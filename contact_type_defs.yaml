@@ -1,0 +1,89 @@
+# This file defines the contact types from a licensing perspective.
+# For each type, it defines the licenses necessary to use it.
+# Refer to the Regulatory Tracker for detailed licensing information:
+# https://docs.google.com/spreadsheets/d/1zkDuvA4PwF9KVhnQgSvTaEtYjiJGRK90BDW2Gs9ZziU/edit
+
+definitions:
+  # The band definitions are given as lower and upper frequency limits,
+  # drawn from the Regulatory Tracker sheet. All values in MHz.
+  UHF402_7_UD: &UHF402_7_UD
+    band: [402.6, 402.8]
+    earth_to_space: true
+    space_to_earth: true
+
+  UHF450_U: &UHF450_U
+    band: [449.75, 450.25]
+    earth_to_space: true
+    space_to_earth: false
+
+  UHF401_5_D: &UHF401_5_D
+    band: [401.0, 402.0]
+    earth_to_space: false
+    space_to_earth: true
+
+  UHF400_U: &UHF400_U
+    band: [399.9, 400.05]
+    earth_to_space: true
+    space_to_earth: false
+
+  SBAND2022_5_D: &SBAND2022_5_D
+    band: [2020.0, 2025.0]
+    earth_to_space: false
+    space_to_earth: true
+
+  SBAND2200_5_D: &SBAND2200_5_D
+    band: [2200.0, 2201.0]
+    earth_to_space: false
+    space_to_earth: true
+
+  SBAND2032_5_U: &SBAND2032_5_U
+    band: [2030.0, 2035.0]
+    earth_to_space: true
+    space_to_earth: false
+
+  XBAND8200_D: &XBAND8200_D
+    band: [8170.0, 8230.0]
+    earth_to_space: false
+    space_to_earth: true
+
+# Contact type definitions are inferred from the code in `scheduler.py` and
+# `licensing.py`, which unfortunately don't fully explain _why_ a certain
+# contact type is used. They also don't check license directionality! o_O
+contact_types:
+  # Bidirectional contact types.
+  CONTACT_BIDIR_UHF:
+    all_of:
+      - any_of:
+        - *UHF402_7_UD
+
+  # Bidirectional contact, using UHF for uplink and S-band for downlink.
+  CONTACT_BIDIR: &contact_bidir
+    all_of:
+      - *UHF402_7_UD
+      - any_of:
+          - *SBAND2022_5_D
+          - *SBAND2200_5_D
+
+  # Variants using the same license, with different link options.
+  CONTACT_BIDIR_DVBS2X: *contact_bidir
+  CONTACT_TRACKING_BIDIR: *contact_bidir
+  CONTACT_TRACKING_BIDIR_DVBS2X: *contact_bidir
+
+  # Receive-only contact types.
+  # CONTACT_RXO is the default, and uses the 2022MHz S-band license.
+  CONTACT_RXO: &contact_rxo
+    all_of:
+      - *SBAND2022_5_D
+
+  CONTACT_RXO_DVBS2X: *contact_rxo
+  CONTACT_TRACKING_RXO: *contact_rxo
+  CONTACT_TRACKING_RXO_DVBS2X: *contact_rxo
+
+  # Contact type for receive-only broadcasts at 2200 MHz.
+  CONTACT_RXO_SBAND_FREQ_2200_MHZ: &contact_rxo_sband_freq_2200_mhz
+    all_of:
+      - *SBAND2200_5_D
+
+  CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ: *contact_rxo_sband_freq_2200_mhz
+  CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ: *contact_rxo_sband_freq_2200_mhz
+  CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ: *contact_rxo_sband_freq_2200_mhz
