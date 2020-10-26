@@ -1,0 +1,48 @@
+resource_types:
+  - name: pull-request
+    type: docker-image
+    source:
+      repository: 784407737194.dkr.ecr.us-west-2.amazonaws.com/github-pr-resource
+      tag: v0.0.2
+
+resources:
+  - name: repo
+    type: pull-request
+    icon: source-branch
+    source:
+      repository: nsat/air
+      paths:
+        - lib/channel_config/*
+      access_token: ((github.infra__access_token))
+      disable_git_lfs: true
+
+jobs:
+  - name: build
+    on_failure:
+      put: repo
+      inputs: [repo]
+      params:
+        path: repo
+        status: failure
+      get_params: {skip_download: true}
+    on_success:
+      put: repo
+      inputs: [repo]
+      params:
+        path: repo
+        status: success
+      get_params: {skip_download: true}
+    plan:
+      - get: repo
+        trigger: true
+        version: every
+      - put: concourse-status-update
+        resource: repo
+        inputs: [repo]
+        params: {path: repo, status: pending}
+        get_params: {skip_download: true}
+      - task: test
+        privileged: true
+        file: repo/lib/channel_config/ci/test-task.yml
+        input_mapping:
+          repo: repo/lib/channel_config

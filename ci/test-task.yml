@@ -1,0 +1,17 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: python
+    tag: 3.8-alpine
+params: []
+inputs:
+  - name: repo
+run:
+  path: bash
+  args:
+    - -exc
+    - |
+      set -ex
+
+      ci/test-all.sh
