@@ -1,0 +1,385 @@
+# This file encodes the current set of RF licenses from the Satellite
+# perspective. As this data was not previously defined in licensing.py but
+# rather configured on a per-satellite basis in TK, we define it here directly
+# from the Regulatory Tracker spreadsheet.
+# See: https://docs.google.com/spreadsheets/d/1zkDuvA4PwF9KVhnQgSvTaEtYjiJGRK90BDW2Gs9ZziU/edit#gid=1309141942
+licenses:
+  # Names and data formats adapted from Regulatory Tracker, attempting to keep
+  # things as similar as possible for ease of comparison and updates.
+  # All frequencies in MHz.
+  USA_PHASE_1A:
+    satellites:
+      [1, 2, 3, 4, 5, 6, 7,
+       8, 11, 12, 16, 17, 18,
+       20, 22, 24, 9, 10, 13,
+       14, 34, 35, 36, 37, 38,
+       39, 40, 41]
+    frequencies:
+      - [2020, 2025, "D"]
+      - [402.6, 402.8, "D"]
+      - [402.6, 402.8, "U"]
+    blacklisted_countries: []
+  USA_PHASE_1B:
+    satellites:
+      [25, 27, 28, 30, 21, 23, 26,
+      42, 43, 44, 45, 46, 29, 32,
+      48, 49, 50, 51, 52, 53, 54,
+      55, 56, 57, 47, 59, 60, 61]
+    frequencies:
+      - [2200, 2201, "D"]
+      - [2020, 2025, "D"]
+      - [402.6, 402.8, "D"]
+      - [402.6, 402.8, "U"]
+    blacklisted_countries: []
+  USA_PHASE_1C:
+    satellites:
+      [62, 63, 64, 65, 75, 78, 79,
+       80, 82, 83, 84, 85, 103, 104,
+       105, 106, 107, 108, 112, 113
+       109, 110, 115, 117, 119, 121,
+       116, 118, 120, 122, 124, 125]
+    frequencies:
+      - [2200, 2201, "D"]
+      - [2020, 2025, "D"]
+      - [402.6, 402.8, "D"]
+      - [449.75, 450.25, "U"]
+      - [402.6, 402.8, "U"]
+    blacklisted_countries: []
+  USA_PHASE_2:
+    satellites:
+      [128, 129, 130, 131, 146,
+       147, 123, 132, 133, 134, 135]
+    frequencies:
+      - [8170, 8230, "D"]
+      - [2200, 2201, "D"]
+      # - [2020, 2025, "D"] # NOTE: Cannot operate in 2020-2025 MHz until license is modified
+      - [402.6, 402.8, "D"]
+      - [401, 401.2, "D"]
+      - [2030, 2035, "U"]
+      - [449.75, 450.25, "U"]
+      - [402.6, 402.8, "U"]
+    blacklisted_countries: []
+  LUX_MINAS:
+    satellites:
+      [91, 92, 93, 94, 95, 96, 97,
+      98, 99, 100, 101, 102, 142]
+    frequencies: &lux-frequencies
+      - [399.9, 400.05, "U"]
+      - [401, 402, "D"]
+      - [402, 403, "U"]
+      - [402, 403, "D"]
+      - [449.75, 450.25, "U"]
+      - [2020, 2025, "D"]
+      - [2025, 2110, "U"]
+      - [2200, 2290, "D"]
+      - [8025, 8175, "D"]
+      - [8175, 8215, "D"]
+      - [8215, 8325, "D"]
+    blacklisted_countries: []
+  LUX_ISL_EXPERIMENTAL:
+    satellites:
+      [144, 145, 136, 137]
+    frequencies:
+      # Default Luxembourg license frequencies.
+      - [399.9, 400.05, "U"]
+      - [401, 402, "D"]
+      - [402, 403, "U"]
+      - [402, 403, "D"]
+      - [449.75, 450.25, "U"]
+      - [2020, 2025, "D"]
+      - [2025, 2110, "U"]
+      - [2200, 2290, "D"]
+      - [8025, 8175, "D"]
+      - [8175, 8215, "D"]
+      - [8215, 8325, "D"]
+      # NOTE: ISL Frequencies bands in 2200-2290 & 2025-2110
+      - [2025, 2026, "ISL"]
+      - [2109, 2110, "ISL"]
+      - [2200, 2201, "ISL"]
+      - [2289, 2290, "ISL"]
+    # NOTE: Cannot communicate with US ground stations
+    blacklisted_countries:
+      - US
+  SNG_COLUGO:
+    satellites:
+      [66, 67, 86, 88, 81, 87, 89, 90]
+    frequencies:
+      - [402, 403, "U"]
+      - [402, 403, "D"]
+      - [2020, 2025, "D"]
+      - [2200, 2290, "D"]
+    blacklisted_countries: []
+
+definitions:
+  # Below are the countries currently we have a licensed ground station in. By
+  # default, we assume that satellites can talk to ground stations licensed in
+  # any of these countries except for the ones blacklisted in the satellite's
+  # license above.
+  spire_gs_countries:
+    - PT # Edisoft
+    - SG # IMDA
+    - JP # JSAT
+    - NO # KSAT
+    - BM # Link Bermuda
+    - IE # National Space Centre
+    - GB # OFCOM
+    - ZA # SANSA
+    - CL # SSC
+    - LK # SupremeSAT
+    - SH # Sure Telecom
+    - FK # Sure Telecom
+    - US # USA (FCC)
+    - NZ # Venture Southland
+    - LV # Latvia, RXO only (no licenses needed)
+
+  # Below are all of the ISO 3166 Two-Letter Country Codes.
+  all_iso_countries: &all_iso_countries
+    - AD # Andorra
+    - AE # United Arab Emirates
+    - AF # Afghanistan
+    - AG # Antigua and Barbuda
+    - AI # Anguilla
+    - AL # Albania
+    - AM # Armenia
+    - AO # Angola
+    - AQ # Antarctica
+    - AR # Argentina
+    - AS # American Samoa
+    - AT # Austria
+    - AU # Australia
+    - AW # Aruba
+    - AX # Åland Islands
+    - AZ # Azerbaijan
+    - BA # Bosnia and Herzegovina
+    - BB # Barbados
+    - BD # Bangladesh
+    - BE # Belgium
+    - BF # Burkina Faso
+    - BG # Bulgaria
+    - BH # Bahrain
+    - BI # Burundi
+    - BJ # Benin
+    - BL # Saint Barth
+    - BM # Bermuda
+    - BN # Brunei Darussalam
+    - BO # Bolivia
+    - BQ # Bonaire
+    - BR # Brazil
+    - BS # Bahamas
+    - BT # Bhutan
+    - BV # Bouvet Island
+    - BW # Botswana
+    - BY # Belarus
+    - BZ # Belize
+    - CA # Canada
+    - CC # Cocos
+    - CD # Congo
+    - CF # Central African Republic
+    - CG # Congo
+    - CH # Switzerland
+    - CI # Côte d'Ivoire
+    - CK # Cook Islands
+    - CL # Chile
+    - CM # Cameroon
+    - CN # China
+    - CO # Colombia
+    - CR # Costa Rica
+    - CU # Cuba
+    - CV # Cabo Verde
+    - CW # Curaçao
+    - CX # Christmas Island
+    - CY # Cyprus
+    - CZ # Czechia
+    - DE # Germany
+    - DJ # Djibouti
+    - DK # Denmark
+    - DM # Dominica
+    - DO # Dominican Republic
+    - DZ # Algeria
+    - EC # Ecuador
+    - EE # Estonia
+    - EG # Egypt
+    - EH # Western Sahara
+    - ER # Eritrea
+    - ES # Spain
+    - ET # Ethiopia
+    - FI # Finland
+    - FJ # Fiji
+    - FK # Falkland Islands
+    - FM # Micronesia
+    - FO # Faroe Islands
+    - FR # France
+    - GA # Gabon
+    - GB # United Kingdom of Great Britain and Northern Ireland
+    - GD # Grenada
+    - GE # Georgia
+    - GF # French Guiana
+    - GG # Guernsey
+    - GH # Ghana
+    - GI # Gibraltar
+    - GL # Greenland
+    - GM # Gambia
+    - GN # Guinea
+    - GP # Guadeloupe
+    - GQ # Equatorial Guinea
+    - GR # Greece
+    - GS # South Georgia and the South Sandwich Islands
+    - GT # Guatemala
+    - GU # Guam
+    - GW # Guinea
+    - GY # Guyana
+    - HK # Hong Kong
+    - HM # Heard Island and McDonald Islands
+    - HN # Honduras
+    - HR # Croatia
+    - HT # Haiti
+    - HU # Hungary
+    - ID # Indonesia
+    - IE # Ireland
+    - IL # Israel
+    - IM # Isle of Man
+    - IN # India
+    - IO # British Indian Ocean Territory
+    - IQ # Iraq
+    - IR # Iran
+    - IS # Iceland
+    - IT # Italy
+    - JE # Jersey
+    - JM # Jamaica
+    - JO # Jordan
+    - JP # Japan
+    - KE # Kenya
+    - KG # Kyrgyzstan
+    - KH # Cambodia
+    - KI # Kiribati
+    - KM # Comoros
+    - KN # Saint Kitts and Nevis
+    - KP # Korea
+    - KR # Korea
+    - KW # Kuwait
+    - KY # Cayman Islands
+    - KZ # Kazakhstan
+    - LA # Lao People's Democratic Republic
+    - LB # Lebanon
+    - LC # Saint Lucia
+    - LI # Liechtenstein
+    - LK # Sri Lanka
+    - LR # Liberia
+    - LS # Lesotho
+    - LT # Lithuania
+    - LU # Luxembourg
+    - LV # Latvia
+    - LY # Libya
+    - MA # Morocco
+    - MC # Monaco
+    - MD # Moldova
+    - ME # Montenegro
+    - MF # Saint Martin
+    - MG # Madagascar
+    - MH # Marshall Islands
+    - MK # North Macedonia
+    - ML # Mali
+    - MM # Myanmar
+    - MN # Mongolia
+    - MO # Macao
+    - MP # Northern Mariana Islands
+    - MQ # Martinique
+    - MR # Mauritania
+    - MS # Montserrat
+    - MT # Malta
+    - MU # Mauritius
+    - MV # Maldives
+    - MW # Malawi
+    - MX # Mexico
+    - MY # Malaysia
+    - MZ # Mozambique
+    - NA # Namibia
+    - NC # New Caledonia
+    - NE # Niger
+    - NF # Norfolk Island
+    - NG # Nigeria
+    - NI # Nicaragua
+    - NL # Netherlands
+    - NO # Norway
+    - NP # Nepal
+    - NR # Nauru
+    - NU # Niue
+    - NZ # New Zealand
+    - OM # Oman
+    - PA # Panama
+    - PE # Peru
+    - PF # French Polynesia
+    - PG # Papua New Guinea
+    - PH # Philippines
+    - PK # Pakistan
+    - PL # Poland
+    - PM # Saint Pierre and Miquelon
+    - PN # Pitcairn
+    - PR # Puerto Rico
+    - PS # Palestine
+    - PT # Portugal
+    - PW # Palau
+    - PY # Paraguay
+    - QA # Qatar
+    - RE # Réunion
+    - RO # Romania
+    - RS # Serbia
+    - RU # Russian Federation
+    - RW # Rwanda
+    - SA # Saudi Arabia
+    - SB # Solomon Islands
+    - SC # Seychelles
+    - SD # Sudan
+    - SE # Sweden
+    - SG # Singapore
+    - SH # Saint Helena
+    - SI # Slovenia
+    - SJ # Svalbard and Jan Mayen
+    - SK # Slovakia
+    - SL # Sierra Leone
+    - SM # San Marino
+    - SN # Senegal
+    - SO # Somalia
+    - SR # Suriname
+    - SS # South Sudan
+    - ST # Sao Tome and Principe
+    - SV # El Salvador
+    - SX # Sint Maarten
+    - SY # Syrian Arab Republic
+    - SZ # Eswatini
+    - TC # Turks and Caicos Islands
+    - TD # Chad
+    - TF # French Southern Territories
+    - TG # Togo
+    - TH # Thailand
+    - TJ # Tajikistan
+    - TK # Tokelau
+    - TL # Timor
+    - TM # Turkmenistan
+    - TN # Tunisia
+    - TO # Tonga
+    - TR # Turkey
+    - TT # Trinidad and Tobago
+    - TV # Tuvalu
+    - TW # Taiwan
+    - TZ # Tanzania
+    - UA # Ukraine
+    - UG # Uganda
+    - UM # United States Minor Outlying Islands
+    - US # United States of America
+    - UY # Uruguay
+    - UZ # Uzbekistan
+    - VA # Holy See
+    - VC # Saint Vincent and the Grenadines
+    - VE # Venezuela
+    - VG # Virgin Islands
+    - VI # Virgin Islands
+    - VN # Viet Nam
+    - VU # Vanuatu
+    - WF # Wallis and Futuna
+    - WS # Samoa
+    - YE # Yemen
+    - YT # Mayotte
+    - ZA # South Africa
+    - ZM # Zambia
+    - ZW # Zimbabwe

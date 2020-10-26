@@ -1,3 +1,16 @@
+#! /usr/bin/env python3
+
+# This script generates channel_tool commands to add configuration for ground stations based on the
+# licensing data encoded in licensing.py (which is symlinked into the current directory). It will
+# only add new licenses, not change existing ones. Be sure to run this from the parent directory so
+# that the contact types can be loaded.
+
+# To generate and run all of the channel addition commands, use:
+# pipenv run python create_gs_configs_from_licensing.py | xargs -L 1 pipenv run
+
+# TODO Replace licensing.py with a set of YAML configuration files defining the ground station
+# licenses, similar to how the satellite licenses are defined.
+
 from licensing import gs_licensed_freqs
 from ruamel.yaml import YAML
 from collections import defaultdict
