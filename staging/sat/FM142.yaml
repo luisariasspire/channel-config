@@ -1,6 +1,6 @@
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
-  allowed_license_countries: &id001
+  allowed_license_countries:
   - PT
   - SG
   - JP
@@ -18,102 +18,267 @@ CONTACT_BIDIR_UHF:
   - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 10.0
-  satellite_constraints: {}
+  satellite_constraints: &id001
+    separation:
+    - no_overlapping_transits:
+        norad_id: 25544
 CONTACT_BIDIR:
   directionality: Bidirectional
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 10.0
-  satellite_constraints: {}
+  satellite_constraints: *id001
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 10.0
-  satellite_constraints: {}
+  satellite_constraints: *id001
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 10.0
-  satellite_constraints: {}
+  satellite_constraints: *id001
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 10.0
-  satellite_constraints: {}
+  satellite_constraints: *id001
 CONTACT_RXO:
   directionality: SpaceToEarth
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 25.0
-  satellite_constraints: {}
+  satellite_constraints: &id002
+    separation:
+    - minimum_distance:
+        norad_id: 25544
+        distance_m: 150000
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 25.0
-  satellite_constraints: {}
+  satellite_constraints: *id002
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 25.0
-  satellite_constraints: {}
+  satellite_constraints: *id002
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 25.0
-  satellite_constraints: {}
+  satellite_constraints: *id002
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 25.0
-  satellite_constraints: {}
+  satellite_constraints: &id003
+    separation:
+    - minimum_distance:
+        norad_id: 25544
+        distance_m: 190000
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 25.0
-  satellite_constraints: {}
+  satellite_constraints: *id003
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 25.0
-  satellite_constraints: {}
+  satellite_constraints: *id003
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
-  allowed_license_countries: *id001
+  allowed_license_countries:
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
   enabled: false
   legal: true
-  ground_station_constraints:
-    min_elevation_deg: 25.0
-  satellite_constraints: {}
+  satellite_constraints: *id003

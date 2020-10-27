@@ -4,14 +4,15 @@ image_resource:
   source:
     repository: python
     tag: 3.8-alpine
-params: []
 inputs:
   - name: repo
 run:
-  path: bash
+  path: sh
   args:
     - -exc
     - |
       set -ex
+
+      cd repo/lib/channel_config
 
       ci/test-all.sh

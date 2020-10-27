@@ -13,6 +13,8 @@ ENVS = ["staging", "production"]
 SCHEMA_FILE = "schema.yaml"
 SAT_DIR = "sat"
 GS_DIR = "gs"
+GROUND_STATION = "ground_station"
+SATELLITE = "satellite"
 
 
 class AlreadyExistsError(Exception):
@@ -49,10 +51,14 @@ def add_config(args):
             template = find_template(channel)
             return modify(template, args)
         else:
-            raise AlreadyExistsError(
+            msg = (
                 f"Configuration for {channel} already exists on {asset}.\n"
                 f"(Tip: Use `channel_tool edit {asset} {channel}` to edit the configuration.)"
             )
+            if args.keep_going:
+                print(msg)
+            else:
+                raise AlreadyExistsError(msg)
 
     apply_update(args.environment, args.assets, args.channels, do_add, yes=args.yes)
 
@@ -62,18 +68,27 @@ def edit_config(args):
         if existing:
             return modify(existing, args)
         else:
-            raise NoConfigurationError(
+            msg = (
                 f"No configuration for {channel} on {asset}.\n"
                 f"(Tip: Use `channel_tool add {asset} {channel}` to add one from a template.)"
             )
+            if args.keep_going:
+                print(msg)
+            else:
+                raise NoConfigurationError(msg)
 
     apply_update(args.environment, args.assets, args.channels, do_edit, yes=args.yes)
 
 
 def validate_all(args):
-    print("Validating templates...")
-    validate_file("templates.yaml", inspect_keys=True)
-    print("PASS")
+    for asset_type in [GROUND_STATION, SATELLITE]:
+        print(f"Validating {asset_type} templates...")
+        validate_file(
+            "templates.yaml",
+            inspect_keys=True,
+            preprocess=lambda x: filter_properties(asset_type, x),
+        )
+        print("PASS")
 
     for env in ENVS:
         print(f"Validating {env} satellites...")
@@ -95,18 +110,24 @@ def validate_all(args):
     print("All passed!")
 
 
-def validate_file(cf, inspect_keys=True):
+def validate_file(cf, inspect_keys=True, preprocess=None):
     with open(cf) as f:
         yaml = YAML()
         config = yaml.load(f)
         if inspect_keys:
             for key in config:
                 try:
-                    validate_one(config[key])
+                    c = config[key]
+                    if preprocess:
+                        c = preprocess(c)
+                    validate_one(c)
                 except Exception as e:
                     raise ValidationError(f"Failed to validate {cf}#{key}: {e}")
         else:
             try:
+                c = config
+                if preprocess:
+                    c = preprocess(c)
                 validate_one(config)
             except Exception as e:
                 raise ValidationError(f"Failed to validate {cf}: {e}")
@@ -154,30 +175,45 @@ def locate_assets(env, assets):
     elif assets == "all_sat":
         return [name(p) for p in os.listdir(os.path.join(env, SAT_DIR))]
     elif assets == "all":
-        vs = locate_assets("all_gs")
-        vs.extend(locate_assets("all_sat"))
+        vs = locate_assets(env, "all_gs")
+        vs.extend(locate_assets(env, "all_sat"))
         return vs
     else:
         return assets.split(",")
 
 
+def filter_properties(asset_type, chan):
+    """Filter the channel configuration properties based on the asset type."""
+    if chan:
+        if asset_type != GROUND_STATION and "ground_station_constraints" in chan:
+            del chan["ground_station_constraints"]
+        if asset_type != SATELLITE and "satellite_constraints" in chan:
+            del chan["satellite_constraints"]
+    return chan
+
+
 def apply_update(env, assets, channels, tfm, yes=False):
-    for asset in locate_assets(assets):
+    for asset in locate_assets(env, assets):
         asset_config = load_asset_config(env, asset)
-        for channel in channels.split(","):
+        for channel in channels:
             existing_chan = asset_config.get(channel)
             try:
                 updated_chan = tfm(asset, channel, existing_chan)
-                validate_one(updated_chan)
+                if updated_chan:
+                    asset_type = infer_asset_type(asset)
+                    updated_chan = filter_properties(asset_type, updated_chan)
+                    validate_one(updated_chan)
                 if updated_chan != existing_chan:
-                    if yes or confirm_changes(asset, channel, existing_chan, updated_chan):
+                    if yes or confirm_changes(
+                        asset, channel, existing_chan, updated_chan
+                    ):
                         asset_config[channel] = updated_chan
                         print(f"Updated {channel} definition for {asset}.")
                 else:
                     print(f"No changes for {channel} on {asset}.")
             except AlreadyExistsError as e:
                 print(f"Error: {e}")
-        write_asset_config(asset, asset_config)
+        write_asset_config(env, asset, asset_config)
 
 
 def confirm_changes(asset, channel, existing, new):
@@ -218,20 +254,35 @@ def load_asset_config(env, asset):
             return {}
 
 
-def write_asset_config(asset, asset_config):
-    config_file = infer_config_file(asset)
+def write_asset_config(env, asset, asset_config):
+    config_file = infer_config_file(env, asset)
     with open(config_file, mode="w+") as f:
         yaml = YAML()
         yaml.dump(asset_config, f)
 
 
-def infer_config_file(env, asset):
+def infer_asset_type(asset):
     if asset.endswith("gs"):
+        return GROUND_STATION
+    else:
+        return SATELLITE
+
+
+def infer_config_file(env, asset):
+    asset_type = infer_asset_type(asset)
+    if asset_type == GROUND_STATION:
         # Assumed to be a ground station.
         return os.path.join(env, GS_DIR, asset + ".yaml")
-    else:
+    elif asset_type == SATELLITE:
         # Assumed to be a satellite.
         return os.path.join(env, SAT_DIR, asset + ".yaml")
+    else:
+        raise ValueError(f"Unexpected asset type {asset_type}")
+
+
+def str_to_yaml(val):
+    yaml = YAML()
+    return yaml.load(val)
 
 
 def str_to_list(values):
@@ -246,6 +297,37 @@ def str_to_bool(val):
     raise ValueError(f"Unrecognized input '{val}'")
 
 
+def channel_list(val):
+    yaml = YAML()
+    with open("templates.yaml", "r") as f:
+        all_channels = yaml.load(f)
+
+    # TODO Clean up the aliases so they use a common source of truth for definitions like "s-band"
+    if val.lower() == "all":
+        return all_channels
+    elif val.lower() == "sband":
+        return [
+            c
+            for c, d in all_channels.items()
+            if "SBAND" in c
+            or "RXO" in c
+            or c == "CONTACT_BIDIR"
+            or c == "CONTACT_BIDIR_DVBS2X"
+        ]
+    elif val.lower() == "uhf":
+        return [c for c, d in all_channels.items() if "SBAND" not in c and "RXO" not in c]
+    elif val.lower() == "bidir":
+        return [
+            c for c, d in all_channels.items() if d["directionality"] == "Bidirectional"
+        ]
+    elif val.lower() == "rxo":
+        return [
+            c for c, d in all_channels.items() if d["directionality"] == "SpaceToEarth"
+        ]
+    else:
+        return str_to_list(val)
+
+
 def add_editing_flags(parser):
     """Add flags for each channel definition field. Used for editing and overrides."""
     # Meta
@@ -255,9 +337,14 @@ def add_editing_flags(parser):
         help="Skip confirmation dialogs and make all edits.",
     )
     parser.add_argument(
+        "--keep-going",
+        action="store_true",
+        help="Continue with further edits after errors.",
+    )
+    parser.add_argument(
         "--comment",
         type=str,
-        help="Optional comment to attach to the channel definition in the YAML file."
+        help="Optional comment to attach to the channel definition in the YAML file.",
     )
 
     # Fields
@@ -280,7 +367,17 @@ def add_editing_flags(parser):
         type=str_to_bool,
         help="Whether the channel is licensed for legal use.",
     )
-    # TODO Add support for ground station/satellite constraints.
+    parser.add_argument(
+        "--ground_station_constraints",
+        type=str_to_yaml,
+        help="A YAML block describing the ground station constraints.",
+    )
+    parser.add_argument(
+        "--satellite_constraints",
+        type=str_to_yaml,
+        help="A YAML block describing the satellite constraints.",
+    )
+# TODO Add support for ground station/satellite constraints.
 
 
 def add_asset_flags(parser):
@@ -288,9 +385,7 @@ def add_asset_flags(parser):
         "environment",
         type=str,
         choices=ENVS,
-        help=(
-            "Which environment to configure."
-        ),
+        help=("Which environment to configure."),
     )
     parser.add_argument(
         "assets",
@@ -301,7 +396,10 @@ def add_asset_flags(parser):
         ),
     )
     parser.add_argument(
-        "channels", type=str, help="The channels to act on as a comma separated list."
+        "channels",
+        type=channel_list,
+        help=("The channels to act on as a comma separated list. "
+              "Also supports the following aliases: uhf, sband, rxo, bidir."),
     )
 
 

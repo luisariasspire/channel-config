@@ -8,7 +8,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
-  satellite_constraints: {}
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -19,7 +18,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
-  satellite_constraints: {}
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -30,7 +28,6 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
-  satellite_constraints: {}
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -41,4 +38,3 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
-  satellite_constraints: {}

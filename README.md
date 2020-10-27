@@ -109,8 +109,13 @@ conforms to the latest schema. This makes it easy to edit the configuration and 
 the result is sound. Note also that the tool provides a diff for each edit it makes, showing that
 the `legal` field was already `true` and did not need to change, while `enabled` was updated from
 `false` to `true` as requested. You will have the option to cancel each change if you don't want to
-apply it. To skip confirmations, use the `--yes` option; this is generally safe to do as long as you
-review the changes before merging your PR (which you're always doing _regardless_, right?).
+apply it. 
+
+To skip confirmations, use the `--yes` option; this is generally safe to do as long as you review
+the changes before merging your PR (which you're always doing _regardless_, right?). Use
+`--keep-going` to tell the tool to skip configurations that have errors and try to finish the
+remaining edits. This is useful when using aliases for channel sets, such as `sband`, where not all
+of the assets may have all of the channels.
 
 ### Validation
 
@@ -126,3 +131,23 @@ pipenv run channel_tool validate
 
 This will check all of the configurations in both `staging` and `production` to verify they conform
 to the expected format.
+
+### Setting channel constraints
+
+Channels can be configured with asset-specific constraints, such as a minimum elevation for a ground
+station or a separation requirement for a satellite. To set these in bulk, create a temporary YAML
+file with the desired constraint. For example:
+
+```yaml
+# /tmp/constraints.yml
+separation:
+  - no_overlapping_transits:
+      norad_id: 25544 # ISS
+```
+
+Then use `channel_tool` to set it on the desired satellites or ground stations:
+
+```bash
+pipenv run channel_tool edit staging FM137,FM142 uhf --keep-going --yes \
+    --satellite_constraints "$(cat /tmp/constraints.yml)"
+```

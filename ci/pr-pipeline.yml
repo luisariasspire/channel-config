@@ -45,4 +45,4 @@ jobs:
         privileged: true
         file: repo/lib/channel_config/ci/test-task.yml
         input_mapping:
-          repo: repo/lib/channel_config
+          repo: repo

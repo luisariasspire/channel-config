@@ -2,8 +2,12 @@
 # http://json-schema.org/understanding-json-schema/
 # It's written in YAML, but the structure is the same.
 
-# Definitions can go here to keep the structure clean.            
+# Definitions can go here to keep the structure clean.
 definitions:
+  directionality: &directionality
+    - Bidirectional
+    - SpaceToEarth
+    - EarthToSpace
   iso3166: &iso3166
     - AD # Andorra
     - AE # United Arab Emirates
@@ -33,7 +37,7 @@ definitions:
     - BL # Saint Barth
     - BM # Bermuda
     - BN # Brunei Darussalam
-    - BO # Bolivia 
+    - BO # Bolivia
     - BQ # Bonaire
     - BR # Brazil
     - BS # Bahamas
@@ -43,7 +47,7 @@ definitions:
     - BY # Belarus
     - BZ # Belize
     - CA # Canada
-    - CC # Cocos 
+    - CC # Cocos
     - CD # Congo
     - CF # Central African Republic
     - CG # Congo
@@ -76,8 +80,8 @@ definitions:
     - ET # Ethiopia
     - FI # Finland
     - FJ # Fiji
-    - FK # Falkland Islands 
-    - FM # Micronesia 
+    - FK # Falkland Islands
+    - FM # Micronesia
     - FO # Faroe Islands
     - FR # France
     - GA # Gabon
@@ -112,7 +116,7 @@ definitions:
     - IN # India
     - IO # British Indian Ocean Territory
     - IQ # Iraq
-    - IR # Iran 
+    - IR # Iran
     - IS # Iceland
     - IT # Italy
     - JE # Jersey
@@ -125,7 +129,7 @@ definitions:
     - KI # Kiribati
     - KM # Comoros
     - KN # Saint Kitts and Nevis
-    - KP # Korea 
+    - KP # Korea
     - KR # Korea
     - KW # Kuwait
     - KY # Cayman Islands
@@ -145,7 +149,7 @@ definitions:
     - MC # Monaco
     - MD # Moldova
     - ME # Montenegro
-    - MF # Saint Martin 
+    - MF # Saint Martin
     - MG # Madagascar
     - MH # Marshall Islands
     - MK # North Macedonia
@@ -215,7 +219,7 @@ definitions:
     - SS # South Sudan
     - ST # Sao Tome and Principe
     - SV # El Salvador
-    - SX # Sint Maarten 
+    - SX # Sint Maarten
     - SY # Syrian Arab Republic
     - SZ # Eswatini
     - TC # Turks and Caicos Islands
@@ -242,9 +246,9 @@ definitions:
     - UZ # Uzbekistan
     - VA # Holy See
     - VC # Saint Vincent and the Grenadines
-    - VE # Venezuela 
-    - VG # Virgin Islands 
-    - VI # Virgin Islands 
+    - VE # Venezuela
+    - VG # Virgin Islands
+    - VI # Virgin Islands
     - VN # Viet Nam
     - VU # Vanuatu
     - WF # Wallis and Futuna
@@ -258,29 +262,63 @@ definitions:
 
 # The JSON Schema is contained under this key to allow us to use YAML features such as anchors.
 schema:
-  type: object
-  additionalProperties: false
-  properties:
-    legal:
-      type: boolean
-    enabled:
-      type: boolean
-    directionality:
-      enum:
-        - Bidirectional
-        - SpaceToEarth
-        - EarthToSpace
-    allowed_license_countries:
-      type: array
-      items:
-        type: string
-        enum: *iso3166
-    ground_station_constraints:
-      type: object
+  oneOf:
+    - type: object
       additionalProperties: false
       properties:
-        min_elevation_deg:
-          type: number
-    satellite_constraints:
-      type: object
+        legal:
+          type: boolean
+        enabled:
+          type: boolean
+        directionality:
+          enum: *directionality
+        allowed_license_countries:
+          type: array
+          items:
+            type: string
+            enum: *iso3166
+        ground_station_constraints:
+          type: object
+          additionalProperties: false
+          properties:
+            min_elevation_deg:
+              type: number
+    - type: object
       additionalProperties: false
+      properties:
+        legal:
+          type: boolean
+        enabled:
+          type: boolean
+        directionality:
+          enum: *directionality
+        allowed_license_countries:
+          type: array
+          items:
+            type: string
+            enum: *iso3166
+        satellite_constraints:
+          type: object
+          additionalProperties: false
+          properties:
+            separation:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  minimum_distance:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      norad_id:
+                        type: number
+                      distance_m:
+                        type: number
+                  no_overlapping_transits:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      norad_id:
+                        type: number
+
