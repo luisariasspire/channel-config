@@ -73,7 +73,7 @@ def emit_channel_commands(sats, channels, countries):
     fms = ",".join([f"FM{sat}" for sat in sats])
     # TODO Should the script update the "is legal" bit on existing channels?
     print(
-        f"channel_tool add {fms}"
+        f"channel_tool staging add {fms}"
         f" {channel_list}"
         f" --allowed_license_countries={country_list}"
         " --legal=True --yes"

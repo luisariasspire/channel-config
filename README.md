@@ -9,8 +9,9 @@ fleet on a per-channel basis. This approach is intended to supplant the extant (
 
 The configuration for the fleet can be quite large, so it is broken up into several directories.
 
-- `sat` contains configuration files for each satellite.
-- `gs` contains configuration files for each ground station.
+- There are separate `staging` and `production` configuration directories. In each:
+  - `sat` contains configuration files for each satellite.
+  - `gs` contains configuration files for each ground station.
 - `templates` contains template configurations for each contact type, using common values.
 
 ## Installation
@@ -44,23 +45,24 @@ Each of the above steps are described in more detail below.
 Adding channels from a template to a ground station is simple:
 
 ```
-pipenv run channel_tool add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True --enabled=True
+pipenv run channel_tool staging add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True --enabled=True
 ```
 
 We can do the same for satellites, and even update several at once:
 
 ```
-pipenv run channel_tool add FM998,FM999 CONTACT_BIDIR --legal=True
+pipenv run channel_tool staging add FM998,FM999 CONTACT_BIDIR --legal=True
 ```
 
 Note the structure of the command. First we have `pipenv run channel_tool`, which calls the tooling
-within the correct virtual environment so that all of the needed modules are available. Next comes a
-subcommand, in this case `add`. After that, we have a comma-separated list of assets (ground
-stations or satellites), a comma-separated list of channel names (i.e. contact types), and finally
-flags that set overrides on the template fields. In the examples above we populated channel
-definitions for FM998 & FM999 from a template specifying the default values that `CONTACT_BIDIR`
-should have, and overrode the `legal` field, which is normally `False`, with the `True` value. (We
-did something similar for TOSGS, and we also set the `enabled` field to `True`.)
+within the correct virtual environment so that all of the needed modules are available. Next comes
+an environment, `staging`, and a subcommand, in this case `add`. After that, we have a
+comma-separated list of assets (ground stations or satellites), a comma-separated list of channel
+names (i.e. contact types), and finally flags that set overrides on the template fields. In the
+examples above we populated channel definitions for FM998 & FM999 from a template specifying the
+default values that `CONTACT_BIDIR` should have, and overrode the `legal` field, which is normally
+`False`, with the `True` value. (We did something similar for TOSGS, and we also set the `enabled`
+field to `True`.)
 
 _All of the commands in `channel_tool` follow this pattern. Use `pipenv run channel_tool --help` to
 get more detailed information on the various subcommands._
@@ -68,7 +70,7 @@ get more detailed information on the various subcommands._
 If we try to add a configuration which already exists we get an error:
 
 ```
-$ pipenv run channel_tool add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True
+$ pipenv run channel_tool staging add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True
 Error: Configuration for CONTACT_RXO_SBAND_FREQ_2200_MHZ already exists on tosgs.
 (Tip: Use `channel_tool edit tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ` to edit the configuration.)
 ```
@@ -81,7 +83,7 @@ this. The `edit` command will apply field-level changes to the specified channel
 given set of assets:
 
 ```
-$ pipenv run channel_tool edit tosgs CONTACT_RXO_SBAND_FREQ_2200MHZ \
+$ pipenv run channel_tool staging edit tosgs CONTACT_RXO_SBAND_FREQ_2200MHZ \
     --enabled=true --legal=true
 Changing asset configuration for CONTACT_RXO_SBAND_FREQ_2200_MHZ on tosgs. Diff:
 --- 
@@ -121,3 +123,6 @@ with a single command:
 ```
 pipenv run channel_tool validate
 ```
+
+This will check all of the configurations in both `staging` and `production` to verify they conform
+to the expected format.

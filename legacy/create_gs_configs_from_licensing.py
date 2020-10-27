@@ -87,7 +87,7 @@ def format_commands(gs_id, gs_chans):
     for contact_type, countries in gs_chans.items():
         c_str = ",".join(countries)
         # TODO Add comments with license justification
-        cmds.append(f"./channel_tool add {gs_id} {contact_type}"
+        cmds.append(f"channel_tool staging add {gs_id} {contact_type}"
                     f" --allowed_license_countries={c_str}"
                     " --legal true"  # Override legality: the license exists.
                     " --yes")

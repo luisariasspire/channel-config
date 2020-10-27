@@ -9,6 +9,7 @@ import os
 import sys
 from io import StringIO
 
+ENVS = ["staging", "production"]
 SCHEMA_FILE = "schema.yaml"
 SAT_DIR = "sat"
 GS_DIR = "gs"
@@ -53,7 +54,7 @@ def add_config(args):
                 f"(Tip: Use `channel_tool edit {asset} {channel}` to edit the configuration.)"
             )
 
-    apply_update(args.assets, args.channels, do_add, yes=args.yes)
+    apply_update(args.environment, args.assets, args.channels, do_add, yes=args.yes)
 
 
 def edit_config(args):
@@ -66,7 +67,7 @@ def edit_config(args):
                 f"(Tip: Use `channel_tool add {asset} {channel}` to add one from a template.)"
             )
 
-    apply_update(args.assets, args.channels, do_edit, yes=args.yes)
+    apply_update(args.environment, args.assets, args.channels, do_edit, yes=args.yes)
 
 
 def validate_all(args):
@@ -74,19 +75,22 @@ def validate_all(args):
     validate_file("templates.yaml", inspect_keys=True)
     print("PASS")
 
-    print("Validating satellites...")
-    all_sats = os.listdir(SAT_DIR)
-    for sf in all_sats:
-        print(f"{sf}... ", end="")
-        validate_file(os.path.join(SAT_DIR, sf))
-        print("PASS")
+    for env in ENVS:
+        print(f"Validating {env} satellites...")
+        sat_dir = os.path.join(env, SAT_DIR)
+        all_sats = os.listdir(sat_dir)
+        for sf in all_sats:
+            print(f"{sf}... ", end="")
+            validate_file(os.path.join(sat_dir, sf))
+            print("PASS")
 
-    print("Validating ground stations...")
-    all_stations = os.listdir(GS_DIR)
-    for gsf in all_stations:
-        print(f"{gsf}... ", end="")
-        validate_file(os.path.join(GS_DIR, gsf))
-        print("PASS")
+        print(f"Validating {env} ground stations...")
+        gs_dir = os.path.join(env, GS_DIR)
+        all_stations = os.listdir(gs_dir)
+        for gsf in all_stations:
+            print(f"{gsf}... ", end="")
+            validate_file(os.path.join(gs_dir, gsf))
+            print("PASS")
 
     print("All passed!")
 
@@ -141,14 +145,14 @@ def find_template(channel):
         raise FileNotFoundError(f"Could not find file {template_file}")
 
 
-def locate_assets(assets):
+def locate_assets(env, assets):
     def name(p):
         return os.path.splitext(os.path.basename(p))[0]
 
     if assets == "all_gs":
-        return [name(p) for p in os.listdir(GS_DIR)]
+        return [name(p) for p in os.listdir(os.path.join(env, GS_DIR))]
     elif assets == "all_sat":
-        return [name(p) for p in os.listdir(SAT_DIR)]
+        return [name(p) for p in os.listdir(os.path.join(env, SAT_DIR))]
     elif assets == "all":
         vs = locate_assets("all_gs")
         vs.extend(locate_assets("all_sat"))
@@ -157,9 +161,9 @@ def locate_assets(assets):
         return assets.split(",")
 
 
-def apply_update(assets, channels, tfm, yes=False):
+def apply_update(env, assets, channels, tfm, yes=False):
     for asset in locate_assets(assets):
-        asset_config = load_asset_config(asset)
+        asset_config = load_asset_config(env, asset)
         for channel in channels.split(","):
             existing_chan = asset_config.get(channel)
             try:
@@ -201,8 +205,8 @@ def dumps(obj):
         return stream.getvalue()
 
 
-def load_asset_config(asset):
-    config_file = infer_config_file(asset)
+def load_asset_config(env, asset):
+    config_file = infer_config_file(env, asset)
     if not os.path.exists(config_file):
         return {}
     with open(config_file, mode="r") as f:
@@ -221,13 +225,13 @@ def write_asset_config(asset, asset_config):
         yaml.dump(asset_config, f)
 
 
-def infer_config_file(asset):
+def infer_config_file(env, asset):
     if asset.endswith("gs"):
         # Assumed to be a ground station.
-        return os.path.join(GS_DIR, asset + ".yaml")
+        return os.path.join(env, GS_DIR, asset + ".yaml")
     else:
         # Assumed to be a satellite.
-        return os.path.join(SAT_DIR, asset + ".yaml")
+        return os.path.join(env, SAT_DIR, asset + ".yaml")
 
 
 def str_to_list(values):
@@ -280,6 +284,14 @@ def add_editing_flags(parser):
 
 
 def add_asset_flags(parser):
+    parser.add_argument(
+        "environment",
+        type=str,
+        choices=ENVS,
+        help=(
+            "Which environment to configure."
+        ),
+    )
     parser.add_argument(
         "assets",
         type=str,
