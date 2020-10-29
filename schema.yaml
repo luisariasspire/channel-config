@@ -304,21 +304,23 @@ schema:
             separation:
               type: array
               items:
-                type: object
-                additionalProperties: false
-                properties:
-                  minimum_distance:
-                    type: object
+                anyOf:
+                  - type: object
                     additionalProperties: false
                     properties:
+                      type:
+                        type: string
+                        enum: [minimum_distance]
                       norad_id:
                         type: number
                       distance_m:
                         type: number
-                  no_overlapping_transits:
-                    type: object
+                  - type: object
                     additionalProperties: false
                     properties:
+                      type:
+                        type: string
+                        enum: [no_overlapping_transits]
                       norad_id:
                         type: number
 

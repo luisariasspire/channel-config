@@ -19,8 +19,8 @@ CONTACT_BIDIR_UHF:
   legal: true
   satellite_constraints: &id001
     separation:
-    - no_overlapping_transits:
-        norad_id: 25544
+    - type: no_overlapping_transits
+      norad_id: 25544
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -122,9 +122,9 @@ CONTACT_RXO:
   legal: true
   satellite_constraints: &id002
     separation:
-    - minimum_distance:
-        norad_id: 25544
-        distance_m: 150000
+    - type: minimum_distance
+      norad_id: 25544
+      distance_m: 150000
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -206,9 +206,9 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   legal: true
   satellite_constraints: &id003
     separation:
-    - minimum_distance:
-        norad_id: 25544
-        distance_m: 190000
+    - type: minimum_distance
+      norad_id: 25544
+      distance_m: 190000
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:

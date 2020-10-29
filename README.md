@@ -141,8 +141,8 @@ file with the desired constraint. For example:
 ```yaml
 # /tmp/constraints.yml
 separation:
-  - no_overlapping_transits:
-      norad_id: 25544 # ISS
+  - type: no_overlapping_transits
+    norad_id: 25544 # ISS
 ```
 
 Then use `channel_tool` to set it on the desired satellites or ground stations:

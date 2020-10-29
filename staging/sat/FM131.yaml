@@ -18,7 +18,13 @@ CONTACT_BIDIR_UHF:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # in production this sat does not have these constraints
+    # they have been added so that we can test the code paths
+    # around these constraints ahead of deploy 25.
+    separation: &id001
+    - type: "no_overlapping_transits"
+      norad_id: 25544
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -39,7 +45,11 @@ CONTACT_BIDIR:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # in production this sat does not have these constraints
+    # they have been added so that we can test the code paths
+    # around these constraints ahead of deploy 25.
+    separation: *id001
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -60,7 +70,11 @@ CONTACT_BIDIR_DVBS2X:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # in production this sat does not have these constraints
+    # they have been added so that we can test the code paths
+    # around these constraints ahead of deploy 25.
+    separation: *id001
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -81,7 +95,11 @@ CONTACT_TRACKING_BIDIR:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # in production this sat does not have these constraints
+    # they have been added so that we can test the code paths
+    # around these constraints ahead of deploy 25.
+    separation: *id001
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -102,7 +120,11 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # in production this sat does not have these constraints
+    # they have been added so that we can test the code paths
+    # around these constraints ahead of deploy 25.
+    separation: *id001
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -123,7 +145,11 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # in production this sat does not have these constraints
+    # they have been added so that we can test the code paths
+    # around these constraints ahead of deploy 25.
+    separation: *id001
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -144,7 +170,11 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # in production this sat does not have these constraints
+    # they have been added so that we can test the code paths
+    # around these constraints ahead of deploy 25.
+    separation: *id001
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -165,7 +195,11 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # in production this sat does not have these constraints
+    # they have been added so that we can test the code paths
+    # around these constraints ahead of deploy 25.
+    separation: *id001
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -186,4 +220,8 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # in production this sat does not have these constraints
+    # they have been added so that we can test the code paths
+    # around these constraints ahead of deploy 25.
+    separation: *id001
