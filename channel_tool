@@ -3,17 +3,21 @@
 import argparse
 from copy import deepcopy
 import difflib
+import itertools
 import jsonschema
 from ruamel.yaml import YAML
 import os
+import requests
 import sys
+from tabulate import tabulate
 from io import StringIO
 
 ENVS = ["staging", "production"]
+TK_DOMAINS = {"staging": "sbox", "production": "cloud"}
 SCHEMA_FILE = "schema.yaml"
 SAT_DIR = "sat"
 GS_DIR = "gs"
-GROUND_STATION = "ground_station"
+GROUND_STATION = "groundstation"
 SATELLITE = "satellite"
 
 
@@ -79,6 +83,111 @@ def edit_config(args):
                 raise NoConfigurationError(msg)
 
     apply_update(args.environment, args.assets, args.channels, do_edit, yes=args.yes)
+
+
+def tk_url(env):
+    env_domain = TK_DOMAINS[env]
+    return f"https://theknowledge.{env_domain}.spire.com/v2/"
+
+
+def load_tk_asset(env, kind, name=None):
+    if name:
+        suffix = f"/{name}"
+    else:
+        suffix = ""
+    r = requests.get(tk_url(env) + kind + suffix)
+    r.raise_for_status()
+    return r.json()
+
+
+def compare_channels(sat_config, gs_config, satellite, ground_station):
+    """Compare the configured channels for the given satellite and ground station."""
+    shared = []
+    mismatched = []
+
+    def channel_rejection_reason(sat_chan, gs_chan):
+        """Apply channel matching rules and return the reason for mismatch, if any."""
+        if not sat_chan["legal"]:
+            return "Channel marked illegal on satellite"
+
+        if not gs_chan["legal"]:
+            return "Channel marked illegal on ground station"
+
+        if not sat_chan["enabled"]:
+            return "Channel disabled on satellite"
+
+        if not gs_chan["enabled"]:
+            return "Channel disabled on ground station"
+
+        sat_dir = sat_chan["directionality"]
+        gs_dir = gs_chan["directionality"]
+        if sat_dir != gs_dir:
+            return f"Directionality mismatch ({sat_dir} vs {gs_dir})"
+
+        sat_countries = sat_chan["allowed_license_countries"]
+        gs_countries = gs_chan["allowed_license_countries"]
+
+        def normalize(country):
+            return country[:2]
+
+        sat_country = normalize(satellite["license_country"])
+        gs_country = ground_station["license_country"]
+
+        if sat_country not in gs_countries:
+            return f"Satellite license country {sat_country} not in set {gs_countries}"
+
+        if gs_country not in sat_countries:
+            return f"Ground station license country {gs_country} not in set {sat_countries}"
+
+        return None
+
+    channels = set(sat_config.keys()).union(set(gs_config.keys()))
+    for chan in channels:
+        sat_chan = sat_config.get(chan)
+        gs_chan = gs_config.get(chan)
+        if sat_chan and gs_chan:
+            reason = channel_rejection_reason(sat_chan, gs_chan)
+            if reason:
+                mismatched.append((chan, reason))
+            else:
+                shared.append(chan)
+        elif sat_chan:
+            mismatched.append((chan, "Channel not configured on ground station"))
+        else:
+            mismatched.append((chan, "Channel not configured on satellite"))
+    shared = sorted(shared)
+    mismatched = sorted(mismatched)
+    return (shared, mismatched)
+
+
+def audit_config(env, sat, gs):
+    """Compute and display a report of the channel (mis)matches between assets."""
+    sat_config = load_asset_config(env, sat)
+    gs_config = load_asset_config(env, gs)
+    satellite = load_tk_asset(env, SATELLITE, sat)
+    ground_station = load_tk_asset(env, GROUND_STATION, gs)
+
+    shared, mismatched = compare_channels(sat_config, gs_config, satellite, ground_station)
+
+    header = f"Audit summary for {sat} -> {gs}"
+    print(header)
+    print("=" * len(header), end="\n\n")
+
+    print("Valid Channels")
+    if shared:
+        print(tabulate([[s] for s in shared]))
+    else:
+        print("(No channels passed licensing rules)")
+    print()
+
+    print("Rejected Channels")
+    print(tabulate(mismatched))
+    print()
+
+
+def audit_configs(args):
+    for sat, gs in itertools.product(args.satellites, args.ground_stations):
+        audit_config(args.environment, sat, gs)
 
 
 def validate_all(args):
@@ -381,13 +490,18 @@ def add_editing_flags(parser):
 # TODO Add support for ground station/satellite constraints.
 
 
-def add_asset_flags(parser):
+def add_env_flag(parser):
     parser.add_argument(
         "environment",
         type=str,
         choices=ENVS,
         help=("Which environment to configure."),
     )
+
+
+def add_asset_flags(parser):
+    add_env_flag(parser)
+    # TODO Change type to str_to_list
     parser.add_argument(
         "assets",
         type=str,
@@ -424,6 +538,23 @@ EDIT_PARSER = SUBPARSERS.add_parser(
 EDIT_PARSER.set_defaults(func=edit_config)
 add_editing_flags(EDIT_PARSER)
 add_asset_flags(EDIT_PARSER)
+
+AUDIT_PARSER = SUBPARSERS.add_parser(
+    "audit", help="Audit a satellite/ground station pair to find usable channels."
+)
+AUDIT_PARSER.set_defaults(func=audit_configs)
+
+add_env_flag(AUDIT_PARSER)
+AUDIT_PARSER.add_argument(
+    "satellites",
+    type=str_to_list,
+    help=("The satellites to audit."),
+)
+AUDIT_PARSER.add_argument(
+    "ground_stations",
+    type=str_to_list,
+    help=("The ground stations to audit."),
+)
 
 VALIDATE_PARSER = SUBPARSERS.add_parser(
     "validate", help="Validate all templates and extant configurations."
