@@ -57,6 +57,7 @@ def add_config(args):
             )
             if args.keep_going:
                 print(msg)
+                return existing
             else:
                 raise AlreadyExistsError(msg)
 

@@ -1,0 +1,69 @@
+CONTACT_BIDIR_UHF:
+  directionality: Bidirectional
+  allowed_license_countries: &id001
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - US
+  - NZ
+  - LV
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+CONTACT_BIDIR:
+  directionality: Bidirectional
+  allowed_license_countries: *id001
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+CONTACT_BIDIR_DVBS2X:
+  directionality: Bidirectional
+  allowed_license_countries: *id001
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+CONTACT_TRACKING_BIDIR:
+  directionality: Bidirectional
+  allowed_license_countries: *id001
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+CONTACT_TRACKING_BIDIR_DVBS2X:
+  directionality: Bidirectional
+  allowed_license_countries: *id001
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+CONTACT_RXO:
+  directionality: SpaceToEarth
+  allowed_license_countries: *id001
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+CONTACT_RXO_DVBS2X:
+  directionality: SpaceToEarth
+  allowed_license_countries: *id001
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+CONTACT_TRACKING_RXO:
+  directionality: SpaceToEarth
+  allowed_license_countries: *id001
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+CONTACT_TRACKING_RXO_DVBS2X:
+  directionality: SpaceToEarth
+  allowed_license_countries: *id001
+  enabled: false
+  legal: true
+  satellite_constraints: {}

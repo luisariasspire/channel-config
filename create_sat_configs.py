@@ -21,6 +21,7 @@ with open("sat_license_defs.yaml") as f:
     SAT_LICENSE_DEFS = y["licenses"]
     ALL_ISO_COUNTRIES = y["definitions"]["all_iso_countries"]
     SPIRE_COUNTRIES = y["definitions"]["spire_gs_countries"]
+    SPIRE_ID_OVERRIDES = y["definitions"]["spire_id_overrides"]
 
 
 # TODO Combine with the definition in create_gs_configs_from_licensing.py
@@ -67,16 +68,21 @@ def find_channels(lic, cdefs):
     return [cname for (cname, cdef) in cdefs.items() if can_use(cdef, lic)]
 
 
+def spire_id(sat):
+    name = f"FM{sat}"
+    return SPIRE_ID_OVERRIDES.get(name, name)
+
+
 def emit_channel_commands(sats, channels, countries):
     country_list = ",".join(countries)
     channel_list = ",".join(channels)
-    fms = ",".join([f"FM{sat}" for sat in sats])
+    fms = ",".join([spire_id(sat) for sat in sats])
     # TODO Should the script update the "is legal" bit on existing channels?
     print(
-        f"channel_tool staging add {fms}"
+        f"channel_tool add staging {fms}"
         f" {channel_list}"
         f" --allowed_license_countries={country_list}"
-        " --legal=True --yes"
+        " --legal=True --yes --keep-going"
     )
 
 

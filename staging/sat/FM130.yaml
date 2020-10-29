@@ -16,16 +16,16 @@ CONTACT_BIDIR_UHF:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # in production this sat does not have these constraints
     # they have been added so that we can test the code paths
     # around these constraints ahead of deploy 25.
     separation: &id001
-      - type: "minimum_distance"
-        norad_id: 25544
-        distance_m: 100000
+    - type: minimum_distance
+      norad_id: 25544
+      distance_m: 100000
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -44,7 +44,7 @@ CONTACT_BIDIR:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # in production this sat does not have these constraints
@@ -69,7 +69,7 @@ CONTACT_BIDIR_DVBS2X:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # in production this sat does not have these constraints
@@ -94,7 +94,7 @@ CONTACT_TRACKING_BIDIR:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # in production this sat does not have these constraints
@@ -119,7 +119,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # in production this sat does not have these constraints
@@ -144,7 +144,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # in production this sat does not have these constraints
@@ -169,7 +169,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # in production this sat does not have these constraints
@@ -194,7 +194,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # in production this sat does not have these constraints
@@ -219,7 +219,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # in production this sat does not have these constraints

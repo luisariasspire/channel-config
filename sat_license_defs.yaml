@@ -35,7 +35,7 @@ licenses:
     satellites:
       [62, 63, 64, 65, 75, 78, 79,
        80, 82, 83, 84, 85, 103, 104,
-       105, 106, 107, 108, 112, 113
+       105, 106, 107, 108, 112, 113,
        109, 110, 115, 117, 119, 121,
        116, 118, 120, 122, 124, 125]
     frequencies:
@@ -131,6 +131,12 @@ definitions:
     - US # USA (FCC)
     - NZ # Venture Southland
     - LV # Latvia, RXO only (no licenses needed)
+
+  spire_id_overrides:
+    FM1: lemur-2-peter
+    FM2: lemur-2-jeroen
+    FM3: lemur-2-joel
+    FM4: lemur-2-chris
 
   # Below are all of the ISO 3166 Two-Letter Country Codes.
   all_iso_countries: &all_iso_countries

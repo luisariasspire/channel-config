@@ -4,7 +4,7 @@ CONTACT_BIDIR_UHF:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -14,7 +14,7 @@ CONTACT_BIDIR:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -24,7 +24,7 @@ CONTACT_BIDIR_DVBS2X:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -34,7 +34,7 @@ CONTACT_TRACKING_BIDIR:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -44,7 +44,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -54,7 +54,7 @@ CONTACT_RXO:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
@@ -64,7 +64,7 @@ CONTACT_RXO_DVBS2X:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
@@ -74,7 +74,7 @@ CONTACT_TRACKING_RXO:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
@@ -84,7 +84,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
