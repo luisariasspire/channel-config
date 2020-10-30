@@ -82,7 +82,7 @@ def emit_channel_commands(sats, channels, countries):
         f"channel_tool add staging {fms}"
         f" {channel_list}"
         f" --allowed_license_countries={country_list}"
-        " --legal=True --yes --keep-going"
+        " --legal=True --yes"
     )
 
 

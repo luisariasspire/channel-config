@@ -113,9 +113,9 @@ apply it.
 
 To skip confirmations, use the `--yes` option; this is generally safe to do as long as you review
 the changes before merging your PR (which you're always doing _regardless_, right?). Use
-`--keep-going` to tell the tool to skip configurations that have errors and try to finish the
-remaining edits. This is useful when using aliases for channel sets, such as `sband`, where not all
-of the assets may have all of the channels.
+`--fail-fast` to tell the tool to stop as soon as it encounters an error and skip remaining
+edits. This is useful when you expect that a configuration exists and want to stop if that
+expectation is wrong.
 
 ### Validation
 
@@ -148,6 +148,29 @@ separation:
 Then use `channel_tool` to set it on the desired satellites or ground stations:
 
 ```bash
-pipenv run channel_tool edit staging FM137,FM142 uhf --keep-going --yes \
+pipenv run channel_tool edit staging FM137,FM142 uhf --yes \
     --satellite_constraints "$(cat /tmp/constraints.yml)"
 ```
+
+## Examples
+
+### Disabling BIDIR channels on a ground station (set RXO-only)
+
+```bash
+pipenv run channel_tool edit production wbugs bidir --enabled=False \
+    --comment "BIDIR disabled due pending USRP repairs"
+```
+
+### Disabling a ground station entirely
+
+```bash
+pipenv run channel_tool edit production cosngs all --enabled=False --yes
+```
+
+### Enabling S-band only at 2200MHz on a satellite
+
+```bash
+pipenv run channel_tool edit production FM96 sband_2020 --enabled=False --yes
+pipenv run channel_tool edit production FM96 sband_2200 --enabled=True --yes
+```
+

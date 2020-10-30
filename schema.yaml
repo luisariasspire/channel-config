@@ -272,6 +272,10 @@ schema:
           type: boolean
         directionality:
           enum: *directionality
+        goodput_kbps:
+          type: number
+        contact_overhead_time:
+          type: string
         allowed_license_countries:
           type: array
           items:
@@ -292,6 +296,10 @@ schema:
           type: boolean
         directionality:
           enum: *directionality
+        goodput_kbps:
+          type: number
+        contact_overhead_time:
+          type: string
         allowed_license_countries:
           type: array
           items:

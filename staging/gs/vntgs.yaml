@@ -8,6 +8,8 @@ CONTACT_RXO:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
+  goodput_kbps: 31.650689
+  contact_overhead_time: 30s
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -18,6 +20,8 @@ CONTACT_RXO_DVBS2X:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
+  goodput_kbps: 31.650689
+  contact_overhead_time: 30s
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -28,6 +32,8 @@ CONTACT_TRACKING_RXO:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
+  goodput_kbps: 31.650689
+  contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -38,3 +44,5 @@ CONTACT_TRACKING_RXO_DVBS2X:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
+  goodput_kbps: 31.650689
+  contact_overhead_time: 30s

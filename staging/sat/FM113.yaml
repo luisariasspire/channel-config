@@ -19,6 +19,8 @@ CONTACT_BIDIR_UHF:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 0.5590911064104712
+  contact_overhead_time: 210s
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -40,6 +42,8 @@ CONTACT_BIDIR:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 210s
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -61,6 +65,8 @@ CONTACT_BIDIR_DVBS2X:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -82,6 +88,8 @@ CONTACT_TRACKING_BIDIR:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -103,6 +111,8 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 210s
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -124,6 +134,8 @@ CONTACT_RXO:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 30s
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -145,6 +157,8 @@ CONTACT_RXO_DVBS2X:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 30s
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -166,6 +180,8 @@ CONTACT_TRACKING_RXO:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -187,6 +203,8 @@ CONTACT_TRACKING_RXO_DVBS2X:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 30s
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -208,6 +226,8 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 30s
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -229,6 +249,8 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -250,6 +272,8 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -271,3 +295,5 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 48.08331352587132
+  contact_overhead_time: 30s
