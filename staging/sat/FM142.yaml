@@ -20,9 +20,10 @@ CONTACT_BIDIR_UHF:
   enabled: true
   legal: true
   satellite_constraints:
-    separation:
-    - type: no_overlapping_transits
-      norad_id: 25544
+    separation: []
+  # todo: re-enable 3 days after launch
+  #   - type: no_overlapping_transits
+  #     norad_id: 25544
   goodput_kbps: 0.341299
   contact_overhead_time: 210s
 CONTACT_BIDIR:
@@ -47,9 +48,10 @@ CONTACT_BIDIR:
   enabled: true
   legal: true
   satellite_constraints:
-    separation:
-    - type: no_overlapping_transits
-      norad_id: 25544
+    separation: []
+    # todo: re-enable 3 days after launch
+    # - type: no_overlapping_transits
+    #   norad_id: 25544
   goodput_kbps: 31.650689
   contact_overhead_time: 210s
 CONTACT_BIDIR_DVBS2X:
@@ -74,9 +76,10 @@ CONTACT_BIDIR_DVBS2X:
   enabled: true
   legal: true
   satellite_constraints:
-    separation:
-    - type: no_overlapping_transits
-      norad_id: 25544
+    separation: []
+    # todo: re-enable 3 days after launch
+    # - type: no_overlapping_transits
+    #   norad_id: 25544
   goodput_kbps: 31.650689
   contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR:
@@ -101,9 +104,10 @@ CONTACT_TRACKING_BIDIR:
   enabled: true
   legal: true
   satellite_constraints:
-    separation:
-    - type: no_overlapping_transits
-      norad_id: 25544
+    separation: []
+    # todo: re-enable 3 days after launch
+    # - type: no_overlapping_transits
+    #   norad_id: 25544
   goodput_kbps: 31.650689
   contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR_DVBS2X:
@@ -128,9 +132,10 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   enabled: true
   legal: true
   satellite_constraints:
-    separation:
-    - type: no_overlapping_transits
-      norad_id: 25544
+    separation: []
+    # todo: re-enable 3 days after launch
+    # - type: no_overlapping_transits
+    #   norad_id: 25544
   goodput_kbps: 31.650689
   contact_overhead_time: 210s
 CONTACT_RXO:
@@ -155,10 +160,11 @@ CONTACT_RXO:
   enabled: true
   legal: true
   satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
+    separation: []
+    # todo: re-enable 3 days after launch
+    # - type: minimum_distance
+    #   norad_id: 25544
+    #   distance_m: 150000
   goodput_kbps: 31.650689
   contact_overhead_time: 30s
 CONTACT_RXO_DVBS2X:
@@ -183,10 +189,11 @@ CONTACT_RXO_DVBS2X:
   enabled: true
   legal: true
   satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
+    separation: []
+    # todo: re-enable 3 days after launch
+    # - type: minimum_distance
+    #   norad_id: 25544
+    #   distance_m: 150000
   goodput_kbps: 31.650689
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO:
@@ -211,10 +218,11 @@ CONTACT_TRACKING_RXO:
   enabled: true
   legal: true
   satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
+    separation: []
+    # todo: re-enable 3 days after launch
+    # - type: minimum_distance
+    #   norad_id: 25544
+    #   distance_m: 150000
   goodput_kbps: 31.650689
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X:
@@ -239,10 +247,11 @@ CONTACT_TRACKING_RXO_DVBS2X:
   enabled: true
   legal: true
   satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
+    separation: []
+    # todo: re-enable 3 days after launch
+    # - type: minimum_distance
+    #   norad_id: 25544
+    #   distance_m: 150000
   goodput_kbps: 31.650689
   contact_overhead_time: 30s
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
