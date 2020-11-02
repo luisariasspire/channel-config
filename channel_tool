@@ -394,9 +394,12 @@ def load_asset_config(env, asset):
 
 def write_asset_config(env, asset, asset_config):
     config_file = infer_config_file(env, asset)
-    with open(config_file, mode="w+") as f:
-        yaml = YAML()
-        yaml.dump(asset_config, f)
+    if asset_config:
+        with open(config_file, mode="w+") as f:
+            yaml = YAML()
+            yaml.dump(asset_config, f)
+    elif os.path.exists(config_file):
+        os.remove(config_file)
 
 
 def infer_asset_type(asset):
