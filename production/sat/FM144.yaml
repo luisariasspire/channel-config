@@ -75,7 +75,7 @@ CONTACT_TRACKING_BIDIR:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_BIDIR_DVBS2X:
@@ -95,7 +95,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_RXO:
@@ -115,7 +115,7 @@ CONTACT_RXO:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_RXO_DVBS2X:
@@ -135,7 +135,7 @@ CONTACT_RXO_DVBS2X:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_RXO:
@@ -155,7 +155,7 @@ CONTACT_TRACKING_RXO:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_RXO_DVBS2X:
@@ -175,7 +175,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
@@ -195,7 +195,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
@@ -215,7 +215,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
@@ -235,7 +235,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
@@ -255,6 +255,6 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}

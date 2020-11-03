@@ -4,7 +4,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
@@ -14,7 +14,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
@@ -24,7 +24,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
@@ -34,7 +34,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0

@@ -39,7 +39,7 @@ CONTACT_BIDIR:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_BIDIR_DVBS2X:
@@ -61,7 +61,7 @@ CONTACT_BIDIR_DVBS2X:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_BIDIR:
@@ -83,7 +83,7 @@ CONTACT_TRACKING_BIDIR:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_BIDIR_DVBS2X:
@@ -105,7 +105,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_RXO:
@@ -127,7 +127,7 @@ CONTACT_RXO:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_RXO_DVBS2X:
@@ -149,7 +149,7 @@ CONTACT_RXO_DVBS2X:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_RXO:
@@ -171,7 +171,7 @@ CONTACT_TRACKING_RXO:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_RXO_DVBS2X:
@@ -193,7 +193,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
@@ -215,7 +215,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
@@ -237,7 +237,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
@@ -259,7 +259,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
@@ -281,6 +281,6 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - NZ
   - LV
   goodput_kbps: 31.650689
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}

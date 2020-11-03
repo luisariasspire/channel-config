@@ -35,12 +35,12 @@ def load_tk_asset(env, kind):
     return r.json()
 
 
-def emit_channel_commands(ids, channels, state):
+def emit_channel_commands(env, ids, channels, state):
     if not ids:
         return
     id_list = ",".join(ids)
     print(
-        f"channel_tool edit staging {id_list}"
+        f"channel_tool edit {env} {id_list}"
         f" {channels}"
         f" --enabled={state} --yes"
     )
@@ -75,7 +75,7 @@ def emit_sat_commands(env):
             disable_chans["rxo"].append(spire_id)
 
     for chan, disable_sats in disable_chans.items():
-        emit_channel_commands(disable_sats, chan, False)
+        emit_channel_commands(env, disable_sats, chan, False)
 
 
 def emit_gs_commands(env):
@@ -95,7 +95,7 @@ def emit_gs_commands(env):
             disable_chans["dvb"].append(gs_id)
 
     for chan, disable_gs in disable_chans.items():
-        emit_channel_commands(disable_gs, chan, False)
+        emit_channel_commands(env, disable_gs, chan, False)
 
 
 def main():
