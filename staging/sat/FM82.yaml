@@ -39,7 +39,7 @@ CONTACT_BIDIR:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 0.637727442820386
@@ -62,7 +62,7 @@ CONTACT_BIDIR_DVBS2X:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 0.637727442820386
@@ -85,7 +85,7 @@ CONTACT_TRACKING_BIDIR:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 0.637727442820386
@@ -108,7 +108,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 0.637727442820386
@@ -131,7 +131,7 @@ CONTACT_RXO:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 31.650689
@@ -154,7 +154,7 @@ CONTACT_RXO_DVBS2X:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 31.650689
@@ -177,7 +177,7 @@ CONTACT_TRACKING_RXO:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 31.650689
@@ -200,7 +200,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 31.650689
@@ -223,7 +223,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 31.650689
@@ -246,7 +246,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 31.650689
@@ -269,7 +269,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 31.650689
@@ -292,7 +292,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 31.650689

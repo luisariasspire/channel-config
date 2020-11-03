@@ -94,7 +94,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -120,7 +120,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:

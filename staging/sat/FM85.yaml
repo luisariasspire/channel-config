@@ -85,7 +85,7 @@ CONTACT_TRACKING_BIDIR:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 38.24241824799961
@@ -108,7 +108,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 38.24241824799961
@@ -177,7 +177,7 @@ CONTACT_TRACKING_RXO:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 38.24241824799961
@@ -200,7 +200,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 38.24241824799961
@@ -269,7 +269,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 38.24241824799961
@@ -292,7 +292,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 38.24241824799961
