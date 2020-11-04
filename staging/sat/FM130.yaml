@@ -25,7 +25,7 @@ CONTACT_BIDIR_UHF:
     separation:
     - type: no_overlapping_transits
       norad_id: 25544
-  goodput_kbps: 0.341299
+  goodput_kbps: 0.40
   contact_overhead_time: 210s
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -54,7 +54,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     separation:
     - type: no_overlapping_transits
       norad_id: 25544
-  goodput_kbps: 31.650689
+  goodput_kbps: 30.0
   contact_overhead_time: 30s
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -83,7 +83,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     separation:
     - type: no_overlapping_transits
       norad_id: 25544
-  goodput_kbps: 31.650689
+  goodput_kbps: 30.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -112,7 +112,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     separation:
     - type: no_overlapping_transits
       norad_id: 25544
-  goodput_kbps: 31.650689
+  goodput_kbps: 30.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -141,5 +141,5 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     separation:
     - type: no_overlapping_transits
       norad_id: 25544
-  goodput_kbps: 31.650689
+  goodput_kbps: 30.0
   contact_overhead_time: 30s

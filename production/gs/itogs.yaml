@@ -6,6 +6,7 @@ CONTACT_BIDIR_UHF:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
+  goodput_kbps: 0.40
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -14,6 +15,7 @@ CONTACT_BIDIR:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
+  goodput_kbps: 30.0
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -22,6 +24,7 @@ CONTACT_BIDIR_DVBS2X:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
+  goodput_kbps: 41.0
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -30,6 +33,7 @@ CONTACT_TRACKING_BIDIR:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
+  goodput_kbps: 30.0
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -38,6 +42,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
+  goodput_kbps: 41.0
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -47,6 +52,7 @@ CONTACT_RXO:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
+  goodput_kbps: 30.0
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -56,6 +62,7 @@ CONTACT_RXO_DVBS2X:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
+  goodput_kbps: 41.0
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -65,6 +72,7 @@ CONTACT_TRACKING_RXO:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
+  goodput_kbps: 30.0
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -74,3 +82,4 @@ CONTACT_TRACKING_RXO_DVBS2X:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
+  goodput_kbps: 41.0
