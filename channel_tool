@@ -176,7 +176,10 @@ def compare_channels(sat_config, gs_config, satellite, ground_station):
             if reason:
                 mismatched.append((chan, reason))
             else:
-                shared.append(chan)
+                if "satellite_constraints" in sat_chan and sat_chan["satellite_constraints"]:
+                    shared.append((chan, "Note: Subject to satellite constraints"))
+                else:
+                    shared.append((chan, None))
         elif sat_chan:
             mismatched.append((chan, "Channel not configured on ground station"))
         else:
@@ -203,7 +206,7 @@ def audit_config(env, sat, gs):
 
     print("Valid Channels")
     if shared:
-        print(tabulate([[s] for s in shared]))
+        print(tabulate(shared))
     else:
         print("(No channels passed licensing rules)")
     print()
@@ -214,7 +217,9 @@ def audit_config(env, sat, gs):
 
 
 def audit_configs(args):
-    for sat, gs in itertools.product(args.satellites, args.ground_stations):
+    sats = locate_assets(args.environment, args.satellites)
+    gss = locate_assets(args.environment, args.ground_stations)
+    for sat, gs in itertools.product(sats, gss):
         audit_config(args.environment, sat, gs)
 
 
@@ -316,6 +321,8 @@ def locate_assets(env, assets):
         vs = locate_assets(env, "all_gs")
         vs.extend(locate_assets(env, "all_sat"))
         return vs
+    elif isinstance(assets, list):
+        return assets
     else:
         return assets.split(",")
 
@@ -579,12 +586,12 @@ AUDIT_PARSER.set_defaults(func=audit_configs)
 add_env_flag(AUDIT_PARSER)
 AUDIT_PARSER.add_argument(
     "satellites",
-    type=str_to_list,
+    type=str,
     help=("The satellites to audit."),
 )
 AUDIT_PARSER.add_argument(
     "ground_stations",
-    type=str_to_list,
+    type=str,
     help=("The ground stations to audit."),
 )
 
