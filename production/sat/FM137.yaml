@@ -105,7 +105,7 @@ CONTACT_TRACKING_BIDIR:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -217,7 +217,7 @@ CONTACT_TRACKING_RXO:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -323,7 +323,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
