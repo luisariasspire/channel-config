@@ -47,10 +47,13 @@ CONTACT_BIDIR:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
-    separation: []
+    separation:
+    - type: minimum_distance
+      norad_id: 25544
+      distance_m: 150000
     # todo: re-enable 15 days after launch
     # - type: no_overlapping_transits
     #   norad_id: 25544
@@ -79,7 +82,10 @@ CONTACT_BIDIR_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints:
-    separation: []
+    separation:
+    - type: minimum_distance
+      norad_id: 25544
+      distance_m: 150000
     # todo: re-enable 15 days after launch
     # - type: no_overlapping_transits
       # norad_id: 25544
@@ -108,7 +114,10 @@ CONTACT_TRACKING_BIDIR:
   enabled: false
   legal: true
   satellite_constraints:
-    separation: []
+    separation:
+    - type: minimum_distance
+      norad_id: 25544
+      distance_m: 150000
     # todo: re-enable 15 days after launch
     # - type: no_overlapping_transits
       # norad_id: 25544
@@ -137,14 +146,16 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints:
-    separation: []
+    separation:
+    - type: minimum_distance
+      norad_id: 25544
+      distance_m: 150000
     # todo: re-enable 15 days after launch
     # - type: no_overlapping_transits
       # norad_id: 25544
   goodput_kbps: 41.0
   contact_overhead_time: 210s
 CONTACT_RXO:
-# Subject to coordination with NASA JSC
   directionality: SpaceToEarth
   allowed_license_countries:
   - BM
@@ -162,7 +173,7 @@ CONTACT_RXO:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -274,7 +285,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
