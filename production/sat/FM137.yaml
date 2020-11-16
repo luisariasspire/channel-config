@@ -121,20 +121,21 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
 # Subject to coordination with NASA JSC
   directionality: Bidirectional
   allowed_license_countries:
+  # todo re-enable 15 days after launch
+  # - IE
+  # - GB
+  # - ZA
+  # - PT
+  # - NO
+  - SG
+  - JP
   - BM
   - CL
-  - FK
-  - GB
-  - IE
-  - JP
   - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
   - SH
-  - ZA
+  - FK
+  - NZ
+  - LV
   enabled: false
   legal: true
   satellite_constraints:
