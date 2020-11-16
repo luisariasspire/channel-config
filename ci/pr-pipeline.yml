@@ -9,6 +9,7 @@ resources:
   - name: repo
     type: pull-request
     icon: source-branch
+    webhook_token: ((github.webhook_token))
     source:
       repository: nsat/air
       paths:

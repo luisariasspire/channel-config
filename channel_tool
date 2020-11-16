@@ -1,17 +1,23 @@
 #! /usr/bin/env python3
 
+# One line change for testing
+
 import argparse
-from copy import deepcopy
-from collections.abc import Sequence
 import difflib
 import itertools
-import jsonschema
-from ruamel.yaml import YAML
 import os
-import requests
 import sys
-from tabulate import tabulate
+from collections.abc import Sequence
+from copy import deepcopy
 from io import StringIO
+from typing import Any, Callable, Dict, List, Mapping, Optional, Set, Tuple, Union
+
+import jsonschema
+import requests
+from mypy_extensions import TypedDict
+from ruamel.yaml import YAML
+from tabulate import tabulate
+from termcolor import colored
 
 ENVS = ["staging", "production"]
 TK_DOMAINS = {"staging": "sbox", "production": "cloud"}
@@ -21,9 +27,43 @@ GS_DIR = "gs"
 GROUND_STATION = "groundstation"
 SATELLITE = "satellite"
 
+
+class DefsFile(TypedDict):
+    groups: Mapping[str, List[str]]
+
+
 with open("contact_type_defs.yaml") as f:
     yaml = YAML()
-    CONTACT_TYPE_DEFS = yaml.load(f)
+    CONTACT_TYPE_DEFS: DefsFile = yaml.load(f)
+
+
+# TODO Derive types from JSON Schema or vice versa
+class GsConstraints(TypedDict):
+    pass
+
+
+class SatConstraints(TypedDict):
+    pass
+
+
+class ChannelDefinition(TypedDict, total=False):
+    legal: bool
+    enabled: bool
+    directionality: str  # TODO Stricter type
+    allowed_license_countries: List[str]
+    ground_station_constraints: GsConstraints
+    satellite_constraints: SatConstraints
+
+
+AssetConfig = Dict[str, Optional[ChannelDefinition]]
+
+
+class TkGroundStation(TypedDict):
+    license_country: str
+
+
+class TkSatellite(TypedDict):
+    license_country: str
 
 
 class AlreadyExistsError(Exception):
@@ -42,42 +82,61 @@ class MissingTemplateError(Exception):
     pass
 
 
-def schema_fields():
+def info(s: str) -> None:
+    print(s)
+
+
+def warn(s: str) -> None:
+    print(colored(s, "yellow"))
+
+
+def err(s: str) -> None:
+    print(colored(s, "red"))
+
+
+def schema_fields() -> Set[str]:
     """Extract a set of possible field names in the channel JSON schema."""
 
-    def discover_keys(s):
+    def discover_keys(s: Union[Dict[str, Any], List[Dict[str, Any]], Any]) -> Set[str]:
         """Extract the transitive closure of map keys from a nested dictionary."""
-        keys = set()
-        try:
-            for k, v in s.items():
-                keys.add(k)
+        keys: Set[str] = set()
+        if isinstance(s, str):
+            pass
+        elif isinstance(s, Sequence):
+            for v in s:
                 keys = keys.union(discover_keys(v))
-        except AttributeError:
-            if isinstance(s, Sequence) and not isinstance(s, str):
-                for v in s:
+        else:
+            try:
+                for k, v in s.items():
+                    keys.add(k)
                     keys = keys.union(discover_keys(v))
+            except AttributeError:
+                pass
         return keys
 
     schema = load_schema()
     return discover_keys(schema)
 
 
-def modify(cdef, args):
+# TODO Stricter type for arguments
+def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
     """Apply modifications to a channel from argparse arguments."""
     new_cdef = deepcopy(cdef)
     vargs = vars(args)
     fields = schema_fields()
     for field in fields:
         if field in vargs and vargs[field] is not None:
-            new_cdef[field] = vargs[field]
+            new_cdef[field] = vargs[field]  # type: ignore
     if args.comment:
-        new_cdef.yaml_set_start_comment(args.comment)
+        new_cdef.yaml_set_start_comment(args.comment)  # type: ignore
     return new_cdef
 
 
-def add_config(args):
-    def do_add(asset, channel, existing):
-        if not existing:
+def add_config(args: Any) -> None:
+    def do_add(
+        asset: str, channel: str, existing: Optional[ChannelDefinition]
+    ) -> ChannelDefinition:
+        if existing is None:
             template = find_template(channel)
             return modify(template, args)
         else:
@@ -86,7 +145,7 @@ def add_config(args):
                 f"(Tip: Use `channel_tool edit {asset} {channel}` to edit the configuration.)"
             )
             if not args.fail_fast:
-                print(msg)
+                warn(msg)
                 return existing
             else:
                 raise AlreadyExistsError(msg)
@@ -94,9 +153,11 @@ def add_config(args):
     apply_update(args.environment, args.assets, args.channels, do_add, yes=args.yes)
 
 
-def edit_config(args):
-    def do_edit(asset, channel, existing):
-        if existing:
+def edit_config(args: Any) -> None:
+    def do_edit(
+        asset: str, channel: str, existing: Optional[ChannelDefinition]
+    ) -> Optional[ChannelDefinition]:
+        if existing is not None:
             return modify(existing, args)
         else:
             msg = (
@@ -104,92 +165,111 @@ def edit_config(args):
                 f"(Tip: Use `channel_tool add {asset} {channel}` to add one from a template.)"
             )
             if not args.fail_fast:
-                print(msg)
+                warn(msg)
+                return None
             else:
                 raise NoConfigurationError(msg)
 
     apply_update(args.environment, args.assets, args.channels, do_edit, yes=args.yes)
 
 
-def tk_url(env):
+def tk_url(env: str) -> str:
     env_domain = TK_DOMAINS[env]
     return f"https://theknowledge.{env_domain}.spire.com/v2/"
 
 
-def load_tk_asset(env, kind, name=None):
+# TODO enum type for assets
+def load_tk_asset(
+    env: str, kind: str, name: Optional[str] = None
+) -> Union[TkGroundStation, TkSatellite]:
     if name:
         suffix = f"/{name}"
     else:
         suffix = ""
     r = requests.get(tk_url(env) + kind + suffix)
     r.raise_for_status()
-    return r.json()
+    return r.json()  # type: ignore
 
 
-def compare_channels(sat_config, gs_config, satellite, ground_station):
+def channel_rejection_reason(
+    satellite: TkSatellite,
+    ground_station: TkGroundStation,
+    sat_chan: Optional[ChannelDefinition],
+    gs_chan: Optional[ChannelDefinition],
+) -> Optional[str]:
+    """Apply channel matching rules and return the reason for mismatch, if any."""
+    if gs_chan is None:
+        return "Channel not configured on ground station"
+
+    if sat_chan is None:
+        return "Channel not configured on satellite"
+
+    if not sat_chan["legal"]:
+        return "Channel marked illegal on satellite"
+
+    if not gs_chan["legal"]:
+        return "Channel marked illegal on ground station"
+
+    if not sat_chan["enabled"]:
+        return "Channel disabled on satellite"
+
+    if not gs_chan["enabled"]:
+        return "Channel disabled on ground station"
+
+    sat_dir = sat_chan["directionality"]
+    gs_dir = gs_chan["directionality"]
+    if sat_dir != gs_dir:
+        return f"Directionality mismatch ({sat_dir} vs {gs_dir})"
+
+    sat_countries = sat_chan["allowed_license_countries"]
+    gs_countries = gs_chan["allowed_license_countries"]
+
+    def normalize(country: str) -> str:
+        return country[:2]
+
+    sat_country = normalize(satellite["license_country"])
+    gs_country = ground_station["license_country"]
+
+    if sat_country not in gs_countries:
+        return f"Satellite license country {sat_country} not in set {gs_countries}"
+
+    if gs_country not in sat_countries:
+        return f"Ground station license country {gs_country} not in set {sat_countries}"
+
+    return None
+
+
+def compare_channels(
+    sat_config: AssetConfig,
+    gs_config: AssetConfig,
+    satellite: TkSatellite,
+    ground_station: TkGroundStation,
+) -> Tuple[List[Tuple[str, Optional[str]]], List[Tuple[str, Optional[str]]]]:
     """Compare the configured channels for the given satellite and ground station."""
-    shared = []
-    mismatched = []
-
-    def channel_rejection_reason(sat_chan, gs_chan):
-        """Apply channel matching rules and return the reason for mismatch, if any."""
-        if not sat_chan["legal"]:
-            return "Channel marked illegal on satellite"
-
-        if not gs_chan["legal"]:
-            return "Channel marked illegal on ground station"
-
-        if not sat_chan["enabled"]:
-            return "Channel disabled on satellite"
-
-        if not gs_chan["enabled"]:
-            return "Channel disabled on ground station"
-
-        sat_dir = sat_chan["directionality"]
-        gs_dir = gs_chan["directionality"]
-        if sat_dir != gs_dir:
-            return f"Directionality mismatch ({sat_dir} vs {gs_dir})"
-
-        sat_countries = sat_chan["allowed_license_countries"]
-        gs_countries = gs_chan["allowed_license_countries"]
-
-        def normalize(country):
-            return country[:2]
-
-        sat_country = normalize(satellite["license_country"])
-        gs_country = ground_station["license_country"]
-
-        if sat_country not in gs_countries:
-            return f"Satellite license country {sat_country} not in set {gs_countries}"
-
-        if gs_country not in sat_countries:
-            return f"Ground station license country {gs_country} not in set {sat_countries}"
-
-        return None
+    shared: List[Tuple[str, Optional[str]]] = []
+    mismatched: List[Tuple[str, Optional[str]]] = []
 
     channels = set(sat_config.keys()).union(set(gs_config.keys()))
     for chan in channels:
         sat_chan = sat_config.get(chan)
         gs_chan = gs_config.get(chan)
-        if sat_chan and gs_chan:
-            reason = channel_rejection_reason(sat_chan, gs_chan)
-            if reason:
-                mismatched.append((chan, reason))
-            else:
-                if "satellite_constraints" in sat_chan and sat_chan["satellite_constraints"]:
-                    shared.append((chan, "Note: Subject to satellite constraints"))
-                else:
-                    shared.append((chan, None))
-        elif sat_chan:
-            mismatched.append((chan, "Channel not configured on ground station"))
+        reason = channel_rejection_reason(satellite, ground_station, sat_chan, gs_chan)
+        if reason:
+            mismatched.append((chan, reason))
         else:
-            mismatched.append((chan, "Channel not configured on satellite"))
+            if (
+                sat_chan is not None
+                and sat_chan.get("satellite_constraints") is not None
+            ):
+                shared.append((chan, "Note: Subject to satellite constraints"))
+            else:
+                shared.append((chan, None))
     shared = sorted(shared)
     mismatched = sorted(mismatched)
     return (shared, mismatched)
 
 
-def audit_config(env, sat, gs):
+def audit_config(env: str, sat: str, gs: str) -> None:
     """Compute and display a report of the channel (mis)matches between assets."""
     sat_config = load_asset_config(env, sat)
     gs_config = load_asset_config(env, gs)
@@ -208,7 +288,7 @@ def audit_config(env, sat, gs):
     if shared:
         print(tabulate(shared))
     else:
-        print("(No channels passed licensing rules)")
+        print(colored("(No channels passed licensing rules)", "magenta"))
     print()
 
     print("Rejected Channels")
@@ -216,14 +296,14 @@ def audit_config(env, sat, gs):
     print()
 
 
-def audit_configs(args):
+def audit_configs(args: Any) -> None:
     sats = locate_assets(args.environment, args.satellites)
     gss = locate_assets(args.environment, args.ground_stations)
     for sat, gs in itertools.product(sats, gss):
         audit_config(args.environment, sat, gs)
 
 
-def validate_all(args):
+def validate_all(args: Any) -> None:
     for asset_type in [GROUND_STATION, SATELLITE]:
         print(f"Validating {asset_type} templates...")
         validate_file(
@@ -231,7 +311,7 @@ def validate_all(args):
             inspect_keys=True,
             preprocess=lambda x: filter_properties(asset_type, x),
         )
-        print("PASS")
+        print(colored("PASS", "green"))
 
     for env in ENVS:
         print(f"Validating {env} satellites...")
@@ -240,7 +320,7 @@ def validate_all(args):
         for sf in all_sats:
             print(f"{sf}... ", end="")
             validate_file(os.path.join(sat_dir, sf))
-            print("PASS")
+            print(colored("PASS", "green"))
 
         print(f"Validating {env} ground stations...")
         gs_dir = os.path.join(env, GS_DIR)
@@ -248,12 +328,16 @@ def validate_all(args):
         for gsf in all_stations:
             print(f"{gsf}... ", end="")
             validate_file(os.path.join(gs_dir, gsf))
-            print("PASS")
+            print(colored("PASS", "green"))
 
     print("All passed!")
 
 
-def validate_file(cf, inspect_keys=True, preprocess=None):
+def validate_file(
+    cf: str,
+    inspect_keys: bool = True,
+    preprocess: Optional[Callable[[ChannelDefinition], ChannelDefinition]] = None,
+) -> None:
     with open(cf) as f:
         yaml = YAML()
         config = yaml.load(f)
@@ -276,7 +360,7 @@ def validate_file(cf, inspect_keys=True, preprocess=None):
                 raise ValidationError(f"Failed to validate {cf}: {e}")
 
 
-def validate_one(config):
+def validate_one(config: ChannelDefinition) -> None:
     schema = load_schema()
     jsonschema.validate(config, schema)
 
@@ -285,7 +369,7 @@ def validate_one(config):
 loaded_schema = None
 
 
-def load_schema():
+def load_schema() -> Any:
     global loaded_schema
     if not loaded_schema:
         yaml = YAML()
@@ -295,12 +379,12 @@ def load_schema():
     return loaded_schema
 
 
-def find_template(channel):
+def find_template(channel: str) -> ChannelDefinition:
     template_file = "templates.yaml"
     if os.path.exists(template_file):
         with open(template_file) as f:
             yaml = YAML()
-            templates = yaml.load(f)
+            templates: Dict[str, ChannelDefinition] = yaml.load(f)
             if channel in templates:
                 return templates[channel]
             else:
@@ -309,25 +393,25 @@ def find_template(channel):
         raise FileNotFoundError(f"Could not find file {template_file}")
 
 
-def locate_assets(env, assets):
-    def name(p):
+def locate_assets(env: str, assets: Union[str, List[str]]) -> List[str]:
+    def name(p: str) -> str:
         return os.path.splitext(os.path.basename(p))[0]
 
-    if assets == "all_gs":
-        return [name(p) for p in os.listdir(os.path.join(env, GS_DIR))]
+    if isinstance(assets, list):
+        return assets
+    elif assets == "all_gs":
+        return sorted([name(p) for p in os.listdir(os.path.join(env, GS_DIR))])
     elif assets == "all_sat":
-        return [name(p) for p in os.listdir(os.path.join(env, SAT_DIR))]
+        return sorted([name(p) for p in os.listdir(os.path.join(env, SAT_DIR))])
     elif assets == "all":
         vs = locate_assets(env, "all_gs")
         vs.extend(locate_assets(env, "all_sat"))
         return vs
-    elif isinstance(assets, list):
-        return assets
     else:
         return assets.split(",")
 
 
-def filter_properties(asset_type, chan):
+def filter_properties(asset_type: str, chan: ChannelDefinition) -> ChannelDefinition:
     """Filter the channel configuration properties based on the asset type."""
     if chan:
         if asset_type != GROUND_STATION and "ground_station_constraints" in chan:
@@ -337,14 +421,20 @@ def filter_properties(asset_type, chan):
     return chan
 
 
-def apply_update(env, assets, channels, tfm, yes=False):
+def apply_update(
+    env: str,
+    assets: List[str],
+    channels: List[str],
+    tfm: Callable[[str, str, Optional[ChannelDefinition]], Optional[ChannelDefinition]],
+    yes: bool = False,
+) -> None:
     for asset in locate_assets(env, assets):
         asset_config = load_asset_config(env, asset)
         for channel in channels:
             existing_chan = asset_config.get(channel)
             try:
                 updated_chan = tfm(asset, channel, existing_chan)
-                if updated_chan:
+                if updated_chan is not None:
                     asset_type = infer_asset_type(asset)
                     updated_chan = filter_properties(asset_type, updated_chan)
                     validate_one(updated_chan)
@@ -357,49 +447,60 @@ def apply_update(env, assets, channels, tfm, yes=False):
                 else:
                     print(f"No changes for {channel} on {asset}.")
             except AlreadyExistsError as e:
-                print(f"Error: {e}")
+                err(f"Error: {e}")
         write_asset_config(env, asset, asset_config)
 
 
-def confirm_changes(asset, channel, existing, new):
-    print(f"Changing asset configuration for {channel} on {asset}. Diff:")
-    print(
-        "".join(
-            difflib.unified_diff(
-                dumps(existing).splitlines(keepends=True),
-                dumps(new).splitlines(keepends=True),
-            )
-        )
-    )
-    response = input("Update asset configuration? [y/N] ")
+def confirm_changes(
+    asset: str,
+    channel: str,
+    existing: Optional[ChannelDefinition],
+    new: Optional[ChannelDefinition],
+) -> bool:
+    ch = colored(channel, attrs=["bold"])
+    at = colored(asset, attrs=["bold"])
+    print(f"Changing {ch} on {at}. Diff:")
+    print(format_diff(existing, new))
+    response = input(colored("Update asset configuration? [y/N] ", attrs=["bold"]))
     if response in ["y", "Y"]:
         return True
     else:
-        print("Canceled.")
+        warn("Canceled.")
         return False
 
 
-def dumps(obj):
+def format_diff(
+    existing: Optional[ChannelDefinition], new: Optional[ChannelDefinition]
+) -> str:
+    return "".join(
+        difflib.unified_diff(
+            dumps(existing).splitlines(keepends=True),
+            dumps(new).splitlines(keepends=True),
+        )
+    )
+
+
+def dumps(obj: Optional[Mapping[str, Any]]) -> str:
     with StringIO() as stream:
         yaml = YAML()
         yaml.dump(obj, stream)
         return stream.getvalue()
 
 
-def load_asset_config(env, asset):
+def load_asset_config(env: str, asset: str) -> AssetConfig:
     config_file = infer_config_file(env, asset)
     if not os.path.exists(config_file):
         return {}
     with open(config_file, mode="r") as f:
         yaml = YAML()
-        config = yaml.load(f)
+        config: Optional[AssetConfig] = yaml.load(f)
         if config:
             return config
         else:
             return {}
 
 
-def write_asset_config(env, asset, asset_config):
+def write_asset_config(env: str, asset: str, asset_config: AssetConfig) -> None:
     config_file = infer_config_file(env, asset)
     if asset_config:
         with open(config_file, mode="w+") as f:
@@ -409,14 +510,14 @@ def write_asset_config(env, asset, asset_config):
         os.remove(config_file)
 
 
-def infer_asset_type(asset):
+def infer_asset_type(asset: str) -> str:
     if asset.endswith("gs"):
         return GROUND_STATION
     else:
         return SATELLITE
 
 
-def infer_config_file(env, asset):
+def infer_config_file(env: str, asset: str) -> str:
     asset_type = infer_asset_type(asset)
     if asset_type == GROUND_STATION:
         # Assumed to be a ground station.
@@ -428,16 +529,18 @@ def infer_config_file(env, asset):
         raise ValueError(f"Unexpected asset type {asset_type}")
 
 
-def str_to_yaml(val):
+def str_to_yaml(val: str) -> Mapping[str, Any]:
     yaml = YAML()
-    return yaml.load(val)
+    v = yaml.load(val)
+    assert isinstance(v, dict)
+    return v
 
 
-def str_to_list(values):
+def str_to_list(values: str) -> List[str]:
     return values.split(",")
 
 
-def str_to_bool(val):
+def str_to_bool(val: str) -> bool:
     if val.lower() in ["y", "yes", "true", "1"]:
         return True
     if val.lower() in ["n", "no", "false", "0"]:
@@ -445,10 +548,11 @@ def str_to_bool(val):
     raise ValueError(f"Unrecognized input '{val}'")
 
 
-def channel_list(val):
+def channel_list(val: str) -> List[str]:
     yaml = YAML()
     with open("templates.yaml", "r") as f:
-        all_channels = yaml.load(f)
+        templates: Dict[str, ChannelDefinition] = yaml.load(f)
+        all_channels = list(templates.keys())
 
     if val.lower() == "all":
         return all_channels
@@ -458,7 +562,7 @@ def channel_list(val):
         return str_to_list(val)
 
 
-def add_editing_flags(parser):
+def add_editing_flags(parser: Any) -> None:
     """Add flags for each channel definition field. Used for editing and overrides."""
     # Meta
     parser.add_argument(
@@ -525,7 +629,7 @@ def add_editing_flags(parser):
     )
 
 
-def add_env_flag(parser):
+def add_env_flag(parser: Any) -> None:
     parser.add_argument(
         "environment",
         type=str,
@@ -534,7 +638,7 @@ def add_env_flag(parser):
     )
 
 
-def add_asset_flags(parser):
+def add_asset_flags(parser: Any) -> None:
     add_env_flag(parser)
     # TODO Change type to str_to_list
     parser.add_argument(
@@ -608,5 +712,5 @@ if __name__ == "__main__":
     except Exception as e:
         if args.debug:
             raise e
-        print(f"Error: {e}")
+        err(f"Error: {e}")
         sys.exit(1)
