@@ -7,10 +7,20 @@ import difflib
 import itertools
 import os
 import sys
-from collections.abc import Sequence
 from copy import deepcopy
 from io import StringIO
-from typing import Any, Callable, Dict, List, Mapping, Optional, Set, Tuple, Union
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    List,
+    Mapping,
+    Optional,
+    Sequence,
+    Set,
+    Tuple,
+    Union,
+)
 
 import jsonschema
 import requests
@@ -118,6 +128,50 @@ def schema_fields() -> Set[str]:
     return discover_keys(schema)
 
 
+ListOrDict = Union[Sequence[Any], Mapping[str, Any]]
+
+
+def merge(a: ListOrDict, b: ListOrDict) -> ListOrDict:
+    if isinstance(a, Sequence):
+        assert isinstance(b, Sequence)
+        # Remove duplicate entries. These may be dictionaries, which are unhashable, so we cannot
+        # use a set here. Generally these lists will be quite small so even this inefficient
+        # algorithm is performant enough.
+        ml = []
+        for x in itertools.chain(a, b):
+            if x not in ml:
+                ml.append(x)
+
+        if len(ml) > 0 and isinstance(ml[0], str):
+            # Special case for lists of strings: sort them
+            ml = sorted(ml)
+        assert isinstance(ml, Sequence)
+        return ml
+    else:
+        assert isinstance(a, dict)
+        assert isinstance(b, dict)
+        md = deepcopy(a)
+        for k, v in b.items():
+            if k in md:
+                md[k] = merge(md[k], v)
+            else:
+                md[k] = v
+        return md
+
+
+def remove(a: ListOrDict, b: ListOrDict) -> ListOrDict:
+    if isinstance(a, Sequence):
+        assert isinstance(b, Sequence)
+        return [x for x in a if x not in b]
+    else:
+        assert isinstance(a, dict)
+        assert isinstance(b, dict)
+        m = deepcopy(a)
+        for k in b.keys():
+            del m[k]
+        return m
+
+
 # TODO Stricter type for arguments
 def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
     """Apply modifications to a channel from argparse arguments."""
@@ -126,7 +180,12 @@ def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
     fields = schema_fields()
     for field in fields:
         if field in vargs and vargs[field] is not None:
-            new_cdef[field] = vargs[field]  # type: ignore
+            if args.mode == "overwrite":
+                new_cdef[field] = vargs[field]  # type: ignore
+            elif args.mode == "merge":
+                new_cdef[field] = merge(cdef[field], vargs[field])  # type: ignore
+            elif args.mode == "remove":
+                new_cdef[field] = remove(cdef[field], vargs[field])  # type: ignore
     if args.comment:
         new_cdef.yaml_set_start_comment(args.comment)  # type: ignore
     return new_cdef
@@ -469,15 +528,26 @@ def confirm_changes(
         return False
 
 
+def color_diff_line(line: str) -> str:
+    if line.startswith("-"):
+        return colored(line, "red")
+    elif line.startswith("+"):
+        return colored(line, "green")
+    elif line.startswith("@@ "):
+        return colored(line, "blue")
+    else:
+        return line
+
+
 def format_diff(
     existing: Optional[ChannelDefinition], new: Optional[ChannelDefinition]
 ) -> str:
-    return "".join(
-        difflib.unified_diff(
-            dumps(existing).splitlines(keepends=True),
-            dumps(new).splitlines(keepends=True),
-        )
-    )
+    a = dumps(existing).splitlines(keepends=True)
+    b = dumps(new).splitlines(keepends=True)
+    lines = max(len(a), len(b))  # Show all context
+    d = difflib.unified_diff(a, b, n=lines)
+    cd = [color_diff_line(l) for l in d]
+    return "".join(cd)
 
 
 def dumps(obj: Optional[Mapping[str, Any]]) -> str:
@@ -532,7 +602,7 @@ def infer_config_file(env: str, asset: str) -> str:
 def str_to_yaml(val: str) -> Mapping[str, Any]:
     yaml = YAML()
     v = yaml.load(val)
-    assert isinstance(v, dict)
+    assert isinstance(v, dict), "Expected YAML key-value mapping"
     return v
 
 
@@ -582,6 +652,14 @@ def add_editing_flags(parser: Any) -> None:
         "--comment",
         type=str,
         help="Optional comment to attach to the channel definition in the YAML file.",
+    )
+    parser.add_argument(
+        "-m",
+        "--mode",
+        type=str,
+        choices=["overwrite", "merge", "remove"],
+        default="overwrite",
+        help=("The editing mode to use for combining record sub-fields."),
     )
 
     # Fields
@@ -706,11 +784,16 @@ VALIDATE_PARSER.set_defaults(func=validate_all)
 
 
 if __name__ == "__main__":
-    args = PARSER.parse_args()
     try:
-        args.func(args)
+        args = PARSER.parse_args()
+        try:
+            args.func(args)
+        except Exception as e:
+            if args.debug:
+                raise e
+            err(f"Error: {e}")
+            err("(Tip: Use the --debug flag to get a full stack trace.)")
+            sys.exit(1)
     except Exception as e:
-        if args.debug:
-            raise e
-        err(f"Error: {e}")
+        err(f"Error while parsing command line arguments: {e}")
         sys.exit(1)
