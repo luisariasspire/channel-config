@@ -1,0 +1,6 @@
+# Separation constraints for D25/NG-14 satellites on UHF bands.
+# NASA requires that we only transmit when the ISS is not in view of our ground station.
+# https://docs.google.com/document/d/1bghmWDsrvwscQ6tKjgO39PSGgl4c2n8bqZ8iezry9SM/edit#heading=h.xmnakdkhgxdx
+separation:
+- type: no_overlapping_transits
+  norad_id: 25544

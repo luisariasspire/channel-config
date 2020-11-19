@@ -1,49 +1,46 @@
 CONTACT_BIDIR_UHF:
-# Subject to coordination with NASA JSC
   directionality: Bidirectional
   allowed_license_countries:
-  # todo re-enable 15 days after launch
-  # - IE
-  # - GB
-  # - ZA
-  # - PT
-  # - NO
-  - SG
-  - JP
   - BM
   - CL
-  - LK
-  - SH
   - FK
-  - NZ
+  - GB
+  - IE
+  - JP
+  - LK
   - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
   enabled: true
   legal: true
   satellite_constraints:
-    separation: []
-    # todo: re-enable 15 days after launch
-    # - type: no_overlapping_transits
-      # norad_id: 25544
+    separation:
+    - &id001
+      type: no_overlapping_transits
+      norad_id: 25544
   goodput_kbps: 0.40
   contact_overhead_time: 210s
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
-  # todo re-enable 15 days after launch
-  # - IE
-  # - GB
-  # - ZA
-  # - PT
-  # - NO
-  - SG
-  - JP
   - BM
   - CL
-  - LK
-  - SH
   - FK
-  - NZ
+  - GB
+  - IE
+  - JP
+  - LK
   - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
   enabled: true
   legal: true
   satellite_constraints:
@@ -51,30 +48,26 @@ CONTACT_BIDIR:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-    # todo: re-enable 15 days after launch
-    # - type: no_overlapping_transits
-    #   norad_id: 25544
+    - *id001
   goodput_kbps: 30.0
   contact_overhead_time: 210s
 CONTACT_BIDIR_DVBS2X:
-# Subject to coordination with NASA JSC
   directionality: Bidirectional
   allowed_license_countries:
-  # todo re-enable 15 days after launch
-  # - IE
-  # - GB
-  # - ZA
-  # - PT
-  # - NO
-  - SG
-  - JP
   - BM
   - CL
-  - LK
-  - SH
   - FK
-  - NZ
+  - GB
+  - IE
+  - JP
+  - LK
   - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -82,29 +75,26 @@ CONTACT_BIDIR_DVBS2X:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-    # todo: re-enable 15 days after launch
-    # - type: no_overlapping_transits
-      # norad_id: 25544
+    - *id001
   goodput_kbps: 41.0
   contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
-  # todo re-enable 15 days after launch
-  # - IE
-  # - GB
-  # - ZA
-  # - PT
-  # - NO
-  - SG
-  - JP
   - BM
   - CL
-  - LK
-  - SH
   - FK
-  - NZ
+  - GB
+  - IE
+  - JP
+  - LK
   - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -112,30 +102,26 @@ CONTACT_TRACKING_BIDIR:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-    # todo: re-enable 15 days after launch
-    # - type: no_overlapping_transits
-      # norad_id: 25544
+    - *id001
   goodput_kbps: 30.0
   contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR_DVBS2X:
-# Subject to coordination with NASA JSC
   directionality: Bidirectional
   allowed_license_countries:
-  # todo re-enable 15 days after launch
-  # - IE
-  # - GB
-  # - ZA
-  # - PT
-  # - NO
-  - SG
-  - JP
   - BM
   - CL
-  - LK
-  - SH
   - FK
-  - NZ
+  - GB
+  - IE
+  - JP
+  - LK
   - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -143,9 +129,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-    # todo: re-enable 15 days after launch
-    # - type: no_overlapping_transits
-    #   norad_id: 25544
+    - *id001
   goodput_kbps: 41.0
   contact_overhead_time: 210s
 CONTACT_RXO:
@@ -265,7 +249,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
-  - NO
   - NO
   - NZ
   - PT

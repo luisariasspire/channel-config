@@ -1,0 +1,7 @@
+# Separation constraints for D25/NG-14 satellites on 2020MHz band.
+# NASA requires that we only transmit when at least 150km from the ISS.
+# https://docs.google.com/document/d/1bghmWDsrvwscQ6tKjgO39PSGgl4c2n8bqZ8iezry9SM/edit#heading=h.tyhtmzl40bhy
+separation:
+- type: minimum_distance
+  norad_id: 25544
+  distance_m: 150000
