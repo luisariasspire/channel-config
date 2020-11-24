@@ -138,7 +138,6 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   goodput_kbps: 41.0
   contact_overhead_time: 210s
 CONTACT_RXO:
-# Subject to coordination with NASA JSC
   directionality: SpaceToEarth
   allowed_license_countries:
   - BM

@@ -44,7 +44,9 @@ CONTACT_TRACKING_RXO_DVBS2X:
   contact_overhead_time: 30s
 CONTACT_BIDIR:
   directionality: Bidirectional
-  allowed_license_countries: []
+  allowed_license_countries: &id001
+  - US
+  - LU
   enabled: false
   legal: true
   ground_station_constraints:
@@ -53,7 +55,7 @@ CONTACT_BIDIR:
   contact_overhead_time: 210s
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
-  allowed_license_countries: []
+  allowed_license_countries: *id001
   enabled: false
   legal: true
   ground_station_constraints:
@@ -62,7 +64,7 @@ CONTACT_BIDIR_DVBS2X:
   contact_overhead_time: 210s
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
-  allowed_license_countries: []
+  allowed_license_countries: *id001
   enabled: false
   legal: true
   ground_station_constraints:
@@ -71,7 +73,7 @@ CONTACT_BIDIR_UHF:
   contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
-  allowed_license_countries: []
+  allowed_license_countries: *id001
   enabled: false
   legal: true
   ground_station_constraints:
@@ -80,7 +82,7 @@ CONTACT_TRACKING_BIDIR:
   contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
-  allowed_license_countries: []
+  allowed_license_countries: *id001
   enabled: false
   legal: true
   ground_station_constraints:
