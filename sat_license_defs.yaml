@@ -52,7 +52,7 @@ licenses:
     frequencies:
       - [8170, 8230, "D"]
       - [2200, 2201, "D"]
-      # - [2020, 2025, "D"] # NOTE: Cannot operate in 2020-2025 MHz until license is modified
+      - [2020, 2025, "D"]
       - [402.6, 402.8, "D"]
       - [401, 401.2, "D"]
       - [2030, 2035, "U"]
