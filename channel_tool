@@ -26,6 +26,7 @@ import jsonschema
 import requests
 from mypy_extensions import TypedDict
 from ruamel.yaml import YAML
+from ruamel.yaml.comments import CommentedMap
 from tabulate import tabulate
 from termcolor import colored
 
@@ -237,17 +238,26 @@ def tk_url(env: str) -> str:
     return f"https://theknowledge.{env_domain}.spire.com/v2/"
 
 
+TK_ASSET_CACHE: Dict[Tuple[str, str, Optional[str]], Union[TkGroundStation, TkSatellite]] = {}
+
+
 # TODO enum type for assets
 def load_tk_asset(
     env: str, kind: str, name: Optional[str] = None
 ) -> Union[TkGroundStation, TkSatellite]:
-    if name:
-        suffix = f"/{name}"
+    if (env, kind, name) not in TK_ASSET_CACHE:
+        # TODO Load all of the assets to populate cache rather than fetching them one by one
+        if name:
+            suffix = f"/{name}"
+        else:
+            suffix = ""
+        r = requests.get(tk_url(env) + kind + suffix)
+        r.raise_for_status()
+        val = r.json()
+        TK_ASSET_CACHE[(env, kind, name)] = val
+        return val  # type: ignore
     else:
-        suffix = ""
-    r = requests.get(tk_url(env) + kind + suffix)
-    r.raise_for_status()
-    return r.json()  # type: ignore
+        return TK_ASSET_CACHE[(env, kind, name)]
 
 
 def channel_rejection_reason(
@@ -438,6 +448,20 @@ def load_schema() -> Any:
     return loaded_schema
 
 
+def normalize_configs(args: Any) -> None:
+    for asset in locate_assets(args.environment, args.assets):
+        config = load_asset_config(args.environment, asset)
+        write_asset_config(args.environment, asset, config)
+
+
+def normalize_config(cfg: Dict[str, Any]) -> Dict[str, Any]:
+    """Normalize a configuration file by removing anchors and sorting keys."""
+    new_config: Dict[str, Any] = CommentedMap()
+    for k in sorted(cfg):
+        new_config[k] = deepcopy(cfg[k])
+    return new_config
+
+
 def find_template(channel: str) -> ChannelDefinition:
     template_file = "templates.yaml"
     if os.path.exists(template_file):
@@ -501,10 +525,12 @@ def apply_update(
                     if yes or confirm_changes(
                         asset, channel, existing_chan, updated_chan
                     ):
-                        asset_config[channel] = updated_chan
+                        # Deepcopy here to try to avoid YAML being too smart and combining
+                        # structures. It makes diffs hard to read.
+                        asset_config[channel] = deepcopy(updated_chan)
                         print(f"Updated {channel} definition for {asset}.")
                 else:
-                    print(f"No changes for {channel} on {asset}.")
+                    print(colored(f"No changes for {channel} on {asset}.", "magenta"))
             except AlreadyExistsError as e:
                 err(f"Error: {e}")
         write_asset_config(env, asset, asset_config)
@@ -557,22 +583,34 @@ def dumps(obj: Optional[Mapping[str, Any]]) -> str:
         return stream.getvalue()
 
 
+CONFIG_CACHE: Dict[Tuple[str, str], AssetConfig] = {}
+
+
 def load_asset_config(env: str, asset: str) -> AssetConfig:
-    config_file = infer_config_file(env, asset)
-    if not os.path.exists(config_file):
-        return {}
-    with open(config_file, mode="r") as f:
-        yaml = YAML()
-        config: Optional[AssetConfig] = yaml.load(f)
-        if config:
-            return config
-        else:
+    def do_load() -> AssetConfig:
+        config_file = infer_config_file(env, asset)
+        if not os.path.exists(config_file):
             return {}
+        with open(config_file, mode="r") as f:
+            yaml = YAML()
+            config: Optional[AssetConfig] = yaml.load(f)
+            if config:
+                return config
+            else:
+                return {}
+
+    if not (env, asset) in CONFIG_CACHE:
+        config = do_load()
+        CONFIG_CACHE[(env, asset)] = config
+        return config
+    else:
+        return CONFIG_CACHE[(env, asset)]
 
 
 def write_asset_config(env: str, asset: str, asset_config: AssetConfig) -> None:
     config_file = infer_config_file(env, asset)
     if asset_config:
+        asset_config = normalize_config(asset_config)
         with open(config_file, mode="w+") as f:
             yaml = YAML()
             yaml.dump(asset_config, f)
@@ -716,9 +754,7 @@ def add_env_flag(parser: Any) -> None:
     )
 
 
-def add_asset_flags(parser: Any) -> None:
-    add_env_flag(parser)
-    # TODO Change type to str_to_list
+def add_asset_flag(parser: Any) -> None:
     parser.add_argument(
         "assets",
         type=str,
@@ -727,8 +763,10 @@ def add_asset_flags(parser: Any) -> None:
             "Can be a comma separated list of asset IDs, 'all_gs', 'all_sat', or 'all'."
         ),
     )
-    aliases = ", ".join([f"'{g}'" for g in CONTACT_TYPE_DEFS["groups"].keys()])
 
+
+def add_channel_flag(parser: Any) -> None:
+    aliases = ", ".join([f"'{g}'" for g in CONTACT_TYPE_DEFS["groups"].keys()])
     parser.add_argument(
         "channels",
         type=channel_list,
@@ -737,6 +775,12 @@ def add_asset_flags(parser: Any) -> None:
             f"Also supports the following aliases: {aliases} or 'all'."
         ),
     )
+
+
+def add_asset_flags(parser: Any) -> None:
+    add_env_flag(parser)
+    add_asset_flag(parser)
+    add_channel_flag(parser)
 
 
 PARSER = argparse.ArgumentParser(
@@ -776,6 +820,13 @@ AUDIT_PARSER.add_argument(
     type=str,
     help=("The ground stations to audit."),
 )
+
+NORMALIZE_PARSER = SUBPARSERS.add_parser(
+    "normalize", help="Convert configuration to a normalized format."
+)
+NORMALIZE_PARSER.set_defaults(func=normalize_configs)
+add_env_flag(NORMALIZE_PARSER)
+add_asset_flag(NORMALIZE_PARSER)
 
 VALIDATE_PARSER = SUBPARSERS.add_parser(
     "validate", help="Validate all templates and extant configurations."
