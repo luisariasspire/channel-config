@@ -666,8 +666,10 @@ def channel_list(val: str) -> List[str]:
         return all_channels
     elif val.lower() in CONTACT_TYPE_DEFS["groups"]:
         return CONTACT_TYPE_DEFS["groups"][val.lower()]
-    else:
+    elif val.lower().startswith("contact"):
         return str_to_list(val)
+    else:
+        raise ValueError(f"Unrecognized channel alias '{val}'")
 
 
 def add_editing_flags(parser: Any) -> None:

@@ -36,7 +36,7 @@ CONTACT_BIDIR_DVBS2X:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 41.0

@@ -39,7 +39,7 @@ CONTACT_BIDIR_DVBS2X:
   - NZ
   - LV
   goodput_kbps: 41.0
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_BIDIR_UHF:
@@ -105,7 +105,7 @@ CONTACT_RXO_DVBS2X:
   - NZ
   - LV
   goodput_kbps: 41.0
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
@@ -127,7 +127,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - NZ
   - LV
   goodput_kbps: 30.0
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:

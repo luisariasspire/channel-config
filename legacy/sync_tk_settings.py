@@ -52,7 +52,7 @@ def emit_sat_commands(env):
     disable_chans = {
         "sband": [],
         "sband_2200": [],
-        "dvb": [],
+        "dvbs2x": [],
         "tracking": [],
         "rxo": [],
     }
@@ -66,7 +66,7 @@ def emit_sat_commands(env):
             disable_chans["sband_2200"].append(spire_id)
 
         if not sat["dvbs2x_enabled"]:
-            disable_chans["dvb"].append(spire_id)
+            disable_chans["dvbs2x"].append(spire_id)
 
         if not sat["target_tracking_enabled"]:
             disable_chans["tracking"].append(spire_id)
@@ -83,7 +83,7 @@ def emit_gs_commands(env):
 
     disable_chans = {
         "sband": [],
-        "dvb": [],
+        "dvbs2x": [],
     }
     for gs in groundstations:
         gs_id = gs["gs_id"]
@@ -92,7 +92,7 @@ def emit_gs_commands(env):
             disable_chans["sband"].append(gs_id)
 
         if not gs["dvbs2x_enabled"]:
-            disable_chans["dvb"].append(gs_id)
+            disable_chans["dvbs2x"].append(gs_id)
 
     for chan, disable_gs in disable_chans.items():
         emit_channel_commands(env, disable_gs, chan, False)

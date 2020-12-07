@@ -3,7 +3,7 @@ CONTACT_BIDIR:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -13,7 +13,7 @@ CONTACT_BIDIR_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -23,7 +23,7 @@ CONTACT_BIDIR_UHF:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -53,7 +53,7 @@ CONTACT_TRACKING_BIDIR:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -63,7 +63,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0

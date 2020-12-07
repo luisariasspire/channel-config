@@ -14,7 +14,7 @@ CONTACT_BIDIR_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -46,7 +46,7 @@ CONTACT_RXO_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
@@ -67,7 +67,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -87,7 +87,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
