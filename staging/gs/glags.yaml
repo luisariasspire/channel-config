@@ -33,6 +33,7 @@ CONTACT_BIDIR_UHF:
   ground_station_constraints:
     min_elevation_deg: 10.0
   goodput_kbps: 0.40
+  contact_overhead_time: 210s
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:

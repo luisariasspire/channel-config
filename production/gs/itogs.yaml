@@ -7,6 +7,7 @@ CONTACT_BIDIR:
   ground_station_constraints:
     min_elevation_deg: 27.0
   goodput_kbps: 30.0
+  contact_overhead_time: 210s
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -16,6 +17,7 @@ CONTACT_BIDIR_DVBS2X:
   ground_station_constraints:
     min_elevation_deg: 27.0
   goodput_kbps: 41.0
+  contact_overhead_time: 210s
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -25,6 +27,7 @@ CONTACT_BIDIR_UHF:
   ground_station_constraints:
     min_elevation_deg: 10.0
   goodput_kbps: 0.40
+  contact_overhead_time: 210s
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -35,6 +38,7 @@ CONTACT_RXO:
   ground_station_constraints:
     min_elevation_deg: 27.0
   goodput_kbps: 30.0
+  contact_overhead_time: 30s
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -45,6 +49,7 @@ CONTACT_RXO_DVBS2X:
   ground_station_constraints:
     min_elevation_deg: 27.0
   goodput_kbps: 41.0
+  contact_overhead_time: 30s
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -54,6 +59,7 @@ CONTACT_TRACKING_BIDIR:
   ground_station_constraints:
     min_elevation_deg: 10.0
   goodput_kbps: 30.0
+  contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -63,6 +69,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   ground_station_constraints:
     min_elevation_deg: 10.0
   goodput_kbps: 41.0
+  contact_overhead_time: 210s
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -73,6 +80,7 @@ CONTACT_TRACKING_RXO:
   ground_station_constraints:
     min_elevation_deg: 25.0
   goodput_kbps: 30.0
+  contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -83,3 +91,4 @@ CONTACT_TRACKING_RXO_DVBS2X:
   ground_station_constraints:
     min_elevation_deg: 25.0
   goodput_kbps: 41.0
+  contact_overhead_time: 30s
