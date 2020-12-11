@@ -19,7 +19,7 @@ CONTACT_BIDIR:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 30.0
+  goodput_kbps: 0.3
   contact_overhead_time: 210s
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
