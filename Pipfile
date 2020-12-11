@@ -4,7 +4,15 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [scripts]
-channel_tool = "python ./channel_tool"
+channel_tool = "python -m channel_tool"
+
+sync_to_tk = "python -m legacy.sync_to_tk"
+sync_from_tk = "python -m legacy.sync_from_tk"
+
+create_sat_configs = "python -m create_sat_configs"
+create_gs_configs_from_licensing = "python -m legacy.create_gs_configs_from_licensing"
+
+format = "sh ./format.sh"
 
 [packages]
 "ruamel.yaml" = "*"

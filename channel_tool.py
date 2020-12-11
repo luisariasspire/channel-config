@@ -1,7 +1,5 @@
 #! /usr/bin/env python3
 
-# One line change for testing
-
 import argparse
 import difflib
 import itertools
@@ -24,57 +22,33 @@ from typing import (
 
 import jsonschema
 import requests
-from mypy_extensions import TypedDict
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap
 from tabulate import tabulate
 from termcolor import colored
 
+from typedefs import (
+    AssetConfig,
+    AssetKind,
+    ChannelDefinition,
+    DefsFile,
+    Environment,
+    GroundStationKind,
+    SatelliteKind,
+    TkGroundStation,
+    TkSatellite,
+)
+from util import GS_DIR, SAT_DIR, confirm, tk_url
+
 ENVS = ["staging", "production"]
-TK_DOMAINS = {"staging": "sbox", "production": "cloud"}
 SCHEMA_FILE = "schema.yaml"
-SAT_DIR = "sat"
-GS_DIR = "gs"
-GROUND_STATION = "groundstation"
-SATELLITE = "satellite"
-
-
-class DefsFile(TypedDict):
-    groups: Mapping[str, List[str]]
+GROUND_STATION: GroundStationKind = "groundstation"
+SATELLITE: SatelliteKind = "satellite"
 
 
 with open("contact_type_defs.yaml") as f:
     yaml = YAML()
     CONTACT_TYPE_DEFS: DefsFile = yaml.load(f)
-
-
-# TODO Derive types from JSON Schema or vice versa
-class GsConstraints(TypedDict):
-    pass
-
-
-class SatConstraints(TypedDict):
-    pass
-
-
-class ChannelDefinition(TypedDict, total=False):
-    legal: bool
-    enabled: bool
-    directionality: str  # TODO Stricter type
-    allowed_license_countries: List[str]
-    ground_station_constraints: GsConstraints
-    satellite_constraints: SatConstraints
-
-
-AssetConfig = Dict[str, Optional[ChannelDefinition]]
-
-
-class TkGroundStation(TypedDict):
-    license_country: str
-
-
-class TkSatellite(TypedDict):
-    license_country: str
 
 
 class AlreadyExistsError(Exception):
@@ -233,17 +207,14 @@ def edit_config(args: Any) -> None:
     apply_update(args.environment, args.assets, args.channels, do_edit, yes=args.yes)
 
 
-def tk_url(env: str) -> str:
-    env_domain = TK_DOMAINS[env]
-    return f"https://theknowledge.{env_domain}.spire.com/v2/"
-
-
-TK_ASSET_CACHE: Dict[Tuple[str, str, Optional[str]], Union[TkGroundStation, TkSatellite]] = {}
+TK_ASSET_CACHE: Dict[
+    Tuple[str, str, Optional[str]], Union[TkGroundStation, TkSatellite]
+] = {}
 
 
 # TODO enum type for assets
 def load_tk_asset(
-    env: str, kind: str, name: Optional[str] = None
+    env: Environment, kind: AssetKind, name: Optional[str] = None
 ) -> Union[TkGroundStation, TkSatellite]:
     if (env, kind, name) not in TK_ASSET_CACHE:
         # TODO Load all of the assets to populate cache rather than fetching them one by one
@@ -338,7 +309,7 @@ def compare_channels(
     return (shared, mismatched)
 
 
-def audit_config(env: str, sat: str, gs: str) -> None:
+def audit_config(env: Environment, sat: str, gs: str) -> None:
     """Compute and display a report of the channel (mis)matches between assets."""
     sat_config = load_asset_config(env, sat)
     gs_config = load_asset_config(env, gs)
@@ -476,7 +447,7 @@ def find_template(channel: str) -> ChannelDefinition:
         raise FileNotFoundError(f"Could not find file {template_file}")
 
 
-def locate_assets(env: str, assets: Union[str, List[str]]) -> List[str]:
+def locate_assets(env: Environment, assets: Union[str, List[str]]) -> List[str]:
     def name(p: str) -> str:
         return os.path.splitext(os.path.basename(p))[0]
 
@@ -505,7 +476,7 @@ def filter_properties(asset_type: str, chan: ChannelDefinition) -> ChannelDefini
 
 
 def apply_update(
-    env: str,
+    env: Environment,
     assets: List[str],
     channels: List[str],
     tfm: Callable[[str, str, Optional[ChannelDefinition]], Optional[ChannelDefinition]],
@@ -546,8 +517,7 @@ def confirm_changes(
     at = colored(asset, attrs=["bold"])
     print(f"Changing {ch} on {at}. Diff:")
     print(format_diff(existing, new))
-    response = input(colored("Update asset configuration? [y/N] ", attrs=["bold"]))
-    if response in ["y", "Y"]:
+    if confirm("Update asset configuration?"):
         return True
     else:
         warn("Canceled.")
@@ -586,7 +556,7 @@ def dumps(obj: Optional[Mapping[str, Any]]) -> str:
 CONFIG_CACHE: Dict[Tuple[str, str], AssetConfig] = {}
 
 
-def load_asset_config(env: str, asset: str) -> AssetConfig:
+def load_asset_config(env: Environment, asset: str) -> AssetConfig:
     def do_load() -> AssetConfig:
         config_file = infer_config_file(env, asset)
         if not os.path.exists(config_file):
@@ -607,7 +577,7 @@ def load_asset_config(env: str, asset: str) -> AssetConfig:
         return CONFIG_CACHE[(env, asset)]
 
 
-def write_asset_config(env: str, asset: str, asset_config: AssetConfig) -> None:
+def write_asset_config(env: Environment, asset: str, asset_config: AssetConfig) -> None:
     config_file = infer_config_file(env, asset)
     if asset_config:
         asset_config = normalize_config(asset_config)
@@ -625,7 +595,7 @@ def infer_asset_type(asset: str) -> str:
         return SATELLITE
 
 
-def infer_config_file(env: str, asset: str) -> str:
+def infer_config_file(env: Environment, asset: str) -> str:
     asset_type = infer_asset_type(asset)
     if asset_type == GROUND_STATION:
         # Assumed to be a ground station.

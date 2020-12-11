@@ -11,10 +11,11 @@
 # TODO Replace licensing.py with a set of YAML configuration files defining the ground station
 # licenses, similar to how the satellite licenses are defined.
 
-from licensing import gs_licensed_freqs
-from ruamel.yaml import YAML
 from collections import defaultdict
-import sys
+
+from ruamel.yaml import YAML
+
+from legacy.licensing import gs_licensed_freqs
 
 yaml = YAML()
 with open("contact_type_defs.yaml") as f:
@@ -23,12 +24,15 @@ with open("contact_type_defs.yaml") as f:
 
 def allows_use(lic, band_def):
     """Test if a license allows use of a directional frequency band."""
+
     def is_allowed(band):
         if band["earth_to_space"] and not lic.uplink:
             return False
         if band["space_to_earth"] and not lic.downlink:
             return False
-        center_freq = ((band["band"][0] + band["band"][1]) / 2) * 1000 * 1000  # Convert to Hz
+        center_freq = (
+            ((band["band"][0] + band["band"][1]) / 2) * 1000 * 1000
+        )  # Convert to Hz
         if not lic.contains(center_freq):
             return False
         return True
@@ -87,10 +91,12 @@ def format_commands(gs_id, gs_chans):
     for contact_type, countries in gs_chans.items():
         c_str = ",".join(countries)
         # TODO Add comments with license justification
-        cmds.append(f"channel_tool add staging {gs_id} {contact_type}"
-                    f" --allowed_license_countries={c_str}"
-                    " --legal true"  # Override legality: the license exists.
-                    " --yes")
+        cmds.append(
+            f"channel_tool add staging {gs_id} {contact_type}"
+            f" --allowed_license_countries={c_str}"
+            " --legal true"  # Override legality: the license exists.
+            " --yes"
+        )
     return cmds
 
 

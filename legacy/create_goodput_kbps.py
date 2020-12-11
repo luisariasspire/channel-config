@@ -6,8 +6,9 @@
 # pipenv run python create_goodput_kbps.py [production,staging]
 
 import argparse
-from ruamel.yaml import YAML
 import os
+
+from ruamel.yaml import YAML
 
 yaml = YAML()
 with open("legacy_asset_profiles.yaml") as f:
@@ -28,17 +29,17 @@ PARSER.add_argument(
 
 
 def update_goodput(env: str):
-    for asset_type in ['gs', 'sat']:
-        directory = f'../{env}/{asset_type}'
+    for asset_type in ["gs", "sat"]:
+        directory = f"../{env}/{asset_type}"
         for filename in os.listdir(directory):
             with open(os.path.join(directory, filename)) as f:
                 channel_configs = yaml.load(f)
             for name, properties in channel_configs.items():
                 goodput = DEFAULT_RATES.get(name)
                 if goodput is None:
-                    print(f'No default rate for {name} defined! Skipping!')
+                    print(f"No default rate for {name} defined! Skipping!")
                 else:
-                    properties['goodput_kbps'] = goodput
+                    properties["goodput_kbps"] = goodput
             with open(os.path.join(directory, filename), "w") as f:
                 yaml.dump(channel_configs, f)
 

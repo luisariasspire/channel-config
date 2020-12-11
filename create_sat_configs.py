@@ -9,8 +9,9 @@
 # To generate and run all of the channel addition commands, use:
 # pipenv run python create_sat_configs.py | xargs -L 1 pipenv run
 
-from ruamel.yaml import YAML
 import sys
+
+from ruamel.yaml import YAML
 
 yaml = YAML()
 with open("contact_type_defs.yaml") as f:

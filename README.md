@@ -14,6 +14,17 @@ The configuration for the fleet can be quite large, so it is broken up into seve
   - `gs` contains configuration files for each ground station.
 - `templates` contains template configurations for each contact type, using common values.
 
+Tools are configured using `pipenv`, and can be executed using `pipenv run <tool name>`. The major
+scripts are:
+
+- `channel_tool`, the primary script, which is used for editing configurations;
+- `create_sat_configs`, which generates `channel_tool` commands to create satellite configurations;
+- `create_gs_configs_from_licensing`, which generates `channel_tool` commands to create ground
+  station configs;
+- `sync_from_tk`, used to synchronize settings _from_ The Knowledge by generating `channel_tool`
+  commands;
+- and `sync_to_tk`, used to synchronize settings _to_ The Knowledge.
+
 ## Installation
 
 Use `pipenv` to install the needed dependencies:
@@ -94,8 +105,8 @@ given set of assets:
 $ pipenv run ./channel_tool staging edit tosgs CONTACT_RXO_SBAND_FREQ_2200MHZ \
     --enabled=true --legal=true
 Changing asset configuration for CONTACT_RXO_SBAND_FREQ_2200_MHZ on tosgs. Diff:
---- 
-+++ 
+---
++++
 @@ -3,7 +3,7 @@
  - US
  - SG
@@ -117,7 +128,7 @@ conforms to the latest schema. This makes it easy to edit the configuration and 
 the result is sound. Note also that the tool provides a diff for each edit it makes, showing that
 the `legal` field was already `true` and did not need to change, while `enabled` was updated from
 `false` to `true` as requested. You will have the option to cancel each change if you don't want to
-apply it. 
+apply it.
 
 To skip confirmations, use the `--yes` option; this is generally safe to do as long as you review
 the changes before merging your PR (which you're always doing _regardless_, right?). Use
@@ -159,6 +170,28 @@ Then use `channel_tool` to set it on the desired satellites or ground stations:
 pipenv run ./channel_tool edit staging FM137,FM142 uhf --yes \
     --satellite_constraints "$(cat /tmp/constraints.yml)"
 ```
+
+## Helper Tools
+
+### Synchronization with The Knowledge
+
+Two scripts, `sync_from_tk` and `sync_to_tk`, are provided to do bidirectional synchronization
+between these config files and The Knowledge. Each can be called using `pipenv run <tool>` and use
+the channel definitions in `contact_type_defs.yaml`.
+
+Pulling configuration from TK involves reading TK's settings for each asset given on the command
+line and generating a series of `channel_tool` edit commands which will bring the config file in
+line with those settings. Conversely, synchronizing _to_ The Knowledge is done by reading each of
+the asset files and computing what settings in TK would be needed to produce that exact set of
+enabled and disabled channels.
+
+Note that it is possible to represent some configurations in the channel config files that can't be
+represented in TK! For example, it is possible to turn on `CONTACT_RXO_SBAND_FREQ_2200_MHZ` without
+also turning on `CONTACT_RXO` in the YAML files, but not in TK because the 2200MHz contact types
+require both `sbnad_enabled` and `sband_2200mhz` to be `True`. The mappings for which TK settings
+are needed for each contact type are provided in `legacy/tk_settings_mapping.yaml` and refer to the
+group definitions in `contact_type_defs.yaml`. In the case where the channel configuration can't be
+represented in TK at all, the `sync_to_tk` script will signal an error showing the conflict.
 
 ## Examples
 

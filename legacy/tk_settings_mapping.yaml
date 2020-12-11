@@ -1,0 +1,38 @@
+# Mappings between TK settings and channel config groups.
+
+# The TK settings switches affect multiple contact types ("channels") at a
+# time. This means that we need to ensure that for the channel configuration and
+# TK to match, for every contact type on a particular asset the following
+# properties hold:
+#
+# - If the channel is enabled in the config files, then all of its requisite TK
+#   settings are also enabled.
+# - If the channel is disabled in the config files, then at least one of its
+#   requisite TK settings is also disabled.
+#
+# Below is a mapping from "groups" of contact types defined in
+# `../contact_type_defs.yaml` to the TK switches they require. This data is
+# consumed by the two scripts `sync_from_tk.py` and `sync_to_tk.py`. The map
+# keys are group identifiers, and their values are the settings fields
+# which must be enabled for any contact type in that group to be enabled.
+#
+# As an example: If a satellite has `sband_enabled=true` but
+# `sband_2200mhz=false`, then all of the the channels in the `sband` group will
+# be enabled except for ones that are _also_ in the `sband_2200` group.
+
+uhf: ~ # UHF is enabled by default and there is no config to change that.
+
+sband: sband_enabled
+
+sband_2020: ~ # Covered by `sband` above.
+
+sband_2200: sband_2200mhz
+
+dvbs2x: dvbs2x_enabled
+
+tracking: target_tracking_enabled
+
+# Scripts should split on this period to get the embedded field.
+rxo: pipeline.enable_rxo
+
+bidir: ~ # Enabled by default unless predluced by another set.

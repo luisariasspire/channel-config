@@ -7,6 +7,11 @@ set -ex
 
 apk add gcc musl-dev
 pip install pipenv
-pipenv sync
-pipenv run mypy
-pipenv run ./channel_tool validate
+pipenv sync --dev
+
+pipenv run mypy # Check types
+pipenv run format # Check formatting
+pipenv run channel_tool validate # Check that configs are valid
+# Check configs are representable in TK, no network I/O
+pipenv run sync_to_tk staging --check-only
+pipenv run sync_to_tk production --check-only
