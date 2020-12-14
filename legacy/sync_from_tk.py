@@ -14,7 +14,7 @@ import os.path
 import requests
 from ruamel.yaml import YAML
 
-from util import is_true
+from util import lookup
 
 TK_DOMAINS = {"staging": "sbox", "production": "cloud"}
 
@@ -70,7 +70,7 @@ def emit_asset_commands(asset_type, id_field, groups, env):
         asset_id = asset[id_field]
 
         for g in groups:
-            if not is_true(GROUP_REQS[g], asset):
+            if not lookup(GROUP_REQS[g], asset):
                 disable_chans[g].append(asset_id)
 
     for chan, disabled_assets in disable_chans.items():
