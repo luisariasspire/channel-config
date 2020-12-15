@@ -13,6 +13,7 @@ import os.path
 from collections import defaultdict
 from typing import Any, FrozenSet, Iterable, List, Mapping, Set, Tuple, Union, overload
 
+import itertools
 import requests
 from ruamel.yaml import YAML
 from tabulate import tabulate
@@ -89,7 +90,7 @@ class SettingsConflictError(Exception):
 
 # Required settings by channel, expanded from group configs.
 # A channel requires all of the settings from all of its groups to be on.
-CHANNEL_REQS = defaultdict(set)
+CHANNEL_REQS: Mapping[str, Set[str]] = defaultdict(set)
 
 for group, channels in GROUP_DEFS.items():
     required_setting = GROUP_REQS[group]
@@ -144,7 +145,7 @@ def find_asset_configs(
 
 
 def generate_settings_requirements(
-    cfg: AssetConfig,
+    cfg: AssetConfig, channel_reqs: Mapping[str, Set[str]]
 ) -> Tuple[Set[str], Set[FrozenSet[str]]]:
     """Create the TK settings requirements for this asset config.
 
@@ -167,7 +168,7 @@ def generate_settings_requirements(
     return ons, offs
 
 
-def refine(ons: Set[str], offs: Set[FrozenSet[str]]) -> Tuple[Set[str], Set[str]]:
+def refine(ons: Set[str], offs: Set[FrozenSet[str]]) -> Tuple[Set[str], Set[FrozenSet[str]]]:
     off_options = [list(opts) for opts in offs]
     conflicts = set()
     for setting in ons:
@@ -185,13 +186,13 @@ def refine(ons: Set[str], offs: Set[FrozenSet[str]]) -> Tuple[Set[str], Set[str]
 
     # If we make it here, then there are options to turn off all the settings that need to be turned
     # off and so there are no conflicts. The remaining on and off sets are disjoint and non-empty.
-    refined_offs: Set[str] = set()
-    refined_offs.update(*off_options)
+    refined_offs: Set[FrozenSet[str]] = set()
+    refined_offs.update([frozenset(os) for os in off_options])
     return ons, refined_offs
 
 
 def create_patch_for_asset(
-    env: Environment, asset: str, kind: AssetKind, enabled: Set[str], disabled: Set[str]
+    env: Environment, asset: str, kind: AssetKind, enabled: Set[str], disabled: Set[FrozenSet[str]]
 ) -> Tuple[Mapping[str, Any], Mapping[str, bool]]:
     existing_asset = load_tk_asset(env, asset, kind)
 
@@ -202,11 +203,25 @@ def create_patch_for_asset(
         fieldset[s] = f
         if not f:
             patch[s] = True
-    for s in disabled:
-        f = lookup(s, existing_asset)
-        fieldset[s] = f
-        if f:
-            patch[s] = False
+    disable_requests = set()
+    for opts in disabled:
+        want_off = set()
+        for s in opts:
+            f = lookup(s, existing_asset)
+            fieldset[s] = f
+            if f:
+                want_off.add(f)
+
+        # Check if there is at least one field in our set of options which is already disabled. We
+        # just need one. If not, add the fields which can be flipped to the "off-request" set.
+        if not any([not lookup(s, existing_asset) for s in opts]):
+            disable_requests.add(want_off)
+
+    # Reduce the set of sets to produce a minimal patch.
+    min_offs = sorted([set(x) for x in itertools.product(*disable_requests)], key=lambda x: len(x))
+    for f in min_offs[0]:
+        patch[f] = False
+
     return fieldset, patch
 
 
@@ -289,7 +304,7 @@ def main() -> None:
 
     for (asset, kind, cfg) in find_asset_configs(args.environment):
         print(f"\rChecking {asset}...    ", end="")
-        raw_enabled, raw_disabled = generate_settings_requirements(cfg)
+        raw_enabled, raw_disabled = generate_settings_requirements(cfg, CHANNEL_REQS)
         try:
             enabled, disabled = refine(raw_enabled, raw_disabled)
 
