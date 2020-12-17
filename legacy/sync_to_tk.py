@@ -9,7 +9,6 @@
 # To perform a sync, run:
 # pipenv run python legacy/sync_to_tk.py
 import argparse
-import itertools
 import os.path
 from collections import defaultdict
 from typing import (
@@ -19,6 +18,7 @@ from typing import (
     Iterable,
     List,
     Mapping,
+    Sequence,
     Set,
     Tuple,
     Union,
@@ -26,6 +26,7 @@ from typing import (
 )
 
 import requests
+from more_itertools import powerset
 from ruamel.yaml import YAML
 from tabulate import tabulate
 from termcolor import colored
@@ -40,8 +41,10 @@ from typedefs import (
     TkSatellite,
 )
 from util import (
+    GROUND_STATION,
     GS_DIR,
     SAT_DIR,
+    SATELLITE,
     confirm,
     get_git_revision,
     get_local_username,
@@ -88,8 +91,10 @@ DIRNAME = os.path.dirname(__file__)
 
 yaml = YAML()
 
-with open(os.path.join(DIRNAME, "tk_settings_mapping.yaml")) as f:
-    GROUP_REQS = yaml.load(f)
+with open(os.path.join(DIRNAME, "tk_sync_config.yaml")) as f:
+    cfg = yaml.load(f)
+    GROUP_REQS = cfg["requirements"]
+    SKIP_CHANS = cfg["skip_channels"]
 
 
 with open(os.path.join(DIRNAME, "../contact_type_defs.yaml")) as f:
@@ -100,15 +105,24 @@ class SettingsConflictError(Exception):
     pass
 
 
+# Type for conjunctive normal form representation of TK settings
+CnfClause = FrozenSet[Tuple[str, bool]]
+CnfFormula = Set[CnfClause]
+
+
 # Required settings by channel, expanded from group configs.
 # A channel requires all of the settings from all of its groups to be on.
-CHANNEL_REQS: Mapping[str, Set[str]] = defaultdict(set)
+CHANNEL_REQS: Mapping[AssetKind, Mapping[str, Set[str]]] = defaultdict(
+    lambda: defaultdict(set)
+)
 
-for group, channels in GROUP_DEFS.items():
-    required_setting = GROUP_REQS[group]
-    if required_setting:
-        for channel in channels:
-            CHANNEL_REQS[channel].add(required_setting)
+kinds: List[AssetKind] = [SATELLITE, GROUND_STATION]
+for kind in kinds:
+    for group, channels in GROUP_DEFS.items():
+        required_setting = GROUP_REQS[kind][group]
+        if required_setting:
+            for channel in channels:
+                CHANNEL_REQS[kind][channel].add(required_setting)
 
 
 @overload
@@ -162,95 +176,134 @@ def find_asset_configs(
 
 
 def generate_settings_requirements(
-    cfg: AssetConfig, channel_reqs: Mapping[str, Set[str]]
-) -> Tuple[Set[str], Set[FrozenSet[str]]]:
+    cfg: AssetConfig, channel_reqs: Mapping[str, Set[str]], skip_channels: Sequence[str]
+) -> CnfFormula:
     """Create the TK settings requirements for this asset config.
 
-    This function produces two sets. The first is a set of settings which must be turned on for this
-    config's enabled channels to be enabled by TK. The second is a set of sets, each of which
-    contains settings which may be disabled to turn off the channels which are disabled in the
-    asset's configuration.
+    This function produces a set of sets, describing the TK settings requirements for this
+    asset. For TK to be correctly configured, at least one setting from each of the sub-sets must be
+    true. This is an "and-of-ors" representation (i.e. conjunctive normal form).
 
-    Said another way: for TK to be configured properly with regards to this asset, all of the
-    settings in the first set must be on, and at least one of the settings in each of the subsets of
-    the second set must be turned off.
     """
-    ons = set()
-    offs = set()
+    clauses: CnfFormula = set()
+
+    def _eval(term: str) -> Tuple[str, bool]:
+        name = term
+        val = True
+        if term.startswith("not "):
+            name = name[4:]
+            val = False
+        return name, val
+
+    def _invert(term: Tuple[str, bool]) -> Tuple[str, bool]:
+        n, v = term
+        return (n, not v)
+
     for channel, chan_cfg in cfg.items():
+        if channel in skip_channels:
+            print(f"Note: Skipping {channel} due to configuration override")
+            continue
+        reqs = channel_reqs[channel]
         if chan_cfg and chan_cfg["enabled"]:
-            ons.update(CHANNEL_REQS[channel])
+            # Channels which are "on" must have all of their requirements met.
+            for req in reqs:
+                clauses.add(frozenset({_eval(req)}))
         else:
-            offs.add(frozenset(CHANNEL_REQS[channel]))
-    return ons, offs
+            # Channels which are "off" must have at least one of their requirements unsatisfied.
+            off_opts = frozenset([_invert(_eval(req)) for req in reqs])
+            if off_opts:
+                clauses.add(off_opts)
+    return clauses
 
 
-def refine(
-    ons: Set[str], offs: Set[FrozenSet[str]]
-) -> Tuple[Set[str], Set[FrozenSet[str]]]:
-    off_options = [list(opts) for opts in offs]
-    conflicts = set()
-    for setting in ons:
-        for off_opt in off_options:
-            if setting in off_opt:
-                off_opt.remove(setting)
-                conflicts.add(setting)
-            if not off_opt:
-                # We have exhausted all of the settings for this set which may be turned off.
-                raise SettingsConflictError(
-                    f"Incompatible settings!\n"
-                    f"Each of these settings must be both enabled and disabled at the same time:\n"
-                    f"{conflicts}"
-                )
+SettingsAssignment = FrozenSet[Tuple[str, bool]]
 
-    # If we make it here, then there are options to turn off all the settings that need to be turned
-    # off and so there are no conflicts. The remaining on and off sets are disjoint and non-empty.
-    refined_offs: Set[FrozenSet[str]] = set()
-    refined_offs.update([frozenset(os) for os in off_options])
-    return ons, refined_offs
+
+def display_cnf(cnf: CnfFormula) -> str:
+    def display_clause(clause: CnfClause) -> str:
+        return "({})".format(
+            " ∨ ".join(
+                [literal if inverted else "¬" + literal for literal, inverted in clause]
+            )
+        )
+
+    return " ∧ ".join(display_clause(clause) for clause in cnf)
+
+
+def solve(clauses: CnfFormula) -> Set[SettingsAssignment]:
+    """
+    Find valid solutions to the conjunctive normal form formula given.
+    """
+    literals: Set[str] = set()
+    for clause in clauses:
+        for binding in clause:
+            n, _ = binding
+            literals.add(n)
+
+    # Generate all possible variable assignments. We track just the literals bound to "true".
+    assignments = powerset(literals)
+
+    # An assignment is satisfying if, when each literal is substituted for its bound value, the
+    # formula reduces to True.
+    def _is_sat(assignment: Sequence[str]) -> bool:
+        def _reduce(clause: FrozenSet[Tuple[str, bool]]) -> bool:
+            # Note that the clause is a series of elements of the form (name, inverted). If the
+            # second element is False, that means that the binding for the literal should be NOT-ed.
+            # Notice that the truth table is symmetrical:
+            #   T F < Binding
+            # F F T
+            # T T F
+            # ^ Inverted
+            # The operation is an inverted XOR on the two variables.
+            return any([b == (n in assignment) for (n, b) in clause])
+
+        return all([_reduce(clause) for clause in clauses])
+
+    def _expand(assignment: Sequence[str]) -> FrozenSet[Tuple[str, bool]]:
+        expansion = []
+        for literal in literals:
+            expansion.append((literal, literal in assignment))
+        return frozenset(expansion)
+
+    satisfying = [_expand(a) for a in assignments if _is_sat(a)]
+    if not satisfying:
+        # TODO Extract conflict kernels and display them here. Reading the formula raw is hard!
+        raise SettingsConflictError(
+            "Incompatible settings!\n"
+            "There are items which must be both enabled and disabled at the same time.\n"
+            f"CNF formula contains a conflict: {display_cnf(clauses)}"
+        )
+
+    return set(satisfying)
 
 
 def create_patch_for_asset(
-    asset_data: Mapping[str, Any], enabled: Set[str], disabled: Set[FrozenSet[str]]
+    asset_data: Mapping[str, Any], assignments: Set[SettingsAssignment]
 ) -> Tuple[Mapping[str, Any], Mapping[str, bool]]:
 
-    fieldset: Dict[str, Any] = {}
-    patch: Dict[str, bool] = {}
+    literals = set()
+    possible_patches = []
+    for assignment in assignments:
+        patch = {}
+        for literal, value in assignment:
+            literals.add(literal)
+            if bool(lookup(literal, asset_data)) != value:
+                patch[literal] = value
+        possible_patches.append(patch)
 
-    for s in enabled:
-        f = lookup(s, asset_data)
-        fieldset[s] = f
-        if not f:
-            patch[s] = True
+    fieldset: Dict[str, Any] = {lit: lookup(lit, asset_data) for lit in literals}
 
-    disable_requests = set()
-    for opts in disabled:
-        want_off = set()
-        for s in opts:
-            f = lookup(s, asset_data)
-            fieldset[s] = f
-            if f:
-                want_off.add(s)
+    # Produce a minimal patch.
+    min_patch = sorted(possible_patches, key=lambda x: len(x))[0]
 
-        # Check if there is at least one field in our set of options which is already disabled. We
-        # just need one. If not, add the fields which can be flipped to the "off-request" set.
-        if not any([not lookup(s, asset_data) for s in opts]):
-            disable_requests.add(frozenset(want_off))
-
-    # Reduce the set of sets to produce a minimal patch.
-    min_offs = sorted(
-        [set(x) for x in itertools.product(*disable_requests)], key=lambda x: len(x)
-    )
-    for f in min_offs[0]:
-        patch[f] = False
-
-    return fieldset, patch
+    return fieldset, min_patch
 
 
 def confirm_patch(
     asset: str,
     existing: Mapping[str, Any],
     patch: Mapping[str, bool],
+    channel_reqs: Mapping[str, Set[str]],
     cfg: AssetConfig,
     yes: bool,
 ) -> bool:
@@ -272,11 +325,21 @@ def confirm_patch(
 
     # TODO Extract this logic and use it to explain conflicts as well as nominal changes
     enabled_statuses = [
-        (bold("Channel (* = Mismatch)"), bold("State"), bold("Required TK settings"))
+        (
+            bold("Channel (* = Mismatch)"),
+            bold("State"),
+            bold('Required TK settings (¬x means "not x")'),
+        )
     ]
     for chan, chan_cfg in cfg.items():
         assert chan_cfg is not None
-        needs_patch = any([req in patch for req in CHANNEL_REQS[chan]])
+
+        def strip_not(s: str) -> str:
+            if s.startswith("not "):
+                return s[4:]
+            return s
+
+        needs_patch = any([strip_not(req) in patch for req in channel_reqs[chan]])
 
         def highlight(s: str) -> str:
             if needs_patch:
@@ -288,10 +351,16 @@ def confirm_patch(
         state = "Enabled" if chan_cfg["enabled"] else "Disabled"
 
         settings = "n/a"
+
+        def _fmt_not(s: str) -> str:
+            if s.startswith("not "):
+                return f"(¬{s[4:]})"
+            return s
+
         reqs = ", ".join(
             {
-                highlight(req + "*") if req in patch else req
-                for req in CHANNEL_REQS[chan]
+                f"{highlight(_fmt_not(req) + '*') if strip_not(req) in patch else _fmt_not(req)}"
+                for req in channel_reqs[chan]
             }
         )
         if chan_cfg["enabled"]:
@@ -326,17 +395,21 @@ def main() -> None:
 
     for (asset, kind, cfg) in find_asset_configs(args.environment):
         print(f"\rChecking {asset}...    ", end="")
-        raw_enabled, raw_disabled = generate_settings_requirements(cfg, CHANNEL_REQS)
+        settings_cnf = generate_settings_requirements(
+            cfg, CHANNEL_REQS[kind], SKIP_CHANS.get(asset, [])
+        )
         try:
-            enabled, disabled = refine(raw_enabled, raw_disabled)
+            assignments = solve(settings_cnf)
 
             if args.check_only:
                 continue  # We're just verifying that the settings are representable.
 
             asset_data = load_tk_asset(args.environment, asset, kind)
-            existing, patch = create_patch_for_asset(asset_data, enabled, disabled)
+            existing, patch = create_patch_for_asset(asset_data, assignments)
             if patch:
-                if confirm_patch(asset, existing, patch, cfg, args.yes):
+                if confirm_patch(
+                    asset, existing, patch, CHANNEL_REQS[kind], cfg, args.yes
+                ):
                     if not args.dry_run:
                         patch_tk_asset(args.environment, asset, kind, patch)
                     else:

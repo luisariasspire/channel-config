@@ -5,10 +5,13 @@ from typing import Any, Mapping
 
 from termcolor import colored
 
-from typedefs import Environment
+from typedefs import Environment, GroundStationKind, SatelliteKind
 
 SAT_DIR = "sat"
 GS_DIR = "gs"
+
+SATELLITE: SatelliteKind = "satellite"
+GROUND_STATION: GroundStationKind = "groundstation"
 
 TK_DOMAINS: Mapping[Environment, str] = {"staging": "sbox", "production": "cloud"}
 

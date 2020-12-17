@@ -19,6 +19,7 @@ requests = "*"
 tabulate = "*"
 termcolor = "*"
 mypy = "*"
+more-itertools = "*"
 
 [dev-packages]
 black = "*"
