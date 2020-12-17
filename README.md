@@ -5,6 +5,12 @@ fleet on a per-channel basis. This approach is intended to supplant the extant (
 `licensing.py` file, as described in [Technical Proposal
 #362](https://docs.google.com/document/d/1oOzPFOxtj3PFqRxY8ZnLOLie2oR95YMfxTyNKmKO9YU/edit?ts=5f80e012#).
 
+## Video Walkthrough
+
+On December 15th 2020, Nick Pascucci from the Optimizer team gave the Ops team an overview of the
+tools and configurations managed here. The session was recorded, and the video can be found
+[here](https://drive.google.com/file/d/1kWfVvtK_tnUGYoJ3ae4tm1Oq7AkIv2CN/view) (54 minutes).
+
 ## Structure
 
 The configuration for the fleet can be quite large, so it is broken up into several directories.

@@ -9,11 +9,22 @@
 # To perform a sync, run:
 # pipenv run python legacy/sync_to_tk.py
 import argparse
+import itertools
 import os.path
 from collections import defaultdict
-from typing import Any, FrozenSet, Iterable, List, Mapping, Set, Tuple, Union, overload
+from typing import (
+    Any,
+    Dict,
+    FrozenSet,
+    Iterable,
+    List,
+    Mapping,
+    Set,
+    Tuple,
+    Union,
+    overload,
+)
 
-import itertools
 import requests
 from ruamel.yaml import YAML
 from tabulate import tabulate
@@ -35,6 +46,7 @@ from util import (
     get_git_revision,
     get_local_username,
     lookup,
+    set_path,
     tk_url,
 )
 
@@ -122,10 +134,15 @@ def load_tk_asset(
 def patch_tk_asset(
     env: Environment, asset: str, kind: AssetKind, patch: Mapping[str, bool]
 ) -> None:
+    json_patch: Mapping[str, Any] = {}
+    for path, val in patch.items():
+        json_patch = set_path(path, json_patch, val)
+
     headers = {
         "User-Agent": f"sync_to_tk.py / {get_git_revision()}",
         "X-Forwarded-User": f"{get_local_username()} via sync_to_tk.py",
     }
+
     r = requests.patch(tk_url(env) + kind + f"/{asset}", json=patch, headers=headers)
     r.raise_for_status()
 
@@ -168,7 +185,9 @@ def generate_settings_requirements(
     return ons, offs
 
 
-def refine(ons: Set[str], offs: Set[FrozenSet[str]]) -> Tuple[Set[str], Set[FrozenSet[str]]]:
+def refine(
+    ons: Set[str], offs: Set[FrozenSet[str]]
+) -> Tuple[Set[str], Set[FrozenSet[str]]]:
     off_options = [list(opts) for opts in offs]
     conflicts = set()
     for setting in ons:
@@ -192,33 +211,36 @@ def refine(ons: Set[str], offs: Set[FrozenSet[str]]) -> Tuple[Set[str], Set[Froz
 
 
 def create_patch_for_asset(
-    env: Environment, asset: str, kind: AssetKind, enabled: Set[str], disabled: Set[FrozenSet[str]]
+    asset_data: Mapping[str, Any], enabled: Set[str], disabled: Set[FrozenSet[str]]
 ) -> Tuple[Mapping[str, Any], Mapping[str, bool]]:
-    existing_asset = load_tk_asset(env, asset, kind)
 
-    fieldset = {}
-    patch = {}
+    fieldset: Dict[str, Any] = {}
+    patch: Dict[str, bool] = {}
+
     for s in enabled:
-        f = lookup(s, existing_asset)
+        f = lookup(s, asset_data)
         fieldset[s] = f
         if not f:
             patch[s] = True
+
     disable_requests = set()
     for opts in disabled:
         want_off = set()
         for s in opts:
-            f = lookup(s, existing_asset)
+            f = lookup(s, asset_data)
             fieldset[s] = f
             if f:
-                want_off.add(f)
+                want_off.add(s)
 
         # Check if there is at least one field in our set of options which is already disabled. We
         # just need one. If not, add the fields which can be flipped to the "off-request" set.
-        if not any([not lookup(s, existing_asset) for s in opts]):
-            disable_requests.add(want_off)
+        if not any([not lookup(s, asset_data) for s in opts]):
+            disable_requests.add(frozenset(want_off))
 
     # Reduce the set of sets to produce a minimal patch.
-    min_offs = sorted([set(x) for x in itertools.product(*disable_requests)], key=lambda x: len(x))
+    min_offs = sorted(
+        [set(x) for x in itertools.product(*disable_requests)], key=lambda x: len(x)
+    )
     for f in min_offs[0]:
         patch[f] = False
 
@@ -311,9 +333,8 @@ def main() -> None:
             if args.check_only:
                 continue  # We're just verifying that the settings are representable.
 
-            existing, patch = create_patch_for_asset(
-                args.environment, asset, kind, enabled, disabled
-            )
+            asset_data = load_tk_asset(args.environment, asset, kind)
+            existing, patch = create_patch_for_asset(asset_data, enabled, disabled)
             if patch:
                 if confirm_patch(asset, existing, patch, cfg, args.yes):
                     if not args.dry_run:

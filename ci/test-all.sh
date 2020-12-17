@@ -10,6 +10,7 @@ pip install pipenv
 pipenv sync --dev
 
 pipenv run mypy # Check types
+pipenv run tests # Check tests
 pipenv run format # Check formatting
 pipenv run channel_tool validate # Check that configs are valid
 # Check configs are representable in TK, no network I/O

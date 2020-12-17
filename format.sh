@@ -1,4 +1,4 @@
 #! /bin/sh
 
-black --exclude "legacy/licensing.py" .
+black --exclude ".*/licensing.py" .
 isort .

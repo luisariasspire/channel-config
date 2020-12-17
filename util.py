@@ -1,5 +1,6 @@
 import os
 import subprocess
+from copy import deepcopy
 from typing import Any, Mapping
 
 from termcolor import colored
@@ -37,6 +38,20 @@ def lookup(path: str, d: Mapping[str, Any]) -> Any:
             field = None
             break
     return field
+
+
+def set_path(path: str, d: Mapping[str, Any], val: Any) -> Mapping[str, Any]:
+    """Get a nested path from a dict, given as dot-separated fields."""
+    d2 = deepcopy(d)
+    path_elts = path.split(".")
+    parent: Any = d2
+    for elt in path_elts[:-1]:
+        if parent and elt in parent:
+            parent = parent[elt]
+        else:
+            raise ValueError("No field {path} in object {d}")
+    parent[path_elts[-1]] = val
+    return d2
 
 
 def get_local_username() -> str:
