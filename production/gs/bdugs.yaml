@@ -1,10 +1,11 @@
 CONTACT_BIDIR:
+# Setting BDUGS to RXO until UHF chain can be fixed
   directionality: Bidirectional
   allowed_license_countries:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -23,12 +24,13 @@ CONTACT_BIDIR_DVBS2X:
   goodput_kbps: 41.0
   contact_overhead_time: 210s
 CONTACT_BIDIR_UHF:
+# Setting BDUGS to RXO until UHF chain can be fixed
   directionality: Bidirectional
   allowed_license_countries:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
@@ -59,12 +61,13 @@ CONTACT_RXO_DVBS2X:
   goodput_kbps: 41.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_BIDIR:
+# Setting BDUGS to RXO until UHF chain can be fixed
   directionality: Bidirectional
   allowed_license_countries:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
