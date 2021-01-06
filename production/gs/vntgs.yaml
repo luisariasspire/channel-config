@@ -21,7 +21,7 @@ CONTACT_RXO_DVBS2X:
   ground_station_constraints:
     min_elevation_deg: 25.0
   goodput_kbps: 41.0
-  contact_overhead_time: 30s
+  contact_overhead_time: 25s
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:

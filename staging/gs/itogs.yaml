@@ -17,7 +17,7 @@ CONTACT_BIDIR_DVBS2X:
   ground_station_constraints:
     min_elevation_deg: 27.0
   goodput_kbps: 41.0
-  contact_overhead_time: 210s
+  contact_overhead_time: 200s
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -49,7 +49,7 @@ CONTACT_RXO_DVBS2X:
   ground_station_constraints:
     min_elevation_deg: 27.0
   goodput_kbps: 41.0
-  contact_overhead_time: 30s
+  contact_overhead_time: 25s
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
