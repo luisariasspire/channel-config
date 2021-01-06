@@ -24,7 +24,7 @@ CONTACT_BIDIR:
       distance_m: 150000
     - type: no_overlapping_transits
       norad_id: 25544
-  goodput_kbps: 30.0
+  goodput_kbps: 640.0
   contact_overhead_time: 210s
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
@@ -52,7 +52,7 @@ CONTACT_BIDIR_DVBS2X:
       distance_m: 150000
     - type: no_overlapping_transits
       norad_id: 25544
-  goodput_kbps: 41.0
+  goodput_kbps: 640.0
   contact_overhead_time: 200s
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
@@ -77,7 +77,7 @@ CONTACT_BIDIR_UHF:
     separation:
     - type: no_overlapping_transits
       norad_id: 25544
-  goodput_kbps: 0.40
+  goodput_kbps: 5.6
   contact_overhead_time: 210s
 CONTACT_RXO:
   directionality: SpaceToEarth
@@ -103,7 +103,7 @@ CONTACT_RXO:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-  goodput_kbps: 30.0
+  goodput_kbps: 680.0
   contact_overhead_time: 30s
 CONTACT_RXO_DVBS2X:
 # Subject to coordination with NASA JSC
@@ -130,7 +130,7 @@ CONTACT_RXO_DVBS2X:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-  goodput_kbps: 41.0
+  goodput_kbps: 720.0
   contact_overhead_time: 25s
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -156,7 +156,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 190000
-  goodput_kbps: 30.0
+  goodput_kbps: 720.0
   contact_overhead_time: 25s
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -182,7 +182,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 190000
-  goodput_kbps: 30.0
+  goodput_kbps: 680.0
   contact_overhead_time: 27s
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
@@ -210,7 +210,7 @@ CONTACT_TRACKING_BIDIR:
       distance_m: 150000
     - type: no_overlapping_transits
       norad_id: 25544
-  goodput_kbps: 30.0
+  goodput_kbps: 640.0
   contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
@@ -238,7 +238,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
       distance_m: 150000
     - type: no_overlapping_transits
       norad_id: 25544
-  goodput_kbps: 41.0
+  goodput_kbps: 640.0
   contact_overhead_time: 210s
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
@@ -264,7 +264,7 @@ CONTACT_TRACKING_RXO:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-  goodput_kbps: 30.0
+  goodput_kbps: 680.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X:
 # Subject to coordination with NASA JSC
@@ -291,7 +291,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-  goodput_kbps: 41.0
+  goodput_kbps: 720.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -317,7 +317,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 190000
-  goodput_kbps: 30.0
+  goodput_kbps: 720.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -343,5 +343,5 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 190000
-  goodput_kbps: 30.0
+  goodput_kbps: 680.0
   contact_overhead_time: 30s
