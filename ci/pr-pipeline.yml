@@ -13,7 +13,7 @@ resources:
     source:
       repository: nsat/air
       paths:
-        - lib/channel_config/*
+        - lib/channel_config/
       access_token: ((github.infra__access_token))
       disable_git_lfs: true
 
