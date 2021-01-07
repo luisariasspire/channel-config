@@ -30,9 +30,9 @@ PARSER.add_argument(
 
 DIRNAME = os.path.dirname(__file__)
 
-with open(os.path.join(DIRNAME, "tk_settings_mapping.yaml")) as f:
+with open(os.path.join(DIRNAME, "tk_sync_config.yaml")) as f:
     yaml = YAML()
-    GROUP_REQS = yaml.load(f)
+    GROUP_REQS = yaml.load(f)["requirements"]
 
 
 # Groups which can be configured for a satellite.
@@ -48,7 +48,7 @@ def tk_url(env):
 
 
 def load_tk_asset(env, kind):
-    r = requests.get(tk_url(env) + kind)
+    r = requests.get(tk_url(env) + kind + "s")
     r.raise_for_status()
     return r.json()
 
@@ -70,7 +70,7 @@ def emit_asset_commands(asset_type, id_field, groups, env):
         asset_id = asset[id_field]
 
         for g in groups:
-            if not lookup(GROUP_REQS[g], asset):
+            if not lookup(GROUP_REQS[asset_type][g], asset):
                 disable_chans[g].append(asset_id)
 
     for chan, disabled_assets in disable_chans.items():
@@ -79,8 +79,8 @@ def emit_asset_commands(asset_type, id_field, groups, env):
 
 def main():
     args = PARSER.parse_args()
-    emit_asset_commands("satellites", "spire_id", SAT_GROUPS, args.environment)
-    emit_asset_commands("groundstations", "gs_id", GS_GROUPS, args.environment)
+    emit_asset_commands("satellite", "spire_id", SAT_GROUPS, args.environment)
+    emit_asset_commands("groundstation", "gs_id", GS_GROUPS, args.environment)
 
 
 if __name__ == "__main__":

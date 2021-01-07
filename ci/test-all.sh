@@ -9,10 +9,16 @@ apk add gcc musl-dev
 pip install pipenv
 pipenv sync --dev
 
+# Static checks
 pipenv run mypy # Check types
 pipenv run tests # Check tests
 pipenv run format # Check formatting
 pipenv run channel_tool validate # Check that configs are valid
+
 # Check configs are representable in TK, no network I/O
 pipenv run sync_to_tk staging --check-only
 pipenv run sync_to_tk production --check-only
+
+# Check sync_from script functions; will contact TK
+pipenv run sync_from_tk staging
+pipenv run sync_from_tk production
