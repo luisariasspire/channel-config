@@ -1,4 +1,5 @@
 from legacy.sync_to_tk import (
+    CnfClause,
     SettingsConflictError,
     create_patch_for_asset,
     generate_settings_requirements,
@@ -22,35 +23,35 @@ def test_generate_settings_requirements():
     }
     channel_reqs = {"A": {"a"}, "B": {"b"}, "C": {"not c"}, "D": {"b", "not c"}}
 
-    clauses = generate_settings_requirements(cfg, channel_reqs, [])
+    clauses = {c.defn for c in generate_settings_requirements(cfg, channel_reqs, [])}
 
     # C is disabled, but its state is inverted from the corresponding setting.
     assert clauses == freeze(
-        [{("a", True)}, {("b", False)}, {("c", True)}, {("b", False), ("c", True)}]
+        [{("a", False)}, {("b", True)}, {("c", False)}, {("b", True), ("c", False)}]
     )
 
 
 def test_solve():
-    cnf = freeze(
+    cnf = set(
         [
-            {("a", True)},  # A
-            {("b", False)},  # ~B
-            {("c", True)},  # C
-            {("b", False), ("c", True)},
+            CnfClause(defn=frozenset({("a", False)}), comment="A"),
+            CnfClause(defn=frozenset({("b", True)}), comment="~B"),
+            CnfClause(defn=frozenset({("c", False)}), comment="C"),
+            CnfClause(defn=frozenset({("b", True), ("c", False)}), comment="~B or C"),
         ]
-    )  # ~B or C
+    )
 
     out = solve(cnf)
     assert out == freeze([{("a", True), ("b", False), ("c", True)}])
 
 
 def test_solve_infeasible():
-    cnf = freeze(
+    cnf = set(
         [
-            {("a", True)},  # A
-            {("b", False)},  # ~B
-            {("c", False)},  # ~C
-            {("b", True), ("c", True)},  # Conflict
+            CnfClause(defn=frozenset({("a", False)}), comment="A"),
+            CnfClause(defn=frozenset({("b", True)}), comment="~B"),
+            CnfClause(defn=frozenset({("c", True)}), comment="~C"),
+            CnfClause(defn=frozenset({("b", False), ("c", False)}), comment="~B or ~C"),  # Conflict
         ]
     )
 

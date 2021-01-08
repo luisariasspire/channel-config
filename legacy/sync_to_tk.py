@@ -18,9 +18,11 @@ from typing import (
     Iterable,
     List,
     Mapping,
+    NamedTuple,
     Sequence,
     Set,
     Tuple,
+    TypedDict,
     Union,
     overload,
 )
@@ -106,8 +108,17 @@ class SettingsConflictError(Exception):
 
 
 # Type for conjunctive normal form representation of TK settings
-CnfClause = FrozenSet[Tuple[str, bool]]
+class CnfClause(NamedTuple):
+    defn: FrozenSet[Tuple[str, bool]]
+    comment: str
+
+
 CnfFormula = Set[CnfClause]
+
+
+class SkipChan(TypedDict):
+    channel: str
+    comment: str
 
 
 # Required settings by channel, expanded from group configs.
@@ -176,7 +187,9 @@ def find_asset_configs(
 
 
 def generate_settings_requirements(
-    cfg: AssetConfig, channel_reqs: Mapping[str, Set[str]], skip_channels: Sequence[str]
+    cfg: AssetConfig,
+    channel_reqs: Mapping[str, Set[str]],
+    skip_channels: Sequence[SkipChan],
 ) -> CnfFormula:
     """Create the TK settings requirements for this asset config.
 
@@ -189,30 +202,44 @@ def generate_settings_requirements(
 
     def _eval(term: str) -> Tuple[str, bool]:
         name = term
-        val = True
+        inverted = False
         if term.startswith("not "):
             name = name[4:]
-            val = False
-        return name, val
+            inverted = True
+        return name, inverted
 
     def _invert(term: Tuple[str, bool]) -> Tuple[str, bool]:
         n, v = term
         return (n, not v)
 
     for channel, chan_cfg in cfg.items():
-        if channel in skip_channels:
-            print(f"Note: Skipping {channel} due to configuration override")
+        skips = [
+            skip
+            for skip in skip_channels
+            if skip["channel"] == channel
+            or skip["channel"] in GROUP_DEFS
+            and channel in GROUP_DEFS[skip["channel"]]
+        ]
+        if skips:
+            print(f"Note: Skipping {channel}: {skips[0]['comment']}")
             continue
         reqs = channel_reqs[channel]
         if chan_cfg and chan_cfg["enabled"]:
             # Channels which are "on" must have all of their requirements met.
             for req in reqs:
-                clauses.add(frozenset({_eval(req)}))
+                clause = CnfClause(
+                    defn=frozenset({_eval(req)}),
+                    comment=f"Required to enable {channel}",
+                )
+                clauses.add(clause)
         else:
             # Channels which are "off" must have at least one of their requirements unsatisfied.
             off_opts = frozenset([_invert(_eval(req)) for req in reqs])
             if off_opts:
-                clauses.add(off_opts)
+                clause = CnfClause(
+                    defn=off_opts, comment=f"Required to disable {channel}"
+                )
+                clauses.add(clause)
     return clauses
 
 
@@ -221,13 +248,17 @@ SettingsAssignment = FrozenSet[Tuple[str, bool]]
 
 def display_cnf(cnf: CnfFormula) -> str:
     def display_clause(clause: CnfClause) -> str:
-        return "({})".format(
+        return "({}) # {}".format(
             " ∨ ".join(
-                [literal if inverted else "¬" + literal for literal, inverted in clause]
-            )
+                [
+                    literal if not inverted else "¬" + literal
+                    for literal, inverted in clause.defn
+                ]
+            ),
+            clause.comment,
         )
 
-    return " ∧ ".join(display_clause(clause) for clause in cnf)
+    return "\n∧ ".join(display_clause(clause) for clause in cnf)
 
 
 def solve(clauses: CnfFormula) -> Set[SettingsAssignment]:
@@ -236,7 +267,7 @@ def solve(clauses: CnfFormula) -> Set[SettingsAssignment]:
     """
     literals: Set[str] = set()
     for clause in clauses:
-        for binding in clause:
+        for binding in clause.defn:
             n, _ = binding
             literals.add(n)
 
@@ -246,16 +277,16 @@ def solve(clauses: CnfFormula) -> Set[SettingsAssignment]:
     # An assignment is satisfying if, when each literal is substituted for its bound value, the
     # formula reduces to True.
     def _is_sat(assignment: Sequence[str]) -> bool:
-        def _reduce(clause: FrozenSet[Tuple[str, bool]]) -> bool:
+        def _reduce(clause: CnfClause) -> bool:
             # Note that the clause is a series of elements of the form (name, inverted). If the
-            # second element is False, that means that the binding for the literal should be NOT-ed.
+            # second element is True, that means that the binding for the literal should be NOT-ed.
             # Notice that the truth table is symmetrical:
             #   T F < Binding
-            # F F T
-            # T T F
+            # T F T
+            # F T F
             # ^ Inverted
-            # The operation is an inverted XOR on the two variables.
-            return any([b == (n in assignment) for (n, b) in clause])
+            # The operation is an XOR on the two variables.
+            return any([inv != (n in assignment) for (n, inv) in clause.defn])
 
         return all([_reduce(clause) for clause in clauses])
 
@@ -271,7 +302,7 @@ def solve(clauses: CnfFormula) -> Set[SettingsAssignment]:
         raise SettingsConflictError(
             "Incompatible settings!\n"
             "There are items which must be both enabled and disabled at the same time.\n"
-            f"CNF formula contains a conflict: {display_cnf(clauses)}"
+            f"CNF formula contains a conflict:\n{display_cnf(clauses)}"
         )
 
     return set(satisfying)
@@ -364,9 +395,9 @@ def confirm_patch(
             }
         )
         if chan_cfg["enabled"]:
-            settings = f"All of {reqs} " + highlight("are True") if reqs else "n/a"
+            settings = f"All of {{{reqs}}} " + highlight("are True") if reqs else "n/a"
         else:
-            settings = f"One of {reqs} " + highlight("is False") if reqs else "n/a"
+            settings = f"One of {{{reqs}}} " + highlight("is False") if reqs else "n/a"
 
         enabled_statuses.append((highlight(chan_name), state, settings))
 
@@ -394,7 +425,7 @@ def main() -> None:
     clean_run = True
 
     for (asset, kind, cfg) in find_asset_configs(args.environment):
-        print(f"\rChecking {asset}...    ", end="")
+        print(f"\rChecking {asset}...           ", end="")
         settings_cnf = generate_settings_requirements(
             cfg, CHANNEL_REQS[kind], SKIP_CHANS.get(asset, [])
         )

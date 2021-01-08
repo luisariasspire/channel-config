@@ -56,13 +56,16 @@ requirements:
     rxo: ~ # No setting on ground stations
     bidir: ~ # Enabled by default unless precluded by another set.
 
-# Override sync_to_tk's delta checking for specific channels.
+# Override sync_to_tk's delta checking for specific channels or groups of channels.
 skip_channels:
   FM42:
-    - CONTACT_BIDIR
+    - channel: CONTACT_BIDIR
+      comment: Old satellites have special behavior for BIDIR contacts
 
   FM44:
-    - CONTACT_BIDIR
+    - channel: CONTACT_BIDIR
+      comment: Old satellites have special behavior for BIDIR contacts
 
   FM51:
-    - CONTACT_BIDIR
+    - channel: CONTACT_BIDIR
+      comment: Old satellites have special behavior for BIDIR contacts
