@@ -28,7 +28,7 @@ CONTACT_TRACKING_RXO:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
@@ -40,7 +40,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
