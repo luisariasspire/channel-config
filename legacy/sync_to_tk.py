@@ -65,6 +65,12 @@ PARSER.add_argument(
     help="Which environment to configure.",
 )
 PARSER.add_argument(
+    "--kind",
+    choices=["satellite", "groundstation"],
+    type=str,
+    help="Limit changes to a given type of asset.",
+)
+PARSER.add_argument(
     "--dry-run",
     action="store_true",
     help="Print what would happen but don't make changes.",
@@ -175,8 +181,12 @@ def patch_tk_asset(
 # TODO This can probably be combined with some code in channel_tool.py.
 def find_asset_configs(
     env: Environment,
+    kind: str,
 ) -> Iterable[Tuple[str, AssetKind, AssetConfig]]:
-    for kind, subdir in [("satellite", SAT_DIR), ("groundstation", GS_DIR)]:
+    for k, subdir in [("satellite", SAT_DIR), ("groundstation", GS_DIR)]:
+        # Filter assets by kind if requested
+        if kind and kind != k:
+            continue
         dirpath = os.path.join(env, subdir)
         assets = sorted(os.listdir(dirpath))
         for af in assets:
@@ -424,7 +434,7 @@ def main() -> None:
 
     clean_run = True
 
-    for (asset, kind, cfg) in find_asset_configs(args.environment):
+    for (asset, kind, cfg) in find_asset_configs(args.environment, args.kind):
         print(f"\rChecking {asset}...           ", end="")
         settings_cnf = generate_settings_requirements(
             cfg, CHANNEL_REQS[kind], SKIP_CHANS.get(asset, [])
