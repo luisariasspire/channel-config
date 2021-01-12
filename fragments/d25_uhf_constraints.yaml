@@ -1,6 +1,33 @@
 # Separation constraints for D25/NG-14 satellites on UHF bands.
 # NASA requires that we only transmit when the ISS is not in view of our ground station.
 # https://docs.google.com/document/d/1bghmWDsrvwscQ6tKjgO39PSGgl4c2n8bqZ8iezry9SM/edit#heading=h.xmnakdkhgxdx
+# 
+# In January 2021 this constraint was relaxed to only include five stations. Our
+# initial operating agreement with DLR (the ISS tenant we are to avoid
+# interference with) extends until the end of February, 2021, when we will need
+# to remove the ground station mask and prevent overlapping transits with the
+# ISS from all ground stations. The text is reproduced below.
+#
+# > As per agreement between Spire and DLR, uplink and downlink at 402.7 MHz shall
+# > not use the ground stations listed below (identified by DLR as sources of high
+# > interference) during the 1st 15 days after deployment from the ISS.. After the
+# > 1st 15 days, MINAS uplinks and downlinks at 402.7 MHz are not allowed while
+# > the ISS is in-view of any MINAS ground stations.
+# > Ground stations not allowed for 402.7 MHz operations during the 1st 15 days
+# > after deployment:
+# > a. BDUGS, Norway
+# > b. GLAGS, United Kingdom
+# > c. JNBGS, South Africa
+# > d. ORKGS, Ireland
+# > e. SMAGS, Azores
+
 separation:
 - type: no_overlapping_transits
   norad_id: 25544
+  modifier:
+    only_for_ground_stations:
+      - bdugs
+      - glags
+      - jnbgs
+      - orkgs
+      - smags

@@ -331,4 +331,11 @@ schema:
                         enum: [no_overlapping_transits]
                       norad_id:
                         type: number
-
+                      modifier:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          only_for_ground_stations:
+                            type: array
+                            items:
+                              type: string
