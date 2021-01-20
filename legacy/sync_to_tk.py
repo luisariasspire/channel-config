@@ -458,6 +458,14 @@ def main() -> None:
                         print("(Skipped for dry run)")
                 else:
                     print("Canceled.")
+        except requests.HTTPError as e:
+            if e.response.status_code == 404:
+                print(colored(f"\nAsset {asset} not found in TK; skipping", attrs=["bold"]))
+            else:
+                clean_run = False
+                print(colored(f"\nHTTP error while updating {asset}: {e}", "red", attrs=["bold"]))
+                if args.fail_fast:
+                    raise e
         except Exception as e:
             clean_run = False
             print(colored(f"\nError updating {asset}: {e}", "red", attrs=["bold"]))
