@@ -1,0 +1,64 @@
+fragments:
+  task-error-handling: &task-error-handling
+    on_failure: &slack-notification
+      put: slack-alert
+      params:
+        text: |
+          <!here> :warning: *Failed to sync channel configs to TK* :warning:
+
+          The configuration may contain conflicts which must be resolved manually.
+
+          Please check the link below to see what happened!
+
+          $ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+    on_error:
+      <<: *slack-notification
+
+  dockerhub_login: &docker_hub
+    username: ((docker.docker-hub-username))
+    password: ((docker.docker-hub-token))
+
+resource_types:
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: cfcommunity/slack-notification-resource
+      tag: latest
+      <<: *docker_hub
+
+resources:
+  - name: repo
+    type: git
+    icon: source-branch
+    webhook_token: ((github.webhook_token))
+    source:
+      uri: https://github.com/nsat/air
+      branch: master
+      paths:
+        - lib/channel_config/
+      username: ((optimizer-team.github-username))
+      password: ((optimizer-team.github-pat))
+
+  - name: slack-alert
+    type: slack-notification
+    source:
+      # TODO Point this to #ops-optimizer or another Ops channel instead
+      url: https://hooks.slack.com/services/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
+
+jobs:
+  - name: sync-tk
+    <<: *task-error-handling
+    serial: true
+    plan:
+      - get: repo
+        trigger: true
+        version: latest
+        params:
+          disable_git_lfs: true
+          depth: 1
+          submodules: none
+      - task: sync-to-tk
+        privileged: true
+        file: repo/lib/channel_config/ci/sync-task.yml
+        input_mapping:
+          repo: repo

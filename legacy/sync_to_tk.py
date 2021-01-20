@@ -21,6 +21,7 @@ from typing import (
     NamedTuple,
     Sequence,
     Set,
+    Optional,
     Tuple,
     TypedDict,
     Union,
@@ -181,7 +182,7 @@ def patch_tk_asset(
 # TODO This can probably be combined with some code in channel_tool.py.
 def find_asset_configs(
     env: Environment,
-    kind: str,
+    kind: Optional[str],
 ) -> Iterable[Tuple[str, AssetKind, AssetConfig]]:
     for k, subdir in [("satellite", SAT_DIR), ("groundstation", GS_DIR)]:
         # Filter assets by kind if requested
@@ -193,7 +194,7 @@ def find_asset_configs(
             with open(os.path.join(dirpath, af), "r") as yaml_file:
                 cfg = yaml.load(yaml_file)
                 asset_id = os.path.splitext(os.path.basename(af))[0]
-                yield (asset_id, kind, cfg)  # type: ignore
+                yield (asset_id, k, cfg)  # type: ignore
 
 
 def generate_settings_requirements(

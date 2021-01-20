@@ -11,3 +11,4 @@ function set_pipeline {
 }
 
 set_pipeline channel-config-pr "$CI_DIR/pr-pipeline.yml"
+set_pipeline channel-config-sync "$CI_DIR/sync-pipeline.yml"
