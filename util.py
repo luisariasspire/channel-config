@@ -44,15 +44,17 @@ def lookup(path: str, d: Mapping[str, Any]) -> Any:
 
 
 def set_path(path: str, d: Mapping[str, Any], val: Any) -> Mapping[str, Any]:
-    """Get a nested path from a dict, given as dot-separated fields."""
+    """Set a nested path in a dict given as dot-separated fields, creating it if needed."""
     d2 = deepcopy(d)
     path_elts = path.split(".")
     parent: Any = d2
     for elt in path_elts[:-1]:
-        if parent and elt in parent:
+        if parent is not None:
+            if elt not in parent:
+                parent[elt] = {}
             parent = parent[elt]
         else:
-            raise ValueError("No field {path} in object {d}")
+            raise ValueError(f"Unexpected error: found {parent} at {elt} in {path}")
     parent[path_elts[-1]] = val
     return d2
 

@@ -19,9 +19,9 @@ from typing import (
     List,
     Mapping,
     NamedTuple,
+    Optional,
     Sequence,
     Set,
-    Optional,
     Tuple,
     TypedDict,
     Union,
@@ -166,8 +166,12 @@ def load_tk_asset(
 def patch_tk_asset(
     env: Environment, asset: str, kind: AssetKind, patch: Mapping[str, bool]
 ) -> None:
+    # HACK Work around TK's API: can't update sub-objects with PATCH to parents
+    patch_pipeline = False
     json_patch: Mapping[str, Any] = {}
     for path, val in patch.items():
+        if path.startswith("pipeline."):
+            patch_pipeline = True
         json_patch = set_path(path, json_patch, val)
 
     headers = {
@@ -175,8 +179,19 @@ def patch_tk_asset(
         "X-Forwarded-User": f"{get_local_username()} via sync_to_tk.py",
     }
 
-    r = requests.patch(tk_url(env) + kind + f"/{asset}", json=patch, headers=headers)
+    print(f"Applying JSON patch: {json_patch}")
+    r = requests.patch(
+        tk_url(env) + kind + f"/{asset}", json=json_patch, headers=headers
+    )
     r.raise_for_status()
+
+    if patch_pipeline:
+        json_patch = json_patch["pipeline"]
+        print(f"Patching pipeline sub-object with {json_patch}")
+        r = requests.patch(
+            tk_url(env) + "pipeline" + f"/{asset}", json=json_patch, headers=headers
+        )
+        r.raise_for_status()
 
 
 # TODO This can probably be combined with some code in channel_tool.py.
@@ -454,16 +469,27 @@ def main() -> None:
                 ):
                     if not args.dry_run:
                         patch_tk_asset(args.environment, asset, kind, patch)
+                        print(colored("Done!", "green", attrs=["bold"]))
                     else:
                         print("(Skipped for dry run)")
                 else:
                     print("Canceled.")
         except requests.HTTPError as e:
             if e.response.status_code == 404:
-                print(colored(f"\nAsset {asset} not found in TK; skipping", attrs=["bold"]))
+                print(
+                    colored(
+                        f"\nAsset {asset} not found in TK; skipping", attrs=["bold"]
+                    )
+                )
             else:
                 clean_run = False
-                print(colored(f"\nHTTP error while updating {asset}: {e}", "red", attrs=["bold"]))
+                print(
+                    colored(
+                        f"\nHTTP error while updating {asset}: {e}",
+                        "red",
+                        attrs=["bold"],
+                    )
+                )
                 if args.fail_fast:
                     raise e
         except Exception as e:

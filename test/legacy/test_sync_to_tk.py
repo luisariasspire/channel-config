@@ -51,7 +51,9 @@ def test_solve_infeasible():
             CnfClause(defn=frozenset({("a", False)}), comment="A"),
             CnfClause(defn=frozenset({("b", True)}), comment="~B"),
             CnfClause(defn=frozenset({("c", True)}), comment="~C"),
-            CnfClause(defn=frozenset({("b", False), ("c", False)}), comment="~B or ~C"),  # Conflict
+            CnfClause(
+                defn=frozenset({("b", False), ("c", False)}), comment="~B or ~C"
+            ),  # Conflict
         ]
     )
 

@@ -20,3 +20,9 @@ def test_set_path():
 
     assert set_path("foo.bar", obj, True) == {"foo": {"bar": True}}
     assert set_path("quux", obj, True) == {"foo": {"bar": False}, "quux": True}
+    assert set_path("quibble.baz", obj, "boq") == {
+        "foo": {"bar": False},
+        "quibble": {"baz": "boq"},
+    }
+
+    assert set_path("foo.bar", {}, True) == {"foo": {"bar": True}}
