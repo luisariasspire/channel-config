@@ -50,6 +50,19 @@ brew install pyenv
 pip install pipenv
 ```
 
+Trouble? See the next section.
+
+### Common Errors
+
+If you have trouble with the installation and are getting error messages, see if any of the
+following apply:
+
+- `xcrun: error: invalid active developer path`: You're missing the Xcode command line tools. Brew
+  should have installed them for you, but if you're encountering this error you can install them
+  again with `xcode-select --install`.
+
+None of the above? Reach out in `#ops-optimizer` on Slack.
+
 ## Managing configurations
 
 A basic workflow for maintaining the channel configuration is as follows:
@@ -70,16 +83,16 @@ Each of the above steps are described in more detail below.
 Adding channels from a template to a ground station is simple:
 
 ```
-pipenv run ./channel_tool staging add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True --enabled=True
+pipenv run channel_tool staging add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True --enabled=True
 ```
 
 We can do the same for satellites, and even update several at once:
 
 ```
-pipenv run ./channel_tool staging add FM998,FM999 CONTACT_BIDIR --legal=True
+pipenv run channel_tool staging add FM998,FM999 CONTACT_BIDIR --legal=True
 ```
 
-Note the structure of the command. First we have `pipenv run ./channel_tool`, which calls the tooling
+Note the structure of the command. First we have `pipenv run channel_tool`, which calls the tooling
 within the correct virtual environment so that all of the needed modules are available. Next comes
 an environment, `staging`, and a subcommand, in this case `add`. After that, we have a
 comma-separated list of assets (ground stations or satellites), a comma-separated list of channel
@@ -89,13 +102,13 @@ default values that `CONTACT_BIDIR` should have, and overrode the `legal` field,
 `False`, with the `True` value. (We did something similar for TOSGS, and we also set the `enabled`
 field to `True`.)
 
-_All of the commands in `channel_tool` follow this pattern. Use `pipenv run ./channel_tool --help` to
+_All of the commands in `channel_tool` follow this pattern. Use `pipenv run channel_tool --help` to
 get more detailed information on the various subcommands._
 
 If we try to add a configuration which already exists we get an error:
 
 ```
-$ pipenv run ./channel_tool staging add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True
+$ pipenv run channel_tool staging add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True
 Error: Configuration for CONTACT_RXO_SBAND_FREQ_2200_MHZ already exists on tosgs.
 (Tip: Use `channel_tool edit tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ` to edit the configuration.)
 ```
@@ -108,7 +121,7 @@ this. The `edit` command will apply field-level changes to the specified channel
 given set of assets:
 
 ```
-$ pipenv run ./channel_tool staging edit tosgs CONTACT_RXO_SBAND_FREQ_2200MHZ \
+$ pipenv run channel_tool staging edit tosgs CONTACT_RXO_SBAND_FREQ_2200MHZ \
     --enabled=true --legal=true
 Changing asset configuration for CONTACT_RXO_SBAND_FREQ_2200_MHZ on tosgs. Diff:
 ---
@@ -151,7 +164,7 @@ be necessary to run the validation manually. Channel configurations and template
 with a single command:
 
 ```
-pipenv run ./channel_tool validate
+pipenv run channel_tool validate
 ```
 
 This will check all of the configurations in both `staging` and `production` to verify they conform
@@ -173,7 +186,7 @@ separation:
 Then use `channel_tool` to set it on the desired satellites or ground stations:
 
 ```bash
-pipenv run ./channel_tool edit staging FM137,FM142 uhf --yes \
+pipenv run channel_tool edit staging FM137,FM142 uhf --yes \
     --satellite_constraints "$(cat /tmp/constraints.yml)"
 ```
 
@@ -204,20 +217,20 @@ represented in TK at all, the `sync_to_tk` script will signal an error showing t
 ### Disabling BIDIR channels on a ground station (set RXO-only)
 
 ```bash
-pipenv run ./channel_tool edit production wbugs bidir --enabled=False \
+pipenv run channel_tool edit production wbugs bidir --enabled=False \
     --comment "BIDIR disabled due pending USRP repairs"
 ```
 
 ### Disabling a ground station entirely
 
 ```bash
-pipenv run ./channel_tool edit production cosngs all --enabled=False --yes
+pipenv run channel_tool edit production cosngs all --enabled=False --yes
 ```
 
 ### Enabling S-band only at 2200MHz on a satellite
 
 ```bash
-pipenv run ./channel_tool edit production FM96 sband_2020 --enabled=False --yes
-pipenv run ./channel_tool edit production FM96 sband_2200 --enabled=True --yes
+pipenv run channel_tool edit production FM96 sband_2020 --enabled=False --yes
+pipenv run channel_tool edit production FM96 sband_2200 --enabled=True --yes
 ```
 
