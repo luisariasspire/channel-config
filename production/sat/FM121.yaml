@@ -17,7 +17,7 @@ CONTACT_BIDIR:
   - NZ
   - LV
   goodput_kbps: 640.0
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -40,7 +40,7 @@ CONTACT_BIDIR_DVBS2X:
   - NZ
   - LV
   goodput_kbps: 640.0
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -86,7 +86,7 @@ CONTACT_RXO:
   - NZ
   - LV
   goodput_kbps: 680.0
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 30s
@@ -109,7 +109,7 @@ CONTACT_RXO_DVBS2X:
   - NZ
   - LV
   goodput_kbps: 720.0
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 25s
@@ -132,7 +132,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - NZ
   - LV
   goodput_kbps: 720.0
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 25s
@@ -155,7 +155,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - NZ
   - LV
   goodput_kbps: 680.0
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 27s
