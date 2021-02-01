@@ -86,7 +86,7 @@ CONTACT_RXO:
   - NZ
   - LV
   goodput_kbps: 680.0
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 30s
@@ -154,7 +154,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   goodput_kbps: 680.0
