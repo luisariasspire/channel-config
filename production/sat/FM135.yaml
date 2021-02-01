@@ -16,7 +16,7 @@ CONTACT_BIDIR:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   goodput_kbps: 640.0
