@@ -62,7 +62,7 @@ CONTACT_BIDIR_UHF:
   - US
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   goodput_kbps: 5.6
