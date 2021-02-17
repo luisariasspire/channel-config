@@ -4,7 +4,7 @@ CONTACT_BIDIR:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 27.0
@@ -28,7 +28,7 @@ CONTACT_BIDIR_UHF:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     min_elevation_deg: 10.0
