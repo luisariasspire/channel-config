@@ -9,12 +9,12 @@ resources:
   - name: repo
     type: pull-request
     icon: source-branch
-    webhook_token: ((github.webhook_token))
+    webhook_token: ((optimizer-team.github_webhook_token))
     source:
       repository: nsat/air
       paths:
         - lib/channel_config/
-      access_token: ((github.infra__access_token))
+      access_token: ((optimizer-team.github_access_token))
       disable_git_lfs: true
 
 jobs:
