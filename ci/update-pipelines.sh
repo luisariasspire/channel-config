@@ -5,7 +5,7 @@ CI_DIR=$(dirname $0)
 function set_pipeline {
     echo "Updating $1 to match config in $2"
     fly set-pipeline \
-        --target=blue-infrastructure \
+        --target=optimizer \
         --pipeline=$1 \
         --config=$2
 }
