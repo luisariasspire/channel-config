@@ -8,7 +8,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
-  goodput_kbps: 720.0
+  goodput_kbps: 240.0
   contact_overhead_time: 25s
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -20,7 +20,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
-  goodput_kbps: 680.0
+  goodput_kbps: 240.0
   contact_overhead_time: 27s
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -32,7 +32,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
-  goodput_kbps: 720.0
+  goodput_kbps: 280.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -44,5 +44,5 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     min_elevation_deg: 25.0
-  goodput_kbps: 680.0
+  goodput_kbps: 240.0
   contact_overhead_time: 30s

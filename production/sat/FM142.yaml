@@ -32,7 +32,7 @@ CONTACT_BIDIR:
         - jnbgs
         - orkgs
         - smags
-  goodput_kbps: 640.0
+  goodput_kbps: 300.0
   contact_overhead_time: 210s
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
@@ -68,7 +68,7 @@ CONTACT_BIDIR_DVBS2X:
         - jnbgs
         - orkgs
         - smags
-  goodput_kbps: 640.0
+  goodput_kbps: 350.0
   contact_overhead_time: 200s
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
@@ -128,7 +128,7 @@ CONTACT_RXO:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-  goodput_kbps: 680.0
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
 CONTACT_RXO_DVBS2X:
 # Subject to coordination with NASA JSC
@@ -156,7 +156,7 @@ CONTACT_RXO_DVBS2X:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-  goodput_kbps: 720.0
+  goodput_kbps: 280.0
   contact_overhead_time: 25s
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -183,7 +183,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 190000
-  goodput_kbps: 720.0
+  goodput_kbps: 240.0
   contact_overhead_time: 25s
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -210,7 +210,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 190000
-  goodput_kbps: 680.0
+  goodput_kbps: 240.0
   contact_overhead_time: 27s
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
@@ -246,7 +246,7 @@ CONTACT_TRACKING_BIDIR:
         - jnbgs
         - orkgs
         - smags
-  goodput_kbps: 640.0
+  goodput_kbps: 300.0
   contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
@@ -282,7 +282,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
         - jnbgs
         - orkgs
         - smags
-  goodput_kbps: 640.0
+  goodput_kbps: 350.0
   contact_overhead_time: 210s
 CONTACT_TRACKING_RXO:
 # Subject to coordination with NASA JSC
@@ -310,7 +310,7 @@ CONTACT_TRACKING_RXO:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-  goodput_kbps: 680.0
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X:
 # Subject to coordination with NASA JSC
@@ -338,7 +338,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-  goodput_kbps: 720.0
+  goodput_kbps: 280.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -365,7 +365,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 190000
-  goodput_kbps: 720.0
+  goodput_kbps: 280.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -392,5 +392,5 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 190000
-  goodput_kbps: 680.0
+  goodput_kbps: 240.0
   contact_overhead_time: 30s

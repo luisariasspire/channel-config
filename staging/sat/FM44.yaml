@@ -19,7 +19,7 @@ CONTACT_BIDIR:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 5.6
+  goodput_kbps: 300.0
   contact_overhead_time: 210s
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
@@ -42,7 +42,7 @@ CONTACT_BIDIR_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 640.0
+  goodput_kbps: 350.0
   contact_overhead_time: 200s
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
@@ -88,7 +88,7 @@ CONTACT_RXO:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 680.0
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
@@ -111,7 +111,7 @@ CONTACT_RXO_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 720.0
+  goodput_kbps: 280.0
   contact_overhead_time: 25s
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -134,7 +134,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 720.0
+  goodput_kbps: 240.0
   contact_overhead_time: 25s
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -157,7 +157,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 680.0
+  goodput_kbps: 240.0
   contact_overhead_time: 27s
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
@@ -180,7 +180,7 @@ CONTACT_TRACKING_BIDIR:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 640.0
+  goodput_kbps: 300.0
   contact_overhead_time: 210s
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
@@ -203,7 +203,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 640.0
+  goodput_kbps: 350.0
   contact_overhead_time: 210s
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
@@ -226,7 +226,7 @@ CONTACT_TRACKING_RXO:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 680.0
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
@@ -249,7 +249,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 720.0
+  goodput_kbps: 280.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -272,7 +272,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 720.0
+  goodput_kbps: 280.0
   contact_overhead_time: 30s
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -295,5 +295,5 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  goodput_kbps: 680.0
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
