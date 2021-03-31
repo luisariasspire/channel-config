@@ -9,6 +9,14 @@ CONTACT_BIDIR:
     min_elevation_deg: 10.0
   goodput_kbps: 300.0
   contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 5.6
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 300
+    uplink_rate_kbps: 5.6
+    min_duration: 20sec
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -20,6 +28,14 @@ CONTACT_BIDIR_DVBS2X:
     min_elevation_deg: 10.0
   goodput_kbps: 350.0
   contact_overhead_time: 200s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 5.6
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 350
+    uplink_rate_kbps: 5.6
+    min_duration: 20sec
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -31,6 +47,10 @@ CONTACT_BIDIR_UHF:
     min_elevation_deg: 10.0
   goodput_kbps: 5.6
   contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 5.6
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -42,6 +62,11 @@ CONTACT_RXO:
     min_elevation_deg: 25.0
   goodput_kbps: 240.0
   contact_overhead_time: 30s
+  link_profile:
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 240.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -53,6 +78,11 @@ CONTACT_RXO_DVBS2X:
     min_elevation_deg: 25.0
   goodput_kbps: 280.0
   contact_overhead_time: 25s
+  link_profile:
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 280.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -64,6 +94,14 @@ CONTACT_TRACKING_BIDIR:
     min_elevation_deg: 10.0
   goodput_kbps: 300.0
   contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 5.6
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 300
+    uplink_rate_kbps: 5.6
+    min_duration: 20sec
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -75,6 +113,14 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
     min_elevation_deg: 10.0
   goodput_kbps: 350.0
   contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 5.6
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 350
+    uplink_rate_kbps: 5.6
+    min_duration: 20sec
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -86,6 +132,11 @@ CONTACT_TRACKING_RXO:
     min_elevation_deg: 25.0
   goodput_kbps: 240.0
   contact_overhead_time: 30s
+  link_profile:
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 240.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -97,3 +148,8 @@ CONTACT_TRACKING_RXO_DVBS2X:
     min_elevation_deg: 25.0
   goodput_kbps: 280.0
   contact_overhead_time: 30s
+  link_profile:
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 280.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min

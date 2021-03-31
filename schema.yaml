@@ -258,7 +258,26 @@ definitions:
     - ZA # South Africa
     - ZM # Zambia
     - ZW # Zimbabwe
-
+  link_profile: &link_profile
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      properties:
+        min_elevation_deg:
+          minimum: 0
+          maximum: 90
+          type: integer
+        downlink_rate_kbps:
+          minimum: 0
+          type: number
+        uplink_rate_kbps:
+          minimum: 0
+          type: number
+        min_duration:
+          type: string
+          pattern : ^([0-9]+ *(?:nsec|ns|usec|us|msec|ms|seconds|second|sec|s|minutes|minute|min|m|hours|hour|hr|h|days|day|d|weeks|week|w|months|month|M|years|year|y) *)+$
+          optional: true
 
 # The JSON Schema is contained under this key to allow us to use YAML features such as anchors.
 schema:
@@ -287,6 +306,8 @@ schema:
           properties:
             min_elevation_deg:
               type: number
+        link_profile: *link_profile
+
     - type: object
       additionalProperties: false
       properties:
@@ -339,3 +360,4 @@ schema:
                             type: array
                             items:
                               type: string
+        link_profile: *link_profile
