@@ -77,8 +77,8 @@ CONTACT_BIDIR_UHF:
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 5.6
+    downlink_rate_kbps: 10.0
+    uplink_rate_kbps: 10.0
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
