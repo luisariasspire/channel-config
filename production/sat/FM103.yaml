@@ -71,7 +71,7 @@ CONTACT_BIDIR_UHF:
   - NZ
   - LV
   goodput_kbps: 5.6
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
