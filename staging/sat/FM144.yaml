@@ -15,7 +15,7 @@ CONTACT_BIDIR:
   - FK
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   goodput_kbps: 300.0
@@ -93,7 +93,7 @@ CONTACT_RXO:
   - FK
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   goodput_kbps: 240.0
@@ -171,7 +171,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - FK
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   goodput_kbps: 240.0
