@@ -693,6 +693,11 @@ def add_editing_flags(parser: Any) -> None:
         help="Whether the channel is licensed for legal use.",
     )
     parser.add_argument(
+        "--goodput_kbps",
+        type=float,
+        help="Estimated upper bound on download rate for this channel.",
+    )
+    parser.add_argument(
         "--contact_overhead_time",
         type=str,
         help=(
@@ -709,11 +714,6 @@ def add_editing_flags(parser: Any) -> None:
         "--satellite_constraints",
         type=str_to_yaml,
         help="A YAML block describing the satellite constraints.",
-    )
-    parser.add_argument(
-        "--link_profile",
-        type=str_to_yaml,
-        help="A YAML block describing the link profile of this contact type.",
     )
 
 

@@ -6,7 +6,9 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    min_elevation_deg: 10.0
+  goodput_kbps: 240.0
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 10
@@ -21,7 +23,9 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    min_elevation_deg: 10.0
+  goodput_kbps: 240.0
   contact_overhead_time: 27s
   link_profile:
   - min_elevation_deg: 10
@@ -36,7 +40,9 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    min_elevation_deg: 10.0
+  goodput_kbps: 280.0
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 10
@@ -51,7 +57,9 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    min_elevation_deg: 10.0
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 10

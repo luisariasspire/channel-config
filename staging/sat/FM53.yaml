@@ -19,6 +19,7 @@ CONTACT_BIDIR:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 300.0
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -45,6 +46,7 @@ CONTACT_BIDIR_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 350.0
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 0
@@ -71,6 +73,7 @@ CONTACT_BIDIR_UHF:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 5.6
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -97,6 +100,7 @@ CONTACT_RXO:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -123,6 +127,7 @@ CONTACT_RXO_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 280.0
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 0
@@ -149,6 +154,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 240.0
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 0
@@ -175,6 +181,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 240.0
   contact_overhead_time: 27s
   link_profile:
   - min_elevation_deg: 0
@@ -201,6 +208,7 @@ CONTACT_TRACKING_BIDIR:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 300.0
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -227,6 +235,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 350.0
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -253,6 +262,7 @@ CONTACT_TRACKING_RXO:
   enabled: true
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -279,6 +289,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 280.0
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -305,6 +316,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 280.0
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -331,6 +343,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0

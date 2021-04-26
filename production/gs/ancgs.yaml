@@ -5,7 +5,9 @@ CONTACT_RXO:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    min_elevation_deg: 25.0
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 25
@@ -19,7 +21,9 @@ CONTACT_RXO_DVBS2X:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    min_elevation_deg: 25.0
+  goodput_kbps: 280.0
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 25
@@ -33,7 +37,9 @@ CONTACT_TRACKING_RXO:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    min_elevation_deg: 25.0
+  goodput_kbps: 240.0
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 25
@@ -47,7 +53,9 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    min_elevation_deg: 25.0
+  goodput_kbps: 280.0
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 25

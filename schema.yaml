@@ -291,6 +291,8 @@ schema:
           type: boolean
         directionality:
           enum: *directionality
+        goodput_kbps:
+          type: number
         contact_overhead_time:
           type: string
         allowed_license_countries:
@@ -301,6 +303,9 @@ schema:
         ground_station_constraints:
           type: object
           additionalProperties: false
+          properties:
+            min_elevation_deg:
+              type: number
         link_profile: *link_profile
 
     - type: object
@@ -312,6 +317,8 @@ schema:
           type: boolean
         directionality:
           enum: *directionality
+        goodput_kbps:
+          type: number
         contact_overhead_time:
           type: string
         allowed_license_countries:
