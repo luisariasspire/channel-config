@@ -128,3 +128,13 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     min_elevation_deg: 25.0
   satellite_constraints: {}
   contact_overhead_time: 30s
+CONTACT_SDR_IQ:
+  directionality: SpaceToEarth
+  allowed_license_countries: []
+  goodput_kbps: 0.0
+  enabled: false
+  legal: false
+  ground_station_constraints:
+    min_elevation_deg: 0.0
+  satellite_constraints: {}
+  contact_overhead_time: 0s
