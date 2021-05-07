@@ -248,6 +248,7 @@ CONTACT_SDR_IQ:
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
+  link_profile: []
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:

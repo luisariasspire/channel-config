@@ -258,6 +258,7 @@ definitions:
     - ZA # South Africa
     - ZM # Zambia
     - ZW # Zimbabwe
+  humantime: &humantime ^([0-9]+ *(?:nsec|ns|usec|us|msec|ms|seconds|second|sec|s|minutes|minute|min|m|hours|hour|hr|h|days|day|d|weeks|week|w|months|month|M|years|year|y) *)+$
   link_profile: &link_profile
     type: array
     items:
@@ -276,8 +277,12 @@ definitions:
           type: number
         min_duration:
           type: string
-          pattern : ^([0-9]+ *(?:nsec|ns|usec|us|msec|ms|seconds|second|sec|s|minutes|minute|min|m|hours|hour|hr|h|days|day|d|weeks|week|w|months|month|M|years|year|y) *)+$
+          pattern: *humantime
           optional: true
+      required:
+        - min_elevation_deg
+        - downlink_rate_kbps
+        - uplink_rate_kbps
 
 # The JSON Schema is contained under this key to allow us to use YAML features such as anchors.
 schema:
@@ -295,6 +300,7 @@ schema:
           type: number
         contact_overhead_time:
           type: string
+          pattern: *humantime
         allowed_license_countries:
           type: array
           items:
@@ -307,6 +313,15 @@ schema:
             min_elevation_deg:
               type: number
         link_profile: *link_profile
+      required:
+        - legal
+        - enabled
+        - directionality
+        - goodput_kbps
+        - contact_overhead_time
+        - allowed_license_countries
+        - ground_station_constraints
+        - link_profile
 
     - type: object
       additionalProperties: false
@@ -321,6 +336,7 @@ schema:
           type: number
         contact_overhead_time:
           type: string
+          pattern: *humantime
         allowed_license_countries:
           type: array
           items:
@@ -361,3 +377,12 @@ schema:
                             items:
                               type: string
         link_profile: *link_profile
+      required:
+        - legal
+        - enabled
+        - directionality
+        - goodput_kbps
+        - contact_overhead_time
+        - allowed_license_countries
+        - satellite_constraints
+        - link_profile

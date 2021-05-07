@@ -1,8 +1,10 @@
 import os
 import subprocess
 from copy import deepcopy
-from typing import Any, Mapping
+from io import StringIO
+from typing import Any, Mapping, Optional
 
+from ruamel.yaml import YAML
 from termcolor import colored
 
 from typedefs import Environment, GroundStationKind, SatelliteKind
@@ -14,6 +16,8 @@ SATELLITE: SatelliteKind = "satellite"
 GROUND_STATION: GroundStationKind = "groundstation"
 
 TK_DOMAINS: Mapping[Environment, str] = {"staging": "sbox", "production": "cloud"}
+
+_yaml = YAML()
 
 
 def tk_url(env: Environment) -> str:
@@ -65,3 +69,23 @@ def get_local_username() -> str:
 
 def get_git_revision() -> str:
     return subprocess.getoutput("git rev-parse --short HEAD")
+
+
+def load_yaml_file(f_name: str) -> Any:
+    with open(f_name) as f:
+        return load_yaml_value(f)
+
+
+def load_yaml_value(v: Any) -> Any:
+    return _yaml.load(v)
+
+
+def dump_yaml_string(obj: Optional[Mapping[str, Any]]) -> str:
+    with StringIO() as stream:
+        _yaml.dump(obj, stream)
+        return stream.getvalue()
+
+
+def dump_yaml_file(data: Any, f_name: str) -> None:
+    with open(f_name, mode="w+") as f:
+        _yaml.dump(data, f)

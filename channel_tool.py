@@ -6,7 +6,6 @@ import itertools
 import os
 import sys
 from copy import deepcopy
-from io import StringIO
 from typing import (
     Any,
     Callable,
@@ -22,7 +21,6 @@ from typing import (
 
 import jsonschema
 import requests
-from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap
 from tabulate import tabulate
 from termcolor import colored
@@ -38,17 +36,23 @@ from typedefs import (
     TkGroundStation,
     TkSatellite,
 )
-from util import GS_DIR, SAT_DIR, confirm, tk_url
+from util import (
+    GS_DIR,
+    SAT_DIR,
+    confirm,
+    dump_yaml_file,
+    dump_yaml_string,
+    load_yaml_file,
+    load_yaml_value,
+    tk_url,
+)
 
 ENVS = ["staging", "production"]
 SCHEMA_FILE = "schema.yaml"
 GROUND_STATION: GroundStationKind = "groundstation"
 SATELLITE: SatelliteKind = "satellite"
 
-
-with open("contact_type_defs.yaml") as f:
-    yaml = YAML()
-    CONTACT_TYPE_DEFS: DefsFile = yaml.load(f)
+CONTACT_TYPE_DEFS: DefsFile = load_yaml_file("contact_type_defs.yaml")
 
 
 class AlreadyExistsError(Exception):
@@ -348,7 +352,6 @@ def validate_all(args: Any) -> None:
         print(f"Validating {asset_type} templates...")
         validate_file(
             "templates.yaml",
-            inspect_keys=True,
             preprocess=lambda x: filter_properties(asset_type, x),
         )
         print(colored("PASS", "green"))
@@ -357,7 +360,7 @@ def validate_all(args: Any) -> None:
         print(f"Validating {env} satellites...")
         sat_dir = os.path.join(env, SAT_DIR)
         all_sats = os.listdir(sat_dir)
-        for sf in all_sats:
+        for sf in sorted(all_sats):
             print(f"{sf}... ", end="")
             validate_file(os.path.join(sat_dir, sf))
             print(colored("PASS", "green"))
@@ -365,7 +368,7 @@ def validate_all(args: Any) -> None:
         print(f"Validating {env} ground stations...")
         gs_dir = os.path.join(env, GS_DIR)
         all_stations = os.listdir(gs_dir)
-        for gsf in all_stations:
+        for gsf in sorted(all_stations):
             print(f"{gsf}... ", end="")
             validate_file(os.path.join(gs_dir, gsf))
             print(colored("PASS", "green"))
@@ -375,34 +378,25 @@ def validate_all(args: Any) -> None:
 
 def validate_file(
     cf: str,
-    inspect_keys: bool = True,
     preprocess: Optional[Callable[[ChannelDefinition], ChannelDefinition]] = None,
 ) -> None:
-    with open(cf) as f:
-        yaml = YAML()
-        config = yaml.load(f)
-        if inspect_keys:
-            for key in config:
-                try:
-                    c = config[key]
-                    if preprocess:
-                        c = preprocess(c)
-                    validate_one(c)
-                except Exception as e:
-                    raise ValidationError(f"Failed to validate {cf}#{key}: {e}")
-        else:
-            try:
-                c = config
-                if preprocess:
-                    c = preprocess(c)
-                validate_one(config)
-            except Exception as e:
-                raise ValidationError(f"Failed to validate {cf}: {e}")
+    config = load_yaml_file(cf)
+    for key in config:
+        try:
+            c = config[key]
+            if preprocess:
+                c = preprocess(c)
+            validate_one(c)
+        except Exception as e:
+            raise ValidationError(f"Failed to validate {cf}#{key}: {e}")
 
 
 def validate_one(config: ChannelDefinition) -> None:
     schema = load_schema()
-    jsonschema.validate(config, schema)
+    try:
+        jsonschema.validate(config, schema)
+    except Exception as e:
+        raise ValidationError from e
 
 
 # Memoize the JSON Schema definition.
@@ -412,10 +406,8 @@ loaded_schema = None
 def load_schema() -> Any:
     global loaded_schema
     if not loaded_schema:
-        yaml = YAML()
-        with open(SCHEMA_FILE) as f:
-            # File has "schema" and "definitions" as top-level fields.
-            loaded_schema = yaml.load(f)["schema"]
+        # File has "schema" and "definitions" as top-level fields.
+        loaded_schema = load_yaml_file(SCHEMA_FILE)["schema"]
     return loaded_schema
 
 
@@ -436,13 +428,11 @@ def normalize_config(cfg: Dict[str, Any]) -> Dict[str, Any]:
 def find_template(channel: str) -> ChannelDefinition:
     template_file = "templates.yaml"
     if os.path.exists(template_file):
-        with open(template_file) as f:
-            yaml = YAML()
-            templates: Dict[str, ChannelDefinition] = yaml.load(f)
-            if channel in templates:
-                return templates[channel]
-            else:
-                raise MissingTemplateError(f"Could not find template for {channel}")
+        templates: Dict[str, ChannelDefinition] = load_yaml_file(template_file)
+        if channel in templates:
+            return templates[channel]
+        else:
+            raise MissingTemplateError(f"Could not find template for {channel}")
     else:
         raise FileNotFoundError(f"Could not find file {template_file}")
 
@@ -538,19 +528,12 @@ def color_diff_line(line: str) -> str:
 def format_diff(
     existing: Optional[ChannelDefinition], new: Optional[ChannelDefinition]
 ) -> str:
-    a = dumps(existing).splitlines(keepends=True)
-    b = dumps(new).splitlines(keepends=True)
+    a = dump_yaml_string(existing).splitlines(keepends=True)
+    b = dump_yaml_string(new).splitlines(keepends=True)
     lines = max(len(a), len(b))  # Show all context
     d = difflib.unified_diff(a, b, n=lines)
     cd = [color_diff_line(l) for l in d]
     return "".join(cd)
-
-
-def dumps(obj: Optional[Mapping[str, Any]]) -> str:
-    with StringIO() as stream:
-        yaml = YAML()
-        yaml.dump(obj, stream)
-        return stream.getvalue()
 
 
 CONFIG_CACHE: Dict[Tuple[str, str], AssetConfig] = {}
@@ -561,13 +544,11 @@ def load_asset_config(env: Environment, asset: str) -> AssetConfig:
         config_file = infer_config_file(env, asset)
         if not os.path.exists(config_file):
             return {}
-        with open(config_file, mode="r") as f:
-            yaml = YAML()
-            config: Optional[AssetConfig] = yaml.load(f)
-            if config:
-                return config
-            else:
-                return {}
+        config: Optional[AssetConfig] = load_yaml_file(config_file)
+        if config:
+            return config
+        else:
+            return {}
 
     if not (env, asset) in CONFIG_CACHE:
         config = do_load()
@@ -581,9 +562,7 @@ def write_asset_config(env: Environment, asset: str, asset_config: AssetConfig) 
     config_file = infer_config_file(env, asset)
     if asset_config:
         asset_config = normalize_config(asset_config)
-        with open(config_file, mode="w+") as f:
-            yaml = YAML()
-            yaml.dump(asset_config, f)
+        dump_yaml_file(asset_config, config_file)
     elif os.path.exists(config_file):
         os.remove(config_file)
 
@@ -608,8 +587,7 @@ def infer_config_file(env: Environment, asset: str) -> str:
 
 
 def str_to_yaml(val: str) -> Mapping[str, Any]:
-    yaml = YAML()
-    v = yaml.load(val)
+    v = load_yaml_value(val)
     assert isinstance(v, dict), "Expected YAML key-value mapping"
     return v
 
@@ -627,10 +605,8 @@ def str_to_bool(val: str) -> bool:
 
 
 def channel_list(val: str) -> List[str]:
-    yaml = YAML()
-    with open("templates.yaml", "r") as f:
-        templates: Dict[str, ChannelDefinition] = yaml.load(f)
-        all_channels = list(templates.keys())
+    templates: Dict[str, ChannelDefinition] = load_yaml_file("templates.yaml")
+    all_channels = list(templates.keys())
 
     if val.lower() == "all":
         return all_channels

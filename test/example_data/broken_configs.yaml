@@ -1,0 +1,32 @@
+EMPTY_CONFIG: {}
+MISSING_FIELD:
+  # directionality: Bidirectional
+  allowed_license_countries: []
+  goodput_kbps: 0.0
+  enabled: false
+  legal: false
+  ground_station_constraints:
+    min_elevation_deg: 0.0
+  contact_overhead_time: 0s
+  link_profile: []
+MIXED_SCHEMAS:
+  directionality: Bidirectional
+  allowed_license_countries: []
+  goodput_kbps: 0.0
+  enabled: false
+  legal: false
+  ground_station_constraints: # Should not be mixed with satellite_constraints
+    min_elevation_deg: 0.0
+  satellite_constraints: {} # <- Here
+  contact_overhead_time: 0s
+  link_profile: []
+EXTRA_FIELD:
+  directionality: Bidirectional
+  allowed_license_countries: []
+  goodput_kbps: 0.0
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 0s
+  link_profile: []
+  unknown_field: true # Not in schema

@@ -20,6 +20,8 @@ tabulate = "*"
 termcolor = "*"
 mypy = "*"
 more-itertools = "*"
+rope = "*"
+pylint = "*"
 
 [dev-packages]
 black = "*"
@@ -29,6 +31,8 @@ pre-commit = "*"
 pytest = "*"
 pytest-cov = "*"
 coverage = "*"
+pylint = "*"
+rope = "*"
 
 [requires]
 python_version = "3.8"
