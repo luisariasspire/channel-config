@@ -261,6 +261,7 @@ definitions:
   humantime: &humantime ^([0-9]+ *(?:nsec|ns|usec|us|msec|ms|seconds|second|sec|s|minutes|minute|min|m|hours|hour|hr|h|days|day|d|weeks|week|w|months|month|M|years|year|y) *)+$
   link_profile: &link_profile
     type: array
+    minItems: 1
     items:
       type: object
       additionalProperties: false

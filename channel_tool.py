@@ -388,7 +388,7 @@ def validate_file(
                 c = preprocess(c)
             validate_one(c)
         except Exception as e:
-            raise ValidationError(f"Failed to validate {cf}#{key}: {e}")
+            raise ValidationError(f"Failed to validate {cf}#{key}") from e
 
 
 def validate_one(config: ChannelDefinition) -> None:
@@ -793,6 +793,6 @@ if __name__ == "__main__":
             err(f"Error: {e}")
             err("(Tip: Use the --debug flag to get a full stack trace.)")
             sys.exit(1)
-    except Exception as e:
+    except argparse.ArgumentError as e:
         err(f"Error while parsing command line arguments: {e}")
         sys.exit(1)

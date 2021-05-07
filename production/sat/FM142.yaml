@@ -240,6 +240,19 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
     uplink_rate_kbps: 0.0
+CONTACT_SDR_IQ:
+  directionality: SpaceToEarth
+  allowed_license_countries: []
+  goodput_kbps: 0.0
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0.0
+    downlink_rate_kbps: 0.0
+    uplink_rate_kbps: 0.0
+    min_duration: 0s
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
