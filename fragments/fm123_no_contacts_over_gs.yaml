@@ -1,0 +1,15 @@
+# slack: https://spire-chat.slack.com/archives/C01GWPVPY0Y/p1620678809297400
+# 
+# Stops the scheduling of contacts for this FM at the specified ground
+# stations. 
+# We achieve this by (ab)using the no_overlapping_transits constraint
+# with the norad_id/TLE set to that of the satellite that has this
+# constraint. As the TLE's are the same all transits are guaranteed to
+# fail this constraint and as a result no contacts will get scheduled.
+separation:
+  - type: no_overlapping_transits
+    norad_id: 47493 #FM123's norad_id
+    modifier:
+      only_for_ground_stations:
+      - tusgs
+      - wbugs

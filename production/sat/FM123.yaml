@@ -18,7 +18,17 @@ CONTACT_BIDIR:
   - LV
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   goodput_kbps: 300.0
   contact_overhead_time: 210s
   link_profile:
@@ -45,7 +55,17 @@ CONTACT_BIDIR_DVBS2X:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   goodput_kbps: 350.0
   contact_overhead_time: 200s
   link_profile:
@@ -72,7 +92,17 @@ CONTACT_BIDIR_UHF:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   goodput_kbps: 5.6
   contact_overhead_time: 210s
   link_profile:
@@ -100,7 +130,17 @@ CONTACT_RXO:
   goodput_kbps: 240.0
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -127,7 +167,17 @@ CONTACT_RXO_DVBS2X:
   goodput_kbps: 280.0
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 0
@@ -153,7 +203,17 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   goodput_kbps: 240.0
   contact_overhead_time: 25s
   link_profile:
@@ -180,7 +240,17 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - LV
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   goodput_kbps: 240.0
   contact_overhead_time: 27s
   link_profile:
@@ -207,7 +277,17 @@ CONTACT_TRACKING_BIDIR:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   goodput_kbps: 300.0
   contact_overhead_time: 210s
   link_profile:
@@ -234,7 +314,17 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   goodput_kbps: 350.0
   contact_overhead_time: 210s
   link_profile:
@@ -262,7 +352,17 @@ CONTACT_TRACKING_RXO:
   goodput_kbps: 240.0
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -289,7 +389,17 @@ CONTACT_TRACKING_RXO_DVBS2X:
   goodput_kbps: 280.0
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -315,7 +425,17 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   goodput_kbps: 280.0
   contact_overhead_time: 30s
   link_profile:
@@ -342,7 +462,17 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
+      - type: no_overlapping_transits
+        norad_id: 47493 #FM123's norad_id
+        modifier:
+          only_for_ground_stations:
+          - tusgs
+          - wbugs
   goodput_kbps: 240.0
   contact_overhead_time: 30s
   link_profile:
