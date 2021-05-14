@@ -1,11 +1,9 @@
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 10.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 210s
   link_profile:
@@ -19,11 +17,9 @@ CONTACT_BIDIR:
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 10.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 200s
   link_profile:
@@ -37,11 +33,9 @@ CONTACT_BIDIR_DVBS2X:
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries: []
-  goodput_kbps: 0.341299
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 10.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 210s
   link_profile:
@@ -51,11 +45,9 @@ CONTACT_BIDIR_UHF:
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 25.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 30s
   link_profile:
@@ -66,11 +58,9 @@ CONTACT_RXO:
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 25.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 25s
   link_profile:
@@ -81,11 +71,9 @@ CONTACT_RXO_DVBS2X:
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 25.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 25s
   link_profile:
@@ -96,11 +84,9 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 25.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 27s
   link_profile:
@@ -111,11 +97,9 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 10.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 210s
   link_profile:
@@ -129,11 +113,9 @@ CONTACT_TRACKING_BIDIR:
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 10.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 210s
   link_profile:
@@ -147,11 +129,9 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 25.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 30s
   link_profile:
@@ -162,11 +142,9 @@ CONTACT_TRACKING_RXO:
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 25.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 30s
   link_profile:
@@ -177,11 +155,9 @@ CONTACT_TRACKING_RXO_DVBS2X:
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 25.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 30s
   link_profile:
@@ -192,11 +168,9 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries: []
-  goodput_kbps: 31.650689
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 25.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 30s
   link_profile:
@@ -207,11 +181,9 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
 CONTACT_SDR_IQ:
   directionality: SpaceToEarth
   allowed_license_countries: []
-  goodput_kbps: 0.0
   enabled: false
   legal: false
-  ground_station_constraints:
-    min_elevation_deg: 0.0
+  ground_station_constraints: {}
   satellite_constraints: {}
   contact_overhead_time: 0s
   link_profile:
