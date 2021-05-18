@@ -4,6 +4,7 @@ CONTACT_BIDIR:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -29,6 +30,7 @@ CONTACT_BIDIR_DVBS2X:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -54,6 +56,7 @@ CONTACT_BIDIR_UHF:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -79,6 +82,7 @@ CONTACT_RXO:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -104,6 +108,7 @@ CONTACT_RXO_DVBS2X:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -129,6 +134,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -154,6 +160,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -179,6 +186,7 @@ CONTACT_TRACKING_BIDIR:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -204,6 +212,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -229,6 +238,7 @@ CONTACT_TRACKING_RXO:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -254,6 +264,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -279,6 +290,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
@@ -304,6 +316,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - PT
   - SG
   - JP
+  - NO
   - BM
   - IE
   - GB
