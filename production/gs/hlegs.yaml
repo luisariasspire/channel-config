@@ -4,7 +4,7 @@ CONTACT_BIDIR:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -40,7 +40,7 @@ CONTACT_BIDIR_UHF:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
