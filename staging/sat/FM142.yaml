@@ -176,6 +176,7 @@ CONTACT_RXO_DVBS2X:
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -206,6 +207,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -388,6 +390,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -418,6 +421,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
