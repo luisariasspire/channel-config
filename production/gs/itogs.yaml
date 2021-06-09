@@ -10,6 +10,7 @@ CONTACT_BIDIR:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
+    min_duration: 4m
   - min_elevation_deg: 27
     downlink_rate_kbps: 300
     uplink_rate_kbps: 5.6
@@ -26,6 +27,7 @@ CONTACT_BIDIR_DVBS2X:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
+    min_duration: 4m
   - min_elevation_deg: 27
     downlink_rate_kbps: 350
     uplink_rate_kbps: 5.6
@@ -42,6 +44,7 @@ CONTACT_BIDIR_UHF:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
+    min_duration: 4m
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -82,6 +85,7 @@ CONTACT_TRACKING_BIDIR:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
+    min_duration: 4m
   - min_elevation_deg: 27
     downlink_rate_kbps: 300
     uplink_rate_kbps: 5.6
@@ -98,6 +102,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
+    min_duration: 4m
   - min_elevation_deg: 27
     downlink_rate_kbps: 350
     uplink_rate_kbps: 5.6

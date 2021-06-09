@@ -24,6 +24,7 @@ CONTACT_BIDIR:
   - min_elevation_deg: 0
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
+    min_duration: 6m
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
