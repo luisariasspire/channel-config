@@ -307,6 +307,11 @@ schema:
             enum: *iso3166
         ground_station_constraints:
           type: object
+          properties:
+            fixed_contact_duration:
+              type: string
+              pattern: *humantime
+              optional: true
           additionalProperties: false
         link_profile: *link_profile
       required:
