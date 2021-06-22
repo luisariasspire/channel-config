@@ -17,7 +17,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 27s
