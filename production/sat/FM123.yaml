@@ -1,21 +1,21 @@
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: true
   legal: true
   satellite_constraints:
@@ -23,12 +23,12 @@ CONTACT_BIDIR:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -37,21 +37,21 @@ CONTACT_BIDIR:
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -59,12 +59,12 @@ CONTACT_BIDIR_DVBS2X:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 0
@@ -73,21 +73,21 @@ CONTACT_BIDIR_DVBS2X:
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -95,12 +95,12 @@ CONTACT_BIDIR_UHF:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -109,21 +109,21 @@ CONTACT_BIDIR_UHF:
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: true
   legal: true
   satellite_constraints:
@@ -131,12 +131,12 @@ CONTACT_RXO:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -145,21 +145,21 @@ CONTACT_RXO:
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -167,12 +167,12 @@ CONTACT_RXO_DVBS2X:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 0
@@ -181,21 +181,21 @@ CONTACT_RXO_DVBS2X:
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -203,12 +203,12 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 0
@@ -217,21 +217,21 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: true
   legal: true
   satellite_constraints:
@@ -239,12 +239,12 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 27s
   link_profile:
   - min_elevation_deg: 0
@@ -253,21 +253,21 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -275,12 +275,12 @@ CONTACT_TRACKING_BIDIR:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -289,21 +289,21 @@ CONTACT_TRACKING_BIDIR:
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -311,12 +311,12 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -325,21 +325,21 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -347,12 +347,12 @@ CONTACT_TRACKING_RXO:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -361,21 +361,21 @@ CONTACT_TRACKING_RXO:
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -383,12 +383,12 @@ CONTACT_TRACKING_RXO_DVBS2X:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -397,21 +397,21 @@ CONTACT_TRACKING_RXO_DVBS2X:
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -419,12 +419,12 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -433,21 +433,21 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
   - PT
   - SG
-  - JP
-#  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -455,12 +455,12 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
       # Exclusion to itself for the specified ground stations.
       # This forces a scheduler to not schedule contacts for
       # these ground stations.
-      - type: no_overlapping_transits
-        norad_id: 47493 #FM123's norad_id
-        modifier:
-          only_for_ground_stations:
-          - tusgs
-          - wbugs
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
