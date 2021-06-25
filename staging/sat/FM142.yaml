@@ -1,6 +1,7 @@
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -40,6 +41,7 @@ CONTACT_BIDIR:
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -79,6 +81,7 @@ CONTACT_BIDIR_DVBS2X:
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -115,6 +118,7 @@ CONTACT_BIDIR_UHF:
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -146,6 +150,7 @@ CONTACT_RXO_DVBS2X:
 # Subject to coordination with NASA JSC
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -237,7 +242,8 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     uplink_rate_kbps: 0.0
 CONTACT_SDR_IQ:
   directionality: SpaceToEarth
-  allowed_license_countries: []
+  allowed_license_countries:
+  - AU
   enabled: false
   legal: true
   satellite_constraints: {}
@@ -250,6 +256,7 @@ CONTACT_SDR_IQ:
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -289,6 +296,7 @@ CONTACT_TRACKING_BIDIR:
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -329,6 +337,7 @@ CONTACT_TRACKING_RXO:
 # Subject to coordination with NASA JSC
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
@@ -360,6 +369,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
 # Subject to coordination with NASA JSC
   directionality: SpaceToEarth
   allowed_license_countries:
+  - AU
   - BM
   - CL
   - FK
