@@ -4,7 +4,7 @@ CONTACT_BIDIR:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -23,7 +23,7 @@ CONTACT_BIDIR_DVBS2X:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 200s
@@ -57,7 +57,7 @@ CONTACT_RXO:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 30s
@@ -72,7 +72,7 @@ CONTACT_RXO_DVBS2X:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 25s
@@ -87,7 +87,7 @@ CONTACT_TRACKING_BIDIR:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -106,7 +106,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -125,7 +125,7 @@ CONTACT_TRACKING_RXO:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 30s
@@ -140,7 +140,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 30s
