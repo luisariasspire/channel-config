@@ -1,0 +1,17 @@
+# Separation constraints imposed by PITGS STA on the ground station for UHF bands.
+# 
+# 4. Transmissions from the Freeport, PA earth station using a frequency of 402.7 MHz shall cease when the NASA
+# International Space Station (NORAD designation 25544, International Spacecraft ID 1998-067A) is within view
+# of the earth station.
+# 5. Transmissions from the LEMUR or MINAS spacecraft using a frequency of 402.7 MHz shall be disabled when the NASA
+# International Space Station (NORAD designation 25544, International Spacecraft ID 1998-067A) is within view of the
+# receiving earth station.
+#
+# https://docs.google.com/document/d/1oGeO3ofSt-Hd-UTpnYScEQ4EcrycYDSq/edit
+
+separation:
+- type: no_overlapping_transits
+  norad_id: 25544
+  modifier:
+    only_for_ground_stations:
+      - pitgs
