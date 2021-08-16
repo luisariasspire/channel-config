@@ -110,6 +110,10 @@ def schema_fields() -> Set[str]:
 ListOrDict = Union[Sequence[Any], Mapping[str, Any]]
 
 
+def is_list_or_dict(x: Any) -> bool:
+    return isinstance(x, Sequence) or isinstance(x, dict)
+
+
 def merge(a: ListOrDict, b: ListOrDict) -> ListOrDict:
     if isinstance(a, Sequence):
         assert isinstance(b, Sequence)
@@ -131,7 +135,7 @@ def merge(a: ListOrDict, b: ListOrDict) -> ListOrDict:
         assert isinstance(b, dict)
         md = deepcopy(a)
         for k, v in b.items():
-            if k in md:
+            if k in md and is_list_or_dict(md[k]):
                 md[k] = merge(md[k], v)
             else:
                 md[k] = v
