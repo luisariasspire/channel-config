@@ -1,6 +1,8 @@
 CONTACT_BIDIR:
   directionality: Bidirectional
-  allowed_license_countries: []
+  allowed_license_countries:
+  - US
+  - LU
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -15,7 +17,9 @@ CONTACT_BIDIR:
     min_duration: 20sec
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
-  allowed_license_countries: []
+  allowed_license_countries:
+  - US
+  - LU
   enabled: false
   legal: true
   ground_station_constraints: {}
@@ -30,7 +34,9 @@ CONTACT_BIDIR_DVBS2X:
     min_duration: 20sec
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
-  allowed_license_countries: []
+  allowed_license_countries:
+  - US
+  - LU
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -41,7 +47,9 @@ CONTACT_BIDIR_UHF:
     uplink_rate_kbps: 5.6
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
-  allowed_license_countries: []
+  allowed_license_countries:
+  - US
+  - LU
   enabled: false
   legal: true
   ground_station_constraints: {}
@@ -53,7 +61,9 @@ CONTACT_RXO_DVBS2X:
     min_duration: 2min
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
-  allowed_license_countries: []
+  allowed_license_countries:
+  - US
+  - LU
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -68,7 +78,9 @@ CONTACT_TRACKING_BIDIR:
     min_duration: 20sec
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
-  allowed_license_countries: []
+  allowed_license_countries:
+  - US
+  - LU
   enabled: false
   legal: true
   ground_station_constraints: {}
@@ -83,7 +95,9 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
     min_duration: 20sec
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
-  allowed_license_countries: []
+  allowed_license_countries:
+  - US
+  - LU
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -95,7 +109,9 @@ CONTACT_TRACKING_RXO:
     min_duration: 20sec
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
-  allowed_license_countries: []
+  allowed_license_countries:
+  - US
+  - LU
   enabled: false
   legal: true
   ground_station_constraints: {}
