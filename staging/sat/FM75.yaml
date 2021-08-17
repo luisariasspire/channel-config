@@ -246,7 +246,7 @@ CONTACT_TRACKING_BIDIR:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -320,7 +320,7 @@ CONTACT_TRACKING_RXO:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -412,7 +412,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 30s

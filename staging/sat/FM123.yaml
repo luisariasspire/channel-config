@@ -11,7 +11,6 @@ CONTACT_BIDIR:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -56,7 +55,6 @@ CONTACT_BIDIR_DVBS2X:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -101,7 +99,6 @@ CONTACT_BIDIR_UHF:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -143,7 +140,6 @@ CONTACT_RXO:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -183,7 +179,6 @@ CONTACT_RXO_DVBS2X:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -221,7 +216,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -258,7 +252,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -295,7 +288,6 @@ CONTACT_TRACKING_BIDIR:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -340,7 +332,6 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -385,7 +376,6 @@ CONTACT_TRACKING_RXO:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -425,7 +415,6 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -465,7 +454,6 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG
@@ -502,7 +490,6 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
-  - NO
   - NZ
   - PT
   - SG

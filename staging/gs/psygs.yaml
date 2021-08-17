@@ -13,7 +13,7 @@ CONTACT_BIDIR:
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
     min_duration: 4m
-  - min_elevation_deg: 25
+  - min_elevation_deg: 27
     downlink_rate_kbps: 300
     uplink_rate_kbps: 5.6
     min_duration: 20sec

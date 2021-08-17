@@ -48,7 +48,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     fixed_contact_duration: 1min

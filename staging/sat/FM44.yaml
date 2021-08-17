@@ -18,7 +18,7 @@ CONTACT_BIDIR:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -35,6 +35,7 @@ CONTACT_BIDIR:
   - min_elevation_deg: 0
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
+    min_duration: 6m
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -92,7 +93,7 @@ CONTACT_BIDIR_UHF:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
