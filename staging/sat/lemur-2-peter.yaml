@@ -134,7 +134,7 @@ CONTACT_RXO:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-  contact_overhead_time: 30s
+  contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -272,7 +272,7 @@ CONTACT_TRACKING_RXO:
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
-  contact_overhead_time: 30s
+  contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
