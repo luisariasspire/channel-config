@@ -45,6 +45,20 @@ CONTACT_BIDIR_UHF:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
+CONTACT_RXO:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 30s
+  link_profile:
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 240.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
