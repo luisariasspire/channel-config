@@ -8,7 +8,7 @@ CONTACT_BIDIR:
   ground_station_constraints: {}
   contact_overhead_time: 210s
   link_profile:
-  - min_elevation_deg: 10
+  - min_elevation_deg: 20
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
   - min_elevation_deg: 25
@@ -25,7 +25,7 @@ CONTACT_BIDIR_DVBS2X:
   ground_station_constraints: {}
   contact_overhead_time: 200s
   link_profile:
-  - min_elevation_deg: 10
+  - min_elevation_deg: 20
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
   - min_elevation_deg: 25
@@ -42,7 +42,7 @@ CONTACT_BIDIR_UHF:
   ground_station_constraints: {}
   contact_overhead_time: 210s
   link_profile:
-  - min_elevation_deg: 10
+  - min_elevation_deg: 20
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
 CONTACT_RXO:
@@ -83,7 +83,7 @@ CONTACT_TRACKING_BIDIR:
   ground_station_constraints: {}
   contact_overhead_time: 210s
   link_profile:
-  - min_elevation_deg: 10
+  - min_elevation_deg: 20
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
   - min_elevation_deg: 25
@@ -100,7 +100,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   ground_station_constraints: {}
   contact_overhead_time: 210s
   link_profile:
-  - min_elevation_deg: 10
+  - min_elevation_deg: 20
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
   - min_elevation_deg: 25
