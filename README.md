@@ -1,35 +1,9 @@
 # Channel Configuration
 
 This directory contains config files and tools for managing the communications configuration for the
-fleet on a per-channel basis. This approach is intended to supplant the extant (as of October 2020)
-`licensing.py` file, as described in [Technical Proposal
+fleet on a per-channel basis. This approach replaced the `licensing.py` file, as described in
+[Technical Proposal
 #362](https://docs.google.com/document/d/1oOzPFOxtj3PFqRxY8ZnLOLie2oR95YMfxTyNKmKO9YU/edit?ts=5f80e012#).
-
-## Video Walkthrough
-
-On December 15th 2020, Nick Pascucci from the Optimizer team gave the Ops team an overview of the
-tools and configurations managed here. The session was recorded, and the video can be found
-[here](https://drive.google.com/file/d/1kWfVvtK_tnUGYoJ3ae4tm1Oq7AkIv2CN/view) (54 minutes).
-
-## Structure
-
-The configuration for the fleet can be quite large, so it is broken up into several directories.
-
-- There are separate `staging` and `production` configuration directories. In each:
-  - `sat` contains configuration files for each satellite.
-  - `gs` contains configuration files for each ground station.
-- `templates` contains template configurations for each contact type, using common values.
-
-Tools are configured using `pipenv`, and can be executed using `pipenv run <tool name>`. The major
-scripts are:
-
-- `channel_tool`, the primary script, which is used for editing configurations;
-- `create_sat_configs`, which generates `channel_tool` commands to create satellite configurations;
-- `create_gs_configs_from_licensing`, which generates `channel_tool` commands to create ground
-  station configs;
-- `sync_from_tk`, used to synchronize settings _from_ The Knowledge by generating `channel_tool`
-  commands;
-- and `sync_to_tk`, used to synchronize settings _to_ The Knowledge.
 
 ## Installation
 
@@ -62,6 +36,57 @@ following apply:
   again with `xcode-select --install`.
 
 None of the above? Reach out in `#ops-optimizer` on Slack.
+
+## Getting Help
+
+The tools are designed to be flexible, but that also makes them a bit challenging to learn. To help
+you wrap your head around the tooling, here are a few resources:
+
+### Built-in Help
+
+First and foremost, every script in this project supports the `--help` flag and will print out usage
+text that can guide you in crafting your commands. It's a good place to start to figure out what is
+supported. The built-in help is always up to date as it is part of the executable code.
+
+### Feature Files
+
+In addition to the built-in help, the `features/` directory contains a set of human-readable
+scenarios that we use to test that the tools work as intended. These show how the tools can be used
+in a variety of contexts, and because they are part of the test suite they are always up to date!
+
+### Video Walkthrough
+
+On December 15th 2020, Nick Pascucci from the Optimizer team gave the Ops team an overview of the
+tools and configurations managed here. The session was recorded, and the video can be found
+[here](https://drive.google.com/file/d/1kWfVvtK_tnUGYoJ3ae4tm1Oq7AkIv2CN/view) (54 minutes).
+
+(Obviously we're not recording new versions of this every time we change the tool, so the video will
+get stale over time. That said, the fundamental principles should remain the same.)
+
+### People
+
+If none of the above meet your needs, feel free to reach out in `#ops-optimizer` in the ECT Slack
+and we'll get you the info you need.
+
+## Structure
+
+The configuration for the fleet can be quite large, so it is broken up into several directories.
+
+- There are separate `staging` and `production` configuration directories. In each:
+  - `sat` contains configuration files for each satellite.
+  - `gs` contains configuration files for each ground station.
+- `templates` contains template configurations for each contact type, using common values.
+
+Tools are configured using `pipenv`, and can be executed using `pipenv run <tool name>`. The major
+scripts are:
+
+- `channel_tool`, the primary script, which is used for editing configurations;
+- `create_sat_configs`, which generates `channel_tool` commands to create satellite configurations;
+- `create_gs_configs_from_licensing`, which generates `channel_tool` commands to create ground
+  station configs;
+- `sync_from_tk`, used to synchronize settings _from_ The Knowledge by generating `channel_tool`
+  commands;
+- and `sync_to_tk`, used to synchronize settings _to_ The Knowledge.
 
 ## Managing configurations
 
@@ -190,28 +215,6 @@ pipenv run channel_tool edit staging FM137,FM142 uhf --yes \
     --satellite_constraints "$(cat /tmp/constraints.yml)"
 ```
 
-## Helper Tools
-
-### Synchronization with The Knowledge
-
-Two scripts, `sync_from_tk` and `sync_to_tk`, are provided to do bidirectional synchronization
-between these config files and The Knowledge. Each can be called using `pipenv run <tool>` and use
-the channel definitions in `contact_type_defs.yaml`.
-
-Pulling configuration from TK involves reading TK's settings for each asset given on the command
-line and generating a series of `channel_tool` edit commands which will bring the config file in
-line with those settings. Conversely, synchronizing _to_ The Knowledge is done by reading each of
-the asset files and computing what settings in TK would be needed to produce that exact set of
-enabled and disabled channels.
-
-Note that it is possible to represent some configurations in the channel config files that can't be
-represented in TK! For example, it is possible to turn on `CONTACT_RXO_SBAND_FREQ_2200_MHZ` without
-also turning on `CONTACT_RXO` in the YAML files, but not in TK because the 2200MHz contact types
-require both `sbnad_enabled` and `sband_2200mhz` to be `True`. The mappings for which TK settings
-are needed for each contact type are provided in `legacy/tk_settings_mapping.yaml` and refer to the
-group definitions in `contact_type_defs.yaml`. In the case where the channel configuration can't be
-represented in TK at all, the `sync_to_tk` script will signal an error showing the conflict.
-
 ## Examples
 
 ### Disabling BIDIR channels on a ground station (set RXO-only)
@@ -234,3 +237,24 @@ pipenv run channel_tool edit production FM96 sband_2020 --enabled=False --yes
 pipenv run channel_tool edit production FM96 sband_2200 --enabled=True --yes
 ```
 
+## Helper Tools
+
+### Synchronization with The Knowledge
+
+Two scripts, `sync_from_tk` and `sync_to_tk`, are provided to do bidirectional synchronization
+between these config files and The Knowledge. Each can be called using `pipenv run <tool>` and use
+the channel definitions in `contact_type_defs.yaml`.
+
+Pulling configuration from TK involves reading TK's settings for each asset given on the command
+line and generating a series of `channel_tool` edit commands which will bring the config file in
+line with those settings. Conversely, synchronizing _to_ The Knowledge is done by reading each of
+the asset files and computing what settings in TK would be needed to produce that exact set of
+enabled and disabled channels.
+
+Note that it is possible to represent some configurations in the channel config files that can't be
+represented in TK! For example, it is possible to turn on `CONTACT_RXO_SBAND_FREQ_2200_MHZ` without
+also turning on `CONTACT_RXO` in the YAML files, but not in TK because the 2200MHz contact types
+require both `sbnad_enabled` and `sband_2200mhz` to be `True`. The mappings for which TK settings
+are needed for each contact type are provided in `legacy/tk_settings_mapping.yaml` and refer to the
+group definitions in `contact_type_defs.yaml`. In the case where the channel configuration can't be
+represented in TK at all, the `sync_to_tk` script will signal an error showing the conflict.

@@ -161,14 +161,24 @@ def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
     new_cdef = deepcopy(cdef)
     vargs = vars(args)
     fields = schema_fields()
+
+    def get_field_value(field: str) -> Any:
+        if field in vargs and vargs[field]:
+            return vargs[field]
+        arg = f"{field}_file"
+        if arg in vargs and vargs[arg]:
+            return vargs[arg]
+        return None
+
     for field in fields:
-        if field in vargs and vargs[field] is not None:
+        val = get_field_value(field)
+        if val is not None:
             if args.mode == "overwrite":
-                new_cdef[field] = vargs[field]  # type: ignore
+                new_cdef[field] = val  # type: ignore
             elif args.mode == "merge":
-                new_cdef[field] = merge(cdef[field], vargs[field])  # type: ignore
+                new_cdef[field] = merge(cdef[field], val)  # type: ignore
             elif args.mode == "remove":
-                new_cdef[field] = remove(cdef[field], vargs[field])  # type: ignore
+                new_cdef[field] = remove(cdef[field], val)  # type: ignore
     if args.comment:
         new_cdef.yaml_set_start_comment(args.comment)  # type: ignore
     return new_cdef
@@ -590,9 +600,27 @@ def infer_config_file(env: Environment, asset: str) -> str:
         raise ValueError(f"Unexpected asset type {asset_type}")
 
 
-def str_to_yaml(val: str) -> Mapping[str, Any]:
+def str_to_yaml_map(val: str) -> Mapping[str, Any]:
     v = load_yaml_value(val)
     assert isinstance(v, dict), "Expected YAML key-value mapping"
+    return v
+
+
+def file_to_yaml_map(path: str) -> Mapping[str, Any]:
+    v = load_yaml_file(path)
+    assert isinstance(v, dict), "Expected YAML key-value mapping"
+    return v
+
+
+def str_to_yaml_list(val: str) -> List[Any]:
+    v = load_yaml_value(val)
+    assert isinstance(v, list), "Expected YAML array"
+    return v
+
+
+def file_to_yaml_list(path: str) -> List[Any]:
+    v = load_yaml_file(path)
+    assert isinstance(v, list), "Expected YAML array"
     return v
 
 
@@ -682,18 +710,23 @@ def add_editing_flags(parser: Any) -> None:
     )
     parser.add_argument(
         "--ground_station_constraints",
-        type=str_to_yaml,
+        type=str_to_yaml_map,
         help="A YAML block describing the ground station constraints.",
     )
     parser.add_argument(
         "--satellite_constraints",
-        type=str_to_yaml,
+        type=str_to_yaml_map,
         help="A YAML block describing the satellite constraints.",
     )
     parser.add_argument(
         "--link_profile",
-        type=str_to_yaml,
+        type=str_to_yaml_list,
         help="A YAML block describing the link profile of this contact type.",
+    )
+    parser.add_argument(
+        "--link_profile_file",
+        type=file_to_yaml_list,
+        help="A YAML file containing the link profile of this contact type.",
     )
 
 

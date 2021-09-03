@@ -39,6 +39,7 @@ requirements:
 
     # Scripts should split on this period to get the embedded field.
     rxo: pipeline.enable_rxo
+    sband_legacy_rxo: pipeline.enable_rxo
 
     bidir: ~ # Enabled by default unless precluded by another set.
 
@@ -49,6 +50,7 @@ requirements:
 
     sband_2020: ~ # No independent setting on ground stations
     sband_2200: ~ # No independent setting on ground stations
+    sband_legacy_rxo: ~
 
     dvbs2x: dvbs2x_enabled
 
