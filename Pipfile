@@ -5,11 +5,8 @@ verify_ssl = true
 
 [scripts]
 channel_tool = "python -m channel_tool"
-create_gs_configs_from_licensing = "python -m legacy.create_gs_configs_from_licensing"
 create_sat_configs = "python -m create_sat_configs"
 format = "sh ./format.sh"
-sync_from_tk = "python -m legacy.sync_from_tk"
-sync_to_tk = "python -m legacy.sync_to_tk"
 tests = "sh ./run_tests.sh"
 
 [packages]

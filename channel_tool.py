@@ -19,7 +19,6 @@ from typing import (
     Union,
 )
 
-import jsonschema
 import requests
 from ruamel.yaml.comments import CommentedMap
 from tabulate import tabulate
@@ -31,14 +30,15 @@ from typedefs import (
     ChannelDefinition,
     DefsFile,
     Environment,
-    GroundStationKind,
-    SatelliteKind,
     TkGroundStation,
     TkSatellite,
 )
 from util import (
+    ENVS,
+    GROUND_STATION,
     GS_DIR,
     SAT_DIR,
+    SATELLITE,
     confirm,
     dump_yaml_file,
     dump_yaml_string,
@@ -46,11 +46,7 @@ from util import (
     load_yaml_value,
     tk_url,
 )
-
-ENVS = ["staging", "production"]
-SCHEMA_FILE = "schema.yaml"
-GROUND_STATION: GroundStationKind = "groundstation"
-SATELLITE: SatelliteKind = "satellite"
+from validation import filter_properties, load_schema, validate_all, validate_one
 
 CONTACT_TYPE_DEFS: DefsFile = load_yaml_file("contact_type_defs.yaml")
 
@@ -60,10 +56,6 @@ class AlreadyExistsError(Exception):
 
 
 class NoConfigurationError(Exception):
-    pass
-
-
-class ValidationError(Exception):
     pass
 
 
@@ -361,70 +353,6 @@ def audit_configs(args: Any) -> None:
         audit_config(args.environment, sat, gs)
 
 
-def validate_all(args: Any) -> None:
-    for asset_type in [GROUND_STATION, SATELLITE]:
-        print(f"Validating {asset_type} templates...")
-        validate_file(
-            "templates.yaml",
-            preprocess=lambda x: filter_properties(asset_type, x),
-        )
-        print(colored("PASS", "green"))
-
-    for env in ENVS:
-        print(f"Validating {env} satellites...")
-        sat_dir = os.path.join(env, SAT_DIR)
-        all_sats = os.listdir(sat_dir)
-        for sf in sorted(all_sats):
-            print(f"{sf}... ", end="")
-            validate_file(os.path.join(sat_dir, sf))
-            print(colored("PASS", "green"))
-
-        print(f"Validating {env} ground stations...")
-        gs_dir = os.path.join(env, GS_DIR)
-        all_stations = os.listdir(gs_dir)
-        for gsf in sorted(all_stations):
-            print(f"{gsf}... ", end="")
-            validate_file(os.path.join(gs_dir, gsf))
-            print(colored("PASS", "green"))
-
-    print("All passed!")
-
-
-def validate_file(
-    cf: str,
-    preprocess: Optional[Callable[[ChannelDefinition], ChannelDefinition]] = None,
-) -> None:
-    config = load_yaml_file(cf)
-    for key in config:
-        try:
-            c = config[key]
-            if preprocess:
-                c = preprocess(c)
-            validate_one(c)
-        except Exception as e:
-            raise ValidationError(f"Failed to validate {cf}#{key}") from e
-
-
-def validate_one(config: ChannelDefinition) -> None:
-    schema = load_schema()
-    try:
-        jsonschema.validate(config, schema)
-    except Exception as e:
-        raise ValidationError from e
-
-
-# Memoize the JSON Schema definition.
-loaded_schema = None
-
-
-def load_schema() -> Any:
-    global loaded_schema
-    if not loaded_schema:
-        # File has "schema" and "definitions" as top-level fields.
-        loaded_schema = load_yaml_file(SCHEMA_FILE)["schema"]
-    return loaded_schema
-
-
 def normalize_configs(args: Any) -> None:
     for asset in locate_assets(args.environment, args.assets):
         config = load_asset_config(args.environment, asset)
@@ -467,16 +395,6 @@ def locate_assets(env: Environment, assets: Union[str, List[str]]) -> List[str]:
         return vs
     else:
         return assets.split(",")
-
-
-def filter_properties(asset_type: str, chan: ChannelDefinition) -> ChannelDefinition:
-    """Filter the channel configuration properties based on the asset type."""
-    if chan:
-        if asset_type != GROUND_STATION and "ground_station_constraints" in chan:
-            del chan["ground_station_constraints"]
-        if asset_type != SATELLITE and "satellite_constraints" in chan:
-            del chan["satellite_constraints"]
-    return chan
 
 
 def apply_update(
@@ -816,7 +734,7 @@ add_asset_flag(NORMALIZE_PARSER)
 VALIDATE_PARSER = SUBPARSERS.add_parser(
     "validate", help="Validate all templates and extant configurations."
 )
-VALIDATE_PARSER.set_defaults(func=validate_all)
+VALIDATE_PARSER.set_defaults(func=lambda _: validate_all())
 
 
 if __name__ == "__main__":

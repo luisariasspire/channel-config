@@ -24,18 +24,7 @@ brew install pyenv
 pip install pipenv
 ```
 
-Trouble? See the next section.
-
-### Common Errors
-
-If you have trouble with the installation and are getting error messages, see if any of the
-following apply:
-
-- `xcrun: error: invalid active developer path`: You're missing the Xcode command line tools. Brew
-  should have installed them for you, but if you're encountering this error you can install them
-  again with `xcode-select --install`.
-
-None of the above? Reach out in `#ops-optimizer` on Slack.
+Trouble? See the "Common Errors" section below.
 
 ## Getting Help
 
@@ -68,25 +57,34 @@ get stale over time. That said, the fundamental principles should remain the sam
 If none of the above meet your needs, feel free to reach out in `#ops-optimizer` in the ECT Slack
 and we'll get you the info you need.
 
+### Common Errors
+
+If you have trouble with the installation and are getting error messages, see if any of the
+following apply:
+
+- `xcrun: error: invalid active developer path`: You're missing the Xcode command line tools. Brew
+  should have installed them for you, but if you're encountering this error you can install them
+  again with `xcode-select --install`.
+
+None of the above? Reach out in `#ops-optimizer` on Slack.
+
 ## Structure
 
 The configuration for the fleet can be quite large, so it is broken up into several directories.
 
-- There are separate `staging` and `production` configuration directories. In each:
-  - `sat` contains configuration files for each satellite.
-  - `gs` contains configuration files for each ground station.
-- `templates` contains template configurations for each contact type, using common values.
+- There are separate `staging/` and `production/` configuration directories. In each:
+  - `sat/` contains configuration files for each satellite.
+  - `gs/` contains configuration files for each ground station.
+- `templates.yaml` contains template configurations for each contact type, using common values.
+- `fragments/` contains pieces of configuration in the YAML format defining special cases, like when
+  satellites or ground stations have specific licensing requirements that need to be applied _en
+  masse_.
 
 Tools are configured using `pipenv`, and can be executed using `pipenv run <tool name>`. The major
 scripts are:
 
-- `channel_tool`, the primary script, which is used for editing configurations;
-- `create_sat_configs`, which generates `channel_tool` commands to create satellite configurations;
-- `create_gs_configs_from_licensing`, which generates `channel_tool` commands to create ground
-  station configs;
-- `sync_from_tk`, used to synchronize settings _from_ The Knowledge by generating `channel_tool`
-  commands;
-- and `sync_to_tk`, used to synchronize settings _to_ The Knowledge.
+- `channel_tool`, the primary script, which is used for editing configurations
+- `create_sat_configs`, which generates `channel_tool` commands to create satellite configurations
 
 ## Managing configurations
 
@@ -236,25 +234,3 @@ pipenv run channel_tool edit production cosngs all --enabled=False --yes
 pipenv run channel_tool edit production FM96 sband_2020 --enabled=False --yes
 pipenv run channel_tool edit production FM96 sband_2200 --enabled=True --yes
 ```
-
-## Helper Tools
-
-### Synchronization with The Knowledge
-
-Two scripts, `sync_from_tk` and `sync_to_tk`, are provided to do bidirectional synchronization
-between these config files and The Knowledge. Each can be called using `pipenv run <tool>` and use
-the channel definitions in `contact_type_defs.yaml`.
-
-Pulling configuration from TK involves reading TK's settings for each asset given on the command
-line and generating a series of `channel_tool` edit commands which will bring the config file in
-line with those settings. Conversely, synchronizing _to_ The Knowledge is done by reading each of
-the asset files and computing what settings in TK would be needed to produce that exact set of
-enabled and disabled channels.
-
-Note that it is possible to represent some configurations in the channel config files that can't be
-represented in TK! For example, it is possible to turn on `CONTACT_RXO_SBAND_FREQ_2200_MHZ` without
-also turning on `CONTACT_RXO` in the YAML files, but not in TK because the 2200MHz contact types
-require both `sbnad_enabled` and `sband_2200mhz` to be `True`. The mappings for which TK settings
-are needed for each contact type are provided in `legacy/tk_settings_mapping.yaml` and refer to the
-group definitions in `contact_type_defs.yaml`. In the case where the channel configuration can't be
-represented in TK at all, the `sync_to_tk` script will signal an error showing the conflict.

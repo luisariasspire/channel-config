@@ -14,7 +14,3 @@ pipenv run mypy # Check types
 pipenv run tests # Check tests
 pipenv run format # Check formatting
 pipenv run channel_tool validate # Check that configs are valid
-
-# Check sync_from script functions; will contact TK
-pipenv run sync_from_tk staging
-pipenv run sync_from_tk production

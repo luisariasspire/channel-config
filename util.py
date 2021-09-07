@@ -17,6 +17,9 @@ GROUND_STATION: GroundStationKind = "groundstation"
 
 TK_DOMAINS: Mapping[Environment, str] = {"staging": "sbox", "production": "cloud"}
 
+ENVS = ["staging", "production"]
+SCHEMA_FILE = "schema.yaml"
+
 _yaml = YAML()
 
 
