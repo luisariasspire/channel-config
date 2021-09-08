@@ -10,10 +10,9 @@ licenses:
   USA_PHASE_1A:
     satellites:
       [1, 2, 3, 4, 5, 6, 7,
-       8, 11, 12, 16, 17, 18,
-       20, 22, 24, 9, 10, 13,
-       14, 34, 35, 36, 37, 38,
-       39, 40, 41]
+       8, 11, 12, 16, 17, 18, 20,
+       22, 24, 9, 10, 13, 14, 34,
+       35, 36, 37, 38, 39, 40, 41]
     frequencies:
       - [2020, 2025, "D"]
       - [402.6, 402.8, "D"]
@@ -37,7 +36,8 @@ licenses:
        80, 82, 83, 84, 85, 103, 104,
        105, 106, 107, 108, 112, 113,
        109, 110, 115, 117, 119, 121,
-       116, 118, 120, 122, 124, 125]
+       116, 118, 120, 122, 124, 125,
+       126, 127]
     frequencies:
       - [2200, 2201, "D"]
       - [2020, 2025, "D"]
@@ -48,7 +48,8 @@ licenses:
   USA_PHASE_2:
     satellites:
       [128, 129, 130, 131, 146,
-       147, 123, 132, 133, 134, 135]
+       147, 123, 132, 133, 134,
+       135, 138]
     frequencies:
       - [8170, 8230, "D"]
       - [2200, 2201, "D"]
@@ -59,10 +60,11 @@ licenses:
       - [449.75, 450.25, "U"]
       - [402.6, 402.8, "U"]
     blacklisted_countries: []
-  LUX_MINAS:
+  LUX_MINAS_US_MARKET_ACCESS:
     satellites:
       [91, 92, 93, 94, 95, 96, 97,
-      98, 99, 100, 101, 102, 142]
+       98, 99, 100, 101, 102, 139,
+       140, 143]
     frequencies: &lux-frequencies
       - [399.9, 400.05, "U"]
       - [401, 402, "D"]
@@ -76,9 +78,9 @@ licenses:
       - [8175, 8215, "D"]
       - [8215, 8325, "D"]
     blacklisted_countries: []
-  LUX_ISL_EXPERIMENTAL:
+  LUX_MINAS_NO_US_MARKET_ACCESS:
     satellites:
-      [144, 145, 136, 137]
+      [136, 137, 142, 144, 145, 150]
     frequencies:
       # Default Luxembourg license frequencies.
       - [399.9, 400.05, "U"]
@@ -116,6 +118,7 @@ definitions:
   # any of these countries except for the ones blacklisted in the satellite's
   # license above.
   spire_gs_countries:
+    - AU # Capricorn Space
     - PT # Edisoft
     - SG # IMDA
     - JP # JSAT
