@@ -45,12 +45,12 @@ CONTACT_BIDIR_UHF:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 135s
+  contact_overhead_time: 90s
   link_profile:
   - min_elevation_deg: 40
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 3m
+    min_duration: 2m
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
