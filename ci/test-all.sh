@@ -5,6 +5,8 @@
 
 set -ex
 
+export CI=1
+
 apk add gcc musl-dev
 pip install pipenv
 pipenv sync --dev
