@@ -49,7 +49,7 @@ CONTACT_BIDIR_UHF:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 4m
+    min_duration: 2m
 CONTACT_RXO:
 # GSDOC477
   directionality: SpaceToEarth
