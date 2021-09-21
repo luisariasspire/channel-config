@@ -279,7 +279,6 @@ definitions:
         min_duration:
           type: string
           pattern: *humantime
-          optional: true
       required:
         - min_elevation_deg
         - downlink_rate_kbps
