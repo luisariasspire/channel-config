@@ -13,7 +13,7 @@ Feature: `channel_tool` supports editing embedded YAML structures
   (Generally speaking Option 1 is easier and recommended.)
 
   Scenario: overwrite a YAML array from a file
-   Given a ground station 'testgs' in 'staging' with channel 'CONTACT_BIDIR_UHF'
+   Given the ground station 'testgs' has 'CONTACT_BIDIR_UHF' in its configuration file
    And a file 'link_profile.yaml' containing:
    """
    - min_elevation_deg: 25

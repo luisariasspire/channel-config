@@ -4,7 +4,7 @@ from pathlib import Path
 
 from behave import *
 
-from util import dump_yaml_file, load_yaml_file
+from util import TEMPLATE_FILE, dump_yaml_file, load_yaml_file
 from validation import validate_file
 
 ASSET_TYPE_TO_PATH = {"ground station": "gs", "satellite": "sat"}
@@ -25,12 +25,18 @@ def cwd_from(context):
         os.chdir(origin)
 
 
-@given("a ground station '{gs_id}' in '{env}' with channel '{channel_id}'")
-def step_impl(context, gs_id, env, channel_id):
+@given("the {asset_type} '{id}' has '{channel_id}' {state} in its configuration file")
+@given("the {asset_type} '{id}' has '{channel_id}' in its configuration file")
+def step_impl(context, asset_type, id, channel_id, state="enabled"):
+    state_to_bool = {"enabled": True, "disabled": False}
     with cwd_from(context):
-        templates = load_yaml_file("templates.yaml")
+        templates = load_yaml_file(TEMPLATE_FILE)
         config = {channel_id: templates[channel_id]}
-        dump_yaml_file(config, os.path.join(env, "gs", f"{gs_id}.yaml"))
+        config[channel_id]["enabled"] = state_to_bool[state]
+        config_path = os.path.join(
+            TEST_ENV, ASSET_TYPE_TO_PATH[asset_type], f"{id}.yaml"
+        )
+        dump_yaml_file(config, config_path)
 
 
 @given("there is no configuration for the {asset_type} '{id}'")
@@ -82,6 +88,16 @@ def step_impl(context, channel, asset_type, id):
         config = load_config(asset_type, id, TEST_ENV)
         chan = config[channel]
         assert chan["enabled"], f"Channel {channel} is not marked enabled but should be"
+
+
+@then("the channel '{channel}' on {asset_type} '{id}' will be marked disabled")
+def step_impl(context, channel, asset_type, id):
+    with cwd_from(context):
+        config = load_config(asset_type, id, TEST_ENV)
+        chan = config[channel]
+        assert not chan[
+            "enabled"
+        ], f"Channel {channel} is marked enabled but should not be"
 
 
 @given("a file '{file_path}' containing")

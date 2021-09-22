@@ -19,6 +19,7 @@ TK_DOMAINS: Mapping[Environment, str] = {"staging": "sbox", "production": "cloud
 
 ENVS = ["staging", "production"]
 SCHEMA_FILE = "schema.yaml"
+TEMPLATE_FILE = "templates.yaml"
 
 _yaml = YAML()
 

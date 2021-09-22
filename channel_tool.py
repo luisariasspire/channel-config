@@ -39,6 +39,7 @@ from util import (
     GS_DIR,
     SAT_DIR,
     SATELLITE,
+    TEMPLATE_FILE,
     confirm,
     dump_yaml_file,
     dump_yaml_string,
@@ -155,10 +156,10 @@ def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
     fields = schema_fields()
 
     def get_field_value(field: str) -> Any:
-        if field in vargs and vargs[field]:
+        if field in vargs and vargs[field] is not None:
             return vargs[field]
         arg = f"{field}_file"
-        if arg in vargs and vargs[arg]:
+        if arg in vargs and vargs[arg] is not None:
             return vargs[arg]
         return None
 
@@ -368,15 +369,14 @@ def normalize_config(cfg: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def find_template(channel: str) -> ChannelDefinition:
-    template_file = "templates.yaml"
-    if os.path.exists(template_file):
-        templates: Dict[str, ChannelDefinition] = load_yaml_file(template_file)
+    if os.path.exists(TEMPLATE_FILE):
+        templates: Dict[str, ChannelDefinition] = load_yaml_file(TEMPLATE_FILE)
         if channel in templates:
             return templates[channel]
         else:
             raise MissingTemplateError(f"Could not find template for {channel}")
     else:
-        raise FileNotFoundError(f"Could not find file {template_file}")
+        raise FileNotFoundError(f"Could not find file {TEMPLATE_FILE}")
 
 
 def locate_assets(env: Environment, assets: Union[str, List[str]]) -> List[str]:
@@ -555,7 +555,7 @@ def str_to_bool(val: str) -> bool:
 
 
 def channel_list(val: str) -> List[str]:
-    templates: Dict[str, ChannelDefinition] = load_yaml_file("templates.yaml")
+    templates: Dict[str, ChannelDefinition] = load_yaml_file(TEMPLATE_FILE)
     all_channels = list(templates.keys())
 
     if val.lower() == "all":
