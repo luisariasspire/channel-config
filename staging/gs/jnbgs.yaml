@@ -4,7 +4,7 @@ CONTACT_BIDIR:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -45,9 +45,9 @@ CONTACT_BIDIR_UHF:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 90s
+  contact_overhead_time: 210s
   link_profile:
-  - min_elevation_deg: 40
+  - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
     min_duration: 2m
@@ -57,7 +57,7 @@ CONTACT_RXO:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 20s
@@ -87,7 +87,7 @@ CONTACT_TRACKING_BIDIR:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -125,7 +125,7 @@ CONTACT_TRACKING_RXO:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 20s
