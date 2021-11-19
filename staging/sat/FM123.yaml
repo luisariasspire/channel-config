@@ -22,9 +22,7 @@ CONTACT_BIDIR:
   satellite_constraints:
     separation:
     - type: no_overlapping_transits
-        # Exclusion to itself for the specified ground stations.  This forces the
-        # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493     # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -66,9 +64,7 @@ CONTACT_BIDIR_DVBS2X:
   satellite_constraints:
     separation:
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -110,9 +106,7 @@ CONTACT_BIDIR_UHF:
   satellite_constraints:
     separation:
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -151,9 +145,7 @@ CONTACT_RXO:
   satellite_constraints:
     separation:
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -226,10 +218,11 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   legal: true
   satellite_constraints:
     separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -262,10 +255,11 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   legal: true
   satellite_constraints:
     separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -299,9 +293,7 @@ CONTACT_TRACKING_BIDIR:
   satellite_constraints:
     separation:
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -343,9 +335,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   satellite_constraints:
     separation:
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -387,9 +377,7 @@ CONTACT_TRACKING_RXO:
   satellite_constraints:
     separation:
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -426,9 +414,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   satellite_constraints:
     separation:
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -464,10 +450,11 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   legal: true
   satellite_constraints:
     separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
@@ -500,10 +487,11 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   legal: true
   satellite_constraints:
     separation:
+      # Exclusion to itself for the specified ground stations.
+      # This forces a scheduler to not schedule contacts for
+      # these ground stations.
     - type: no_overlapping_transits
-      # Exclusion to itself for the specified ground stations.  This forces the
-      # contact scheduler to not schedule contacts for these ground stations.
-      norad_id: 47493   # FM123's norad_id
+      norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
         - tusgs
