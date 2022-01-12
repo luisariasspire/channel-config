@@ -64,7 +64,7 @@ licenses:
     satellites:
       [91, 92, 93, 94, 95, 96, 97,
        98, 99, 100, 101, 102, 139,
-       140, 143]
+       140, 143, 148, 141, 149]
     frequencies: &lux-frequencies
       - [399.9, 400.05, "U"]
       - [401, 402, "D"]
@@ -80,7 +80,7 @@ licenses:
     blacklisted_countries: []
   LUX_MINAS_NO_US_MARKET_ACCESS:
     satellites:
-      [136, 137, 142, 144, 145, 150]
+      [136, 137, 142, 144, 145, 150, 151, 152, 153, 154]
     frequencies:
       # Default Luxembourg license frequencies.
       - [399.9, 400.05, "U"]
