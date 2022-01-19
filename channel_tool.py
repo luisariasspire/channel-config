@@ -320,7 +320,9 @@ def compare_channels(
     return (shared, mismatched)
 
 
-def audit_config(env: Environment, sat: str, gs: str) -> None:
+def print_audit_report(
+    env: Environment, sat: str, gs: str, require_match: bool = False
+) -> None:
     """Compute and display a report of the channel (mis)matches between assets."""
     sat_config = load_asset_config(env, sat)
     gs_config = load_asset_config(env, gs)
@@ -330,6 +332,9 @@ def audit_config(env: Environment, sat: str, gs: str) -> None:
     shared, mismatched = compare_channels(
         sat_config, gs_config, satellite, ground_station
     )
+
+    if require_match and not shared:
+        return
 
     header = f"Audit summary for {sat} -> {gs}"
     print(header)
@@ -351,7 +356,7 @@ def audit_configs(args: Any) -> None:
     sats = locate_assets(args.environment, args.satellites)
     gss = locate_assets(args.environment, args.ground_stations)
     for sat, gs in itertools.product(sats, gss):
-        audit_config(args.environment, sat, gs)
+        print_audit_report(args.environment, sat, gs, args.matches_only)
 
 
 def normalize_configs(args: Any) -> None:
@@ -722,6 +727,11 @@ AUDIT_PARSER.add_argument(
     "ground_stations",
     type=str,
     help=("The ground stations to audit."),
+)
+AUDIT_PARSER.add_argument(
+    "--matches_only",
+    action="store_true",
+    help=("Only print asset pairs that contain valid channels."),
 )
 
 NORMALIZE_PARSER = SUBPARSERS.add_parser(
