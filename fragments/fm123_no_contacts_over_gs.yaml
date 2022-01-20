@@ -13,3 +13,4 @@ separation:
       only_for_ground_stations:
       - tusgs
       - wbugs
+      - seags
