@@ -27,7 +27,6 @@ CONTACT_BIDIR:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
@@ -70,7 +69,6 @@ CONTACT_BIDIR_DVBS2X:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
@@ -113,7 +111,6 @@ CONTACT_BIDIR_UHF:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
     - type: no_overlapping_transits
       norad_id: 25544
       modifier:
@@ -153,7 +150,6 @@ CONTACT_RXO:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
@@ -191,7 +187,6 @@ CONTACT_RXO_DVBS2X:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
@@ -232,7 +227,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 0
@@ -270,7 +264,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 0
@@ -305,7 +298,6 @@ CONTACT_TRACKING_BIDIR:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
@@ -348,7 +340,6 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
@@ -391,7 +382,6 @@ CONTACT_TRACKING_RXO:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
@@ -429,7 +419,6 @@ CONTACT_TRACKING_RXO_DVBS2X:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
     - type: minimum_distance
       norad_id: 25544
       distance_m: 150000
@@ -470,7 +459,6 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
@@ -508,7 +496,6 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-        - seags
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 0
