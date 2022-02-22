@@ -11,11 +11,11 @@ CONTACT_BIDIR:
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
     min_duration: 4m
   - min_elevation_deg: 27
     downlink_rate_kbps: 300
-    uplink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
     min_duration: 20sec
 CONTACT_BIDIR_DVBS2X:
 # GSDOC477
@@ -30,11 +30,11 @@ CONTACT_BIDIR_DVBS2X:
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
     min_duration: 4m
   - min_elevation_deg: 27
     downlink_rate_kbps: 350
-    uplink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
     min_duration: 20sec
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
@@ -48,7 +48,7 @@ CONTACT_BIDIR_UHF:
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
     min_duration: 2m
 CONTACT_RXO:
 # GSDOC477
@@ -95,11 +95,11 @@ CONTACT_TRACKING_BIDIR:
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
     min_duration: 4m
   - min_elevation_deg: 27
     downlink_rate_kbps: 300
-    uplink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
     min_duration: 20sec
 CONTACT_TRACKING_BIDIR_DVBS2X:
 # GSDOC477
@@ -114,11 +114,11 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
     min_duration: 4m
   - min_elevation_deg: 27
     downlink_rate_kbps: 350
-    uplink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
     min_duration: 20sec
 CONTACT_TRACKING_RXO:
 # GSDOC477
