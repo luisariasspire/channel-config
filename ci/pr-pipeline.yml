@@ -9,7 +9,7 @@ resources:
   - name: repo
     type: pull-request
     icon: source-branch
-    webhook_token: ((optimizer-team.github_webhook_token))
+    webhook_token: 6e65edd0a500129c50f1138c785dda537b2f25d36c3abe7c92cc9ccf7f453f9b
     source:
       repository: nsat/air
       paths:

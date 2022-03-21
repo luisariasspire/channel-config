@@ -8,6 +8,7 @@ definitions:
     - Bidirectional
     - SpaceToEarth
     - EarthToSpace
+  # ISO 3166 country codes
   iso3166: &iso3166
     - AD # Andorra
     - AE # United Arab Emirates
@@ -258,6 +259,7 @@ definitions:
     - ZA # South Africa
     - ZM # Zambia
     - ZW # Zimbabwe
+  # Regular expression for 'humantime' formatted durations
   humantime: &humantime ^([0-9]+ *(?:nsec|ns|usec|us|msec|ms|seconds|second|sec|s|minutes|minute|min|m|hours|hour|hr|h|days|day|d|weeks|week|w|months|month|M|years|year|y) *)+$
   link_profile: &link_profile
     type: array
@@ -283,27 +285,40 @@ definitions:
         - min_elevation_deg
         - downlink_rate_kbps
         - uplink_rate_kbps
+  contact_type: &contact_type ^[A-Z0-9_]+$
 
-# The JSON Schema is contained under this key to allow us to use YAML features such as anchors.
+# Basic properties which are shared between both satellite and ground station schemas.
+base_properties: &base_properties
+  legal:
+    type: boolean
+  enabled:
+    type: boolean
+  directionality:
+    enum: *directionality
+  contact_type:
+    type: string
+    pattern: *contact_type
+  contact_overhead_time:
+    type: string
+    pattern: *humantime
+  allowed_license_countries:
+    type: array
+    items:
+      type: string
+      enum: *iso3166
+  link_profile: *link_profile
+  window_parameters:
+    type: object
+    additionalProperties: true
+
+# The full JSON schema for both satellites and ground stations.
 schema:
   oneOf:
+    # Ground station schema
     - type: object
       additionalProperties: false
       properties:
-        legal:
-          type: boolean
-        enabled:
-          type: boolean
-        directionality:
-          enum: *directionality
-        contact_overhead_time:
-          type: string
-          pattern: *humantime
-        allowed_license_countries:
-          type: array
-          items:
-            type: string
-            enum: *iso3166
+        <<: *base_properties
         ground_station_constraints:
           type: object
           properties:
@@ -312,7 +327,6 @@ schema:
               pattern: *humantime
               optional: true
           additionalProperties: false
-        link_profile: *link_profile
       required:
         - legal
         - enabled
@@ -322,23 +336,11 @@ schema:
         - ground_station_constraints
         - link_profile
 
+    # Satellite schema
     - type: object
       additionalProperties: false
       properties:
-        legal:
-          type: boolean
-        enabled:
-          type: boolean
-        directionality:
-          enum: *directionality
-        contact_overhead_time:
-          type: string
-          pattern: *humantime
-        allowed_license_countries:
-          type: array
-          items:
-            type: string
-            enum: *iso3166
+        <<: *base_properties
         satellite_constraints:
           type: object
           additionalProperties: false
@@ -373,7 +375,6 @@ schema:
                             type: array
                             items:
                               type: string
-        link_profile: *link_profile
       required:
         - legal
         - enabled

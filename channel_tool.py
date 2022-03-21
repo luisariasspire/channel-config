@@ -611,6 +611,11 @@ def add_editing_flags(parser: Any) -> None:
         help="The channel direction.",
     )
     parser.add_argument(
+        "--contact_type",
+        type=str,
+        help="The contact type to use when creating contact windows from this channel.",
+    )
+    parser.add_argument(
         "--allowed_license_countries",
         type=str_to_list,
         help="The license countries which this channel can be used with as a comma separated list.",
@@ -641,15 +646,27 @@ def add_editing_flags(parser: Any) -> None:
         type=str_to_yaml_map,
         help="A YAML block describing the satellite constraints.",
     )
-    parser.add_argument(
+    link_profile_group = parser.add_mutually_exclusive_group()
+    link_profile_group.add_argument(
         "--link_profile",
         type=str_to_yaml_list,
         help="A YAML block describing the link profile of this contact type.",
     )
-    parser.add_argument(
+    link_profile_group.add_argument(
         "--link_profile_file",
         type=file_to_yaml_list,
         help="A YAML file containing the link profile of this contact type.",
+    )
+    window_parameters_group = parser.add_mutually_exclusive_group()
+    window_parameters_group.add_argument(
+        "--window_parameters",
+        type=str_to_yaml_list,
+        help="A YAML block describing the window parameters to use when scheduling contacts.",
+    )
+    window_parameters_group.add_argument(
+        "--window_parameters_file",
+        type=file_to_yaml_list,
+        help="A YAML file containing the window parameters to use when scheduling contacts.",
     )
 
 
