@@ -2,8 +2,7 @@
 
 This directory contains config files and tools for managing the communications configuration for the
 fleet on a per-channel basis. This approach replaced the `licensing.py` file, as described in
-[Technical Proposal
-#362](https://docs.google.com/document/d/1oOzPFOxtj3PFqRxY8ZnLOLie2oR95YMfxTyNKmKO9YU/edit?ts=5f80e012#).
+[Technical Proposal #362](https://docs.google.com/document/d/1oOzPFOxtj3PFqRxY8ZnLOLie2oR95YMfxTyNKmKO9YU/edit?ts=5f80e012#).
 
 ## Installation
 

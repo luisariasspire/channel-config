@@ -230,3 +230,38 @@ CONTACT_SPACE_GROUND_TXO:
     uplink_rate_kbps: 0.0
     min_duration: 2min
   window_parameters: {}
+X_BAND_TXO:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries: []
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  satellite_constraints: {}
+  contact_overhead_time: 27s
+  link_profile:
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 940.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+  window_parameters: 
+    forward_channels: 
+    - radio_band: "XBAND"
+      protocol: "DVBS2X"
+      bandaid_override: 
+        tx_sample_rate_hz: 10000000
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        dvb: 5
+        mod_gain: 130
+    chainOverride: 
+      sband: 
+        header-freq-pow: 7
+        coarse-freq-win: 1000000
+        lo-offset: 5000000
+        ant: "RX2"
+        rf_bandwidth: 10000000
+        gain: 3
+        freq: 1250000000

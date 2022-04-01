@@ -86,6 +86,10 @@ contact_types:
   CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ: *contact_rxo_sband_freq_2200_mhz
   CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ: *contact_rxo_sband_freq_2200_mhz
 
+  X_BAND_TXO: &xband_txo
+    all_of:
+      - *XBAND8200_D
+
 # Below are alias definitions for groups of channels which can be used in
 # `channel_tool`.
 groups:
@@ -132,6 +136,9 @@ groups:
     - CONTACT_RXO_SBAND_FREQ_2200_MHZ
     - CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ
 
+  xband:
+    - X_BAND_TXO
+
   bidir:
     - CONTACT_BIDIR_UHF
     - CONTACT_BIDIR
@@ -148,6 +155,7 @@ groups:
     - CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
     - CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ
     - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
+    - X_BAND_TXO
 
   dvbs2x:
     - CONTACT_BIDIR_DVBS2X
@@ -156,6 +164,7 @@ groups:
     - CONTACT_TRACKING_BIDIR_DVBS2X
     - CONTACT_TRACKING_RXO_DVBS2X
     - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
+    - X_BAND_TXO
 
   tracking:
     - CONTACT_TRACKING_BIDIR
