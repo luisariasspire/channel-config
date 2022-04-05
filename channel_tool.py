@@ -660,12 +660,12 @@ def add_editing_flags(parser: Any) -> None:
     window_parameters_group = parser.add_mutually_exclusive_group()
     window_parameters_group.add_argument(
         "--window_parameters",
-        type=str_to_yaml_list,
+        type=str_to_yaml_map,
         help="A YAML block describing the window parameters to use when scheduling contacts.",
     )
     window_parameters_group.add_argument(
         "--window_parameters_file",
-        type=file_to_yaml_list,
+        type=file_to_yaml_map,
         help="A YAML file containing the window parameters to use when scheduling contacts.",
     )
 
