@@ -107,7 +107,7 @@ CONTACT_BIDIR_UHF:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -268,7 +268,6 @@ CONTACT_SDR_IQ:
   - min_elevation_deg: 0.0
     downlink_rate_kbps: 0.0
     uplink_rate_kbps: 0.0
-    min_duration: 0s
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:

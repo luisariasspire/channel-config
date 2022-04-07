@@ -412,22 +412,20 @@ X_BAND_TXO:
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
   - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
   - PT
   - SG
-  - SH
-  - US
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
   - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - NZ
+  - LV
   enabled: true
   legal: true
   satellite_constraints: {}

@@ -67,8 +67,8 @@ X_BAND_TXO:
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
   - US
-  - SG
   - LU
+  - SG
   enabled: true
   legal: true
   ground_station_constraints: {}
