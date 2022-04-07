@@ -19,6 +19,7 @@ rope = "*"
 "ruamel.yaml" = "*"
 tabulate = "*"
 termcolor = "*"
+isort = "*"
 
 [dev-packages]
 behave = "*"
