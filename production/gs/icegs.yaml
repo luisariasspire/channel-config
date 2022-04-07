@@ -69,7 +69,7 @@ X_BAND_TXO:
   - US
   - LU
   - SG
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 27s
