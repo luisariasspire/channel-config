@@ -69,12 +69,12 @@ X_BAND_TXO:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 27s
   link_profile:
-  - min_elevation_deg: 25
+  - min_elevation_deg: 10
     downlink_rate_kbps: 940.0
     uplink_rate_kbps: 0.0
     min_duration: 2min
