@@ -1,0 +1,42 @@
+# Constrains a satellites DVB contacts to only icegs & tosgs.
+# These ground stations have a 3m dish that has enough SNR to
+# decode 5MHz DVB SBAND and counter the 7db of noise increase
+# from 1MHz.
+# This fragment is required to enable 5MHz SBAND DVB contacts
+#
+  satellite_constraints:
+    separation:
+    - type: no_overlapping_transits
+      norad_id: 44405 # THIS SAT
+      modifier:
+        only_for_ground_stations:
+        - accgs # only icegs & tosgs
+        - ancgs
+        - bdags
+        - bdlgs
+        - bdugs
+        - cltgs
+        - cmbgs
+        - dalgs
+        - dlhgs
+        - glags
+        - gumgs
+        - hlegs
+        - hndgs
+        - itogs
+        - ivcgs
+        - jnbgs
+        - jnugs
+        - orkgs
+        - pergs
+        - pitgs
+        - psygs
+        - puqgs
+        - seags
+        - sings
+        - smags
+        - stxgs
+        - tusgs
+        - vntgs
+        - wbugs
+        - xspgs
