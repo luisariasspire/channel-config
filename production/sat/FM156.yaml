@@ -1,0 +1,403 @@
+CONTACT_BIDIR:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+CONTACT_BIDIR_DVBS2X:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 200s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+CONTACT_BIDIR_UHF:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 100
+    uplink_rate_kbps: 10
+CONTACT_RXO:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 30s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 0
+CONTACT_RXO_DVBS2X:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 25s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 0
+CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 25s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 0
+CONTACT_RXO_SBAND_FREQ_2200_MHZ:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 27s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 0
+CONTACT_SDR_IQ:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0.0
+    downlink_rate_kbps: 0.0
+    uplink_rate_kbps: 0.0
+CONTACT_TRACKING_BIDIR:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+CONTACT_TRACKING_BIDIR_DVBS2X:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+CONTACT_TRACKING_RXO:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 30s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+CONTACT_TRACKING_RXO_DVBS2X:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 30s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 0
+CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 30s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 0
+CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 30s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 0
+X_BAND_TXO:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - PT
+  - SG
+  - JP
+  - NO
+  - BM
+  - IE
+  - GB
+  - ZA
+  - CL
+  - LK
+  - SH
+  - FK
+  - NZ
+  - LV
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 27s
+  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 940.0, uplink_rate_kbps: 0.0}]
+  window_parameters: {}
