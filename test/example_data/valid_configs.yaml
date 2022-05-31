@@ -24,6 +24,17 @@ SAT_CONFIG_WITH_CONSTRAINTS:
       modifier:
         only_for_ground_stations:
         - pitgs
+    - type: minimum_angular_separation
+      norad_id: 25544
+      angle_deg: 10
+    - type: avoid_ground_station_beams
+      norad_ids: 
+        - 25544
+      station_coordinates:
+        - latitude: 0
+          longitude: 0
+          elevation_m: 0
+      beamwidth_deg: 10
 
 SAT_CONFIG_WITH_CONTACT_TYPE_OVERRIDE:
   <<: *base

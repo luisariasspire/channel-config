@@ -311,6 +311,31 @@ base_properties: &base_properties
     type: object
     additionalProperties: true
 
+# Modifiers for separation constraints
+modifier: &constraint_modifier
+  type: object
+  additionalProperties: false
+  properties:
+    only_for_ground_stations:
+      type: array
+      items:
+        type: string
+
+geodetic_coordinate: &geodetic_coordinate
+  type: object
+  additionalProperties: false
+  properties:
+    # Geodetic longitude in degrees, with East positive, West negative.
+    # NOTE This is different from the representation TK uses, where West is positive.
+    longitude: 
+      type: number
+    # Geodetic latitude in degrees, with North positive, South negative.
+    latitude: 
+      type: number
+    # Elevation above WGS84 reference ellipsoid in meters.
+    elevation_m: 
+      type: number
+
 # The full JSON schema for both satellites and ground stations.
 schema:
   oneOf:
@@ -359,6 +384,7 @@ schema:
                         type: number
                       distance_m:
                         type: number
+                      modifier: *constraint_modifier
                   - type: object
                     additionalProperties: false
                     properties:
@@ -367,14 +393,34 @@ schema:
                         enum: [no_overlapping_transits]
                       norad_id:
                         type: number
-                      modifier:
-                        type: object
-                        additionalProperties: false
-                        properties:
-                          only_for_ground_stations:
-                            type: array
-                            items:
-                              type: string
+                      modifier: *constraint_modifier
+                  - type: object
+                    additionalProperties: false
+                    properties:
+                      type:
+                        type: string
+                        enum: [minimum_angular_separation]
+                      norad_id:
+                        type: number
+                      angle_deg:
+                        type: number
+                      modifier: *constraint_modifier
+                  - type: object
+                    additionalProperties: false
+                    properties:
+                      type:
+                        type: string
+                        enum: [avoid_ground_station_beams]
+                      norad_ids:
+                        type: array
+                        items:
+                          type: number
+                      station_coordinates:
+                        type: array
+                        items: *geodetic_coordinate
+                      beamwidth_deg:
+                        type: number
+                      modifier: *constraint_modifier
       required:
         - legal
         - enabled
