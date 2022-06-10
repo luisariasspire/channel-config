@@ -1,0 +1,9 @@
+# GS constraint which denies satellites with customer payloads.
+deny_satellites:
+- FM123
+- FM142
+- FM150
+- FM151
+- FM152
+- FM153
+- FM154

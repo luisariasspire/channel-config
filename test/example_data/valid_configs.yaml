@@ -1,4 +1,24 @@
-MINIMAL_SAT_CONFIG: &base
+MINIMAL_GS_CONFIG: &gs_base
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  enabled: false
+  legal: true
+  contact_overhead_time: 210s
+  ground_station_constraints: {}
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000.0
+    uplink_rate_kbps: 10.0
+
+GS_CONFIG_WITH_CONSTRAINTS: 
+  <<: *gs_base
+  ground_station_constraints:
+    deny_satellites:
+    - FM999
+
+MINIMAL_SAT_CONFIG: &sat_base
   directionality: Bidirectional
   allowed_license_countries:
   - AU
@@ -13,8 +33,10 @@ MINIMAL_SAT_CONFIG: &base
     uplink_rate_kbps: 10.0
 
 SAT_CONFIG_WITH_CONSTRAINTS:
-  <<: *base
+  <<: *sat_base
   satellite_constraints:
+    deny_ground_stations:
+    - testgs
     separation:
     - type: minimum_distance
       norad_id: 25544
@@ -37,10 +59,10 @@ SAT_CONFIG_WITH_CONSTRAINTS:
       beamwidth_deg: 10
 
 SAT_CONFIG_WITH_CONTACT_TYPE_OVERRIDE:
-  <<: *base
+  <<: *sat_base
   contact_type: CONTACT_TYPE
 
 SAT_CONFIG_WITH_PARAMETERS:
-  <<: *base
+  <<: *sat_base
   window_parameters: 
     foo: bar

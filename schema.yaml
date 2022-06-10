@@ -347,6 +347,10 @@ schema:
         ground_station_constraints:
           type: object
           properties:
+            deny_satellites:
+              type: array
+              items: 
+                type: string
             fixed_contact_duration:
               type: string
               pattern: *humantime
@@ -370,6 +374,10 @@ schema:
           type: object
           additionalProperties: false
           properties:
+            deny_ground_stations:
+              type: array
+              items: 
+                type: string
             separation:
               type: array
               items:
