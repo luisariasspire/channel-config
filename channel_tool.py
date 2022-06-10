@@ -546,6 +546,15 @@ def file_to_yaml_list(path: str) -> List[Any]:
     assert isinstance(v, list), "Expected YAML array"
     return v
 
+def str_to_yaml_collection(val: str) -> Union[Mapping[str, Any], List[Any]]:
+    v = load_yaml_value(val)
+    assert isinstance(v, list) or isinstance(v, dict), "Expected YAML collection (map or list)"
+    return v
+
+def file_to_yaml_collection(path: str) -> Union[Mapping[str, Any], List[Any]]:
+    v = load_yaml_file(path)
+    assert isinstance(v, list) or isinstance(v, dict), "Expected YAML collection (map or list)"
+    return v
 
 def str_to_list(values: str) -> List[str]:
     return values.split(",")
@@ -638,13 +647,23 @@ def add_editing_flags(parser: Any) -> None:
     )
     parser.add_argument(
         "--ground_station_constraints",
-        type=str_to_yaml_map,
+        type=str_to_yaml_collection,
         help="A YAML block describing the ground station constraints.",
     )
     parser.add_argument(
+        "--ground_station_constraints_file",
+        type=file_to_yaml_collection,
+        help="A YAML file describing the ground station constraints.",
+    )
+    parser.add_argument(
         "--satellite_constraints",
-        type=str_to_yaml_map,
+        type=str_to_yaml_collection,
         help="A YAML block describing the satellite constraints.",
+    )
+    parser.add_argument(
+        "--satellite_constraints_file",
+        type=file_to_yaml_collection,
+        help="A YAML file describing the satellite constraints.",
     )
     link_profile_group = parser.add_mutually_exclusive_group()
     link_profile_group.add_argument(

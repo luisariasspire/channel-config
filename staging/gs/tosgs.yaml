@@ -6,15 +6,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints:
-    deny_satellites:
-    - FM123
-    - FM142
-    - FM150
-    - FM151
-    - FM152
-    - FM153
-    - FM154
+  ground_station_constraints: {}
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 10
@@ -29,15 +21,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints:
-    deny_satellites:
-    - FM123
-    - FM142
-    - FM150
-    - FM151
-    - FM152
-    - FM153
-    - FM154
+  ground_station_constraints: {}
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 10
@@ -52,15 +36,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints:
-    deny_satellites:
-    - FM123
-    - FM142
-    - FM150
-    - FM151
-    - FM152
-    - FM153
-    - FM154
+  ground_station_constraints: {}
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 10
@@ -75,15 +51,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints:
-    deny_satellites:
-    - FM123
-    - FM142
-    - FM150
-    - FM151
-    - FM152
-    - FM153
-    - FM154
+  ground_station_constraints: {}
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 10
@@ -99,15 +67,7 @@ X_BAND_TXO:
   - SG
   enabled: true
   legal: true
-  ground_station_constraints:
-    deny_satellites:
-    - FM123
-    - FM142
-    - FM150
-    - FM151
-    - FM152
-    - FM153
-    - FM154
+  ground_station_constraints: {}
   contact_overhead_time: 27s
   link_profile:
   - min_elevation_deg: 10
