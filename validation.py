@@ -2,6 +2,8 @@ import os
 from typing import Any, Callable, Optional
 
 import jsonschema
+from jsonschema.exceptions import ValidationError as SchemaValidationError
+from jsonschema.exceptions import best_match
 from termcolor import colored
 
 from typedefs import ChannelDefinition
@@ -17,7 +19,20 @@ from util import (
 
 
 class ValidationError(Exception):
-    pass
+    def __init__(self, parent, file=None, key=None, count=1):
+        self._parent = parent
+        self._file = file
+        self._key = key
+        self._count = count
+
+    def __str__(self):
+        return f"""Validation error: {self._parent.message}
+        in {self._parent.json_path}
+
+        (Best match of {self._count} errors found while validating {self._file}#{self._key})
+        Context:
+        {self._parent.context}
+        """
 
 
 def validate_all() -> None:
@@ -53,21 +68,17 @@ def validate_file(
 ) -> None:
     config = load_yaml_file(cf)
     for key in config:
-        try:
-            c = config[key]
-            if preprocess:
-                c = preprocess(c)
-            validate_one(c)
-        except Exception as e:
-            raise ValidationError(f"Failed to validate {cf}#{key}") from e
+        c = config[key]
+        if preprocess:
+            c = preprocess(c)
+        validate_one(c, file=cf, key=key)
 
 
-def validate_one(config: ChannelDefinition) -> None:
+def validate_one(config: ChannelDefinition, file: str, key: str) -> None:
     schema = load_schema()
-    try:
-        jsonschema.validate(config, schema)
-    except Exception as e:
-        raise ValidationError from e
+    errs = list(jsonschema.Draft7Validator(schema).iter_errors(config))  # type: ignore
+    if errs:
+        raise ValidationError(best_match(errs), file=file, key=key, count=len(errs))
 
 
 # Memoize the JSON Schema definition.

@@ -428,7 +428,305 @@ X_BAND_TXO:
   - LV
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+# X-band constraints to comply with NASA/Spire coordination agreement
+#
+# https://drive.google.com/file/d/1iMt6TgUZ6O0V2gvSXcDBscRae8US8MnF/view
+#
+# Appendix A contains a list of protected missions, their NORAD IDs, and their ground station
+# coordinates. We need to avoid transmitting when our satellites are in the beam between one of the
+# protected satellites and its ground station. Only launched missions are included here.
+    separation:
+# CSA/CAN,RADARSAT-3C1,Gatineau Canada
+# CSA/CAN,RS-2C,Gatineau Canada
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 44322
+      - 44323
+      - 44324
+      - 32382
+      station_coordinates:
+      - latitude: 45.58
+        longitude: -76.19
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# CNES,pleiades (-1B),Kiruna Sweden
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 39019
+      station_coordinates:
+      - latitude: 67.89
+        longitude: 21.05
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# ESA,SENTINEL-1,2,3 (A,B),Kiruna Sweden
+# ESA,SENTINEL-1,2,3 (A,B),Svalbard Norway
+# ESA,SENTINEL-1,2,3 (A,B),Troll Antarctica
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 39634
+      - 41456
+      - 40697
+      - 41335
+      - 43437
+      station_coordinates:
+  # Kiruna
+      - latitude: 67.86
+        longitude: 20.97
+        elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.4
+        elevation_m: 0.0
+  # Troll
+      - latitude: -72.01
+        longitude: 2.55
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# ESA,SENTINEL-5P,Svalbard Norway
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 42969
+      station_coordinates:
+      - latitude: 78.23
+        longitude: 15.4
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# JAXA,ALOS-2,Japan-Hatoyoma
+# JAXA,ALOS-2,Katsuura Japan
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 39766
+      station_coordinates:
+  # Hatoyoma
+      - latitude: 36.00
+        longitude: 139.35
+        elevation_m: 0.0
+  # Katsuura
+      - latitude: 35.21
+        longitude: 140.30
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# JAXA,GCOM-C1,Hatoyoma Japan
+# JAXA,GCOM-C1,Tsukuba Japan
+# JAXA,GCOM-C1,Katsuura Japan
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 43065
+      station_coordinates:
+  # Hatoyoma
+      - latitude: 36.00
+        longitude: 139.20
+        elevation_m: 0.0
+  # Tsukuba
+      - latitude: 36.07
+        longitude: 140.13
+        elevation_m: 0.0
+  # Katsuura
+      - latitude: 35.21
+        longitude: 140.30
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# JAXA,GOSAT,Hatoyama Japan
+# JAXA,GOSAT-2,Katsuura Japan
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 33492
+      - 43672
+      station_coordinates:
+  # Hatoyoma
+      - latitude: 36.00
+        longitude: 139.20
+        elevation_m: 0.0
+  # Katsuura
+      - latitude: 35.12
+        longitude: 140.18
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# JAXA,RAPIS-1,USUDA10 Japan
+# JAXA,RAPIS-1,SAGAMIHARA Japan
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 43932
+      station_coordinates:
+  # USUDA
+      - latitude: 36.13
+        longitude: 138.36
+        elevation_m: 0.0
+  # SAGAMIHARA
+      - latitude: 35.71
+        longitude: 139.49
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NASA/GSFC,LANDSAT-7,Hartebeesthoek S Africa
+# NASA/GSFC,LANDSAT-7,Rumpin Indonesia
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 25682
+      station_coordinates:
+  # Hartebeesthoek 
+      - latitude: -25.89
+        longitude: 27.69
+        elevation_m: 0.0
+  # Rumpin
+      - latitude: -6.37
+        longitude: 106.63
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NASA/GSFC,Landsat-8,(LDCM) Rumpin Indonesia
+# NASA/GSFC,Landsat-8,(LDCM) Hartebeesthoek S Africa
+# NASA/GSFC,Landsat-8,(LDCM) Mayaguez USA-PR
+# NASA/GSFC,Landsat-8,(LDCM) Wallops Island VA
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 39084
+      station_coordinates:
+  # Hartebeesthoek 
+      - latitude: -25.89
+        longitude: 27.69
+        elevation_m: 0.0
+  # Rumpin
+      - latitude: -6.37
+        longitude: 106.63
+        elevation_m: 0.0
+  # Mayaguez
+      - latitude: 18.21
+        longitude: -67.14
+        elevation_m: 0.0
+  # Wallops
+      - latitude: 37.92
+        longitude: -75.48
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NASA/GSFC,ICESat-2,Wallops Island VA
+# NASA/GSFC,ICESat-2,Svalbard Norway
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 43613
+      station_coordinates:
+  # Wallops
+      - latitude: 37.92
+        longitude: -75.48
+        elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.39
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NASA/GSFC,Terra (EOS-AM), Svalbard Norway
+# NASA/GSFC,Terra (EOS-AM), Wallops Island VA
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 25994
+      station_coordinates:
+  # Wallops
+      - latitude: 37.92
+        longitude: -75.48
+        elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.39
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NASA/JPL,OCO-2,Troll Antarctica
+# NASA/JPL,OCO-2,Svalbard Norway
+# NASA/JPL,OCO-2,Kiruna Sweden
+# NASA/JPL,OCO-2,Wallops Island VA
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 40059
+      station_coordinates:
+  # Troll
+      - latitude: -72.01
+        longitude: 2.55
+        elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.4
+        elevation_m: 0.0
+  # Kiruna
+      - latitude: 67.89
+        longitude: 21.05
+        elevation_m: 0.0
+  # Wallops
+      - latitude: 37.92
+        longitude: -75.48
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NASA/JPL,SMAP,Svalbard Norway
+# NASA/JPL,SMAP,Wallops Island VA
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 40376
+      station_coordinates:
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.4
+        elevation_m: 0.0
+  # Wallops
+      - latitude: 37.92
+        longitude: -75.48
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NASRDA,N-2,Bordon Camp UK
+# NASRDA,N-X,Bordon Camp UK
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 37789
+      - 37790
+      station_coordinates:
+  # Bordon Camp
+      - latitude: 51.0
+        longitude: 0.0
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NOAA,NPP,Troll Antarctica, -72.0, 2.53, 37849
+# NOAA,NPP,Svalbard Norway, 78.2, 15.39, 37849
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 37849
+      station_coordinates:
+  # Troll
+      - latitude: -72.01
+        longitude: 2.55
+        elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.4
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NOAA,GOES-16/17,Wallops Island VA
+# NOAA,GOES-16/17,Fairmont WV
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 41866
+      - 43226
+      station_coordinates:
+  # Wallops
+      - latitude: 37.95
+        longitude: -75.46
+        elevation_m: 0.0
+  # Fairmont
+      - latitude: 39.43
+        longitude: -80.2
+        elevation_m: 0.0
+      beamwidth_deg: 5
   contact_overhead_time: 27s
   link_profile:
   - min_elevation_deg: 0

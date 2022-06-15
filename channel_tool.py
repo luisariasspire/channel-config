@@ -418,7 +418,7 @@ def apply_update(
                 if updated_chan is not None:
                     asset_type = infer_asset_type(asset)
                     updated_chan = filter_properties(asset_type, updated_chan)
-                    validate_one(updated_chan)
+                    validate_one(updated_chan, file=asset, key=channel)
                 if updated_chan != existing_chan:
                     if yes or confirm_changes(
                         asset, channel, existing_chan, updated_chan
