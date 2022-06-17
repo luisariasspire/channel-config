@@ -16,6 +16,9 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     - FM152
     - FM153
     - FM154
+    - FM155
+    - FM156
+    - FM161
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 10
@@ -40,6 +43,9 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     - FM152
     - FM153
     - FM154
+    - FM155
+    - FM156
+    - FM161
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 10
@@ -64,6 +70,9 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     - FM152
     - FM153
     - FM154
+    - FM155
+    - FM156
+    - FM161
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 10
@@ -88,6 +97,9 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     - FM152
     - FM153
     - FM154
+    - FM155
+    - FM156
+    - FM161
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 10
@@ -112,6 +124,9 @@ X_BAND_TXO:
     - FM152
     - FM153
     - FM154
+    - FM155
+    - FM156
+    - FM161
   contact_overhead_time: 27s
   link_profile:
   - min_elevation_deg: 10
