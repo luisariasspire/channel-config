@@ -395,7 +395,7 @@ X_BAND_TXO:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
 # X-band constraints to comply with NASA/Spire coordination agreement
