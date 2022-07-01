@@ -492,13 +492,6 @@ X_BAND_TXO:
   enabled: false
   legal: true
   satellite_constraints:
-# X-band constraints to comply with NASA/Spire coordination agreement
-#
-# https://drive.google.com/file/d/1iMt6TgUZ6O0V2gvSXcDBscRae8US8MnF/view
-#
-# Appendix A contains a list of protected missions, their NORAD IDs, and their ground station
-# coordinates. We need to avoid transmitting when our satellites are in the beam between one of the
-# protected satellites and its ground station. Only launched missions are included here.
     separation:
 # CSA/CAN,RADARSAT-3C1,Gatineau Canada
 # CSA/CAN,RS-2C,Gatineau Canada
@@ -514,25 +507,84 @@ X_BAND_TXO:
         elevation_m: 0.0
       beamwidth_deg: 5
 
-# CNES,pleiades (-1B),Kiruna Sweden
+# CNES,EYESAT,Aussaguel France
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 44877
+      station_coordinates:
+      - latitude: 43.43
+        longitude: 1.50
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# CNES,pleiades (-1A/1B),Toulouse France
+# CNES,pleiades (-1A/1B),Creil France
+# CNES,pleiades (-1A/1B),Torrejon Spain
+# CNES,pleiades (-1A/1B),Kiruna Sweden
     - type: avoid_ground_station_beams
       norad_ids:
       - 39019
+      - 38012
       station_coordinates:
+  #Toulouse
+      - latitude: 43.40
+        longitude: 1.50
+        elevation_m: 0.0
+  #Creil
+      - latitude: 39.26
+        longitude: 2.48
+        elevation_m: 0.0
+  #Torrejon
+      - latitude: 40.46
+        longitude: 3.48
+        elevation_m: 0.0
+  #Kiruna
       - latitude: 67.89
         longitude: 21.05
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# CNES,SPOT (-2/4/5),Toulouse France
+# CNES,SPOT (-2/4/5),Kiruna Sweden
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 20436
+      - 25260
+      - 27421
+      station_coordinates:
+  #Toulouse
+      - latitude: 43.40
+        longitude: 1.50
+        elevation_m: 0.0
+  #Kiruna
+      - latitude: 67.89
+        longitude: 21.05
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# DLR,TERRASAR,Okinawa Japan
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 31698
+      station_coordinates:
+      - latitude: 26.14
+        longitude: 127.66
         elevation_m: 0.0
       beamwidth_deg: 5
 
 # ESA,SENTINEL-1,2,3 (A,B),Kiruna Sweden
 # ESA,SENTINEL-1,2,3 (A,B),Svalbard Norway
 # ESA,SENTINEL-1,2,3 (A,B),Troll Antarctica
+# ESA,SENTINEL-1,2,3 (A,B),Maspalomas Spain
+# ESA,SENTINEL-1,2,3 (A,B),Matera Italy
+# ESA,SENTINEL-1,2,3 (A,B),Inuvik Canada
     - type: avoid_ground_station_beams
       norad_ids:
       - 39634
       - 41456
       - 40697
       - 41335
+      - 42069
       - 43437
       station_coordinates:
   # Kiruna
@@ -547,20 +599,41 @@ X_BAND_TXO:
       - latitude: -72.01
         longitude: 2.55
         elevation_m: 0.0
+  # Maspalomas
+      - latitude: 27.763
+        longitude: -15.63
+        elevation_m: 0.0
+  # Matera
+      - latitude: 40.390
+        longitude: 16.42
+        elevation_m: 0.0
+  # Inuvik
+      - latitude: 68.318
+        longitude: -133.54
+        elevation_m: 0.0
       beamwidth_deg: 5
 
 # ESA,SENTINEL-5P,Svalbard Norway
+# ESA,SENTINEL-5P,Inuvik Canada
     - type: avoid_ground_station_beams
       norad_ids:
       - 42969
       station_coordinates:
+  # Svalbard
       - latitude: 78.23
         longitude: 15.4
         elevation_m: 0.0
+  # Inuvik
+      - latitude: 68.318
+        longitude: -133.54
+        elevation_m: 0.0
       beamwidth_deg: 5
 
-# JAXA,ALOS-2,Japan-Hatoyoma
+# JAXA,ALOS-2,Hatoyoma Japan
 # JAXA,ALOS-2,Katsuura Japan
+# JAXA,ALOS-2,Fairbanks USA
+# JAXA,ALOS-2,Svalbard Norway
+# JAXA,ALOS-2,Kiruna Sweden
     - type: avoid_ground_station_beams
       norad_ids:
       - 39766
@@ -573,11 +646,24 @@ X_BAND_TXO:
       - latitude: 35.21
         longitude: 140.30
         elevation_m: 0.0
+  # Fairbanks
+      - latitude: 64.859
+        longitude: -147.86
+        elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.22
+        longitude: 15.45
+        elevation_m: 0.0
+  # Kiruna
+      - latitude: 67.889
+        longitude: 21.06
+        elevation_m: 0.0
       beamwidth_deg: 5
 
 # JAXA,GCOM-C1,Hatoyoma Japan
 # JAXA,GCOM-C1,Tsukuba Japan
 # JAXA,GCOM-C1,Katsuura Japan
+# JAXA,GCOM-C1,Svalbard Norway
     - type: avoid_ground_station_beams
       norad_ids:
       - 43065
@@ -594,10 +680,44 @@ X_BAND_TXO:
       - latitude: 35.21
         longitude: 140.30
         elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.130
+        longitude: 15.23
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# JAXA,GCOM-W1,Svalbard Norway
+# JAXA,GCOM-W1,Hatoyoma Japan
+# JAXA,GCOM-W1,Tsukuba Japan
+# JAXA,GCOM-W1,Katsuura Japan
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 38337
+      station_coordinates:
+  # Svalbard
+      - latitude: 78.22
+        longitude: 15.45
+        elevation_m: 0.0
+  # Hatoyoma
+      - latitude: 36.00
+        longitude: 139.20
+        elevation_m: 0.0
+  # Tsukuba
+      - latitude: 36.07
+        longitude: 140.13
+        elevation_m: 0.0
+  # Katsuura
+      - latitude: 35.21
+        longitude: 140.30
+        elevation_m: 0.0
       beamwidth_deg: 5
 
 # JAXA,GOSAT,Hatoyama Japan
 # JAXA,GOSAT-2,Katsuura Japan
+# JAXA,GOSAT,Svalbard Norway
+# JAXA,GOSAT-2,Fairbanks USA
+# JAXA,GOSAT-2,Svalbard Norway
+# JAXA,GOSAT-2,Kiruna Sweden
     - type: avoid_ground_station_beams
       norad_ids:
       - 33492
@@ -610,6 +730,18 @@ X_BAND_TXO:
   # Katsuura
       - latitude: 35.12
         longitude: 140.18
+        elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.22
+        longitude: 15.45
+        elevation_m: 0.0
+  # Fairbanks
+      - latitude: 64.859
+        longitude: -147.86
+        elevation_m: 0.0
+  # Kiruna
+      - latitude: 67.889
+        longitude: 21.07
         elevation_m: 0.0
       beamwidth_deg: 5
 
@@ -629,13 +761,71 @@ X_BAND_TXO:
         elevation_m: 0.0
       beamwidth_deg: 5
 
+
+# NASA/GSFC,AQUA,Fairbanks USA
+# NASA/GSFC,AQUA,Svalbard Norway
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 27424
+      station_coordinates:
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.39
+        elevation_m: 0.0
+  # Fairbanks
+      - latitude: 64.86
+        longitude: -147.86
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+
+# NASA/GSFC,AURA,Fairbanks USA
+# NASA/GSFC,AURA,Svalbard Norway
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 28376
+      station_coordinates:
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.39
+        elevation_m: 0.0
+  # Fairbanks
+      - latitude: 64.86
+        longitude: -147.86
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NASA/GSFC,CALIPSO,North Pole USA
+# NASA/GSFC,CALIPSO,Kiruna Sweden
+# NASA/GSFC,CALIPSO,Dongara Australia
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 29108
+      station_coordinates:
+  # North Pole
+      - latitude: 64.81
+        longitude: -147.50
+        elevation_m: 0.0
+  # Kiruna
+      - latitude: 67.89
+        longitude: 21.05
+        elevation_m: 0.0
+  # Dongara
+      - latitude: -29.05
+        longitude: 115.35
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
 # NASA/GSFC,LANDSAT-7,Hartebeesthoek S Africa
 # NASA/GSFC,LANDSAT-7,Rumpin Indonesia
+# NASA/GSFC,LANDSAT-7,North Pole USA
+# NASA/GSFC,LANDSAT-7,Libreville Gabon
+# NASA/GSFC,LANDSAT-7,Svalbard Norway
     - type: avoid_ground_station_beams
       norad_ids:
       - 25682
       station_coordinates:
-  # Hartebeesthoek 
+  # Hartebeesthoek
       - latitude: -25.89
         longitude: 27.69
         elevation_m: 0.0
@@ -643,17 +833,39 @@ X_BAND_TXO:
       - latitude: -6.37
         longitude: 106.63
         elevation_m: 0.0
+  # North Pole
+      - latitude: 64.86
+        longitude: -147.86
+        elevation_m: 0.0
+  # Libreville
+      - latitude: 0.39
+        longitude: 9.60
+        elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.40
+        elevation_m: 0.0
       beamwidth_deg: 5
 
 # NASA/GSFC,Landsat-8,(LDCM) Rumpin Indonesia
 # NASA/GSFC,Landsat-8,(LDCM) Hartebeesthoek S Africa
 # NASA/GSFC,Landsat-8,(LDCM) Mayaguez USA-PR
 # NASA/GSFC,Landsat-8,(LDCM) Wallops Island VA
+# NASA/GSFC,Landsat-8,(LDCM) Beijing China
+# NASA/GSFC,Landsat-8,(LDCM) Libreville Gabon
+# NASA/GSFC,Landsat-8,(LDCM) Matera Italy
+# NASA/GSFC,Landsat-8,(LDCM) Hirosima Japan
+# NASA/GSFC,Landsat-8,(LDCM) Kumamoto Japan
+# NASA/GSFC,Landsat-8,(LDCM) Svalbard Norway
+# NASA/GSFC,Landsat-8,(LDCM) Riyadh Saudi Arabia
+# NASA/GSFC,Landsat-8,(LDCM) Ulsan South Korea
+# NASA/GSFC,Landsat-8,(LDCM) Maspalomas Spain
+# NASA/GSFC,Landsat-8,(LDCM) Fairbanks USA
     - type: avoid_ground_station_beams
       norad_ids:
       - 39084
       station_coordinates:
-  # Hartebeesthoek 
+  # Hartebeesthoek
       - latitude: -25.89
         longitude: 27.69
         elevation_m: 0.0
@@ -669,10 +881,138 @@ X_BAND_TXO:
       - latitude: 37.92
         longitude: -75.48
         elevation_m: 0.0
+  # Beijing
+      - latitude: 40.45
+        longitude: 116.86
+        elevation_m: 0.0
+  # Libreville
+      - latitude: 0.39
+        longitude: 9.60
+        elevation_m: 0.0
+  # Matera
+      - latitude: 40.39
+        longitude: 16.42
+        elevation_m: 0.0
+  # Hirosima
+      - latitude: 34.36
+        longitude: 132.40
+        elevation_m: 0.0
+  # Kumamoto
+      - latitude: 32.84
+        longitude: 130.87
+        elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.40
+        elevation_m: 0.0
+  # Riyadh
+      - latitude: 24.72
+        longitude: 46.63
+        elevation_m: 0.0
+  # Ulsan
+      - latitude: 35.57
+        longitude: 129.32
+        elevation_m: 0.0
+  # Maspalomas
+      - latitude: 27.763
+        longitude: -15.63
+        elevation_m: 0.0
+  # Fairbanks
+      - latitude: 64.97
+        longitude: -147.51
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NASA/GSFC,Landsat-9,Gatineau Canada
+# NASA/GSFC,Landsat-9,Inuvik Canada
+# NASA/GSFC,Landsat-9,Beijing China
+# NASA/GSFC,Landsat-9,IEE Ecuador
+# NASA/GSFC,Landsat-9,Libreville Gabon
+# NASA/GSFC,Landsat-9,Neustrelitz Germany
+# NASA/GSFC,Landsat-9,Rumpin Indonesia
+# NASA/GSFC,Landsat-9,Matera Italy
+# NASA/GSFC,Landsat-9,Kumamoto Japan
+# NASA/GSFC,Landsat-9,Svalbard Norway
+# NASA/GSFC,Landsat-9,IRKUTSK Russia
+# NASA/GSFC,Landsat-9,Riyadh Saudi Arabia
+# NASA/GSFC,Landsat-9,Hartebeesthoek S Africa
+# NASA/GSFC,Landsat-9,Soeul South Korea
+# NASA/GSFC,Landsat-9,Ulsan South Korea
+# NASA/GSFC,Landsat-9,Kiruna Sweden
+# NASA/GSFC,Landsat-9,Fairbanks USA
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 49620
+      station_coordinates:
+  # Gatineau
+      - latitude: 45.59
+        longitude: -75.81
+        elevation_m: 0.0
+  # Inuvik
+      - latitude: 68.32
+        longitude: -133.55
+        elevation_m: 0.0
+  # Beijing
+      - latitude: 40.45
+        longitude: 116.86
+        elevation_m: 0.0
+  # Libreville
+      - latitude: 0.39
+        longitude: 9.60
+        elevation_m: 0.0
+  # Neustrelitz
+      - latitude: 53.33
+        longitude: 13.07
+        elevation_m: 0.0
+  # Rumpin
+      - latitude: -6.37
+        longitude: 106.63
+        elevation_m: 0.0
+  # Matera
+      - latitude: 40.65
+        longitude: 16.71
+        elevation_m: 0.0
+  # Kumamoto
+      - latitude: 32.84
+        longitude: 130.87
+        elevation_m: 0.0
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.39
+        elevation_m: 0.0
+  # IRKUTSK
+      - latitude: 52.28
+        longitude: 104.30
+        elevation_m: 0.0
+  # Riyadh
+      - latitude: 24.72
+        longitude: 46.63
+        elevation_m: 0.0
+  # Hartebeesthoek
+      - latitude: -25.89
+        longitude: 27.71
+        elevation_m: 0.0
+  # Seoul
+      - latitude: 37.46
+        longitude: 127.07
+        elevation_m: 0.0
+  # Ulsan
+      - latitude: 35.57
+        longitude: 129.32
+        elevation_m: 0.0
+  # Kiruna
+      - latitude: 67.88
+        longitude: 21.04
+        elevation_m: 0.0
+  # Fairbanks
+      - latitude: 65.00
+        longitude: -147.50
+        elevation_m: 0.0
       beamwidth_deg: 5
 
 # NASA/GSFC,ICESat-2,Wallops Island VA
 # NASA/GSFC,ICESat-2,Svalbard Norway
+# NASA/GSFC,ICESat-2,Fairbanks USA
     - type: avoid_ground_station_beams
       norad_ids:
       - 43613
@@ -685,10 +1025,15 @@ X_BAND_TXO:
       - latitude: 78.23
         longitude: 15.39
         elevation_m: 0.0
+  # Fairbanks
+      - latitude: 64.86
+        longitude: -147.86
+        elevation_m: 0.0
       beamwidth_deg: 5
 
 # NASA/GSFC,Terra (EOS-AM), Svalbard Norway
 # NASA/GSFC,Terra (EOS-AM), Wallops Island VA
+# NASA/GSFC,Terra (EOS-AM), Fairbanks USA
     - type: avoid_ground_station_beams
       norad_ids:
       - 25994
@@ -701,12 +1046,17 @@ X_BAND_TXO:
       - latitude: 78.23
         longitude: 15.39
         elevation_m: 0.0
+  # Fairbanks
+      - latitude: 64.86
+        longitude: -147.86
+        elevation_m: 0.0
       beamwidth_deg: 5
 
 # NASA/JPL,OCO-2,Troll Antarctica
 # NASA/JPL,OCO-2,Svalbard Norway
 # NASA/JPL,OCO-2,Kiruna Sweden
 # NASA/JPL,OCO-2,Wallops Island VA
+# NASA/JPL,OCO-2,Fairbanks USA
     - type: avoid_ground_station_beams
       norad_ids:
       - 40059
@@ -727,10 +1077,15 @@ X_BAND_TXO:
       - latitude: 37.92
         longitude: -75.48
         elevation_m: 0.0
+  # Fairbanks
+      - latitude: 64.86
+        longitude: -147.86
+        elevation_m: 0.0
       beamwidth_deg: 5
 
 # NASA/JPL,SMAP,Svalbard Norway
 # NASA/JPL,SMAP,Wallops Island VA
+# NASA/JPL,SMAP,Fairbanks USA
     - type: avoid_ground_station_beams
       norad_ids:
       - 40376
@@ -742,6 +1097,10 @@ X_BAND_TXO:
   # Wallops
       - latitude: 37.92
         longitude: -75.48
+        elevation_m: 0.0
+  # Fairbanks
+      - latitude: 64.86
+        longitude: -147.86
         elevation_m: 0.0
       beamwidth_deg: 5
 
@@ -760,6 +1119,7 @@ X_BAND_TXO:
 
 # NOAA,NPP,Troll Antarctica, -72.0, 2.53, 37849
 # NOAA,NPP,Svalbard Norway, 78.2, 15.39, 37849
+# NOAA,NPP,Fairbanks USA
     - type: avoid_ground_station_beams
       norad_ids:
       - 37849
@@ -771,6 +1131,10 @@ X_BAND_TXO:
   # Svalbard
       - latitude: 78.23
         longitude: 15.4
+        elevation_m: 0.0
+  # Fairbanks
+      - latitude: 64.97
+        longitude: -147.51
         elevation_m: 0.0
       beamwidth_deg: 5
 
@@ -788,6 +1152,18 @@ X_BAND_TXO:
   # Fairmont
       - latitude: 39.43
         longitude: -80.2
+        elevation_m: 0.0
+      beamwidth_deg: 5
+
+# NSPO,FORMOSAT-2/5,Svalbard Norway
+    - type: avoid_ground_station_beams
+      norad_ids:
+      - 28254
+      - 42920
+      station_coordinates:
+  # Svalbard
+      - latitude: 78.23
+        longitude: 15.40
         elevation_m: 0.0
       beamwidth_deg: 5
   contact_overhead_time: 27s
