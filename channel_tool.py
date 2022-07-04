@@ -782,10 +782,15 @@ VALIDATE_PARSER = SUBPARSERS.add_parser(
 )
 VALIDATE_PARSER.set_defaults(func=lambda _: validate_all())
 
-
 if __name__ == "__main__":
     try:
         args = PARSER.parse_args()
+
+        if 'func' not in args:
+            err("Missing positional argument, I do not know what to do")
+            PARSER.print_help()
+            sys.exit(1)
+
         try:
             args.func(args)
         except Exception as e:
