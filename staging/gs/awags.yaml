@@ -24,7 +24,7 @@ X_BAND_TXO:
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 10000000
-        dvb: 5
+        pls: 5
         mod_gain: 130
         vbatt/current/max: 2300
         vbatt/power/max: 17000
