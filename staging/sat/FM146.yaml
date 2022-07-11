@@ -440,7 +440,7 @@ X_BAND_TXO:
   - US
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
 # X-band constraints to comply with NASA/Spire coordination agreement
