@@ -3,16 +3,15 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
-  ground_station_constraints:
-    fixed_contact_duration: 1min
+  ground_station_constraints: {}
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 280.0
     uplink_rate_kbps: 0.0
-    min_duration: 1min
+    min_duration: 2min
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -20,8 +19,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints:
-    fixed_contact_duration: 1min
+  ground_station_constraints: {}
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 10
@@ -35,14 +33,13 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints:
-    fixed_contact_duration: 1min
+  ground_station_constraints: {}
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 240.0
     uplink_rate_kbps: 0.0
-    min_duration: 1min
+    min_duration: 2min
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -50,11 +47,48 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints:
-    fixed_contact_duration: 1min
+  ground_station_constraints: {}
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 240.0
     uplink_rate_kbps: 0.0
-    min_duration: 1min
+    min_duration: 2min
+X_BAND_TXO:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 27s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 940.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      protocol: DVBS2X
+      bandaid_override:
+        tx_sample_rate_hz: 10000000
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        pls: 5
+        mod_gain: 130
+        vbatt/voltage/min: 7200
+        vbatt/power/max: 17000
+    chainOverride:
+      sband:
+        header-freq-pow: 7
+        coarse-freq-win: 1000000
+        lo-offset: 5000000
+        ant: RX2
+        rf_bandwidth: 10000000
+        gain: 3
+        freq: 1250000000
