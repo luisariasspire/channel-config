@@ -1,10 +1,9 @@
 CONTACT_BIDIR:
-# GSDOC477
   directionality: Bidirectional
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -18,7 +17,6 @@ CONTACT_BIDIR:
     uplink_rate_kbps: 4.0
     min_duration: 20sec
 CONTACT_BIDIR_DVBS2X:
-# GSDOC477
   directionality: Bidirectional
   allowed_license_countries:
   - US
@@ -51,13 +49,12 @@ CONTACT_BIDIR_UHF:
     uplink_rate_kbps: 4.0
     min_duration: 2m
 CONTACT_RXO:
-# GSDOC477
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 20s
@@ -67,7 +64,6 @@ CONTACT_RXO:
     uplink_rate_kbps: 0.0
     min_duration: 2min
 CONTACT_RXO_DVBS2X:
-# GSDOC477
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
@@ -83,12 +79,11 @@ CONTACT_RXO_DVBS2X:
     uplink_rate_kbps: 0.0
     min_duration: 2min
 CONTACT_TRACKING_BIDIR:
-# GSDOC477
   directionality: Bidirectional
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -102,7 +97,6 @@ CONTACT_TRACKING_BIDIR:
     uplink_rate_kbps: 4.0
     min_duration: 20sec
 CONTACT_TRACKING_BIDIR_DVBS2X:
-# GSDOC477
   directionality: Bidirectional
   allowed_license_countries:
   - US
@@ -121,13 +115,12 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
     uplink_rate_kbps: 4.0
     min_duration: 20sec
 CONTACT_TRACKING_RXO:
-# GSDOC477
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 20s
@@ -137,7 +130,6 @@ CONTACT_TRACKING_RXO:
     uplink_rate_kbps: 0.0
     min_duration: 2min
 CONTACT_TRACKING_RXO_DVBS2X:
-# GSDOC477
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
