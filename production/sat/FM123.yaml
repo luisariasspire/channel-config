@@ -177,19 +177,49 @@ CONTACT_RXO_DVBS2X:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
+    - type: minimum_distance
+      norad_id: 25544
+      distance_m: 150000
     - type: no_overlapping_transits
       norad_id: 47493   #FM123's norad_id
       modifier:
         only_for_ground_stations:
+        - accgs # only for WBUGS
+        - ancgs
+        - awags
+        - bdags
+        - bdlgs
+        - bdugs
+        - cltgs
+        - cmbgs
+        - dalgs
+        - dlhgs
+        - glags
+        - gumgs
+        - hlegs
+        - hndgs
+        - icegs
+        - itogs
+        - ivcgs
+        - jnbgs
+        - jnugs
+        - orkgs
+        - pergs
+        - pitgs
+        - psygs
+        - puqgs
+        - seags
+        - sings
+        - smags
+        - stxgs
+        - tosgs
         - tusgs
-        - wbugs
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
+        - vntgs
+        - xspgs
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 0
