@@ -1,3 +1,63 @@
+CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - LU
+  - SG
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 25s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 280.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+CONTACT_RXO_SBAND_FREQ_2200_MHZ:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - LU
+  - SG
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 20s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 240.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - LU
+  - SG
+  enabled: false
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 30s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 240.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - LU
+  - SG
+  enabled: false
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 20s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 240.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
 X_BAND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
