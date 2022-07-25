@@ -3,7 +3,7 @@ CONTACT_BIDIR:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -54,7 +54,7 @@ CONTACT_RXO:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 20s
@@ -83,7 +83,7 @@ CONTACT_TRACKING_BIDIR:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -120,7 +120,7 @@ CONTACT_TRACKING_RXO:
   - US
   - SG
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 20s
