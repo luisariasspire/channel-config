@@ -550,7 +550,7 @@ X_BAND_TXO:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     deny_ground_stations:
