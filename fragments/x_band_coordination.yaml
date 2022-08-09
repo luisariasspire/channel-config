@@ -57,24 +57,6 @@ separation:
     elevation_m: 0.0
   beamwidth_deg: 5
 
-# CNES,SPOT (-2/4/5),Toulouse France
-# CNES,SPOT (-2/4/5),Kiruna Sweden
-- type: avoid_ground_station_beams
-  norad_ids:
-  - 20436
-  - 25260
-  - 27421
-  station_coordinates:
-  #Toulouse
-  - latitude: 43.40
-    longitude: 1.50
-    elevation_m: 0.0
-  #Kiruna
-  - latitude: 67.89
-    longitude: 21.05
-    elevation_m: 0.0
-  beamwidth_deg: 5
-
 # DLR,TERRASAR,Okinawa Japan
 - type: avoid_ground_station_beams
   norad_ids:
@@ -97,7 +79,7 @@ separation:
   - 41456
   - 40697
   - 41335
-  - 42069
+  - 42063
   - 43437
   station_coordinates:
   # Kiruna
@@ -455,7 +437,7 @@ separation:
 # NASA/GSFC,Landsat-9,Fairbanks USA
 - type: avoid_ground_station_beams
   norad_ids:
-  - 49620
+  - 49260
   station_coordinates:
   # Gatineau
   - latitude: 45.59
