@@ -1,0 +1,176 @@
+Agency,Mission,Rx ES Location,Lat (N),Long (E),NORAD ID,Launch Date/Status
+CNES,EYESAT,"Aussaguel, France",43.429,1.498,44877,In orbit
+CNES,pleiades (-1A/1B),"Toulouse, France",43.4,1.5,39019,In orbit
+CNES,pleiades (-1A/1B),"Creil, France",39.26,2.475,39019,In orbit
+CNES,pleiades (-1A/1B),"Torrejon, Spain",40.46,3.48,39019,In orbit
+CNES,pleiades (1A/-1B),"Kiruna, Sweden",67.89,21.052,39019,In orbit
+CNES,SPOT (-2),"Toulouse, France",43.4,1.5,20436,In orbit
+CNES,SPOT (-2),"Kiruna, Sweden",67.89,21.052,20436,In orbit
+CNES,SPOT (-4),"Toulouse, France",43.4,1.5,25260,In orbit
+CNES,SPOT (-4),"Kiruna, Sweden",67.89,21.052,25260,In orbit
+CNES,SPOT (-5),"Toulouse, France",43.4,1.5,27421,In orbit
+CNES,SPOT (-5),"Kiruna, Sweden",67.89,21.052,27421,In orbit
+CSA/CAN,RADARSAT-3C1,Canada-Gatineau,45.581,-76.194,44322,In orbit
+CSA/CAN,RADARSAT-3C2,Canada-Gatineau,45.581,-76.194,44323,In orbit
+CSA/CAN,RADARSAT-3C3,Canada-Gatineau,45.581,-76.194,44324,In orbit
+CSA/CAN,RS-2C,Canada-Gatineau,45.581,-76.194,32382,In orbit
+DLR,TERRASAR,Japan-Okinawa,26.14,127.66,31698,In orbit
+ESA,ALTIUS,Antarctica-Troll (KSAT),-72.01,2.55,-,2025
+ESA,ALTIUS,Canada-Inuvik,68.32,-133.54,-,2025
+ESA,ALTIUS,Sweden-Kiruna (USN),67.89,21.06,-,2025
+ESA,ALTIUS,"USA-AK,Fairbanks",64.97,-147.51,-,2025
+ESA,ALTIUS,Norway-Svalbard,78.23,15.4,-,2025
+ESA,BIOMASS,Canada-Inuvik,68.318,-133.544,-,10/1/2022
+ESA,BIOMASS,Sweden-Kiruna (ESA),67.9,21.1,-,10/1/2022
+ESA,BIOMASS,Norway-Svalbard,78.232,15.401,-,10/1/2022
+ESA,BIOMASS,"USA-AK,Prudhoe Bay",70.326,-148.711,-,10/1/2022
+ESA,BIOMASS,Finland-Sodankyla,67.36,26.61,-,10/1/2022
+ESA,FLEX,Norway-Svalbard,78.23,15.4,-,2025
+ESA,SENTINEL-1 (A),Spain-Maspalomas (ESA),27.763,-15.634,39634,In orbit
+ESA,SENTINEL-1 (A),Antarctica-Troll (KSAT),-72.01,2.555,39634,In orbit
+ESA,SENTINEL-1 (A),Norway-Svalbard,78.23,15.4,39634,In orbit
+ESA,SENTINEL-1 (A),Italy-Matera,40.39,16.42,39634,In orbit
+ESA,SENTINEL-1 (A),Sweden-Kiruna (ESA),67.858,20.967,39634,In orbit
+ESA,SENTINEL-1 (A),Canada-Inuvik,68.318,-133.544,39634,In orbit
+ESA,SENTINEL-2 (A),Spain-Maspalomas (ESA),27.763,-15.634,40697,In orbit
+ESA,SENTINEL-2 (A),Antarctica-Troll (KSAT),-72.01,2.555,40697,In orbit
+ESA,SENTINEL-2 (A),Norway-Svalbard,78.23,15.4,40697,In orbit
+ESA,SENTINEL-2 (A),Italy-Matera,40.39,16.42,40697,In orbit
+ESA,SENTINEL-2 (A),Sweden-Kiruna (ESA),67.858,20.967,40697,In orbit
+ESA,SENTINEL-2 (A),Canada-Inuvik,68.318,-133.544,40697,In orbit
+ESA,SENTINEL-3 (A),Spain-Maspalomas (ESA),27.763,-15.634,41335,In orbit
+ESA,SENTINEL-3 (A),Antarctica-Troll (KSAT),-72.01,2.555,41335,In orbit
+ESA,SENTINEL-3 (A),Norway-Svalbard,78.23,15.4,41335,In orbit
+ESA,SENTINEL-3 (A),Italy-Matera,40.39,16.42,41335,In orbit
+ESA,SENTINEL-3 (A),Sweden-Kiruna (ESA),67.858,20.967,41335,In orbit
+ESA,SENTINEL-3 (A),Canada-Inuvik,68.318,-133.544,41335,In orbit
+ESA,SENTINEL-1 (B),Spain-Maspalomas (ESA),27.763,-15.634,41456,In orbit
+ESA,SENTINEL-1 (B),Antarctica-Troll (KSAT),-72.01,2.555,41456,In orbit
+ESA,SENTINEL-1 (B),Norway-Svalbard,78.23,15.4,41456,In orbit
+ESA,SENTINEL-1 (B),Italy-Matera,40.39,16.42,41456,In orbit
+ESA,SENTINEL-1 (B),Sweden-Kiruna (ESA),67.858,20.967,41456,In orbit
+ESA,SENTINEL-1 (B),Canada-Inuvik,68.318,-133.544,41456,In orbit
+ESA,SENTINEL-2 (B),Spain-Maspalomas (ESA),27.763,-15.634,42069,In orbit
+ESA,SENTINEL-2 (B),Antarctica-Troll (KSAT),-72.01,2.555,42069,In orbit
+ESA,SENTINEL-2 (B),Norway-Svalbard,78.23,15.4,42069,In orbit
+ESA,SENTINEL-2 (B),Italy-Matera,40.39,16.42,42069,In orbit
+ESA,SENTINEL-2 (B),Sweden-Kiruna (ESA),67.858,20.967,42069,In orbit
+ESA,SENTINEL-2 (B),Canada-Inuvik,68.318,-133.544,42069,In orbit
+ESA,SENTINEL-3 (B),Spain-Maspalomas (ESA),27.763,-15.634,43437,In orbit
+ESA,SENTINEL-3 (B),Antarctica-Troll (KSAT),-72.01,2.555,43437,In orbit
+ESA,SENTINEL-3 (B),Norway-Svalbard,78.23,15.4,43437,In orbit
+ESA,SENTINEL-3 (B),Italy-Matera,40.39,16.42,43437,In orbit
+ESA,SENTINEL-3 (B),Sweden-Kiruna (ESA),67.858,20.967,43437,In orbit
+ESA,SENTINEL-3 (B),Canada-Inuvik,68.318,-133.544,43437,In orbit
+ESA,SENTINEL-5P,Canada-Inuvik,68.318,-133.544,42969,In orbit
+ESA,SENTINEL-5P,"KSAT-Svalbard, NORWAY",78.232,15.401,42969,In orbit
+ESA and CAS,SMILE-X,Antarctica-Troll (KSAT),-72.01,2.54,-,1/1/2023
+JAXA,ALOS-2,"USA-AK,Fairbanks (NASA)",64.859,-147.855,39766,In orbit
+JAXA,ALOS-2,Norway-Svalbard,78.22,15.45,39766,In orbit
+JAXA,ALOS-2,Sweden-Kiruna (USN),67.889,21.06,39766,In orbit
+JAXA,ALOS-2,Japan-Hatoyoma,36.002,139.348,39766,In orbit
+JAXA,ALOS-2,Japan-Katsuura,35.21,140.3,39766,In orbit
+JAXA,ALOS-3 (AOS),"USA-AK,Fairbanks",64.859,-147.855,-,12/2022
+JAXA,ALOS-3 (AOS),Norway-Svalbard,78.22,15.45,-,12/2022
+JAXA,DESTINY PLUS,Australia-Canberra,-35.399,148.98,-,1/1/2024
+JAXA,DESTINY PLUS,Australia-New Norcia,-31.048,116.191,-,1/1/2024
+JAXA,DESTINY PLUS,Japan-Uchinoura,31.254,131.078,-,1/1/2024
+JAXA,DESTINY PLUS,Japan-Usuda,36.133,138.363,-,1/1/2024
+JAXA,DESTINY PLUS,Spain-Madrid,40.428,-4.251,-,1/1/2024
+JAXA,DESTINY PLUS,"USA-CA,Goldstone",35.337,-116.873,-,1/1/2024
+JAXA,GCOM-C1,Norway-Svalbard,78.13,15.23,43065,In orbit
+JAXA,GCOM-C1,Japan-Hatoyoma,36,139.2,43065,In orbit
+JAXA,GCOM-C1,Japan-Tsukuba,36.072,140.129,43065,In orbit
+JAXA,GCOM-C1,Japan-Katsuura,35.211,140.299,43065,In orbit
+JAXA,GCOM-W1,Norway-Svalbard,78.22,15.45,38337,In orbit
+JAXA,GCOM-W1,Japan-Hatoyoma,36,139.2,38337,In orbit
+JAXA,GCOM-W1,Japan-Tsukuba,36.072,140.129,38337,In orbit
+JAXA,GCOM-W1,Japan-Katsuura,35.211,140.299,38337,In orbit
+JAXA,GOSAT,"Svalbard, Norway",78.22,15.45,33492,In orbit
+JAXA,GOSAT,"Hatoyama, Japan",36,139.2,33492,In orbit
+JAXA,GOSAT-2,ASF FAIRBANKS,64.859,-147.855,43672,In orbit
+JAXA,GOSAT-2,"Svalbard, Norway",78.22,15.45,43672,In orbit
+JAXA,GOSAT-2,SSC KIRUNA,67.889,21.066,43672,In orbit
+JAXA,GOSAT-2,"Katsuura, Japan",35.123,140.18,43672,In orbit
+JAXA,LEOMI/RAISE-3,Japan-Hatoyoma,36.002,139.348,-,01/2023
+JAXA,LEOMI/RAISE-3,Japan-Katsuura,35.209,140.301,-,01/2023
+JAXA,LEOMI/RAISE-3,Japan-Sagamihara,35.558,139.395,-,01/2023
+JAXA,LEOMI/RAISE-3,Japan-Tsukuba,36.071,140.126,-,01/2023
+JAXA,RAPIS-1,USUDA10,36.133,138.363,43932,In orbit
+JAXA,RAPIS-1,SAGAMIHARA,35.71,139.49,43932,In orbit
+NASA/GSFC,AQUA,"USA-AK,Fairbanks (NASA)",64.859,-147.858,27424,In orbit
+NASA/GSFC,AQUA,Norway-Svalbard,78.23,15.389,27424,In orbit
+NASA/GSFC,AURA,"USA-AK,Fairbanks (NASA)",64.859,-147.858,28376,In orbit
+NASA/GSFC,AURA,Norway-Svalbard,78.23,15.389,28376,In orbit
+NASA/GSFC,CALIPSO,"North Pole, AK",64.805,-147.499,29108,In orbit
+NASA/GSFC,CALIPSO,"Kiruna, Sweden",67.89,21.052,29108,In orbit
+NASA/GSFC,CALIPSO,"Dongara, Australia",-29.048,115.35,29108,In orbit
+NASA/GSFC,ICESat-2,"USA-AK,Fairbanks (NASA)",64.86,-147.86,43613,In orbit
+NASA/GSFC,ICESat-2,"USA-VA,Wallops Island",37.925,-75.477,43613,In orbit
+NASA/GSFC,ICESat-2,Norway-Svalbard,78.23,15.39,43613,In orbit
+NASA/GSFC,LANDSAT-7,"USA-AK,North Pole (USN)",64.859,-147.858,25682,In orbit
+NASA/GSFC,LANDSAT-7,Gabon-Libreville,0.386,9.597,25682,In orbit
+NASA/GSFC,LANDSAT-7,Norway-Svalbard,78.23,15.4,25682,In orbit
+NASA/GSFC,LANDSAT-7,S Africa-Hartebeesthoek,-25.89,27.685,25682,In orbit
+NASA/GSFC,LANDSAT-7,Indonesia-Rumpin,-6.372,106.632,25682,In orbit
+NASA/GSFC,LDCM,China-Beijing (RADI),40.45,116.86,39084,In orbit
+NASA/GSFC,LDCM,Gabon-Libreville,0.386,9.597,39084,In orbit
+NASA/GSFC,LDCM,Indonesia-Rumpin,-6.372,106.632,39084,In orbit
+NASA/GSFC,LDCM,Italy-Matera,40.39,16.42,39084,In orbit
+NASA/GSFC,LDCM,Japan-Hiroshima,34.36,132.4,39084,In orbit
+NASA/GSFC,LDCM,Japan-Kumamoto,32.835,130.87,39084,In orbit
+NASA/GSFC,LDCM,Norway-Svalbard,78.23,15.4,39084,In orbit
+NASA/GSFC,LDCM,Saudi Arabia-Riyadh,24.72,46.633,39084,In orbit
+NASA/GSFC,LDCM,S Africa-Hartebeesthoek,-25.89,27.685,39084,In orbit
+NASA/GSFC,LDCM,S Korea-Ulsan,35.566,129.316,39084,In orbit
+NASA/GSFC,LDCM,Spain-Maspalomas (ESA),27.763,-15.634,39084,In orbit
+NASA/GSFC,LDCM,"USA-AK,Fairbanks",64.973,-147.508,39084,In orbit
+NASA/GSFC,LDCM,"USA-PR,Mayaguez",18.21,-67.14,39084,In orbit
+NASA/GSFC,LDCM,"USA-VA,Wallops Island",37.925,-75.477,39084,In orbit
+NASA/GSFC,LANDSAT-9,Canada-Gatineau,45.585,-75.808,49620,In orbit
+NASA/GSFC,LANDSAT-9,Canada-Inuvik,68.32,-133.55,49620,In orbit
+NASA/GSFC,LANDSAT-9,China-Beijing (RADI),40.451,116.857,49620,In orbit
+NASA/GSFC,LANDSAT-9,Ecuador-IEE,0.62,-78.58,49620,In orbit
+NASA/GSFC,LANDSAT-9,Gabon-Libreville,0.387,9.597,49620,In orbit
+NASA/GSFC,LANDSAT-9,Germany-Neustrelitz,53.328,13.073,49620,In orbit
+NASA/GSFC,LANDSAT-9,Indonesia-Rumpin,-6.372,106.632,49620,In orbit
+NASA/GSFC,LANDSAT-9,Italy-Matera,40.65,16.706,49620,In orbit
+NASA/GSFC,LANDSAT-9,Japan-Kumamoto,32.836,130.869,49620,In orbit
+NASA/GSFC,LANDSAT-9,Norway-Svalbard,78.231,15.389,49620,In orbit
+NASA/GSFC,LANDSAT-9,Russia-IRKUTSK,52.283,104.3,49620,In orbit
+NASA/GSFC,LANDSAT-9,Saudi Arabia-Riyadh,24.72,46.633,49620,In orbit
+NASA/GSFC,LANDSAT-9,S Africa-Hartebeesthoek,-25.886,27.709,49620,In orbit
+NASA/GSFC,LANDSAT-9,S Korea-Soeul,37.459,127.069,49620,In orbit
+NASA/GSFC,LANDSAT-9,S Korea-Ulsan,35.566,129.316,49620,In orbit
+NASA/GSFC,LANDSAT-9,Sweden-Kiruna (ESA),67.879,21.038,49620,In orbit
+NASA/GSFC,LANDSAT-9,"USA-AK,Fairbanks",64.977,-147.5,49620,In orbit
+NASA/LARC,MAIA,"Quebec, Canada",-53.15,-70.91,-,2023
+NASA/LARC,MAIA,"Svalbard, Norway",78.2,15.4,-,2023
+NASA/GSFC,Terra (EOS-AM),"USA-AK,Fairbanks (NASA)",64.859,-147.858,25994,In orbit
+NASA/GSFC,Terra (EOS-AM),"USA-VA,Wallops Island",37.92,-75.47,25994,In orbit
+NASA/GSFC,Terra (EOS-AM),Norway-Svalbard,78.23,15.39,25994,In orbit
+NASA/JPL,OCO-2,"USA-AK,Fairbanks (NASA)",64.859,-147.858,40059,In orbit
+NASA/JPL,OCO-2,"USA-VA,Wallops Island",37.925,-75.477,40059,In orbit
+NASA/JPL,OCO-2,Antarctica-Troll (KSAT),-72.01,2.555,40059,In orbit
+NASA/JPL,OCO-2,Norway-Svalbard,78.23,15.4,40059,In orbit
+NASA/JPL,OCO-2,Sweden-Kiruna (USN),67.89,21.052,40059,In orbit
+NASA/JPL,SMAP,"USA-AK,Fairbanks (NASA)",64.859,-147.858,40376,In orbit
+NASA/JPL,SMAP,"USA-VA,Wallops Island",37.925,-75.477,40376,In orbit
+NASA/JPL,SMAP,Norway-Svalbard,78.232,15.401,40376,In orbit
+NASA/JPL,SWOT,Canada-Inuvik,68.317,-133.533,-,11/17/2022
+NASA/JPL,SWOT,France-Issus Aussaguel,43.439,1.498,-,11/17/2022
+NASA/JPL,SWOT,Sweden-Kiruna (USN),67.89,21.07,-,11/17/2022
+NASA/JPL,SWOT,S Africa-Hartebeesthoek,-25.887,27.7,-,11/17/2022
+NASRDA,N-2,UK-Bordon,51,0,37789,In orbit
+NASRDA,N-X,UK-Bordon,51,0,37790,In orbit
+NOAA,NPP,"USA-AK,Fairbanks",64.97,-147.51,37849,In orbit
+NOAA,NPP,Antarctica-Troll (KSAT),-72,2.53,37849,In orbit
+NOAA,NPP,Norway-Svalbard,78.2,15.39,37849,In orbit
+NOAA,OCEANSAT-3,Norway-Svalbard,78.2,15.39,-,Aug 2022
+NSPO,FORMOSAT-2,Norway-Svalbard,78.232,15.401,28254,In orbit
+NSPO,FORMOSAT-5,Norway-Svalbard,78.232,15.401,42920,In orbit
+NSPO,FORMOSAT-8,Norway-Svalbard,78.23,15.4,-,2023
+NOAA,GOES 16,"USA-WV,Fairmont",39.433,-80.2,41866,In orbit
+NOAA,GOES 16,"USA-VA,Wallops Island",37.945,-75.462,41866,In orbit
+NOAA,GOES-17,"USA-WV,Fairmont",39.433,-80.2,43226,In orbit
+NOAA,GOES-17,"USA-VA,Wallops Island",37.945,-75.462,43226,In orbit
