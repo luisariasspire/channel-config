@@ -27,14 +27,6 @@ CONTACT_BIDIR:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -69,14 +61,6 @@ CONTACT_BIDIR_DVBS2X:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 0
@@ -111,11 +95,6 @@ CONTACT_BIDIR_UHF:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -150,9 +129,6 @@ CONTACT_RXO:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 0
@@ -181,9 +157,6 @@ CONTACT_RXO_DVBS2X:
   legal: true
   satellite_constraints:
     separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
     - type: no_overlapping_transits
       norad_id: 47493   #FM123's norad_id
       modifier:
@@ -328,14 +301,6 @@ CONTACT_TRACKING_BIDIR:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -370,14 +335,6 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -412,9 +369,6 @@ CONTACT_TRACKING_RXO:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 0
@@ -449,9 +403,6 @@ CONTACT_TRACKING_RXO_DVBS2X:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0

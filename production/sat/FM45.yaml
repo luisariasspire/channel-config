@@ -20,16 +20,7 @@ CONTACT_BIDIR:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
+  satellite_constraints: {}
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -58,16 +49,7 @@ CONTACT_BIDIR_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
+  satellite_constraints: {}
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 0
@@ -95,13 +77,7 @@ CONTACT_BIDIR_UHF:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints:
-    separation:
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
+  satellite_constraints: {}
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -130,11 +106,7 @@ CONTACT_RXO:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
+  satellite_constraints: {}
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 0
@@ -162,11 +134,7 @@ CONTACT_RXO_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
+  satellite_constraints: {}
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 0
@@ -250,16 +218,7 @@ CONTACT_TRACKING_BIDIR:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
+  satellite_constraints: {}
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -287,16 +246,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
+  satellite_constraints: {}
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -324,11 +274,7 @@ CONTACT_TRACKING_RXO:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
+  satellite_constraints: {}
   contact_overhead_time: 20s
   link_profile:
   - min_elevation_deg: 0
@@ -356,11 +302,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints:
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
+  satellite_constraints: {}
   contact_overhead_time: 30s
   link_profile:
   - min_elevation_deg: 0
