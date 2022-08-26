@@ -23,6 +23,7 @@ The formatted YAML constraints are printed to stdout.
 import csv
 import sys
 from collections import defaultdict
+
 from ruamel.yaml import YAML, comments
 
 yaml = YAML()
@@ -36,17 +37,15 @@ coordinates. We need to avoid transmitting when our satellites are in the beam b
 protected satellites and its ground station. Only launched missions are included here."""
 
 # NASA has provided some bad IDs; this maps them to the corrected version.
-NORAD_ID_CORRECTIONS = { 
-    49620: 49260,
-    42069: 42063
-}
+NORAD_ID_CORRECTIONS = {49620: 49260, 42069: 42063}
 
 # These missions are now listed as "dead" in Celestrak.
 EOL_MISSIONS = {
-    20436, # SPOT-2
-    25260, # SPOT-4
-    27421, # SPOT-5
+    20436,  # SPOT-2
+    25260,  # SPOT-4
+    27421,  # SPOT-5
 }
+
 
 def main(file_name):
     with open(file_name, "r") as f:
@@ -124,7 +123,8 @@ def to_constraints(missions):
 
         constraint["station_coordinates"] = [
             # Sort by location name to keep the diff clean
-            to_gs_entry(*gs) for gs in sorted(assets["Stations"], key=lambda vs: vs[0])
+            to_gs_entry(*gs)
+            for gs in sorted(assets["Stations"], key=lambda vs: vs[0])
         ]
         constraint["beamwidth_deg"] = 5
         constraints.append(constraint)

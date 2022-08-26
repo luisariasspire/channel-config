@@ -31,3 +31,22 @@ Feature: `channel_tool` supports editing embedded YAML structures
        uplink_rate_kbps: 10.0
        min_duration: 2min
    """
+
+  Scenario: remove a YAML structure from a file
+   Given the ground station 'testgs' has 'CONTACT_BIDIR' in its configuration file
+   And a file 'link_profile.yaml' containing:
+   """
+   - min_elevation_deg: 25
+     downlink_rate_kbps: 300
+     uplink_rate_kbps: 5.6
+     min_duration: 20sec
+   """
+   When I run 'python channel_tool.py edit staging testgs CONTACT_BIDIR --link_profile_file link_profile.yaml --mode=remove --yes'
+   Then it will exit with code '0'
+   And the file 'staging/gs/testgs.yaml' will not contain:
+   """
+   - min_elevation_deg: 25
+     downlink_rate_kbps: 300
+     uplink_rate_kbps: 5.6
+     min_duration: 20sec
+   """

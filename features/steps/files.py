@@ -141,6 +141,15 @@ def file_contains(context, file_path):
             assert pattern in contents, f"{pattern}\nis not in:\n{contents}"
 
 
+@then("the file '{file_path}' will not contain")
+def file_does_not_contain(context, file_path):
+    with cwd_from(context):
+        pattern = str(context.text).strip()
+        with open(file_path, mode="r") as f:
+            contents = f.read()
+            assert pattern not in contents, f"{pattern}\nfound in:\n{contents}"
+
+
 @given("the file '{file_path}' exists")
 def create_empty_file(context, file_path):
     with cwd_from(context):

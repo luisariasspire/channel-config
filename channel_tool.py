@@ -135,17 +135,56 @@ def merge(a: ListOrDict, b: ListOrDict) -> ListOrDict:
         return md
 
 
-def remove(a: ListOrDict, b: ListOrDict) -> ListOrDict:
-    if isinstance(a, Sequence):
+def remove(a: Any, b: Any) -> Optional[Any]:
+    """Recursively remove from the first argument all elements from the second.
+
+    The deletion proceeds depth-first in a recursive fashion, removing any "leaf" value which
+    matches both its path and value between the two arguments.
+
+    If deletion of "leaf" elements in a non-root structure leaves it empty, that structure will be
+    deleted. Containers which are non-empty after their children are processed are left in place. If
+    the root node has no children after processing it is returned as an empty collection.
+
+    The order of elements in a sequence does not matter: if an element of the first sequence matches
+    any element of the second it is removed. Children of a sequence are not processed recursively,
+    rather, they are checked for equality as a unit. This is because when editing nested structures
+    with the channel_tool it is almost always an error to remove sub-structure from elements in an
+    array rather than removing the entire structure atomically.
+
+    If both arguments are atoms -- neither sequences nor dictionaries -- they are compared for
+    equality and None is returned if they match.
+    """
+    # For containers, first process recursively and filter out Nones returned by child nodes, then
+    # if container is empty return None. Handle strings as atoms.
+    if isinstance(a, Sequence) and not isinstance(a, str):
         assert isinstance(b, Sequence)
-        return [x for x in a if x not in b]
-    else:
-        assert isinstance(a, dict)
+        retained = []
+        for elt in a:
+            # Only remove elements from sequences that are perfect matches, otherwise if we recurse
+            # we might remove fields from an object that leave it in an invalid state. We almost
+            # never want to do that; we want to remove the whole thing, but only if it's exactly the
+            # item we were looking for.
+            if not any([elt == filt for filt in b]):
+                retained.append(elt)
+        return retained
+    elif isinstance(a, dict):
         assert isinstance(b, dict)
         m = deepcopy(a)
         for k in b.keys():
-            del m[k]
+            if k not in m:
+                continue
+
+            filtered = remove(m[k], b[k])
+            if filtered:
+                m[k] = filtered
+            else:
+                del m[k]
         return m
+    else:  # Primitives
+        if a == b:
+            return None
+        else:
+            return a
 
 
 # TODO Stricter type for arguments
@@ -546,15 +585,22 @@ def file_to_yaml_list(path: str) -> List[Any]:
     assert isinstance(v, list), "Expected YAML array"
     return v
 
+
 def str_to_yaml_collection(val: str) -> Union[Mapping[str, Any], List[Any]]:
     v = load_yaml_value(val)
-    assert isinstance(v, list) or isinstance(v, dict), "Expected YAML collection (map or list)"
+    assert isinstance(v, list) or isinstance(
+        v, dict
+    ), "Expected YAML collection (map or list)"
     return v
+
 
 def file_to_yaml_collection(path: str) -> Union[Mapping[str, Any], List[Any]]:
     v = load_yaml_file(path)
-    assert isinstance(v, list) or isinstance(v, dict), "Expected YAML collection (map or list)"
+    assert isinstance(v, list) or isinstance(
+        v, dict
+    ), "Expected YAML collection (map or list)"
     return v
+
 
 def str_to_list(values: str) -> List[str]:
     return values.split(",")
@@ -786,7 +832,7 @@ if __name__ == "__main__":
     try:
         args = PARSER.parse_args()
 
-        if 'func' not in args:
+        if "func" not in args:
             err("Missing positional argument, I do not know what to do")
             PARSER.print_help()
             sys.exit(1)
