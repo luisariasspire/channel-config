@@ -256,7 +256,8 @@ X_BAND_TXO:
           pls: 5
           mod_gain: 130
           vbatt/voltage/min: 7200
-          vbatt/power/max: 17000
+          vbatt/voltage/max: 8500
+          vbatt/power/max: 19550
     chainOverride:
       sband:
         header-freq-pow: 7
