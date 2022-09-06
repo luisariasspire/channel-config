@@ -6,7 +6,9 @@ CONTACT_BIDIR:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM161
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 10
@@ -44,7 +46,9 @@ CONTACT_BIDIR_UHF:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM161
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 10
