@@ -3,7 +3,7 @@ CONTACT_BIDIR:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -21,7 +21,7 @@ CONTACT_BIDIR_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 200s
@@ -42,9 +42,9 @@ CONTACT_BIDIR_UHF:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 90s
+  contact_overhead_time: 210s
   link_profile:
-  - min_elevation_deg: 40
+  - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
     min_duration: 2m
@@ -53,7 +53,7 @@ CONTACT_RXO:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 20s
@@ -61,13 +61,13 @@ CONTACT_RXO:
   - min_elevation_deg: 25
     downlink_rate_kbps: 240.0
     uplink_rate_kbps: 0.0
-    min_duration: 2min
+    min_duration: 1min
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 25s
@@ -75,7 +75,7 @@ CONTACT_RXO_DVBS2X:
   - min_elevation_deg: 25
     downlink_rate_kbps: 280.0
     uplink_rate_kbps: 0.0
-    min_duration: 2min
+    min_duration: 1min
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -125,7 +125,7 @@ CONTACT_TRACKING_RXO:
   - min_elevation_deg: 25
     downlink_rate_kbps: 240.0
     uplink_rate_kbps: 0.0
-    min_duration: 2min
+    min_duration: 1min
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -139,4 +139,4 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - min_elevation_deg: 25
     downlink_rate_kbps: 280.0
     uplink_rate_kbps: 0.0
-    min_duration: 2min
+    min_duration: 1min
