@@ -65,7 +65,13 @@ def test_remove_dicts_recursive():
 
 
 def test_remove_mixed_dicts_and_lists_preserving_substructure():
-    a = {"a": [2], "b": [1, 3], "c": [{"c1": 2}, {"c1": 3}, {"c2": 4}], "d": [4], "e": [5]}
+    a = {
+        "a": [2],
+        "b": [1, 3],
+        "c": [{"c1": 2}, {"c1": 3}, {"c2": 4}],
+        "d": [4],
+        "e": [5],
+    }
     b = {"a": [1], "b": [1], "c": [{"c1": 2}], "e": [5]}
     c = remove(a, b)
     # Note that the "c" sequence is only modified when there's a perfect match

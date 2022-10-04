@@ -7,12 +7,12 @@ set -ex
 
 export CI=1
 
-apk add gcc musl-dev
-pip install pipenv
-pipenv sync --dev
+apk add gcc musl-dev libffi-dev
+pip install poetry
+poetry install
 
 # Static checks
-pipenv run mypy # Check types
-pipenv run tests # Check tests
-pipenv run format # Check formatting
-pipenv run channel_tool validate # Check that configs are valid
+poetry run mypy # Check types
+poetry run ./run_tests.sh # Check tests
+poetry run ./format.sh # Check formatting
+poetry run ./channel_tool.py validate # Check that configs are valid

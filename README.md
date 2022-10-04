@@ -6,21 +6,21 @@ fleet on a per-channel basis. This approach replaced the `licensing.py` file, as
 
 ## Installation
 
-Use `pipenv` to install the needed dependencies:
+Use `poetry` to install the needed dependencies:
 
 ```
-pipenv install
+poetry install
 ```
 
 This will create a managed virtual environment separate from the system Python installation,
 ensuring consistency of versions across different people's machines.
 
-If you don't have Pipenv set up, run the following:
+If you don't have Poetry set up, run the following:
 
 ```
 brew update
 brew install pyenv
-pip install pipenv
+pip install poetry
 ```
 
 Trouble? See the "Common Errors" section below.
@@ -79,8 +79,8 @@ The configuration for the fleet can be quite large, so it is broken up into seve
   satellites or ground stations have specific licensing requirements that need to be applied _en
   masse_.
 
-Tools are configured using `pipenv`, and can be executed using `pipenv run <tool name>`. The major
-scripts are:
+Tools are configured using `poetry`, and can be executed using `poetry run ./<tool name>.py`. The
+major scripts are:
 
 - `channel_tool`, the primary script, which is used for editing configurations
 - `create_sat_configs`, which generates `channel_tool` commands to create satellite configurations
@@ -105,16 +105,16 @@ Each of the above steps are described in more detail below.
 Adding channels from a template to a ground station is simple:
 
 ```
-pipenv run channel_tool staging add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True --enabled=True
+poetry run ./channel_tool.py staging add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True --enabled=True
 ```
 
 We can do the same for satellites, and even update several at once:
 
 ```
-pipenv run channel_tool staging add FM998,FM999 CONTACT_BIDIR --legal=True
+poetry run ./channel_tool.py staging add FM998,FM999 CONTACT_BIDIR --legal=True
 ```
 
-Note the structure of the command. First we have `pipenv run channel_tool`, which calls the tooling
+Note the structure of the command. First we have `poetry run channel_tool`, which calls the tooling
 within the correct virtual environment so that all of the needed modules are available. Next comes
 an environment, `staging`, and a subcommand, in this case `add`. After that, we have a
 comma-separated list of assets (ground stations or satellites), a comma-separated list of channel
@@ -124,13 +124,13 @@ default values that `CONTACT_BIDIR` should have, and overrode the `legal` field,
 `False`, with the `True` value. (We did something similar for TOSGS, and we also set the `enabled`
 field to `True`.)
 
-_All of the commands in `channel_tool` follow this pattern. Use `pipenv run channel_tool --help` to
-get more detailed information on the various subcommands._
+_All of the commands in `channel_tool` follow this pattern. Use `poetry run ./channel_tool.py
+--help` to get more detailed information on the various subcommands._
 
 If we try to add a configuration which already exists we get an error:
 
 ```
-$ pipenv run channel_tool staging add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True
+$ poetry run ./channel_tool.py staging add tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True
 Error: Configuration for CONTACT_RXO_SBAND_FREQ_2200_MHZ already exists on tosgs.
 (Tip: Use `channel_tool edit tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ` to edit the configuration.)
 ```
@@ -143,7 +143,7 @@ this. The `edit` command will apply field-level changes to the specified channel
 given set of assets:
 
 ```
-$ pipenv run channel_tool staging edit tosgs CONTACT_RXO_SBAND_FREQ_2200MHZ \
+$ poetry run ./channel_tool.py staging edit tosgs CONTACT_RXO_SBAND_FREQ_2200MHZ \
     --enabled=true --legal=true
 Changing asset configuration for CONTACT_RXO_SBAND_FREQ_2200_MHZ on tosgs. Diff:
 ---
@@ -186,7 +186,7 @@ be necessary to run the validation manually. Channel configurations and template
 with a single command:
 
 ```
-pipenv run channel_tool validate
+poetry run channel_tool validate
 ```
 
 This will check all of the configurations in both `staging` and `production` to verify they conform
@@ -208,7 +208,7 @@ separation:
 Then use `channel_tool` to set it on the desired satellites or ground stations:
 
 ```bash
-pipenv run channel_tool edit staging FM137,FM142 uhf --yes \
+poetry run ./channel_tool.py edit staging FM137,FM142 uhf --yes \
     --satellite_constraints "$(cat /tmp/constraints.yml)"
 ```
 
@@ -217,19 +217,19 @@ pipenv run channel_tool edit staging FM137,FM142 uhf --yes \
 ### Disabling BIDIR channels on a ground station (set RXO-only)
 
 ```bash
-pipenv run channel_tool edit production wbugs bidir --enabled=False \
+poetry run ./channel_tool.py edit production wbugs bidir --enabled=False \
     --comment "BIDIR disabled due pending USRP repairs"
 ```
 
 ### Disabling a ground station entirely
 
 ```bash
-pipenv run channel_tool edit production cosngs all --enabled=False --yes
+poetry run ./channel_tool.py edit production cosngs all --enabled=False --yes
 ```
 
 ### Enabling S-band only at 2200MHz on a satellite
 
 ```bash
-pipenv run channel_tool edit production FM96 sband_2020 --enabled=False --yes
-pipenv run channel_tool edit production FM96 sband_2200 --enabled=True --yes
+poetry run ./channel_tool.py edit production FM96 sband_2020 --enabled=False --yes
+poetry run ./channel_tool.py edit production FM96 sband_2200 --enabled=True --yes
 ```

@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "channel-config"
+version = "0.1.0"
+description = "Tooling for managing communications channel configuration."
+authors = ["nick pascucci <nick.pascucci@spire.com>"]
+readme = "README.md"
+packages = []
+
+[tool.poetry.dependencies]
+python = "^3.10"
+jsonschema = "*"
+more-itertools = "*"
+mypy = "*"
+pylint = "*"
+requests = "*"
+rope = "*"
+"ruamel.yaml" = "*"
+tabulate = "*"
+termcolor = "*"
+isort = "*"
+
+[tool.poetry.dev-dependencies]
+behave = "*"
+black = "*"
+coverage = "*"
+flake8 = "*"
+isort = "*"
+pre-commit = "*"
+pylint = "*"
+pytest = "*"
+pytest-cov = "*"
+rope = "*"
+types-requests = "*"
+types-tabulate = "*"
+types-termcolor = "*"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
