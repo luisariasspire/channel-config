@@ -112,6 +112,7 @@ CONTACT_RXO:
     uplink_rate_kbps: 0.0
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
   - AU
   - BM
@@ -130,7 +131,7 @@ CONTACT_RXO_DVBS2X:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 25s
@@ -166,6 +167,11 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
     uplink_rate_kbps: 0.0
+  window_parameters:
+    "forward_channels": 
+      - "bandaid_override": {}
+        "radio_band": "SBAND"
+        "protocol": "DVBS2X"
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
