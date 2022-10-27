@@ -46,6 +46,7 @@ CONTACT_BIDIR_UHF:
   legal: true
   ground_station_constraints: 
     deny_satellites:
+    - FM154
     - FM161
   contact_overhead_time: 210s
   link_profile:
