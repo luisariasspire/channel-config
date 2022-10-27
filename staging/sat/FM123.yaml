@@ -129,7 +129,7 @@ CONTACT_RXO:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -193,7 +193,7 @@ CONTACT_RXO_DVBS2X:
         - tusgs
         - vntgs
         - xspgs
-  contact_overhead_time: 25s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -230,7 +230,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 25s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -267,7 +267,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -369,7 +369,7 @@ CONTACT_TRACKING_RXO:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -403,7 +403,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 30s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -440,7 +440,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 30s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -477,7 +477,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -1167,6 +1167,6 @@ X_BAND_TXO:
         longitude: 15.40
         elevation_m: 0.0
       beamwidth_deg: 5
-  contact_overhead_time: 27s
+  contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 940.0, uplink_rate_kbps: 0.0}]
   window_parameters: {}
