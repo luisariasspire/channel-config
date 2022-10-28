@@ -44,7 +44,7 @@ CONTACT_BIDIR_UHF:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: 
+  ground_station_constraints:
     deny_satellites:
     - FM154
     - FM161
@@ -63,7 +63,7 @@ CONTACT_RXO:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
     downlink_rate_kbps: 240.0
@@ -78,7 +78,7 @@ CONTACT_RXO_DVBS2X:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 25s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
     downlink_rate_kbps: 280.0
@@ -131,7 +131,7 @@ CONTACT_TRACKING_RXO:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
     downlink_rate_kbps: 240.0
@@ -146,7 +146,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   enabled: false
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 30s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
     downlink_rate_kbps: 280.0

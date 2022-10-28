@@ -106,7 +106,7 @@ CONTACT_RXO:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -134,7 +134,7 @@ CONTACT_RXO_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 25s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -162,7 +162,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 25s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -190,7 +190,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -274,7 +274,7 @@ CONTACT_TRACKING_RXO:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -302,7 +302,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 30s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -330,7 +330,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 30s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -358,7 +358,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0

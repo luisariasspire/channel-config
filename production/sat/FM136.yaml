@@ -101,7 +101,7 @@ CONTACT_RXO:
   enabled: true
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -128,7 +128,7 @@ CONTACT_RXO_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 25s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -155,7 +155,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 25s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -182,7 +182,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -263,7 +263,7 @@ CONTACT_TRACKING_RXO:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -290,7 +290,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 30s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -317,7 +317,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 30s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -344,7 +344,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 20s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
@@ -1034,7 +1034,7 @@ X_BAND_TXO:
         longitude: 15.40
         elevation_m: 0.0
       beamwidth_deg: 5
-  contact_overhead_time: 27s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 940.0
