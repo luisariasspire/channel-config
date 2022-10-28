@@ -327,13 +327,13 @@ geodetic_coordinate: &geodetic_coordinate
   properties:
     # Geodetic longitude in degrees, with East positive, West negative.
     # NOTE This is different from the representation TK uses, where West is positive.
-    longitude: 
+    longitude:
       type: number
     # Geodetic latitude in degrees, with North positive, South negative.
-    latitude: 
+    latitude:
       type: number
     # Elevation above WGS84 reference ellipsoid in meters.
-    elevation_m: 
+    elevation_m:
       type: number
 
 # The full JSON schema for both satellites and ground stations.
@@ -349,7 +349,7 @@ schema:
           properties:
             deny_satellites:
               type: array
-              items: 
+              items:
                 type: string
             fixed_contact_duration:
               type: string
@@ -374,9 +374,20 @@ schema:
           type: object
           additionalProperties: false
           properties:
+            max_contact_time:
+              type: object
+              additionalProperties: false
+              optional: true
+              properties:
+                amount:
+                  type: string
+                  pattern: *humantime
+                interval:
+                  type: string
+                  pattern: *humantime
             deny_ground_stations:
               type: array
-              items: 
+              items:
                 type: string
             separation:
               type: array
