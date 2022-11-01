@@ -311,6 +311,11 @@ def channel_rejection_reason(
     if sat_dir != gs_dir:
         return f"Directionality mismatch ({sat_dir} vs {gs_dir})"
 
+    sat_ct = sat_chan.get("contact_type")
+    gs_ct = gs_chan.get("contact_type")
+    if sat_ct != gs_ct:
+        return f"Contact type mismatch ({sat_ct} vs {gs_ct})"
+
     sat_countries = sat_chan["allowed_license_countries"]
     gs_countries = gs_chan["allowed_license_countries"]
 
