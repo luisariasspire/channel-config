@@ -110,7 +110,7 @@ X_BAND_TXO:
         tx_bandwidth_hz: 10000000
         pls: 5
         mod_gain: 130
-        vbatt/voltage/min: 7200
+        vbatt/voltage/min: 7000
         vbatt/voltage/max: 8500
         vbatt/power/max: 19550
     chainOverride:
