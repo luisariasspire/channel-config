@@ -1062,5 +1062,5 @@ X_BAND_TXO:
         elevation_m: 0.0
       beamwidth_deg: 5
   contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 940.0, uplink_rate_kbps: 0.0}]
+  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 1331.0, uplink_rate_kbps: 0.0}]
   window_parameters: {}
