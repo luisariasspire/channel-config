@@ -5,6 +5,13 @@ supplement to the README for those needing more details on specific semantics or
 
 ## Channels
 
+- A _channel_ is an abstract description of a possible communications link between a satellite and a
+  ground station or another satellite.
+- The set of channels that a satellite or ground station can use and the rules governing them are
+  defined by its _channel config_.
+- Channels are an extension of the _contact type_ concept, enriched with more information about
+  legal, physical, and operational constraints relevant to contact scheduling.
+
 Channels are defined as entries in a YAML map, where the keys are user-defined strings and the
 values are configuration blocks containing specific properties. A machine-readable schema for these
 properties is defined in `schema.yaml`. In this section you will find detailed descriptions of each
@@ -41,8 +48,33 @@ for details.
 
 ### Link Profiles
 
-- TODO Field definitions
-- TODO Dynamic parameters
+Link profiles allow us to model how link performance and window parameters vary with elevation. A
+profile is made up of a series of one or more link segments which contain the following fields:  
+
+- `min_elevation_deg`: Defines how low in the AER coordinate frame's elevation dimension the profile
+  goes. Each segment applies to all elevations greater than this value, though if another segment
+  exists with a higher `min_elevation_deg` it will take priority.
+- `downlink_rate_kbps`: The expected goodput in the space-to-ground direction for this elevation
+  band.
+- `uplink_rate_kbps`: The expected goodput in the ground-to-space direction for this elevation band.
+- `minimum_duration`: The minimum amount of time that the satellite must be in this or a higher band
+  for the parent channel to be valid for scheduling.  
+- `window_parameters`: The dynamic, elevation-dependent parameters which should be set on contacts
+  which enter this band. 
+
+A satellite "enters" a link segment when its elevation as perceived by the ground station is greater
+than the link segment's `min_elevation_deg`, and exits when the elevation falls below that value
+again. Accordingly, a segment is "active" when the satellite has entered it and not exited, and has
+not entered a link segment with a higher minimum elevation.  
+
+For a given access to become a transit it is necessary to check that the link profile is satisfied
+for the channel in question. This means that:  
+
+  - The satellite must enter the `min_elevation_deg` of the lowest link segment  
+  - All of the constraints (i.e. `minimum_duration`) of the entered segments must be satisfied  
+
+All of the link segments defined by the satellite and the ground station are merged to create the
+final link profile during contact scheduling.
 
 ### Constraints
 

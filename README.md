@@ -1,8 +1,19 @@
 # Channel Configuration
 
 This directory contains config files and tools for managing the communications configuration for the
-fleet on a per-channel basis. This approach replaced the `licensing.py` file, as described in
-[Technical Proposal #362](https://docs.google.com/document/d/1oOzPFOxtj3PFqRxY8ZnLOLie2oR95YMfxTyNKmKO9YU/edit?ts=5f80e012#).
+Spire constellation.
+
+Each satellite and ground station has a configuration file describing the set of named _channels_ it
+can use to communicate with other Spire assets, and the rules governing when those communications
+can occur. Giving each channel an explicit configuration makes for a very flexible way to describe 
+all of the possible interactions between our satellites and ground stations.
+
+The current config-based approach replaced the `licensing.py` file, as described in [Technical
+Proposal #362][1].
+
+In this README file you will find information focused on installing and running the `channel_tool`
+helper script. Detailed information on the config files themselves can be found in the [reference
+documentation](./docs/index.md).
 
 ## Installation
 
@@ -233,3 +244,5 @@ poetry run ./channel_tool.py edit production cosngs all --enabled=False --yes
 poetry run ./channel_tool.py edit production FM96 sband_2020 --enabled=False --yes
 poetry run ./channel_tool.py edit production FM96 sband_2200 --enabled=True --yes
 ```
+
+[1]: https://docs.google.com/document/d/1oOzPFOxtj3PFqRxY8ZnLOLie2oR95YMfxTyNKmKO9YU/edit
