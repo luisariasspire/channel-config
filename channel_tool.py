@@ -187,7 +187,118 @@ def remove(a: Any, b: Any) -> Optional[Any]:
             return a
 
 
+LTE = "<="
+GTE = ">="
+LT = "<"
+GT = ">"
+EQ = "=="
+NEQ = "!="
+
+comparator_to_lambda = {
+    LTE: lambda curr_value, target_value: curr_value <= target_value,
+    GTE: lambda curr_value, target_value: curr_value >= target_value,
+    LT: lambda curr_value, target_value: curr_value < target_value,
+    GT: lambda curr_value, target_value: curr_value > target_value,
+    EQ: lambda curr_value, target_value: curr_value == target_value,
+    NEQ: lambda curr_value, target_value: curr_value != target_value,
+}
+
+VALID_COMPARATORS = " ".join(comparator_to_lambda.keys())
+
+
+def compile_predicates(str_predicate: str) -> Any:
+    # Takes a single predicate in string form
+    # "<field_name> <comparator> <target_value>"
+    # and returns a function which runs the predicate on a config dictionary
+
+    predicate = str_predicate.split(" ")
+
+    field_name = predicate[0]
+    comparator = predicate[1]
+
+    try:
+        target_value: Any = float(predicate[2])
+    except ValueError:
+        target_value = predicate[2]
+
+    if comparator not in comparator_to_lambda:
+        raise ValueError(
+            f"Invalid comparator {comparator}. Valid options are: {VALID_COMPARATORS}"
+        )
+
+    comparator_func = comparator_to_lambda[comparator]
+
+    def predicate_func(config: Any) -> Optional[Any]:
+        return comparator_func(config[field_name], target_value)
+
+    return predicate_func
+
+
+def update(
+    current_config: Any, config_updates: Any, comparison_functions: Any = None
+) -> Optional[Any]:
+    print(f"\n\n\n {comparison_functions} \n\n\n")
+
+    f"""Update will default to updating all values in a list unless predicates are defined.
+    In that case existing configs will be filtered before the update.
+
+    All mandatory fields need to be passed in. If a mandatory field need not update, its value should
+    be set to null. If a mandatory field is not given, an exception will be raised.
+    Optional fields that need not update may be omitted or set to null.
+
+    Multiple predicates may be passed in. Each predicate is supplied using an option of the form
+    -p <field_name> <comparator> <value>
+    for example
+    -p min_elevation_deg >= 25 -p downlink_rate_kbps == 300
+
+    Valid comparators are: {VALID_COMPARATORS}
+    """
+    if isinstance(current_config, Sequence):
+        assert isinstance(config_updates, Sequence)
+
+        if all(
+            isinstance(n, dict) for n in itertools.chain(current_config, config_updates)
+        ):
+            config_update = config_updates[0]  # Max one update at a time
+            current_config = list(current_config)
+
+            for config in current_config:
+                if comparison_functions:
+                    if not all(
+                        comparison_function(config)
+                        for comparison_function in comparison_functions
+                    ):
+                        continue
+
+                for field_name in config_update:
+                    if field_name not in config:
+                        continue
+
+                    if config_update[field_name] == None:
+                        continue
+
+                    config[field_name] = update(
+                        config[field_name], config_update[field_name], comparison_functions
+                    )
+
+            return current_config
+
+        return config_updates
+    elif isinstance(current_config, dict):
+        assert isinstance(config_updates, dict)
+
+        for key in config_updates:
+            if key in current_config and config_updates[key]:
+                current_config[key] = update(current_config[key], config_updates[key])
+
+        return current_config
+
+    return config_updates
+
+
 # TODO Stricter type for arguments
+
+
 def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
     """Apply modifications to a channel from argparse arguments."""
     new_cdef = deepcopy(cdef)
@@ -211,6 +322,11 @@ def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
                 new_cdef[field] = merge(cdef[field], val)  # type: ignore
             elif args.mode == "remove":
                 new_cdef[field] = remove(cdef[field], val)  # type: ignore
+            elif args.mode == "update":
+                print("AAAAAAAAAAAA", args.predicate)
+                new_cdef[field] = update(  # type: ignore
+                    cdef[field], val, args.predicate  # type: ignore
+                )  # type: ignore
     if args.comment:
         new_cdef.yaml_set_start_comment(args.comment)  # type: ignore
     return new_cdef
@@ -658,11 +774,18 @@ def add_editing_flags(parser: Any) -> None:
         "-m",
         "--mode",
         type=str,
-        choices=["overwrite", "merge", "remove"],
+        choices=["overwrite", "merge", "remove", "update"],
         default="overwrite",
         help=("The editing mode to use for combining record sub-fields."),
     )
-
+    parser.add_argument(
+        "-p",
+        "--predicate",
+        type=compile_predicates,
+        default=None,
+        nargs=1,
+        help=("Optional predicates to select configs. Only valid with --mode=update."),
+    )
     # Fields
     parser.add_argument(
         "--directionality",

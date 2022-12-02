@@ -1,12 +1,16 @@
 import subprocess
 from pathlib import Path
-
+import shlex
 from behave import *
 
 
 @when("I run '{command}'")
 def step_impl(context, command):
-    cmd = command.split()
+    # Str's .split() method does not respect quotes
+    # surrounding predicates. Shlex splits the predicates
+    # as one entry.
+    cmd = shlex.split(command)
+
     try:
         cwd = context.config_directory.name
     except AttributeError:
