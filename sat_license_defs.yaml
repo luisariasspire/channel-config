@@ -115,7 +115,7 @@ definitions:
   # any of these countries except for the ones blacklisted in the satellite's
   # license above.
   spire_gs_countries:
-    - AU # Capricorn Space
+    - AU # Capricorn Space, KSAT-Lite
     - PT # Edisoft
     - SG # IMDA
     - JP # JSAT
@@ -131,6 +131,7 @@ definitions:
     - US # USA (FCC)
     - NZ # Venture Southland
     - LV # Latvia, RXO only (no licenses needed)
+    - ES # KSAT-Lite
 
   spire_id_overrides:
     FM1: lemur-2-peter
