@@ -285,7 +285,54 @@ definitions:
         - min_elevation_deg
         - downlink_rate_kbps
         - uplink_rate_kbps
-  contact_type: &contact_type ^[A-Z0-9_]+$
+
+  channel_parameter_set: &channel_parameter_set
+    oneOf: 
+    - type: object
+      properties:
+        radio_band:
+          const: UHF
+      required:
+        - radio_band
+    - type: object
+      properties:
+        radio_band: 
+          enum: [SBAND, XBAND]
+        protocol:
+          enum: [DVBS2X, LEGACY]
+        bandaid_mode:
+          type: string
+        bandaid_override:
+          type: object
+          additionalProperties: true
+        ground_override:
+          type: object
+          additionalProperties: true
+        bandaid_global_params:
+          type: object
+          additionalProperties: true
+        use_radionet:
+          type: boolean
+      required:
+        - radio_band
+        - protocol
+  chain_override: &chain_override
+    type: object
+    additionalProperties: true
+
+  window_parameters: &window_parameters
+    type: object
+    properties:
+      forward_channels:
+        type: array
+        items: *channel_parameter_set
+      reverse_channels:
+        type: array
+        items: *channel_parameter_set
+      # note the property here has nonstandard capitalization.  Used in MissionNetwork
+      chainOverride: *chain_override
+
+  contact_type: &contact_type ^CONTACT_[A-Z0-9_]+$
 
 # Basic properties which are shared between both satellite and ground station schemas.
 base_properties: &base_properties
@@ -307,9 +354,7 @@ base_properties: &base_properties
       type: string
       enum: *iso3166
   link_profile: *link_profile
-  window_parameters:
-    type: object
-    additionalProperties: true
+  window_parameters: *window_parameters
 
 # Modifiers for separation constraints
 modifier: &constraint_modifier

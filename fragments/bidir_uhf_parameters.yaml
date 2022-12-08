@@ -1,0 +1,4 @@
+forward_channels:
+  - radio_band: UHF
+reverse_channels:
+  - radio_band: UHF

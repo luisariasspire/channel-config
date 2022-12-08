@@ -1,0 +1,5 @@
+forward_channels:
+  - radio_band: SBAND
+    protocol: LEGACY
+    bandaid_mode: TX_SBAND_IP
+    use_radionet: true
