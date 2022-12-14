@@ -30,6 +30,10 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     downlink_rate_kbps: 240.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
+  window_parameters:
+    chainOverride:
+      sband:
+        freq: 70000000
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:

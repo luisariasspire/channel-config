@@ -1,0 +1,3 @@
+chainOverride:
+  sband:
+    freq: 70000000
