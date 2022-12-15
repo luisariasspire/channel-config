@@ -13,6 +13,13 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     downlink_rate_kbps: 280.0
     uplink_rate_kbps: 0.0
     min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        freq: 70000000
+    chainOverride:
+      sband:
+        freq: 70000000
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -29,6 +36,9 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     uplink_rate_kbps: 0.0
     min_duration: 2min
   window_parameters:
+    forward_channels:
+    - ground_override:
+        freq: 70000000
     chainOverride:
       sband:
         freq: 70000000
@@ -80,12 +90,7 @@ X_BAND_TXO:
     min_duration: 2min
   window_parameters:
     forward_channels:
-    - radio_band: XBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_XBAND_DVB
-      bandaid_override:
-        vbatt/voltage/min: 7000
-      ground_override:
+    - ground_override:
         header-freq-pow: 7
         coarse-freq-win: 1000000
         lo-offset: 5000000

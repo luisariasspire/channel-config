@@ -295,6 +295,7 @@ definitions:
       required:
         - radio_band
     - type: object
+      # note: satellite parameters
       properties:
         radio_band: 
           enum: [SBAND, XBAND]
@@ -305,17 +306,15 @@ definitions:
         bandaid_override:
           type: object
           additionalProperties: true
-        ground_override:
-          type: object
-          additionalProperties: true
         bandaid_global_params:
           type: object
           additionalProperties: true
         use_radionet:
           type: boolean
-      required:
-        - radio_band
-        - protocol
+        # note: gs parameters
+        ground_override:
+          type: object
+          additionalProperties: true
   chain_override: &chain_override
     type: object
     additionalProperties: true

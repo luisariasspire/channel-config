@@ -5,9 +5,4 @@ forward_channels:
     use_radionet: true
     bandaid_override:
       tx_carrier_frequency_hz: 2200500000
-    ground_override:
-      freq: 2200500000
-chainOverride:
-  sband:
-    freq: 2200500000
 
