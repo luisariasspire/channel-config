@@ -6,48 +6,32 @@ import itertools
 import os
 import sys
 from copy import deepcopy
-from typing import (
-    Any,
-    Callable,
-    Dict,
-    List,
-    Mapping,
-    Optional,
-    Sequence,
-    Set,
-    Tuple,
-    Union,
-)
+from typing import Any, Callable, Dict, List, Mapping, Optional, Sequence, Set, Union
 
-import requests
-from ruamel.yaml.comments import CommentedMap
-from tabulate import tabulate
 from termcolor import colored
 
-from typedefs import (
-    AssetConfig,
-    AssetKind,
-    ChannelDefinition,
-    DefsFile,
-    Environment,
-    TkGroundStation,
-    TkSatellite,
+from channel_tool.asset_config import (
+    infer_asset_type,
+    load_asset_config,
+    locate_assets,
+    write_asset_config,
 )
-from util import (
+from channel_tool.audit import AuditReport
+from channel_tool.typedefs import ChannelDefinition, DefsFile, Environment
+from channel_tool.util import (
     ENVS,
-    GROUND_STATION,
-    GS_DIR,
-    SAT_DIR,
-    SATELLITE,
     TEMPLATE_FILE,
     confirm,
-    dump_yaml_file,
     dump_yaml_string,
     load_yaml_file,
     load_yaml_value,
-    tk_url,
 )
-from validation import filter_properties, load_schema, validate_all, validate_one
+from channel_tool.validation import (
+    filter_properties,
+    load_schema,
+    validate_all,
+    validate_one,
+)
 
 CONTACT_TYPE_DEFS: DefsFile = load_yaml_file("contact_type_defs.yaml")
 
@@ -278,7 +262,9 @@ def update(
                         continue
 
                     config[field_name] = update(
-                        config[field_name], config_update[field_name], comparison_functions
+                        config[field_name],
+                        config_update[field_name],
+                        comparison_functions,
                     )
 
             return current_config
@@ -373,164 +359,19 @@ def edit_config(args: Any) -> None:
     apply_update(args.environment, args.assets, args.channels, do_edit, yes=args.yes)
 
 
-TK_ASSET_CACHE: Dict[
-    Tuple[str, str, Optional[str]], Union[TkGroundStation, TkSatellite]
-] = {}
-
-
-# TODO enum type for assets
-def load_tk_asset(
-    env: Environment, kind: AssetKind, name: Optional[str] = None
-) -> Union[TkGroundStation, TkSatellite]:
-    if (env, kind, name) not in TK_ASSET_CACHE:
-        # TODO Load all of the assets to populate cache rather than fetching them one by one
-        if name:
-            suffix = f"/{name}"
-        else:
-            suffix = ""
-        r = requests.get(tk_url(env) + kind + suffix)
-        r.raise_for_status()
-        val = r.json()
-        TK_ASSET_CACHE[(env, kind, name)] = val
-        return val  # type: ignore
-    else:
-        return TK_ASSET_CACHE[(env, kind, name)]
-
-
-def channel_rejection_reason(
-    satellite: TkSatellite,
-    ground_station: TkGroundStation,
-    sat_chan: Optional[ChannelDefinition],
-    gs_chan: Optional[ChannelDefinition],
-) -> Optional[str]:
-    """Apply channel matching rules and return the reason for mismatch, if any."""
-    if gs_chan is None:
-        return "Channel not configured on ground station"
-
-    if sat_chan is None:
-        return "Channel not configured on satellite"
-
-    if not sat_chan["legal"]:
-        return "Channel marked illegal on satellite"
-
-    if not gs_chan["legal"]:
-        return "Channel marked illegal on ground station"
-
-    if not sat_chan["enabled"]:
-        return "Channel disabled on satellite"
-
-    if not gs_chan["enabled"]:
-        return "Channel disabled on ground station"
-
-    sat_dir = sat_chan["directionality"]
-    gs_dir = gs_chan["directionality"]
-    if sat_dir != gs_dir:
-        return f"Directionality mismatch ({sat_dir} vs {gs_dir})"
-
-    sat_ct = sat_chan.get("contact_type")
-    gs_ct = gs_chan.get("contact_type")
-    if sat_ct != gs_ct:
-        return f"Contact type mismatch ({sat_ct} vs {gs_ct})"
-
-    sat_countries = sat_chan["allowed_license_countries"]
-    gs_countries = gs_chan["allowed_license_countries"]
-
-    def normalize(country: str) -> str:
-        return country[:2]
-
-    sat_country = normalize(satellite["license_country"])
-    gs_country = ground_station["license_country"]
-
-    if sat_country not in gs_countries:
-        return f"Satellite license country {sat_country} not in set {gs_countries}"
-
-    if gs_country not in sat_countries:
-        return f"Ground station license country {gs_country} not in set {sat_countries}"
-
-    return None
-
-
-def compare_channels(
-    sat_config: AssetConfig,
-    gs_config: AssetConfig,
-    satellite: TkSatellite,
-    ground_station: TkGroundStation,
-) -> Tuple[List[Tuple[str, Optional[str]]], List[Tuple[str, Optional[str]]]]:
-    """Compare the configured channels for the given satellite and ground station."""
-    shared: List[Tuple[str, Optional[str]]] = []
-    mismatched: List[Tuple[str, Optional[str]]] = []
-
-    channels = set(sat_config.keys()).union(set(gs_config.keys()))
-    for chan in channels:
-        sat_chan = sat_config.get(chan)
-        gs_chan = gs_config.get(chan)
-        reason = channel_rejection_reason(satellite, ground_station, sat_chan, gs_chan)
-        if reason:
-            mismatched.append((chan, reason))
-        else:
-            if (
-                sat_chan is not None
-                and sat_chan.get("satellite_constraints") is not None
-            ):
-                shared.append((chan, "Note: Subject to satellite constraints"))
-            else:
-                shared.append((chan, None))
-    shared = sorted(shared)
-    mismatched = sorted(mismatched)
-    return (shared, mismatched)
-
-
-def print_audit_report(
-    env: Environment, sat: str, gs: str, require_match: bool = False
-) -> None:
-    """Compute and display a report of the channel (mis)matches between assets."""
-    sat_config = load_asset_config(env, sat)
-    gs_config = load_asset_config(env, gs)
-    satellite = load_tk_asset(env, SATELLITE, sat)
-    ground_station = load_tk_asset(env, GROUND_STATION, gs)
-
-    shared, mismatched = compare_channels(
-        sat_config, gs_config, satellite, ground_station
-    )
-
-    if require_match and not shared:
-        return
-
-    header = f"Audit summary for {sat} -> {gs}"
-    print(header)
-    print("=" * len(header), end="\n\n")
-
-    print("Valid Channels")
-    if shared:
-        print(tabulate(shared))
-    else:
-        print(colored("(No channels passed licensing rules)", "magenta"))
-    print()
-
-    print("Rejected Channels")
-    print(tabulate(mismatched))
-    print()
-
-
 def audit_configs(args: Any) -> None:
     sats = locate_assets(args.environment, args.satellites)
     gss = locate_assets(args.environment, args.ground_stations)
     for sat, gs in itertools.product(sats, gss):
-        print_audit_report(args.environment, sat, gs, args.matches_only)
+        report = AuditReport(args.environment, sat, gs)
+        if report.shared or not args.matches_only:
+            print(report)
 
 
 def normalize_configs(args: Any) -> None:
     for asset in locate_assets(args.environment, args.assets):
         config = load_asset_config(args.environment, asset)
         write_asset_config(args.environment, asset, config)
-
-
-def normalize_config(cfg: Dict[str, Any]) -> Dict[str, Any]:
-    """Normalize a configuration file by removing anchors and sorting keys."""
-    new_config: Dict[str, Any] = CommentedMap()
-    for k in sorted(cfg):
-        new_config[k] = deepcopy(cfg[k])
-    return new_config
 
 
 def find_template(channel: str) -> ChannelDefinition:
@@ -542,24 +383,6 @@ def find_template(channel: str) -> ChannelDefinition:
             raise MissingTemplateError(f"Could not find template for {channel}")
     else:
         raise FileNotFoundError(f"Could not find file {TEMPLATE_FILE}")
-
-
-def locate_assets(env: Environment, assets: Union[str, List[str]]) -> List[str]:
-    def name(p: str) -> str:
-        return os.path.splitext(os.path.basename(p))[0]
-
-    if isinstance(assets, list):
-        return assets
-    elif assets == "all_gs":
-        return sorted([name(p) for p in os.listdir(os.path.join(env, GS_DIR))])
-    elif assets == "all_sat":
-        return sorted([name(p) for p in os.listdir(os.path.join(env, SAT_DIR))])
-    elif assets == "all":
-        vs = locate_assets(env, "all_gs")
-        vs.extend(locate_assets(env, "all_sat"))
-        return vs
-    else:
-        return assets.split(",")
 
 
 def apply_update(
@@ -633,56 +456,6 @@ def format_diff(
     return "".join(cd)
 
 
-CONFIG_CACHE: Dict[Tuple[str, str], AssetConfig] = {}
-
-
-def load_asset_config(env: Environment, asset: str) -> AssetConfig:
-    def do_load() -> AssetConfig:
-        config_file = infer_config_file(env, asset)
-        if not os.path.exists(config_file):
-            return {}
-        config: Optional[AssetConfig] = load_yaml_file(config_file)
-        if config:
-            return config
-        else:
-            return {}
-
-    if not (env, asset) in CONFIG_CACHE:
-        config = do_load()
-        CONFIG_CACHE[(env, asset)] = config
-        return config
-    else:
-        return CONFIG_CACHE[(env, asset)]
-
-
-def write_asset_config(env: Environment, asset: str, asset_config: AssetConfig) -> None:
-    config_file = infer_config_file(env, asset)
-    if asset_config:
-        asset_config = normalize_config(asset_config)
-        dump_yaml_file(asset_config, config_file)
-    elif os.path.exists(config_file):
-        os.remove(config_file)
-
-
-def infer_asset_type(asset: str) -> str:
-    if asset.endswith("gs"):
-        return GROUND_STATION
-    else:
-        return SATELLITE
-
-
-def infer_config_file(env: Environment, asset: str) -> str:
-    asset_type = infer_asset_type(asset)
-    if asset_type == GROUND_STATION:
-        # Assumed to be a ground station.
-        return os.path.join(env, GS_DIR, asset + ".yaml")
-    elif asset_type == SATELLITE:
-        # Assumed to be a satellite.
-        return os.path.join(env, SAT_DIR, asset + ".yaml")
-    else:
-        raise ValueError(f"Unexpected asset type {asset_type}")
-
-
 def str_to_yaml_map(val: str) -> Mapping[str, Any]:
     v = load_yaml_value(val)
     assert isinstance(v, dict), "Expected YAML key-value mapping"
@@ -742,7 +515,8 @@ def channel_list(val: str) -> List[str]:
     if val.lower() == "all":
         return all_channels
     elif val.lower() in CONTACT_TYPE_DEFS["groups"]:
-        return CONTACT_TYPE_DEFS["groups"][val.lower()]
+        group: List[str] = CONTACT_TYPE_DEFS["groups"][val.lower()]
+        return group
     elif val.lower().startswith("contact"):
         return str_to_list(val)
     else:
@@ -902,7 +676,8 @@ def add_asset_flags(parser: Any) -> None:
 
 
 PARSER = argparse.ArgumentParser(
-    description="A utility to help with managing channels."
+    prog="python -m channel_tool",
+    description="A utility to help with managing channels.",
 )
 PARSER.add_argument("--debug", action="store_true", help="Run in debugging mode.")
 

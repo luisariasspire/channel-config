@@ -17,22 +17,22 @@ Feature: operators can create new asset configurations
 
   Scenario: adding a new ground station
     Given there is no configuration for the ground station 'testgs'
-    When I run 'python channel_tool.py add staging testgs all --yes'
+    When I run 'python -m channel_tool add staging testgs all --yes'
     Then there is a valid configuration for the ground station 'testgs'
     And the configuration for the ground station 'testgs' will have no enabled channels
 
   Scenario: adding a new satellite
     Given there is no configuration for the satellite 'FM0'
-    When I run 'python channel_tool.py add staging FM0 all --yes'
+    When I run 'python -m channel_tool add staging FM0 all --yes'
     Then there is a valid configuration for the satellite 'FM0'
     And the configuration for the satellite 'FM0' will have no enabled channels
 
   Scenario: marking channels as legal to use
     Given there is a valid configuration for the satellite 'FM0'
-    When I run 'python channel_tool.py edit staging FM0 CONTACT_BIDIR_UHF --legal=True --yes'
+    When I run 'python -m channel_tool edit staging FM0 CONTACT_BIDIR_UHF --legal=True --yes'
     Then the channel 'CONTACT_BIDIR_UHF' on satellite 'FM0' will be marked legal
 
   Scenario: marking channels as enabled
     Given there is a valid configuration for the satellite 'FM0'
-    When I run 'python channel_tool.py edit staging FM0 CONTACT_BIDIR_UHF --enabled=True --yes'
+    When I run 'python -m channel_tool edit staging FM0 CONTACT_BIDIR_UHF --enabled=True --yes'
     Then the channel 'CONTACT_BIDIR_UHF' on satellite 'FM0' will be marked enabled

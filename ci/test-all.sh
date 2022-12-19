@@ -15,4 +15,4 @@ poetry install
 poetry run mypy # Check types
 poetry run ./run_tests.sh # Check tests
 poetry run ./format.sh # Check formatting
-poetry run ./channel_tool.py validate # Check that configs are valid
+poetry run python -m channel_tool validate # Check that configs are valid

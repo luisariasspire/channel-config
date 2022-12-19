@@ -1,17 +1,4 @@
-from typing import (
-    Any,
-    Callable,
-    Dict,
-    Iterable,
-    List,
-    Literal,
-    Mapping,
-    Optional,
-    Sequence,
-    Set,
-    Tuple,
-    Union,
-)
+from typing import Any, Dict, List, Literal, Mapping, Optional, Union
 
 from mypy_extensions import TypedDict
 
@@ -38,6 +25,7 @@ class ChannelDefinition(TypedDict, total=False):
     allowed_license_countries: List[str]
     ground_station_constraints: GsConstraints
     satellite_constraints: SatConstraints
+    parameters: Any  # Unfortunately, we can't represent JSON in MyPy.
 
 
 AssetConfig = Dict[str, Optional[ChannelDefinition]]

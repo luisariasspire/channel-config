@@ -2,12 +2,11 @@ import os
 from typing import Any, Callable, Optional
 
 import jsonschema
-from jsonschema.exceptions import ValidationError as SchemaValidationError
 from jsonschema.exceptions import best_match
 from termcolor import colored
 
-from typedefs import ChannelDefinition
-from util import (
+from channel_tool.typedefs import ChannelDefinition
+from channel_tool.util import (
     ENVS,
     GROUND_STATION,
     GS_DIR,
@@ -19,13 +18,13 @@ from util import (
 
 
 class ValidationError(Exception):
-    def __init__(self, parent, file=None, key=None, count=1):
+    def __init__(self, parent: Any, file: str = None, key: str = None, count: int = 1):
         self._parent = parent
         self._file = file
         self._key = key
         self._count = count
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"""Validation error: {self._parent.message}
         in {self._parent.json_path}
 

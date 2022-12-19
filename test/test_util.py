@@ -1,4 +1,4 @@
-from util import lookup, set_path
+from channel_tool.util import lookup, set_path
 
 
 def test_lookup():

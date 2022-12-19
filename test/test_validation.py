@@ -1,7 +1,7 @@
 import pytest
 
-from util import load_yaml_file
-from validation import ValidationError, validate_one
+from channel_tool.util import load_yaml_file
+from channel_tool.validation import ValidationError, validate_one
 
 
 @pytest.mark.parametrize(

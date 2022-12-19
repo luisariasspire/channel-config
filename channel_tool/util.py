@@ -7,7 +7,7 @@ from typing import Any, Mapping, Optional
 from ruamel.yaml import YAML
 from termcolor import colored
 
-from typedefs import Environment, GroundStationKind, SatelliteKind
+from channel_tool.typedefs import Environment, GroundStationKind, SatelliteKind
 
 SAT_DIR = "sat"
 GS_DIR = "gs"

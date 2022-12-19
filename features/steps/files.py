@@ -4,8 +4,8 @@ from pathlib import Path
 
 from behave import *
 
-from util import TEMPLATE_FILE, dump_yaml_file, load_yaml_file
-from validation import validate_file
+from channel_tool.util import TEMPLATE_FILE, dump_yaml_file, load_yaml_file
+from channel_tool.validation import validate_file
 
 ASSET_TYPE_TO_PATH = {"ground station": "gs", "satellite": "sat"}
 TEST_ENV = "staging"

@@ -90,8 +90,7 @@ The configuration for the fleet can be quite large, so it is broken up into seve
   satellites or ground stations have specific licensing requirements that need to be applied _en
   masse_.
 
-Tools are configured using `poetry`, and can be executed using `poetry run ./<tool name>.py`. The
-major scripts are:
+Tools are configured using `poetry`, and can be executed using `poetry run`. The major scripts are:
 
 - `channel_tool`, the primary script, which is used for editing configurations
 - `create_sat_configs`, which generates `channel_tool` commands to create satellite configurations
@@ -116,32 +115,32 @@ Each of the above steps are described in more detail below.
 Adding channels from a template to a ground station is simple:
 
 ```
-poetry run ./channel_tool.py add staging tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True --enabled=True
+poetry run python -m channel_tool add staging tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True --enabled=True
 ```
 
 We can do the same for satellites, and even update several at once:
 
 ```
-poetry run ./channel_tool.py add staging FM998,FM999 CONTACT_BIDIR --legal=True
+poetry run python -m channel_tool add staging FM998,FM999 CONTACT_BIDIR --legal=True
 ```
 
-Note the structure of the command. First we have `poetry run channel_tool`, which calls the tooling
-within the correct virtual environment so that all of the needed modules are available. Next comes
-the argument `add` from `{add,a,edit,e,audit,normalize,validate}` and the environment, in this case
-`staging`. After that, we have a comma-separated list of assets (ground stations or satellites), 
-a comma-separated list of channel names (i.e. contact types), and finally flags that set overrides 
-on the template fields. In the examples above we populated channel definitions for FM998 & FM999 from
-a template specifying the default values that `CONTACT_BIDIR` should have, and overrode the `legal` 
-field, which is normally `False`, with the `True` value. (We did something similar for TOSGS, and 
-we also set the `enabled` field to `True`.)
+Note the structure of the command. First we have `poetry run python -m channel_tool`, which calls
+the tooling within the correct virtual environment so that all of the needed modules are available.
+Next comes the argument `add` from `{add,a,edit,e,audit,normalize,validate}` and the environment, in
+this case `staging`. After that, we have a comma-separated list of assets (ground stations or
+satellites), a comma-separated list of channel names (i.e. contact types), and finally flags that
+set overrides on the template fields. In the examples above we populated channel definitions for
+FM998 & FM999 from a template specifying the default values that `CONTACT_BIDIR` should have, and
+overrode the `legal` field, which is normally `False`, with the `True` value. (We did something
+similar for TOSGS, and we also set the `enabled` field to `True`.)
 
-_All of the commands in `channel_tool` follow this pattern. Use `poetry run ./channel_tool.py
+_All of the commands in `channel_tool` follow this pattern. Use `poetry run python -m channel_tool
 --help` to get more detailed information on the various subcommands._
 
 If we try to add a configuration which already exists we get an error:
 
 ```
-$ poetry run ./channel_tool.py add staging tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True
+$ poetry run python -m channel_tool add staging tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ --legal=True
 Error: Configuration for CONTACT_RXO_SBAND_FREQ_2200_MHZ already exists on tosgs.
 (Tip: Use `channel_tool edit tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ` to edit the configuration.)
 ```
@@ -154,7 +153,7 @@ this. The `edit` command will apply field-level changes to the specified channel
 given set of assets:
 
 ```
-$ poetry run ./channel_tool.py edit staging tosgs CONTACT_RXO_SBAND_FREQ_2200MHZ \
+$ poetry run python -m channel_tool edit staging tosgs CONTACT_RXO_SBAND_FREQ_2200MHZ \
     --enabled=true --legal=true
 Changing asset configuration for CONTACT_RXO_SBAND_FREQ_2200_MHZ on tosgs. Diff:
 ---
@@ -219,7 +218,7 @@ separation:
 Then use `channel_tool` to set it on the desired satellites or ground stations:
 
 ```bash
-poetry run ./channel_tool.py edit staging FM137,FM142 uhf --yes \
+poetry run python -m channel_tool edit staging FM137,FM142 uhf --yes \
     --satellite_constraints "$(cat /tmp/constraints.yml)"
 ```
 
@@ -228,21 +227,21 @@ poetry run ./channel_tool.py edit staging FM137,FM142 uhf --yes \
 ### Disabling BIDIR channels on a ground station (set RXO-only)
 
 ```bash
-poetry run ./channel_tool.py edit production wbugs bidir --enabled=False \
+poetry run python -m channel_tool edit production wbugs bidir --enabled=False \
     --comment "BIDIR disabled due pending USRP repairs"
 ```
 
 ### Disabling a ground station entirely
 
 ```bash
-poetry run ./channel_tool.py edit production cosngs all --enabled=False --yes
+poetry run python -m channel_tool edit production cosngs all --enabled=False --yes
 ```
 
 ### Enabling S-band only at 2200MHz on a satellite
 
 ```bash
-poetry run ./channel_tool.py edit production FM96 sband_2020 --enabled=False --yes
-poetry run ./channel_tool.py edit production FM96 sband_2200 --enabled=True --yes
+poetry run python -m channel_tool edit production FM96 sband_2020 --enabled=False --yes
+poetry run python -m channel_tool edit production FM96 sband_2200 --enabled=True --yes
 ```
 
 [1]: https://docs.google.com/document/d/1oOzPFOxtj3PFqRxY8ZnLOLie2oR95YMfxTyNKmKO9YU/edit

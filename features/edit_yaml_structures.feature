@@ -21,7 +21,7 @@ Feature: `channel_tool` supports editing embedded YAML structures
      uplink_rate_kbps: 10.0
      min_duration: 2min
    """
-   When I run 'python channel_tool.py edit staging testgs CONTACT_BIDIR_UHF --link_profile_file link_profile.yaml --yes'
+   When I run 'python -m channel_tool edit staging testgs CONTACT_BIDIR_UHF --link_profile_file link_profile.yaml --yes'
    Then it will exit with code '0'
    And the file 'staging/gs/testgs.yaml' will contain:
    """
@@ -41,7 +41,7 @@ Feature: `channel_tool` supports editing embedded YAML structures
      uplink_rate_kbps: 5.6
      min_duration: 20sec
    """
-   When I run 'python channel_tool.py edit staging testgs CONTACT_BIDIR --link_profile_file link_profile.yaml --mode=remove --yes'
+   When I run 'python -m channel_tool edit staging testgs CONTACT_BIDIR --link_profile_file link_profile.yaml --mode=remove --yes'
    Then it will exit with code '0'
    And the file 'staging/gs/testgs.yaml' will not contain:
    """
@@ -60,7 +60,7 @@ Feature: `channel_tool` supports editing embedded YAML structures
      uplink_rate_kbps: null
      min_duration: 20sec
    """
-   When I run 'python channel_tool.py --debug edit staging testgs CONTACT_BIDIR --link_profile_file link_profile.yaml --mode=update --yes --predicate "min_elevation_deg >= 25" -p "downlink_rate_kbps == 300"'
+   When I run 'python -m channel_tool --debug edit staging testgs CONTACT_BIDIR --link_profile_file link_profile.yaml --mode=update --yes --predicate "min_elevation_deg >= 25" -p "downlink_rate_kbps == 300"'
    Then it will exit with code '0'
    And the file 'staging/gs/testgs.yaml' will contain:
    """

@@ -21,12 +21,10 @@ def config_isolated(context):
         [
             "Pipfile",
             "Pipfile.lock",
-            "channel_tool.py",
+            "channel_tool",
             "contact_type_defs.yaml",
             "schema.yaml",
             "templates.yaml",
-            "typedefs.py",
-            "util.py",
         ],
         origin,
         dir_name,
