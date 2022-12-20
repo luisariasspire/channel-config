@@ -138,6 +138,12 @@ CONTACT_RXO_DVBS2X:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000
     uplink_rate_kbps: 0
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -194,6 +200,14 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000
     uplink_rate_kbps: 0
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND
+      bandaid_override:
+        tx_carrier_frequency_hz: 2200500000
 CONTACT_SDR_IQ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -1078,4 +1092,10 @@ X_BAND_TXO:
       beamwidth_deg: 5
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 940.0, uplink_rate_kbps: 0.0}]
-  window_parameters: {}
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_XBAND_DVB
+      bandaid_override:
+        vbatt/voltage/min: 7000

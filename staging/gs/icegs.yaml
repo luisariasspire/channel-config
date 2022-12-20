@@ -15,6 +15,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     uplink_rate_kbps: 0.0
     min_duration: 1min
   window_parameters:
+# GS uses a downconverter to deliver SBand signal at 70MHz
     forward_channels:
     - ground_override:
         freq: 70000000
@@ -38,6 +39,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     uplink_rate_kbps: 0.0
     min_duration: 1min
   window_parameters:
+# GS uses a downconverter to deliver SBand signal at 70MHz
     forward_channels:
     - ground_override:
         freq: 70000000
@@ -93,6 +95,7 @@ X_BAND_TXO:
     uplink_rate_kbps: 0.0
     min_duration: 2min
   window_parameters:
+# GS uses a downconverter to deliver XBand signal at 1250MHz
     forward_channels:
     - ground_override:
         header-freq-pow: 7
