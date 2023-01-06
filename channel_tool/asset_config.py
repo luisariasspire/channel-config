@@ -41,7 +41,7 @@ def locate_assets(env: Environment, assets: Union[str, List[str]]) -> List[str]:
 
 
 def infer_asset_type(asset: str) -> Union[GroundStationKind, SatelliteKind]:
-    if asset.endswith("gs"):
+    if asset.endswith("gs") or asset.endswith("kl"):
         return GROUND_STATION
     else:
         return SATELLITE
