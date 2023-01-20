@@ -1,20 +1,31 @@
+fragments:
+  aws_login: &aws_creds
+    aws_access_key_id: ((ecr_credentials.aws_access_key_id))
+    aws_secret_access_key: ((ecr_credentials.aws_secret_access_key))
+    aws_region: us-gov-west-1
+
+  dockerhub_login: &docker_hub
+    username: ((docker.docker-hub-username))
+    password: ((docker.docker-hub-token))
+
 resource_types:
   - name: pull-request
     type: docker-image
     source:
-      repository: 784407737194.dkr.ecr.us-west-2.amazonaws.com/github-pr-resource
-      tag: v0.0.2
+      repository: teliaoss/github-pr-resource
+      tag: v0.23.0
+      <<: *docker_hub
 
 resources:
   - name: repo
     type: pull-request
     icon: source-branch
-    webhook_token: 6e65edd0a500129c50f1138c785dda537b2f25d36c3abe7c92cc9ccf7f453f9b
+    webhook_token: 1208FE9D-C3A4-434D-BF57-9E1A539445B3
     source:
-      repository: nsat/air
-      paths:
-        - lib/channel_config/
+      repository: space/channel-config
       access_token: ((optimizer-team.github_access_token))
+      v3_endpoint: https://github.ect.spire.com/api/v3/
+      v4_endpoint: https://github.ect.spire.com/api/graphql
       disable_git_lfs: true
 
 jobs:
@@ -44,6 +55,6 @@ jobs:
         get_params: {skip_download: true}
       - task: test
         privileged: true
-        file: repo/lib/channel_config/ci/test-task.yml
+        file: repo/ci/test-task.yml
         input_mapping:
           repo: repo
