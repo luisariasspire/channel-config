@@ -53,7 +53,7 @@ CONTACT_BIDIR_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -174,7 +174,7 @@ CONTACT_RXO_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -207,7 +207,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
