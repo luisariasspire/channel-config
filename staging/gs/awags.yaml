@@ -12,9 +12,9 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - min_elevation_deg: 10
     downlink_rate_kbps: 280.0
     uplink_rate_kbps: 0.0
-    min_duration: 2min
+    min_duration: 1min
   window_parameters:
-# GS uses a downconverter to deliver SBand signal at 70MHz
+# GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
     forward_channels:
     - ground_override:
         freq: 70000000
@@ -37,7 +37,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     uplink_rate_kbps: 0.0
     min_duration: 1min
   window_parameters:
-# GS uses a downconverter to deliver SBand signal at 70MHz
+# GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
     forward_channels:
     - ground_override:
         freq: 70000000
@@ -58,7 +58,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - min_elevation_deg: 10
     downlink_rate_kbps: 240.0
     uplink_rate_kbps: 0.0
-    min_duration: 2min
+    min_duration: 1min
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -73,7 +73,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - min_elevation_deg: 10
     downlink_rate_kbps: 240.0
     uplink_rate_kbps: 0.0
-    min_duration: 2min
+    min_duration: 1min
 X_BAND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -87,7 +87,7 @@ X_BAND_TXO:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 1331.0
+    downlink_rate_kbps: 1200.0
     uplink_rate_kbps: 0.0
     min_duration: 2min
   window_parameters:
