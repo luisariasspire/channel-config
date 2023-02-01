@@ -309,7 +309,6 @@ def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
             elif args.mode == "remove":
                 new_cdef[field] = remove(cdef[field], val)  # type: ignore
             elif args.mode == "update":
-                print("AAAAAAAAAAAA", args.predicate)
                 new_cdef[field] = update(  # type: ignore
                     cdef[field], val, args.predicate  # type: ignore
                 )  # type: ignore
@@ -337,6 +336,25 @@ def add_config(args: Any) -> None:
                 raise AlreadyExistsError(msg)
 
     apply_update(args.environment, args.assets, args.channels, do_add, yes=args.yes)
+
+
+def delete_config(args: Any) -> None:
+    def do_delete(
+        asset: str, channel: str, existing: Optional[ChannelDefinition]
+    ) -> None:
+        if existing is None:
+            if args.require_existing:
+                msg = (
+                    f"No configuration for {channel} on {asset}."
+                )
+                if not args.fail_fast:
+                    warn(msg)
+                    return None
+                else:
+                    raise NoConfigurationError(msg)
+        return None
+
+    apply_update(args.environment, args.assets, args.channels, do_delete, yes=args.yes)
 
 
 def edit_config(args: Any) -> None:
@@ -406,10 +424,17 @@ def apply_update(
                     if yes or confirm_changes(
                         asset, channel, existing_chan, updated_chan
                     ):
-                        # Deepcopy here to try to avoid YAML being too smart and combining
-                        # structures. It makes diffs hard to read.
-                        asset_config[channel] = deepcopy(updated_chan)
-                        print(f"Updated {channel} definition for {asset}.")
+                        if updated_chan is None:
+                            try:
+                                del asset_config[channel]
+                                print(f"Deleted {channel} definition for {asset}.")
+                            except KeyError:
+                                pass
+                        else:
+                            # Deepcopy here to try to avoid YAML being too smart and combining
+                            # structures. It makes diffs hard to read.
+                            asset_config[channel] = deepcopy(updated_chan)
+                            print(f"Updated {channel} definition for {asset}.")
                 else:
                     print(colored(f"No changes for {channel} on {asset}.", "magenta"))
             except AlreadyExistsError as e:
@@ -522,10 +547,8 @@ def channel_list(val: str) -> List[str]:
     else:
         raise ValueError(f"Unrecognized channel alias '{val}'")
 
-
-def add_editing_flags(parser: Any) -> None:
-    """Add flags for each channel definition field. Used for editing and overrides."""
-    # Meta
+def add_process_flags(parser: Any) -> None:
+    """Flags modulating the editing process."""
     parser.add_argument(
         "-y",
         "--yes",
@@ -538,6 +561,19 @@ def add_editing_flags(parser: Any) -> None:
         action="store_true",
         help="Do not continue with further edits after errors.",
     )
+
+def add_delete_flags(parser: Any) -> None:
+    """Flags for deleting channels."""
+    parser.add_argument(
+        "-r",
+        "--require-existing",
+        action="store_true",
+        help="Raise an error whenever the channel to delete does not currently exist.",
+    )
+
+def add_editing_flags(parser: Any) -> None:
+    """Add flags for each channel definition field. Used for editing and overrides."""
+    # Meta
     parser.add_argument(
         "-c",
         "--comment",
@@ -687,13 +723,23 @@ ADD_PARSER = SUBPARSERS.add_parser(
     "add", help="Add a channel configuration from a template.", aliases=["a"]
 )
 ADD_PARSER.set_defaults(func=add_config)
+add_process_flags(ADD_PARSER)
 add_editing_flags(ADD_PARSER)
 add_asset_flags(ADD_PARSER)
+
+DELETE_PARSER = SUBPARSERS.add_parser(
+    "delete", help="Delete a channel configuration.", aliases=["d"]
+)
+DELETE_PARSER.set_defaults(func=delete_config)
+add_process_flags(DELETE_PARSER)
+add_delete_flags(DELETE_PARSER)
+add_asset_flags(DELETE_PARSER)
 
 EDIT_PARSER = SUBPARSERS.add_parser(
     "edit", help="Modify an existing channel configuration.", aliases=["e"]
 )
 EDIT_PARSER.set_defaults(func=edit_config)
+add_process_flags(EDIT_PARSER)
 add_editing_flags(EDIT_PARSER)
 add_asset_flags(EDIT_PARSER)
 

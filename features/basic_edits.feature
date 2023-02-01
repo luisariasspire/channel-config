@@ -20,3 +20,9 @@ Feature: operators can make basic edits
     When I run 'python -m channel_tool add staging FM0 CONTACT_BIDIR --contact_type=CONTACT_SPACE_GROUND_BIDIR --yes'
     Then the satellite 'FM0' has 'CONTACT_BIDIR' in its configuration file
     And the channel 'CONTACT_BIDIR' on satellite 'FM0' has contact_type set to CONTACT_SPACE_GROUND_BIDIR
+
+  Scenario: deleting a channel
+    Given the satellite 'FM0' has 'CONTACT_BIDIR' in its configuration file
+    And the satellite 'FM0' has 'CONTACT_RXO' in its configuration file
+    When I run 'python -m channel_tool delete staging FM0 CONTACT_BIDIR --yes'
+    Then the satellite 'FM0' does not have 'CONTACT_BIDIR' in its configuration file

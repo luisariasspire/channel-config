@@ -35,7 +35,7 @@ def load_config(asset_type, id, env):
 
 @given("the {asset_type} '{id}' has '{channel_id}' {state} in its configuration file")
 @given("the {asset_type} '{id}' has '{channel_id}' in its configuration file")
-def has_channel_with_state(context, asset_type, id, channel_id, state="enabled"):
+def given_has_channel_with_state(context, asset_type, id, channel_id, state="enabled"):
     state_to_bool = {"enabled": True, "disabled": False}
     with cwd_from(context):
         templates = load_yaml_file(TEMPLATE_FILE)
@@ -45,13 +45,19 @@ def has_channel_with_state(context, asset_type, id, channel_id, state="enabled")
 
 
 @then("the {asset_type} '{id}' has '{channel_id}' in its configuration file")
-def has_channel(context, asset_type, id, channel_id):
+def then_has_channel(context, asset_type, id, channel_id):
     with cwd_from(context):
         assert channel_id in load_config(asset_type, id, TEST_ENV)
 
 
+@then("the {asset_type} '{id}' does not have '{channel_id}' in its configuration file")
+def then_does_not_have_channel(context, asset_type, id, channel_id):
+    with cwd_from(context):
+        assert channel_id not in load_config(asset_type, id, TEST_ENV)
+
+
 @given("the {asset_type} '{id}' does not have '{channel_id}' in its configuration file")
-def does_not_have_channel(context, asset_type, id, channel_id):
+def given_does_not_have_channel(context, asset_type, id, channel_id):
     with cwd_from(context):
         config = load_config(asset_type, id, TEST_ENV)
         try:
@@ -62,7 +68,7 @@ def does_not_have_channel(context, asset_type, id, channel_id):
 
 
 @given("there is no configuration for the {asset_type} '{id}'")
-def has_no_config(context, asset_type, id):
+def given_has_no_config(context, asset_type, id):
     with cwd_from(context):
         assert not os.path.exists(
             config_path(asset_type, id)
@@ -70,13 +76,13 @@ def has_no_config(context, asset_type, id):
 
 
 @step("there is a valid configuration for the {asset_type} '{id}'")
-def has_config(context, asset_type, id):
+def step_has_config(context, asset_type, id):
     with cwd_from(context):
         validate_file(config_path(asset_type, id))
 
 
 @then("the configuration for the {asset_type} '{id}' will have no enabled channels")
-def has_no_enabled_channels(context, asset_type, id):
+def then_has_no_enabled_channels(context, asset_type, id):
     with cwd_from(context):
         config = load_config(asset_type, id, TEST_ENV)
         for (chan_id, chan) in config.items():
@@ -86,7 +92,7 @@ def has_no_enabled_channels(context, asset_type, id):
 
 
 @then("the channel '{channel}' on {asset_type} '{id}' will be marked legal")
-def has_legal_channel(context, channel, asset_type, id):
+def then_has_legal_channel(context, channel, asset_type, id):
     with cwd_from(context):
         config = load_config(asset_type, id, TEST_ENV)
         chan = config[channel]
@@ -94,7 +100,7 @@ def has_legal_channel(context, channel, asset_type, id):
 
 
 @then("the channel '{channel}' on {asset_type} '{id}' will be marked enabled")
-def has_enabled_channel(context, channel, asset_type, id):
+def then_has_enabled_channel(context, channel, asset_type, id):
     with cwd_from(context):
         config = load_config(asset_type, id, TEST_ENV)
         chan = config[channel]
@@ -102,7 +108,7 @@ def has_enabled_channel(context, channel, asset_type, id):
 
 
 @then("the channel '{channel}' on {asset_type} '{id}' will be marked disabled")
-def has_disabled_channel(context, channel, asset_type, id):
+def then_has_disabled_channel(context, channel, asset_type, id):
     with cwd_from(context):
         config = load_config(asset_type, id, TEST_ENV)
         chan = config[channel]
@@ -112,7 +118,7 @@ def has_disabled_channel(context, channel, asset_type, id):
 
 
 @then("the channel '{channel}' on {asset_type} '{id}' has {property} set to {value}")
-def has_channel_with_property(context, channel, asset_type, id, property, value):
+def then_has_channel_with_property(context, channel, asset_type, id, property, value):
     with cwd_from(context):
         config = load_config(asset_type, id, TEST_ENV)
         chan = config[channel]
@@ -126,14 +132,14 @@ def has_channel_with_property(context, channel, asset_type, id, property, value)
 
 
 @given("a file '{file_path}' containing")
-def create_file_containing(context, file_path):
+def given_create_file_containing(context, file_path):
     with cwd_from(context):
         with open(file_path, mode="w+") as f:
             f.write(context.text)
 
 
 @then("the file '{file_path}' will contain")
-def file_contains(context, file_path):
+def then_file_contains(context, file_path):
     with cwd_from(context):
         pattern = str(context.text).strip()
         with open(file_path, mode="r") as f:
@@ -142,7 +148,7 @@ def file_contains(context, file_path):
 
 
 @then("the file '{file_path}' will not contain")
-def file_does_not_contain(context, file_path):
+def then_file_does_not_contain(context, file_path):
     with cwd_from(context):
         pattern = str(context.text).strip()
         with open(file_path, mode="r") as f:
@@ -151,6 +157,6 @@ def file_does_not_contain(context, file_path):
 
 
 @given("the file '{file_path}' exists")
-def create_empty_file(context, file_path):
+def then_create_empty_file(context, file_path):
     with cwd_from(context):
         assert os.path.exists(file_path), f"{file_path} does not exist"

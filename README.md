@@ -187,6 +187,26 @@ the changes before merging your PR (which you're always doing _regardless_, righ
 edits. This is useful when you expect that a configuration exists and want to stop if that
 expectation is wrong.
 
+
+### Deleting a channel from an asset
+
+Deleting channels from a ground station is straightforward:
+
+```
+poetry run python -m channel_tool delete staging tosgs CONTACT_RXO_SBAND_FREQ_2200_MHZ
+```
+
+We can do the same for satellites, and update several at once:
+
+```
+poetry run python -m channel_tool delete staging FM998,FM999 CONTACT_BIDIR
+```
+
+As with the `edit` command, to skip confirmations, use the `--yes` option. 
+You can use the `--require-existing` to raise an error if the channel to delete does not
+currently exist and `--fail-fast` to tell the tool to stop as soon as it encounters such 
+an error.
+
 ### Validation
 
 All edits performed using `channel_tool` as described above are automatically validated against a
