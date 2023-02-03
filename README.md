@@ -265,3 +265,20 @@ poetry run python -m channel_tool edit production FM96 sband_2200 --enabled=True
 ```
 
 [1]: https://docs.google.com/document/d/1oOzPFOxtj3PFqRxY8ZnLOLie2oR95YMfxTyNKmKO9YU/edit
+
+### Auto-updating link profiles
+
+Downlink rates in link profiles can be auto-updated. Auto-update does not require YAML files to be 
+passed in but it does require a CSV file containing past performance of the channels to be updated.
+See help for a full list of parameters.
+
+#### Obtaining the Input
+
+The expected CSV file must contain a column whose name matching exactly to the `--data-column` parameter. 
+The column should contain numeric values representing periodic actual values of `--parameter`.
+
+Historic goodput rates can be obtained from [Constpipe's STP grafana dashboard](constpipe-telemetry.cloud.spire.com:3000/d/wTH60WRGk/stp?orgId=1).
+
+#### Aftermath
+
+The impact of the changes can be monitored from [this Grafana dashboard](https://grafana.cloud.spire.com/d/rBEDPMI4z/link-volume-expected-vs-actual?orgId=1).

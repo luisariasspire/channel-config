@@ -1,4 +1,9 @@
-from channel_tool.__main__ import merge, remove, str_to_bool, update
+from channel_tool.__main__ import (
+    merge,
+    remove,
+    str_to_bool,
+    update,
+)
 
 
 def test_merge_lists_simple():

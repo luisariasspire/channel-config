@@ -69,3 +69,22 @@ Feature: `channel_tool` supports editing embedded YAML structures
        uplink_rate_kbps: 5.6
        min_duration: 20sec
    """
+
+  Scenario: update a YAML structure within a file
+   Given the ground station 'testgs' has 'CONTACT_BIDIR' in its configuration file
+   And a file 'goodput.csv' containing:
+   """
+   Goodput
+   1000
+   1200
+   1400
+   """
+   When I run 'python -m channel_tool auto-update staging testgs CONTACT_BIDIR --parameter=link_profile --data-column=Goodput --history-length=3  --safety-factor=0.95 --calculation-method=ema --source-file="goodput.csv" -y'
+   Then it will exit with code '0'
+   And the file 'staging/gs/testgs.yaml' will contain:
+   """
+     - min_elevation_deg: 25
+       downlink_rate_kbps: 1220
+       uplink_rate_kbps: 5.6
+       min_duration: 20sec
+   """

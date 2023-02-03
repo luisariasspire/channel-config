@@ -17,6 +17,7 @@ from channel_tool.asset_config import (
     write_asset_config,
 )
 from channel_tool.audit import AuditReport
+from channel_tool.auto_update_utils import asset_to_predicates, create_config_updates
 from channel_tool.typedefs import ChannelDefinition, DefsFile, Environment
 from channel_tool.util import (
     ENVS,
@@ -190,10 +191,12 @@ comparator_to_lambda = {
 VALID_COMPARATORS = " ".join(comparator_to_lambda.keys())
 
 
-def compile_predicates(str_predicate: str) -> Any:
-    # Takes a single predicate in string form
-    # "<field_name> <comparator> <target_value>"
-    # and returns a function which runs the predicate on a config dictionary
+def compile_predicate(str_predicate: str) -> Any:
+    """
+    Takes a single predicate in string form
+    "<field_name> <comparator> <target_value>"
+    and returns a function which runs the predicate on a config dictionary
+    """
 
     predicate = str_predicate.split(" ")
 
@@ -221,21 +224,16 @@ def compile_predicates(str_predicate: str) -> Any:
 def update(
     current_config: Any, config_updates: Any, comparison_functions: Any = None
 ) -> Optional[Any]:
-    print(f"\n\n\n {comparison_functions} \n\n\n")
-
-    f"""Update will default to updating all values in a list unless predicates are defined.
+    """Update will default to updating all values in a list unless predicates are defined.
     In that case existing configs will be filtered before the update.
 
-    All mandatory fields need to be passed in. If a mandatory field need not update, its value should
-    be set to null. If a mandatory field is not given, an exception will be raised.
-    Optional fields that need not update may be omitted or set to null.
+    Only the fields to be updated are mandatory. The rest may be set to None or be omitted
+    completely.
 
     Multiple predicates may be passed in. Each predicate is supplied using an option of the form
     -p <field_name> <comparator> <value>
     for example
     -p min_elevation_deg >= 25 -p downlink_rate_kbps == 300
-
-    Valid comparators are: {VALID_COMPARATORS}
     """
     if isinstance(current_config, Sequence):
         assert isinstance(config_updates, Sequence)
@@ -258,7 +256,7 @@ def update(
                     if field_name not in config:
                         continue
 
-                    if config_update[field_name] == None:
+                    if config_update[field_name] is None:
                         continue
 
                     config[field_name] = update(
@@ -312,8 +310,25 @@ def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
                 new_cdef[field] = update(  # type: ignore
                     cdef[field], val, args.predicate  # type: ignore
                 )  # type: ignore
+
     if args.comment:
         new_cdef.yaml_set_start_comment(args.comment)  # type: ignore
+    return new_cdef
+
+
+def auto_update(asset: str, cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
+    """Create configuration updates and predicates. Then make the updates"""
+
+    new_cdef = deepcopy(cdef)
+    field = args.parameter
+
+    config_updates = create_config_updates(args)
+    predicates = asset_to_predicates(asset, compile_predicate)
+    new_cdef[field] = update(cdef[field], config_updates, predicates)  # type: ignore
+
+    if args.comment:
+        new_cdef.yaml_set_start_comment(args.comment)  # type: ignore
+
     return new_cdef
 
 
@@ -375,6 +390,28 @@ def edit_config(args: Any) -> None:
                 raise NoConfigurationError(msg)
 
     apply_update(args.environment, args.assets, args.channels, do_edit, yes=args.yes)
+
+
+def auto_update_config(args: Any) -> None:
+    def do_auto_update(
+        asset: str, channel: str, existing: Optional[ChannelDefinition]
+    ) -> Optional[ChannelDefinition]:
+        if existing is not None:
+            return auto_update(asset, existing, args)
+        else:
+            msg = (
+                f"No configuration for {channel} on {asset}.\n"
+                f"(Tip: Use `channel_tool add {asset} {channel}` to add one from a template.)"
+            )
+            if not args.fail_fast:
+                warn(msg)
+                return None
+            else:
+                raise NoConfigurationError(msg)
+
+    apply_update(
+        args.environment, args.assets, args.channels, do_auto_update, yes=args.yes
+    )
 
 
 def audit_configs(args: Any) -> None:
@@ -561,6 +598,12 @@ def add_process_flags(parser: Any) -> None:
         action="store_true",
         help="Do not continue with further edits after errors.",
     )
+    parser.add_argument(
+        "-c",
+        "--comment",
+        type=str,
+        help="Optional comment to attach to the channel definition in the YAML file.",
+    )
 
 def add_delete_flags(parser: Any) -> None:
     """Flags for deleting channels."""
@@ -571,15 +614,10 @@ def add_delete_flags(parser: Any) -> None:
         help="Raise an error whenever the channel to delete does not currently exist.",
     )
 
+
 def add_editing_flags(parser: Any) -> None:
     """Add flags for each channel definition field. Used for editing and overrides."""
     # Meta
-    parser.add_argument(
-        "-c",
-        "--comment",
-        type=str,
-        help="Optional comment to attach to the channel definition in the YAML file.",
-    )
     parser.add_argument(
         "-m",
         "--mode",
@@ -591,7 +629,7 @@ def add_editing_flags(parser: Any) -> None:
     parser.add_argument(
         "-p",
         "--predicate",
-        type=compile_predicates,
+        type=compile_predicate,
         default=None,
         nargs=1,
         help=("Optional predicates to select configs. Only valid with --mode=update."),
@@ -705,6 +743,58 @@ def add_channel_flag(parser: Any) -> None:
     )
 
 
+def add_auto_update_flags(parser: Any) -> None:
+    parser.add_argument(
+        "--parameter",
+        type=str,
+        choices={"link_profile"},  # TODO: contact_overhead_time
+        help="Which config parameter to auto-update",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--data-column",
+        type=str,
+        help="Name of the column that stores historic values. Must match exactly",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--conversion-factor",
+        type=float,
+        help="The factor by which individual values will be multiplied by. e.g. if your data is in kilobytes but output should be in megabytes, pass in 0.001",
+        default=1.0,
+    )
+
+    parser.add_argument(
+        "--calculation-method",
+        type=str,
+        choices={"ema", "sma"},
+        help="Calculation method for new values. Exponential moving average or simple moving average",
+        default="ema",
+    )
+
+    parser.add_argument(
+        "--history-length",
+        type=int,
+        help="Sets how many days into the past the algorithm will look at",
+        default=14,
+    )
+
+    parser.add_argument(
+        "--safety-factor",
+        type=float,
+        help="Multiplier for the updated parameter, to enable conservative under-estimation. Should be between 0 and 1.",
+        default=1,
+    )
+
+    parser.add_argument(
+        "--source-file",
+        type=str,
+        help="The CSV file containing historical data",
+    )
+
+
 def add_asset_flags(parser: Any) -> None:
     add_env_flag(parser)
     add_asset_flag(parser)
@@ -748,6 +838,7 @@ AUDIT_PARSER = SUBPARSERS.add_parser(
 )
 AUDIT_PARSER.set_defaults(func=audit_configs)
 
+
 add_env_flag(AUDIT_PARSER)
 AUDIT_PARSER.add_argument(
     "satellites",
@@ -776,6 +867,15 @@ VALIDATE_PARSER = SUBPARSERS.add_parser(
     "validate", help="Validate all templates and extant configurations."
 )
 VALIDATE_PARSER.set_defaults(func=lambda _: validate_all())
+
+AUTO_UPDATE_PARSER = SUBPARSERS.add_parser(
+    "auto-update",
+    help="Automatically update link profiles for given assets, channels and channels.",
+)
+AUTO_UPDATE_PARSER.set_defaults(func=auto_update_config)
+add_auto_update_flags(AUTO_UPDATE_PARSER)
+add_asset_flags(AUTO_UPDATE_PARSER)
+add_process_flags(AUTO_UPDATE_PARSER)
 
 if __name__ == "__main__":
     try:
