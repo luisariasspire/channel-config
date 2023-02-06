@@ -23,7 +23,7 @@ CONTACT_BIDIR:
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
+    downlink_rate_kbps: 700.0
     uplink_rate_kbps: 10
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
@@ -104,7 +104,7 @@ CONTACT_RXO:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
+    downlink_rate_kbps: 700.0
     uplink_rate_kbps: 0
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
@@ -185,7 +185,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
+    downlink_rate_kbps: 700.0
     uplink_rate_kbps: 0
 CONTACT_SDR_IQ:
   directionality: SpaceToEarth
@@ -239,7 +239,7 @@ CONTACT_TRACKING_BIDIR:
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
+    downlink_rate_kbps: 700.0
     uplink_rate_kbps: 10
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
@@ -293,7 +293,7 @@ CONTACT_TRACKING_RXO:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
+    downlink_rate_kbps: 700.0
     uplink_rate_kbps: 10
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
@@ -374,7 +374,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
+    downlink_rate_kbps: 700.0
     uplink_rate_kbps: 0
 X_BAND_TXO:
   directionality: SpaceToEarth
