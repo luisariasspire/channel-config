@@ -98,7 +98,7 @@ CONTACT_RXO:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -179,7 +179,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
