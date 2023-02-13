@@ -9,7 +9,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 280.0
+    downlink_rate_kbps: 550.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
   window_parameters:
@@ -31,7 +31,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 240.0
+    downlink_rate_kbps: 350.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
   window_parameters:
@@ -53,7 +53,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 240.0
+    downlink_rate_kbps: 550.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
@@ -67,7 +67,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 240.0
+    downlink_rate_kbps: 350.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
 X_BAND_TXO:

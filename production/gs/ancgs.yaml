@@ -9,7 +9,7 @@ CONTACT_RXO:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
-    downlink_rate_kbps: 240.0
+    downlink_rate_kbps: 350.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
 CONTACT_RXO_DVBS2X:
@@ -23,7 +23,7 @@ CONTACT_RXO_DVBS2X:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
-    downlink_rate_kbps: 280.0
+    downlink_rate_kbps: 550.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
 CONTACT_TRACKING_RXO:
@@ -37,7 +37,7 @@ CONTACT_TRACKING_RXO:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
-    downlink_rate_kbps: 240.0
+    downlink_rate_kbps: 350.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
 CONTACT_TRACKING_RXO_DVBS2X:
@@ -51,6 +51,6 @@ CONTACT_TRACKING_RXO_DVBS2X:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
-    downlink_rate_kbps: 280.0
+    downlink_rate_kbps: 550.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
