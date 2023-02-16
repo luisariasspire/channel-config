@@ -33,6 +33,12 @@ from channel_tool.validation import (
     validate_all,
     validate_one,
 )
+from channel_tool.pls_tool import (
+    pls_lookup,
+    pls_short,
+    pls_long,
+)
+
 
 CONTACT_TYPE_DEFS: DefsFile = load_yaml_file("contact_type_defs.yaml")
 
@@ -876,6 +882,22 @@ AUTO_UPDATE_PARSER.set_defaults(func=auto_update_config)
 add_auto_update_flags(AUTO_UPDATE_PARSER)
 add_asset_flags(AUTO_UPDATE_PARSER)
 add_process_flags(AUTO_UPDATE_PARSER)
+
+PLS_PARSER = SUBPARSERS.add_parser(
+    "pls",
+    help="Look up PLS-associated values",
+)
+PLS_PARSER.set_defaults(func=pls_lookup)
+PLS_LOOKUP = PLS_PARSER.add_mutually_exclusive_group(required=True)
+PLS_LOOKUP.add_argument("-p", "--pls", help="PLS value", type=int)
+PLS_LOOKUP.add_argument("-d", "--db", help="SnR value (db)", type=float)
+PLS_BAND = PLS_PARSER.add_mutually_exclusive_group(required=False)
+PLS_BAND.add_argument("-s", "--sband", help=f"SBand mode.  Valid PLS values are {sorted(pls_short)}", action="store_true")
+PLS_BAND.add_argument("-x", "--xband", help=f"XBand mode.  Valid PLS values are {sorted(pls_long)}", action="store_true")
+PLS_PARSER.add_argument("-r", "--radionet", help="enable radionet", default=False, action="store_true")
+PLS_PARSER.add_argument("--iovdb", help="SnR db adjustment based on IOV (default %(default).1f, change with care)", default=4, type=float)
+PLS_PARSER.add_argument("template", nargs='?', help="YAML template to expand", default="fragments/txo_dvb_template.yaml")
+
 
 if __name__ == "__main__":
     try:

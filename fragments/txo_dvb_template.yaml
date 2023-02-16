@@ -1,0 +1,13 @@
+# this yaml template is for the exclusive use of the pls-mtu tool.
+# other uses will not do what you expect.
+forward_channels:
+  - !notnull
+    radio_band: ${band}
+    bandaid_mode: ${mode}
+    use_radionet: ${radionet}
+    protocol: DVBS2X
+    bandaid_override: !notnull
+        pls: ${pls}
+        !radionet mtu: ${mtu}
+    ground_override: !notnull
+        !radionet radionet-m: ${mtu}

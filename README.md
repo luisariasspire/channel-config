@@ -242,6 +242,76 @@ poetry run python -m channel_tool edit staging FM137,FM142 uhf --yes \
     --satellite_constraints "$(cat /tmp/constraints.yml)"
 ```
 
+### Looking up PLS parameters
+
+The pls tool is for looking up the correct radionet mtu value to go with
+a particular DVB PLS value.  It also outputs some helpful values based on the
+given PLS value.
+
+```
+$ poetry run python3 -m channel_tool pls -p 39
+pls: 39  mtu: 1632 req SnR: 9.18 speed: 1.195
+```
+
+If SBand or Xband usage is known, then it can be specified to generate a
+parameter block using the given PLS value.
+
+```
+$ poetry run python3 -m channel_tool pls -p 39 -s
+pls: 39  mtu: 1632 req SnR: 9.18 speed: 1.195
+---using template txo_dvb_template.yaml---
+forward_channels:
+- bandaid_mode: TX_SBAND_DVB
+  bandaid_override:
+    pls: 39
+  protocol: DVBS2X
+  radio_band: SBAND
+```
+
+If radionet parameters are desired, specify `-r` to indicate radionet mode.
+This will add additional parameters.
+
+```
+$ poetry run python3 -m channel_tool pls -p 39 -s -r
+Radionet enabled
+pls: 39  mtu: 1632 req SnR: 9.18 speed: 1.195
+---using template txo_dvb_template.yaml---
+forward_channels:
+- bandaid_mode: TX_SBAND_DVB_IP
+  bandaid_override:
+    mtu: 1632
+    pls: 39
+  ground_override:
+    radionet-m: 1632
+  protocol: DVBS2X
+  radio_band: SBAND
+  use_radionet: true
+```
+
+If the PLS is not known but the signal strength is, the pls tool can look
+up the appropriate PLS value to use for the given signal strength.
+SBand/XBand and radionet arguments work here as well.  Note: the SnR values
+are adjusted to reflect our IOV testing (req +4dB) rather than the DVB spec values.
+
+
+```
+$ poetry run python3 -m channel_tool pls -d 9.8 -s -r
+Radionet enabled
+pls: 39  mtu: 1632  req SnR: 9.18 speed: 1.195Mbps
+---using template txo_dvb_template.yaml---
+forward_channels:
+- bandaid_mode: TX_SBAND_DVB_IP
+  bandaid_override:
+    mtu: 1632
+    pls: 39
+  ground_override:
+    radionet-m: 1632
+  protocol: DVBS2X
+  radio_band: SBAND
+  use_radionet: true
+```
+
+
 ## Examples
 
 ### Disabling BIDIR channels on a ground station (set RXO-only)
