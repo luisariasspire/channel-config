@@ -15,10 +15,13 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     uplink_rate_kbps: 0.0
     min_duration: 1min
   window_parameters:
-# GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
     forward_channels:
     - ground_override:
+        # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
         freq: 70000000
+    - bandaid_override:
+        # The 3m dish has ~ 15db of SNR allowing PLS 87 (2.391mbps)
+        pls: 87
     chainOverride:
       sband:
         freq: 70000000
