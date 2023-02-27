@@ -13,7 +13,7 @@ from channel_tool.typedefs import (
     TkGroundStation,
     TkSatellite,
 )
-from channel_tool.util import GROUND_STATION, SATELLITE, dump_yaml_string
+from channel_tool.util import GROUND_STATION, SATELLITE, dump_yaml_string, lookup
 
 
 def channel_rejection_reason(
@@ -65,6 +65,15 @@ def channel_rejection_reason(
 
     if gs_country not in sat_countries:
         return f"Ground station license country {gs_country} not in set {sat_countries}"
+
+    denied_gss = lookup("satellite_constraints.deny_ground_stations", sat_chan)
+    denied_sats = lookup("ground_station_constraints.deny_satellites", gs_chan)
+
+    if satellite["spire_id"] in denied_sats:
+        return f"Satellite in ground station deny list"
+
+    if ground_station["gs_id"] in denied_gss:
+        return f"Ground station in satellite deny list"
 
     return None
 
