@@ -24,14 +24,18 @@ def exponential_moving_average(
     for i in range(1, len(history)):
         ema = history[i] * factor + ema * (1 - factor)
 
-    return int(ema * result_safety_factor)
+    return round(float(ema * result_safety_factor), 2)
 
 
 def simple_moving_average(
     history: list[float], history_length_days: int, result_safety_factor: float
 ) -> float:
-    return int(
-        average(history[len(history) - history_length_days :]) * result_safety_factor
+    return round(
+        float(
+            average(history[len(history) - history_length_days :])
+            * result_safety_factor
+        ),
+        2,
     )
 
 
@@ -39,28 +43,26 @@ def read_history(
     column: str, source_file: str, conversion_factor: float
 ) -> list[float]:
     goodput = []
-    # From the documentation: If csvfile is a file object, it should be opened with newline=''
+    # If csvfile is a file object, it should be opened with newline=''
     # https://docs.python.org/3/library/csv.html
-
     with open(source_file, newline="", encoding="utf-8-sig") as f:
         contents = csv.DictReader(f)
-        print(contents)
         for line_number, row in enumerate(contents):
             try:
-                # Zero goodput means no data
-                if row[column] != "0":
-                    goodput.append(int(row[column]) * conversion_factor)
+                goodput.append(float(row[column]) * conversion_factor)
             except IndexError:
-                warnings.warn(f"Empty line on {source_file} {line_number} skipped")
+                warnings.warn(f"Empty line on {source_file} line:{line_number} skipped")
             except ValueError:
-                warnings.warn(f"Non-int value on {source_file} {line_number} skipped")
+                warnings.warn(
+                    f"Non-float value {row[column]} on {source_file} line:{line_number} skipped"
+                )
             except KeyError:
                 sys.exit(f"No column named {column} was found in {source_file}.")
 
     return goodput
 
 
-def create_config_updates(args: Any) -> List[Mapping[str, Any]]:
+def create_config_updates(args: Any) -> List[Mapping[str, Any]] | str:
     """
     Creates the new value for the parameter.
     Returns it in the format expected by the update function.
@@ -68,26 +70,17 @@ def create_config_updates(args: Any) -> List[Mapping[str, Any]]:
 
     history = read_history(args.data_column, args.source_file, args.conversion_factor)
 
-    assert (
-        len(history) >= args.history_length
-    ), "History length cannot be longer than data provided."
-
     if args.calculation_method == "sma":
-        new_value = simple_moving_average(
-            history, args.history_length, args.safety_factor
-        )
+        new_value = simple_moving_average(history, len(history), args.safety_factor)
     else:
         new_value = exponential_moving_average(
-            history, args.history_length, args.safety_factor
+            history, len(history), args.safety_factor
         )
 
-    key = (
-        "downlink_rate_kbps"
-        if args.parameter == "link_profile"
-        else "contact_overhead_time"
-    )
-
-    return [{key: new_value}]
+    if args.parameter == "link_profile":
+        return [{"downlink_rate_kbps": new_value}]
+    else:
+        return str(int(new_value)) + "s"
 
 
 def asset_to_predicates(asset: str, compiler: Callable[[str], Any]) -> Any:

@@ -3,7 +3,7 @@ import sys
 import re
 from typing import Dict, Any, Optional, Union
 
-pls_mtu_map  = {
+pls_mtu_map = {
     # short frame PLS values
     7: 372,
     11: 642,
@@ -38,7 +38,7 @@ pls_mtu_map  = {
     61: 6718,
     65: 7172,
     # error
-    "Not available": "Not available"
+    "Not available": "Not available",
 }
 
 pls_snr_req = {
@@ -76,7 +76,7 @@ pls_snr_req = {
     61: 9.35,
     65: 10.69,
     # error
-    "Not available": -99999
+    "Not available": -99999,
 }
 
 pls_speed = {
@@ -117,42 +117,65 @@ pls_speed = {
 }
 
 pls_short = {7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 75, 79, 83, 87, 91}
-pls_long = {5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 49, 53, 57, 61, 65}  # note 45 is omitted - no data
+pls_long = {
+    5,
+    9,
+    13,
+    17,
+    21,
+    25,
+    29,
+    33,
+    37,
+    41,
+    49,
+    53,
+    57,
+    61,
+    65,
+}  # note 45 is omitted - no data
 
 
 # YAML template support
 def load_expand(loader: yaml.loader.BaseLoader, node: yaml.nodes.Node) -> Any:
     value = loader.construct_scalar(node)
-    var = re.search(r'\$\{(.*)\}', value)
+    var = re.search(r"\$\{(.*)\}", value)
     if not var:
         raise ValueError(f"match not found in {value}")
     return loader.vars.get(var.group(1))
 
-def load_notnull(loader: yaml.loader.BaseLoader, node: yaml.nodes.Node) -> Dict[str, Any]:
-    mapping = loader.construct_mapping(node)
-    return {k: v for k,v in mapping.items() if k is not None and bool(v)}
 
-def load_radionet(loader: yaml.loader.BaseLoader, node: yaml.nodes.Node) -> Optional[Any]:
+def load_notnull(
+    loader: yaml.loader.BaseLoader, node: yaml.nodes.Node
+) -> Dict[str, Any]:
+    mapping = loader.construct_mapping(node)
+    return {k: v for k, v in mapping.items() if k is not None and bool(v)}
+
+
+def load_radionet(
+    loader: yaml.loader.BaseLoader, node: yaml.nodes.Node
+) -> Optional[Any]:
     if loader.args.radionet:
         return loader.construct_scalar(node)
     return None
+
 
 def pls_lookup(args: Any) -> None:
     """
     module main entry point
     """
-    found: Dict[str, Optional[Union[float, str]]] = {'pls': None, 'mtu': None}
+    found: Dict[str, Optional[Union[float, str]]] = {"pls": None, "mtu": None}
     if args.radionet:
         print("Radionet enabled")
-        found['radionet'] = True
+        found["radionet"] = True
 
     if args.sband:
-        found['band'] = 'SBAND'
-        found['mode'] = 'TX_SBAND_DVB_IP' if args.radionet else 'TX_SBAND_DVB'
+        found["band"] = "SBAND"
+        found["mode"] = "TX_SBAND_DVB_IP" if args.radionet else "TX_SBAND_DVB"
         filt_sp = {v: k for k, v in pls_speed.items() if k in pls_short}
     elif args.xband:
-        found['band'] = 'XBAND'
-        found['mode'] = 'TX_XBAND_DVB_IP' if args.radionet else 'TX_XBAND_DVB'
+        found["band"] = "XBAND"
+        found["mode"] = "TX_XBAND_DVB_IP" if args.radionet else "TX_XBAND_DVB"
         filt_sp = {v: k for k, v in pls_speed.items() if k in pls_long}
     else:
         filt_sp = {v: k for k, v in pls_speed.items()}
@@ -162,13 +185,15 @@ def pls_lookup(args: Any) -> None:
             raise ValueError(f"pls {args.pls} not valid for sband")
         if args.xband and args.pls not in pls_long:
             raise ValueError(f"pls {args.pls} not valid for xband")
-        found['pls'] = args.pls
-        found['mtu'] = pls_mtu_map[args.pls]
-        print(f"pls: {args.pls}  mtu: {pls_mtu_map[args.pls]} req SnR: {pls_snr_req[args.pls] + args.iovdb} speed: {pls_speed[args.pls]}")
+        found["pls"] = args.pls
+        found["mtu"] = pls_mtu_map[args.pls]
+        print(
+            f"pls: {args.pls}  mtu: {pls_mtu_map[args.pls]} req SnR: {pls_snr_req[args.pls] + args.iovdb} speed: {pls_speed[args.pls]}"
+        )
     else:
         reqd = args.db - args.iovdb
 
-        found_pls : Union[int, str] = "Not available"
+        found_pls: Union[int, str] = "Not available"
         found_db = float("-inf")
         speed = 0.0
         for sp in sorted(filt_sp.keys()):
@@ -179,9 +204,11 @@ def pls_lookup(args: Any) -> None:
             found_pls = pls
             found_db = db_req
             speed = sp
-        print(f"pls: {found_pls}  mtu: {pls_mtu_map[found_pls]}  req SnR: {found_db + args.iovdb} speed: {speed}Mbps")
-        found['pls'] = found_pls
-        found['mtu'] = pls_mtu_map[found_pls]
+        print(
+            f"pls: {found_pls}  mtu: {pls_mtu_map[found_pls]}  req SnR: {found_db + args.iovdb} speed: {speed}Mbps"
+        )
+        found["pls"] = found_pls
+        found["mtu"] = pls_mtu_map[found_pls]
 
     if not (args.xband or args.sband):
         print("Specify sband or xband to generate template")

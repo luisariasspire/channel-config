@@ -347,7 +347,15 @@ See help for a full list of parameters.
 The expected CSV file must contain a column whose name matching exactly to the `--data-column` parameter. 
 The column should contain numeric values representing periodic actual values of `--parameter`.
 
-Historic goodput rates can be obtained from [Constpipe's STP grafana dashboard](constpipe-telemetry.cloud.spire.com:3000/d/wTH60WRGk/stp?orgId=1).
+Historic goodput rates can be obtained from [the historical contact performance Grafana dashboard](https://grafana.cloud.spire.com/d/Mv46v_1Vk/historical_contact_performance).
+
+It's up to you to select how far back the data goes. Unless you have good reason to do otherwise, 30
+days is recommended.
+
+It is also recommended to do the updates by Channel ID.
+
+Zero Byte Contacts are recommended to be included in the source data to ensure real world conditions are
+properly reflected.
 
 #### Aftermath
 

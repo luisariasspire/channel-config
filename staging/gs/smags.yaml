@@ -13,7 +13,7 @@ CONTACT_BIDIR:
     uplink_rate_kbps: 4.0
     min_duration: 4m
   - min_elevation_deg: 27
-    downlink_rate_kbps: 355.0
+    downlink_rate_kbps: 446.46
     uplink_rate_kbps: 4.0
     min_duration: 20sec
 CONTACT_BIDIR_DVBS2X:
@@ -31,7 +31,7 @@ CONTACT_BIDIR_DVBS2X:
     uplink_rate_kbps: 4.0
     min_duration: 4m
   - min_elevation_deg: 27
-    downlink_rate_kbps: 555.0
+    downlink_rate_kbps: 562.93
     uplink_rate_kbps: 4.0
     min_duration: 20sec
 CONTACT_BIDIR_UHF:
@@ -60,7 +60,7 @@ CONTACT_RXO:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 27
-    downlink_rate_kbps: 350.0
+    downlink_rate_kbps: 583.41
     uplink_rate_kbps: 0.0
     min_duration: 1min
 CONTACT_RXO_DVBS2X:
@@ -75,7 +75,7 @@ CONTACT_RXO_DVBS2X:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 27
-    downlink_rate_kbps: 550.0
+    downlink_rate_kbps: 634.85
     uplink_rate_kbps: 0.0
     min_duration: 1min
 CONTACT_TRACKING_BIDIR:

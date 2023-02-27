@@ -365,9 +365,7 @@ def delete_config(args: Any) -> None:
     ) -> None:
         if existing is None:
             if args.require_existing:
-                msg = (
-                    f"No configuration for {channel} on {asset}."
-                )
+                msg = f"No configuration for {channel} on {asset}."
                 if not args.fail_fast:
                     warn(msg)
                     return None
@@ -590,6 +588,7 @@ def channel_list(val: str) -> List[str]:
     else:
         raise ValueError(f"Unrecognized channel alias '{val}'")
 
+
 def add_process_flags(parser: Any) -> None:
     """Flags modulating the editing process."""
     parser.add_argument(
@@ -610,6 +609,7 @@ def add_process_flags(parser: Any) -> None:
         type=str,
         help="Optional comment to attach to the channel definition in the YAML file.",
     )
+
 
 def add_delete_flags(parser: Any) -> None:
     """Flags for deleting channels."""
@@ -753,7 +753,10 @@ def add_auto_update_flags(parser: Any) -> None:
     parser.add_argument(
         "--parameter",
         type=str,
-        choices={"link_profile"},  # TODO: contact_overhead_time
+        choices={
+            "link_profile",
+            "contact_overhead_time",
+        },  # TODO: contact_overhead_time
         help="Which config parameter to auto-update",
         required=True,
     )
@@ -778,13 +781,6 @@ def add_auto_update_flags(parser: Any) -> None:
         choices={"ema", "sma"},
         help="Calculation method for new values. Exponential moving average or simple moving average",
         default="ema",
-    )
-
-    parser.add_argument(
-        "--history-length",
-        type=int,
-        help="Sets how many days into the past the algorithm will look at",
-        default=14,
     )
 
     parser.add_argument(
@@ -892,11 +888,33 @@ PLS_LOOKUP = PLS_PARSER.add_mutually_exclusive_group(required=True)
 PLS_LOOKUP.add_argument("-p", "--pls", help="PLS value", type=int)
 PLS_LOOKUP.add_argument("-d", "--db", help="SnR value (db)", type=float)
 PLS_BAND = PLS_PARSER.add_mutually_exclusive_group(required=False)
-PLS_BAND.add_argument("-s", "--sband", help=f"SBand mode.  Valid PLS values are {sorted(pls_short)}", action="store_true")
-PLS_BAND.add_argument("-x", "--xband", help=f"XBand mode.  Valid PLS values are {sorted(pls_long)}", action="store_true")
-PLS_PARSER.add_argument("-r", "--radionet", help="enable radionet", default=False, action="store_true")
-PLS_PARSER.add_argument("--iovdb", help="SnR db adjustment based on IOV (default %(default).1f, change with care)", default=4, type=float)
-PLS_PARSER.add_argument("template", nargs='?', help="YAML template to expand", default="fragments/txo_dvb_template.yaml")
+PLS_BAND.add_argument(
+    "-s",
+    "--sband",
+    help=f"SBand mode.  Valid PLS values are {sorted(pls_short)}",
+    action="store_true",
+)
+PLS_BAND.add_argument(
+    "-x",
+    "--xband",
+    help=f"XBand mode.  Valid PLS values are {sorted(pls_long)}",
+    action="store_true",
+)
+PLS_PARSER.add_argument(
+    "-r", "--radionet", help="enable radionet", default=False, action="store_true"
+)
+PLS_PARSER.add_argument(
+    "--iovdb",
+    help="SnR db adjustment based on IOV (default %(default).1f, change with care)",
+    default=4,
+    type=float,
+)
+PLS_PARSER.add_argument(
+    "template",
+    nargs="?",
+    help="YAML template to expand",
+    default="fragments/txo_dvb_template.yaml",
+)
 
 
 if __name__ == "__main__":
