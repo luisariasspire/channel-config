@@ -69,10 +69,10 @@ def channel_rejection_reason(
     denied_gss = lookup("satellite_constraints.deny_ground_stations", sat_chan)
     denied_sats = lookup("ground_station_constraints.deny_satellites", gs_chan)
 
-    if satellite["spire_id"] in denied_sats:
+    if denied_sats and satellite["spire_id"] in denied_sats:
         return f"Satellite in ground station deny list"
 
-    if ground_station["gs_id"] in denied_gss:
+    if denied_gss and ground_station["gs_id"] in denied_gss:
         return f"Ground station in satellite deny list"
 
     return None
