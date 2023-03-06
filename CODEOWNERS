@@ -1,6 +1,1 @@
-# team won't work right now because it's private
-# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-# * @space/optimizer
-
-# as a workaround, adding individual users as codeowners,
-* @frankie-foston @eilidh-mcadam @nick-pascucci @josh-singer @eren-simsek @ellie-mccarthy @tyler-thompson @sterling-baker @alex-westfall @daniel-polo @john-tooprose @Liz-West @marc-sans @zack-bowles @arjun-preetham @prit-chovatiya @marhisyam-muhammad
+* @space/optimizer @space/satops
