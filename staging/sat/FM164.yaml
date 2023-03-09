@@ -77,7 +77,7 @@ CONTACT_BIDIR_UHF:
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 100
+    downlink_rate_kbps: 10
     uplink_rate_kbps: 10
 CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   directionality: SpaceToEarth
