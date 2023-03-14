@@ -66,6 +66,41 @@ CONTACT_BIDIR_DVBS2X:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
     uplink_rate_kbps: 4.0
+CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION:
+  contact_type: CONTACT_BIDIR_DVBS2X
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - tusgs
+        - wbugs
+  contact_overhead_time: 200s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000.0
+    uplink_rate_kbps: 4.0
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -168,6 +203,77 @@ CONTACT_RXO:
       protocol: LEGACY
       bandaid_mode: TX_SBAND
 CONTACT_RXO_DVBS2X:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: no_overlapping_transits
+      norad_id: 47493   #FM123's norad_id
+      modifier:
+        only_for_ground_stations:
+        - accgs # only for WBUGS
+        - ancgs
+        - awags
+        - bdags
+        - bdlgs
+        - bdugs
+        - cltgs
+        - cmbgs
+        - dalgs
+        - dlhgs
+        - glags
+        - gumgs
+        - hlegs
+        - hndgs
+        - icegs
+        - itogs
+        - ivcgs
+        - jnbgs
+        - jnugs
+        - orkgs
+        - pergs
+        - pitgs
+        - psygs
+        - puqgs
+        - seags
+        - sings
+        - smags
+        - stxgs
+        - tosgs
+        - tusgs
+        - vntgs
+        - xspgs
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000.0
+    uplink_rate_kbps: 0.0
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   directionality: SpaceToEarth
   allowed_license_countries:
   - AU

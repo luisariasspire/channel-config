@@ -34,6 +34,26 @@ CONTACT_BIDIR_DVBS2X:
     downlink_rate_kbps: 562.93
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION:
+  directionality: Bidirectional
+  contact_type: CONTACT_BIDIR_DVBS2X
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 200s
+  link_profile:
+  - min_elevation_deg: 40
+    downlink_rate_kbps: 850.0
+    uplink_rate_kbps: 4.0
+    min_duration: 20sec
+  window_parameters:
+    forward_channels:
+    - bandaid_override:
+        # The 1.8m dish has better SNR above 40 degrees elevation - PLS 75 is 1.7Mbit
+        pls: 75
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -76,6 +96,26 @@ CONTACT_RXO_DVBS2X:
     downlink_rate_kbps: 634.85
     uplink_rate_kbps: 0.0
     min_duration: 1min
+CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_RXO_DVBS2X
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 40
+    downlink_rate_kbps: 850.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters:
+    forward_channels:
+    - bandaid_override:
+        # The 1.8m dish has better SNR above 40 degrees elevation - PLS 75 is 1.7Mbit
+        pls: 75
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
