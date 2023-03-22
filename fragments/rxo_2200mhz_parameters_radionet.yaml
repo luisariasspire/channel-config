@@ -5,3 +5,5 @@ forward_channels:
     use_radionet: true
     bandaid_override:
       tx_carrier_frequency_hz: 2200500000
+      fec: 255
+      fec_k: 254

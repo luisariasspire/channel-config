@@ -1,5 +1,8 @@
 forward_channels:
   - radio_band: XBAND
     bandaid_mode: TX_XBAND_DVB_IP
+    bandaid_override:
+      fec: 255
+      fec_k: 254
     use_radionet: true
     protocol: DVBS2X

@@ -33,6 +33,8 @@ Feature: `channel_tool pls` offers guidance on PLS and MTU values
     forward_channels:
     - bandaid_mode: TX_SBAND_DVB
       bandaid_override:
+        fec: 255
+        fec_k: 254
         pls: 35
       protocol: DVBS2X
       radio_band: SBAND
@@ -49,6 +51,8 @@ Feature: `channel_tool pls` offers guidance on PLS and MTU values
     forward_channels:
     - bandaid_mode: TX_SBAND_DVB_IP
       bandaid_override:
+        fec: 255
+        fec_k: 254
         mtu: 867
         pls: 19
       ground_override:
