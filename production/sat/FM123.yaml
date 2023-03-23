@@ -27,10 +27,10 @@ CONTACT_BIDIR:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 210s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 700.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 4.0
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
@@ -61,10 +61,10 @@ CONTACT_BIDIR_DVBS2X:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 200s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 4.0
 CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION:
   contact_type: CONTACT_BIDIR_DVBS2X
@@ -130,10 +130,10 @@ CONTACT_BIDIR_UHF:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 210s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 10.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 4.0
 CONTACT_RXO:
   directionality: SpaceToEarth
@@ -167,7 +167,7 @@ CONTACT_RXO:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 700.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 0.0
   contact_type: CONTACT_SPACE_GROUND_TXO
   window_parameters:
@@ -237,7 +237,7 @@ CONTACT_RXO_DVBS2X:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 0.0
   contact_type: CONTACT_SPACE_GROUND_TXO
   window_parameters:
@@ -355,7 +355,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 0.0
   window_parameters:
     forward_channels:
@@ -404,7 +404,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 700.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 0.0
   contact_type: CONTACT_SPACE_GROUND_TXO
   window_parameters:
@@ -443,10 +443,10 @@ CONTACT_TRACKING_BIDIR:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 210s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 700.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 4.0
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
@@ -477,10 +477,10 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
         only_for_ground_stations:
         - tusgs
         - wbugs
-  contact_overhead_time: 210s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 4.0
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
@@ -514,7 +514,7 @@ CONTACT_TRACKING_RXO:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 700.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 0.0
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
@@ -548,7 +548,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 0.0
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -585,7 +585,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 1000.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 0.0
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -622,7 +622,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
-    downlink_rate_kbps: 700.0
+    downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 0.0
 X_BAND_TXO:
   directionality: SpaceToEarth
@@ -1310,7 +1310,7 @@ X_BAND_TXO:
         elevation_m: 0.0
       beamwidth_deg: 5
   contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 940.0, uplink_rate_kbps: 0.0}]
+  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]
   window_parameters:
     forward_channels:
     - radio_band: XBAND
