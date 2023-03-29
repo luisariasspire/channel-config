@@ -43,3 +43,9 @@ def then_it_will_exit_with_code(context, expected):
         f"Exit code {actual} is not {expected}."
         f" stdout:\n{stdout}\nstderr:\n{stderr}"
     )
+
+
+@when("I successfully run '{command}'")
+def when_i_successfully_run_command(context, command):
+    when_i_run_command(context, command)
+    then_it_will_exit_with_code(context, 0)

@@ -583,10 +583,8 @@ def channel_list(val: str) -> List[str]:
     elif val.lower() in CONTACT_TYPE_DEFS["groups"]:
         group: List[str] = CONTACT_TYPE_DEFS["groups"][val.lower()]
         return group
-    elif val.lower().startswith("contact"):
-        return str_to_list(val)
     else:
-        raise ValueError(f"Unrecognized channel alias '{val}'")
+        return str_to_list(val)
 
 
 def add_process_flags(parser: Any) -> None:
