@@ -7,7 +7,7 @@
 # for a satellite.
 
 # To generate and run all of the channel addition commands, use:
-# pipenv run python create_sat_configs.py | xargs -L 1 pipenv run
+# poetry run python create_sat_configs.py | xargs -L 1 poetry run
 
 import sys
 
@@ -80,7 +80,7 @@ def emit_channel_commands(sats, channels, countries):
     fms = ",".join([spire_id(sat) for sat in sats])
     # TODO Should the script update the "is legal" bit on existing channels?
     print(
-        f"channel_tool add staging {fms}"
+        f"python -m channel_tool add staging {fms}"
         f" {channel_list}"
         f" --allowed_license_countries={country_list}"
         " --legal=True --yes"
