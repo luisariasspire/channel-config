@@ -7,7 +7,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {fixed_contact_duration: 4min}
+  ground_station_constraints: {fixed_contact_duration: 2min}
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 10, downlink_rate_kbps: 564.01, uplink_rate_kbps: 0.0,
       min_duration: 2min}]
