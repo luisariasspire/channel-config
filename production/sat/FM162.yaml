@@ -111,6 +111,26 @@ CONTACT_BIDIR_UHF:
   - min_elevation_deg: 0
     downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 10
+CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - CL
+  - ES
+  - GR
+  - NO
+  - NZ
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 10000.0
+    uplink_rate_kbps: 0
+  window_parameters: {}
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:

@@ -130,19 +130,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - min_elevation_deg: 0
     downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 0
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: LEGACY
-      bandaid_mode: TX_SBAND_IP
-      use_radionet: true
-      bandaid_override:
-        tx_carrier_frequency_hz: 2200500000
-      ground_override:
-        freq: 70000000
-    chainOverride:
-      sband:
-        freq: 70000000
+  window_parameters: {}
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
