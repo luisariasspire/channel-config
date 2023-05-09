@@ -4,7 +4,7 @@ CONTACT_BIDIR:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -26,7 +26,7 @@ CONTACT_BIDIR_DVBS2X:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -54,19 +54,19 @@ CONTACT_BIDIR_UHF:
     deny_satellites:
     - FM154
     - FM161
-  contact_overhead_time: 210s
+  contact_overhead_time: 90s
   link_profile:
-  - min_elevation_deg: 10
+  - min_elevation_deg: 60
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 60s
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -81,7 +81,7 @@ CONTACT_RXO_DVBS2X:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
