@@ -684,7 +684,7 @@ X_BAND_TXO:
   contact_overhead_time: 27s
   link_profile:
     - min_elevation_deg: 25
-      downlink_rate_kbps: 940.0
+      downlink_rate_kbps: 10000.0
       uplink_rate_kbps: 0.0
       min_duration: 2min
   window_parameters:
