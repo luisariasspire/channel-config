@@ -3,7 +3,7 @@
 # Refer to the Regulatory Tracker for detailed licensing information:
 # https://docs.google.com/spreadsheets/d/1zkDuvA4PwF9KVhnQgSvTaEtYjiJGRK90BDW2Gs9ZziU/edit
 
-definitions:
+bands:
   # The band definitions are given as lower and upper frequency limits,
   # drawn from the Regulatory Tracker sheet. All values in MHz.
   UHF402_7_UD: &UHF402_7_UD
@@ -52,47 +52,97 @@ definitions:
 contact_types:
   # Bidirectional contact types.
   CONTACT_BIDIR_UHF:
+    desc: "Bidirectional contact with UHF only"
+    contact_type: "CONTACT_BIDIR_UHF"
+    directionality: "Bidirectional"
     all_of:
-      - any_of:
-        - *UHF402_7_UD
+      - *UHF402_7_UD
 
   # Bidirectional contact, using UHF for uplink and S-band for downlink.
   CONTACT_BIDIR: &contact_bidir
+    desc: "Bidirectional contact with UHF up and S-band down"
+    contact_type: "CONTACT_BIDIR"
+    directionality: "Bidirectional"
     all_of:
       - *UHF402_7_UD
       - *SBAND2022_5_D
 
   # Variants using the same license, with different link options.
-  CONTACT_BIDIR_DVBS2X: *contact_bidir
-  CONTACT_TRACKING_BIDIR: *contact_bidir
-  CONTACT_TRACKING_BIDIR_DVBS2X: *contact_bidir
+  CONTACT_BIDIR_DVBS2X: 
+    <<: *contact_bidir
+    desc: "Bidirectional contact with UHF up and S-band down, using DVB-S2X modulation"
+    contact_type: "CONTACT_BIDIR_DVBS2X"
+
+  CONTACT_TRACKING_BIDIR: 
+    <<: *contact_bidir
+    desc: "Bidirectional contact with UHF up and S-band down, with target tracking"
+    contact_type: "CONTACT_TRACKING_BIDIR"
+
+  CONTACT_TRACKING_BIDIR_DVBS2X: 
+    <<: *contact_bidir
+    desc: "Bidirectional contact with UHF and S-band, with target tracking using DVB-S2X modulation"
+    contact_type: "CONTACT_TRACKING_BIDIR_DVBS2X"
 
   # Receive-only contact types.
   # CONTACT_RXO is the default, and uses the 2022MHz S-band license.
   CONTACT_RXO: &contact_rxo
+    desc: "One-way contact with S-band down"
+    contact_type: "CONTACT_RXO"
+    directionality: "SpaceToEarth"
     all_of:
       - *SBAND2022_5_D
 
-  CONTACT_RXO_DVBS2X: *contact_rxo
-  CONTACT_TRACKING_RXO: *contact_rxo
-  CONTACT_TRACKING_RXO_DVBS2X: *contact_rxo
+  CONTACT_RXO_DVBS2X: 
+    <<: *contact_rxo
+    desc: "One-way contact with S-band down, using DVB-S2X modulation"
+    contact_type: "CONTACT_RXO_DVBS2X"
+
+  CONTACT_TRACKING_RXO: 
+    <<: *contact_rxo
+    desc: "One-way contact with S-band down, with target tracking"
+    contact_type: "CONTACT_TRACKING_RXO"
+
+  CONTACT_TRACKING_RXO_DVBS2X: 
+    <<: *contact_rxo
+    desc: "One-way contact with S-band down, with target tracking using DVB-S2X modulation"
+    contact_type: "CONTACT_TRACKING_RXO_DVBS2X"
 
   # Contact type for receive-only broadcasts at 2200 MHz.
   CONTACT_RXO_SBAND_FREQ_2200_MHZ: &contact_rxo_sband_freq_2200_mhz
     all_of:
       - *SBAND2200_5_D
+    desc: "One-way contact with S-band down in 2200MHz band"
+    contact_type: "CONTACT_RXO_SBAND_FREQ_2200_MHZ"
+    directionality: "SpaceToEarth"
 
-  CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ: *contact_rxo_sband_freq_2200_mhz
-  CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ: *contact_rxo_sband_freq_2200_mhz
-  CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ: *contact_rxo_sband_freq_2200_mhz
+  CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ: 
+    <<: *contact_rxo_sband_freq_2200_mhz
+    desc: "One-way contact with S-band down in 2200MHz band using DVB-S2X modulation"
+    contact_type: "CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ"
+
+  CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ: 
+    <<: *contact_rxo_sband_freq_2200_mhz
+    desc: "One-way contact with S-band down in 2200MHz band with target tracking"
+    contact_type: "CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ"
+
+  CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ: 
+    <<: *contact_rxo_sband_freq_2200_mhz
+    desc: "One-way contact in 2200MHz band with target tracking using DVB-S2X modulation"
+    contact_type: "CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ"
 
   X_BAND_TXO: &xband_txo
     all_of:
       - *XBAND8200_D
+    desc: "One-way contact in X-band"
+    contact_type: "CONTACT_SPACE_GROUND_TXO"
+    directionality: "SpaceToEarth"
 
   CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO: &CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
     all_of:
       - *SBAND2200_5_D
+    desc: "One-way contact in S-band, using KSAT Lite network"
+    contact_type: "CONTACT_SPACE_GROUND_TXO"
+    directionality: "SpaceToEarth"
 
 # Below are alias definitions for groups of channels which can be used in
 # `channel_tool`.

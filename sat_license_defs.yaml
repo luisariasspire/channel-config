@@ -3,7 +3,7 @@
 # rather configured on a per-satellite basis in TK, we define it here directly
 # from the Regulatory Tracker spreadsheet.
 # See: https://docs.google.com/spreadsheets/d/1zkDuvA4PwF9KVhnQgSvTaEtYjiJGRK90BDW2Gs9ZziU/edit#gid=1309141942
-licenses:
+sat_licenses:
   # Names and data formats adapted from Regulatory Tracker, attempting to keep
   # things as similar as possible for ease of comparison and updates.
   # All frequencies in MHz.
@@ -109,6 +109,32 @@ licenses:
       - [2020, 2025, "D"]
       - [2200, 2290, "D"]
     blacklisted_countries: []
+
+gs_licenses:
+  UHF402_7_UD: 
+    US: [ancgs, bdags, bdlgs, bdugs, cltgs, cmbgs, dalgs, dlhgs, glags, gumgs, hlegs, itogs, ivcgs, jnbgs, jnugs2, orkgs, pitgs, psygs, seags, sings, smags, stxgs, tusgs, wbugs, xspgs]
+    LU: [bdags, bdlgs, bdugs, cltgs, cmbgs, dalgs, dlhgs, glags, gumgs,  hlegs, itogs, ivcgs, jnbgs, jnugs2, orkgs, pitgs, psygs, seags, sings, smags, stxgs, tusgs, wbugs, xspgs]
+    SG: [bdags, bdugs, cmbgs, glags, hlegs, ivcgs, jnbgs, orkgs, psygs, sings, xspgs]
+  UHF_450_U:
+    US: [cltgs, dlhgs, itogs, ivcgs]
+    LU: [cltgs, dlhgs, itogs, ivcgs]
+    SG: []
+  SBAND_2022_5_D:
+    US: [ancgs, awags, bdags, bdlgs, bdugs, cltgs, cmbgs, dalgs, dlhgs, glags, gumgs, hlegs, itogs, ivcgs, jnbgs, jnugs2, orkgs, pitgs, psygs, seags, sings, smags, stxgs, tusgs, vntgs, wbugs, xspgs]
+    LU: [awags, bdags, bdlgs, bdugs, cltgs, cmbgs, dalgs, dlhgs, glags, gumgs, hlegs, itogs, ivcgs, jnbgs, jnugs2, orkgs, pitgs, psygs, seags, sings, smags, stxgs, tusgs, vntgs, wbugs, xspgs]
+    SG: [awags, bdags, bdugs, cmbgs, glags, hlegs, ivcgs, jnbgs, orkgs, psygs, sings, vntgs, xspgs]
+  SBAND2200_5_D:
+    US: [accgs, awags, hndgs, icegs, pergs, puqgs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
+    LU: [accgs, awags, hndgs, icegs, pergs, puqgs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
+    SG: [accgs, awags, hndgs, icegs, pergs, puqgs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
+  SBAND2032_5_U:
+    US: [icegs, pergs, tosgs]
+    LU: [icegs, pergs, tosgs]
+    SG: [icegs, pergs, tosgs]
+  XBAND8200_D:
+    US: [awags, icegs, ivcgs, pergs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
+    LU: [awags, icegs, ivcgs, pergs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
+    SG: [awags, icegs, ivcgs, pergs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
 
 definitions:
   # Below are the countries currently we have a licensed ground station in. By

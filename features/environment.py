@@ -23,6 +23,7 @@ def config_isolated(context):
             "Pipfile.lock",
             "channel_tool",
             "contact_type_defs.yaml",
+            "sat_license_defs.yaml",
             "schema.yaml",
             "templates.yaml",
         ],

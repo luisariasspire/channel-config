@@ -19,7 +19,7 @@ with open("contact_type_defs.yaml") as f:
 
 with open("sat_license_defs.yaml") as f:
     y = yaml.load(f)
-    SAT_LICENSE_DEFS = y["licenses"]
+    SAT_LICENSE_DEFS = y["sat_licenses"]
     ALL_ISO_COUNTRIES = y["definitions"]["all_iso_countries"]
     SPIRE_COUNTRIES = y["definitions"]["spire_gs_countries"]
     SPIRE_ID_OVERRIDES = y["definitions"]["spire_id_overrides"]

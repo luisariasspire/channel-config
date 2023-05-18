@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 
 import argparse
-import difflib
 import itertools
 import os
 import sys
@@ -10,6 +9,7 @@ from typing import Any, Callable, Dict, List, Mapping, Optional, Sequence, Set, 
 
 from termcolor import colored
 
+import channel_tool.database as db
 from channel_tool.asset_config import (
     infer_asset_type,
     load_asset_config,
@@ -23,9 +23,18 @@ from channel_tool.util import (
     ENVS,
     TEMPLATE_FILE,
     confirm,
-    dump_yaml_string,
+    err,
+    file_to_yaml_collection,
+    file_to_yaml_list,
+    file_to_yaml_map,
+    format_diff,
     load_yaml_file,
-    load_yaml_value,
+    str_to_bool,
+    str_to_list,
+    str_to_yaml_collection,
+    str_to_yaml_list,
+    str_to_yaml_map,
+    warn,
 )
 from channel_tool.validation import (
     filter_properties,
@@ -53,18 +62,6 @@ class NoConfigurationError(Exception):
 
 class MissingTemplateError(Exception):
     pass
-
-
-def info(s: str) -> None:
-    print(s)
-
-
-def warn(s: str) -> None:
-    print(colored(s, "yellow"))
-
-
-def err(s: str) -> None:
-    print(colored(s, "red"))
 
 
 def schema_fields() -> Set[str]:
@@ -500,80 +497,6 @@ def confirm_changes(
         return False
 
 
-def color_diff_line(line: str) -> str:
-    if line.startswith("-"):
-        return colored(line, "red")
-    elif line.startswith("+"):
-        return colored(line, "green")
-    elif line.startswith("@@ "):
-        return colored(line, "blue")
-    else:
-        return line
-
-
-def format_diff(
-    existing: Optional[ChannelDefinition], new: Optional[ChannelDefinition]
-) -> str:
-    a = dump_yaml_string(existing).splitlines(keepends=True)
-    b = dump_yaml_string(new).splitlines(keepends=True)
-    lines = max(len(a), len(b))  # Show all context
-    d = difflib.unified_diff(a, b, n=lines)
-    cd = [color_diff_line(l) for l in d]
-    return "".join(cd)
-
-
-def str_to_yaml_map(val: str) -> Mapping[str, Any]:
-    v = load_yaml_value(val)
-    assert isinstance(v, dict), "Expected YAML key-value mapping"
-    return v
-
-
-def file_to_yaml_map(path: str) -> Mapping[str, Any]:
-    v = load_yaml_file(path)
-    assert isinstance(v, dict), "Expected YAML key-value mapping"
-    return v
-
-
-def str_to_yaml_list(val: str) -> List[Any]:
-    v = load_yaml_value(val)
-    assert isinstance(v, list), "Expected YAML array"
-    return v
-
-
-def file_to_yaml_list(path: str) -> List[Any]:
-    v = load_yaml_file(path)
-    assert isinstance(v, list), "Expected YAML array"
-    return v
-
-
-def str_to_yaml_collection(val: str) -> Union[Mapping[str, Any], List[Any]]:
-    v = load_yaml_value(val)
-    assert isinstance(v, list) or isinstance(
-        v, dict
-    ), "Expected YAML collection (map or list)"
-    return v
-
-
-def file_to_yaml_collection(path: str) -> Union[Mapping[str, Any], List[Any]]:
-    v = load_yaml_file(path)
-    assert isinstance(v, list) or isinstance(
-        v, dict
-    ), "Expected YAML collection (map or list)"
-    return v
-
-
-def str_to_list(values: str) -> List[str]:
-    return values.split(",")
-
-
-def str_to_bool(val: str) -> bool:
-    if val.lower() in ["y", "yes", "true", "1"]:
-        return True
-    if val.lower() in ["n", "no", "false", "0"]:
-        return False
-    raise ValueError(f"Unrecognized input '{val}'")
-
-
 def channel_list(val: str) -> List[str]:
     templates: Dict[str, ChannelDefinition] = load_yaml_file(TEMPLATE_FILE)
     all_channels = list(templates.keys())
@@ -584,7 +507,8 @@ def channel_list(val: str) -> List[str]:
         group: List[str] = CONTACT_TYPE_DEFS["groups"][val.lower()]
         return group
     else:
-        return str_to_list(val)
+        channels: List[str] = str_to_list(val)
+        return channels
 
 
 def add_process_flags(parser: Any) -> None:
@@ -914,6 +838,34 @@ PLS_PARSER.add_argument(
     default="fragments/txo_dvb_template.yaml",
 )
 
+DATABASE_PARSER = SUBPARSERS.add_parser(
+    "db", help="[EXPERIMENTAL] Interact with SQL config database"
+)
+DATABASE_SUBPARSERS = DATABASE_PARSER.add_subparsers()
+
+DATABASE_INIT_PARSER = DATABASE_SUBPARSERS.add_parser(
+    "init", help="Create a new SQLite database with existing data"
+)
+DATABASE_INIT_PARSER.set_defaults(func=lambda _: db.init())
+
+DATABASE_SAMPLE_PARSER = DATABASE_SUBPARSERS.add_parser(
+    "load-samples", help="Load sample data into the database"
+)
+DATABASE_SAMPLE_PARSER.set_defaults(func=lambda _: db.load_sample_data())
+
+DATABASE_LICENSE_PARSER = DATABASE_SUBPARSERS.add_parser(
+    "load-licenses", help="Load license data from YAML into the database"
+)
+DATABASE_LICENSE_PARSER.set_defaults(func=lambda _: db.load_license_data())
+
+DATABASE_INGEST_PARSER = DATABASE_SUBPARSERS.add_parser(
+    "ingest", help="Ingest a configuration file for a given asset into the database"
+)
+DATABASE_INGEST_PARSER.set_defaults(
+    func=lambda args: db.ingest_assets(args.environment, args.assets)
+)
+add_env_flag(DATABASE_INGEST_PARSER)
+add_asset_flag(DATABASE_INGEST_PARSER)
 
 if __name__ == "__main__":
     try:

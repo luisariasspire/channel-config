@@ -1,13 +1,19 @@
+import difflib
 import os
 import subprocess
 from copy import deepcopy
 from io import StringIO
-from typing import Any, Mapping, Optional
+from typing import Any, List, Mapping, Optional, Union
 
 from ruamel.yaml import YAML
 from termcolor import colored
 
-from channel_tool.typedefs import Environment, GroundStationKind, SatelliteKind
+from channel_tool.typedefs import (
+    ChannelDefinition,
+    Environment,
+    GroundStationKind,
+    SatelliteKind,
+)
 
 SAT_DIR = "sat"
 GS_DIR = "gs"
@@ -22,6 +28,18 @@ SCHEMA_FILE = "schema.yaml"
 TEMPLATE_FILE = "templates.yaml"
 
 _yaml = YAML()
+
+
+def info(s: str) -> None:
+    print(s)
+
+
+def warn(s: str) -> None:
+    print(colored(s, "yellow"))
+
+
+def err(s: str) -> None:
+    print(colored(s, "red"))
 
 
 def tk_url(env: Environment) -> str:
@@ -93,3 +111,77 @@ def dump_yaml_string(obj: Optional[Mapping[str, Any]]) -> str:
 def dump_yaml_file(data: Any, f_name: str) -> None:
     with open(f_name, mode="w+") as f:
         _yaml.dump(data, f)
+
+
+def str_to_yaml_map(val: str) -> Mapping[str, Any]:
+    v = load_yaml_value(val)
+    assert isinstance(v, dict), "Expected YAML key-value mapping"
+    return v
+
+
+def file_to_yaml_map(path: str) -> Mapping[str, Any]:
+    v = load_yaml_file(path)
+    assert isinstance(v, dict), "Expected YAML key-value mapping"
+    return v
+
+
+def str_to_yaml_list(val: str) -> List[Any]:
+    v = load_yaml_value(val)
+    assert isinstance(v, list), "Expected YAML array"
+    return v
+
+
+def file_to_yaml_list(path: str) -> List[Any]:
+    v = load_yaml_file(path)
+    assert isinstance(v, list), "Expected YAML array"
+    return v
+
+
+def str_to_yaml_collection(val: str) -> Union[Mapping[str, Any], List[Any]]:
+    v = load_yaml_value(val)
+    assert isinstance(v, list) or isinstance(
+        v, dict
+    ), "Expected YAML collection (map or list)"
+    return v
+
+
+def file_to_yaml_collection(path: str) -> Union[Mapping[str, Any], List[Any]]:
+    v = load_yaml_file(path)
+    assert isinstance(v, list) or isinstance(
+        v, dict
+    ), "Expected YAML collection (map or list)"
+    return v
+
+
+def str_to_list(values: str) -> List[str]:
+    return values.split(",")
+
+
+def str_to_bool(val: str) -> bool:
+    if val.lower() in ["y", "yes", "true", "1"]:
+        return True
+    if val.lower() in ["n", "no", "false", "0"]:
+        return False
+    raise ValueError(f"Unrecognized input '{val}'")
+
+
+def color_diff_line(line: str) -> str:
+    if line.startswith("-"):
+        return colored(line, "red")
+    elif line.startswith("+"):
+        return colored(line, "green")
+    elif line.startswith("@@ "):
+        return colored(line, "blue")
+    else:
+        return line
+
+
+def format_diff(
+    existing: Optional[ChannelDefinition], new: Optional[ChannelDefinition]
+) -> str:
+    a = dump_yaml_string(existing).splitlines(keepends=True)
+    b = dump_yaml_string(new).splitlines(keepends=True)
+    lines = max(len(a), len(b))  # Show all context
+    d = difflib.unified_diff(a, b, n=lines)
+    cd = [color_diff_line(l) for l in d]
+    return "".join(cd)
