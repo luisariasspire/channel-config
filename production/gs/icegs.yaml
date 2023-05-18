@@ -32,6 +32,46 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     fixed_contact_duration: 2min
+    deny_satellites:
+    - FM123
+    - FM128
+    - FM129
+    - FM130
+    - FM131
+    - FM132
+    - FM133
+    - FM134
+    - FM135
+    - FM136
+    - FM138
+    - FM139
+    - FM140
+    - FM141
+    - FM143
+    - FM144
+    - FM145
+    - FM146
+    - FM147
+    - FM148
+    - FM149
+    - FM150
+    - FM152
+    - FM153
+    - FM154
+    - FM155
+    - FM156
+    - FM161
+    - FM162
+    - FM163
+    - FM164
+    - FM165
+    - FM166
+    - FM167
+    - FM168
+    - FM169
+    - FM170
+    - FM171
+    - FM172
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -72,6 +112,46 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     fixed_contact_duration: 2min
+    deny_satellites:
+    - FM123
+    - FM128
+    - FM129
+    - FM130
+    - FM131
+    - FM132
+    - FM133
+    - FM134
+    - FM135
+    - FM136
+    - FM138
+    - FM139
+    - FM140
+    - FM141
+    - FM143
+    - FM144
+    - FM145
+    - FM146
+    - FM147
+    - FM148
+    - FM149
+    - FM150
+    - FM152
+    - FM153
+    - FM154
+    - FM155
+    - FM156
+    - FM161
+    - FM162
+    - FM163
+    - FM164
+    - FM165
+    - FM166
+    - FM167
+    - FM168
+    - FM169
+    - FM170
+    - FM171
+    - FM172
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
