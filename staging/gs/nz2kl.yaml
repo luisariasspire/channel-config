@@ -2,29 +2,29 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
-    - US
-    - SG
-    - LU
+  - US
+  - SG
+  - LU
   enabled: true
   legal: true
   ground_station_constraints:
     fixed_contact_duration: 2min
   contact_overhead_time: 0s
   link_profile:
-    - min_elevation_deg: 10
-      downlink_rate_kbps: 564.01
-      uplink_rate_kbps: 0
-      min_duration: 2min
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 564.01
+    uplink_rate_kbps: 0
+    min_duration: 2min
   window_parameters:
     forward_channels:
-      - radio_band: SBAND
-        protocol: LEGACY
-        bandaid_mode: TX_SBAND_IP
-        use_radionet: true
-        bandaid_override:
-          tx_carrier_frequency_hz: 2200500000
-        ground_override:
-          freq: 70000000
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
+      bandaid_override:
+        tx_carrier_frequency_hz: 2200500000
+      ground_override:
+        freq: 70000000
     chainOverride:
       sband:
         freq: 70000000

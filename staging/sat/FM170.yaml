@@ -54,6 +54,114 @@ CONTACT_BIDIR_DVBS2X:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000
     uplink_rate_kbps: 10
+CONTACT_BIDIR_PARAM:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+CONTACT_BIDIR_PARAM_DVBS2X:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 200s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+CONTACT_BIDIR_PARAM_UHF:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 100
+    uplink_rate_kbps: 10
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
