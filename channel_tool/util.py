@@ -21,7 +21,7 @@ GS_DIR = "gs"
 SATELLITE: SatelliteKind = "satellite"
 GROUND_STATION: GroundStationKind = "groundstation"
 
-TK_DOMAINS: Mapping[Environment, str] = {"staging": "sbox", "production": "cloud"}
+TK_DOMAINS: Mapping[Environment, str] = {"staging": "staging.spire.sh", "production": "cloud.spire.com"}
 
 ENVS = ["staging", "production"]
 SCHEMA_FILE = "schema.yaml"
@@ -44,7 +44,7 @@ def err(s: str) -> None:
 
 def tk_url(env: Environment) -> str:
     env_domain = TK_DOMAINS[env]
-    return f"https://theknowledge.{env_domain}.spire.com/v2/"
+    return f"https://theknowledge.{env_domain}/v2/"
 
 
 def confirm(msg: str) -> bool:
