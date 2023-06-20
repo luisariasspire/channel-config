@@ -17,7 +17,7 @@ CONTACT_BIDIR:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -44,7 +44,7 @@ CONTACT_BIDIR_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -72,7 +72,7 @@ CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -259,7 +259,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -287,7 +287,7 @@ CONTACT_RXO:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -323,7 +323,7 @@ CONTACT_RXO_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -360,7 +360,7 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -393,7 +393,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -432,7 +432,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -658,7 +658,7 @@ X_BAND_TXO:
   - FK
   - NZ
   - LV
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
 # X-band constraints to comply with NASA/Spire coordination agreement
