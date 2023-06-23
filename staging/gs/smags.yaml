@@ -197,3 +197,19 @@ CONTACT_TRACKING_RXO_DVBS2X:
     downlink_rate_kbps: 550.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
+CONTACT_TRACKING_SBAND:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - SG
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 27
+    downlink_rate_kbps: 634.85
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters: {"tracking_target": { "latitude_north": 37.0, "longitude_west": 25.14 }}
