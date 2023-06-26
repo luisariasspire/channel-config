@@ -72,3 +72,29 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     downlink_rate_kbps: 350.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
+# FM175 specific track hack. Can revert after SCS USW fix
+CONTACT_FM175_TRACK_RXO_2200MHZ:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - SG
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 564.01
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters:
+    tracking_target:
+      latitude_north: 7.34
+      longitude_west: 2.34
+    forward_channels:
+    - ground_override:
+        freq: 2200500000
+    chainOverride:
+      sband:
+        freq: 2200500000

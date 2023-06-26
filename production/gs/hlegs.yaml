@@ -149,3 +149,40 @@ CONTACT_TRACKING_RXO_DVBS2X:
     downlink_rate_kbps: 550.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
+# FM175 track hack. Remove after SCS fix.
+CONTACT_FM175_TRACK_BIDIR_DVBS2X:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - US
+  - SG
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 200s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
+    min_duration: 4m
+  - min_elevation_deg: 27
+    downlink_rate_kbps: 562.93
+    uplink_rate_kbps: 4.0
+    min_duration: 20sec
+  window_parameters: {"tracking_target": { "latitude_north": -15.9419444, "longitude_west": 5.705278 }}
+CONTACT_FM175_TRACK_RXO_DVBS2X:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - SG
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 27
+    downlink_rate_kbps: 634.85
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters: {"tracking_target": { "latitude_north": -15.9419444, "longitude_west": 5.705278 }}
