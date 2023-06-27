@@ -1048,6 +1048,7 @@ CONTACT_FM175_TRACK_BIDIR:
   - min_elevation_deg: 0
     downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 10
+  contact_type: CONTACT_BIDIR
 CONTACT_FM175_TRACK_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -1075,6 +1076,7 @@ CONTACT_FM175_TRACK_BIDIR_DVBS2X:
   - min_elevation_deg: 0
     downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 10
+  contact_type: CONTACT_BIDIR_DVBS2X
 CONTACT_FM175_TRACK_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
