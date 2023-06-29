@@ -113,19 +113,3 @@ X_BAND_TXO:
         rf_bandwidth: 10000000
         gain: 3
         freq: 1250000000
-CONTACT_TRACKING_SBAND:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - US
-  - LU
-  - SG
-  enabled: true
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 759.79
-    uplink_rate_kbps: 0.0
-    min_duration: 1min
-  window_parameters: {"tracking_target": { "latitude_north": -46.52966, "longitude_west": -168.38124 }}
