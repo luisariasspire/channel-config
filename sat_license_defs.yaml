@@ -2,7 +2,7 @@
 # perspective. As this data was not previously defined in licensing.py but
 # rather configured on a per-satellite basis in TK, we define it here directly
 # from the Regulatory Tracker spreadsheet.
-# See: https://docs.google.com/spreadsheets/d/1zkDuvA4PwF9KVhnQgSvTaEtYjiJGRK90BDW2Gs9ZziU/edit#gid=1309141942
+# See: https://spire.sharepoint.us/:x:/r/sites/Regulatory/Shared%20Documents/TechnicalLibrary/Regulatory_Tracker.xlsx?d=w6bf2b27a32174b00b28214137c3c5971&csf=1&web=1&e=O2u2rS
 sat_licenses:
   # Names and data formats adapted from Regulatory Tracker, attempting to keep
   # things as similar as possible for ease of comparison and updates.
@@ -49,7 +49,7 @@ sat_licenses:
     satellites:
       [128, 129, 130, 131, 146,
        147, 123, 132, 133, 134,
-       135, 138]
+       135, 138, 193, 194]
     frequencies:
       - [401, 401.2, "D"]
       - [402.6, 402.8, "D"]
@@ -81,7 +81,7 @@ sat_licenses:
       [136, 137, 142, 144, 145, 150,
        151, 152, 153, 154, 155, 156,
        161, 164, 165, 168, 169, 171,
-       172]
+       172, 159, 160, 175]
     frequencies:
       # Default Luxembourg license frequencies.
       - [401, 401.2, "D"]

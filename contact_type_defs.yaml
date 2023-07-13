@@ -1,7 +1,7 @@
 # This file defines the contact types from a licensing perspective.
 # For each type, it defines the licenses necessary to use it.
 # Refer to the Regulatory Tracker for detailed licensing information:
-# https://docs.google.com/spreadsheets/d/1zkDuvA4PwF9KVhnQgSvTaEtYjiJGRK90BDW2Gs9ZziU/edit
+# https://spire.sharepoint.us/:x:/r/sites/Regulatory/Shared%20Documents/TechnicalLibrary/Regulatory_Tracker.xlsx?d=w6bf2b27a32174b00b28214137c3c5971&csf=1&web=1&e=O2u2rS
 
 bands:
   # The band definitions are given as lower and upper frequency limits,
