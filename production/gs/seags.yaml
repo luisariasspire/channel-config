@@ -3,7 +3,7 @@ CONTACT_BIDIR:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -21,7 +21,7 @@ CONTACT_BIDIR_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 200s
@@ -53,7 +53,7 @@ CONTACT_RXO:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -67,7 +67,7 @@ CONTACT_RXO_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -81,7 +81,7 @@ CONTACT_TRACKING_BIDIR:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -99,7 +99,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -117,7 +117,7 @@ CONTACT_TRACKING_RXO:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -131,7 +131,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
