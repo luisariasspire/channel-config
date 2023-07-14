@@ -1,4 +1,4 @@
-CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
+CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO_RINGFENCED:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
@@ -8,7 +8,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   ground_station_constraints:
-    fixed_contact_duration: 2min
+    fixed_contact_duration: 4min
   contact_overhead_time: 0s
   link_profile:
     - min_elevation_deg: 10
