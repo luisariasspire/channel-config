@@ -22,6 +22,10 @@ isort = "*"
 [tool.poetry.dev-dependencies]
 behave = "*"
 black = "*"
+# cython 3.0.0+ may cause pyyaml build to fail, since pyyaml has a bug and does not constrain its own deps.
+# This project gets its dependency on pyyaml from pre-commit.
+# The bug: https://github.com/yaml/pyyaml/issues/601
+# TODO: remove this constraint when pyyaml is better
 cython = "<3.0.0"
 coverage = "*"
 flake8 = "*"
