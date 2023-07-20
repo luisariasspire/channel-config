@@ -17,7 +17,7 @@ CONTACT_RXO_DVBS2X:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -31,7 +31,7 @@ CONTACT_TRACKING_RXO:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
