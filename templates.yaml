@@ -71,6 +71,19 @@ CONTACT_RXO_DVBS2X:
       downlink_rate_kbps: 240.0
       uplink_rate_kbps: 0.0
       min_duration: 2min
+CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
+  directionality: SpaceToEarth
+  allowed_license_countries: []
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  satellite_constraints: {}
+  contact_overhead_time: 25s
+  link_profile:
+    - min_elevation_deg: 40
+      downlink_rate_kbps: 1000
+      uplink_rate_kbps: 0.0
+      min_duration: 2min
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries: []
@@ -733,3 +746,98 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
       use_radionet: true
       bandaid_override:
         tx_carrier_frequency_hz: 2200500000
+CONTACT_BIDIR_PARAM:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries: []
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  satellite_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+    - min_elevation_deg: 10
+      downlink_rate_kbps: 5.6
+      uplink_rate_kbps: 5.6
+      min_duration: 4m
+    - min_elevation_deg: 25
+      downlink_rate_kbps: 300
+      uplink_rate_kbps: 5.6
+      min_duration: 20sec
+  window_parameters:
+    forward_channels:
+      - radio_band: SBAND
+        protocol: LEGACY
+        bandaid_mode: TX_SBAND
+      - radio_band: UHF
+    reverse_channels:
+      - radio_band: UHF
+CONTACT_BIDIR_PARAM_DVBS2X:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries: []
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  satellite_constraints: {}
+  contact_overhead_time: 200s
+  link_profile:
+    - min_elevation_deg: 10
+      downlink_rate_kbps: 5.6
+      uplink_rate_kbps: 5.6
+      min_duration: 4m
+    - min_elevation_deg: 25
+      downlink_rate_kbps: 300
+      uplink_rate_kbps: 5.6
+      min_duration: 20sec
+  window_parameters:
+    forward_channels:
+      - radio_band: SBAND
+        protocol: DVBS2X
+        bandaid_mode: TX_SBAND_DVB
+      - radio_band: UHF
+    reverse_channels:
+      - radio_band: UHF
+CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries: []
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  satellite_constraints: {}
+  contact_overhead_time: 200s
+  link_profile:
+    - min_elevation_deg: 40
+      downlink_rate_kbps: 1000
+      uplink_rate_kbps: 5.6
+      min_duration: 20sec
+  window_parameters:
+    forward_channels:
+      - radio_band: SBAND
+        protocol: DVBS2X
+        bandaid_mode: TX_SBAND_DVB
+        bandaid_override:
+          pls: 75
+      - radio_band: UHF
+    reverse_channels:
+      - radio_band: UHF
+CONTACT_BIDIR_PARAM_UHF:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries: []
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  satellite_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+    - min_elevation_deg: 10
+      downlink_rate_kbps: 5.6
+      uplink_rate_kbps: 5.6
+      min_duration: 2m
+  window_parameters:
+    forward_channels:
+      - radio_band: UHF
+    reverse_channels:
+      - radio_band: UHF
