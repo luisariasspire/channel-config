@@ -267,7 +267,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -316,8 +316,8 @@ CONTACT_RXO:
     forward_channels:
     - radio_band: SBAND
       protocol: LEGACY
-      bandaid_mode: TX_SBAND_IP
-      use_radionet: true
+      bandaid_mode: TX_SBAND
+      use_radionet: false
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -351,8 +351,8 @@ CONTACT_RXO_DVBS2X:
     forward_channels:
     - radio_band: SBAND
       protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB_IP
-      use_radionet: true
+      bandaid_mode: TX_SBAND_DVB
+      use_radionet: false
 CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   contact_type: CONTACT_RXO_DVBS2X
   directionality: SpaceToEarth
@@ -386,8 +386,8 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
     forward_channels:
     - radio_band: SBAND
       protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB_IP
-      use_radionet: true
+      bandaid_mode: TX_SBAND_DVB
+      use_radionet: false
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -421,8 +421,8 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     forward_channels:
     - radio_band: SBAND
       protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB_IP
-      use_radionet: true
+      bandaid_mode: TX_SBAND_DVB
+      use_radionet: false
       bandaid_override:
         tx_carrier_frequency_hz: 2200500000
 
@@ -459,8 +459,8 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     forward_channels:
     - radio_band: SBAND
       protocol: LEGACY
-      bandaid_mode: TX_SBAND_IP
-      use_radionet: true
+      bandaid_mode: TX_SBAND
+      use_radionet: false
       bandaid_override:
         tx_carrier_frequency_hz: 2200500000
 CONTACT_TRACKING_BIDIR:
