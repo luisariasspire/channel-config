@@ -7,9 +7,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   ground_station_constraints:
-    deny_satellites:
-    - FM193
-    - FM194
     fixed_contact_duration: 4min
   contact_overhead_time: 0s
   link_profile:
@@ -37,9 +34,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   ground_station_constraints:
-    deny_satellites:
-    - FM193
-    - FM194
     fixed_contact_duration: 4min
   contact_overhead_time: 0s
   link_profile:
@@ -64,9 +58,6 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   ground_station_constraints:
-    deny_satellites:
-    - FM193
-    - FM194
     fixed_contact_duration: 4min
   contact_overhead_time: 0s
   link_profile:
@@ -83,9 +74,6 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   ground_station_constraints:
-    deny_satellites:
-    - FM193
-    - FM194
     fixed_contact_duration: 4min
   contact_overhead_time: 0s
   link_profile:
@@ -103,9 +91,6 @@ X_BAND_TXO:
   enabled: true
   legal: true
   ground_station_constraints:
-    deny_satellites:
-    - FM193
-    - FM194
     fixed_contact_duration: 4min
   contact_overhead_time: 0s
   link_profile:
