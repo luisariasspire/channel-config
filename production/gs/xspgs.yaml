@@ -193,7 +193,7 @@ CONTACT_BIDIR_PARAM_UHF:
     - US
     - SG
     - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s

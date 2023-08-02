@@ -194,7 +194,7 @@ CONTACT_BIDIR_PARAM:
     - US
     - SG
     - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -216,7 +216,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     - US
     - SG
     - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -238,7 +238,7 @@ CONTACT_BIDIR_PARAM_UHF:
     - US
     - SG
     - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     deny_satellites:
