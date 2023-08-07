@@ -365,8 +365,6 @@ CONTACT_RXO:
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
-      bandaid_override:
-        idl_tcp_buffer_bytes: 45056
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -607,7 +605,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
       use_radionet: true
       bandaid_override:
         tx_carrier_frequency_hz: 2200500000
-        idl_tcp_buffer_bytes: 45056
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
@@ -850,7 +847,7 @@ X_BAND_TXO:
     separation:
   # X-band constraints to comply with NASA/Spire coordination agreement
   #
-  # https://docs.google.com/document/d/1zSxW1yMJnskzFpVrb3STgVL-6T8JZY2L/edit 
+  # https://docs.google.com/document/d/1zSxW1yMJnskzFpVrb3STgVL-6T8JZY2L/edit
   #
   # Appendix A contains a list of protected missions, their NORAD IDs, and their ground station
   # coordinates. We need to avoid transmitting when our satellites are in the beam between one of

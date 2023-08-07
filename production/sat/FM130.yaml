@@ -310,8 +310,6 @@ CONTACT_RXO:
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
-      bandaid_override:
-        idl_tcp_buffer_bytes: 45056
   contact_type: CONTACT_SPACE_GROUND_TXO
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
@@ -462,7 +460,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
       use_radionet: true
       bandaid_override:
         tx_carrier_frequency_hz: 2200500000
-        idl_tcp_buffer_bytes: 45056
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:

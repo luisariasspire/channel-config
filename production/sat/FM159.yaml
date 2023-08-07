@@ -274,7 +274,6 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
       bandaid_override:
-        idl_tcp_buffer_bytes: 45056
         mtu: 223
         fec_k: 254
         fec: 255
@@ -312,7 +311,6 @@ CONTACT_RXO:
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
       bandaid_override:
-        idl_tcp_buffer_bytes: 45056
         mtu: 223
         fec_k: 254
         fec: 255
@@ -422,7 +420,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
       use_radionet: true
       bandaid_override:
         tx_carrier_frequency_hz: 2200500000
-        idl_tcp_buffer_bytes: 45056
         fec: 255
         fec_k: 254
 
@@ -463,7 +460,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
       use_radionet: true
       bandaid_override:
         tx_carrier_frequency_hz: 2200500000
-        idl_tcp_buffer_bytes: 45056
         mtu: 223
         fec_k: 254
         fec: 255
