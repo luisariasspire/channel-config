@@ -335,6 +335,7 @@ CONTACT_RXO_DVBS2X:
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
+  contact_type: CONTACT_SPACE_GROUND_TXO
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 10000.0
