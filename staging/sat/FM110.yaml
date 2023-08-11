@@ -352,6 +352,7 @@ CONTACT_RXO_DVBS2X:
       bandaid_override:
         fec: 255
         fec_k: 254
+        pkt_header_len: 2
 CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   contact_type: CONTACT_BIDIR_DVBS2X
   directionality: SpaceToEarth
@@ -420,6 +421,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
         tx_carrier_frequency_hz: 2200500000
         fec: 255
         fec_k: 254
+        pkt_header_len: 2
 
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
