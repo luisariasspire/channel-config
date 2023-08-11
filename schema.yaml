@@ -433,6 +433,27 @@ schema:
               type: array
               items:
                 type: string
+            sun_constraint:
+              type: object
+              additionalProperties: false
+              optional: true
+              properties:
+                contacts_above_threshold:
+                  type: boolean
+                exclude_gs_ids:
+                  type: array
+                  items:
+                    type: string
+                declination_threshold_deg:
+                  type: number
+                pre_buffer:
+                  type: string
+                  optional: true
+                  pattern: *humantime
+                post_buffer:
+                  type: string
+                  optional: true
+                  pattern: *humantime
             separation:
               type: array
               items:

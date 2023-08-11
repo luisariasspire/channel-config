@@ -20,7 +20,10 @@ CONTACT_BIDIR:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -48,7 +51,10 @@ CONTACT_BIDIR_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -77,7 +83,10 @@ CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 0
@@ -105,7 +114,10 @@ CONTACT_BIDIR_PARAM:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -142,7 +154,10 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -180,7 +195,10 @@ CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 0
@@ -278,7 +296,10 @@ CONTACT_RXO:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -306,7 +327,10 @@ CONTACT_RXO_DVBS2X:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -335,7 +359,10 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -363,7 +390,10 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -391,7 +421,10 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -419,7 +452,10 @@ CONTACT_TRACKING_BIDIR:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -447,7 +483,10 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -475,7 +514,10 @@ CONTACT_TRACKING_RXO:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -503,7 +545,10 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -531,7 +576,10 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -559,7 +607,10 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      declination_threshold_deg: 5.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
