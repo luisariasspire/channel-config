@@ -51,7 +51,7 @@ CONTACT_BIDIR_DVBS2X:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -163,7 +163,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -183,7 +183,11 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     forward_channels:
     - radio_band: SBAND
       protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override:
+        fec: 255
+        fec_k: 254
+      use_radionet: true
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
