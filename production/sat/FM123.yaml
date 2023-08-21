@@ -17,7 +17,7 @@ CONTACT_BIDIR:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -120,7 +120,7 @@ CONTACT_BIDIR_PARAM:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
