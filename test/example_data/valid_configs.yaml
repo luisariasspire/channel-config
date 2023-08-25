@@ -1,62 +1,68 @@
 MINIMAL_GS_CONFIG: &gs_base
   directionality: Bidirectional
   allowed_license_countries:
-  - AU
-  - BM
+    - AU
+    - BM
   enabled: false
   legal: true
   contact_overhead_time: 210s
   ground_station_constraints: {}
   link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000.0
-    uplink_rate_kbps: 10.0
+    - min_elevation_deg: 0
+      downlink_rate_kbps: 1000.0
+      uplink_rate_kbps: 10.0
 
-GS_CONFIG_WITH_CONSTRAINTS: 
+GS_CONFIG_WITH_CONSTRAINTS:
   <<: *gs_base
   ground_station_constraints:
     deny_satellites:
-    - FM999
+      - FM999
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1000
+        interval: 1day
+      fixed_dollar_cost: 10
 
 MINIMAL_SAT_CONFIG: &sat_base
   directionality: Bidirectional
   allowed_license_countries:
-  - AU
-  - BM
+    - AU
+    - BM
   enabled: false
   legal: true
   contact_overhead_time: 210s
   satellite_constraints: {}
   link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000.0
-    uplink_rate_kbps: 10.0
+    - min_elevation_deg: 0
+      downlink_rate_kbps: 1000.0
+      uplink_rate_kbps: 10.0
 
 SAT_CONFIG_WITH_CONSTRAINTS:
   <<: *sat_base
   satellite_constraints:
+    budget_name: KSAT_LITE
     deny_ground_stations:
-    - testgs
+      - testgs
     separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 150000
-    - type: no_overlapping_transits
-      norad_id: 25544
-      modifier:
-        only_for_ground_stations:
-        - pitgs
-    - type: minimum_angular_separation
-      norad_id: 25544
-      angle_deg: 10
-    - type: avoid_ground_station_beams
-      norad_ids: 
-        - 25544
-      station_coordinates:
-        - latitude: 0
-          longitude: 0
-          elevation_m: 0
-      beamwidth_deg: 10
+      - type: minimum_distance
+        norad_id: 25544
+        distance_m: 150000
+      - type: no_overlapping_transits
+        norad_id: 25544
+        modifier:
+          only_for_ground_stations:
+            - pitgs
+      - type: minimum_angular_separation
+        norad_id: 25544
+        angle_deg: 10
+      - type: avoid_ground_station_beams
+        norad_ids:
+          - 25544
+        station_coordinates:
+          - latitude: 0
+            longitude: 0
+            elevation_m: 0
+        beamwidth_deg: 10
 
 SAT_CONFIG_WITH_CONTACT_TYPE_OVERRIDE:
   <<: *sat_base
@@ -64,5 +70,5 @@ SAT_CONFIG_WITH_CONTACT_TYPE_OVERRIDE:
 
 SAT_CONFIG_WITH_PARAMETERS:
   <<: *sat_base
-  window_parameters: 
+  window_parameters:
     foo: bar

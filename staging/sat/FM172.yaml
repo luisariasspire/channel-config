@@ -197,32 +197,8 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 10000.0
-    uplink_rate_kbps: 0
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: LEGACY
-      bandaid_mode: TX_SBAND_IP
-      use_radionet: true
-CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO_RINGFENCED:
-  directionality: SpaceToEarth
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  allowed_license_countries:
-  - AU
-  - CL
-  - ES
-  - GR
-  - NO
-  - NZ
-  - ZA
-  enabled: true
-  legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    budget_name: KSAT_NRO
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -316,7 +292,10 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # have to add this budget name in case this channel is used with
+    # TOSGS which does incur KSAT charges
+    budget_name: KSAT_NRO
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -355,7 +334,10 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # have to add this budget name in case this channel is used with
+    # TOSGS which does incur KSAT charges
+    budget_name: KSAT_NRO
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -526,7 +508,10 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # have to add this budget name in case this channel is used with
+    # TOSGS which does incur KSAT charges
+    budget_name: KSAT_NRO
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -553,7 +538,10 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    # have to add this budget name in case this channel is used with
+    # TOSGS which does incur KSAT charges
+    budget_name: KSAT_NRO
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -1025,6 +1013,9 @@ X_BAND_TXO:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
+    # have to add this budget name in case this channel is used with
+    # TOSGS which does incur KSAT charges
+    budget_name: KSAT_NRO
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]
   window_parameters:

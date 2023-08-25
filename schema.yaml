@@ -287,34 +287,34 @@ definitions:
         - uplink_rate_kbps
 
   channel_parameter_set: &channel_parameter_set
-    oneOf: 
-    - type: object
-      properties:
-        radio_band:
-          const: UHF
-      required:
-        - radio_band
-    - type: object
-      # note: satellite parameters
-      properties:
-        radio_band: 
-          enum: [SBAND, XBAND]
-        protocol:
-          enum: [DVBS2X, LEGACY]
-        bandaid_mode:
-          type: string
-        bandaid_override:
-          type: object
-          additionalProperties: true
-        bandaid_global_params:
-          type: object
-          additionalProperties: true
-        use_radionet:
-          type: boolean
-        # note: gs parameters
-        ground_override:
-          type: object
-          additionalProperties: true
+    oneOf:
+      - type: object
+        properties:
+          radio_band:
+            const: UHF
+        required:
+          - radio_band
+      - type: object
+        # note: satellite parameters
+        properties:
+          radio_band:
+            enum: [SBAND, XBAND]
+          protocol:
+            enum: [DVBS2X, LEGACY]
+          bandaid_mode:
+            type: string
+          bandaid_override:
+            type: object
+            additionalProperties: true
+          bandaid_global_params:
+            type: object
+            additionalProperties: true
+          use_radionet:
+            type: boolean
+          # note: gs parameters
+          ground_override:
+            type: object
+            additionalProperties: true
   chain_override: &chain_override
     type: object
     additionalProperties: true
@@ -399,6 +399,22 @@ schema:
               type: string
               pattern: *humantime
               optional: true
+            dollar_cost:
+              type: object
+              additional_properties: false
+              optional: true
+              properties:
+                time_dollar_cost:
+                  type: object
+                  additional_properties: false
+                  properties:
+                    dollars:
+                      type: number
+                    interval:
+                      type: string
+                      pattern: *humantime
+                fixed_dollar_cost:
+                  type: number
           additionalProperties: false
       required:
         - legal
@@ -429,6 +445,8 @@ schema:
                 interval:
                   type: string
                   pattern: *humantime
+            budget_name:
+              type: string
             deny_ground_stations:
               type: array
               items:

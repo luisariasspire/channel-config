@@ -9,6 +9,11 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   legal: true
   ground_station_constraints:
     fixed_contact_duration: 2min
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1.35
+        interval: 1min
+      fixed_dollar_cost: 1.35
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
