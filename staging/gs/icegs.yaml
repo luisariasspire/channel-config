@@ -188,6 +188,7 @@ X_BAND_TXO:
   enabled: false
   legal: true
   ground_station_constraints:
+    fixed_contact_duration: 2min
     dollar_cost:
       time_dollar_cost:
         dollars: 1.35
@@ -196,7 +197,7 @@ X_BAND_TXO:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 2672.74
+    downlink_rate_kbps: 2543.86
     uplink_rate_kbps: 0.0
     min_duration: 2min
   window_parameters:

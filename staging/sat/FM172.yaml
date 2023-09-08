@@ -17,7 +17,7 @@ CONTACT_BIDIR:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -44,7 +44,7 @@ CONTACT_BIDIR_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -71,7 +71,7 @@ CONTACT_BIDIR_PARAM:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -107,7 +107,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -115,6 +115,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000
     uplink_rate_kbps: 10
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -123,7 +124,6 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
 CONTACT_BIDIR_PARAM_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -143,7 +143,7 @@ CONTACT_BIDIR_PARAM_UHF:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -176,7 +176,7 @@ CONTACT_BIDIR_UHF:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -195,7 +195,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     budget_name: KSAT_NRO
@@ -229,7 +229,7 @@ CONTACT_RXO:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -263,7 +263,7 @@ CONTACT_RXO_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -290,7 +290,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # have to add this budget name in case this channel is used with
@@ -332,7 +332,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # have to add this budget name in case this channel is used with
@@ -566,7 +566,7 @@ X_BAND_TXO:
   - FK
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:

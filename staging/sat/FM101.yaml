@@ -18,7 +18,7 @@ CONTACT_BIDIR:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -46,7 +46,7 @@ CONTACT_BIDIR_DVBS2X:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -75,7 +75,7 @@ CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -103,7 +103,7 @@ CONTACT_BIDIR_PARAM:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -140,7 +140,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -148,6 +148,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - min_elevation_deg: 0
     downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 10.0
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -156,7 +157,6 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
 CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   directionality: Bidirectional
@@ -178,7 +178,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -214,7 +214,7 @@ CONTACT_BIDIR_PARAM_UHF:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -248,7 +248,7 @@ CONTACT_BIDIR_UHF:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s

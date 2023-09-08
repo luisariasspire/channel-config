@@ -23,48 +23,9 @@ CONTACT_BIDIR_DVBS2X:
   - US
   - SG
   - LU
-  enabled: true
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 200s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 4.0
-    min_duration: 4m
-  - min_elevation_deg: 35
-    downlink_rate_kbps: 562.93
-    uplink_rate_kbps: 4.0
-    min_duration: 20sec
-CONTACT_BIDIR_PARAM:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - US
-  - SG
-  - LU
   enabled: false
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 210s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 4.0
-    min_duration: 4m
-  - min_elevation_deg: 35
-    downlink_rate_kbps: 446.46
-    uplink_rate_kbps: 4.0
-    min_duration: 20sec
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
-CONTACT_BIDIR_PARAM_DVBS2X:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - US
-  - SG
-  - LU
-  enabled: true
-  legal: true
-  ground_station_constraints: {}
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 10
@@ -75,23 +36,6 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     downlink_rate_kbps: 562.93
     uplink_rate_kbps: 4.0
     min_duration: 20sec
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
-CONTACT_BIDIR_PARAM_UHF:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - US
-  - SG
-  - LU
-  enabled: true
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 210s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 4.0
-    min_duration: 2m
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -128,7 +72,7 @@ CONTACT_RXO_DVBS2X:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -196,7 +140,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - US
   - SG
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -205,3 +149,56 @@ CONTACT_TRACKING_RXO_DVBS2X:
     downlink_rate_kbps: 550.0
     uplink_rate_kbps: 0.0
     min_duration: 2min
+CONTACT_BIDIR_PARAM:
+  directionality: Bidirectional
+  allowed_license_countries:
+    - US
+    - SG
+    - LU
+  enabled: false
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+    - min_elevation_deg: 10
+      downlink_rate_kbps: 5.6
+      uplink_rate_kbps: 4.0
+      min_duration: 4m
+    - min_elevation_deg: 35
+      downlink_rate_kbps: 446.46
+      uplink_rate_kbps: 4.0
+      min_duration: 20sec
+CONTACT_BIDIR_PARAM_DVBS2X:
+  directionality: Bidirectional
+  allowed_license_countries:
+    - US
+    - SG
+    - LU
+  enabled: false
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 200s
+  link_profile:
+    - min_elevation_deg: 10
+      downlink_rate_kbps: 5.6
+      uplink_rate_kbps: 4.0
+      min_duration: 4m
+    - min_elevation_deg: 35
+      downlink_rate_kbps: 562.93
+      uplink_rate_kbps: 4.0
+      min_duration: 20sec
+CONTACT_BIDIR_PARAM_UHF:
+  directionality: Bidirectional
+  allowed_license_countries:
+    - US
+    - SG
+    - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+    - min_elevation_deg: 10
+      downlink_rate_kbps: 5.6
+      uplink_rate_kbps: 4.0
+      min_duration: 2m
