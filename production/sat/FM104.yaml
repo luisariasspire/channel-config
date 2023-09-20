@@ -316,8 +316,8 @@ CONTACT_RXO:
     forward_channels:
     - radio_band: SBAND
       protocol: LEGACY
-      bandaid_mode: TX_SBAND
-      use_radionet: false
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -458,8 +458,8 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     forward_channels:
     - radio_band: SBAND
       protocol: LEGACY
-      bandaid_mode: TX_SBAND
-      use_radionet: false
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
       bandaid_override:
         tx_carrier_frequency_hz: 2200500000
 CONTACT_TRACKING_BIDIR:
