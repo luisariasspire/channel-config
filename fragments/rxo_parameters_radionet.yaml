@@ -3,6 +3,4 @@ forward_channels:
     protocol: LEGACY
     bandaid_mode: TX_SBAND_IP
     use_radionet: true
-    bandaid_override:
-      fec: 255
-      fec_k: 254
+    bandaid_override: {}
