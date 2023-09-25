@@ -99,7 +99,7 @@ CONTACT_BIDIR_UHF:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s

@@ -145,7 +145,7 @@ CONTACT_BIDIR_PARAM_UHF:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -178,7 +178,7 @@ CONTACT_BIDIR_UHF:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
