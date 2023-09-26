@@ -339,6 +339,7 @@ CONTACT_RXO:
   - JP
   - LK
   - LV
+  - MN
   - NZ
   - PT
   - SG
@@ -380,6 +381,7 @@ CONTACT_RXO_DVBS2X:
   - JP
   - LK
   - LV
+  - MN
   - NZ
   - PT
   - SG
@@ -424,6 +426,7 @@ CONTACT_RXO_DVBS2X:
         - stxgs
         - tosgs
         - tusgs
+        - ubngs
         - vntgs
         - xspgs
   contact_overhead_time: 0s
@@ -454,6 +457,7 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   - JP
   - LK
   - LV
+  - MN
   - NZ
   - PT
   - SG
@@ -498,6 +502,7 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
         - stxgs
         - tosgs
         - tusgs
+        - ubngs
         - vntgs
         - xspgs
   contact_overhead_time: 0s
@@ -525,6 +530,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
+  - MN
   - NZ
   - PT
   - SG
@@ -574,6 +580,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
+  - MN
   - NZ
   - PT
   - SG
@@ -832,6 +839,7 @@ X_BAND_TXO:
   - ZA
   - CL
   - LK
+  - MN
   - SH
   - FK
   - NZ

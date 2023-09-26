@@ -319,8 +319,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints:
-    budget_name: KSAT_GENERAL
+  satellite_constraints: {}
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -340,6 +339,7 @@ CONTACT_RXO:
   - JP
   - LK
   - LV
+  - MN
   - NZ
   - PT
   - SG
@@ -381,6 +381,7 @@ CONTACT_RXO_DVBS2X:
   - JP
   - LK
   - LV
+  - MN
   - NZ
   - PT
   - SG
@@ -425,6 +426,7 @@ CONTACT_RXO_DVBS2X:
         - stxgs
         - tosgs
         - tusgs
+        - ubngs
         - vntgs
         - xspgs
   contact_overhead_time: 0s
@@ -455,6 +457,7 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   - JP
   - LK
   - LV
+  - MN
   - NZ
   - PT
   - SG
@@ -499,6 +502,7 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
         - stxgs
         - tosgs
         - tusgs
+        - ubngs
         - vntgs
         - xspgs
   contact_overhead_time: 0s
@@ -526,6 +530,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
+  - MN
   - NZ
   - PT
   - SG
@@ -545,9 +550,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -578,6 +580,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
+  - MN
   - NZ
   - PT
   - SG
@@ -597,9 +600,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -782,9 +782,6 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -822,9 +819,6 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
         only_for_ground_stations:
         - tusgs
         - wbugs
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -845,6 +839,7 @@ X_BAND_TXO:
   - ZA
   - CL
   - LK
+  - MN
   - SH
   - FK
   - NZ
@@ -1303,9 +1298,6 @@ X_BAND_TXO:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]
   window_parameters:
