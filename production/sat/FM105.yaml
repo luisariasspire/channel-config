@@ -185,11 +185,12 @@ CONTACT_BIDIR_PARAM:
       uplink_rate_kbps: 10.0
   window_parameters:
     forward_channels:
-      - radio_band: SBAND
-        protocol: LEGACY
-        bandaid_mode: TX_SBAND_IP
-        use_radionet: true
-      - radio_band: UHF
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      bandaid_override: {}
+      use_radionet: true
+    - radio_band: UHF
     reverse_channels:
       - radio_band: UHF
   contact_type: CONTACT_SPACE_GROUND_BIDIR
