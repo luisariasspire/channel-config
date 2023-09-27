@@ -1,0 +1,5 @@
+separation:
+  - type: no_overlapping_transits
+    modifier:
+      only_for_ground_stations:
+        - ubngs

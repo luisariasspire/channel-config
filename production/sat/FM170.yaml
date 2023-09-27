@@ -230,6 +230,7 @@ CONTACT_RXO:
   - JP
   - LK
   - LV
+  - MN
   - NO
   - NZ
   - PT
@@ -265,6 +266,7 @@ CONTACT_RXO_DVBS2X:
   - JP
   - LK
   - LV
+  - MN
   - NO
   - NZ
   - PT
@@ -293,6 +295,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
+  - MN
   - NO
   - NZ
   - PT
@@ -333,6 +336,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
+  - MN
   - NO
   - NZ
   - PT
@@ -558,21 +562,22 @@ X_BAND_TXO:
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
   - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
   - PT
   - SG
-  - JP
-  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
   - SH
-  - FK
   - US
-  - NZ
-  - LV
+  - ZA
   enabled: true
   legal: true
   satellite_constraints:

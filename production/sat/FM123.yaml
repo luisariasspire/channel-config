@@ -829,21 +829,21 @@ X_BAND_TXO:
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
   - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
   - PT
   - SG
-  - JP
-  - NO
-  - BM
-  - IE
-  - GB
-  - ZA
-  - CL
-  - LK
-  - MN
   - SH
-  - FK
-  - NZ
-  - LV
+  - ZA
   enabled: true
   legal: true
   satellite_constraints:
