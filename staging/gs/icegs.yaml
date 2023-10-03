@@ -39,11 +39,23 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     fixed_contact_duration: 2min
     deny_satellites:
     - FM103
+    - FM105
+    - FM106
+    - FM107
+    - FM108
     - FM110
     - FM113
+    - FM115
     - FM118
     - FM119
+    - FM120
+    - FM121
+    - FM122
     - FM123
+    - FM124
+    - FM125
+    - FM126
+    - FM127
     - FM128
     - FM129
     - FM130
@@ -134,11 +146,23 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     fixed_contact_duration: 2min
     deny_satellites:
     - FM103
+    - FM105
+    - FM106
+    - FM107
+    - FM108
     - FM110
     - FM113
+    - FM115
     - FM118
     - FM119
+    - FM120
+    - FM121
+    - FM122
     - FM123
+    - FM124
+    - FM125
+    - FM126
+    - FM127
     - FM128
     - FM129
     - FM130
