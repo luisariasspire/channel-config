@@ -58,6 +58,13 @@ CONTACT_RXO:
       downlink_rate_kbps: 240.0
       uplink_rate_kbps: 0.0
       min_duration: 2min
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries: []
@@ -71,6 +78,14 @@ CONTACT_RXO_DVBS2X:
       downlink_rate_kbps: 240.0
       uplink_rate_kbps: 0.0
       min_duration: 2min
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override: {}
 CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   directionality: SpaceToEarth
   allowed_license_countries: []
@@ -84,6 +99,15 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
       downlink_rate_kbps: 1000
       uplink_rate_kbps: 0.0
       min_duration: 2min
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 87
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries: []
@@ -97,6 +121,15 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
       downlink_rate_kbps: 240.0
       uplink_rate_kbps: 0.0
       min_duration: 2min
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        tx_carrier_frequency_hz: 2200500000
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries: []
@@ -110,6 +143,15 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
       downlink_rate_kbps: 240.0
       uplink_rate_kbps: 0.0
       min_duration: 2min
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
+      bandaid_override:
+        tx_carrier_frequency_hz: 2200500000
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries: []
@@ -249,11 +291,11 @@ X_BAND_TXO:
   enabled: false
   legal: false
   ground_station_constraints: {}
-  satellite_constraints: 
+  satellite_constraints:
     separation:
       # X-band constraints to comply with NASA/Spire coordination agreement
       #
-      # https://docs.google.com/document/d/1zSxW1yMJnskzFpVrb3STgVL-6T8JZY2L/edit 
+      # https://docs.google.com/document/d/1zSxW1yMJnskzFpVrb3STgVL-6T8JZY2L/edit
       #
       # Appendix A contains a list of protected missions, their NORAD IDs, and their ground station
       # coordinates. We need to avoid transmitting when our satellites are in the beam between one of
@@ -702,29 +744,41 @@ X_BAND_TXO:
       min_duration: 2min
   window_parameters:
     forward_channels:
-      - radio_band: "XBAND"
-        protocol: "DVBS2X"
-        bandaid_mode: TX_XBAND_DVB
-        bandaid_override:
-          tx_sample_rate_hz: 10000000
-          tx_lo_frequency_hz: 6440000000
-          tx_carrier_frequency_hz: 1760000000
-          tx_hardware_gain_db: -10
-          tx_bandwidth_hz: 10000000
-          pls: 5
-          mod_gain: 130
-          vbatt/voltage/min: 7000
-          vbatt/voltage/max: 8500
-          vbatt/power/max: 19550
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      bandaid_override:
+        tx_sample_rate_hz: 10000000
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        pls: 5
+        mtu: 1989
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+      ground_override:
+        header-freq-pow: 7
+        coarse-freq-win: 1000000
+        lo-offset: 5000000
+        ant: RX2
+        rf_bandwidth: 10000000
+        gain: 3
+        freq: 1250000000
+        radionet-m: 1989
+      use_radionet: true
+      protocol: DVBS2X
     chainOverride:
       sband:
         header-freq-pow: 7
         coarse-freq-win: 1000000
         lo-offset: 5000000
-        ant: "RX2"
+        ant: RX2
         rf_bandwidth: 10000000
         gain: 3
         freq: 1250000000
+        radionet-m: 1989
 CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -766,12 +820,14 @@ CONTACT_BIDIR_PARAM:
       min_duration: 20sec
   window_parameters:
     forward_channels:
-      - radio_band: SBAND
-        protocol: LEGACY
-        bandaid_mode: TX_SBAND
-      - radio_band: UHF
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      bandaid_override: {}
+      use_radionet: true
+    - radio_band: UHF
     reverse_channels:
-      - radio_band: UHF
+    - radio_band: UHF
 CONTACT_BIDIR_PARAM_DVBS2X:
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   directionality: Bidirectional
@@ -792,12 +848,14 @@ CONTACT_BIDIR_PARAM_DVBS2X:
       min_duration: 20sec
   window_parameters:
     forward_channels:
-      - radio_band: SBAND
-        protocol: DVBS2X
-        bandaid_mode: TX_SBAND_DVB
-      - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override: {}
+      use_radionet: true
+    - radio_band: UHF
     reverse_channels:
-      - radio_band: UHF
+    - radio_band: UHF
 CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   directionality: Bidirectional
@@ -816,9 +874,11 @@ CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
     forward_channels:
       - radio_band: SBAND
         protocol: DVBS2X
-        bandaid_mode: TX_SBAND_DVB
+        bandaid_mode: TX_SBAND_DVB_IP
+        use_radionet: true
         bandaid_override:
           pls: 75
+          mtu: 1182
       - radio_band: UHF
     reverse_channels:
       - radio_band: UHF
