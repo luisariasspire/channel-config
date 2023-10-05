@@ -286,6 +286,7 @@ CONTACT_RXO:
   - JP
   - LK
   - LV
+  - MN
   - NO
   - NZ
   - PT
@@ -320,6 +321,7 @@ CONTACT_RXO_DVBS2X:
   - JP
   - LK
   - LV
+  - MN
   - NO
   - NZ
   - PT
@@ -357,6 +359,7 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   - JP
   - LK
   - LV
+  - MN
   - NO
   - NZ
   - PT
@@ -390,6 +393,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
+  - MN
   - NO
   - NZ
   - PT
@@ -432,6 +436,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - JP
   - LK
   - LV
+  - MN
   - NO
   - NZ
   - PT
@@ -672,6 +677,7 @@ X_BAND_TXO:
   - FK
   - NZ
   - LV
+  - MN
   enabled: true
   legal: true
   satellite_constraints:

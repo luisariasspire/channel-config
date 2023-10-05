@@ -8,6 +8,11 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     fixed_contact_duration: 2min
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1.35
+        interval: 1min
+      fixed_dollar_cost: 1.35
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -39,8 +44,11 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     - FM107
     - FM108
     - FM110
+    - FM112
     - FM113
     - FM115
+    - FM116
+    - FM117
     - FM118
     - FM119
     - FM120
@@ -77,6 +85,8 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     - FM154
     - FM155
     - FM156
+    - FM159
+    - FM160
     - FM161
     - FM162
     - FM163
@@ -89,6 +99,14 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     - FM170
     - FM171
     - FM172
+    - FM175
+    - FM193
+    - FM194
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1.35
+        interval: 1min
+      fixed_dollar_cost: 1.35
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -113,6 +131,11 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   legal: true
   ground_station_constraints:
     fixed_contact_duration: 2min
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1.35
+        interval: 1min
+      fixed_dollar_cost: 1.35
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -136,8 +159,11 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     - FM107
     - FM108
     - FM110
+    - FM112
     - FM113
     - FM115
+    - FM116
+    - FM117
     - FM118
     - FM119
     - FM120
@@ -174,6 +200,8 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     - FM154
     - FM155
     - FM156
+    - FM159
+    - FM160
     - FM161
     - FM162
     - FM163
@@ -186,6 +214,14 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     - FM170
     - FM171
     - FM172
+    - FM175
+    - FM193
+    - FM194
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1.35
+        interval: 1min
+      fixed_dollar_cost: 1.35
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -203,6 +239,11 @@ X_BAND_TXO:
   legal: true
   ground_station_constraints:
     fixed_contact_duration: 2min
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1.35
+        interval: 1min
+      fixed_dollar_cost: 1.35
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
