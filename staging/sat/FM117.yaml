@@ -271,7 +271,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
@@ -309,7 +309,7 @@ CONTACT_RXO:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -345,7 +345,7 @@ CONTACT_RXO_DVBS2X:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -413,12 +413,12 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
+    budget_name: KSAT_GENERAL
     # have to add this budget name in case this channel is used with
     # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -456,12 +456,12 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
+    budget_name: KSAT_GENERAL
     # have to add this budget name in case this channel is used with
     # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
