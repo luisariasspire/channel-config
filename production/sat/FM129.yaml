@@ -354,7 +354,7 @@ CONTACT_RXO_DVBS2X:
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
 CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
-  contact_type: CONTACT_BIDIR_DVBS2X
+  contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
   allowed_license_countries:
   - AU
@@ -383,6 +383,16 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000.0
     uplink_rate_kbps: 0.0
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 75
+        mtu: 1182
+        pkt_header_len: 2
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:

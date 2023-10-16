@@ -354,7 +354,7 @@ CONTACT_RXO_DVBS2X:
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
 CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
-  contact_type: CONTACT_BIDIR_DVBS2X
+  contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
   allowed_license_countries:
   - AU
