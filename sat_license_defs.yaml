@@ -9,10 +9,36 @@ sat_licenses:
   # All frequencies in MHz.
   USA_PHASE_1A:
     satellites:
-      [1, 2, 3, 4, 5, 6, 7,
-       8, 11, 12, 16, 17, 18, 20,
-       22, 24, 9, 10, 13, 14, 34,
-       35, 36, 37, 38, 39, 40, 41]
+      [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11,
+        12,
+        16,
+        17,
+        18,
+        20,
+        22,
+        24,
+        9,
+        10,
+        13,
+        14,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+      ]
     frequencies:
       - [402.6, 402.8, "D"]
       - [402.6, 402.8, "U"]
@@ -20,10 +46,36 @@ sat_licenses:
     blacklisted_countries: []
   USA_PHASE_1B:
     satellites:
-      [25, 27, 28, 30, 21, 23, 26,
-      42, 43, 44, 45, 46, 29, 32,
-      48, 49, 50, 51, 52, 53, 54,
-      55, 56, 57, 47, 59, 60, 61]
+      [
+        25,
+        27,
+        28,
+        30,
+        21,
+        23,
+        26,
+        42,
+        43,
+        44,
+        45,
+        46,
+        29,
+        32,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        47,
+        59,
+        60,
+        61,
+      ]
     frequencies:
       - [402.6, 402.8, "D"]
       - [402.6, 402.8, "U"]
@@ -32,12 +84,42 @@ sat_licenses:
     blacklisted_countries: []
   USA_PHASE_1C:
     satellites:
-      [62, 63, 64, 65, 75, 78, 79,
-       80, 82, 83, 84, 85, 103, 104,
-       105, 106, 107, 108, 112, 113,
-       109, 110, 115, 117, 119, 121,
-       116, 118, 120, 122, 124, 125,
-       126, 127]
+      [
+        62,
+        63,
+        64,
+        65,
+        75,
+        78,
+        79,
+        80,
+        82,
+        83,
+        84,
+        85,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        112,
+        113,
+        109,
+        110,
+        115,
+        117,
+        119,
+        121,
+        116,
+        118,
+        120,
+        122,
+        124,
+        125,
+        126,
+        127,
+      ]
     frequencies:
       - [402.6, 402.8, "D"]
       - [402.6, 402.8, "U"]
@@ -47,9 +129,7 @@ sat_licenses:
     blacklisted_countries: []
   USA_PHASE_2:
     satellites:
-      [128, 129, 130, 131, 146,
-       147, 123, 132, 133, 134,
-       135, 138, 193, 194]
+      [128, 129, 130, 131, 146, 147, 123, 132, 133, 134, 135, 138, 193, 194]
     frequencies:
       - [401, 401.2, "D"]
       - [402.6, 402.8, "D"]
@@ -60,12 +140,42 @@ sat_licenses:
       - [2200, 2201, "D"]
       - [8170, 8230, "D"]
     blacklisted_countries: []
+  USA_EXPERIMENTAL_MANGO_2:
+    satellites: [157, 158]
+    frequencies:
+      - [402.6, 402.8, "D"]
+      - [402.6, 402.8, "U"]
+      - [2020, 2025, "D"]
+      - [2200, 2201, "D"]
+      - [8170, 8230, "D"]
+    blacklisted_countries: []
   LUX_MINAS_US_MARKET_ACCESS:
     satellites:
-      [91, 92, 93, 94, 95, 96, 97,
-       98, 99, 100, 101, 102, 139,
-       140, 143, 148, 141, 149,
-       162, 163, 166, 167, 170]
+      [
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        139,
+        140,
+        143,
+        148,
+        141,
+        149,
+        162,
+        163,
+        166,
+        167,
+        170,
+      ]
     frequencies: &lux-frequencies
       - [401, 401.2, "D"]
       - [402.6, 402.8, "D"]
@@ -78,10 +188,39 @@ sat_licenses:
     blacklisted_countries: []
   LUX_MINAS_NO_US_MARKET_ACCESS:
     satellites:
-      [136, 137, 142, 144, 145, 150,
-       151, 152, 153, 154, 155, 156,
-       161, 164, 165, 168, 169, 171,
-       172, 159, 160, 175]
+      [
+        136,
+        137,
+        142,
+        144,
+        145,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        161,
+        164,
+        165,
+        168,
+        169,
+        171,
+        172,
+        159,
+        160,
+        175,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+      ]
     frequencies:
       # Default Luxembourg license frequencies.
       - [401, 401.2, "D"]
@@ -101,8 +240,7 @@ sat_licenses:
     blacklisted_countries:
       - US
   SNG_COLUGO:
-    satellites:
-      [66, 67, 86, 88, 81, 87, 89, 90]
+    satellites: [66, 67, 86, 88, 81, 87, 89, 90]
     frequencies:
       - [402, 403, "U"]
       - [402, 403, "D"]
@@ -111,30 +249,258 @@ sat_licenses:
     blacklisted_countries: []
 
 gs_licenses:
-  UHF402_7_UD: 
-    US: [ancgs, bdags, bdlgs, bdugs, cltgs, cmbgs, dalgs, dlhgs, glags, gumgs, hlegs, itogs, ivcgs, jnbgs, jnugs2, orkgs, pitgs, psygs, seags, sings, smags, stxgs, tusgs, wbugs, xspgs]
-    LU: [bdags, bdlgs, bdugs, cltgs, cmbgs, dalgs, dlhgs, glags, gumgs,  hlegs, itogs, ivcgs, jnbgs, jnugs2, orkgs, pitgs, psygs, seags, sings, smags, stxgs, tusgs, wbugs, xspgs]
-    SG: [bdags, bdugs, cmbgs, glags, hlegs, ivcgs, jnbgs, orkgs, psygs, sings, xspgs]
+  UHF402_7_UD:
+    US:
+      [
+        ancgs,
+        bdags,
+        bdlgs,
+        bdugs,
+        cltgs,
+        cmbgs,
+        dalgs,
+        dlhgs,
+        glags,
+        gumgs,
+        hlegs,
+        itogs,
+        ivcgs,
+        jnbgs,
+        jnugs2,
+        orkgs,
+        pitgs,
+        psygs,
+        seags,
+        sings,
+        smags,
+        stxgs,
+        tusgs,
+        wbugs,
+        xspgs,
+      ]
+    LU:
+      [
+        bdags,
+        bdlgs,
+        bdugs,
+        cltgs,
+        cmbgs,
+        dalgs,
+        dlhgs,
+        glags,
+        gumgs,
+        hlegs,
+        itogs,
+        ivcgs,
+        jnbgs,
+        jnugs2,
+        orkgs,
+        pitgs,
+        psygs,
+        seags,
+        sings,
+        smags,
+        stxgs,
+        tusgs,
+        wbugs,
+        xspgs,
+      ]
+    SG:
+      [
+        bdags,
+        bdugs,
+        cmbgs,
+        glags,
+        hlegs,
+        ivcgs,
+        jnbgs,
+        orkgs,
+        psygs,
+        sings,
+        xspgs,
+      ]
   UHF_450_U:
     US: [cltgs, dlhgs, itogs, ivcgs]
     LU: [cltgs, dlhgs, itogs, ivcgs]
     SG: []
   SBAND_2022_5_D:
-    US: [ancgs, awags, bdags, bdlgs, bdugs, cltgs, cmbgs, dalgs, dlhgs, glags, gumgs, hlegs, itogs, ivcgs, jnbgs, jnugs2, orkgs, pitgs, psygs, seags, sings, smags, stxgs, tusgs, vntgs, wbugs, xspgs]
-    LU: [awags, bdags, bdlgs, bdugs, cltgs, cmbgs, dalgs, dlhgs, glags, gumgs, hlegs, itogs, ivcgs, jnbgs, jnugs2, orkgs, pitgs, psygs, seags, sings, smags, stxgs, tusgs, vntgs, wbugs, xspgs]
-    SG: [awags, bdags, bdugs, cmbgs, glags, hlegs, ivcgs, jnbgs, orkgs, psygs, sings, vntgs, xspgs]
+    US:
+      [
+        ancgs,
+        awags,
+        bdags,
+        bdlgs,
+        bdugs,
+        cltgs,
+        cmbgs,
+        dalgs,
+        dlhgs,
+        glags,
+        gumgs,
+        hlegs,
+        itogs,
+        ivcgs,
+        jnbgs,
+        jnugs2,
+        orkgs,
+        pitgs,
+        psygs,
+        seags,
+        sings,
+        smags,
+        stxgs,
+        tusgs,
+        vntgs,
+        wbugs,
+        xspgs,
+      ]
+    LU:
+      [
+        awags,
+        bdags,
+        bdlgs,
+        bdugs,
+        cltgs,
+        cmbgs,
+        dalgs,
+        dlhgs,
+        glags,
+        gumgs,
+        hlegs,
+        itogs,
+        ivcgs,
+        jnbgs,
+        jnugs2,
+        orkgs,
+        pitgs,
+        psygs,
+        seags,
+        sings,
+        smags,
+        stxgs,
+        tusgs,
+        vntgs,
+        wbugs,
+        xspgs,
+      ]
+    SG:
+      [
+        awags,
+        bdags,
+        bdugs,
+        cmbgs,
+        glags,
+        hlegs,
+        ivcgs,
+        jnbgs,
+        orkgs,
+        psygs,
+        sings,
+        vntgs,
+        xspgs,
+      ]
   SBAND2200_5_D:
-    US: [accgs, awags, hndgs, icegs, pergs, puqgs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
-    LU: [accgs, awags, hndgs, icegs, pergs, puqgs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
-    SG: [accgs, awags, hndgs, icegs, pergs, puqgs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
+    US:
+      [
+        accgs,
+        awags,
+        hndgs,
+        icegs,
+        pergs,
+        puqgs,
+        tosgs,
+        at*kl,
+        ha*kl,
+        mn*kl,
+        pl*kl,
+        sg*kl,
+        tg*kl,
+        tr*kl,
+      ]
+    LU:
+      [
+        accgs,
+        awags,
+        hndgs,
+        icegs,
+        pergs,
+        puqgs,
+        tosgs,
+        at*kl,
+        ha*kl,
+        mn*kl,
+        pl*kl,
+        sg*kl,
+        tg*kl,
+        tr*kl,
+      ]
+    SG:
+      [
+        accgs,
+        awags,
+        hndgs,
+        icegs,
+        pergs,
+        puqgs,
+        tosgs,
+        at*kl,
+        ha*kl,
+        mn*kl,
+        pl*kl,
+        sg*kl,
+        tg*kl,
+        tr*kl,
+      ]
   SBAND2032_5_U:
     US: [icegs, pergs, tosgs]
     LU: [icegs, pergs, tosgs]
     SG: [icegs, pergs, tosgs]
   XBAND8200_D:
-    US: [awags, icegs, ivcgs, pergs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
-    LU: [awags, icegs, ivcgs, pergs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
-    SG: [awags, icegs, ivcgs, pergs, tosgs, at*kl, ha*kl, mn*kl, pl*kl, sg*kl, tg*kl, tr*kl]
+    US:
+      [
+        awags,
+        icegs,
+        ivcgs,
+        pergs,
+        tosgs,
+        at*kl,
+        ha*kl,
+        mn*kl,
+        pl*kl,
+        sg*kl,
+        tg*kl,
+        tr*kl,
+      ]
+    LU:
+      [
+        awags,
+        icegs,
+        ivcgs,
+        pergs,
+        tosgs,
+        at*kl,
+        ha*kl,
+        mn*kl,
+        pl*kl,
+        sg*kl,
+        tg*kl,
+        tr*kl,
+      ]
+    SG:
+      [
+        awags,
+        icegs,
+        ivcgs,
+        pergs,
+        tosgs,
+        at*kl,
+        ha*kl,
+        mn*kl,
+        pl*kl,
+        sg*kl,
+        tg*kl,
+        tr*kl,
+      ]
 
 definitions:
   # Below are the countries currently we have a licensed ground station in. By
