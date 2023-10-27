@@ -156,7 +156,8 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     - radio_band: SBAND
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
-      bandaid_override: {}
+      bandaid_override:
+        pkt_header_len: 2
       use_radionet: true
     - radio_band: UHF
     reverse_channels:

@@ -142,7 +142,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -156,7 +156,8 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     - radio_band: SBAND
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
-      bandaid_override: {}
+      bandaid_override:
+        pkt_header_len: 2
       use_radionet: true
     - radio_band: UHF
     reverse_channels:
@@ -182,7 +183,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -345,7 +346,7 @@ CONTACT_RXO_DVBS2X:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -384,7 +385,7 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -413,7 +414,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     # have to add this budget name in case this channel is used with
