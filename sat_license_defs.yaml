@@ -409,6 +409,7 @@ gs_licenses:
         pergs,
         puqgs,
         tosgs,
+        ubngs,
         at*kl,
         ha*kl,
         mn*kl,
@@ -426,6 +427,7 @@ gs_licenses:
         pergs,
         puqgs,
         tosgs,
+        ubngs,
         at*kl,
         ha*kl,
         mn*kl,
@@ -443,6 +445,7 @@ gs_licenses:
         pergs,
         puqgs,
         tosgs,
+        ubngs,
         at*kl,
         ha*kl,
         mn*kl,
@@ -452,9 +455,9 @@ gs_licenses:
         tr*kl,
       ]
   SBAND2032_5_U:
-    US: [icegs, pergs, tosgs]
-    LU: [icegs, pergs, tosgs]
-    SG: [icegs, pergs, tosgs]
+    US: [icegs, pergs, tosgs, ubngs]
+    LU: [icegs, pergs, tosgs, ubngs]
+    SG: [icegs, pergs, tosgs, ubngs]
   XBAND8200_D:
     US:
       [
@@ -463,6 +466,7 @@ gs_licenses:
         ivcgs,
         pergs,
         tosgs,
+        ubngs,
         at*kl,
         ha*kl,
         mn*kl,
@@ -478,6 +482,7 @@ gs_licenses:
         ivcgs,
         pergs,
         tosgs,
+        ubngs,
         at*kl,
         ha*kl,
         mn*kl,
@@ -493,6 +498,7 @@ gs_licenses:
         ivcgs,
         pergs,
         tosgs,
+        ubngs,
         at*kl,
         ha*kl,
         mn*kl,
