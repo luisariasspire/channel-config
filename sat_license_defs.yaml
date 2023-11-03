@@ -148,7 +148,13 @@ sat_licenses:
       - [2020, 2025, "D"]
       - [2200, 2201, "D"]
       - [8170, 8230, "D"]
-    blacklisted_countries: []
+      - [9401, 9463, "U"]
+      - [9449.8, 9450.2, "U"]
+      - [8199.2, 8200.2, "D"]
+      - [2439, 2441, "ISL"]
+
+    blacklisted_countries:
+      - US
   LUX_MINAS_US_MARKET_ACCESS:
     satellites:
       [
@@ -211,15 +217,6 @@ sat_licenses:
         159,
         160,
         175,
-        182,
-        183,
-        184,
-        185,
-        186,
-        187,
-        188,
-        189,
-        190,
       ]
     frequencies:
       # Default Luxembourg license frequencies.
@@ -247,6 +244,22 @@ sat_licenses:
       - [2020, 2025, "D"]
       - [2200, 2290, "D"]
     blacklisted_countries: []
+  DEU_DIAMANT:
+    satellites: [182, 183, 184, 185, 186, 187, 188, 189, 190]
+    frequencies:
+      - [402.6, 402.8, "D"]
+      - [402.6, 402.8, "U"]
+      - [2020, 2025, "D"]
+      - [2030, 2035, "U"]
+      - [2200, 2201, "D"]
+      - [8170, 8230, "D"]
+      # NOTE: ISL Frequencies bands in 2200-2290 & 2025-2110
+      - [2025, 2026, "ISL"]
+      - [2109, 2110, "ISL"]
+      - [2200, 2201, "ISL"]
+      - [2289, 2290, "ISL"]
+    blacklisted_countries:
+      - US
 
 gs_licenses:
   UHF402_7_UD:
