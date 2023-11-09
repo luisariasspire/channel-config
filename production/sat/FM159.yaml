@@ -484,33 +484,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
         mtu: 223
         fec_k: 254
         fec: 255
-CONTACT_SDR_IQ:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: false
-  legal: true
-  satellite_constraints: {}
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0.0
-    downlink_rate_kbps: 10000.0
-    uplink_rate_kbps: 0.0
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
