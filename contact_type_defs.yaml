@@ -51,12 +51,17 @@ bands:
 # contact type is used. They also don't check license directionality! o_O
 contact_types:
   # Bidirectional contact types.
-  CONTACT_BIDIR_UHF:
+  CONTACT_BIDIR_UHF: &contact_bidir_uhf
     desc: "Bidirectional contact with UHF only"
     contact_type: "CONTACT_BIDIR_UHF"
     directionality: "Bidirectional"
     all_of:
       - *UHF402_7_UD
+
+  CONTACT_BIDIR_PARAM_UHF:
+    <<: *contact_bidir_uhf
+    desc: "Bidirectional contact with UHF only, parameterized window version"
+    contact_type: "CONTACT_SPACE_GROUND_BIDIR"
 
   # Bidirectional contact, using UHF for uplink and S-band for downlink.
   CONTACT_BIDIR: &contact_bidir
@@ -83,6 +88,26 @@ contact_types:
     desc: "Bidirectional contact with UHF and S-band, with target tracking using DVB-S2X modulation"
     contact_type: "CONTACT_TRACKING_BIDIR_DVBS2X"
 
+  CONTACT_BIDIR_PARAM:
+    <<: *contact_bidir
+    desc: "Bidirectional contact with UHF up and S-band down, parameterized window version"
+    contact_type: "CONTACT_SPACE_GROUND_BIDIR"
+
+  CONTACT_BIDIR_PARAM_DVBS2X:
+    <<: *contact_bidir
+    desc: "Bidirectional contact with UHF up and S-band down, using DVB-S2X modulation, parameterized window version"
+    contact_type: "CONTACT_SPACE_GROUND_BIDIR"
+
+  CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION:
+    <<: *contact_bidir
+    desc: "Bidirectional contact with UHF up and S-band down, using DVB-S2X high-elevation modcod"
+    contact_type: "CONTACT_BIDIR_DVBS2X"
+
+  CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
+    <<: *contact_bidir
+    desc: "Bidirectional contact with UHF up and S-band down, using DVB-S2X high-elevation modcod, parameterized window version"
+    contact_type: "CONTACT_SPACE_GROUND_BIDIR"
+
   # Receive-only contact types.
   # CONTACT_RXO is the default, and uses the 2022MHz S-band license.
   CONTACT_RXO: &contact_rxo
@@ -96,6 +121,11 @@ contact_types:
     <<: *contact_rxo
     desc: "One-way contact with S-band down, using DVB-S2X modulation"
     contact_type: "CONTACT_RXO_DVBS2X"
+
+  CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
+    <<: *contact_rxo
+    desc: "One-way contact with S-band down, using DVB-S2X high-elevation modcod, parameterized window version"
+    contact_type: "CONTACT_SPACE_GROUND_TXO"
 
   CONTACT_TRACKING_RXO: 
     <<: *contact_rxo
@@ -137,6 +167,11 @@ contact_types:
     contact_type: "CONTACT_SPACE_GROUND_TXO"
     directionality: "SpaceToEarth"
 
+  TRACK_X_BAND_TXO:
+    <<: *xband_txo
+    desc: "One-way contact in X-band with target tracking"
+    contact_type: "CONTACT_SPACE_GROUND_TXO"
+
   CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO: &CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
     all_of:
       - *SBAND2200_5_D
@@ -147,13 +182,25 @@ contact_types:
 # Below are alias definitions for groups of channels which can be used in
 # `channel_tool`.
 groups:
+  # any using UHF
   uhf:
     - CONTACT_BIDIR_UHF
     - CONTACT_BIDIR
     - CONTACT_BIDIR_DVBS2X
     - CONTACT_TRACKING_BIDIR
     - CONTACT_TRACKING_BIDIR_DVBS2X
+    - CONTACT_BIDIR_PARAM_UHF
+    - CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION
+    - CONTACT_BIDIR_PARAM
+    - CONTACT_BIDIR_PARAM_DVBS2X
+    - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
 
+  # only using UHF
+  uhf_only:
+    - CONTACT_BIDIR_UHF
+    - CONTACT_BIDIR_PARAM_UHF
+
+  # any using SBand 2020
   sband_2020:
     - CONTACT_BIDIR
     - CONTACT_BIDIR_DVBS2X
@@ -163,7 +210,32 @@ groups:
     - CONTACT_RXO_DVBS2X
     - CONTACT_TRACKING_RXO
     - CONTACT_TRACKING_RXO_DVBS2X
+    - CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION
+    - CONTACT_BIDIR_PARAM
+    - CONTACT_BIDIR_PARAM_DVBS2X
+    - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
+    - CONTACT_RXO_DVBS2X_HIGH_ELEVATION
 
+  # only using UHF and SBand 2020:
+  uhf_and_sband_2020_only:
+    - CONTACT_BIDIR
+    - CONTACT_BIDIR_DVBS2X
+    - CONTACT_TRACKING_BIDIR
+    - CONTACT_TRACKING_BIDIR_DVBS2X
+    - CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION
+    - CONTACT_BIDIR_PARAM
+    - CONTACT_BIDIR_PARAM_DVBS2X
+    - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
+
+  # only using SBand 2020
+  sband_2020_only:
+    - CONTACT_RXO
+    - CONTACT_RXO_DVBS2X
+    - CONTACT_TRACKING_RXO
+    - CONTACT_TRACKING_RXO_DVBS2X
+    - CONTACT_RXO_DVBS2X_HIGH_ELEVATION
+
+  # any using SBand 2200
   sband_2200:
     - CONTACT_RXO_SBAND_FREQ_2200_MHZ
     - CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
@@ -171,6 +243,15 @@ groups:
     - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
     - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
 
+  # only using SBand 2200
+  sband_2200_only:
+    - CONTACT_RXO_SBAND_FREQ_2200_MHZ
+    - CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
+    - CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ
+    - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
+    - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
+
+  # any using SBand
   sband:
     - CONTACT_BIDIR
     - CONTACT_BIDIR_DVBS2X
@@ -185,23 +266,39 @@ groups:
     - CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ
     - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
     - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
+    - CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION
+    - CONTACT_BIDIR_PARAM
+    - CONTACT_BIDIR_PARAM_DVBS2X
+    - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
+    - CONTACT_RXO_DVBS2X_HIGH_ELEVATION
 
+  # any RXO using SBand legacy
   sband_legacy_rxo:
     - CONTACT_RXO
     - CONTACT_TRACKING_RXO
     - CONTACT_RXO_SBAND_FREQ_2200_MHZ
     - CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ
+    - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
 
+  # any using XBand
   xband:
     - X_BAND_TXO
+    - TRACK_X_BAND_TXO
 
+  # bidirectionals
   bidir:
     - CONTACT_BIDIR_UHF
     - CONTACT_BIDIR
     - CONTACT_BIDIR_DVBS2X
     - CONTACT_TRACKING_BIDIR
     - CONTACT_TRACKING_BIDIR_DVBS2X
+    - CONTACT_BIDIR_PARAM_UHF
+    - CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION
+    - CONTACT_BIDIR_PARAM
+    - CONTACT_BIDIR_PARAM_DVBS2X
+    - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
 
+  # space-to-ground only
   rxo:
     - CONTACT_RXO
     - CONTACT_RXO_DVBS2X
@@ -213,7 +310,10 @@ groups:
     - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
     - X_BAND_TXO
     - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
+    - CONTACT_RXO_DVBS2X_HIGH_ELEVATION
+    - TRACK_X_BAND_TXO
 
+  # DVBS2X encoded
   dvbs2x:
     - CONTACT_BIDIR_DVBS2X
     - CONTACT_RXO_DVBS2X
@@ -222,7 +322,13 @@ groups:
     - CONTACT_TRACKING_RXO_DVBS2X
     - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
     - X_BAND_TXO
+    - CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION
+    - CONTACT_BIDIR_PARAM_DVBS2X
+    - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
+    - CONTACT_RXO_DVBS2X_HIGH_ELEVATION
+    - TRACK_X_BAND_TXO
 
+  # Target tracking
   tracking:
     - CONTACT_TRACKING_BIDIR
     - CONTACT_TRACKING_BIDIR_DVBS2X
@@ -230,6 +336,8 @@ groups:
     - CONTACT_TRACKING_RXO_DVBS2X
     - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
     - CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ
+    - TRACK_X_BAND_TXO
 
+  # Antenna-only KSAT contacts.
   ksatlite:
     - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO

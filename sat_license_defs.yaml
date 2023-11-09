@@ -332,10 +332,21 @@ gs_licenses:
         sings,
         xspgs,
       ]
+    DE:
+      [
+        bdags,
+        bdugs,
+        cmbgs,
+        hlegs,
+        jnbgs,
+        orkgs,
+        psygs,
+      ]
   UHF_450_U:
     US: [cltgs, dlhgs, itogs, ivcgs]
     LU: [cltgs, dlhgs, itogs, ivcgs]
     SG: []
+    DE: []
   SBAND_2022_5_D:
     US:
       [
@@ -412,6 +423,17 @@ gs_licenses:
         vntgs,
         xspgs,
       ]
+    DE: [
+        bdags,
+        bdugs,
+        cmbgs,
+        glags,
+        hlegs,
+        jnbgs,
+        orkgs,
+        psygs,
+        vntgs,
+      ]
   SBAND2200_5_D:
     US:
       [
@@ -426,6 +448,8 @@ gs_licenses:
         at*kl,
         ha*kl,
         mn*kl,
+        nz*kl,
+        pa*kl,
         pl*kl,
         sg*kl,
         tg*kl,
@@ -444,6 +468,8 @@ gs_licenses:
         at*kl,
         ha*kl,
         mn*kl,
+        nz*kl,
+        pa*kl,
         pl*kl,
         sg*kl,
         tg*kl,
@@ -462,6 +488,26 @@ gs_licenses:
         at*kl,
         ha*kl,
         mn*kl,
+        nz*kl,
+        pa*kl,
+        pl*kl,
+        sg*kl,
+        tg*kl,
+        tr*kl,
+      ]
+    DE: [
+        accgs,
+        awags,
+        hndgs,
+        icegs,
+        pergs,
+        tosgs,
+        ubngs,
+        at*kl,
+        ha*kl,
+        mn*kl,
+        nz*kl,
+        pa*kl,
         pl*kl,
         sg*kl,
         tg*kl,
@@ -471,6 +517,7 @@ gs_licenses:
     US: [icegs, pergs, tosgs, ubngs]
     LU: [icegs, pergs, tosgs, ubngs]
     SG: [icegs, pergs, tosgs, ubngs]
+    DE: [icegs, pergs, tosgs, ubngs]
   XBAND8200_D:
     US:
       [
@@ -483,6 +530,8 @@ gs_licenses:
         at*kl,
         ha*kl,
         mn*kl,
+        nz*kl,
+        pa*kl,
         pl*kl,
         sg*kl,
         tg*kl,
@@ -499,6 +548,8 @@ gs_licenses:
         at*kl,
         ha*kl,
         mn*kl,
+        nz*kl,
+        pa*kl,
         pl*kl,
         sg*kl,
         tg*kl,
@@ -515,11 +566,30 @@ gs_licenses:
         at*kl,
         ha*kl,
         mn*kl,
+        nz*kl,
+        pa*kl,
         pl*kl,
         sg*kl,
         tg*kl,
         tr*kl,
       ]
+    DE: [
+        awags,
+        icegs,
+        ivcgs,
+        pergs,
+        tosgs,
+        ubngs,
+        at*kl,
+        ha*kl,
+        mn*kl,
+        nz*kl,
+        pa*kl,
+        pl*kl,
+        sg*kl,
+        tg*kl,
+        tr*kl,
+    ]
 
 definitions:
   # Below are the countries currently we have a licensed ground station in. By
@@ -535,13 +605,14 @@ definitions:
     - BM # Link Bermuda
     - IE # National Space Centre
     - GB # OFCOM
-    - ZA # SANSA
-    - CL # SSC
+    - GR # KSAT-Lite
+    - ZA # SANSA, KSAT-Lite
+    - CL # SSC, KSAT-Lite
     - LK # SupremeSAT
     - SH # Sure Telecom
     - FK # Sure Telecom
     - US # USA (FCC)
-    - NZ # Venture Southland
+    - NZ # Venture Southland, KSAT-Lite
     - LV # Latvia, RXO only (no licenses needed)
     - ES # KSAT-Lite
 

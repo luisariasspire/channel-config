@@ -2,9 +2,10 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
-  - US
-  - SG
+  - DE
   - LU
+  - SG
+  - US
   enabled: true
   legal: true
   ground_station_constraints:
