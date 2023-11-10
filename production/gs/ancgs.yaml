@@ -5,7 +5,10 @@ CONTACT_RXO:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -19,7 +22,10 @@ CONTACT_RXO_DVBS2X:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -33,7 +39,10 @@ CONTACT_TRACKING_RXO:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -47,7 +56,10 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25

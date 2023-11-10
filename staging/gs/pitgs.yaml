@@ -5,7 +5,10 @@ CONTACT_BIDIR:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 20
@@ -23,7 +26,10 @@ CONTACT_BIDIR_DVBS2X:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 20
@@ -41,7 +47,10 @@ CONTACT_BIDIR_PARAM:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 20
@@ -59,7 +68,10 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 20
@@ -77,7 +89,10 @@ CONTACT_BIDIR_PARAM_UHF:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 20
@@ -91,7 +106,10 @@ CONTACT_BIDIR_UHF:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 20
@@ -105,7 +123,10 @@ CONTACT_RXO:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -119,7 +140,10 @@ CONTACT_RXO_DVBS2X:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -133,7 +157,10 @@ CONTACT_TRACKING_BIDIR:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 20
@@ -151,7 +178,10 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 20
@@ -169,7 +199,10 @@ CONTACT_TRACKING_RXO:
   - LU
   enabled: true
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -183,7 +216,10 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - LU
   enabled: false
   legal: true
-  ground_station_constraints: {}
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
