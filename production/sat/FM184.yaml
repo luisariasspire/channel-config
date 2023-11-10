@@ -1031,7 +1031,6 @@ X_BAND_TXO:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
-        vbatt/voltage/min: 7000
         fec: 255
         fec_k: 254
         pls: 5
