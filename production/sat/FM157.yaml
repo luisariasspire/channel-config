@@ -1,23 +1,7 @@
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -33,23 +17,7 @@ CONTACT_BIDIR:
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -65,23 +33,7 @@ CONTACT_BIDIR_DVBS2X:
 CONTACT_BIDIR_PARAM:
   directionality: Bidirectional
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -108,23 +60,7 @@ CONTACT_BIDIR_PARAM:
 CONTACT_BIDIR_PARAM_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -151,23 +87,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
 CONTACT_BIDIR_PARAM_UHF:
   directionality: Bidirectional
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: true
   legal: true
   satellite_constraints: {}
@@ -185,23 +105,7 @@ CONTACT_BIDIR_PARAM_UHF:
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints: {}
@@ -214,13 +118,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
-  - AU
-  - CL
-  - ES
-  - GR
-  - NO
-  - NZ
-  - ZA
+  - US
   enabled: false
   legal: true
   satellite_constraints:
@@ -243,24 +141,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -283,24 +164,7 @@ CONTACT_RXO:
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -325,24 +189,7 @@ CONTACT_RXO_DVBS2X:
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -373,24 +220,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -418,23 +248,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -450,23 +264,7 @@ CONTACT_TRACKING_BIDIR:
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -482,23 +280,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -514,23 +296,7 @@ CONTACT_TRACKING_RXO:
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -546,23 +312,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -581,23 +331,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
@@ -617,23 +351,7 @@ X_BAND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
   - US
-  - ZA
   enabled: false
   legal: true
   satellite_constraints:
