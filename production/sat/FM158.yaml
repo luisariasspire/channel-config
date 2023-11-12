@@ -2,7 +2,7 @@ CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -18,7 +18,7 @@ CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -34,7 +34,7 @@ CONTACT_BIDIR_PARAM:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -61,7 +61,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -106,7 +106,7 @@ CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -142,7 +142,7 @@ CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -165,7 +165,7 @@ CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -190,11 +190,9 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
     budget_name: KSAT_GENERAL
     separation:
     - type: minimum_distance
@@ -221,11 +219,9 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
     budget_name: KSAT_GENERAL
     separation:
     - type: minimum_distance
@@ -249,7 +245,7 @@ CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -265,7 +261,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -281,7 +277,7 @@ CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -297,7 +293,7 @@ CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -313,11 +309,9 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
     budget_name: KSAT_GENERAL
     separation:
     - type: minimum_distance
@@ -332,11 +326,9 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
     budget_name: KSAT_GENERAL
     separation:
     - type: minimum_distance
@@ -352,7 +344,7 @@ X_BAND_TXO:
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
   - US
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
