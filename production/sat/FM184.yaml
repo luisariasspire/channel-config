@@ -71,7 +71,7 @@ CONTACT_BIDIR_PARAM:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -234,7 +234,7 @@ CONTACT_RXO:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -349,7 +349,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     # have to add this budget name in case this channel is used with
