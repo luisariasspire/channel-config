@@ -2,7 +2,7 @@ CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -18,7 +18,7 @@ CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -106,7 +106,7 @@ CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -245,7 +245,7 @@ CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -261,7 +261,7 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
   - US
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
