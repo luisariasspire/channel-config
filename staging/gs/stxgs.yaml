@@ -3,7 +3,7 @@ CONTACT_BIDIR:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -39,7 +39,7 @@ CONTACT_BIDIR_PARAM:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -75,7 +75,7 @@ CONTACT_BIDIR_PARAM_UHF:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -89,7 +89,7 @@ CONTACT_BIDIR_UHF:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -131,7 +131,7 @@ CONTACT_TRACKING_BIDIR:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
