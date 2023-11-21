@@ -586,14 +586,6 @@ TRACK_X_BAND_TXO:
       # coordinates. We need to avoid transmitting when our satellites are in the beam between one of
       # the protected satellites and its ground station. Only launched missions are included here.
     - type: avoid_ground_station_beams
-      norad_ids:   # CNES: EYESAT
-      - 44877
-      station_coordinates:
-      - latitude: 43.429     # Aussaguel, France
-        longitude: 1.498
-        elevation_m: 0.0
-      beamwidth_deg: 5
-    - type: avoid_ground_station_beams
       norad_ids:   # CNES: pleiades (-1A/1B)
       - 39019
       station_coordinates:
@@ -1088,14 +1080,6 @@ X_BAND_TXO:
   # Appendix A contains a list of protected missions, their NORAD IDs, and their ground station
   # coordinates. We need to avoid transmitting when our satellites are in the beam between one of
   # the protected satellites and its ground station. Only launched missions are included here.
-    - type: avoid_ground_station_beams
-      norad_ids: # CNES: EYESAT
-      - 44877
-      station_coordinates:
-      - latitude: 43.429 # Aussaguel, France
-        longitude: 1.498
-        elevation_m: 0.0
-      beamwidth_deg: 5
     - type: avoid_ground_station_beams
       norad_ids: # CNES: pleiades (-1A/1B)
       - 39019
