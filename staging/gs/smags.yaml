@@ -1,8 +1,9 @@
 CONTACT_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
-  - US
+  - DE
   - LU
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -19,8 +20,9 @@ CONTACT_BIDIR:
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
-  - US
+  - DE
   - LU
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -37,8 +39,9 @@ CONTACT_BIDIR_DVBS2X:
 CONTACT_BIDIR_PARAM:
   directionality: Bidirectional
   allowed_license_countries:
-  - US
+  - DE
   - LU
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -55,8 +58,9 @@ CONTACT_BIDIR_PARAM:
 CONTACT_BIDIR_PARAM_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
-  - US
+  - DE
   - LU
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -73,8 +77,9 @@ CONTACT_BIDIR_PARAM_DVBS2X:
 CONTACT_BIDIR_PARAM_UHF:
   directionality: Bidirectional
   allowed_license_countries:
-  - US
+  - DE
   - LU
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -87,8 +92,9 @@ CONTACT_BIDIR_PARAM_UHF:
 CONTACT_BIDIR_UHF:
   directionality: Bidirectional
   allowed_license_countries:
-  - US
+  - DE
   - LU
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -101,9 +107,10 @@ CONTACT_BIDIR_UHF:
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - US
-  - SG
+  - DE
   - LU
+  - SG
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -116,9 +123,10 @@ CONTACT_RXO:
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - US
-  - SG
+  - DE
   - LU
+  - SG
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -131,8 +139,9 @@ CONTACT_RXO_DVBS2X:
 CONTACT_TRACKING_BIDIR:
   directionality: Bidirectional
   allowed_license_countries:
-  - US
+  - DE
   - LU
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -149,8 +158,9 @@ CONTACT_TRACKING_BIDIR:
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
-  - US
+  - DE
   - LU
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -167,9 +177,10 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - US
-  - SG
+  - DE
   - LU
+  - SG
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}
@@ -182,9 +193,10 @@ CONTACT_TRACKING_RXO:
 CONTACT_TRACKING_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - US
-  - SG
+  - DE
   - LU
+  - SG
+  - US
   enabled: true
   legal: true
   ground_station_constraints: {}

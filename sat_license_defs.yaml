@@ -338,9 +338,14 @@ gs_licenses:
         bdugs,
         cmbgs,
         hlegs,
+        ivcgs,
         jnbgs,
         orkgs,
         psygs,
+        puqgs,
+        sings,
+        smags,
+        xspgs,
       ]
   UHF_450_U:
     US: [cltgs, dlhgs, itogs, ivcgs]
@@ -423,16 +428,22 @@ gs_licenses:
         vntgs,
         xspgs,
       ]
-    DE: [
+    DE:
+      [
+        awags,
         bdags,
         bdugs,
         cmbgs,
         glags,
         hlegs,
+        ivcgs,
         jnbgs,
         orkgs,
         psygs,
+        sings,
+        smags,
         vntgs,
+        xspgs,
       ]
   SBAND2200_5_D:
     US:
@@ -495,16 +506,21 @@ gs_licenses:
         tg*kl,
         tr*kl,
       ]
-    DE: [
+    DE:
+      [
         accgs,
         awags,
         hndgs,
         icegs,
         pergs,
+        puqgs,
         tosgs,
         ubngs,
         at*kl,
         ha*kl,
+        ig*kl,
+        jj*kl,
+        ma*kl,
         mn*kl,
         nz*kl,
         pa*kl,
@@ -573,7 +589,8 @@ gs_licenses:
         tg*kl,
         tr*kl,
       ]
-    DE: [
+    DE:
+      [
         awags,
         icegs,
         ivcgs,
@@ -582,6 +599,9 @@ gs_licenses:
         ubngs,
         at*kl,
         ha*kl,
+        ig*kl,
+        jj*kl,
+        ma*kl,
         mn*kl,
         nz*kl,
         pa*kl,
@@ -589,7 +609,7 @@ gs_licenses:
         sg*kl,
         tg*kl,
         tr*kl,
-    ]
+      ]
 
 definitions:
   # Below are the countries currently we have a licensed ground station in. By

@@ -1,9 +1,10 @@
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - US
-  - SG
+  - DE
   - LU
+  - SG
+  - US
   enabled: false
   legal: true
   ground_station_constraints:
@@ -30,9 +31,10 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - US
-  - SG
+  - DE
   - LU
+  - SG
+  - US
   enabled: true
   legal: true
   ground_station_constraints:
@@ -124,9 +126,10 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - US
-  - SG
+  - DE
   - LU
+  - SG
+  - US
   enabled: false
   legal: true
   ground_station_constraints:
@@ -145,9 +148,10 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
 CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
-  - US
-  - SG
+  - DE
   - LU
+  - SG
+  - US
   enabled: true
   legal: true
   ground_station_constraints:
@@ -232,9 +236,10 @@ X_BAND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
-  - US
+  - DE
   - LU
   - SG
+  - US
   enabled: false
   legal: true
   ground_station_constraints:
