@@ -161,7 +161,7 @@ TRACK_X_BAND_TXO:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -210,7 +210,7 @@ X_BAND_TXO:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
