@@ -11,7 +11,7 @@ for gs_id in "${antenna_gs_ids[@]}"; do
          --legal true \
          --allowed_license_countries US,SG,LU \
          --window_parameters_file fragments/ksatlite_sband_rxo_parameters.yaml \
-	 --ground_station_constraints '{"fixed_contact_duration": "4min"}' \
+	 --ground_station_constraints '{"fixed_contact_duration": ["4min"]}' \
          --link_profile '[{"min_elevation_deg": 10, "downlink_rate_kbps": 564.01, "uplink_rate_kbps": 0.0, "min_duration": "2min"}]' \
          ${environment} ${gs_id} CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
 done 

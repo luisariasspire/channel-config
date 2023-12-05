@@ -396,7 +396,10 @@ schema:
               items:
                 type: string
             fixed_contact_duration:
-              type: string
+              type: [string, array]
+              items:
+                type: string
+                pattern: *humantime
               pattern: *humantime
               optional: true
             dollar_cost:
