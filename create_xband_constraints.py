@@ -4,7 +4,7 @@
 Conversion script which processes NASA X-band missions from a CSV dump into channel config
 constraint format. To use it:
 
-    pipenv run python create_xband_constraints.py x_band_moa_constraints.csv \
+    poetry run python create_xband_constraints.py fragments/x_band_moa_constraints.csv \
         > fragments/x_band_coordination.yaml
 
 The latest coordination agreements can be found here:
@@ -28,7 +28,10 @@ from ruamel.yaml import YAML, comments
 
 yaml = YAML()
 
-TOPLEVEL_COMMENT = """X-band constraints to comply with NASA/Spire coordination agreement
+TOPLEVEL_COMMENT = """NOTE see documentation in channel-config/create_xband_constraints.py
+for instructions on how to automate updates to this file.
+
+X-band constraints to comply with NASA/Spire coordination agreement
 
 https://docs.google.com/document/d/1zSxW1yMJnskzFpVrb3STgVL-6T8JZY2L/edit 
 

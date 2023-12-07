@@ -1054,6 +1054,23 @@ X_BAND_TXO:
         elevation_m: 0.0
       beamwidth_deg: 5
     - type: avoid_ground_station_beams
+      norad_ids:  # NASA/JPL: SWOT
+      - 54754
+      station_coordinates:
+      - latitude: 68.317  # Canada-Inuvik
+        longitude: -133.533
+        elevation_m: 0.0
+      - latitude: 43.439  # France-Issus Aussaguel
+        longitude: 1.498
+        elevation_m: 0.0
+      - latitude: -25.887  # S Africa-Hartebeesthoek
+        longitude: 27.7
+        elevation_m: 0.0
+      - latitude: 67.89  # Sweden-Kiruna (USN)
+        longitude: 21.07
+        elevation_m: 0.0
+      beamwidth_deg: 5
+    - type: avoid_ground_station_beams
       norad_ids: # NASRDA: N-2, NASRDA: N-X
       - 37789
       - 37790

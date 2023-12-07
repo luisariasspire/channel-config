@@ -156,16 +156,15 @@ NASA/JPL,OCO-2,Sweden-Kiruna (USN),67.89,21.052,40059,In orbit
 NASA/JPL,SMAP,"USA-AK,Fairbanks (NASA)",64.859,-147.858,40376,In orbit
 NASA/JPL,SMAP,"USA-VA,Wallops Island",37.925,-75.477,40376,In orbit
 NASA/JPL,SMAP,Norway-Svalbard,78.232,15.401,40376,In orbit
-NASA/JPL,SWOT,Canada-Inuvik,68.317,-133.533,-,11/17/2022
-NASA/JPL,SWOT,France-Issus Aussaguel,43.439,1.498,-,11/17/2022
-NASA/JPL,SWOT,Sweden-Kiruna (USN),67.89,21.07,-,11/17/2022
-NASA/JPL,SWOT,S Africa-Hartebeesthoek,-25.887,27.7,-,11/17/2022
+NASA/JPL,SWOT,Canada-Inuvik,68.317,-133.533,54754,In orbit
+NASA/JPL,SWOT,France-Issus Aussaguel,43.439,1.498,54754,In orbit
+NASA/JPL,SWOT,Sweden-Kiruna (USN),67.89,21.07,54754,In orbit
+NASA/JPL,SWOT,S Africa-Hartebeesthoek,-25.887,27.7,54754,In orbit
 NASRDA,N-2,UK-Bordon,51,0,37789,In orbit
 NASRDA,N-X,UK-Bordon,51,0,37790,In orbit
 NOAA,NPP,"USA-AK,Fairbanks",64.97,-147.51,37849,In orbit
 NOAA,NPP,Antarctica-Troll (KSAT),-72,2.53,37849,In orbit
 NOAA,NPP,Norway-Svalbard,78.2,15.39,37849,In orbit
-NOAA,OCEANSAT-3,Norway-Svalbard,78.2,15.39,-,Aug 2022
 NSPO,FORMOSAT-2,Norway-Svalbard,78.232,15.401,28254,In orbit
 NSPO,FORMOSAT-5,Norway-Svalbard,78.232,15.401,42920,In orbit
 NSPO,FORMOSAT-8,Norway-Svalbard,78.23,15.4,-,2023
