@@ -21,13 +21,9 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     - FM189
     - FM190
     fixed_contact_duration: 
-    - 1min
     - 2min
-    - 3min
     - 4min
-    - 5min
     - 6min
-    - 7min
     dollar_cost:
       time_dollar_cost:
         dollars: 1.35
@@ -73,13 +69,9 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     - FM189
     - FM190
     fixed_contact_duration: 
-    - 1min
     - 2min
-    - 3min
     - 4min
-    - 5min
     - 6min
-    - 7min
     dollar_cost:
       time_dollar_cost:
         dollars: 1.35
@@ -122,13 +114,9 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     - FM189
     - FM190
     fixed_contact_duration: 
-    - 1min
     - 2min
-    - 3min
     - 4min
-    - 5min
     - 6min
-    - 7min
     dollar_cost:
       time_dollar_cost:
         dollars: 1.35
@@ -163,13 +151,9 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     - FM189
     - FM190
     fixed_contact_duration: 
-    - 1min
     - 2min
-    - 3min
     - 4min
-    - 5min
     - 6min
-    - 7min
     dollar_cost:
       time_dollar_cost:
         dollars: 1.35
@@ -205,13 +189,9 @@ TRACK_X_BAND_TXO:
     - FM189
     - FM190
     fixed_contact_duration: 
-    - 1min
     - 2min
-    - 3min
     - 4min
-    - 5min
     - 6min
-    - 7min
     dollar_cost:
       time_dollar_cost:
         dollars: 1.35
@@ -261,13 +241,9 @@ X_BAND_TXO:
     - FM189
     - FM190
     fixed_contact_duration: 
-    - 1min
     - 2min
-    - 3min
     - 4min
-    - 5min
     - 6min
-    - 7min
     dollar_cost:
       time_dollar_cost:
         dollars: 1.35
