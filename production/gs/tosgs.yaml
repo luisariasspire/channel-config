@@ -23,9 +23,9 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     fixed_contact_duration: 4min
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.35
+        dollars: 1.60
         interval: 1min
-      fixed_dollar_cost: 1.35
+      fixed_dollar_cost: 1.60
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -68,9 +68,9 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     fixed_contact_duration: 4min
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.35
+        dollars: 1.60
         interval: 1min
-      fixed_dollar_cost: 1.35
+      fixed_dollar_cost: 1.60
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -110,9 +110,9 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     fixed_contact_duration: 4min
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.35
+        dollars: 1.60
         interval: 1min
-      fixed_dollar_cost: 1.35
+      fixed_dollar_cost: 1.60
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -144,9 +144,9 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     fixed_contact_duration: 4min
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.35
+        dollars: 1.60
         interval: 1min
-      fixed_dollar_cost: 1.35
+      fixed_dollar_cost: 1.60
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -179,9 +179,9 @@ TRACK_X_BAND_TXO:
     fixed_contact_duration: 4min
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.35
+        dollars: 1.60
         interval: 1min
-      fixed_dollar_cost: 1.35
+      fixed_dollar_cost: 1.60
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -228,9 +228,9 @@ X_BAND_TXO:
     fixed_contact_duration: 4min
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.35
+        dollars: 1.60
         interval: 1min
-      fixed_dollar_cost: 1.35
+      fixed_dollar_cost: 1.60
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10

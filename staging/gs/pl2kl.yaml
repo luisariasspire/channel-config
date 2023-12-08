@@ -11,9 +11,9 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   ground_station_constraints:
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.35
+        dollars: 1.60
         interval: 1min
-      fixed_dollar_cost: 1.35
+      fixed_dollar_cost: 1.60
     fixed_contact_duration: 
     - 2min
     - 4min
