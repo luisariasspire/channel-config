@@ -321,7 +321,8 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    budget_name: KSAT_GENERAL
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
