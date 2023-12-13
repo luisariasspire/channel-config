@@ -612,6 +612,21 @@ gs_licenses:
       ]
 
 definitions:
+  # these are the namd freqency bands used elsewhere
+  frequencies:
+    SBAND_2022_5_D:
+      - [2020, 2025, "D"]
+    SBAND2032_5_U:
+      - [2030, 2035, "U"]
+    SBAND2200_5_D:
+      - [2200, 2201, "D"]
+    UHF_450_U:
+      - [449.75, 450.25, "U"]
+    UHF402_7_UD:
+      - [402.6, 402.8, "D"]
+      - [402.6, 402.8, "U"]
+    XBAND8200_D:
+      - [8170, 8230, "D"]
   # Below are the countries currently we have a licensed ground station in. By
   # default, we assume that satellites can talk to ground stations licensed in
   # any of these countries except for the ones blacklisted in the satellite's
@@ -621,7 +636,7 @@ definitions:
     - PT # Edisoft
     - SG # IMDA
     - JP # JSAT
-    - NO # KSAT
+    - "NO" # KSAT
     - BM # Link Bermuda
     - IE # National Space Centre
     - GB # OFCOM
@@ -810,7 +825,7 @@ definitions:
     - NG # Nigeria
     - NI # Nicaragua
     - NL # Netherlands
-    - NO # Norway
+    - "NO" # Norway
     - NP # Nepal
     - NR # Nauru
     - NU # Niue
