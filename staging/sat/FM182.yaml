@@ -16,7 +16,6 @@ CONTACT_BIDIR:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -44,7 +43,6 @@ CONTACT_BIDIR_DVBS2X:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -72,7 +70,6 @@ CONTACT_BIDIR_PARAM:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -111,7 +108,6 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -243,7 +239,6 @@ CONTACT_BIDIR_PARAM_UHF:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: true
   legal: true
@@ -277,7 +272,6 @@ CONTACT_BIDIR_UHF:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -332,7 +326,6 @@ CONTACT_RXO:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -368,7 +361,6 @@ CONTACT_RXO_DVBS2X:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -494,7 +486,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -538,7 +529,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -578,7 +568,6 @@ CONTACT_TRACKING_BIDIR:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -606,7 +595,6 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -634,7 +622,6 @@ CONTACT_TRACKING_RXO:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -662,7 +649,6 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -690,7 +676,6 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -721,7 +706,6 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
@@ -753,7 +737,6 @@ X_BAND_TXO:
   - PT
   - SG
   - SH
-  - US
   - ZA
   enabled: false
   legal: true
