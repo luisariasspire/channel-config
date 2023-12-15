@@ -179,6 +179,13 @@ contact_types:
     contact_type: "CONTACT_SPACE_GROUND_TXO"
     directionality: "SpaceToEarth"
 
+  CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO: &CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO
+    all_of:
+      - *XBAND8200_D
+    desc: "One-way contact in X-band, using KSAT Lite network"
+    contact_type: "CONTACT_SPACE_GROUND_TXO"
+    directionality: "SpaceToEarth"
+
   CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
     <<: *contact_rxo
     desc: "One-way contact with S-band down, using DVB-S2X modulation and 5MHz rf bandwidth at PLS15"
@@ -360,6 +367,7 @@ groups:
   xband:
     - X_BAND_TXO
     - TRACK_X_BAND_TXO
+    - CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO
 
   # bidirectionals
   bidir:
@@ -399,6 +407,7 @@ groups:
     - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
     - CONTACT_RXO_DVBS2X_HIGH_ELEVATION
     - TRACK_X_BAND_TXO
+    - CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO
     - CONTACT_RXO_DVBS2X_BW5MHZ_PLS15
     - CONTACT_RXO_DVBS2X_BW5MHZ_PLS11
 
@@ -416,6 +425,7 @@ groups:
     - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
     - CONTACT_RXO_DVBS2X_HIGH_ELEVATION
     - TRACK_X_BAND_TXO
+    - CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO
     - CONTACT_RXO_DVBS2X_BW5MHZ_PLS15
     - CONTACT_RXO_DVBS2X_BW5MHZ_PLS11
     - CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15
@@ -441,6 +451,7 @@ groups:
   # Antenna-only KSAT contacts.
   ksatlite:
     - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
+    - CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO
 
   # sband 5MHz DVB contacts
   sband_5mhz:

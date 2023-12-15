@@ -1674,4 +1674,3 @@ X_BAND_TXO:
       lo-offset: 5000000
       rf_bandwidth: 10000000
       radionet-m: 1989
-# FM175-specific channels below. Can remove after SCS USW update mitigates tracking hack
