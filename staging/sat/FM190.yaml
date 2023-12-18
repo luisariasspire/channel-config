@@ -19,7 +19,19 @@ CONTACT_BIDIR:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -46,7 +58,19 @@ CONTACT_BIDIR_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 0
@@ -73,7 +97,19 @@ CONTACT_BIDIR_PARAM:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -111,7 +147,19 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 0
@@ -296,6 +344,18 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -329,7 +389,19 @@ CONTACT_RXO:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -364,7 +436,19 @@ CONTACT_RXO_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -493,6 +577,18 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     # have to add this budget name in case this channel is used with
     # TOSGS which does incur KSAT charges
     budget_name: KSAT_GENERAL
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -536,6 +632,18 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     # have to add this budget name in case this channel is used with
     # TOSGS which does incur KSAT charges
     budget_name: KSAT_GENERAL
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -571,7 +679,19 @@ CONTACT_TRACKING_BIDIR:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -598,7 +718,19 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -625,7 +757,19 @@ CONTACT_TRACKING_RXO:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -652,7 +796,19 @@ CONTACT_TRACKING_RXO_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -683,6 +839,18 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     # have to add this budget name in case this channel is used with
     # TOSGS which does incur KSAT charges
     budget_name: KSAT_GENERAL
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -713,6 +881,18 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     # have to add this budget name in case this channel is used with
     # TOSGS which does incur KSAT charges
     budget_name: KSAT_GENERAL
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -1197,6 +1377,18 @@ X_BAND_TXO:
     # have to add this budget name in case this channel is used with
     # TOSGS which does incur KSAT charges
     budget_name: KSAT_GENERAL
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]
   window_parameters:
