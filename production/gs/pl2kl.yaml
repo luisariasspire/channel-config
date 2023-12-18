@@ -14,7 +14,10 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
         dollars: 1.60
         interval: 1min
       fixed_dollar_cost: 1.60
-    fixed_contact_duration: 4min
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
