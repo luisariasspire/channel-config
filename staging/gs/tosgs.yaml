@@ -20,7 +20,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     - FM188
     - FM189
     - FM190
-    fixed_contact_duration: 
+    fixed_contact_duration:
     - 2min
     - 4min
     - 6min
@@ -68,7 +68,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     - FM188
     - FM189
     - FM190
-    fixed_contact_duration: 
+    fixed_contact_duration:
     - 2min
     - 4min
     - 6min
@@ -113,7 +113,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     - FM188
     - FM189
     - FM190
-    fixed_contact_duration: 
+    fixed_contact_duration:
     - 2min
     - 4min
     - 6min
@@ -150,7 +150,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     - FM188
     - FM189
     - FM190
-    fixed_contact_duration: 
+    fixed_contact_duration:
     - 2min
     - 4min
     - 6min
@@ -188,7 +188,7 @@ TRACK_X_BAND_TXO:
     - FM188
     - FM189
     - FM190
-    fixed_contact_duration: 
+    fixed_contact_duration:
     - 2min
     - 4min
     - 6min
@@ -240,7 +240,7 @@ X_BAND_TXO:
     - FM188
     - FM189
     - FM190
-    fixed_contact_duration: 
+    fixed_contact_duration:
     - 2min
     - 4min
     - 6min
