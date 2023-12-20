@@ -389,6 +389,18 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
   enabled: false
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - sg71kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
     budget_name: KSAT_GENERAL
     separation:
     - type: avoid_ground_station_beams
