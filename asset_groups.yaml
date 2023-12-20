@@ -1,0 +1,85 @@
+# satellites using the sband monopole antenna with degraded performance at high elevation
+monopole_fms:
+  - FM103
+  - FM104
+  - FM105
+  - FM106
+  - FM107
+  - FM108
+  - FM110
+  - FM112
+  - FM113
+  - FM115
+  - FM116
+  - FM117
+  - FM119
+  - FM121
+  - FM123
+  - FM124
+  - FM126
+  - FM127
+  - FM128
+  - FM129
+
+# satellites using the sband patch antenna
+patch_fms:
+  - FM130
+  - FM131
+  - FM132
+  - FM133
+  - FM134
+  - FM135
+  - FM136
+  - FM138
+  - FM139
+  - FM140
+  - FM141
+  - FM143
+  - FM144
+  - FM145
+  - FM146
+  - FM147
+  - FM148
+  - FM149
+  - FM152
+  - FM153
+  - FM154
+  - FM155
+  - FM156
+  - FM157
+  - FM158
+  - FM159
+  - FM160
+  - FM161
+  - FM162
+  - FM163
+  - FM164
+  - FM165
+  - FM166
+  - FM167
+  - FM168
+  - FM169
+  - FM170
+  - FM171
+  - FM172
+  - FM175
+  - FM182
+  - FM183
+  - FM184
+  - FM185
+  - FM186
+  - FM187
+  - FM188
+  - FM189
+  - FM190
+  - FM193
+  - FM194
+
+# FMs with a broken high-speed radio
+no_hs:
+  - FM161
+
+ghgsat:
+  - FM188
+  - FM189
+  - FM190

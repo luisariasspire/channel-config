@@ -26,6 +26,7 @@ def config_isolated(context):
             "sat_license_defs.yaml",
             "schema.yaml",
             "templates.yaml",
+            "asset_groups.yaml",
         ],
         origin,
         dir_name,

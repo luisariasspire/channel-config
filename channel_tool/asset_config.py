@@ -26,6 +26,10 @@ def locate_assets(env: Environment, assets: Union[str, List[str]]) -> List[str]:
     def name(p: str) -> str:
         return os.path.splitext(os.path.basename(p))[0]
 
+    def group(g: str) -> Optional[List[str]]:
+        assetGroups : Dict[str, List[str]] = load_yaml_file("asset_groups.yaml")
+        return assetGroups.get(g)
+
     if isinstance(assets, list):
         return assets
     elif assets == "all_gs":
@@ -36,6 +40,8 @@ def locate_assets(env: Environment, assets: Union[str, List[str]]) -> List[str]:
         vs = locate_assets(env, "all_gs")
         vs.extend(locate_assets(env, "all_sat"))
         return vs
+    elif asset_group := group(assets):
+        return asset_group
     else:
         return assets.split(",")
 
