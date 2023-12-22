@@ -45,7 +45,7 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     dollar_cost:
