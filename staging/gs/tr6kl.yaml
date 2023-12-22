@@ -81,5 +81,7 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
         vbatt/power/max: 19550
       ground_override:
         radionet-m: 1989
+        rf_bandwidth: 10000000
+        gain: 3
       use_radionet: true
       protocol: DVBS2X
