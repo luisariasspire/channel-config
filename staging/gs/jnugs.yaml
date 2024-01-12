@@ -3,7 +3,7 @@ CONTACT_BIDIR:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -45,7 +45,7 @@ CONTACT_BIDIR_PARAM:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -121,7 +121,7 @@ CONTACT_RXO:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -226,3 +226,4 @@ CONTACT_TRACKING_RXO_DVBS2X:
     downlink_rate_kbps: 550.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
+
