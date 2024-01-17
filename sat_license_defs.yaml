@@ -245,7 +245,8 @@ sat_licenses:
       - [2200, 2290, "D"]
     blacklisted_countries: []
   DEU_DIAMANT:
-    satellites: [182, 183, 184, 185, 186, 187, 188, 189, 190]
+    satellites:
+      [178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190]
     frequencies:
       - [402.6, 402.8, "D"]
       - [402.6, 402.8, "U"]
