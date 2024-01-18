@@ -244,6 +244,8 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
   - AU
+  - CA
+  - CA
   - CL
   - ES
   - GR
