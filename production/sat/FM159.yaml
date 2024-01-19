@@ -1879,7 +1879,7 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_GENERAL
+    budget_name: KSAT_NRO
     separation:
     - type: avoid_ground_station_beams
       norad_ids: # CNES: pleiades (-1A/1B)
