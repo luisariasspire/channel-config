@@ -637,6 +637,17 @@ def add_editing_flags(parser: Any) -> None:
         type=file_to_yaml_map,
         help="A YAML file containing the window parameters to use when scheduling contacts.",
     )
+    dynamic_window_parameters_group = parser.add_mutually_exclusive_group()
+    dynamic_window_parameters_group.add_argument(
+        "--dynamic_window_parameters",
+        type=str_to_yaml_map,
+        help="A YAML block describing the dynamic window parameters config to use when scheduling contacts.",
+    )
+    dynamic_window_parameters_group.add_argument(
+        "--dynamic_window_parameters_file",
+        type=file_to_yaml_map,
+        help="A YAML file containing the dynamic window parameters config to use when scheduling contacts.",
+    )
 
 
 def add_env_flag(parser: Any) -> None:

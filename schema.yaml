@@ -388,6 +388,18 @@ schema:
       additionalProperties: false
       properties:
         <<: *base_properties
+        dynamic_window_parameters:
+          type: object
+          additionalProperties: false
+          properties:
+            transmit_times:
+              type: object
+              additionalProperties: false
+              properties:
+                elevation_threshold_deg:
+                  type: number
+              required:
+                - elevation_threshold_deg
         ground_station_constraints:
           type: object
           properties:

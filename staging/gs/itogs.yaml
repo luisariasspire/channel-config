@@ -15,6 +15,9 @@ CONTACT_BIDIR:
     downlink_rate_kbps: 446.46
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 27
 CONTACT_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -32,6 +35,9 @@ CONTACT_BIDIR_DVBS2X:
     downlink_rate_kbps: 562.93
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 27
 CONTACT_BIDIR_PARAM:
   directionality: Bidirectional
   allowed_license_countries:
@@ -49,6 +55,9 @@ CONTACT_BIDIR_PARAM:
     downlink_rate_kbps: 446.46
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 27
 CONTACT_BIDIR_PARAM_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -66,6 +75,9 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     downlink_rate_kbps: 562.93
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 27
 CONTACT_BIDIR_PARAM_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -137,6 +149,9 @@ CONTACT_TRACKING_BIDIR:
     downlink_rate_kbps: 355.0
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 27
 CONTACT_TRACKING_BIDIR_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -154,6 +169,9 @@ CONTACT_TRACKING_BIDIR_DVBS2X:
     downlink_rate_kbps: 555.0
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 27
 CONTACT_TRACKING_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:

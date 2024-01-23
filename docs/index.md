@@ -39,8 +39,13 @@ All channel definitions include the following core properties.
 - `link_profile`: A sequence of link profile segments used to define elevation-dependent behavior.
   See the below section on "Link Profiles" for more details on this field.
 - `window_parameters`: A JSON object containing the _static_ window parameters. This object is
-  merged with dynamic parameters given in the link profile during contact scheduling. See "Window
+  merged with parameters given in the link profile during contact scheduling. See "Window
   Parameter Merge Semantics" below for details on this process.
+
+## Groundstation-only properties
+
+- `dynamic_window_parameters`: A JSON object containing configuration for _dyamically-generated_
+  window parameters. 
 
 Additionally, satellites and ground stations will have their own constraint types under the
 `satellite_constraints` or `ground_station_constraints` key, respectively. See "Constraints" below
@@ -59,7 +64,7 @@ profile is made up of a series of one or more link segments which contain the fo
 - `uplink_rate_kbps`: The expected goodput in the ground-to-space direction for this elevation band.
 - `minimum_duration`: The minimum amount of time that the satellite must be in this or a higher band
   for the parent channel to be valid for scheduling.  
-- `window_parameters`: The dynamic, elevation-dependent parameters which should be set on contacts
+- `window_parameters`: The elevation-dependent parameters which should be set on contacts
   which enter this band. 
 
 A satellite "enters" a link segment when its elevation as perceived by the ground station is greater
