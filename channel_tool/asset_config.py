@@ -16,6 +16,7 @@ from channel_tool.util import (
     SAT_DIR,
     SATELLITE,
     dump_yaml_file,
+    dump_yaml_string,
     load_yaml_file,
 )
 
@@ -92,6 +93,12 @@ def write_asset_config(env: Environment, asset: str, asset_config: AssetConfig) 
     elif os.path.exists(config_file):
         os.remove(config_file)
 
+        
+def asset_config_to_string(asset_config: AssetConfig) -> str:
+    asset_config = normalize_config(asset_config)
+    str_result: str = dump_yaml_string(asset_config)
+    return str_result
+    
 
 def normalize_config(cfg: Dict[str, Any]) -> Dict[str, Any]:
     """Normalize a configuration file by removing anchors and sorting keys."""

@@ -14,7 +14,9 @@ from channel_tool.asset_config import (
     infer_asset_type,
     load_asset_config,
     locate_assets,
+    asset_config_to_string,
     write_asset_config,
+    infer_config_file,
 )
 from channel_tool.audit import AuditReport
 from channel_tool.auto_update_utils import asset_to_predicates, create_config_updates
@@ -47,7 +49,10 @@ from channel_tool.pls_tool import (
     pls_short,
     pls_long,
 )
-
+from channel_tool.util import (
+    GS_DIR,
+    SAT_DIR,
+)
 
 CONTACT_TYPE_DEFS: DefsFile = load_yaml_file("contact_type_defs.yaml")
 
@@ -430,6 +435,38 @@ def normalize_configs(args: Any) -> None:
         write_asset_config(args.environment, asset, config)
 
 
+def format_configs(args: Any) -> None:
+    pass_check = True
+    for env in ENVS:
+        all_assets = locate_assets(env, "all_gs")
+        all_assets.extend(locate_assets(env, "all_sat"))
+        for asset in sorted(all_assets):
+            path = infer_config_file(env, asset)
+            pass_check = pass_check and format_asset(args, env, path, asset)
+    if args.check and not pass_check:
+        print(f"Use the channel_tool 'format' or 'normalize' commands to correct non-standard formatting")
+        exit(1)
+
+
+def format_asset(args: Any, env: str, path: str, asset: str) -> bool:
+    with open(path) as f:
+        string_before = f.read()
+    config = load_asset_config(env, asset)
+    string_after = asset_config_to_string(config)
+    if string_before == string_after:
+        if not args.check:
+            print(f"Formatting {path}: no update required")
+        return True
+    else:
+        if args.check:
+            print(f"Formatting {path}: file would be updated")
+        else:
+            print(f"Formatting {path}: updated")
+            with open(path, "w") as f:
+                f.write(string_after)
+        return False
+    
+
 def find_template(channel: str) -> ChannelDefinition:
     if os.path.exists(TEMPLATE_FILE):
         templates: Dict[str, ChannelDefinition] = load_yaml_file(TEMPLATE_FILE)
@@ -792,11 +829,21 @@ AUDIT_PARSER.add_argument(
 )
 
 NORMALIZE_PARSER = SUBPARSERS.add_parser(
-    "normalize", help="Convert configuration to a normalized format."
+    "normalize", help="Silently convert specific configurations to a normalized format."
 )
 NORMALIZE_PARSER.set_defaults(func=normalize_configs)
 add_env_flag(NORMALIZE_PARSER)
 add_asset_flag(NORMALIZE_PARSER)
+
+FORMAT_PARSER = SUBPARSERS.add_parser(
+    "format", help="Normalize all configuration formatting, indicating which files were changed."
+)
+FORMAT_PARSER.set_defaults(func=format_configs)
+FORMAT_PARSER.add_argument(
+    "--check",
+    action="store_true",
+    help=("Report if any configs would be updated for formatting and fail if so."),
+)
 
 VALIDATE_PARSER = SUBPARSERS.add_parser(
     "validate", help="Validate all templates and extant configurations."
