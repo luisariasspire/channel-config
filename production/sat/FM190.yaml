@@ -635,9 +635,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -690,9 +687,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -897,9 +891,6 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -939,9 +930,6 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -1435,9 +1423,7 @@ X_BAND_TXO:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
+  
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0

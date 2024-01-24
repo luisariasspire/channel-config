@@ -613,10 +613,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
+  satellite_constraints: {}
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -657,10 +654,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
+  satellite_constraints: {}
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -809,10 +803,7 @@ CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
+  satellite_constraints: {}
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -840,10 +831,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints:
-    # have to add this budget name in case this channel is used with
-    # TOSGS which does incur KSAT charges
-    budget_name: KSAT_GENERAL
+  satellite_constraints: {}
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
