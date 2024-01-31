@@ -107,7 +107,7 @@ TRACK_X_BAND_TXO:
         lo-offset: 5000000
         ant: RX2
         rf_bandwidth: 10000000
-        gain: 3
+        gain: 17
         freq: 1250000000
     tracking_target:
       latitude_north: -46.52966
@@ -138,7 +138,7 @@ X_BAND_TXO:
         lo-offset: 5000000
         ant: RX2
         rf_bandwidth: 10000000
-        gain: 3
+        gain: 17
         freq: 1250000000
     chainOverride:
       sband:
