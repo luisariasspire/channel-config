@@ -1310,15 +1310,6 @@ X_BAND_TXO:
         fec_k: 254
         pls: 5
         mtu: 1989
-      ground_override:
-        ant: RX2
-        coarse-freq-win: 1000000
-        freq: 1250000000
-        gain: 3
-        header-freq-pow: 7
-        lo-offset: 5000000
-        rf_bandwidth: 10000000
-        radionet-m: 1989
       use_radionet: true
       protocol: DVBS2X
     chainOverride:
