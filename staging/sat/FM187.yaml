@@ -781,7 +781,7 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 10000.0
+    downlink_rate_kbps: 15000.0
     uplink_rate_kbps: 0.0
     min_duration: 2min
   window_parameters:
@@ -794,14 +794,14 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 10000000
-        pls: 5
-        mtu: 1989
+        pls: 49
+        mtu: 4824
         mod_gain: 130
         vbatt/voltage/min: 7000
         vbatt/voltage/max: 8500
         vbatt/power/max: 19550
       ground_override:
-        radionet-m: 1989
+        radionet-m: 4824
       use_radionet: true
       protocol: DVBS2X
 CONTACT_RXO:
