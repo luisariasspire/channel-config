@@ -1201,10 +1201,10 @@ X_BAND_TXO:
       bandaid_override:
         fec: 255
         fec_k: 254
-        pls: 49
-        mtu: 4824
+        pls: 29
+        mtu: 6039
       ground_override:
-        radionet-m: 4824
+        radionet-m: 6039
       use_radionet: true
       protocol: DVBS2X
 CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
@@ -1685,13 +1685,13 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 10000000
-        pls: 49
-        mtu: 4824
+        pls: 29
+        mtu: 6039
         mod_gain: 130
         vbatt/voltage/min: 7000
         vbatt/voltage/max: 8500
         vbatt/power/max: 19550
       ground_override:
-        radionet-m: 4824
+        radionet-m: 6039
       use_radionet: true
       protocol: DVBS2X
