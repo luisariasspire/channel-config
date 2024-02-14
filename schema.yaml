@@ -444,6 +444,15 @@ schema:
       additionalProperties: false
       properties:
         <<: *base_properties
+        additional_provider_config:
+          type: object
+          optional: true
+          additionalProperties: false
+          properties:
+            ksat_mission_config:
+              type: string
+              enum: [SPIRE_Q, SPIRE_Q_20MHZ]
+              optional: true
         satellite_constraints:
           type: object
           additionalProperties: false

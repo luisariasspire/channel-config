@@ -444,7 +444,9 @@ def format_configs(args: Any) -> None:
             path = infer_config_file(env, asset)
             pass_check = pass_check and format_asset(args, env, path, asset)
     if args.check and not pass_check:
-        print(f"Use the channel_tool 'format' or 'normalize' commands to correct non-standard formatting")
+        print(
+            f"Use the channel_tool 'format' or 'normalize' commands to correct non-standard formatting"
+        )
         exit(1)
 
 
@@ -465,7 +467,7 @@ def format_asset(args: Any, env: str, path: str, asset: str) -> bool:
             with open(path, "w") as f:
                 f.write(string_after)
         return False
-    
+
 
 def find_template(channel: str) -> ChannelDefinition:
     if os.path.exists(TEMPLATE_FILE):
@@ -685,6 +687,12 @@ def add_editing_flags(parser: Any) -> None:
         type=file_to_yaml_map,
         help="A YAML file containing the dynamic window parameters config to use when scheduling contacts.",
     )
+    additional_provider_config = parser.add_mutually_exclusive_group()
+    additional_provider_config.add_argument(
+        "--additional_provider_config",
+        type=str_to_yaml_map,
+        help="A YAML block describing any additional config to be passed to the GS provider with a contact",
+    )
 
 
 def add_env_flag(parser: Any) -> None:
@@ -836,7 +844,8 @@ add_env_flag(NORMALIZE_PARSER)
 add_asset_flag(NORMALIZE_PARSER)
 
 FORMAT_PARSER = SUBPARSERS.add_parser(
-    "format", help="Normalize all configuration formatting, indicating which files were changed."
+    "format",
+    help="Normalize all configuration formatting, indicating which files were changed.",
 )
 FORMAT_PARSER.set_defaults(func=format_configs)
 FORMAT_PARSER.add_argument(
