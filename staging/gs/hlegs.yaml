@@ -51,7 +51,7 @@ CONTACT_BIDIR_PARAM:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -74,7 +74,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 200s
@@ -126,7 +126,7 @@ CONTACT_RXO:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -142,7 +142,7 @@ CONTACT_RXO_DVBS2X:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -229,4 +229,3 @@ CONTACT_TRACKING_RXO_DVBS2X:
     downlink_rate_kbps: 550.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
-# FM175 track hack. Remove after SCS fix.
