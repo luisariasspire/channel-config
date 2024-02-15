@@ -1447,6 +1447,9 @@ X_BAND_TXO:
         fec_k: 254
         pls: 5
         mtu: 1989
+        vbatt/voltage/min: 6700
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
       use_radionet: true
       protocol: DVBS2X
     chainOverride:
@@ -1951,7 +1954,7 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
         pls: 5
         mtu: 1989
         mod_gain: 130
-        vbatt/voltage/min: 7000
+        vbatt/voltage/min: 6700
         vbatt/voltage/max: 8500
         vbatt/power/max: 19550
       ground_override:
