@@ -804,6 +804,8 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
         radionet-m: 6039
       use_radionet: true
       protocol: DVBS2X
+  additional_provider_config:
+    ksat_mission_config: SPIRE_Q_20MHZ
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -1679,7 +1681,7 @@ X_BAND_TXO:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-  
+
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]
   window_parameters:
