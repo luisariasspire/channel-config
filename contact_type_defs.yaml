@@ -160,16 +160,26 @@ contact_types:
     desc: "One-way contact in 2200MHz band with target tracking using DVB-S2X modulation"
     contact_type: "CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ"
 
-  X_BAND_TXO: &xband_txo
+  X_BAND_TXO_LEMDIG: &xband_txo
     all_of:
       - *XBAND8200_D
-    desc: "One-way contact in X-band"
+    desc: "One-way contact in X-band for LEMDIG Dexters"
     contact_type: "CONTACT_SPACE_GROUND_TXO"
     directionality: "SpaceToEarth"
 
-  TRACK_X_BAND_TXO:
+  X_BAND_TXO_MARSUPIAL:
     <<: *xband_txo
-    desc: "One-way contact in X-band with target tracking"
+    desc: "One-way contact in X-band for Marsupial Dexters"
+    contact_type: "CONTACT_SPACE_GROUND_TXO"
+
+  TRACK_X_BAND_TXO_LEMDIG:
+    <<: *xband_txo
+    desc: "One-way contact in X-band with target tracking for LEMDIG Dexters"
+    contact_type: "CONTACT_SPACE_GROUND_TXO"
+
+  TRACK_X_BAND_TXO_MARSUPIAL:
+    <<: *xband_txo
+    desc: "One-way contact in X-band with target tracking for Marsupial Dexters"
     contact_type: "CONTACT_SPACE_GROUND_TXO"
 
   CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO: &CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
@@ -365,8 +375,10 @@ groups:
 
   # any using XBand
   xband:
-    - X_BAND_TXO
-    - TRACK_X_BAND_TXO
+    - X_BAND_TXO_LEMDIG
+    - X_BAND_TXO_MARSUPIAL
+    - TRACK_X_BAND_TXO_LEMDIG
+    - TRACK_X_BAND_TXO_MARSUPIAL
     - CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO
 
   # bidirectionals
@@ -416,10 +428,12 @@ groups:
     - CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
     - CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ
     - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
-    - X_BAND_TXO
+    - X_BAND_TXO_LEMDIG
+    - X_BAND_TXO_MARSUPIAL
     - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
     - CONTACT_RXO_DVBS2X_HIGH_ELEVATION
-    - TRACK_X_BAND_TXO
+    - TRACK_X_BAND_TXO_LEMDIG
+    - TRACK_X_BAND_TXO_MARSUPIAL
     - CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO
     - CONTACT_RXO_DVBS2X_BW5MHZ_PLS15
     - CONTACT_RXO_DVBS2X_BW5MHZ_PLS11
@@ -432,12 +446,14 @@ groups:
     - CONTACT_TRACKING_BIDIR_DVBS2X
     - CONTACT_TRACKING_RXO_DVBS2X
     - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
-    - X_BAND_TXO
+    - X_BAND_TXO_LEMDIG
+    - X_BAND_TXO_MARSUPIAL
     - CONTACT_BIDIR_DVBS2X_HIGH_ELEVATION
     - CONTACT_BIDIR_PARAM_DVBS2X
     - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
     - CONTACT_RXO_DVBS2X_HIGH_ELEVATION
-    - TRACK_X_BAND_TXO
+    - TRACK_X_BAND_TXO_LEMDIG
+    - TRACK_X_BAND_TXO_MARSUPIAL
     - CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO
     - CONTACT_RXO_DVBS2X_BW5MHZ_PLS15
     - CONTACT_RXO_DVBS2X_BW5MHZ_PLS11
@@ -459,7 +475,8 @@ groups:
     - CONTACT_TRACKING_RXO_DVBS2X
     - CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
     - CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ
-    - TRACK_X_BAND_TXO
+    - TRACK_X_BAND_TXO_LEMDIG
+    - TRACK_X_BAND_TXO_MARSUPIAL
 
   # Antenna-only KSAT contacts.
   ksatlite:

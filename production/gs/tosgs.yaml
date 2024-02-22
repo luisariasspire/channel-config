@@ -43,9 +43,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
       bandaid_override:
           # The 3m dish has ~ 15db of SNR allowing PLS 87 (2.391mbps)
         pls: 87
-    chainOverride:
-      sband:
-        freq: 70000000
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -87,9 +84,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
     forward_channels:
     - ground_override:
-        freq: 70000000
-    chainOverride:
-      sband:
         freq: 70000000
 CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -165,7 +159,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
     downlink_rate_kbps: 350.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
-TRACK_X_BAND_TXO:
+TRACK_X_BAND_TXO_LEMDIG:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
@@ -206,7 +200,23 @@ TRACK_X_BAND_TXO:
   window_parameters:
     # GS uses a downconverter to deliver XBand signal at 1250MHz
     forward_channels:
-    - ground_override:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      bandaid_override:
+        tx_sample_rate_hz: 10000000
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        pls: 5
+        mtu: 1989
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
         header-freq-pow: 7
         coarse-freq-win: 1000000
         lo-offset: 5000000
@@ -214,10 +224,11 @@ TRACK_X_BAND_TXO:
         rf_bandwidth: 10000000
         gain: 3
         freq: 1250000000
+        radionet-m: 1989
     tracking_target:
       latitude_north: 69.662829
       longitude_west: -18.941422
-X_BAND_TXO:
+TRACK_X_BAND_TXO_MARSUPIAL:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
@@ -258,7 +269,23 @@ X_BAND_TXO:
   window_parameters:
     # GS uses a downconverter to deliver XBand signal at 1250MHz
     forward_channels:
-    - ground_override:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      bandaid_override:
+        tx_sample_rate_hz: 10000000
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        pls: 29
+        mtu: 6039
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
         header-freq-pow: 7
         coarse-freq-win: 1000000
         lo-offset: 5000000
@@ -266,8 +293,68 @@ X_BAND_TXO:
         rf_bandwidth: 10000000
         gain: 3
         freq: 1250000000
-    chainOverride:
-      sband:
+        radionet-m: 6039
+    tracking_target:
+      latitude_north: 69.662829
+      longitude_west: -18.941422
+X_BAND_TXO_LEMDIG:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: true
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
+    - FM182
+    - FM183
+    - FM184
+    - FM185
+    - FM186
+    - FM187
+    - FM188
+    - FM189
+    - FM190
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1.60
+        interval: 1min
+      fixed_dollar_cost: 1.60
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 2543.86
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+  window_parameters:
+    # GS uses a downconverter to deliver XBand signal at 1250MHz
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      bandaid_override:
+        tx_sample_rate_hz: 10000000
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        pls: 5
+        mtu: 1989
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
         header-freq-pow: 7
         coarse-freq-win: 1000000
         lo-offset: 5000000
@@ -275,3 +362,70 @@ X_BAND_TXO:
         rf_bandwidth: 10000000
         gain: 3
         freq: 1250000000
+        radionet-m: 1989
+X_BAND_TXO_MARSUPIAL:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: true
+  ground_station_constraints:
+    deny_satellites:
+    - FM157
+    - FM158
+    - FM182
+    - FM183
+    - FM184
+    - FM185
+    - FM186
+    - FM187
+    - FM188
+    - FM189
+    - FM190
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1.60
+        interval: 1min
+      fixed_dollar_cost: 1.60
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 2543.86
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+  window_parameters:
+    # GS uses a downconverter to deliver XBand signal at 1250MHz
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      bandaid_override:
+        tx_sample_rate_hz: 10000000
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        pls: 29
+        mtu: 6039
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        header-freq-pow: 7
+        coarse-freq-win: 1000000
+        lo-offset: 5000000
+        ant: RX2
+        rf_bandwidth: 10000000
+        gain: 3
+        freq: 1250000000
+        radionet-m: 6039
