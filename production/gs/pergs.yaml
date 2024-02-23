@@ -112,7 +112,7 @@ TRACK_X_BAND_TXO_LEMDIG:
         lo-offset: 5000000
         ant: RX2
         rf_bandwidth: 10000000
-        gain: 3
+        gain: 17
         freq: 1250000000
         radionet-m: 1989
     tracking_target:
@@ -206,7 +206,7 @@ X_BAND_TXO_LEMDIG:
         lo-offset: 5000000
         ant: RX2
         rf_bandwidth: 10000000
-        gain: 3
+        gain: 17
         freq: 1250000000
         radionet-m: 1989
 # FM175 track hack. Can remove after SCS fix
