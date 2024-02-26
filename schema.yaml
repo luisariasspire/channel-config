@@ -407,12 +407,6 @@ schema:
               type: array
               items:
                 type: string
-            fixed_contact_duration:
-              type: array
-              items:
-                type: string
-                pattern: *humantime
-              optional: true
             dollar_cost:
               type: object
               additional_properties: false
@@ -429,6 +423,12 @@ schema:
                       pattern: *humantime
                 fixed_dollar_cost:
                   type: number
+            fixed_contact_duration:
+              type: array
+              items:
+                type: string
+                pattern: *humantime
+              optional: true
           additionalProperties: false
       required:
         - legal
@@ -470,6 +470,12 @@ schema:
                   pattern: *humantime
             budget_name:
               type: string
+            fixed_contact_duration:
+              type: array
+              items:
+                type: string
+                pattern: *humantime
+              optional: true
             deny_ground_stations:
               type: array
               items:

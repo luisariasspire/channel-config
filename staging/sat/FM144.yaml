@@ -369,6 +369,10 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0

@@ -369,6 +369,10 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -837,6 +841,10 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -1753,7 +1761,7 @@ TRACK_X_BAND_TXO_LEMDIG:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-  
+
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]
 X_BAND_TXO_LEMDIG:
@@ -2232,6 +2240,6 @@ X_BAND_TXO_LEMDIG:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-  
+
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]

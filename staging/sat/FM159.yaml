@@ -48,37 +48,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
-CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
-  directionality: SpaceToEarth
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  allowed_license_countries:
-  - AU
-  - CA
-  - CL
-  - ES
-  - GR
-  - NO
-  - NZ
-  - ZA
-  enabled: true
-  legal: true
-  satellite_constraints:
-    budget_name: KSAT_NRO
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 10000.0
-    uplink_rate_kbps: 0
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: LEGACY
-      bandaid_mode: TX_SBAND_IP
-      use_radionet: true
-      bandaid_override:
-        mtu: 223
-        fec_k: 254
-        fec: 255
 CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   directionality: Bidirectional
@@ -130,6 +99,41 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     reverse_channels:
     - radio_band: UHF
 
+CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - CA
+  - CL
+  - ES
+  - GR
+  - NO
+  - NZ
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    budget_name: KSAT_NRO
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 10000.0
+    uplink_rate_kbps: 0
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
+      bandaid_override:
+        mtu: 223
+        fec_k: 254
+        fec: 255
 CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -592,6 +596,10 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
