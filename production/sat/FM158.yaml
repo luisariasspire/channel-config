@@ -224,6 +224,10 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
     separation:
     - type: minimum_distance
       norad_id: 25544
@@ -1009,6 +1013,10 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
     separation:
     - type: avoid_ground_station_beams
       norad_ids: # CNES: pleiades (-1A/1B)

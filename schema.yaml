@@ -423,12 +423,6 @@ schema:
                       pattern: *humantime
                 fixed_dollar_cost:
                   type: number
-            fixed_contact_duration:
-              type: array
-              items:
-                type: string
-                pattern: *humantime
-              optional: true
           additionalProperties: false
       required:
         - legal
