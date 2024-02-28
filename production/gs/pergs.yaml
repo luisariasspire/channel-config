@@ -115,6 +115,7 @@ TRACK_X_BAND_TXO_LEMDIG:
         gain: 17
         freq: 1250000000
         radionet-m: 1989
+        radionet-l: 0
     tracking_target:
       latitude_north: -29.010417
       longitude_west: -115.341708
@@ -209,6 +210,7 @@ X_BAND_TXO_LEMDIG:
         gain: 17
         freq: 1250000000
         radionet-m: 1989
+        radionet-l: 0
 # FM175 track hack. Can remove after SCS fix
 X_BAND_TXO_MARSUPIAL:
   directionality: SpaceToEarth
