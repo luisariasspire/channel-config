@@ -370,7 +370,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_MYRIOTA
+    budget_name: KSAT_GENERAL
     fixed_contact_duration:
     - 2min
     - 4min
@@ -1811,7 +1811,7 @@ CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_MYRIOTA
+    budget_name: KSAT_GENERAL
     fixed_contact_duration:
     - 2min
     - 4min
