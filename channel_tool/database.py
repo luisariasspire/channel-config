@@ -200,7 +200,7 @@ CHANNELS = [
         "frequencies": ["SBAND_2200_5_D"],
     },
     {
-        "id": "X_BAND_TXO",
+        "id": "TXO_XBAND",
         "desc": "One-way contact with X-band down",
         "contact_type": "CONTACT_SPACE_GROUND_TXO",
         "directionality": "SpaceToGround",
@@ -418,9 +418,9 @@ SAMPLE_DATA_SCHEMA = [
     *[licensed_frequency(ICEGS_LICENSE_ID, b["id"]) for b in ICEGS_BANDS],
     *[channel(c) for c in CHANNELS],
     *CHANNEL_FREQUENCY_ASSIGNMENTS,
-    asset_channel_config("icegs", "X_BAND_TXO"),
+    asset_channel_config("icegs", "TXO_XBAND"),
     asset_channel_config("icegs", "CONTACT_RXO", enabled=False),
-    asset_channel_config("FM100", "X_BAND_TXO"),
+    asset_channel_config("FM100", "TXO_XBAND"),
     asset_channel_config("FM100", "CONTACT_RXO", enabled=True),
 ]
 

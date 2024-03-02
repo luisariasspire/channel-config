@@ -243,7 +243,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
-CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
+TXO_XBAND_PROV_KSAT:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
@@ -1005,7 +1005,7 @@ CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
   - min_elevation_deg: 0
     downlink_rate_kbps: 1000
     uplink_rate_kbps: 0
-X_BAND_TXO_LEMDIG:
+TXO_XBAND:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
@@ -1466,6 +1466,5 @@ X_BAND_TXO_LEMDIG:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]

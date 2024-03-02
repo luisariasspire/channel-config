@@ -243,7 +243,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
-CONTACT_KSATLITE_XBAND_SPACE_GROUND_TXO:
+TXO_XBAND_PROV_KSAT:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
