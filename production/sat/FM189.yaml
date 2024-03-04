@@ -2427,3 +2427,5 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
     forward_channels:
     - bandaid_override:
         vbatt/voltage/min: 6700
+  additional_provider_config:
+    ksat_mission_config: SPIRE_Q_20MHZ

@@ -792,6 +792,8 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
     downlink_rate_kbps: 9999999
     uplink_rate_kbps: 0.0
     min_duration: 2min
+  additional_provider_config:
+    ksat_mission_config: SPIRE_Q_20MHZ
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:

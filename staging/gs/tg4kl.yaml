@@ -121,5 +121,3 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
     tracking_target:
       latitude_north: 69.6632
       longitude_west: -18.9404
-  additional_provider_config:
-    ksat_mission_config: SPIRE_Q_20MHZ
