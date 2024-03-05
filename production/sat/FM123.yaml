@@ -120,7 +120,7 @@ CONTACT_BIDIR_PARAM:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
