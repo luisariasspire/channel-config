@@ -256,7 +256,7 @@ TXO_XBAND_PROV_KSAT:
   - NZ
   - ZA
   enabled: false
-  legal: true
+  legal: false
   satellite_constraints:
     budget_name: KSAT_GENERAL
     fixed_contact_duration:
