@@ -21,7 +21,10 @@ GS_DIR = "gs"
 SATELLITE: SatelliteKind = "satellite"
 GROUND_STATION: GroundStationKind = "groundstation"
 
-TK_DOMAINS: Mapping[Environment, str] = {"staging": "staging.spire.sh", "production": "cloud.spire.com"}
+TK_DOMAINS: Mapping[Environment, str] = {
+    "staging": "staging.spire.sh",
+    "production": "cloud.spire.com",
+}
 
 ENVS = ["staging", "production"]
 SCHEMA_FILE = "schema.yaml"

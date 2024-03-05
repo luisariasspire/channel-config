@@ -85,7 +85,7 @@ def step_has_config(context, asset_type, id):
 def then_has_no_enabled_channels(context, asset_type, id):
     with cwd_from(context):
         config = load_config(asset_type, id, TEST_ENV)
-        for (chan_id, chan) in config.items():
+        for chan_id, chan in config.items():
             assert not chan[
                 "enabled"
             ], f"Channel {chan_id} is enabled but should not be"

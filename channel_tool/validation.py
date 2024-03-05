@@ -18,7 +18,13 @@ from channel_tool.util import (
 
 
 class ValidationError(Exception):
-    def __init__(self, parent: Any, file: Optional[str] = None, key: Optional[str] = None, count: int = 1):
+    def __init__(
+        self,
+        parent: Any,
+        file: Optional[str] = None,
+        key: Optional[str] = None,
+        count: int = 1,
+    ):
         self._parent = parent
         self._file = file
         self._key = key

@@ -11,18 +11,21 @@ from termcolor import colored
 
 import channel_tool.database as db
 from channel_tool.asset_config import (
+    asset_config_to_string,
     infer_asset_type,
+    infer_config_file,
     load_asset_config,
     locate_assets,
-    asset_config_to_string,
     write_asset_config,
-    infer_config_file,
 )
 from channel_tool.audit import AuditReport
 from channel_tool.auto_update_utils import asset_to_predicates, create_config_updates
+from channel_tool.pls_tool import pls_long, pls_lookup, pls_short
 from channel_tool.typedefs import ChannelDefinition, DefsFile, Environment
 from channel_tool.util import (
     ENVS,
+    GS_DIR,
+    SAT_DIR,
     TEMPLATE_FILE,
     confirm,
     err,
@@ -43,15 +46,6 @@ from channel_tool.validation import (
     load_schema,
     validate_all,
     validate_one,
-)
-from channel_tool.pls_tool import (
-    pls_lookup,
-    pls_short,
-    pls_long,
-)
-from channel_tool.util import (
-    GS_DIR,
-    SAT_DIR,
 )
 
 CONTACT_TYPE_DEFS: DefsFile = load_yaml_file("contact_type_defs.yaml")

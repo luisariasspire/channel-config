@@ -1,7 +1,8 @@
-from ruamel import yaml
-import sys
 import re
-from typing import Dict, Any, Optional, Union
+import sys
+from typing import Any, Dict, Optional, Union
+
+from ruamel import yaml
 
 pls_mtu_map = {
     # short frame PLS values
@@ -217,7 +218,7 @@ def pls_lookup(args: Any) -> None:
         loader = yaml.loader.SafeLoader
         loader.vars = found
         loader.args = args
-        loader.add_implicit_resolver("!var", re.compile("\$\{"), None)
+        loader.add_implicit_resolver("!var", re.compile("\\$\\{"), None)
         loader.add_constructor("!var", load_expand)
         loader.add_constructor("!notnull", load_notnull)
         loader.add_constructor("!radionet", load_radionet)

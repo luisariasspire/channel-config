@@ -3,9 +3,9 @@
 import json
 import os
 import sqlite3
-from uuid import uuid4, UUID
 from collections import defaultdict
 from typing import Any, DefaultDict, List, Mapping, Optional
+from uuid import UUID, uuid4
 
 from ruamel.yaml import YAML
 
@@ -163,7 +163,9 @@ def frequency_band(band_def: Mapping[str, Any]) -> str:
     """
 
 
-def licensed_frequency(license_id: UUID, band_id: Any, allowed_countries: Any={}) -> str:
+def licensed_frequency(
+    license_id: UUID, band_id: Any, allowed_countries: Any = {}
+) -> str:
     return f"""
     INSERT INTO LicensedFrequency VALUES (
     '{license_id}',
@@ -257,7 +259,11 @@ for c in CHANNELS:
 
 
 def asset_channel_config(
-    asset_id: str, channel_id: str, link_profile: Optional[str]=None, parameter_set: Optional[str]=None, enabled: bool=True
+    asset_id: str,
+    channel_id: str,
+    link_profile: Optional[str] = None,
+    parameter_set: Optional[str] = None,
+    enabled: bool = True,
 ) -> str:
     lp = f"'{link_profile}'" if link_profile else "NULL"
     ps = f"'{parameter_set}'" if parameter_set else "NULL"
@@ -453,7 +459,7 @@ def load_sample_data() -> None:
 def _create_frequency_bands() -> None:
     defs = []
 
-    for (id, band_info) in BAND_DEFS.items():
+    for id, band_info in BAND_DEFS.items():
         defs.append(frequency_band({"id": id, **band_info}))
 
     _run_statements(defs)
@@ -492,27 +498,31 @@ def allows_use(licensed_freqs: List[Any], band_def: Mapping[str, Any]) -> bool:
 def _create_licenses() -> None:
     defs = []
 
-    for (id, license_info) in SAT_LICENSE_DEFS.items():
+    for id, license_info in SAT_LICENSE_DEFS.items():
         defs.append(license({"id": id, **license_info}))
 
-    for (lid, license_info) in SAT_LICENSE_DEFS.items():
-        for (bid, band_info) in BAND_DEFS.items():
+    for lid, license_info in SAT_LICENSE_DEFS.items():
+        for bid, band_info in BAND_DEFS.items():
             if allows_use(license_info["frequencies"], band_info):
                 allowed_countries = [
-                    c for c in SPIRE_COUNTRIES if c not in license_info["blacklisted_countries"]
+                    c
+                    for c in SPIRE_COUNTRIES
+                    if c not in license_info["blacklisted_countries"]
                 ]
                 defs.append(licensed_frequency(lid, bid, allowed_countries))
 
     stations: DefaultDict[str, Any] = defaultdict(lambda: defaultdict(list))
-    for (band, countries) in GS_LICENSE_DEFS.items():
-        for (country, allowed_stations) in countries.items():
+    for band, countries in GS_LICENSE_DEFS.items():
+        for country, allowed_stations in countries.items():
             for station in allowed_stations:
                 stations[station][band].append(country)
 
-    for (station, bands) in stations.items():
+    for station, bands in stations.items():
         lid = f"{station}_gs_license"
-        defs.append(license({"id": lid, "description": f"Ground station license for {station}"}))
-        for (bid, allowed_countries) in bands.items():
+        defs.append(
+            license({"id": lid, "description": f"Ground station license for {station}"})
+        )
+        for bid, allowed_countries in bands.items():
             defs.append(licensed_frequency(lid, bid, allowed_countries))
 
     _run_statements(defs)
@@ -521,7 +531,7 @@ def _create_licenses() -> None:
 def _create_satellites() -> None:
     defs = []
 
-    for (lid, license_info) in SAT_LICENSE_DEFS.items():
+    for lid, license_info in SAT_LICENSE_DEFS.items():
         for sat_num in license_info["satellites"]:
             name = f"FM{sat_num}"
             name = SPIRE_ID_OVERRIDES.get(name, name)
@@ -532,6 +542,7 @@ def _create_satellites() -> None:
 
 def _create_ground_stations() -> None:
     stations = set()
+
     def lid(station: str) -> str:
         return f"{station}_gs_license"
 
@@ -547,10 +558,10 @@ def _create_ground_stations() -> None:
 def _create_channels() -> None:
     defs = []
 
-    for (cid, channel_info) in CHANNEL_DEFS.items():
+    for cid, channel_info in CHANNEL_DEFS.items():
         defs.append(channel({"id": cid, **channel_info}))
 
-        for (bid, band_info) in BAND_DEFS.items():
+        for bid, band_info in BAND_DEFS.items():
             band = band_info["band"]
             for req in channel_info["all_of"]:
                 band_req = req["band"]
@@ -568,16 +579,26 @@ def load_license_data() -> None:
     _create_channels()
 
 
-def _shared_asset_channel_defs(asset_id: str, cid: str, channel_def: ChannelDefinition) -> List[str]:
+def _shared_asset_channel_defs(
+    asset_id: str, cid: str, channel_def: ChannelDefinition
+) -> List[str]:
     defs = []
     lp_id = f"{asset_id}_{cid}_profile"
     ps_id = f"{asset_id}_{cid}_params"
     # Note: In a production migration link profiles and parameter sets should be de-duplicated.
-    defs.append(link_profile(lp_id, channel_def["link_profile"], channel_def["contact_overhead_time"]))
+    defs.append(
+        link_profile(
+            lp_id, channel_def["link_profile"], channel_def["contact_overhead_time"]
+        )
+    )
     defs.append(parameter_set(ps_id, channel_def.get("window_parameters", {})))
     defs.append(
         asset_channel_config(
-            asset_id, cid, link_profile=lp_id, parameter_set=ps_id, enabled=channel_def["enabled"]
+            asset_id,
+            cid,
+            link_profile=lp_id,
+            parameter_set=ps_id,
+            enabled=channel_def["enabled"],
         )
     )
     return defs
@@ -586,7 +607,7 @@ def _shared_asset_channel_defs(asset_id: str, cid: str, channel_def: ChannelDefi
 def _ingest_ground_station_config(asset_id: str, config: AssetConfig) -> None:
     defs = []
 
-    for (cid, channel_def) in config.items():
+    for cid, channel_def in config.items():
         defs.extend(_shared_asset_channel_defs(asset_id, cid, channel_def))
 
         if con := channel_def.get("ground_station_constraints"):
@@ -600,7 +621,7 @@ def _ingest_ground_station_config(asset_id: str, config: AssetConfig) -> None:
 def _ingest_satellite_config(asset_id: str, config: AssetConfig) -> None:
     defs = []
 
-    for (cid, channel_def) in config.items():
+    for cid, channel_def in config.items():
         defs.extend(_shared_asset_channel_defs(asset_id, cid, channel_def))
 
         if con := channel_def.get("satellite_constraints"):

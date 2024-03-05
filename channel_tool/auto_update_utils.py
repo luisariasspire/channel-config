@@ -1,6 +1,6 @@
+import csv
 import sys
 import warnings
-import csv
 from typing import Any, Callable, List, Mapping
 
 warnings.formatwarning = lambda msg, *args, **kwargs: f"Warning: {msg}\n"

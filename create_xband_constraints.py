@@ -110,7 +110,7 @@ def combine_similar_missions(missions):
 def to_constraints(missions):
     constraints = []
     # Sort by first mission in the set here so that the diff will stay nice-ish if the input changes
-    for (mission, assets) in sorted(missions.items(), key=lambda kv: kv[0]):
+    for mission, assets in sorted(missions.items(), key=lambda kv: kv[0]):
         constraint = comments.CommentedMap()
         constraint.yaml_add_eol_comment(mission, "norad_ids")
         constraint["type"] = "avoid_ground_station_beams"
