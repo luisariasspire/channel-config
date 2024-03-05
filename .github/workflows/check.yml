@@ -1,0 +1,184 @@
+name: Check
+
+concurrency:
+  group: CI-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+
+env:
+  CI: 1
+  PYTHON_VERSION: "3.10.13"
+  TEST_RESULT_PATH: ./tests/results.xml
+jobs:
+  setup:
+    name: Setup env
+    runs-on: [ self-hosted ]
+    env:
+      POETRY_VIRTUALENVS_CREATE: true
+      POETRY_VIRTUALENVS_IN_PROJECT: true
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          token: ${{ secrets.GH_PAT }}
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      - name: Install poetry
+        run: pip install poetry==1.8.2
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      - name: Install poetry dependencies
+        run: poetry install --no-root
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+
+  Formatting:
+    name: Python Formatting
+    needs: setup
+    runs-on: [ self-hosted ]
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          token: ${{ secrets.GH_PAT }}
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install linting GHA problem matchers
+        run: |
+          echo "::add-matcher::./.github/workflows/problem_matchers/black.json"
+      - name: black
+        run: ./.venv/bin/black --check --verbose .
+      - name: isort
+        run: ./.venv/bin/isort -c .
+
+  mypy:
+    name: Mypy
+    needs: setup
+    runs-on: [ self-hosted ]
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          token: ${{ secrets.GH_PAT }}
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install linting GHA problem matchers
+        run: |
+          echo "::add-matcher::./.github/workflows/problem_matchers/mypy.json"
+      - name: mypy
+        run: ./.venv/bin/mypy
+
+  pytest:
+    env:
+      COVERAGE_RESULT_PATH: ./test_coverage.txt
+    name: Pytest
+    needs: setup
+    runs-on: [ self-hosted ]
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          token: ${{ secrets.GH_PAT }}
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+      - name: pytest
+        id: run_test
+        run: |
+          set -euo pipefail
+          .venv/bin/pytest --cov=. --durations 20 --junitxml=${{ env.TEST_RESULT_PATH }} | tee ${{ env.COVERAGE_RESULT_PATH }}
+        continue-on-error: true
+      - name: Pytest coverage comment
+        id: coverageComment
+        uses: space/github-actions/MishaKav/pytest-coverage-comment/@30e8b4f1fb6d18b41ccb640b87b831a0d476a4a5 # s1.0.0
+        with:
+          hide-comment: false
+          pytest-coverage-path: ${{ env.COVERAGE_RESULT_PATH }}
+          junitxml-path: ${{ env.TEST_RESULT_PATH }}
+          junitxml-title: Test results summary - See CI Job Summary for details
+      - name: Add coverage to job summary
+        run: |
+          echo '${{ steps.coverageComment.outputs.coverageHtml }}' >> $GITHUB_STEP_SUMMARY
+      - name: Add tests to job summary
+        uses: space/github-actions/test-summary/action/@6467aac97f1eedad57bf0321fe828f4aaa288e6b # s1.0.0
+        with:
+          show: "all"
+          paths: |
+            ${{ env.TEST_RESULT_PATH }}
+        if: always()
+      - name: Check on failures
+        if: steps.run_test.outcome != 'success'
+        run: exit 1
+
+  behave:
+    name: Behave
+    needs: setup
+    runs-on: [ self-hosted ]
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          token: ${{ secrets.GH_PAT }}
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+      - name: behave
+        run: |
+          # There is a catch! the scripts themselves will call python, so it needs to be in the PATH
+          . ./.venv/bin/activate
+          behave --format progress3
+
+  validate:
+    name: Channel validation
+    needs: setup
+    runs-on: [ self-hosted ]
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          token: ${{ secrets.GH_PAT }}
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Validate with channel_tool
+        run: ./.venv/bin/python -m channel_tool validate

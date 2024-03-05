@@ -39,7 +39,9 @@ types-requests = "*"
 types-tabulate = "*"
 types-termcolor = "*"
 
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
