@@ -129,7 +129,7 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 33000.0
+    downlink_rate_kbps: 2600.0
     uplink_rate_kbps: 0.0
     min_duration: 2min
   window_parameters:
