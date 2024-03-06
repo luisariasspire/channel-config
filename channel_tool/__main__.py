@@ -436,7 +436,7 @@ def format_configs(args: Any) -> None:
         all_assets.extend(locate_assets(env, "all_sat"))
         for asset in sorted(all_assets):
             path = infer_config_file(env, asset)
-            pass_check = pass_check and format_asset(args, env, path, asset)
+            pass_check = format_asset(args, env, path, asset) and pass_check
     if args.check and not pass_check:
         print(
             f"Use the channel_tool 'format' or 'normalize' commands to correct non-standard formatting"

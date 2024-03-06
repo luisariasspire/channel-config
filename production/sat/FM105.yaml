@@ -873,7 +873,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
         - vntgs
         - wbugs
         - xspgs
-  
+
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0

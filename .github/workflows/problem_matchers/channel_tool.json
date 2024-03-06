@@ -1,0 +1,15 @@
+{
+    "problemMatcher": [
+        {
+        "owner": "channel_tool",
+        "severity": "error",
+        "pattern": [
+            {
+            "regexp": "^(Formatting (.+): file would be updated)$",
+            "file": 2,
+            "message": 1
+            }
+        ]
+        }
+    ]
+}
