@@ -165,7 +165,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -314,7 +314,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
