@@ -378,7 +378,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_GENERAL
+    budget_name: KSAT_NOAA
     fixed_contact_duration:
     - 2min
     - 4min

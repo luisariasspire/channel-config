@@ -378,7 +378,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_MYRIOTA
+    budget_name: KSAT_NOAA
     fixed_contact_duration:
     - 2min
     - 4min
@@ -1330,7 +1330,7 @@ TXO_XBAND_PROV_KSAT:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_MYRIOTA
+    budget_name: KSAT_NOAA
     separation:
     - type: avoid_ground_station_beams
       norad_ids: # CNES: pleiades (-1A/1B)
