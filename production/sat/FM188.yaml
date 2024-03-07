@@ -273,7 +273,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_GENERAL
+    budget_name: KSAT_GHGSAT
     fixed_contact_duration:
     - 2min
     - 4min
@@ -1627,7 +1627,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
       - sg180kl
       - sg182kl
       - sg189kl
-    budget_name: KSAT_GENERAL
+    budget_name: KSAT_GHGSAT
     fixed_contact_duration:
     - 2min
     - 4min
