@@ -423,6 +423,18 @@ def audit_configs(args: Any) -> None:
             print(report)
 
 
+def query_configs(args: Any) -> None:
+    print(f"asset,channel,{args.field}")
+    for asset in locate_assets(args.environment, args.assets):
+        asset_config = load_asset_config(args.environment, asset)
+        for channel in args.channels:
+            existing_channel = asset_config.get(channel)
+            if not existing_channel:
+                continue
+            value = existing_channel.get(args.field, None)
+            print(f"{asset},{channel},{value}")
+
+
 def normalize_configs(args: Any) -> None:
     for asset in locate_assets(args.environment, args.assets):
         config = load_asset_config(args.environment, asset)
@@ -828,6 +840,20 @@ AUDIT_PARSER.add_argument(
     "--matches_only",
     action="store_true",
     help=("Only print asset pairs that contain valid channels."),
+)
+
+QUERY_PARSER = SUBPARSERS.add_parser(
+    "query",
+    help="Query field values across assets and channels and output to CSV (only flat fields at the moment).",
+)
+QUERY_PARSER.set_defaults(func=query_configs)
+add_env_flag(QUERY_PARSER)
+add_asset_flag(QUERY_PARSER)
+add_channel_flag(QUERY_PARSER)
+QUERY_PARSER.add_argument(
+    "field",
+    type=str,
+    help=("The field to query."),
 )
 
 NORMALIZE_PARSER = SUBPARSERS.add_parser(

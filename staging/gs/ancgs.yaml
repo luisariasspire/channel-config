@@ -96,37 +96,3 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
       ground_override:
         rf_bandwidth: 5000000
 
-CONTACT_TRACKING_RXO:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - US
-  - LU
-  enabled: false
-  legal: true
-  ground_station_constraints:
-    deny_satellites:
-    - FM157
-    - FM158
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 350.0
-    uplink_rate_kbps: 0.0
-    min_duration: 1min
-CONTACT_TRACKING_RXO_DVBS2X:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - US
-  - LU
-  enabled: false
-  legal: true
-  ground_station_constraints:
-    deny_satellites:
-    - FM157
-    - FM158
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 550.0
-    uplink_rate_kbps: 0.0
-    min_duration: 1min

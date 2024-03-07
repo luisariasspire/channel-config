@@ -44,36 +44,3 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     chainOverride:
       sband:
         freq: 2200500000
-CONTACT_TRACKING_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - DE
-  - LU
-  - SG
-  - US
-  enabled: false
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 550.0
-    uplink_rate_kbps: 0.0
-    min_duration: 1min
-CONTACT_TRACKING_RXO_SBAND_FREQ_2200_MHZ:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - DE
-  - LU
-  - SG
-  - US
-  enabled: true
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 350.0
-    uplink_rate_kbps: 0.0
-    min_duration: 1min
-# FM175 specific track hack. Can revert after SCS USW fix
