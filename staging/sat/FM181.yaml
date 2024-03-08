@@ -17,7 +17,7 @@ CONTACT_BIDIR_PARAM:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -56,7 +56,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -97,7 +97,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -147,7 +147,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -222,7 +222,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
@@ -261,7 +261,7 @@ CONTACT_RXO:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -297,7 +297,7 @@ CONTACT_RXO_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -336,7 +336,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 25s
@@ -380,7 +380,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 25s
@@ -423,7 +423,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -464,7 +464,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
