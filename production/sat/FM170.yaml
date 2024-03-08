@@ -508,7 +508,7 @@ TXO_XBAND:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -971,7 +971,7 @@ TXO_XBAND_PROV_KSAT:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
