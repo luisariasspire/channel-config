@@ -1126,7 +1126,7 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -2100,7 +2100,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     sun_constraint:
