@@ -700,7 +700,7 @@ TXO_XBAND:
   - FK
   - NZ
   - LV
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -1158,6 +1158,14 @@ TXO_XBAND:
       beamwidth_deg: 5
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_override:
+        pls: 9
+        mtu: 2664
+      ground_override:
+        radionet-m: 2664
 TXO_XBAND_PROV_KSAT:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1630,3 +1638,11 @@ TXO_XBAND_PROV_KSAT:
     downlink_rate_kbps: 10000.0
     uplink_rate_kbps: 0.0
     min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_override:
+        pls: 9
+        mtu: 2664
+      ground_override:
+        radionet-m: 2664
