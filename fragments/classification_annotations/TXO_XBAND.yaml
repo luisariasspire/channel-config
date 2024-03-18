@@ -1,0 +1,9 @@
+provider: SPIRE
+directionality: TXO
+adcs_pointing: NADIR
+space_ground_uhf: false
+ground_space_uhf: false
+space_ground_sband: false
+space_ground_xband: true
+space_ground_xband_dvbs2x_pls: 5
+space_ground_xband_bandwidth_mhz: 10

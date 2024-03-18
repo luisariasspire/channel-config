@@ -24,9 +24,12 @@ from channel_tool.pls_tool import pls_long, pls_lookup, pls_short
 from channel_tool.typedefs import ChannelDefinition, DefsFile, Environment
 from channel_tool.util import (
     ENVS,
+    GROUND_STATION,
     GS_DIR,
+    GS_TEMPLATE_FILE,
     SAT_DIR,
-    TEMPLATE_FILE,
+    SAT_TEMPLATE_FILE,
+    SATELLITE,
     confirm,
     err,
     file_to_yaml_collection,
@@ -42,8 +45,8 @@ from channel_tool.util import (
     warn,
 )
 from channel_tool.validation import (
-    filter_properties,
-    load_schema,
+    load_gs_schema,
+    load_sat_schema,
     validate_all,
     validate_one,
 )
@@ -83,8 +86,11 @@ def schema_fields() -> Set[str]:
                 pass
         return keys
 
-    schema = load_schema()
-    return discover_keys(schema)
+    sat_schema = load_sat_schema()
+    sat_keys = discover_keys(sat_schema)
+    gs_schema = load_gs_schema()
+    gs_keys = discover_keys(gs_schema)
+    return sat_keys.union(gs_keys)
 
 
 ListOrDict = Union[Sequence[Any], Mapping[str, Any]]
@@ -339,7 +345,8 @@ def add_config(args: Any) -> None:
         asset: str, channel: str, existing: Optional[ChannelDefinition]
     ) -> ChannelDefinition:
         if existing is None:
-            template = find_template(channel)
+            asset_type = infer_asset_type(asset)
+            template = find_template(asset_type, channel)
             return modify(template, args)
         else:
             msg = (
@@ -443,12 +450,17 @@ def normalize_configs(args: Any) -> None:
 
 def format_configs(args: Any) -> None:
     pass_check = True
+    gs_templates = load_yaml_file(GS_TEMPLATE_FILE)
+    pass_check = format_asset(args, gs_templates, GS_TEMPLATE_FILE) and pass_check
+    sat_templates = load_yaml_file(SAT_TEMPLATE_FILE)
+    pass_check = format_asset(args, sat_templates, SAT_TEMPLATE_FILE) and pass_check
     for env in ENVS:
         all_assets = locate_assets(env, "all_gs")
         all_assets.extend(locate_assets(env, "all_sat"))
         for asset in sorted(all_assets):
             path = infer_config_file(env, asset)
-            pass_check = format_asset(args, env, path, asset) and pass_check
+            config = load_asset_config(env, asset)
+            pass_check = format_asset(args, config, path) and pass_check
     if args.check and not pass_check:
         print(
             f"Use the channel_tool 'format' or 'normalize' commands to correct non-standard formatting"
@@ -456,10 +468,9 @@ def format_configs(args: Any) -> None:
         exit(1)
 
 
-def format_asset(args: Any, env: str, path: str, asset: str) -> bool:
+def format_asset(args: Any, config: Any, path: str) -> bool:
     with open(path) as f:
         string_before = f.read()
-    config = load_asset_config(env, asset)
     string_after = asset_config_to_string(config)
     if string_before == string_after:
         if not args.check:
@@ -475,15 +486,23 @@ def format_asset(args: Any, env: str, path: str, asset: str) -> bool:
         return False
 
 
-def find_template(channel: str) -> ChannelDefinition:
-    if os.path.exists(TEMPLATE_FILE):
-        templates: Dict[str, ChannelDefinition] = load_yaml_file(TEMPLATE_FILE)
+def find_template(asset_type: str, channel: str) -> ChannelDefinition:
+    if asset_type == GROUND_STATION:
+        template_file = GS_TEMPLATE_FILE
+    elif asset_type == SATELLITE:
+        template_file = SAT_TEMPLATE_FILE
+    else:
+        raise Exception(f"Unknown asset type {asset_type}")
+    if os.path.exists(template_file):
+        templates: Dict[str, ChannelDefinition] = load_yaml_file(template_file)
         if channel in templates:
             return templates[channel]
         else:
-            raise MissingTemplateError(f"Could not find template for {channel}")
+            raise MissingTemplateError(
+                f"Could not find template for {channel} in {template_file}"
+            )
     else:
-        raise FileNotFoundError(f"Could not find file {TEMPLATE_FILE}")
+        raise FileNotFoundError(f"Could not find file {template_file}")
 
 
 def apply_update(
@@ -501,8 +520,7 @@ def apply_update(
                 updated_chan = tfm(asset, channel, existing_chan)
                 if updated_chan is not None:
                     asset_type = infer_asset_type(asset)
-                    updated_chan = filter_properties(asset_type, updated_chan)
-                    validate_one(updated_chan, file=asset, key=channel)
+                    validate_one(asset_type, updated_chan, file=asset, key=channel)
                 if updated_chan != existing_chan:
                     if yes or confirm_changes(
                         asset, channel, existing_chan, updated_chan
@@ -543,8 +561,9 @@ def confirm_changes(
 
 
 def channel_list(val: str) -> List[str]:
-    templates: Dict[str, ChannelDefinition] = load_yaml_file(TEMPLATE_FILE)
-    all_channels = list(templates.keys())
+    sat_templates: Dict[str, ChannelDefinition] = load_yaml_file(SAT_TEMPLATE_FILE)
+    gs_templates: Dict[str, ChannelDefinition] = load_yaml_file(GS_TEMPLATE_FILE)
+    all_channels = list(set(sat_templates.keys()).union(set(gs_templates.keys())))
 
     if val.lower() == "all":
         return all_channels
@@ -692,6 +711,17 @@ def add_editing_flags(parser: Any) -> None:
         "--dynamic_window_parameters_file",
         type=file_to_yaml_map,
         help="A YAML file containing the dynamic window parameters config to use when scheduling contacts.",
+    )
+    classification_annotations_group = parser.add_mutually_exclusive_group()
+    classification_annotations_group.add_argument(
+        "--classification_annotations",
+        type=str_to_yaml_map,
+        help="A YAML block describing the classification annotations to use when scheduling contacts.",
+    )
+    classification_annotations_group.add_argument(
+        "--classification_annotations_file",
+        type=file_to_yaml_map,
+        help="A YAML file containing the  classification annotations to use when scheduling contacts.",
     )
     additional_provider_config = parser.add_mutually_exclusive_group()
     additional_provider_config.add_argument(

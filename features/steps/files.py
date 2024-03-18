@@ -4,10 +4,21 @@ from pathlib import Path
 
 from behave import *
 
-from channel_tool.util import TEMPLATE_FILE, dump_yaml_file, load_yaml_file
+from channel_tool.util import (
+    GROUND_STATION,
+    GS_TEMPLATE_FILE,
+    SAT_TEMPLATE_FILE,
+    SATELLITE,
+    dump_yaml_file,
+    load_yaml_file,
+)
 from channel_tool.validation import validate_file
 
-ASSET_TYPE_TO_PATH = {"ground station": "gs", "satellite": "sat"}
+HUMAN_ASSET_TYPE_TO_PATH = {"ground station": "gs", "satellite": "sat"}
+HUMAN_ASSET_TYPE_TO_PROGRAMMATIC = {
+    "ground station": GROUND_STATION,
+    "satellite": SATELLITE,
+}
 TEST_ENV = "staging"
 
 
@@ -26,11 +37,20 @@ def cwd_from(context):
 
 
 def config_path(asset_type, id):
-    return os.path.join(TEST_ENV, ASSET_TYPE_TO_PATH[asset_type], f"{id}.yaml")
+    return os.path.join(TEST_ENV, HUMAN_ASSET_TYPE_TO_PATH[asset_type], f"{id}.yaml")
 
 
 def load_config(asset_type, id, env):
     return load_yaml_file(config_path(asset_type, id))
+
+
+def load_templates(asset_type):
+    if asset_type == "ground station":
+        return load_yaml_file(GS_TEMPLATE_FILE)
+    elif asset_type == "satellite":
+        return load_yaml_file(SAT_TEMPLATE_FILE)
+    else:
+        raise Exception(f"Unknown asset type {asset_type}")
 
 
 @given("the {asset_type} '{id}' has '{channel_id}' {state} in its configuration file")
@@ -38,7 +58,7 @@ def load_config(asset_type, id, env):
 def given_has_channel_with_state(context, asset_type, id, channel_id, state="enabled"):
     state_to_bool = {"enabled": True, "disabled": False}
     with cwd_from(context):
-        templates = load_yaml_file(TEMPLATE_FILE)
+        templates = load_templates(asset_type)
         config = {channel_id: templates[channel_id]}
         config[channel_id]["enabled"] = state_to_bool[state]
         dump_yaml_file(config, config_path(asset_type, id))
@@ -78,7 +98,9 @@ def given_has_no_config(context, asset_type, id):
 @step("there is a valid configuration for the {asset_type} '{id}'")
 def step_has_config(context, asset_type, id):
     with cwd_from(context):
-        validate_file(config_path(asset_type, id))
+        validate_file(
+            HUMAN_ASSET_TYPE_TO_PROGRAMMATIC[asset_type], config_path(asset_type, id)
+        )
 
 
 @then("the configuration for the {asset_type} '{id}' will have no enabled channels")

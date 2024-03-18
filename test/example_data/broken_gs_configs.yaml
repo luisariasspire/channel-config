@@ -14,7 +14,7 @@ MIXED_SCHEMAS:
   enabled: false
   legal: false
   ground_station_constraints: { }
-  satellite_constraints: { } # <- Here
+  satellite_constraints: { }
   contact_overhead_time: 0s
   link_profile: [ ]
 EXTRA_FIELD:
@@ -22,7 +22,7 @@ EXTRA_FIELD:
   allowed_license_countries: [ ]
   enabled: false
   legal: false
-  satellite_constraints: { }
+  ground_station_constraints: { }
   contact_overhead_time: 0s
   link_profile: [ ]
   unknown_field: true # Not in schema
@@ -33,7 +33,7 @@ INVALID_FIELD_GOODPUT_KBPS:
   goodput_kbps: 0.0 # <- Here
   enabled: false
   legal: false
-  satellite_constraints: { }
+  ground_station_constraints: { }
   contact_overhead_time: 0s
   link_profile:
     - min_elevation_deg: 0
@@ -52,3 +52,23 @@ INVALID_FIELD_GROUND_STATION_CONSTRAINTS_MIN_ELEVATION_DEG:
     - min_elevation_deg: 0
       downlink_rate_kbps: 1000.0
       uplink_rate_kbps: 10.0
+MISSING_CLASSIFICATION_ANNOTATION:
+  directionality: Bidirectional
+  allowed_license_countries:
+    - AU
+    - BM
+  enabled: false
+  legal: true
+  contact_overhead_time: 210s
+  ground_station_constraints: {}
+  link_profile:
+    - min_elevation_deg: 0
+      downlink_rate_kbps: 1000.0
+      uplink_rate_kbps: 10.0
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    space_ground_sband: false
+    space_ground_xband: false

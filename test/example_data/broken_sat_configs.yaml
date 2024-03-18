@@ -1,0 +1,41 @@
+EMPTY_CONFIG: { }
+MISSING_FIELD:
+  # directionality: Bidirectional
+  allowed_license_countries: [ ]
+  enabled: false
+  legal: false
+  satellite_constraints: { } # <- Here
+  contact_overhead_time: 0s
+  link_profile: [ ]
+MIXED_SCHEMAS:
+  directionality: Bidirectional
+  allowed_license_countries: [ ]
+  goodput_kbps: 0.0
+  enabled: false
+  legal: false
+  ground_station_constraints: { }
+  satellite_constraints: { } # <- Here
+  contact_overhead_time: 0s
+  link_profile: [ ]
+EXTRA_FIELD:
+  directionality: Bidirectional
+  allowed_license_countries: [ ]
+  enabled: false
+  legal: false
+  satellite_constraints: { }
+  contact_overhead_time: 0s
+  link_profile: [ ]
+  unknown_field: true # Not in schema
+INVALID_FIELD_GOODPUT_KBPS:
+  directionality: Bidirectional
+  allowed_license_countries:
+    - US
+  goodput_kbps: 0.0 # <- Here
+  enabled: false
+  legal: false
+  satellite_constraints: { }
+  contact_overhead_time: 0s
+  link_profile:
+    - min_elevation_deg: 0
+      downlink_rate_kbps: 1000.0
+      uplink_rate_kbps: 10.0

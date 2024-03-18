@@ -24,6 +24,17 @@ CONTACT_BIDIR_PARAM:
   dynamic_window_parameters:
     transmit_times:
       elevation_threshold_deg: 25
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    space_ground_sband: true
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_encoding: LEGACY
+    space_ground_sband_bandwidth_mhz: 1
 CONTACT_BIDIR_PARAM_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -50,6 +61,18 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   dynamic_window_parameters:
     transmit_times:
       elevation_threshold_deg: 25
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    space_ground_sband: true
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 39
+    space_ground_sband_bandwidth_mhz: 1
 CONTACT_BIDIR_PARAM_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -69,6 +92,14 @@ CONTACT_BIDIR_PARAM_UHF:
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
     min_duration: 2m
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    space_ground_sband: false
+    space_ground_xband: false
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -85,6 +116,17 @@ CONTACT_RXO:
     downlink_rate_kbps: 583.41
     uplink_rate_kbps: 0.0
     min_duration: 1min
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    space_ground_sband: true
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_encoding: LEGACY
+    space_ground_sband_bandwidth_mhz: 1
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -101,3 +143,15 @@ CONTACT_RXO_DVBS2X:
     downlink_rate_kbps: 634.85
     uplink_rate_kbps: 0.0
     min_duration: 1min
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    space_ground_sband: true
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 39
+    space_ground_sband_bandwidth_mhz: 1

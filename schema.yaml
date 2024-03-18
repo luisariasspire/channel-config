@@ -315,9 +315,6 @@ definitions:
           ground_override:
             type: object
             additionalProperties: true
-  chain_override: &chain_override
-    type: object
-    additionalProperties: true
 
   window_parameters: &window_parameters
     type: object
@@ -328,10 +325,18 @@ definitions:
       reverse_channels:
         type: array
         items: *channel_parameter_set
-      # note the property here has nonstandard capitalization.  Used in MissionNetwork
-      chainOverride: *chain_override
 
   contact_type: &contact_type ^CONTACT_[A-Z0-9_]+$
+
+additional_provider_config: &additional_provider_config
+  type: object
+  optional: true
+  additionalProperties: false
+  properties:
+    ksat_mission_config:
+      type: string
+      enum: [SPIRE_Q, SPIRE_Q_20MHZ]
+      optional: true
 
 # Basic properties which are shared between both satellite and ground station schemas.
 base_properties: &base_properties
@@ -354,6 +359,8 @@ base_properties: &base_properties
       enum: *iso3166
   link_profile: *link_profile
   window_parameters: *window_parameters
+  additional_provider_config: *additional_provider_config
+
 
 # Modifiers for separation constraints
 modifier: &constraint_modifier
@@ -380,177 +387,224 @@ geodetic_coordinate: &geodetic_coordinate
     elevation_m:
       type: number
 
-# The full JSON schema for both satellites and ground stations.
-schema:
-  oneOf:
-    # Ground station schema
-    - type: object
+# some flat key-value pairs that get added into the annotations json
+# of contacts that get created, to help various consumers of the contact
+# schedule to classify contacts. These key-values form a public API
+# so should not be changed without due process
+classification_annotations: &classification_annotations
+  type: object
+  additionalProperties: false
+  properties:
+    provider:
+      type: string
+      enum: [SPIRE, KSAT]
+      required: true
+    directionality:
+      type: string
+      enum: [BIDIR, TXO]
+      required: true
+    adcs_pointing:
+      type: string
+      enum: [TRACK, NADIR]
+      required: true
+    space_ground_uhf:
+      type: boolean
+      required: true
+    ground_space_uhf:
+      type: boolean
+      required: true
+    space_ground_sband:
+      type: boolean
+      required: true
+    space_ground_sband_mid_freq_mhz:
+      type: number
+    space_ground_sband_bandwidth_mhz:
+      type: number
+    space_ground_sband_encoding:
+      type: string
+      enum: [LEGACY, DVBS2X]
+    space_ground_sband_dvbs2x_pls:
+      type: integer
+    space_ground_xband:
+      type: boolean
+      required: true
+    space_ground_xband_dvbs2x_pls:
+      type: integer
+    space_ground_xband_bandwidth_mhz:
+      type: number
+  required:
+    - provider
+    - directionality
+    - adcs_pointing
+    - space_ground_uhf
+    - ground_space_uhf
+    - space_ground_sband
+    - space_ground_xband
+
+
+# The full JSON schema for ground stations.
+gs_schema:
+  type: object
+  additionalProperties: false
+  properties:
+    <<: *base_properties
+    dynamic_window_parameters:
+      type: object
       additionalProperties: false
       properties:
-        <<: *base_properties
-        dynamic_window_parameters:
+        transmit_times:
           type: object
           additionalProperties: false
           properties:
-            transmit_times:
-              type: object
-              additionalProperties: false
-              properties:
-                elevation_threshold_deg:
-                  type: number
-              required:
-                - elevation_threshold_deg
-        ground_station_constraints:
+            elevation_threshold_deg:
+              type: number
+          required:
+            - elevation_threshold_deg
+    ground_station_constraints:
+      type: object
+      properties:
+        deny_satellites:
+          type: array
+          items:
+            type: string
+        dollar_cost:
           type: object
+          additional_properties: false
+          optional: true
           properties:
-            deny_satellites:
-              type: array
-              items:
-                type: string
-            dollar_cost:
+            time_dollar_cost:
               type: object
               additional_properties: false
-              optional: true
               properties:
-                time_dollar_cost:
-                  type: object
-                  additional_properties: false
-                  properties:
-                    dollars:
-                      type: number
-                    interval:
-                      type: string
-                      pattern: *humantime
-                fixed_dollar_cost:
+                dollars:
                   type: number
-          additionalProperties: false
-      required:
-        - legal
-        - enabled
-        - directionality
-        - contact_overhead_time
-        - allowed_license_countries
-        - ground_station_constraints
-        - link_profile
-
-    # Satellite schema
-    - type: object
-      additionalProperties: false
-      properties:
-        <<: *base_properties
-        additional_provider_config:
-          type: object
-          optional: true
-          additionalProperties: false
-          properties:
-            ksat_mission_config:
-              type: string
-              enum: [SPIRE_Q, SPIRE_Q_20MHZ]
-              optional: true
-        satellite_constraints:
-          type: object
-          additionalProperties: false
-          properties:
-            max_contact_time:
-              type: object
-              additionalProperties: false
-              optional: true
-              properties:
-                amount:
-                  type: string
-                  pattern: *humantime
                 interval:
                   type: string
                   pattern: *humantime
-            budget_name:
+            fixed_dollar_cost:
+              type: number
+      additionalProperties: false
+    classification_annotations: *classification_annotations
+  required:
+    - legal
+    - enabled
+    - directionality
+    - contact_overhead_time
+    - allowed_license_countries
+    - ground_station_constraints
+    - link_profile
+    - classification_annotations
+
+# The full JSON schema for satellites.
+sat_schema:
+  type: object
+  additionalProperties: false
+  properties:
+    <<: *base_properties
+    satellite_constraints:
+      type: object
+      additionalProperties: false
+      properties:
+        max_contact_time:
+          type: object
+          additionalProperties: false
+          optional: true
+          properties:
+            amount:
               type: string
-            fixed_contact_duration:
+              pattern: *humantime
+            interval:
+              type: string
+              pattern: *humantime
+        budget_name:
+          type: string
+        fixed_contact_duration:
+          type: array
+          items:
+            type: string
+            pattern: *humantime
+          optional: true
+        deny_ground_stations:
+          type: array
+          items:
+            type: string
+        sun_constraint:
+          type: object
+          additionalProperties: false
+          optional: true
+          properties:
+            contacts_above_threshold:
+              type: boolean
+            exclude_gs_ids:
               type: array
               items:
                 type: string
-                pattern: *humantime
+            declination_threshold_deg:
+              type: number
+            pre_buffer:
+              type: string
               optional: true
-            deny_ground_stations:
-              type: array
-              items:
-                type: string
-            sun_constraint:
-              type: object
-              additionalProperties: false
+              pattern: *humantime
+            post_buffer:
+              type: string
               optional: true
-              properties:
-                contacts_above_threshold:
-                  type: boolean
-                exclude_gs_ids:
-                  type: array
-                  items:
+              pattern: *humantime
+        separation:
+          type: array
+          items:
+            anyOf:
+              - type: object
+                additionalProperties: false
+                properties:
+                  type:
                     type: string
-                declination_threshold_deg:
-                  type: number
-                pre_buffer:
-                  type: string
-                  optional: true
-                  pattern: *humantime
-                post_buffer:
-                  type: string
-                  optional: true
-                  pattern: *humantime
-            separation:
-              type: array
-              items:
-                anyOf:
-                  - type: object
-                    additionalProperties: false
-                    properties:
-                      type:
-                        type: string
-                        enum: [minimum_distance]
-                      norad_id:
-                        type: number
-                      distance_m:
-                        type: number
-                      modifier: *constraint_modifier
-                  - type: object
-                    additionalProperties: false
-                    properties:
-                      type:
-                        type: string
-                        enum: [no_overlapping_transits]
-                      norad_id:
-                        type: number
-                      modifier: *constraint_modifier
-                  - type: object
-                    additionalProperties: false
-                    properties:
-                      type:
-                        type: string
-                        enum: [minimum_angular_separation]
-                      norad_id:
-                        type: number
-                      angle_deg:
-                        type: number
-                      modifier: *constraint_modifier
-                  - type: object
-                    additionalProperties: false
-                    properties:
-                      type:
-                        type: string
-                        enum: [avoid_ground_station_beams]
-                      norad_ids:
-                        type: array
-                        items:
-                          type: number
-                      station_coordinates:
-                        type: array
-                        items: *geodetic_coordinate
-                      beamwidth_deg:
-                        type: number
-                      modifier: *constraint_modifier
-      required:
-        - legal
-        - enabled
-        - directionality
-        - contact_overhead_time
-        - allowed_license_countries
-        - satellite_constraints
-        - link_profile
+                    enum: [minimum_distance]
+                  norad_id:
+                    type: number
+                  distance_m:
+                    type: number
+                  modifier: *constraint_modifier
+              - type: object
+                additionalProperties: false
+                properties:
+                  type:
+                    type: string
+                    enum: [no_overlapping_transits]
+                  norad_id:
+                    type: number
+                  modifier: *constraint_modifier
+              - type: object
+                additionalProperties: false
+                properties:
+                  type:
+                    type: string
+                    enum: [minimum_angular_separation]
+                  norad_id:
+                    type: number
+                  angle_deg:
+                    type: number
+                  modifier: *constraint_modifier
+              - type: object
+                additionalProperties: false
+                properties:
+                  type:
+                    type: string
+                    enum: [avoid_ground_station_beams]
+                  norad_ids:
+                    type: array
+                    items:
+                      type: number
+                  station_coordinates:
+                    type: array
+                    items: *geodetic_coordinate
+                  beamwidth_deg:
+                    type: number
+                  modifier: *constraint_modifier
+  required:
+    - legal
+    - enabled
+    - directionality
+    - contact_overhead_time
+    - allowed_license_countries
+    - satellite_constraints
+    - link_profile

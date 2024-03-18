@@ -18,9 +18,18 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     forward_channels:
     - ground_override:
         freq: 2200500000
-    chainOverride:
-      sband:
-        freq: 2200500000
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    space_ground_sband: true
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 39
+    space_ground_sband_bandwidth_mhz: 1
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -41,6 +50,14 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     forward_channels:
     - ground_override:
         freq: 2200500000
-    chainOverride:
-      sband:
-        freq: 2200500000
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    space_ground_sband: true
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: LEGACY
+    space_ground_sband_bandwidth_mhz: 1

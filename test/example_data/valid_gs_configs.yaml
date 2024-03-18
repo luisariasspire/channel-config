@@ -1,0 +1,44 @@
+MINIMAL_GS_CONFIG: &gs_base
+  directionality: Bidirectional
+  allowed_license_countries:
+    - AU
+    - BM
+  enabled: false
+  legal: true
+  contact_overhead_time: 210s
+  ground_station_constraints: {}
+  link_profile:
+    - min_elevation_deg: 0
+      downlink_rate_kbps: 1000.0
+      uplink_rate_kbps: 10.0
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    space_ground_sband: false
+    space_ground_xband: false
+
+
+GS_CONFIG_WITH_CONSTRAINTS:
+  <<: *gs_base
+  ground_station_constraints:
+    deny_satellites:
+      - FM999
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1000
+        interval: 1day
+      fixed_dollar_cost: 10
+
+GS_CONFIG_WITH_ADDITIONAL_PROVIDER_CONFIG:
+  <<: *gs_base
+  additional_provider_config:
+    ksat_mission_config: SPIRE_Q_20MHZ
+
+GS_CONFIG_WITH_DYNAMIC_WINDOW_PARAMETERS:
+  <<: *gs_base
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 25
