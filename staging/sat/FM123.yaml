@@ -1162,10 +1162,10 @@ TXO_XBAND:
     forward_channels:
     - radio_band: XBAND
       bandaid_override:
-        pls: 9
-        mtu: 2664
+        pls: 13
+        mtu: 3204
       ground_override:
-        radionet-m: 2664
+        radionet-m: 3204
 TXO_XBAND_PROV_KSAT:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1642,7 +1642,7 @@ TXO_XBAND_PROV_KSAT:
     forward_channels:
     - radio_band: XBAND
       bandaid_override:
-        pls: 9
-        mtu: 2664
+        pls: 13
+        mtu: 3204
       ground_override:
-        radionet-m: 2664
+        radionet-m: 3204
