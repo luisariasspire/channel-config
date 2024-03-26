@@ -108,7 +108,6 @@ TXO_XBAND:
         gain: 17
         freq: 1250000000
         radionet-m: 1989
-        radionet-l: 0
   classification_annotations:
     provider: SPIRE
     directionality: TXO
