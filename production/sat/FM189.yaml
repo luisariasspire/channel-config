@@ -257,6 +257,8 @@ CONTACT_BIDIR_PARAM_UHF:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
+    link_state_cues:
+    - topics: [mission_download]
   contact_type: CONTACT_SPACE_GROUND_BIDIR
 CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   directionality: SpaceToEarth
