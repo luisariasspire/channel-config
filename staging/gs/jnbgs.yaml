@@ -104,6 +104,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
         tx_bandwidth_hz: 5000000
       ground_override:
         rf_bandwidth: 5000000
+        status_poll_period: 10
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
@@ -156,6 +157,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
         tx_bandwidth_hz: 5000000
       ground_override:
         rf_bandwidth: 5000000
+        status_poll_period: 10
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
@@ -280,6 +282,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
         tx_bandwidth_hz: 5000000
       ground_override:
         rf_bandwidth: 5000000
+        status_poll_period: 10
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -322,6 +325,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
         tx_bandwidth_hz: 5000000
       ground_override:
         rf_bandwidth: 5000000
+        status_poll_period: 10
   classification_annotations:
     provider: SPIRE
     directionality: TXO
