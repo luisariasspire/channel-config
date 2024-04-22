@@ -18,7 +18,7 @@ CONTACT_BIDIR_PARAM:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -307,7 +307,7 @@ CONTACT_RXO:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -551,7 +551,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
