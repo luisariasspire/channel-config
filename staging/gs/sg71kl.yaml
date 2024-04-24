@@ -6,7 +6,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     dollar_cost:
@@ -49,7 +49,7 @@ TXO_XBAND_PROV_KSAT:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     dollar_cost:
@@ -103,7 +103,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     dollar_cost:
