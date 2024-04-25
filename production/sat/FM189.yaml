@@ -28,7 +28,9 @@ CONTACT_BIDIR_PARAM:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -78,7 +80,9 @@ CONTACT_BIDIR_PARAM_DVBS2X:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -130,7 +134,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -193,7 +199,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -288,7 +296,9 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -334,7 +344,9 @@ CONTACT_RXO:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -381,7 +393,9 @@ CONTACT_RXO_DVBS2X:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -431,7 +445,9 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -488,7 +504,9 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -544,7 +562,9 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -596,7 +616,9 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -1098,7 +1120,9 @@ TXO_XBAND:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -1592,7 +1616,9 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -1625,7 +1651,9 @@ TXO_XBAND_PROV_KSAT:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl
@@ -2113,7 +2141,9 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
       exclude_gs_ids:
       - tr4kl
       - tr6kl
+      - tr20kl
       - sg71kl
+      - sg161kl
       - sg180kl
       - sg182kl
       - sg189kl

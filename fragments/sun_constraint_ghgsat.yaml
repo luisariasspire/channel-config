@@ -6,7 +6,9 @@ sun_constraint:
   exclude_gs_ids:
     - tr4kl
     - tr6kl
+    - tr20kl
     - sg71kl
+    - sg161kl
     - sg180kl
     - sg182kl
     - sg189kl
