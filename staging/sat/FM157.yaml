@@ -223,6 +223,7 @@ CONTACT_RXO:
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
+      bandaid_override: {}
   contact_type: CONTACT_SPACE_GROUND_TXO
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth

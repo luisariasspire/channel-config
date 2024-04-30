@@ -29,9 +29,9 @@ CONTACT_BIDIR_PARAM:
     forward_channels:
     - radio_band: SBAND
       protocol: LEGACY
-      bandaid_mode: TX_SBAND
+      bandaid_mode: TX_SBAND_IP
       bandaid_override: {}
-      use_radionet: false
+      use_radionet: true
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
@@ -273,8 +273,9 @@ CONTACT_RXO:
     forward_channels:
     - radio_band: SBAND
       protocol: LEGACY
-      bandaid_mode: TX_SBAND
-      use_radionet: false
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
+      bandaid_override: {}
   contact_type: CONTACT_SPACE_GROUND_TXO
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
@@ -474,8 +475,8 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     forward_channels:
     - radio_band: SBAND
       protocol: LEGACY
-      bandaid_mode: TX_SBAND
-      use_radionet: false
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
       bandaid_override:
         tx_carrier_frequency_hz: 2200500000
 TXO_XBAND:
