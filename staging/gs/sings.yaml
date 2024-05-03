@@ -5,7 +5,7 @@ CONTACT_BIDIR_PARAM:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -42,7 +42,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -81,16 +81,13 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
     - FM154
     - FM161
   contact_overhead_time: 200s
-  dynamic_window_parameters:
-    transmit_times:
-      elevation_threshold_deg: 25
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
@@ -116,6 +113,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 25
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -136,16 +136,13 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
     - FM154
     - FM161
   contact_overhead_time: 200s
-  dynamic_window_parameters:
-    transmit_times:
-      elevation_threshold_deg: 30
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
@@ -171,6 +168,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 30
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -217,7 +217,7 @@ CONTACT_RXO:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -244,7 +244,7 @@ CONTACT_RXO_DVBS2X:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -273,7 +273,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -318,7 +318,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:

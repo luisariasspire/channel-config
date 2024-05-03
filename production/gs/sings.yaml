@@ -5,7 +5,7 @@ CONTACT_BIDIR_PARAM:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -42,7 +42,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -81,7 +81,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -136,7 +136,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -217,7 +217,7 @@ CONTACT_RXO:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -244,7 +244,7 @@ CONTACT_RXO_DVBS2X:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -273,7 +273,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
@@ -318,7 +318,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints:
     deny_satellites:
