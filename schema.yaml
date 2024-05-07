@@ -518,6 +518,17 @@ sat_schema:
               pattern: *humantime
         budget_name:
           type: string
+        electrical_cost:
+          type: object
+          additionalProperties: false
+          optional: true
+          properties:
+            flat:
+              minimum: 0
+              type: number
+            per_second:
+              minimum: 0
+              type: number
         fixed_contact_duration:
           type: array
           items:
