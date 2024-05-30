@@ -19,7 +19,12 @@ CONTACT_BIDIR_PARAM:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Legacy SBand: 8.6W
+      per_second: 8.6
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -57,7 +62,12 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W
+      per_second: 7
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 0
@@ -97,7 +107,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W
+      per_second: 7
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 10
@@ -147,7 +162,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W
+      per_second: 7
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 10
@@ -225,6 +245,11 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Legacy SBand: 8.6W
+      per_second: 8.6
     budget_name: KSAT_GNSS_R
     fixed_contact_duration:
     - 2min
@@ -263,7 +288,12 @@ CONTACT_RXO:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Legacy SBand: 8.6W
+      per_second: 8.6
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -299,7 +329,12 @@ CONTACT_RXO_DVBS2X:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W
+      per_second: 7
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -337,7 +372,12 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W
+      per_second: 7
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 25
@@ -381,7 +421,12 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W
+      per_second: 7
   contact_overhead_time: 25s
   link_profile:
   - min_elevation_deg: 30
@@ -424,7 +469,12 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W
+      per_second: 7
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -464,7 +514,12 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Legacy SBand: 8.6W
+      per_second: 8.6
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -502,6 +557,11 @@ TXO_XBAND:
   enabled: true
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Lemdig XBand: 19W
+      per_second: 19
     separation:
     - type: avoid_ground_station_beams
       norad_ids: # CNES: pleiades (-1A/1B)
@@ -965,6 +1025,11 @@ TXO_XBAND_PROV_KSAT:
   enabled: true
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Lemdig XBand: 19W
+      per_second: 19
     budget_name: KSAT_GNSS_R
     fixed_contact_duration:
     - 2min

@@ -20,9 +20,6 @@ CONTACT_BIDIR_PARAM:
   enabled: true
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -75,9 +72,6 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   enabled: true
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -132,9 +126,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   enabled: true
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -199,9 +190,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   enabled: true
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -294,9 +282,6 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   legal: true
   satellite_constraints:
     budget_name: KSAT_GHGSAT
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -349,9 +334,6 @@ CONTACT_RXO:
   enabled: false
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -402,9 +384,6 @@ CONTACT_RXO_DVBS2X:
   enabled: false
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -457,9 +436,6 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   enabled: false
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -519,9 +495,6 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   enabled: false
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -580,9 +553,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -637,9 +607,6 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   enabled: false
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.1
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -1144,9 +1111,6 @@ TXO_XBAND:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-    electrical_cost:
-      flat: 20
-      per_second: 0.2
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -1643,9 +1607,6 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-    electrical_cost:
-      flat: 20
-      per_second: 0.2
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -1681,9 +1642,6 @@ TXO_XBAND_PROV_KSAT:
   enabled: true
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.2
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -2174,9 +2132,6 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
   enabled: true
   legal: true
   satellite_constraints:
-    electrical_cost:
-      flat: 20
-      per_second: 0.2
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
