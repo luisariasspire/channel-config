@@ -25,6 +25,8 @@ CONTACT_BIDIR_PARAM:
     adcs_pointing: NADIR
     space_ground_uhf: true
     ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
     space_ground_sband: true
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
@@ -57,6 +59,8 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     adcs_pointing: NADIR
     space_ground_uhf: true
     ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
     space_ground_sband: true
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
@@ -86,6 +90,8 @@ CONTACT_BIDIR_PARAM_UHF:
     adcs_pointing: NADIR
     space_ground_uhf: true
     ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
     space_ground_sband: false
     space_ground_xband: false
 CONTACT_RXO:

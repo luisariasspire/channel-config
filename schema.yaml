@@ -432,6 +432,10 @@ classification_annotations: &classification_annotations
       type: integer
     space_ground_xband_bandwidth_mhz:
       type: number
+    can_sync_schedule:
+      type: boolean
+    can_run_rpcs:
+      type: boolean
   required:
     - provider
     - directionality
