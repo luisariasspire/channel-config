@@ -77,7 +77,10 @@ patch_fms:
 
 # FMs with a broken high-speed radio
 no_hs:
+  - FM117
   - FM161
+  - FM165
+  - FM168
 
 ghgsat:
   - FM188
