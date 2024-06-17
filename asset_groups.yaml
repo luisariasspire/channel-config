@@ -86,3 +86,26 @@ ghgsat:
   - FM188
   - FM189
   - FM190
+
+ksat_gs:
+  - at2kl
+  - ha2kl
+  - ig4kl
+  - mn3kl
+  - nz2kl
+  - pa51kl
+  - pl2kl
+  - sg161kl
+  - sg180kl
+  - sg182kl
+  - sg189kl
+  - sg71kl
+  - tg4kl
+  - tr20kl
+  - tr4kl
+  - tr6kl
+
+xband_gs:
+  - awags
+  - pergs
+  - ubngs
