@@ -18,6 +18,7 @@ rope = "*"
 tabulate = "*"
 termcolor = "*"
 isort = "*"
+deepdiff = "^7.0.1"
 
 [tool.poetry.dev-dependencies]
 behave = "*"

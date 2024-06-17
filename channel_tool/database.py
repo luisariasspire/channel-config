@@ -11,7 +11,7 @@ from ruamel.yaml import YAML
 
 from channel_tool.asset_config import infer_asset_type, load_asset_config, locate_assets
 from channel_tool.typedefs import AssetConfig, ChannelDefinition, Environment
-from channel_tool.util import GROUND_STATION, SATELLITE, dump_yaml_string
+from channel_tool.util import GROUND_STATION, SATELLITE
 
 yaml = YAML()
 with open("contact_type_defs.yaml") as f:

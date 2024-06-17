@@ -1,5 +1,5 @@
 import os
-from typing import Any, Callable, Dict, Optional, Set
+from typing import Any, Dict, Optional, Set
 
 import jsonschema
 from jsonschema.exceptions import best_match
@@ -47,16 +47,16 @@ class TemplateValidationError(Exception):
 
 
 def validate_all() -> None:
-    print(f"Validating satellite templates...")
+    print("Validating satellite templates...")
     validate_file(SATELLITE, SAT_TEMPLATE_FILE)
     print(colored("PASS", "green"))
 
-    print(f"Validating ground station templates...")
+    print("Validating ground station templates...")
     validate_file(GROUND_STATION, GS_TEMPLATE_FILE)
     print(colored("PASS", "green"))
 
     print(
-        f"Validating satellite and ground station templates have the same set of channels"
+        "Validating satellite and ground station templates have the same set of channels"
     )
     sat_templates: Dict[str, ChannelDefinition] = load_yaml_file(SAT_TEMPLATE_FILE)
     gs_templates: Dict[str, ChannelDefinition] = load_yaml_file(GS_TEMPLATE_FILE)
@@ -78,7 +78,7 @@ def validate_all() -> None:
     print(colored("PASS", "green"))
 
     print(
-        f"Validating channels in satellite and ground station templates have legal and enabled set to false"
+        "Validating channels in satellite and ground station templates have legal and enabled set to false"
     )
     for templates, template_file in [
         (sat_templates, SAT_TEMPLATE_FILE),
@@ -86,7 +86,7 @@ def validate_all() -> None:
     ]:
         for key, config in templates.items():
             for field in ["legal", "enabled"]:
-                if config[field] != False:
+                if config[field]:
                     raise TemplateValidationError(
                         f"Channel {key} in {template_file} should have {field} set to false"
                     )

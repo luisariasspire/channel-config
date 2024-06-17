@@ -187,5 +187,5 @@ def format_diff(
     b = dump_yaml_string(new).splitlines(keepends=True)
     lines = max(len(a), len(b))  # Show all context
     d = difflib.unified_diff(a, b, n=lines)
-    cd = [color_diff_line(l) for l in d]
+    cd = [color_diff_line(line) for line in d]
     return "".join(cd)

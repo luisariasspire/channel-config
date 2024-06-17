@@ -7,6 +7,7 @@ import sys
 from copy import deepcopy
 from typing import Any, Callable, Dict, List, Mapping, Optional, Sequence, Set, Union
 
+from deepdiff import DeepDiff
 from termcolor import colored
 
 import channel_tool.database as db
@@ -25,9 +26,7 @@ from channel_tool.typedefs import ChannelDefinition, DefsFile, Environment
 from channel_tool.util import (
     ENVS,
     GROUND_STATION,
-    GS_DIR,
     GS_TEMPLATE_FILE,
-    SAT_DIR,
     SAT_TEMPLATE_FILE,
     SATELLITE,
     confirm,
@@ -442,6 +441,31 @@ def query_configs(args: Any) -> None:
             print(f"{asset},{channel},{value}")
 
 
+def diff_configs(args: Any) -> None:
+    assets_dict = {}
+    for env in args.environment.split(","):
+        for asset in locate_assets(env, args.assets):
+            asset_config = load_asset_config(env, asset)
+            # assets_dict[env] = {asset: asset_config}
+            assets_dict[f"{env}-{asset}"] = asset_config
+
+    for permutation in itertools.combinations(assets_dict.keys(), 2):
+        diff = DeepDiff(
+            assets_dict[permutation[0]],
+            assets_dict[permutation[1]],
+            ignore_order=True,
+            verbose_level=args.verbose,
+        )
+        out = f"Difference between {permutation[0]} and {permutation[1]}"
+        sep = "=" * len(out)
+        out = "\n" + out + "\n" + sep + "\n"
+        print(out)
+        if diff:  # if diff is not empty
+            print(f"{diff.pretty()}\n")
+        else:
+            print("None\n")
+
+
 def normalize_configs(args: Any) -> None:
     for asset in locate_assets(args.environment, args.assets):
         config = load_asset_config(args.environment, asset)
@@ -463,7 +487,7 @@ def format_configs(args: Any) -> None:
             pass_check = format_asset(args, config, path) and pass_check
     if args.check and not pass_check:
         print(
-            f"Use the channel_tool 'format' or 'normalize' commands to correct non-standard formatting"
+            "Use the channel_tool 'format' or 'normalize' commands to correct non-standard formatting"
         )
         exit(1)
 
@@ -735,8 +759,11 @@ def add_env_flag(parser: Any) -> None:
     parser.add_argument(
         "environment",
         type=str,
-        choices=ENVS,
-        help=("Which environment to configure."),
+        # choices=ENVS,
+        help=(
+            "Which environment to configure."
+            "Either 'production' or 'staging' except for diff which can take in both as a list."
+        ),
     )
 
 
@@ -884,6 +911,22 @@ QUERY_PARSER.add_argument(
     "field",
     type=str,
     help=("The field to query."),
+)
+
+DIFF_PARSER = SUBPARSERS.add_parser(
+    "diff",
+    help="Compare items.",
+)
+DIFF_PARSER.set_defaults(func=diff_configs)
+add_env_flag(DIFF_PARSER)
+add_asset_flag(DIFF_PARSER)
+DIFF_PARSER.add_argument(
+    "-v",
+    "--verbose",
+    action="store_const",
+    const=2,
+    default=1,
+    help=("Increase verbosity of diff and print changed values."),
 )
 
 NORMALIZE_PARSER = SUBPARSERS.add_parser(

@@ -77,7 +77,7 @@ def load_asset_config(env: Environment, asset: str) -> AssetConfig:
         else:
             return {}
 
-    if not (env, asset) in CONFIG_CACHE:
+    if (env, asset) not in CONFIG_CACHE:
         config = do_load()
         CONFIG_CACHE[(env, asset)] = config
         return config
