@@ -190,7 +190,11 @@ sat_licenses:
         167,
         170,
         176,
-        177
+        177,
+        196,
+        197,
+        198,
+        199
       ]
     frequencies: &lux-frequencies
       - [401, 401.2, "D"]
