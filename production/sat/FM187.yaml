@@ -956,7 +956,7 @@ TXO_XBAND:
         elevation_m: 0.0
       beamwidth_deg: 5
   contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 15000.0, uplink_rate_kbps: 0.0}]
+  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
 TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO

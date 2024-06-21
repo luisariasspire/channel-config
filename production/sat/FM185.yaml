@@ -95,7 +95,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -145,7 +145,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 200s
@@ -225,6 +225,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: false
   legal: true
   satellite_constraints:
+    budget_name: KSAT_SNC
     fixed_contact_duration:
     - 2min
     - 4min
@@ -955,7 +956,7 @@ TXO_XBAND:
         elevation_m: 0.0
       beamwidth_deg: 5
   contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]
+  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
   window_parameters:
     forward_channels:
     - radio_band: XBAND
@@ -1467,6 +1468,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
   enabled: true
   legal: true
   satellite_constraints:
+    budget_name: KSAT_SNC
     fixed_contact_duration:
     - 2min
     - 4min
