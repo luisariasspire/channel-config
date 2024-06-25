@@ -5,7 +5,7 @@ CONTACT_BIDIR_PARAM:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -212,7 +212,7 @@ CONTACT_RXO:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
