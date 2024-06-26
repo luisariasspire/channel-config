@@ -253,6 +253,8 @@ CONTACT_RXO:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: true
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
@@ -278,6 +280,8 @@ CONTACT_RXO_DVBS2X:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: true
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
@@ -319,6 +323,8 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: true
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
@@ -360,6 +366,8 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: true
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
@@ -397,6 +405,8 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: true
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5

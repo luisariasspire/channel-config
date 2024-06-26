@@ -36,6 +36,8 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: true
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2200.5
@@ -91,6 +93,8 @@ TXO_XBAND_PROV_KSAT:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 5
@@ -148,6 +152,8 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
     adcs_pointing: TRACK
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 29
@@ -202,6 +208,8 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_17:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 17
@@ -257,6 +265,8 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_21:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 21
@@ -312,6 +322,8 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_25:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 25

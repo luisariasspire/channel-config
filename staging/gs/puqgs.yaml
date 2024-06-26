@@ -24,6 +24,8 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: true
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2200.5
@@ -56,6 +58,8 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     adcs_pointing: NADIR
     space_ground_uhf: false
     ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
     space_ground_sband: true
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2200.5
