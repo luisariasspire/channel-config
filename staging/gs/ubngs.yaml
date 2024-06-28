@@ -195,8 +195,8 @@ TXO_XBAND_BW_10_PLS_21:
   - LU
   - SG
   - US
-  enabled: false
-  legal: false
+  enabled: true
+  legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
   link_profile:
@@ -205,7 +205,6 @@ TXO_XBAND_BW_10_PLS_21:
     uplink_rate_kbps: 0.0
     min_duration: 2min
   window_parameters:
-    # GS uses a downconverter to deliver XBand signal at 1250MHz
     forward_channels:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
