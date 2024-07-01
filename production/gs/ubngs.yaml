@@ -195,8 +195,8 @@ TXO_XBAND_BW_10_PLS_21:
   - LU
   - SG
   - US
-  enabled: false
-  legal: false
+  enabled: true
+  legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
   link_profile:
