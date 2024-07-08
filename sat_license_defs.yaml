@@ -129,7 +129,7 @@ sat_licenses:
     blacklisted_countries: []
   USA_PHASE_2:
     satellites:
-      [128, 129, 130, 131, 146, 147, 123, 132, 133, 134, 135, 138, 193, 194]
+      [128, 129, 130, 131, 146, 147, 123, 132, 133, 134, 135, 138, 193, 194, 173, 174]
     frequencies:
       - [401, 401.2, "D"]
       - [402.6, 402.8, "D"]
@@ -156,7 +156,7 @@ sat_licenses:
     blacklisted_countries:
       - US
   US_HUBBLE123:
-    satellites: [191, 192]
+    satellites: [191, 192, 195]
     frequencies:
         - [402.6, 402.8, "D"]
         - [402.6, 402.8, "U"]
