@@ -26,7 +26,12 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+          # If a build is stopped *right during the cache upload phase*, we might end up with a
+          # cache key being reserved but not yet uploaded. The solution in that case is to change
+          # the name of the key (here by adding -2 at the end) or to wait until that cache reservation
+          # is flushed (can be up to 24h apparently).
+          # See https://github.com/actions/cache/issues/485#issuecomment-744145040
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}-2
       - name: Install Python
         uses: actions/setup-python@v4
         with:
@@ -57,7 +62,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}-2
       - name: Install linting GHA problem matchers
         run: |
           echo "::add-matcher::./.github/workflows/problem_matchers/black.json"
@@ -83,7 +88,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}-2
       - name: Install linting GHA problem matchers
         run: |
           echo "::add-matcher::./.github/workflows/problem_matchers/channel_tool.json"
@@ -107,7 +112,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}-2
       - name: Install linting GHA problem matchers
         run: |
           echo "::add-matcher::./.github/workflows/problem_matchers/mypy.json"
@@ -133,7 +138,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}-2
       - name: pytest
         id: run_test
         run: |
@@ -179,7 +184,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}-2
       - name: behave
         run: |
           # There is a catch! the scripts themselves will call python, so it needs to be in the PATH
@@ -203,6 +208,6 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}-2
       - name: Validate with channel_tool
         run: ./.venv/bin/python -m channel_tool validate
