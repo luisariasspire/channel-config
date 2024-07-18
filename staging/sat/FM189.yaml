@@ -161,6 +161,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
         pls: 11
         mtu: 642
         tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
     - radio_band: UHF
@@ -225,6 +226,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
         pls: 15
         mtu: 777
         tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
     - radio_band: UHF
@@ -468,6 +470,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
         pls: 11
         mtu: 642
         tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
 
@@ -527,6 +530,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
         pls: 15
         mtu: 777
         tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
 

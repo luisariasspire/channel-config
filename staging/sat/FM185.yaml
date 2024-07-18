@@ -119,6 +119,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
         pls: 11
         mtu: 642
         tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
     - radio_band: UHF
@@ -169,6 +170,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
         pls: 15
         mtu: 777
         tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
     - radio_band: UHF
@@ -355,6 +357,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
         pls: 11
         mtu: 642
         tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
 
@@ -399,6 +402,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
         pls: 15
         mtu: 777
         tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
 
@@ -1452,6 +1456,7 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
       bandaid_override:
         tx_hardware_gain_db: -20
         tx_bandwidth_hz: 20000000
+        tx_sample_rate_hz: 16666000
         pls: 29
 TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
   directionality: SpaceToEarth
@@ -1934,6 +1939,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
       bandaid_override:
         tx_hardware_gain_db: -20
         tx_bandwidth_hz: 20000000
+        tx_sample_rate_hz: 16666000
         pls: 29
   additional_provider_config:
     ksat_mission_config: SPIRE_Q_20MHZ

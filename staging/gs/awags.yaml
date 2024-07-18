@@ -93,11 +93,11 @@ TXO_XBAND:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
-        tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 10000000
+        tx_sample_rate_hz: 8333000
         pls: 5
         mtu: 1989
         mod_gain: 130
@@ -150,11 +150,11 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
-        tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 20000000
+        tx_sample_rate_hz: 16666000
         pls: 29
         mtu: 6039
         mod_gain: 130

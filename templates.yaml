@@ -756,11 +756,11 @@ TXO_XBAND:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
-        tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 10000000
+        tx_sample_rate_hz: 8333000
         pls: 5
         mtu: 1989
         mod_gain: 130
@@ -1250,11 +1250,11 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
-        tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 20000000
+        tx_sample_rate_hz: 16666000
         pls: 29
         mtu: 6039
         mod_gain: 130
@@ -1311,11 +1311,11 @@ TXO_XBAND_PROV_KSAT:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
-        tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 10000000
+        tx_sample_rate_hz: 8333000
         pls: 5
         mtu: 1989
         mod_gain: 130
@@ -1456,6 +1456,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
         pls: 15
         mtu: 777
         tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
 
@@ -1488,6 +1489,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
           pls: 15
           mtu: 777
           tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
         ground_override:
           rf_bandwidth: 5000000
       - radio_band: UHF
@@ -1519,6 +1521,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
         pls: 11
         mtu: 642
         tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
 
@@ -1551,6 +1554,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
           pls: 11
           mtu: 642
           tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
         ground_override:
           rf_bandwidth: 5000000
       - radio_band: UHF
