@@ -252,7 +252,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
       flat: 465
       # Legacy SBand: 8.6W
       per_second: 8.6
-    budget_name: KSAT_GNSS_R
+    budget_name: KSAT_GENERAL
     fixed_contact_duration:
     - 2min
     - 4min
@@ -1034,7 +1034,7 @@ TXO_XBAND_PROV_KSAT:
       flat: 465
       # Lemdig XBand: 19W
       per_second: 19
-    budget_name: KSAT_GNSS_R
+    budget_name: KSAT_GENERAL
     fixed_contact_duration:
     - 2min
     - 4min
