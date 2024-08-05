@@ -45,8 +45,8 @@ CONTACT_BIDIR_PARAM:
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       bandaid_override:
-        fec: 223
-        fec_k: 255
+        fec_k: 223
+        fec: 255
       use_radionet: true
     - radio_band: UHF
     reverse_channels:
@@ -100,8 +100,8 @@ CONTACT_BIDIR_PARAM_DVBS2X:
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
       bandaid_override:
-        fec: 223
-        fec_k: 255
+        fec_k: 223
+        fec: 255
       use_radionet: true
     - radio_band: UHF
     reverse_channels:
@@ -167,8 +167,8 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
         mtu: 642
         tx_bandwidth_hz: 5000000
         tx_sample_rate_hz: 3703000
-        fec: 223
-        fec_k: 255
+        fec_k: 223
+        fec: 255
       ground_override:
         rf_bandwidth: 5000000
     - radio_band: UHF
@@ -235,8 +235,8 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
         mtu: 777
         tx_bandwidth_hz: 5000000
         tx_sample_rate_hz: 3703000
-        fec: 223
-        fec_k: 255
+        fec_k: 223
+        fec: 255
       ground_override:
         rf_bandwidth: 5000000
     - radio_band: UHF
@@ -372,8 +372,8 @@ CONTACT_RXO:
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
       bandaid_override:
-        fec: 223
-        fec_k: 255
+        fec_k: 223
+        fec: 255
   contact_type: CONTACT_SPACE_GROUND_TXO
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
@@ -426,8 +426,8 @@ CONTACT_RXO_DVBS2X:
       use_radionet: true
       bandaid_override:
         pkt_header_len: 2
-        fec: 223
-        fec_k: 255
+        fec_k: 223
+        fec: 255
 CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -487,8 +487,8 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
         tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
-        fec: 223
-        fec_k: 255
+        fec_k: 223
+        fec: 255
 
 CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -549,8 +549,8 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
         tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
-        fec: 223
-        fec_k: 255
+        fec_k: 223
+        fec: 255
 
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
