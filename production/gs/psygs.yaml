@@ -5,7 +5,7 @@ CONTACT_BIDIR_PARAM:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -41,7 +41,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 200s
@@ -79,7 +79,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 200s
@@ -131,7 +131,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 200s
@@ -182,7 +182,7 @@ CONTACT_BIDIR_PARAM_UHF:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
