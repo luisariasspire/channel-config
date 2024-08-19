@@ -31,7 +31,9 @@ CONTACT_BIDIR_PARAM:
     - radio_band: SBAND
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
-      bandaid_override: {}
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
       use_radionet: true
     - radio_band: UHF
     reverse_channels:
@@ -71,7 +73,9 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     - radio_band: SBAND
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
-      bandaid_override:
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
         pkt_header_len: 2
       use_radionet: true
     - radio_band: UHF
@@ -119,7 +123,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
-      bandaid_override:
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
         pls: 11
         mtu: 642
         tx_bandwidth_hz: 5000000
@@ -171,7 +177,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
-      bandaid_override:
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
         pls: 15
         mtu: 777
         tx_bandwidth_hz: 5000000
@@ -216,6 +224,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
     - radio_band: SBAND
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
@@ -286,7 +297,9 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
-      bandaid_override:
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
         tx_carrier_frequency_hz: 2200500000
 CONTACT_RXO:
   directionality: SpaceToEarth
@@ -324,7 +337,9 @@ CONTACT_RXO:
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
-      bandaid_override: {}
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -361,7 +376,9 @@ CONTACT_RXO_DVBS2X:
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
-      bandaid_override:
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
         pkt_header_len: 2
 CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -401,7 +418,9 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
-      bandaid_override:
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
         pls: 11
         mtu: 642
         tx_bandwidth_hz: 5000000
@@ -447,7 +466,9 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
-      bandaid_override:
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
         pls: 15
         mtu: 777
         tx_bandwidth_hz: 5000000
@@ -491,7 +512,9 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
-      bandaid_override:
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
         pls: 75
         mtu: 1182
         pkt_header_len: 2
@@ -531,7 +554,9 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
-      bandaid_override:
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
         tx_carrier_frequency_hz: 2200500000
         pkt_header_len: 2
 
@@ -571,5 +596,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
-      bandaid_override:
+    - bandaid_override:
+        fec_k: 223
+        fec: 255
         tx_carrier_frequency_hz: 2200500000
