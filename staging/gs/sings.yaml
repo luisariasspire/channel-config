@@ -33,6 +33,7 @@ CONTACT_BIDIR_PARAM:
     can_sync_schedule: true
     can_run_rpcs: true
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
     space_ground_sband_encoding: LEGACY
@@ -72,6 +73,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     can_sync_schedule: true
     can_run_rpcs: true
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
     space_ground_sband_encoding: DVBS2X
@@ -130,6 +132,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
     can_sync_schedule: true
     can_run_rpcs: true
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
     space_ground_sband_encoding: DVBS2X
@@ -188,6 +191,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     can_sync_schedule: true
     can_run_rpcs: true
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
     space_ground_sband_encoding: DVBS2X
@@ -221,6 +225,7 @@ CONTACT_BIDIR_PARAM_UHF:
     can_sync_schedule: true
     can_run_rpcs: true
     space_ground_sband: false
+    ground_space_sband: false
     space_ground_xband: false
 CONTACT_RXO:
   directionality: SpaceToEarth
@@ -247,6 +252,7 @@ CONTACT_RXO:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
     space_ground_sband_encoding: LEGACY
@@ -276,6 +282,7 @@ CONTACT_RXO_DVBS2X:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
     space_ground_sband_encoding: DVBS2X
@@ -324,6 +331,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
     space_ground_sband_encoding: DVBS2X
@@ -372,6 +380,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2020.5
     space_ground_sband_encoding: DVBS2X

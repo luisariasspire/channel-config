@@ -4,8 +4,11 @@ adcs_pointing: NADIR
 space_ground_uhf: true
 ground_space_uhf: true
 space_ground_sband: true
+ground_space_sband: false
 space_ground_xband: false
 space_ground_sband_mid_freq_mhz: 2020.5
 space_ground_sband_encoding: DVBS2X
 space_ground_sband_dvbs2x_pls: 15
 space_ground_sband_bandwidth_mhz: 5
+can_sync_schedule: true
+can_run_rpcs: true

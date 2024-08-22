@@ -39,6 +39,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2200.5
     space_ground_sband_encoding: LEGACY
@@ -96,6 +97,7 @@ TXO_XBAND_PROV_KSAT:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: false
+    ground_space_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 5
     space_ground_xband_bandwidth_mhz: 10
@@ -155,6 +157,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: false
+    ground_space_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 29
     space_ground_xband_bandwidth_mhz: 20
@@ -211,6 +214,7 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_17:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: false
+    ground_space_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 17
     space_ground_xband_bandwidth_mhz: 10
@@ -268,6 +272,7 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_21:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: false
+    ground_space_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 21
     space_ground_xband_bandwidth_mhz: 10
@@ -325,6 +330,7 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_25:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: false
+    ground_space_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 25
     space_ground_xband_bandwidth_mhz: 10

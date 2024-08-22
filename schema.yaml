@@ -416,6 +416,9 @@ classification_annotations: &classification_annotations
     space_ground_sband:
       type: boolean
       required: true
+    ground_space_sband:
+      type: boolean
+      required: true
     space_ground_sband_mid_freq_mhz:
       type: number
     space_ground_sband_bandwidth_mhz:

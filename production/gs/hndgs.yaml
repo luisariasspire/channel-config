@@ -27,6 +27,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2200.5
     space_ground_sband_encoding: DVBS2X
@@ -61,6 +62,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: true
+    ground_space_sband: false
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2200.5
     space_ground_sband_encoding: LEGACY
