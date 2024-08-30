@@ -484,7 +484,12 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
     forward_channels:
     - radio_band: SBAND
       protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 75
+        mtu: 1182
+        pkt_header_len: 2
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -567,22 +572,22 @@ TXO_XBAND:
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
   - AU
-  - PT
-  - SG
-  - JP
-  - NO
   - BM
-  - IE
-  - GB
-  - ZA
   - CL
-  - LK
-  - SH
   - FK
-  - NZ
+  - GB
+  - IE
+  - JP
+  - LK
   - LV
   - MN
-  enabled: false
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -1052,10 +1057,14 @@ TXO_XBAND_PROV_KSAT:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     budget_name: KSAT_NOAA
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
     separation:
     - type: avoid_ground_station_beams
       norad_ids: # CNES: pleiades (-1A/1B)
@@ -1502,10 +1511,6 @@ TXO_XBAND_PROV_KSAT:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-    fixed_contact_duration:
-    - 2min
-    - 4min
-    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10

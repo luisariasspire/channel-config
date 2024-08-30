@@ -405,9 +405,14 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
     min_duration: 1min
   window_parameters:
     forward_channels:
-    - bandaid_override:
-          # The 1.8m dish has better SNR above 40 degrees elevation - PLS 75 is 1.7Mbit
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
         pls: 75
+        mtu: 1182
+        pkt_header_len: 2
   classification_annotations:
     provider: SPIRE
     directionality: TXO

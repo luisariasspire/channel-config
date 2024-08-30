@@ -95,6 +95,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
     downlink_rate_kbps: 1767
     uplink_rate_kbps: 5.6
     min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 25
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -148,6 +151,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     downlink_rate_kbps: 2130
     uplink_rate_kbps: 5.6
     min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 30
   window_parameters:
     forward_channels:
     - radio_band: SBAND

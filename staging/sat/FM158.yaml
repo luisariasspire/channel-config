@@ -184,14 +184,14 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
-    separation:
-    - type: minimum_distance
-      norad_id: 25544
-      distance_m: 190000
     fixed_contact_duration:
     - 2min
     - 4min
     - 6min
+    separation:
+    - type: minimum_distance
+      norad_id: 25544
+      distance_m: 190000
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -257,6 +257,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   directionality: SpaceToEarth
   allowed_license_countries:
   - AU
+  - CA
   - BM
   - CL
   - ES
@@ -866,7 +867,6 @@ TXO_XBAND_PROV_KSAT:
   allowed_license_countries:
   - AU
   - CA
-  - CA
   - CL
   - ES
   - GR
@@ -877,6 +877,10 @@ TXO_XBAND_PROV_KSAT:
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
     separation:
     - type: avoid_ground_station_beams
       norad_ids: # CNES: pleiades (-1A/1B)
@@ -1323,10 +1327,6 @@ TXO_XBAND_PROV_KSAT:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-    fixed_contact_duration:
-    - 2min
-    - 4min
-    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10

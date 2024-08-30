@@ -1,3 +1,79 @@
+CONTACT_BIDIR_PARAM:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 10000.0
+    uplink_rate_kbps: 10
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      bandaid_override: {}
+      use_radionet: true
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+CONTACT_BIDIR_PARAM_DVBS2X:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 10000.0
+    uplink_rate_kbps: 10
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override: {}
+      use_radionet: true
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
 CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   directionality: Bidirectional
@@ -101,6 +177,77 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     reverse_channels:
     - radio_band: UHF
 
+CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 200s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+CONTACT_BIDIR_PARAM_UHF:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 10000.0
+    uplink_rate_kbps: 10
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+    link_state_cues:
+    - topics: [mission_download]
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
 CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -333,7 +480,12 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
     forward_channels:
     - radio_band: SBAND
       protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 75
+        mtu: 1182
+        pkt_header_len: 2
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -416,21 +568,21 @@ TXO_XBAND:
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
   - AU
-  - PT
-  - SG
-  - JP
-  - NO
   - BM
-  - IE
-  - GB
-  - ZA
   - CL
-  - LK
-  - SH
   - FK
-  - NZ
+  - GB
+  - IE
+  - JP
+  - LK
   - LV
   - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
   enabled: true
   legal: true
   satellite_constraints:
@@ -905,6 +1057,10 @@ TXO_XBAND_PROV_KSAT:
   legal: true
   satellite_constraints:
     budget_name: KSAT_FOREST_2
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
     separation:
     - type: avoid_ground_station_beams
       norad_ids: # CNES: pleiades (-1A/1B)
@@ -1351,10 +1507,6 @@ TXO_XBAND_PROV_KSAT:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-    fixed_contact_duration:
-    - 2min
-    - 4min
-    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10

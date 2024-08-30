@@ -19,6 +19,9 @@ CONTACT_BIDIR_PARAM:
     downlink_rate_kbps: 446.46
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 25
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -54,6 +57,9 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     downlink_rate_kbps: 562.93
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 25
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR

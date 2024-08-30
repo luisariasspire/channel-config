@@ -1455,6 +1455,10 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
   legal: true
   satellite_constraints:
     budget_name: KSAT_SNC
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
     separation:
     - type: avoid_ground_station_beams
       norad_ids: # CNES: pleiades (-1A/1B)
@@ -1901,10 +1905,6 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-    fixed_contact_duration:
-    - 2min
-    - 4min
-    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10

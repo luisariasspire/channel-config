@@ -140,6 +140,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
       - sg180kl
       - sg182kl
       - sg189kl
+
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 10
@@ -205,6 +206,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
       - sg180kl
       - sg182kl
       - sg189kl
+
   contact_overhead_time: 200s
   link_profile:
   - min_elevation_deg: 10
@@ -284,6 +286,10 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   legal: true
   satellite_constraints:
     budget_name: KSAT_GHGSAT
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
     sun_constraint:
       contacts_above_threshold: false
       declination_threshold_deg: 10.0
@@ -298,10 +304,6 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
       - sg180kl
       - sg182kl
       - sg189kl
-    fixed_contact_duration:
-    - 2min
-    - 4min
-    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -1661,6 +1663,10 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
       - sg182kl
       - sg189kl
     budget_name: KSAT_GHGSAT
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
     separation:
     - type: avoid_ground_station_beams
       norad_ids: # CNES: pleiades (-1A/1B)
@@ -2107,10 +2113,6 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
         longitude: 15.401
         elevation_m: 0.0
       beamwidth_deg: 5
-    fixed_contact_duration:
-    - 2min
-    - 4min
-    - 6min
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
