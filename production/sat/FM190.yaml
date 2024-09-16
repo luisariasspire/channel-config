@@ -163,13 +163,14 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
       bandaid_override:
+        fec_k: 223
+        fec: 255
         pls: 11
         mtu: 642
         tx_bandwidth_hz: 5000000
         tx_sample_rate_hz: 3703000
-        fec_k: 223
-        fec: 255
       ground_override:
+        radionet-m: 642
         rf_bandwidth: 5000000
     - radio_band: UHF
     reverse_channels:
@@ -231,18 +232,18 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
       bandaid_override:
+        fec_k: 223
+        fec: 255
         pls: 15
         mtu: 777
         tx_bandwidth_hz: 5000000
         tx_sample_rate_hz: 3703000
-        fec_k: 223
-        fec: 255
       ground_override:
+        radionet-m: 777
         rf_bandwidth: 5000000
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
-
 CONTACT_BIDIR_PARAM_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -425,7 +426,6 @@ CONTACT_RXO_DVBS2X:
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
       bandaid_override:
-        pkt_header_len: 2
         fec_k: 223
         fec: 255
 CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
@@ -481,15 +481,15 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
       bandaid_override:
+        fec_k: 223
+        fec: 255
         pls: 11
         mtu: 642
         tx_bandwidth_hz: 5000000
         tx_sample_rate_hz: 3703000
       ground_override:
+        radionet-m: 642
         rf_bandwidth: 5000000
-        fec_k: 223
-        fec: 255
-
 CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -543,15 +543,15 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
       bandaid_override:
+        fec_k: 223
+        fec: 255
         pls: 15
         mtu: 777
         tx_bandwidth_hz: 5000000
         tx_sample_rate_hz: 3703000
       ground_override:
+        radionet-m: 777
         rf_bandwidth: 5000000
-        fec_k: 223
-        fec: 255
-
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -602,9 +602,9 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
       bandaid_mode: TX_SBAND_DVB_IP
       use_radionet: true
       bandaid_override:
-        tx_carrier_frequency_hz: 2200500000
         fec_k: 223
         fec: 255
+        tx_carrier_frequency_hz: 2200500000
 
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
@@ -656,9 +656,9 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
       bandaid_override:
-        tx_carrier_frequency_hz: 2200500000
         fec_k: 223
         fec: 255
+        tx_carrier_frequency_hz: 2200500000
 TXO_XBAND:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO

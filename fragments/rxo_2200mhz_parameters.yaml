@@ -1,6 +1,0 @@
-forward_channels:
-  - radio_band: SBAND
-    protocol: LEGACY
-    bandaid_mode: TX_SBAND
-    bandaid_override:
-      tx_carrier_frequency_hz: 2200500000

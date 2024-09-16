@@ -27,6 +27,8 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
       bandaid_override:
+        fec: 255
+        fec_k: 223
         tx_carrier_frequency_hz: 2200500000
       ground_override:
         freq: 70000000
@@ -71,6 +73,8 @@ TXO_XBAND_PROV_KSAT:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
+        fec: 255
+        fec_k: 223
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
@@ -128,6 +132,8 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
+        fec: 255
+        fec_k: 223
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
@@ -145,9 +151,6 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
         gain: 3
       use_radionet: true
       protocol: DVBS2X
-    tracking_target:
-      latitude_north: -52.93508
-      longitude_west: 70.87073
   classification_annotations:
     provider: KSAT
     directionality: TXO
@@ -188,6 +191,8 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_17:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
+        fec: 255
+        fec_k: 223
         tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
@@ -246,6 +251,8 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_21:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
+        fec: 255
+        fec_k: 223
         tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
@@ -304,6 +311,8 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_25:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
+        fec: 255
+        fec_k: 223
         tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000

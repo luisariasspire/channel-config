@@ -1,6 +1,0 @@
-forward_channels:
-- radio_band: XBAND
-  protocol: DVBS2X
-  bandaid_mode: TX_XBAND_DVB
-  bandaid_override:
-    vbatt/voltage/min: 7000

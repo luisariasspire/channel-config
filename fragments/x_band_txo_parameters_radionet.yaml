@@ -4,7 +4,7 @@ forward_channels:
     bandaid_override:
       vbatt/voltage/min: 7000
       fec: 255
-      fec_k: 254
+      fec_k: 223
       pls: 5
       mtu: 1989
     ground_override:

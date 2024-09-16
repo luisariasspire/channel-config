@@ -4,4 +4,6 @@ forward_channels:
     bandaid_mode: TX_SBAND_IP
     use_radionet: true
     bandaid_override:
+      fec_k: 223
+      fec: 255    
       tx_carrier_frequency_hz: 2200500000

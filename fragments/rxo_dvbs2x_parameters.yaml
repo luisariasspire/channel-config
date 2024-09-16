@@ -1,4 +1,0 @@
-forward_channels:
-  - radio_band: SBAND
-    protocol: DVBS2X
-    bandaid_mode: TX_SBAND_DVB

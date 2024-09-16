@@ -305,18 +305,21 @@ def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
         return None
 
     for field in fields:
-        val = get_field_value(field)
-        if val is not None:
-            if args.mode == "overwrite":
-                new_cdef[field] = val  # type: ignore
-            elif args.mode == "merge":
-                new_cdef[field] = merge(cdef[field], val)  # type: ignore
-            elif args.mode == "remove":
-                new_cdef[field] = remove(cdef[field], val)  # type: ignore
-            elif args.mode == "update":
-                new_cdef[field] = update(  # type: ignore
-                    cdef[field], val, args.predicate  # type: ignore
-                )  # type: ignore
+        try:
+            val = get_field_value(field)
+            if val is not None:
+                if args.mode == "overwrite":
+                    new_cdef[field] = val  # type: ignore
+                elif args.mode == "merge":
+                    new_cdef[field] = merge(cdef.get(field, {}), val)  # type: ignore
+                elif args.mode == "remove":
+                    new_cdef[field] = remove(cdef.get(field, {}), val)  # type: ignore
+                elif args.mode == "update":
+                    new_cdef[field] = update(  # type: ignore
+                        cdef.get(field, {}), val, args.predicate  # type: ignore
+                    )  # type: ignore
+        except Exception as e:
+            raise Exception(f"Failed to '{args.mode}' field '{field}'") from e
 
     if args.comment:
         new_cdef.yaml_set_start_comment(args.comment)  # type: ignore
@@ -564,6 +567,11 @@ def apply_update(
                     print(colored(f"No changes for {channel} on {asset}.", "magenta"))
             except AlreadyExistsError as e:
                 err(f"Error: {e}")
+            except Exception as e:
+                err(
+                    f"Unhandled exception with asset {asset} and channel {channel} : {e}"
+                )
+                raise
         write_asset_config(env, asset, asset_config)
 
 

@@ -1,0 +1,18 @@
+forward_channels:
+- radio_band: SBAND
+  protocol: DVBS2X
+  bandaid_mode: TX_SBAND_DVB_IP
+  use_radionet: true
+  bandaid_override:
+    fec_k: 223
+    fec: 255
+    pls: 15
+    mtu: 777
+    tx_bandwidth_hz: 5000000
+    tx_sample_rate_hz: 3703000
+  ground_override:
+    radionet-m: 777
+    rf_bandwidth: 5000000
+- radio_band: UHF
+reverse_channels:
+- radio_band: UHF

@@ -92,6 +92,8 @@ TXO_XBAND:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
+        fec_k: 223
+        fec: 255
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
@@ -106,6 +108,7 @@ TXO_XBAND:
       use_radionet: true
       protocol: DVBS2X
       ground_override:
+        radionet-m: 1989
         header-freq-pow: 7
         coarse-freq-win: 1000000
         lo-offset: 5000000
@@ -113,7 +116,6 @@ TXO_XBAND:
         rf_bandwidth: 10000000
         gain: 17
         freq: 1250000000
-        radionet-m: 1989
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -149,6 +151,8 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
+        fec_k: 223
+        fec: 255
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
         tx_hardware_gain_db: -10
@@ -163,6 +167,7 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
       use_radionet: true
       protocol: DVBS2X
       ground_override:
+        radionet-m: 6039
         header-freq-pow: 7
         coarse-freq-win: 1000000
         lo-offset: 5000000
@@ -170,10 +175,6 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
         rf_bandwidth: 20000000
         gain: 17
         freq: 1250000000
-        radionet-m: 6039
-    tracking_target:
-      latitude_north: -29.010417
-      longitude_west: -115.341708
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -210,6 +211,8 @@ TXO_XBAND_BW_10_PLS_17:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
+        fec_k: 223
+        fec: 255
         tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
@@ -224,6 +227,7 @@ TXO_XBAND_BW_10_PLS_17:
       use_radionet: true
       protocol: DVBS2X
       ground_override:
+        radionet-m: 4014
         header-freq-pow: 7
         coarse-freq-win: 1000000
         lo-offset: 5000000
@@ -231,7 +235,6 @@ TXO_XBAND_BW_10_PLS_17:
         rf_bandwidth: 10000000
         gain: 17
         freq: 1250000000
-        radionet-m: 4014
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -245,7 +248,6 @@ TXO_XBAND_BW_10_PLS_17:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 17
     space_ground_xband_bandwidth_mhz: 10
-
 TXO_XBAND_BW_10_PLS_21:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -269,6 +271,8 @@ TXO_XBAND_BW_10_PLS_21:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
+        fec_k: 223
+        fec: 255
         tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
@@ -283,6 +287,7 @@ TXO_XBAND_BW_10_PLS_21:
       use_radionet: true
       protocol: DVBS2X
       ground_override:
+        radionet-m: 4824
         header-freq-pow: 7
         coarse-freq-win: 1000000
         lo-offset: 5000000
@@ -290,7 +295,6 @@ TXO_XBAND_BW_10_PLS_21:
         rf_bandwidth: 10000000
         gain: 17
         freq: 1250000000
-        radionet-m: 4824
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -304,7 +308,6 @@ TXO_XBAND_BW_10_PLS_21:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 21
     space_ground_xband_bandwidth_mhz: 10
-
 TXO_XBAND_BW_10_PLS_25:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -328,6 +331,8 @@ TXO_XBAND_BW_10_PLS_25:
     - radio_band: XBAND
       bandaid_mode: TX_XBAND_DVB_IP
       bandaid_override:
+        fec_k: 223
+        fec: 255
         tx_sample_rate_hz: 10000000
         tx_lo_frequency_hz: 6440000000
         tx_carrier_frequency_hz: 1760000000
@@ -342,6 +347,7 @@ TXO_XBAND_BW_10_PLS_25:
       use_radionet: true
       protocol: DVBS2X
       ground_override:
+        radionet-m: 5368
         header-freq-pow: 7
         coarse-freq-win: 1000000
         lo-offset: 5000000
@@ -349,7 +355,6 @@ TXO_XBAND_BW_10_PLS_25:
         rf_bandwidth: 10000000
         gain: 17
         freq: 1250000000
-        radionet-m: 5368
   classification_annotations:
     provider: SPIRE
     directionality: TXO

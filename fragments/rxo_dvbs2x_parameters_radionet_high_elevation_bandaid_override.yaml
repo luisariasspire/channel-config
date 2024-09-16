@@ -4,6 +4,7 @@ forward_channels:
     bandaid_mode: TX_SBAND_DVB_IP
     use_radionet: true
     bandaid_override:
+      fec_k: 223
+      fec: 255    
       pls: 75
       mtu: 1182
-      pkt_header_len: 2

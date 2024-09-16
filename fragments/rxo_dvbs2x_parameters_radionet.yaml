@@ -1,7 +1,8 @@
 forward_channels:
-  - radio_band: SBAND
-    protocol: DVBS2X
-    bandaid_mode: TX_SBAND_DVB_IP
-    use_radionet: true
-    bandaid_override:
-      pkt_header_len: 2
+- radio_band: SBAND
+  protocol: DVBS2X
+  bandaid_mode: TX_SBAND_DVB_IP
+  use_radionet: true
+  bandaid_override:
+    fec_k: 223
+    fec: 255
