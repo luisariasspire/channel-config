@@ -70,6 +70,8 @@ CONTACT_BIDIR_PARAM_DVBS2X:
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
       bandaid_override:
+        tx_bandwidth_hz: 1000000
+        tx_sample_rate_hz: 739999
         fec_k: 223
         fec: 255
       use_radionet: true
