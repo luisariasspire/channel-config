@@ -236,10 +236,10 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_GENERAL
+    budget_name: KSAT_NOAA
     fixed_contact_duration:
     - 2min
     - 4min
@@ -489,7 +489,7 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - SH
   - US
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -992,10 +992,10 @@ TXO_XBAND_PROV_KSAT:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_GENERAL
+    budget_name: KSAT_NOAA
     fixed_contact_duration:
     - 2min
     - 4min
