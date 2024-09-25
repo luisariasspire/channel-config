@@ -56,7 +56,7 @@ contact_types:
       - *UHF402_7_UD
 
   # Bidirectional contact, using UHF for uplink and S-band for downlink.
-  CONTACT_BIDIR_PARAM: &contact_bidir
+  CONTACT_BIDIR_PARAM: &contact_bidir_s_down
     desc: "Bidirectional contact with UHF up and S-band down"
     directionality: "Bidirectional"
     contact_type: "CONTACT_SPACE_GROUND_BIDIR"
@@ -64,17 +64,34 @@ contact_types:
       - *UHF402_7_UD
       - *SBAND2022_5_D
 
+  # Bidirectional contact, using S-band for uplink and X-band for downlink.
+  CONTACT_BIDIR_X_DOWN_PARAM: &contact_bidir_x_down
+    desc: "Bidirectional contact with S-band up and X-band down"
+    directionality: "Bidirectional"
+    contact_type: "CONTACT_SPACE_GROUND_BIDIR"
+    all_of:
+      - *XBAND8200_D
+      - *SBAND2032_5_U
+
   CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
-    <<: *contact_bidir
+    <<: *contact_bidir_s_down
     desc: "Bidirectional contact with UHF up and S-band down, using DVB-S2X high-elevation modcod"
 
   CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
-    <<: *contact_bidir
+    <<: *contact_bidir_s_down
     desc: "Bidirectional contact with UHF up and S-band down, using DVB-S2X modulation and 5MHz rf bandwidth at PLS15"
 
   CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
-    <<: *contact_bidir
+    <<: *contact_bidir_s_down
     desc: "Bidirectional contact with UHF up and S-band down, using DVB-S2X modulation and 5MHz rf bandwidth at PLS11"
+
+  BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
+    <<: *contact_bidir_x_down
+    desc: "Bidirectional contact with S-band up and X-band down, with 10Mhz bandwidth at PLS 5"
+
+  BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
+    <<: *contact_bidir_x_down
+    desc: "Bidirectional contact with S-band up and X-band down, with 10Mhz bandwidth at PLS 13"
 
   # Receive-only contact types.
   # CONTACT_RXO is the default, and uses the 2022MHz S-band license.
@@ -216,6 +233,8 @@ groups:
     - CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15
     - CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11
     - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
+    - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5
+    - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13
 
   # any RXO using SBand legacy
   sband_legacy_rxo:
@@ -229,6 +248,8 @@ groups:
     - TXO_XBAND_ADCS_TRACK_BW_20_PLS_29
     - TXO_XBAND_PROV_KSAT
     - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29
+    - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5
+    - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13
 
   # bidirectionals
   bidir:
@@ -238,6 +259,9 @@ groups:
     - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
     - CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15
     - CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11
+    - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5
+    - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13
+
 
   # SBand bidirectionals
   sband_bidir:
@@ -246,6 +270,8 @@ groups:
     - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
     - CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15
     - CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11
+    - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5
+    - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13
 
   # space-to-ground only
   rxo:
@@ -295,3 +321,5 @@ groups:
     - CONTACT_RXO_DVBS2X_BW5MHZ_PLS11
     - CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15
     - CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11
+    - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5
+    - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13
