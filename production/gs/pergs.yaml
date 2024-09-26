@@ -315,6 +315,9 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
         rf_bandwidth: 20000000
         gain: 17
         freq: 1250000000
+    tracking_target:
+      latitude_north: -29.010417
+      longitude_west: -115.341708
   classification_annotations:
     provider: SPIRE
     directionality: TXO
