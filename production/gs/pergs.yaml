@@ -51,9 +51,10 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
       bandaid_mode: RX_SBAND_TX_XBAND
       use_radionet: true
       ground_override:
-        usrp-tx-gain: 12
+        usrp-tx-gain: 1
         radionet-m: 223
-        uplink-sps: 10
+        uplink-sps: 15
+        dopp-up-rate: 0.1
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -121,9 +122,10 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
       bandaid_mode: RX_SBAND_TX_XBAND
       use_radionet: true
       ground_override:
-        usrp-tx-gain: 12
+        usrp-tx-gain: 1
         radionet-m: 223
-        uplink-sps: 10
+        uplink-sps: 15
+        dopp-up-rate: 0.1
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
