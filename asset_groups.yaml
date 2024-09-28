@@ -87,6 +87,11 @@ ghgsat:
   - FM189
   - FM190
 
+snc:
+  - FM184
+  - FM185
+  - FM186
+
 ksat_gs:
   - at2kl
   - ha2kl
