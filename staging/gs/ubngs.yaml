@@ -6,7 +6,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -77,7 +77,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s

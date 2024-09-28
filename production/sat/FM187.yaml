@@ -4,7 +4,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
   allowed_license_countries:
   - AU
   - MN
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
