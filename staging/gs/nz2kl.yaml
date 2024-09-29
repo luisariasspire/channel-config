@@ -151,6 +151,9 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
         gain: 3
       use_radionet: true
       protocol: DVBS2X
+    tracking_target:
+      latitude_north: -46.52877
+      longitude_west: -168.37987
   classification_annotations:
     provider: KSAT
     directionality: TXO
