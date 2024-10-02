@@ -462,6 +462,12 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
       beamwidth_deg: 5
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        oort_dest_host: localhost
 CONTACT_BIDIR_PARAM:
   directionality: Bidirectional
   allowed_license_countries:
