@@ -706,7 +706,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: false
   legal: true
   satellite_constraints:
-    budget_name: KSAT_GENERAL
+    budget_name: KSAT_SNC
     fixed_contact_duration:
     - 2min
     - 4min
