@@ -463,6 +463,12 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
       beamwidth_deg: 5
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        vbatt/current/max: 2300
 CONTACT_BIDIR_PARAM:
   directionality: Bidirectional
   allowed_license_countries:
@@ -1032,7 +1038,7 @@ TXO_XBAND:
     separation:
   # X-band constraints to comply with NASA/Spire coordination agreement
   #
-  # https://docs.google.com/document/d/1zSxW1yMJnskzFpVrb3STgVL-6T8JZY2L/edit 
+  # https://docs.google.com/document/d/1zSxW1yMJnskzFpVrb3STgVL-6T8JZY2L/edit
   #
   # Appendix A contains a list of protected missions, their NORAD IDs, and their ground station
   # coordinates. We need to avoid transmitting when our satellites are in the beam between one of
