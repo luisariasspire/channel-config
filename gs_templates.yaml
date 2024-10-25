@@ -11,8 +11,8 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
   ground_station_constraints: {}
   contact_overhead_time: 0s
   link_profile:
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 10000.0
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 22000.0
     uplink_rate_kbps: 50.0
     min_duration: 2min
   window_parameters:
@@ -39,7 +39,7 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
         lo-offset: 5000000
         ant: RX2
         rf_bandwidth: 20000000
-        gain: 3
+        gain: 17
         freq: 1250000000
         radionet-m: 6039
         status_poll_period: 10
