@@ -25,6 +25,7 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 20000000
         tx_sample_rate_hz: 16666000
+        rx_sample_rate_hz: 16666000
         pls: 29
         mtu: 6039
         mod_gain: 130
