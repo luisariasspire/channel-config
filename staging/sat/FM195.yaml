@@ -239,7 +239,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_GENERAL
+    budget_name: KSAT_HUBBLE
     fixed_contact_duration:
     - 2min
     - 4min
@@ -523,7 +523,7 @@ TXO_XBAND_PROV_KSAT:
   enabled: false
   legal: false
   satellite_constraints:
-    budget_name: KSAT_GENERAL
+    budget_name: KSAT_HUBBLE
     fixed_contact_duration:
     - 2min
     - 4min
