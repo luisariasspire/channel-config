@@ -74,10 +74,11 @@ Feature: `channel_tool` supports editing embedded YAML structures
    Given the ground station 'testgs' has 'CONTACT_BIDIR_PARAM' in its configuration file
    And a file 'goodput.csv' containing:
    """
-   Goodput
-   1000
-   1200
-   1400
+   sync_id,Goodput,channel_id
+   1,1000,CONTACT_BIDIR_PARAM
+   3,1400,CONTACT_BIDIR_PARAM
+   2,1200,CONTACT_BIDIR_PARAM
+   4,1200,CONTACT_BIDIR_PARAM_2
    """
    When I run 'python -m channel_tool auto-update staging testgs CONTACT_BIDIR_PARAM --parameter=link_profile --data-column=Goodput  --safety-factor=0.95 --calculation-method=ema --source-file="goodput.csv" -y'
    Then it will exit with code '0'

@@ -20,7 +20,11 @@ from channel_tool.asset_config import (
     write_asset_config,
 )
 from channel_tool.audit import AuditReport
-from channel_tool.auto_update_utils import asset_to_predicates, create_config_updates
+from channel_tool.auto_update_utils import (
+    asset_to_predicates,
+    create_config_updates,
+    read_history,
+)
 from channel_tool.pls_tool import pls_long, pls_lookup, pls_short
 from channel_tool.typedefs import ChannelDefinition, DefsFile, Environment
 from channel_tool.util import (
@@ -316,7 +320,10 @@ def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
                     new_cdef[field] = remove(cdef.get(field, {}), val)  # type: ignore
                 elif args.mode == "update":
                     new_cdef[field] = update(  # type: ignore
-                        cdef.get(field, {}), val, args.predicate  # type: ignore
+                        # type: ignore
+                        cdef.get(field, {}),
+                        val,
+                        args.predicate,
                     )  # type: ignore
         except Exception as e:
             raise Exception(f"Failed to '{args.mode}' field '{field}'") from e
@@ -332,8 +339,9 @@ def auto_update(asset: str, cdef: ChannelDefinition, args: Any) -> ChannelDefini
     new_cdef = deepcopy(cdef)
     field = args.parameter
 
-    config_updates = create_config_updates(args)
-    predicates = asset_to_predicates(asset, compile_predicate)
+    config_updates = create_config_updates(args, args.history)
+    # filter out low elevation UHF link profiles
+    predicates = [compile_predicate("downlink_rate_kbps > 20")]
     new_cdef[field] = update(cdef[field], config_updates, predicates)  # type: ignore
 
     if args.comment:
@@ -418,9 +426,13 @@ def auto_update_config(args: Any) -> None:
             else:
                 raise NoConfigurationError(msg)
 
-    apply_update(
-        args.environment, args.assets, args.channels, do_auto_update, yes=args.yes
-    )
+    history = read_history(args.data_column, args.source_file, args.conversion_factor)
+
+    for channel_id, hist in history.items():
+        args.history = hist
+        apply_update(
+            args.environment, args.assets, [channel_id], do_auto_update, yes=args.yes
+        )
 
 
 def audit_configs(args: Any) -> None:

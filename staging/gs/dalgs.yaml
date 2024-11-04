@@ -48,7 +48,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     uplink_rate_kbps: 4.0
     min_duration: 4m
   - min_elevation_deg: 25
-    downlink_rate_kbps: 562.93
+    downlink_rate_kbps: 984.91
     uplink_rate_kbps: 4.0
     min_duration: 20sec
   dynamic_window_parameters:
@@ -133,7 +133,7 @@ CONTACT_RXO_DVBS2X:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
-    downlink_rate_kbps: 634.85
+    downlink_rate_kbps: 1574.06
     uplink_rate_kbps: 0.0
     min_duration: 1min
   classification_annotations:

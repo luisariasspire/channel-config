@@ -41,34 +41,37 @@ def simple_moving_average(
 
 def read_history(
     column: str, source_file: str, conversion_factor: float
-) -> list[float]:
-    goodput = []
+) -> Mapping[str, list[float]]:
+    goodput = {}  # type: ignore
     # If csvfile is a file object, it should be opened with newline=''
     # https://docs.python.org/3/library/csv.html
     with open(source_file, newline="", encoding="utf-8-sig") as f:
         contents = csv.DictReader(f)
-        for line_number, row in enumerate(contents):
+        sorted_contents = sorted(contents, key=lambda row: row["sync_id"])
+        for row in sorted_contents:
             try:
-                goodput.append(float(row[column]) * conversion_factor)
+                goodput.setdefault(row["channel_id"], []).append(
+                    float(row[column]) * conversion_factor
+                )
             except IndexError:
-                warnings.warn(f"Empty line on {source_file} line:{line_number} skipped")
+                warnings.warn(f"Empty line on {source_file} skipped")
             except ValueError:
                 warnings.warn(
-                    f"Non-float value {row[column]} on {source_file} line:{line_number} skipped"
+                    f"Non-float value {row[column]} on {source_file} sync_id:{row['sync_id']} skipped"
                 )
-            except KeyError:
-                sys.exit(f"No column named {column} was found in {source_file}.")
+            except KeyError as e:
+                sys.exit(f"No column named {e} was found in {source_file}.")
 
     return goodput
 
 
-def create_config_updates(args: Any) -> List[Mapping[str, Any]] | str:
+def create_config_updates(
+    args: Any, history: list[float]
+) -> List[Mapping[str, Any]] | str:
     """
     Creates the new value for the parameter.
     Returns it in the format expected by the update function.
     """
-
-    history = read_history(args.data_column, args.source_file, args.conversion_factor)
 
     if args.calculation_method == "sma":
         new_value = simple_moving_average(history, len(history), args.safety_factor)
@@ -127,9 +130,11 @@ def asset_to_predicates(asset: str, compiler: Callable[[str], Any]) -> Any:
 
     if asset in min_elevation_25:
         return [compiler("min_elevation_deg >= 25")]
-    elif asset not in min_elevation_10:
-        warnings.warn(
-            f"There is no predicate definition for asset {asset}. No filters will be applied."
-        )
+    elif asset in min_elevation_10:
+        return [compiler("min_elevation_deg >= 10")]
+
+    warnings.warn(
+        f"There is no predicate definition for asset {asset}. No filters will be applied."
+    )
 
     return None

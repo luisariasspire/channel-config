@@ -82,7 +82,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 2543.86
+    downlink_rate_kbps: 6304.74
     uplink_rate_kbps: 50.0
     min_duration: 2min
   window_parameters:
@@ -153,7 +153,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 2543.86
+    downlink_rate_kbps: 3837.32
     uplink_rate_kbps: 50.0
     min_duration: 2min
   window_parameters:
@@ -222,7 +222,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 759.79
+    downlink_rate_kbps: 1312.95
     uplink_rate_kbps: 0.0
     min_duration: 1min
   window_parameters:
@@ -295,7 +295,7 @@ TXO_XBAND:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 2543.86
+    downlink_rate_kbps: 2029.12
     uplink_rate_kbps: 0.0
     min_duration: 2min
   window_parameters:
@@ -354,7 +354,7 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
-    downlink_rate_kbps: 22000.00
+    downlink_rate_kbps: 22532.82
     uplink_rate_kbps: 0.0
     min_duration: 2min
   window_parameters:
