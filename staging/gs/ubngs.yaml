@@ -9,7 +9,7 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 22000.0
@@ -79,7 +79,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 6304.74
@@ -150,7 +150,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 3837.32
@@ -220,7 +220,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 1312.95
@@ -296,7 +296,7 @@ TXO_XBAND:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 2029.12
@@ -356,7 +356,7 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 22532.82

@@ -45,7 +45,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 200s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
@@ -84,7 +84,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 200s
+  contact_overhead_time: 10s
   dynamic_window_parameters:
     transmit_times:
       elevation_threshold_deg: 25
@@ -141,7 +141,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 200s
+  contact_overhead_time: 10s
   dynamic_window_parameters:
     transmit_times:
       elevation_threshold_deg: 30
@@ -254,7 +254,7 @@ CONTACT_RXO_DVBS2X:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 25
     downlink_rate_kbps: 1574.06
@@ -286,7 +286,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 25s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 25
       # spec * 0.75
@@ -333,7 +333,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 25s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 30
       # spec * 0.75

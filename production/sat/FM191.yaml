@@ -60,7 +60,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   enabled: true
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 200s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
     downlink_rate_kbps: 10000
@@ -103,7 +103,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 200s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 10000
@@ -158,7 +158,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 200s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 10000
@@ -356,7 +356,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 25s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
       # spec * 0.75
@@ -404,7 +404,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   enabled: false
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 25s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 30
       # spec * 0.75

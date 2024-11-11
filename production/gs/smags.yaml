@@ -43,7 +43,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 200s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
@@ -137,7 +137,7 @@ CONTACT_RXO_DVBS2X:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 27
     downlink_rate_kbps: 1574.06

@@ -62,7 +62,7 @@ TXO_XBAND_PROV_KSAT:
         dollars: 1.60
         interval: 1min
       fixed_dollar_cost: 1.60
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 2684.41
@@ -121,7 +121,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
         dollars: 1.60
         interval: 1min
       fixed_dollar_cost: 1.60
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 22503.34

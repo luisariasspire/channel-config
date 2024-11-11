@@ -40,7 +40,7 @@ CONTACT_RXO_DVBS2X:
     deny_satellites:
     - FM157
     - FM158
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 25
     downlink_rate_kbps: 1574.06
@@ -73,7 +73,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
     deny_satellites:
     - FM157
     - FM158
-  contact_overhead_time: 25s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 25
       # spec * 0.75
@@ -121,7 +121,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
     deny_satellites:
     - FM157
     - FM158
-  contact_overhead_time: 25s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 30
       # spec * 0.75
