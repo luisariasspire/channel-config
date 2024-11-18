@@ -8,6 +8,12 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
   enabled: false
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Rough figures using historical telemetry from FM189: 5v = 0.930A, vbat = 1.36A.
+      # From telemetry and previous channel config numbers, vbat assumed to be 2.5v. 
+      per_second: 8.1
     separation:
   # X-band constraints to comply with NASA/Spire coordination agreement
   #
@@ -478,6 +484,12 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
   enabled: false
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Rough figures using historical telemetry from FM187: 5v = 1.0A, vbat = 1.68A.
+      # From telemetry and previous channel config numbers, vbat assumed to be 2.5v. 
+      per_second: 9.2
     separation:
   # X-band constraints to comply with NASA/Spire coordination agreement
   #
@@ -960,7 +972,13 @@ CONTACT_BIDIR_PARAM:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Legacy SBand: 8.6W. From FM172 channel configs.
+      # No historical telemetry for FM184, FM185, FM186, FM187
+      per_second: 8.6
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -998,7 +1016,13 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # From telemetry on FM187:
+      # 5v = 0.986A, vbat = 0.594A. Vbat assumed to be 2.5v.
+      per_second: 6.4
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -1040,7 +1064,13 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # From telemetry on FM187:
+      # 5v = 0.98A, vbat = 0.57A. Vbat assumed to be 2.5v.
+      per_second: 6.3
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -1094,7 +1124,13 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # From telemetry on FM187:
+      # 5v = 1A, vbat = 0.558A. Vbat assumed to be 2.5v.
+      per_second: 6.4
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -1146,7 +1182,13 @@ CONTACT_BIDIR_PARAM_UHF:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Dexter switches on in UHF BIDIR if on OORT.
+      # Rough calculations from telemetry: 5v = 0.98A, vbat = 0.04A. Vbat assumed to be 2.5v.  
+      per_second: 5
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -1175,6 +1217,12 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: false
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Legacy SBand: 8.6W. From FM172 channel configs.
+      # No telemetry for FM184, 185, 186 or 187.
+      per_second: 8.6
     budget_name: KSAT_SNC
     fixed_contact_duration:
     - 2min
@@ -1213,7 +1261,13 @@ CONTACT_RXO:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Legacy SBand: 8.6W. From FM172 channel configs.
+      # No telemetry for FM184, 185, 186 or 187.
+      per_second: 8.6
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -1249,7 +1303,13 @@ CONTACT_RXO_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W. From FM172 channel configs.
+      # No telemetry for FM184, 185, 186 or 187.
+      per_second: 7
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -1288,7 +1348,13 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W. From FM172 channel configs.
+      # No telemetry for FM184, 185, 186 or 187.
+      per_second: 7
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -1335,7 +1401,13 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W. From FM172 channel configs.
+      # No telemetry for FM184, 185, 186 or 187.
+      per_second: 7
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 30
@@ -1381,7 +1453,13 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # DVB SBand: 7W. From FM172 channel configs.
+      # No telemetry for FM184, 185, 186 or 187.
+      per_second: 7
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -1421,7 +1499,13 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Legacy SBand: 8.6W. From FM172 channel configs.
+      # No telemetry for FM184, 185, 186 or 187.
+      per_second: 8.6
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -1461,6 +1545,12 @@ TXO_XBAND:
   enabled: false
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3W x 155s
+      flat: 465
+      # Lemdig XBand: 19W. From FM172 channel configs.
+      # No telemetry for FM184, 185, 186 or 187.
+      per_second: 19
     separation:
   # X-band constraints to comply with NASA/Spire coordination agreement
   #
@@ -1947,6 +2037,11 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
   enabled: true
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3W x 155s - Kept same as the other channels.
+      flat: 465
+      # Rough figures using historical telemetry: 5v = 1.2A, vbat = 1.6A. vbat assumed 2.5v
+      per_second: 10
     separation:
   # X-band constraints to comply with NASA/Spire coordination agreement
   #
@@ -2428,6 +2523,11 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
   enabled: true
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3W x 155s - Kept same as the other channels.
+      flat: 465
+      # Rough figures using historical telemetry: 5v = 1.2A, vbat = 1.6A. vbat assumed 2.5v 
+      per_second: 10
     budget_name: KSAT_SNC
     fixed_contact_duration:
     - 2min
