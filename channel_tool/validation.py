@@ -17,6 +17,12 @@ from channel_tool.util import (
     SCHEMA_FILE,
     load_yaml_file,
 )
+from channel_tool.validation_rules import get_validation_rules
+from channel_tool.validation_rules.utils import (
+    ValidationRuleInput,
+    ValidationRuleMode,
+    ValidationRuleViolatedError,
+)
 
 
 class ValidationError(Exception):
@@ -43,6 +49,10 @@ class ValidationError(Exception):
 
 
 class TemplateValidationError(Exception):
+    pass
+
+
+class BusinessRuleViolatedError(Exception):
     pass
 
 
@@ -107,6 +117,19 @@ def validate_all() -> None:
         for gsf in sorted(all_stations):
             print(f"{gsf}... ", end="")
             validate_file(GROUND_STATION, os.path.join(gs_dir, gsf), gs_template_keys)
+
+        print(f"\nValidating {env} business rules...")
+        all_sat_configs = {
+            os.path.splitext(sf)[0]: load_yaml_file(os.path.join(sat_dir, sf))
+            for sf in all_sats
+        }
+        all_gs_configs = {
+            os.path.splitext(gsf)[0]: load_yaml_file(os.path.join(gs_dir, gsf))
+            for gsf in all_stations
+        }
+
+        run_validation_rules(all_sat_configs, all_gs_configs)
+
     print("All passed!")
 
 
@@ -130,6 +153,55 @@ def validate_one(
     errs = list(jsonschema.Draft7Validator(schema).iter_errors(config))  # type: ignore
     if errs:
         raise ValidationError(best_match(errs), file=file, key=key, count=len(errs))
+
+
+def run_validation_rules(
+    all_sat_configs: Dict[str, Dict[str, Optional[ChannelDefinition]]],
+    all_gs_configs: Dict[str, Dict[str, Optional[ChannelDefinition]]],
+) -> None:
+    validation_rules = get_validation_rules()
+
+    input = ValidationRuleInput(all_sat_configs, all_gs_configs)
+
+    results = {
+        f"{rule.__module__}.{rule.__name__}": rule(input) for rule in validation_rules
+    }
+    violations = {k: v for k, v in results.items() if v is not None}
+
+    if not violations:
+        print(colored("PASS", "green"))
+        return
+
+    soft_fails = {
+        source: violation
+        for source, violation in violations.items()
+        if violation.mode == ValidationRuleMode.COMPLAIN
+    }
+
+    for source, fail in soft_fails.items():
+        print(
+            "{0}: '{1}' would fail if enforced:\n\tDescription: {2}\n\tViolations: \n\t - {3}".format(
+                colored("COMPLAIN", "yellow"),
+                source,
+                fail.description,
+                "\n\t - ".join(fail.violation_cases),
+            ),
+        )
+
+    hard_fails = [
+        "{0}: '{1}' failed:\n\tDescription: {2}\n\tViolations: \n\t - {3}".format(
+            colored("ENFORCE", "red"),
+            source,
+            fail.description,
+            "\n\t - ".join(fail.violation_cases),
+        )
+        for source, fail in violations.items()
+        if fail.mode == ValidationRuleMode.ENFORCE
+    ]
+
+    if len(hard_fails) > 0:
+        exp = "\n\t".join(hard_fails)
+        raise BusinessRuleViolatedError(exp)
 
 
 # Memoize the JSON Schema definitions.
