@@ -970,7 +970,17 @@ FORMAT_PARSER.add_argument(
 VALIDATE_PARSER = SUBPARSERS.add_parser(
     "validate", help="Validate all templates and extant configurations."
 )
-VALIDATE_PARSER.set_defaults(func=lambda _: validate_all())
+VALIDATE_PARSER.add_argument(
+    "-m", "--module", help="Validation rule module substring", type=str, required=False
+)
+VALIDATE_PARSER.add_argument(
+    "-f",
+    "--function",
+    help="Validation rule function name substring",
+    type=str,
+    required=False,
+)
+VALIDATE_PARSER.set_defaults(func=lambda args: validate_all(args))
 
 AUTO_UPDATE_PARSER = SUBPARSERS.add_parser(
     "auto-update",

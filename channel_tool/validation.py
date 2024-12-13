@@ -1,5 +1,5 @@
 import os
-from typing import Any, Dict, Optional, Set
+from typing import Any, Callable, Dict, List, Optional, Set, cast
 
 import jsonschema
 from jsonschema.exceptions import best_match
@@ -17,11 +17,12 @@ from channel_tool.util import (
     SCHEMA_FILE,
     load_yaml_file,
 )
-from channel_tool.validation_rules import get_validation_rules
-from channel_tool.validation_rules.utils import (
+from channel_tool.validation_rules import (
+    ValidationRule,
     ValidationRuleInput,
     ValidationRuleMode,
     ValidationRuleViolatedError,
+    get_validation_rules,
 )
 
 
@@ -52,11 +53,17 @@ class TemplateValidationError(Exception):
     pass
 
 
-class BusinessRuleViolatedError(Exception):
-    pass
+def validate_all(args: Any) -> None:
+    if args.module is not None:
+        rule_module_filter = lambda rule: args.module in rule.__module__
+    else:
+        rule_module_filter = lambda _: True
 
+    if args.function is not None:
+        rule_function_filter = lambda rule: args.function in rule.__name__
+    else:
+        rule_function_filter = lambda _: True
 
-def validate_all() -> None:
     print("Validating satellite templates...")
     validate_file(SATELLITE, SAT_TEMPLATE_FILE)
     print(colored("PASS", "green"))
@@ -102,6 +109,8 @@ def validate_all() -> None:
                     )
     print(colored("PASS", "green"))
 
+    validation_rules = get_validation_rules(rule_module_filter, rule_function_filter)
+
     for env in ENVS:
         print(f"Validating {env} satellites...")
         sat_dir = os.path.join(env, SAT_DIR)
@@ -118,7 +127,7 @@ def validate_all() -> None:
             print(f"{gsf}... ", end="")
             validate_file(GROUND_STATION, os.path.join(gs_dir, gsf), gs_template_keys)
 
-        print(f"\nValidating {env} business rules...")
+        print(f"Validating {env} config ...")
         all_sat_configs = {
             os.path.splitext(sf)[0]: load_yaml_file(os.path.join(sat_dir, sf))
             for sf in all_sats
@@ -128,9 +137,8 @@ def validate_all() -> None:
             for gsf in all_stations
         }
 
-        run_validation_rules(all_sat_configs, all_gs_configs)
-
-    print("All passed!")
+        run_validation_rules(validation_rules, all_sat_configs, all_gs_configs)
+        print(f"Validation complete for {env}")
 
 
 def validate_file(
@@ -155,53 +163,80 @@ def validate_one(
         raise ValidationError(best_match(errs), file=file, key=key, count=len(errs))
 
 
+def run_validation_rule(
+    rule: ValidationRule,
+    input: ValidationRuleInput,
+) -> Optional[ValidationRuleViolatedError]:
+    print(f"    Rule {rule.name} ... ", end="")
+    result = rule.function(input)
+    if not result:
+        print(colored("PASS", "green"))
+    else:
+        print(colored("FAIL", "red"))
+    return result
+
+
 def run_validation_rules(
+    validation_rules: Dict[str, List[ValidationRule]],
     all_sat_configs: Dict[str, Dict[str, Optional[ChannelDefinition]]],
     all_gs_configs: Dict[str, Dict[str, Optional[ChannelDefinition]]],
 ) -> None:
-    validation_rules = get_validation_rules()
-
     input = ValidationRuleInput(all_sat_configs, all_gs_configs)
 
-    results = {
-        f"{rule.__module__}.{rule.__name__}": rule(input) for rule in validation_rules
+    results = {}
+
+    for module, module_rules in validation_rules.items():
+        print(f"  Module {module}")
+        for rule in module_rules:
+            results[f"{rule.module}.{rule.name}"] = (
+                rule,
+                run_validation_rule(rule, input),
+            )
+
+    fail_results = {
+        rulestring: (result[0], cast(ValidationRuleViolatedError, result[1]))
+        for rulestring, result in results.items()
+        if result[1] is not None
     }
-    violations = {k: v for k, v in results.items() if v is not None}
 
-    if not violations:
-        print(colored("PASS", "green"))
-        return
-
-    soft_fails = {
-        source: violation
-        for source, violation in violations.items()
-        if violation.mode == ValidationRuleMode.COMPLAIN
+    complain_fail_results = {
+        rulestring: result
+        for rulestring, result in fail_results.items()
+        if result[1].mode == ValidationRuleMode.COMPLAIN
     }
 
-    for source, fail in soft_fails.items():
+    for rulestring, result in complain_fail_results.items():
         print(
-            "{0}: '{1}' would fail if enforced:\n\tDescription: {2}\n\tViolations: \n\t - {3}".format(
-                colored("COMPLAIN", "yellow"),
-                source,
-                fail.description,
-                "\n\t - ".join(fail.violation_cases),
+            "{0}: {1} failed:\n\tMode: {2}\n\tModule: {3}\n\tDescription: {4}\n\tViolation cases: \n\t - {5}".format(
+                colored("WARN", "yellow"),
+                result[0].name,
+                result[1].mode,
+                result[0].module,
+                result[1].description,
+                "\n\t - ".join(result[1].violation_cases),
             ),
         )
 
-    hard_fails = [
-        "{0}: '{1}' failed:\n\tDescription: {2}\n\tViolations: \n\t - {3}".format(
-            colored("ENFORCE", "red"),
-            source,
-            fail.description,
-            "\n\t - ".join(fail.violation_cases),
-        )
-        for source, fail in violations.items()
-        if fail.mode == ValidationRuleMode.ENFORCE
-    ]
+    enforce_fail_results = {
+        rulestring: result
+        for rulestring, result in fail_results.items()
+        if result[1].mode == ValidationRuleMode.ENFORCE
+    }
 
-    if len(hard_fails) > 0:
-        exp = "\n\t".join(hard_fails)
-        raise BusinessRuleViolatedError(exp)
+    for rulestring, result in enforce_fail_results.items():
+        print(
+            "{0}: {1} failed:\n\tMode: {2}\n\tModule: {3}\n\tDescription: {4}\n\tViolation cases: \n\t - {5}".format(
+                colored("ERROR", "red"),
+                result[0].name,
+                result[1].mode,
+                result[0].module,
+                result[1].description,
+                "\n\t - ".join(result[1].violation_cases),
+            ),
+        )
+
+    if len(enforce_fail_results) > 0:
+        raise ValidationError(Exception("One or more enforced validation rules failed"))
 
 
 # Memoize the JSON Schema definitions.
