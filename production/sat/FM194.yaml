@@ -484,7 +484,12 @@ CONTACT_BIDIR_PARAM:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      flat: 666
+      # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
+      per_second: 9.5
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -522,7 +527,12 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      flat: 666
+      # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
+      per_second: 9.5
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -565,7 +575,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      flat: 666
+      # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
+      per_second: 9.5
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -620,7 +635,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      flat: 666
+      # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
+      per_second: 9.5
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -701,6 +721,11 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      flat: 589
+      # legacy sband: 8.98W
+      per_second: 8.98
     budget_name: KSAT_NOAA
     fixed_contact_duration:
     - 2min
@@ -743,7 +768,12 @@ CONTACT_RXO:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      flat: 589
+      # legacy sband: 8.98W
+      per_second: 8.98
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -779,7 +809,12 @@ CONTACT_RXO_DVBS2X:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      flat: 589
+      # legacy sband: 8.98W
+      per_second: 8.98
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -819,7 +854,12 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      flat: 589
+      # legacy sband: 8.98W
+      per_second: 8.98
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -867,7 +907,12 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      flat: 589
+      # legacy sband: 8.98W
+      per_second: 8.98
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 30
@@ -913,7 +958,12 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      flat: 589
+      # legacy sband: 8.98W
+      per_second: 8.98
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -953,7 +1003,12 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      flat: 589
+      # legacy sband: 8.98W
+      per_second: 8.98
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -993,7 +1048,12 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      flat: 589
+      # legacy sband: 8.98W
+      per_second: 8.98
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -1033,6 +1093,11 @@ TXO_XBAND:
   enabled: true
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3.8W x 155s
+      flat: 589
+      # legacy sband: 8.6W
+      per_second: 19.3
     separation:
   # X-band constraints to comply with NASA/Spire coordination agreement
   #
@@ -1503,6 +1568,11 @@ TXO_XBAND_PROV_KSAT:
   enabled: true
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3.8W x 155s
+      flat: 589
+      # legacy sband: 8.6W
+      per_second: 19.3
     budget_name: KSAT_NOAA
     fixed_contact_duration:
     - 2min
