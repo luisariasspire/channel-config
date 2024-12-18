@@ -2,6 +2,7 @@ CONTACT_BIDIR_PARAM:
   directionality: Bidirectional
   allowed_license_countries:
   - US
+  - LU
   enabled: false
   legal: true
   ground_station_constraints: {}
@@ -36,6 +37,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
   - US
+  - LU
   enabled: false
   legal: true
   ground_station_constraints: {}
@@ -71,6 +73,7 @@ CONTACT_BIDIR_PARAM_UHF:
   directionality: Bidirectional
   allowed_license_countries:
   - US
+  - LU
   enabled: true
   legal: true
   ground_station_constraints: {}
