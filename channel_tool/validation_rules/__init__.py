@@ -10,16 +10,31 @@ from channel_tool.typedefs import ChannelDefinition
 class ValidationRuleInput:
     def __init__(
         self,
+        sat_templates_file: str,
+        sat_templates: Dict[str, ChannelDefinition],
         sat_configs: Dict[str, Dict[str, Optional[ChannelDefinition]]],
+        gs_templates_file: str,
+        gs_templates: Dict[str, ChannelDefinition],
         gs_configs: Dict[str, Dict[str, Optional[ChannelDefinition]]],
     ):
+        self.sat_templates_file = sat_templates_file
+        self.sat_templates = sat_templates
         self.sat_configs = sat_configs
+        self.gs_templates_file = gs_templates_file
+        self.gs_templates = gs_templates
         self.gs_configs = gs_configs
 
 
 class ValidationRuleMode(Enum):
     ENFORCE = 1
     COMPLAIN = 2
+
+
+class ValidationRuleScope(Enum):
+    GROUNDSTATION_TEMPLATE_CHANNEL = 1
+    SATELLITE_TEMPLATE_CHANNEL = 2
+    GROUNDSTATION_CHANNEL = 3
+    SATELLITE_CHANNEL = 4
 
 
 class ValidationRuleViolatedError:
@@ -57,15 +72,11 @@ def get_nested(d: Dict[str, Any], keys_list: List[str]) -> Optional[Any]:
     return get_nested(d[key], keys_list)
 
 
-def class_anno(channel_config: Dict[str, Any], key: str) -> Any:
-    return get_nested(channel_config, ["classification_annotations", key])
-
-
 validation_rules: Dict[str, List[ValidationRule]] = {}
 
 
 def validation_rule(
-    scope: str, description: str, mode: ValidationRuleMode
+    scope: ValidationRuleScope, description: str, mode: ValidationRuleMode
 ) -> Callable[
     [Any], Callable[[ValidationRuleInput], Optional[ValidationRuleViolatedError]]
 ]:
@@ -76,11 +87,40 @@ def validation_rule(
             input: ValidationRuleInput,
         ) -> Optional[ValidationRuleViolatedError]:
             violation_cases = []
-            if scope == "groundstation_channel":
-                for gs_id, gs_config in input.gs_configs.items():
-                    for channel_id, channel_config in gs_config.items():
-                        if not func(gs_id, channel_id, channel_config):
-                            violation_cases.append(f"{channel_id} on {gs_id}")
+            match scope:
+                case ValidationRuleScope.GROUNDSTATION_TEMPLATE_CHANNEL:
+                    for channel_id, channel_config in input.gs_templates.items():
+                        if not func(channel_id, channel_config):
+                            violation_cases.append(
+                                f"{channel_id} in {input.gs_templates_file}"
+                            )
+                case ValidationRuleScope.SATELLITE_TEMPLATE_CHANNEL:
+                    for channel_id, channel_config in input.sat_templates.items():
+                        if not func(channel_id, channel_config):
+                            violation_cases.append(
+                                f"{channel_id} in {input.sat_templates_file}"
+                            )
+                case ValidationRuleScope.GROUNDSTATION_CHANNEL:
+                    for gs_id, gs_config in input.gs_configs.items():
+                        for channel_id, channel_config in gs_config.items():
+                            class_annos = input.gs_templates[channel_id][
+                                "classification_annotations"
+                            ]
+                            if not func(gs_id, channel_id, class_annos, channel_config):
+                                violation_cases.append(f"{channel_id} on {gs_id}")
+                case ValidationRuleScope.SATELLITE_CHANNEL:
+                    for sat_id, sat_config in input.sat_configs.items():
+                        for channel_id, channel_config in sat_config.items():
+                            class_annos = input.gs_templates[channel_id][
+                                "classification_annotations"
+                            ]
+                            if not func(
+                                sat_id, channel_id, class_annos, channel_config
+                            ):
+                                violation_cases.append(f"{channel_id} on {sat_id}")
+                case _:
+                    raise Exception(f"Unknown validation rule scope {scope}")
+
             if len(violation_cases) > 0:
                 return ValidationRuleViolatedError(description, mode, violation_cases)
             return None

@@ -5,6 +5,12 @@ import jsonschema
 from jsonschema.exceptions import best_match
 from termcolor import colored
 
+from channel_tool.asset_config import (
+    infer_asset_type,
+    infer_config_file,
+    load_asset_config,
+    locate_assets,
+)
 from channel_tool.typedefs import ChannelDefinition
 from channel_tool.util import (
     ENVS,
@@ -64,20 +70,23 @@ def validate_all(args: Any) -> None:
     else:
         rule_function_filter = lambda _: True
 
-    print("Validating satellite templates...")
-    validate_file(SATELLITE, SAT_TEMPLATE_FILE)
+    validation_rules = get_validation_rules(rule_module_filter, rule_function_filter)
+
+    print("Checking that satellite templates conform to the schema...")
+    sat_templates: Dict[str, ChannelDefinition] = check_file_conforms_to_schema(
+        SATELLITE, SAT_TEMPLATE_FILE
+    )
     print(colored("PASS", "green"))
 
-    print("Validating ground station templates...")
-    validate_file(GROUND_STATION, GS_TEMPLATE_FILE)
+    print("Checking that ground station templates conform to the schema...")
+    gs_templates: Dict[str, ChannelDefinition] = check_file_conforms_to_schema(
+        GROUND_STATION, GS_TEMPLATE_FILE
+    )
     print(colored("PASS", "green"))
 
     print(
-        "Validating satellite and ground station templates have the same set of channels"
+        "Checking that satellite and ground station templates have the same set of channels"
     )
-    sat_templates: Dict[str, ChannelDefinition] = load_yaml_file(SAT_TEMPLATE_FILE)
-    gs_templates: Dict[str, ChannelDefinition] = load_yaml_file(GS_TEMPLATE_FILE)
-
     sat_template_keys = set(sat_templates.keys())
     gs_template_keys = set(gs_templates.keys())
 
@@ -95,66 +104,102 @@ def validate_all(args: Any) -> None:
     print(colored("PASS", "green"))
 
     print(
-        "Validating channels in satellite and ground station templates have legal and enabled set to false"
+        "Checking that in GS templates, classification annotations are unique to channel ID"
     )
-    for templates, template_file in [
-        (sat_templates, SAT_TEMPLATE_FILE),
-        (gs_templates, GS_TEMPLATE_FILE),
-    ]:
-        for key, config in templates.items():
-            for field in ["legal", "enabled"]:
-                if config[field]:
+    for channel_id_1, channel_config_1 in gs_templates.items():
+        for channel_id_2, channel_config_2 in gs_templates.items():
+            if (
+                channel_id_1 > channel_id_2
+            ):  # ensures each unordered distinct pair is considered only once.
+                if (
+                    channel_config_1["classification_annotations"]
+                    == channel_config_2["classification_annotations"]
+                ):
                     raise TemplateValidationError(
-                        f"Channel {key} in {template_file} should have {field} set to false"
+                        f"In {GS_TEMPLATE_FILE} channels {channel_id_1} and {channel_id_2} have the same classification annotations"
                     )
     print(colored("PASS", "green"))
 
-    validation_rules = get_validation_rules(rule_module_filter, rule_function_filter)
-
     for env in ENVS:
-        print(f"Validating {env} satellites...")
-        sat_dir = os.path.join(env, SAT_DIR)
-        all_sats = os.listdir(sat_dir)
-        for sf in sorted(all_sats):
-            print(f"{sf}... ", end="")
-            validate_file(SATELLITE, os.path.join(sat_dir, sf), sat_template_keys)
+        if args.assets is None:
+            assets = locate_assets(env, "all")
+        else:
+            assets = locate_assets(env, args.assets)
+        all_sats = [a for a in assets if infer_asset_type(a) == SATELLITE]
+        all_stations = [a for a in assets if infer_asset_type(a) == GROUND_STATION]
+        print(
+            f"Starting validation for {env} config: {len(all_sats)} satellites and {len(all_stations)} groundstations"
+        )
+        print(f"Checking {env} satellite configs conform to the schema ...")
+        all_sat_configs = {}
+        for sat_id in sorted(all_sats):
+            print(f"{sat_id}... ", end="")
+            config = check_file_conforms_to_schema(
+                SATELLITE, infer_config_file(env, sat_id)
+            )
+            all_sat_configs[sat_id] = config
             print(colored("PASS", "green"))
 
-        print(f"Validating {env} ground stations...")
-        gs_dir = os.path.join(env, GS_DIR)
-        all_stations = os.listdir(gs_dir)
-        for gsf in sorted(all_stations):
-            print(f"{gsf}... ", end="")
-            validate_file(GROUND_STATION, os.path.join(gs_dir, gsf), gs_template_keys)
+        print(f"Checking {env} groundstation configs conform to the schema ...")
+        all_gs_configs = {}
+        for gs_id in sorted(all_stations):
+            print(f"{gs_id}... ", end="")
+            config = check_file_conforms_to_schema(
+                GROUND_STATION, infer_config_file(env, gs_id)
+            )
+            all_gs_configs[gs_id] = config
+            print(colored("PASS", "green"))
 
-        print(f"Validating {env} config ...")
-        all_sat_configs = {
-            os.path.splitext(sf)[0]: load_yaml_file(os.path.join(sat_dir, sf))
-            for sf in all_sats
-        }
-        all_gs_configs = {
-            os.path.splitext(gsf)[0]: load_yaml_file(os.path.join(gs_dir, gsf))
-            for gsf in all_stations
-        }
+        print(
+            f"Checking {env} satellite configs use channel IDs from {SAT_TEMPLATE_FILE} ..."
+        )
+        for sat_id in sorted(all_sats):
+            check_allowed_keys(
+                SAT_TEMPLATE_FILE, sat_id, all_sat_configs[sat_id], sat_template_keys
+            )
+        print(colored("PASS", "green"))
 
-        run_validation_rules(validation_rules, all_sat_configs, all_gs_configs)
+        print(
+            f"Checking {env} groundstation configs use channel IDs from {GS_TEMPLATE_FILE} ..."
+        )
+        for gs_id in sorted(all_stations):
+            check_allowed_keys(
+                GS_TEMPLATE_FILE, gs_id, all_gs_configs[gs_id], gs_template_keys
+            )
+        print(colored("PASS", "green"))
+
+        print(f"Running validation rules on {env} config ...")
+        validation_rule_input = ValidationRuleInput(
+            SAT_TEMPLATE_FILE,
+            sat_templates,
+            all_sat_configs,
+            GS_TEMPLATE_FILE,
+            gs_templates,
+            all_gs_configs,
+        )
+        run_validation_rules(validation_rules, validation_rule_input)
         print(f"Validation complete for {env}")
 
 
-def validate_file(
-    asset_type: str, cf: str, allowed_keys: Optional[Set[str]] = None
+def check_allowed_keys(
+    template_file: str, asset: str, config: ChannelDefinition, allowed_keys: Set[str]
 ) -> None:
-    config = load_yaml_file(cf)
     for key in config:
-        c = config[key]
-        validate_one(asset_type, c, file=cf, key=key)
-        if allowed_keys and key not in allowed_keys:
+        if key not in allowed_keys:
             raise TemplateValidationError(
-                f"Channel ID {key} in {cf} is absent from {asset_type} template_file"
+                f"Channel ID {key} in {asset} is absent from {template_file}"
             )
 
 
-def validate_one(
+def check_file_conforms_to_schema(asset_type: str, cf: str) -> Any:
+    config = load_yaml_file(cf)
+    for key in config:
+        c = config[key]
+        check_channel_conforms_to_schema(asset_type, c, file=cf, key=key)
+    return config
+
+
+def check_channel_conforms_to_schema(
     asset_type: str, config: ChannelDefinition, file: str, key: str
 ) -> None:
     schema = load_schema(asset_type)
@@ -178,11 +223,8 @@ def run_validation_rule(
 
 def run_validation_rules(
     validation_rules: Dict[str, List[ValidationRule]],
-    all_sat_configs: Dict[str, Dict[str, Optional[ChannelDefinition]]],
-    all_gs_configs: Dict[str, Dict[str, Optional[ChannelDefinition]]],
+    validation_rule_input: ValidationRuleInput,
 ) -> None:
-    input = ValidationRuleInput(all_sat_configs, all_gs_configs)
-
     results = {}
 
     for module, module_rules in validation_rules.items():
@@ -190,7 +232,7 @@ def run_validation_rules(
         for rule in module_rules:
             results[f"{rule.module}.{rule.name}"] = (
                 rule,
-                run_validation_rule(rule, input),
+                run_validation_rule(rule, validation_rule_input),
             )
 
     fail_results = {

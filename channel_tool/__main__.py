@@ -48,10 +48,10 @@ from channel_tool.util import (
     warn,
 )
 from channel_tool.validation import (
+    check_channel_conforms_to_schema,
     load_gs_schema,
     load_sat_schema,
     validate_all,
-    validate_one,
 )
 
 CONTACT_TYPE_DEFS: DefsFile = load_yaml_file("contact_type_defs.yaml")
@@ -559,7 +559,9 @@ def apply_update(
                 updated_chan = tfm(asset, channel, existing_chan)
                 if updated_chan is not None:
                     asset_type = infer_asset_type(asset)
-                    validate_one(asset_type, updated_chan, file=asset, key=channel)
+                    check_channel_conforms_to_schema(
+                        asset_type, updated_chan, file=asset, key=channel
+                    )
                 if updated_chan != existing_chan:
                     if yes or confirm_changes(
                         asset, channel, existing_chan, updated_chan
@@ -977,6 +979,16 @@ VALIDATE_PARSER.add_argument(
     "-f",
     "--function",
     help="Validation rule function name substring",
+    type=str,
+    required=False,
+)
+VALIDATE_PARSER.add_argument(
+    "-a",
+    "--assets",
+    help=(
+        "The satellites or ground stations to validate. "
+        "Can be a comma separated list of asset IDs, 'all_gs', 'all_sat', or 'all'."
+    ),
     type=str,
     required=False,
 )

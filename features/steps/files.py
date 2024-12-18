@@ -12,7 +12,7 @@ from channel_tool.util import (
     dump_yaml_file,
     load_yaml_file,
 )
-from channel_tool.validation import validate_file
+from channel_tool.validation import check_file_conforms_to_schema
 
 HUMAN_ASSET_TYPE_TO_PATH = {"ground station": "gs", "satellite": "sat"}
 HUMAN_ASSET_TYPE_TO_PROGRAMMATIC = {
@@ -98,7 +98,7 @@ def given_has_no_config(context, asset_type, id):
 @step("there is a valid configuration for the {asset_type} '{id}'")
 def step_has_config(context, asset_type, id):
     with cwd_from(context):
-        validate_file(
+        check_file_conforms_to_schema(
             HUMAN_ASSET_TYPE_TO_PROGRAMMATIC[asset_type], config_path(asset_type, id)
         )
 

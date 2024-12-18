@@ -3,20 +3,27 @@ from typing import Any, Dict, Optional
 from channel_tool.validation_rules import (
     ValidationRuleInput,
     ValidationRuleMode,
+    ValidationRuleScope,
     ValidationRuleViolatedError,
-    class_anno,
     get_nested,
     validation_rule,
 )
 
+"""
+    Rules to check consistency of classification annotations in the GS templates
+"""
+
+
+def class_anno(channel_config: Dict[str, Any], key: str) -> Any:
+    return get_nested(channel_config, ["classification_annotations", key])
+
 
 @validation_rule(
-    scope="groundstation_channel",
+    scope=ValidationRuleScope.GROUNDSTATION_TEMPLATE_CHANNEL,
     description="DVBS2X-encoded space-ground SBand must have classification annotation space_ground_sband_dvbs2x_pls",
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def space_ground_sband_dvbs2x_must_have_pls_value(
-    gs_id: str,
     channel_id: str,
     channel_config: Dict[str, Any],
 ) -> bool:
@@ -30,12 +37,11 @@ def space_ground_sband_dvbs2x_must_have_pls_value(
 
 
 @validation_rule(
-    scope="groundstation_channel",
+    scope=ValidationRuleScope.GROUNDSTATION_TEMPLATE_CHANNEL,
     description="Space-ground SBand must have classification annotation space_ground_sband_bandwidth_mhz",
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def space_ground_sband_must_have_bandwidth(
-    gs_id: str,
     channel_id: str,
     channel_config: Dict[str, Any],
 ) -> bool:
@@ -47,12 +53,11 @@ def space_ground_sband_must_have_bandwidth(
 
 
 @validation_rule(
-    scope="groundstation_channel",
+    scope=ValidationRuleScope.GROUNDSTATION_TEMPLATE_CHANNEL,
     description="Space-ground XBand must have classification annotation space_ground_xband_dvbs2x_pls",
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def space_ground_xband_must_have_pls_value(
-    gs_id: str,
     channel_id: str,
     channel_config: Dict[str, Any],
 ) -> bool:
@@ -64,12 +69,11 @@ def space_ground_xband_must_have_pls_value(
 
 
 @validation_rule(
-    scope="groundstation_channel",
+    scope=ValidationRuleScope.GROUNDSTATION_TEMPLATE_CHANNEL,
     description="Space-ground XBand must have classification annotation space_ground_xband_bandwidth_mhz",
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def space_ground_xband_must_have_bandwidth(
-    gs_id: str,
     channel_id: str,
     channel_config: Dict[str, Any],
 ) -> bool:
