@@ -4,7 +4,6 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
   allowed_license_countries:
   - AU
   - MN
-  - NZ
   enabled: false
   legal: true
   satellite_constraints:
