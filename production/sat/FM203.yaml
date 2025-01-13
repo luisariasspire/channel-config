@@ -669,7 +669,7 @@ CONTACT_BIDIR_PARAM_UHF:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
