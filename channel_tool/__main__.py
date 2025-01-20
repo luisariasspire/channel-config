@@ -48,7 +48,7 @@ from channel_tool.util import (
     warn,
 )
 from channel_tool.validation import (
-    check_channel_conforms_to_schema,
+    check_element_conforms_to_schema,
     load_gs_schema,
     load_sat_schema,
     validate_all,
@@ -559,7 +559,7 @@ def apply_update(
                 updated_chan = tfm(asset, channel, existing_chan)
                 if updated_chan is not None:
                     asset_type = infer_asset_type(asset)
-                    check_channel_conforms_to_schema(
+                    check_element_conforms_to_schema(
                         asset_type, updated_chan, file=asset, key=channel
                     )
                 if updated_chan != existing_chan:

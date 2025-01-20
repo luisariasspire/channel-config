@@ -1,6 +1,7 @@
-from typing import Any, Dict
+from typing import Any, Dict, Union
 
 from channel_tool.validation_rules import (
+    ValidationRuleInput,
     ValidationRuleMode,
     ValidationRuleScope,
     validation_rule,
@@ -13,9 +14,10 @@ from channel_tool.validation_rules import (
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def gs_template_channels_must_have_enabled_false(
+    input: ValidationRuleInput,
     channel_id: str,
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     return not channel_config["enabled"]
 
 
@@ -25,9 +27,10 @@ def gs_template_channels_must_have_enabled_false(
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def gs_template_channels_must_have_legal_false(
+    input: ValidationRuleInput,
     channel_id: str,
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     return not channel_config["legal"]
 
 
@@ -37,9 +40,10 @@ def gs_template_channels_must_have_legal_false(
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def sat_template_channels_must_have_enabled_false(
+    input: ValidationRuleInput,
     channel_id: str,
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     return not channel_config["enabled"]
 
 
@@ -49,7 +53,8 @@ def sat_template_channels_must_have_enabled_false(
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def sat_template_channels_must_have_legal_false(
+    input: ValidationRuleInput,
     channel_id: str,
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     return not channel_config["legal"]

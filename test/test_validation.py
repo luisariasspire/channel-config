@@ -1,7 +1,7 @@
 import pytest
 
 from channel_tool.util import GROUND_STATION, SATELLITE, load_yaml_file
-from channel_tool.validation import ValidationError, check_channel_conforms_to_schema
+from channel_tool.validation import ValidationError, check_element_conforms_to_schema
 
 
 @pytest.mark.parametrize(
@@ -9,7 +9,7 @@ from channel_tool.validation import ValidationError, check_channel_conforms_to_s
 )
 def test_validate_one_valid_gs_config(key, config):
     try:
-        check_channel_conforms_to_schema(
+        check_element_conforms_to_schema(
             GROUND_STATION, config, file="valid_gs_configs.yaml", key=key
         )
     except ValidationError as e:
@@ -21,7 +21,7 @@ def test_validate_one_valid_gs_config(key, config):
 )
 def test_validate_one_broken_gs_config(key, config):
     try:
-        check_channel_conforms_to_schema(
+        check_element_conforms_to_schema(
             GROUND_STATION, config, file="broken_gs_configs.yaml", key=key
         )
         raise AssertionError(f"Expected ValidationError for GS config {key}")
@@ -34,7 +34,7 @@ def test_validate_one_broken_gs_config(key, config):
 )
 def test_validate_one_valid_sat_config(key, config):
     try:
-        check_channel_conforms_to_schema(
+        check_element_conforms_to_schema(
             SATELLITE, config, file="valid_sat_configs.yaml", key=key
         )
     except ValidationError as e:
@@ -46,7 +46,7 @@ def test_validate_one_valid_sat_config(key, config):
 )
 def test_validate_one_broken_sat_config(key, config):
     try:
-        check_channel_conforms_to_schema(
+        check_element_conforms_to_schema(
             SATELLITE, config, file="broken_sat_configs.yaml", key=key
         )
         raise AssertionError(f"Expected ValidationError for satellite config {key}")

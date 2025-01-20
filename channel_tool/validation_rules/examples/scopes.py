@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 from channel_tool.validation_rules import (
     ValidationRuleInput,
@@ -15,11 +15,12 @@ from channel_tool.validation_rules import (
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def groundstation_channel_example(
+    input: ValidationRuleInput,
     gs_id: str,
     channel_id: str,
     class_annos: Dict[str, Any],
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     # print(f"Prototype rule gs {gs_id}, channel {channel_id}, class_annos: {class_annos}")
     return True
 
@@ -30,11 +31,12 @@ def groundstation_channel_example(
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def satellite_channel_example(
+    input: ValidationRuleInput,
     sat_id: str,
     channel_id: str,
     class_annos: Dict[str, Any],
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     # print(f"Prototype rule satellite {sat_id}, channel {channel_id}, class_annos: {class_annos}")
     return True
 
@@ -45,9 +47,10 @@ def satellite_channel_example(
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def groundstation_template_channel_example(
+    input: ValidationRuleInput,
     channel_id: str,
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     # print(f"Prototype GS template channel rule, channel {channel_id}")
     return True
 
@@ -58,8 +61,21 @@ def groundstation_template_channel_example(
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def satellite_template_channel_example(
+    input: ValidationRuleInput,
     channel_id: str,
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     # print(f"Prototype satellite template channel rule, channel {channel_id}")
+    return True
+
+
+@validation_rule(
+    scope=ValidationRuleScope.GENERAL,
+    description="Example rule with general scope",
+    mode=ValidationRuleMode.ENFORCE,
+)  # type: ignore
+def general_example(
+    input: ValidationRuleInput,
+) -> Union[str, bool]:
+    # print(f"Prototype general rule")
     return True

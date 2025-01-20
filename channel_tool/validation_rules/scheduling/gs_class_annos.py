@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 from channel_tool.validation_rules import (
     ValidationRuleInput,
@@ -19,11 +19,12 @@ from channel_tool.validation_rules import (
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def gs_class_annos_must_match_template(
+    input: ValidationRuleInput,
     gs_id: str,
     channel_id: str,
     class_annos: Dict[str, Any],
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     if class_annos != channel_config["classification_annotations"]:
         return False
     return True

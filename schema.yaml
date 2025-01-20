@@ -448,6 +448,70 @@ classification_annotations: &classification_annotations
     - space_ground_sband
     - space_ground_xband
 
+separation_constraint: &separation_constraint
+  anyOf:
+    - type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+          enum: [minimum_distance]
+        norad_id:
+          type: number
+        distance_m:
+          type: number
+        modifier: *constraint_modifier
+    - type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+          enum: [no_overlapping_transits]
+        norad_id:
+          type: number
+        modifier: *constraint_modifier
+    - type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+          enum: [minimum_angular_separation]
+        norad_id:
+          type: number
+        angle_deg:
+          type: number
+        modifier: *constraint_modifier
+    - type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+          enum: [avoid_ground_station_beams]
+        norad_ids:
+          type: array
+          items:
+            type: number
+        station_coordinates:
+          type: array
+          items: *geodetic_coordinate
+        beamwidth_deg:
+          type: number
+        modifier: *constraint_modifier
+    - type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+          enum: [shared_constraint_set]
+        name:
+          type: string
+        modifier: *constraint_modifier
+
+
+# The full JSON schema for shared separation constraint sets
+shared_separation_constraint_sets_schema:
+  type: array
+  items: *separation_constraint
 
 # The full JSON schema for ground stations.
 gs_schema:
@@ -569,55 +633,7 @@ sat_schema:
               pattern: *humantime
         separation:
           type: array
-          items:
-            anyOf:
-              - type: object
-                additionalProperties: false
-                properties:
-                  type:
-                    type: string
-                    enum: [minimum_distance]
-                  norad_id:
-                    type: number
-                  distance_m:
-                    type: number
-                  modifier: *constraint_modifier
-              - type: object
-                additionalProperties: false
-                properties:
-                  type:
-                    type: string
-                    enum: [no_overlapping_transits]
-                  norad_id:
-                    type: number
-                  modifier: *constraint_modifier
-              - type: object
-                additionalProperties: false
-                properties:
-                  type:
-                    type: string
-                    enum: [minimum_angular_separation]
-                  norad_id:
-                    type: number
-                  angle_deg:
-                    type: number
-                  modifier: *constraint_modifier
-              - type: object
-                additionalProperties: false
-                properties:
-                  type:
-                    type: string
-                    enum: [avoid_ground_station_beams]
-                  norad_ids:
-                    type: array
-                    items:
-                      type: number
-                  station_coordinates:
-                    type: array
-                    items: *geodetic_coordinate
-                  beamwidth_deg:
-                    type: number
-                  modifier: *constraint_modifier
+          items: *separation_constraint
   required:
     - legal
     - enabled

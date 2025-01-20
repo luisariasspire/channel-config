@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 from channel_tool.validation_rules import (
     ValidationRuleInput,
@@ -24,9 +24,10 @@ def class_anno(channel_config: Dict[str, Any], key: str) -> Any:
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def space_ground_sband_dvbs2x_must_have_pls_value(
+    input: ValidationRuleInput,
     channel_id: str,
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     if (
         class_anno(channel_config, "space_ground_sband")
         and class_anno(channel_config, "space_ground_sband_encoding") == "DVBS2X"
@@ -42,9 +43,10 @@ def space_ground_sband_dvbs2x_must_have_pls_value(
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def space_ground_sband_must_have_bandwidth(
+    input: ValidationRuleInput,
     channel_id: str,
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     if class_anno(channel_config, "space_ground_sband") and not class_anno(
         channel_config, "space_ground_sband_bandwidth_mhz"
     ):
@@ -58,9 +60,10 @@ def space_ground_sband_must_have_bandwidth(
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def space_ground_xband_must_have_pls_value(
+    input: ValidationRuleInput,
     channel_id: str,
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     if class_anno(channel_config, "space_ground_xband") and not class_anno(
         channel_config, "space_ground_xband_dvbs2x_pls"
     ):
@@ -74,9 +77,10 @@ def space_ground_xband_must_have_pls_value(
     mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def space_ground_xband_must_have_bandwidth(
+    input: ValidationRuleInput,
     channel_id: str,
     channel_config: Dict[str, Any],
-) -> bool:
+) -> Union[str, bool]:
     if class_anno(channel_config, "space_ground_xband") and not class_anno(
         channel_config, "space_ground_xband_bandwidth_mhz"
     ):

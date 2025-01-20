@@ -21,6 +21,8 @@ from channel_tool.util import (
     SAT_TEMPLATE_FILE,
     SATELLITE,
     SCHEMA_FILE,
+    SHARED_CONSTRAINT_SET,
+    SHARED_SEP_CONSTRAINTS_DIR,
     load_yaml_file,
 )
 from channel_tool.validation_rules import (
@@ -121,6 +123,28 @@ def validate_all(args: Any) -> None:
     print(colored("PASS", "green"))
 
     for env in ENVS:
+        print(f"Checking {env} shared constraint sets conform to the schema ...")
+        shared_constraint_sets = {}
+        shared_constraint_set_dir = os.path.join(env, SHARED_SEP_CONSTRAINTS_DIR)
+        if os.path.isdir(shared_constraint_set_dir):
+            shared_constraint_set_files = os.listdir(shared_constraint_set_dir)
+            shared_sep_constraint_names = [
+                os.path.splitext(os.path.basename(p))[0]
+                for p in shared_constraint_set_files
+            ]
+            for shared_sep_constraint_set in sorted(shared_sep_constraint_names):
+                print(f"{shared_sep_constraint_set}... ", end="")
+                config = check_file_conforms_to_schema(
+                    SHARED_CONSTRAINT_SET,
+                    os.path.join(
+                        env,
+                        SHARED_SEP_CONSTRAINTS_DIR,
+                        shared_sep_constraint_set + ".yaml",
+                    ),
+                )
+                shared_constraint_sets[shared_sep_constraint_set] = config
+                print(colored("PASS", "green"))
+
         if args.assets is None:
             assets = locate_assets(env, "all")
         else:
@@ -176,6 +200,7 @@ def validate_all(args: Any) -> None:
             GS_TEMPLATE_FILE,
             gs_templates,
             all_gs_configs,
+            shared_constraint_sets,
         )
         run_validation_rules(validation_rules, validation_rule_input)
         print(f"Validation complete for {env}")
@@ -193,14 +218,20 @@ def check_allowed_keys(
 
 def check_file_conforms_to_schema(asset_type: str, cf: str) -> Any:
     config = load_yaml_file(cf)
-    for key in config:
-        c = config[key]
-        check_channel_conforms_to_schema(asset_type, c, file=cf, key=key)
+
+    if asset_type == GROUND_STATION or asset_type == SATELLITE:
+        for key in config:
+            c = config[key]
+            check_element_conforms_to_schema(asset_type, c, file=cf, key=key)
+    elif asset_type == SHARED_CONSTRAINT_SET:
+        check_element_conforms_to_schema(asset_type, config, file=cf, key=None)
+    else:
+        raise Exception(f"Unknown asset type {asset_type}")
     return config
 
 
-def check_channel_conforms_to_schema(
-    asset_type: str, config: ChannelDefinition, file: str, key: str
+def check_element_conforms_to_schema(
+    asset_type: str, config: Any, file: str, key: Optional[str]
 ) -> None:
     schema = load_schema(asset_type)
     errs = list(jsonschema.Draft7Validator(schema).iter_errors(config))  # type: ignore
@@ -249,7 +280,7 @@ def run_validation_rules(
 
     for rulestring, result in complain_fail_results.items():
         print(
-            "{0}: {1} failed:\n\tMode: {2}\n\tModule: {3}\n\tDescription: {4}\n\tViolation cases: \n\t - {5}".format(
+            "{0}: Rule {1} failed:\n\tMode: {2}\n\tModule: {3}\n\tDescription: {4}\n\tViolation cases: \n\t - {5}".format(
                 colored("WARN", "yellow"),
                 result[0].name,
                 result[1].mode,
@@ -284,6 +315,7 @@ def run_validation_rules(
 # Memoize the JSON Schema definitions.
 loaded_gs_schema = None
 loaded_sat_schema = None
+loaded_shared_constraint_set_schema = None
 
 
 def load_schema(asset_type: str) -> Any:
@@ -291,14 +323,24 @@ def load_schema(asset_type: str) -> Any:
         return load_gs_schema()
     elif asset_type == SATELLITE:
         return load_sat_schema()
+    elif asset_type == SHARED_CONSTRAINT_SET:
+        return load_shared_constraint_set_schema()
     else:
         raise Exception(f"Unknown asset type {asset_type}")
+
+
+def load_shared_constraint_set_schema() -> Any:
+    global loaded_shared_constraint_set_schema
+    if not loaded_shared_constraint_set_schema:
+        loaded_shared_constraint_set_schema = load_yaml_file(SCHEMA_FILE)[
+            "shared_separation_constraint_sets_schema"
+        ]
+    return loaded_shared_constraint_set_schema
 
 
 def load_gs_schema() -> Any:
     global loaded_gs_schema
     if not loaded_gs_schema:
-        # File has "gs_schema", "sat_schema" and "definitions" as top-level fields.
         loaded_gs_schema = load_yaml_file(SCHEMA_FILE)["gs_schema"]
     return loaded_gs_schema
 
@@ -306,6 +348,5 @@ def load_gs_schema() -> Any:
 def load_sat_schema() -> Any:
     global loaded_sat_schema
     if not loaded_sat_schema:
-        # File has "gs_schema", "sat_schema" and "definitions" as top-level fields.
         loaded_sat_schema = load_yaml_file(SCHEMA_FILE)["sat_schema"]
     return loaded_sat_schema

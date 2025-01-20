@@ -17,9 +17,11 @@ from channel_tool.typedefs import (
 
 SAT_DIR = "sat"
 GS_DIR = "gs"
+SHARED_SEP_CONSTRAINTS_DIR = "shared_separation_constraint_sets"
 
 SATELLITE: SatelliteKind = "satellite"
 GROUND_STATION: GroundStationKind = "groundstation"
+SHARED_CONSTRAINT_SET: str = "shared_constraint_set"
 
 TK_DOMAINS: Mapping[Environment, str] = {
     "staging": "staging.spire.sh",
