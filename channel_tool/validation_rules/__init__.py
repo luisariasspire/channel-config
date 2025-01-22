@@ -100,9 +100,12 @@ def validation_rule(
                         )
                 case ValidationRuleScope.SATELLITE_TEMPLATE_CHANNEL:
                     for channel_id, channel_config in input.sat_templates.items():
+                        class_annos = input.gs_templates[channel_id][
+                            "classification_annotations"
+                        ]
                         interpret_rule_result(
                             violation_cases,
-                            func(input, channel_id, channel_config),
+                            func(input, channel_id, class_annos, channel_config),
                             f"{channel_id} in {input.sat_templates_file}",
                         )
                 case ValidationRuleScope.GROUNDSTATION_CHANNEL:

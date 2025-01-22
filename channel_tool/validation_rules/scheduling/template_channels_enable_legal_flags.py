@@ -42,6 +42,7 @@ def gs_template_channels_must_have_legal_false(
 def sat_template_channels_must_have_enabled_false(
     input: ValidationRuleInput,
     channel_id: str,
+    class_annos: Dict[str, Any],
     channel_config: Dict[str, Any],
 ) -> Union[str, bool]:
     return not channel_config["enabled"]
@@ -55,6 +56,7 @@ def sat_template_channels_must_have_enabled_false(
 def sat_template_channels_must_have_legal_false(
     input: ValidationRuleInput,
     channel_id: str,
+    class_annos: Dict[str, Any],
     channel_config: Dict[str, Any],
 ) -> Union[str, bool]:
     return not channel_config["legal"]
