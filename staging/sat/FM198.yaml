@@ -292,7 +292,7 @@ CONTACT_BIDIR_PARAM_UHF:
   #- BM
   #- CL
   #- FK
-  #- GB
+  - GB
   #- GH
   #- IE
   #- JP
