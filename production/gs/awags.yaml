@@ -219,8 +219,8 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 1312.95
+  - min_elevation_deg: 17
+    downlink_rate_kbps: 1800.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
   window_parameters:
