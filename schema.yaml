@@ -398,27 +398,20 @@ classification_annotations: &classification_annotations
     provider:
       type: string
       enum: [SPIRE, KSAT]
-      required: true
     directionality:
       type: string
       enum: [BIDIR, TXO]
-      required: true
     adcs_pointing:
       type: string
       enum: [TRACK, NADIR]
-      required: true
     space_ground_uhf:
       type: boolean
-      required: true
     ground_space_uhf:
       type: boolean
-      required: true
     space_ground_sband:
       type: boolean
-      required: true
     ground_space_sband:
       type: boolean
-      required: true
     space_ground_sband_mid_freq_mhz:
       type: number
     space_ground_sband_bandwidth_mhz:
@@ -430,7 +423,6 @@ classification_annotations: &classification_annotations
       type: integer
     space_ground_xband:
       type: boolean
-      required: true
     space_ground_xband_dvbs2x_pls:
       type: integer
     space_ground_xband_bandwidth_mhz:
@@ -439,6 +431,9 @@ classification_annotations: &classification_annotations
       type: boolean
     can_run_rpcs:
       type: boolean
+    jira_ticket:
+      type: string
+      pattern: ^[A-Z]+-\d+$
   required:
     - provider
     - directionality
@@ -447,6 +442,10 @@ classification_annotations: &classification_annotations
     - ground_space_uhf
     - space_ground_sband
     - space_ground_xband
+    - can_sync_schedule
+    - can_run_rpcs
+    - ground_space_sband
+    - adcs_pointing
 
 separation_constraint: &separation_constraint
   anyOf:

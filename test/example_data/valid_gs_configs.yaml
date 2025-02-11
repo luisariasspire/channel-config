@@ -19,6 +19,9 @@ MINIMAL_GS_CONFIG: &gs_base
     ground_space_uhf: true
     space_ground_sband: false
     space_ground_xband: false
+    can_sync_schedule: true
+    can_run_rpcs: true
+    ground_space_sband: true
 
 
 GS_CONFIG_WITH_CONSTRAINTS:
