@@ -632,6 +632,47 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
         fec: 255
         tx_carrier_frequency_hz: 2200500000
 
+CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ_PLS_87:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 10000
+
+    uplink_rate_kbps: 0
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
   allowed_license_countries:

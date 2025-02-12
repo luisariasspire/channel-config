@@ -206,8 +206,8 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 5
     space_ground_xband_bandwidth_mhz: 10
-
-CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
+# The 3m dish has ~ 15db of SNR allowing PLS 87 (2.391mbps)
+CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ_PLS_87:
   directionality: SpaceToEarth
   allowed_license_countries:
   - DE
@@ -229,7 +229,6 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
         # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
         freq: 70000000
       bandaid_override:
-        # The 3m dish has ~ 15db of SNR allowing PLS 87 (2.391mbps)
         pls: 87
   classification_annotations:
     provider: SPIRE
@@ -244,7 +243,7 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
     space_ground_xband: false
     space_ground_sband_mid_freq_mhz: 2200.5
     space_ground_sband_encoding: DVBS2X
-    space_ground_sband_dvbs2x_pls: 39
+    space_ground_sband_dvbs2x_pls: 87
     space_ground_sband_bandwidth_mhz: 1
 CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   directionality: SpaceToEarth
