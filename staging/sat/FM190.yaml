@@ -597,7 +597,7 @@ CONTACT_RXO_DVBS2X_BW1MHZ_23PLS_25DEG:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -634,7 +634,7 @@ CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s

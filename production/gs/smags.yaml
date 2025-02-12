@@ -39,7 +39,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
   allowed_license_countries:
   - DE
   - LU
-  - SG
   - US
   enabled: true
   legal: true
@@ -95,7 +94,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   allowed_license_countries:
   - DE
   - LU
-  - SG
   - US
   enabled: true
   legal: true
@@ -190,7 +188,6 @@ CONTACT_RXO_DVBS2X_BW1MHZ_23PLS_25DEG:
   allowed_license_countries:
   - DE
   - LU
-  - SG
   - US
   enabled: true
   legal: true
@@ -239,7 +236,6 @@ CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
   allowed_license_countries:
   - DE
   - LU
-  - SG
   - US
   enabled: true
   legal: true

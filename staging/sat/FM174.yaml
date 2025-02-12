@@ -111,8 +111,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
   - PT
   - SG
   - SH
+  - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -160,8 +161,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   - PT
   - SG
   - SH
+  - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -441,6 +443,7 @@ CONTACT_RXO_DVBS2X_BW1MHZ_23PLS_25DEG:
   - PT
   - SG
   - SH
+  - US
   - ZA
   enabled: true
   legal: true
@@ -478,6 +481,7 @@ CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
   - PT
   - SG
   - SH
+  - US
   - ZA
   enabled: true
   legal: true
