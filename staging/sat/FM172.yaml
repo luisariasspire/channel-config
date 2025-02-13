@@ -148,6 +148,9 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
       protocol: DVBS2X
       radio_band: SBAND
       use_radionet: true
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
 CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   directionality: Bidirectional
   allowed_license_countries:
@@ -180,6 +183,18 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
     downlink_rate_kbps: 1120.0
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+      use_radionet: true
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
 CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   directionality: Bidirectional
