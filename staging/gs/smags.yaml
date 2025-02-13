@@ -89,6 +89,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
     space_ground_sband_dvbs2x_pls: 23
     space_ground_sband_bandwidth_mhz: 1
     jira_ticket: PRI-184
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
 CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   directionality: Bidirectional
   allowed_license_countries:
@@ -127,6 +128,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
     jira_ticket: PRI-184
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
 CONTACT_BIDIR_PARAM_UHF:
   directionality: Bidirectional
   allowed_license_countries:
@@ -230,6 +232,7 @@ CONTACT_RXO_DVBS2X_BW1MHZ_23PLS_25DEG:
     space_ground_sband_dvbs2x_pls: 23
     space_ground_sband_bandwidth_mhz: 1
     jira_ticket: PRI-184
+  contact_type: CONTACT_SPACE_GROUND_TXO
 CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -261,3 +264,4 @@ CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
     jira_ticket: PRI-184
+  contact_type: CONTACT_SPACE_GROUND_TXO
