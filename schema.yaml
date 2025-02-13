@@ -571,6 +571,34 @@ sat_schema:
   additionalProperties: false
   properties:
     <<: *base_properties
+    dynamic_window_parameters:
+      type: object
+      additionalProperties: false
+      properties:
+        link_state_cues:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              topics:
+                type: array
+                items:
+                  type: string
+              offset:
+                type: object
+                additionalProperties: false
+                properties:
+                  offset_type:
+                    type: string
+                    enum: [absolute, relative]
+                  value: 
+                    type: number
+                required:
+                  - offset_type
+                  - value
+            required:
+              - topics 
     satellite_constraints:
       type: object
       additionalProperties: false
