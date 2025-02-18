@@ -149,7 +149,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
     min_duration: 4m
-  - min_elevation_deg: 25
+  - min_elevation_deg: 46
       # spec * 0.75
     downlink_rate_kbps: 1888.13
     uplink_rate_kbps: 5.6
@@ -172,7 +172,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
     - radio_band: UHF
   dynamic_window_parameters:
     transmit_times:
-      elevation_threshold_deg: 25
+      elevation_threshold_deg: 46
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -205,7 +205,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
     min_duration: 4m
-  - min_elevation_deg: 30
+  - min_elevation_deg: 50
       # spec * 0.75
     downlink_rate_kbps: 2169.54
     uplink_rate_kbps: 5.6
@@ -229,7 +229,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
 
   dynamic_window_parameters:
     transmit_times:
-      elevation_threshold_deg: 30
+      elevation_threshold_deg: 50
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -398,7 +398,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 25
+  - min_elevation_deg: 50
       # spec * 0.75
     downlink_rate_kbps: 2142.49
     uplink_rate_kbps: 0.0
@@ -445,7 +445,7 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 30
+  - min_elevation_deg: 55
       # spec * 0.75
     downlink_rate_kbps: 2592.57
     uplink_rate_kbps: 0.0
