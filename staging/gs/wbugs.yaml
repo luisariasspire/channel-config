@@ -203,6 +203,31 @@ CONTACT_BIDIR_PARAM_UHF:
     space_ground_sband: false
     ground_space_sband: false
     space_ground_xband: false
+CONTACT_BIDIR_PARAM_UHF_WBUGS_PAR_437:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
+    min_duration: 2m
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: false
+    can_run_rpcs: true
+    space_ground_sband: false
+    ground_space_sband: false
+    space_ground_xband: false
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
