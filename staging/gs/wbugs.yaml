@@ -228,6 +228,7 @@ CONTACT_BIDIR_PARAM_UHF_WBUGS_PAR_437:
     space_ground_sband: false
     ground_space_sband: false
     space_ground_xband: false
+    jira_ticket: PAR-437
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:

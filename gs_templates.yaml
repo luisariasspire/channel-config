@@ -581,6 +581,7 @@ CONTACT_BIDIR_PARAM_UHF_WBUGS_PAR_437:
     space_ground_sband: false
     ground_space_sband: false
     space_ground_xband: false
+    jira_ticket: PAR-437
 CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
