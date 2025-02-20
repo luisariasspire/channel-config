@@ -30,7 +30,7 @@ CONTACT_BIDIR_PARAM:
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
 CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
@@ -82,7 +82,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 23
     space_ground_sband_bandwidth_mhz: 1
@@ -120,7 +120,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
@@ -176,7 +176,7 @@ CONTACT_RXO:
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
 CONTACT_RXO_DVBS2X_BW1MHZ_23PLS_25DEG:
@@ -221,7 +221,7 @@ CONTACT_RXO_DVBS2X_BW1MHZ_23PLS_25DEG:
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 23
     space_ground_sband_bandwidth_mhz: 1
@@ -252,7 +252,7 @@ CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1

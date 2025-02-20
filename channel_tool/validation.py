@@ -63,12 +63,12 @@ class TemplateValidationError(Exception):
 
 def validate_all(args: Any) -> None:
     if args.module is not None:
-        rule_module_filter = lambda rule: args.module in rule.__module__
+        rule_module_filter = lambda rule: args.module in rule.module
     else:
         rule_module_filter = lambda _: True
 
     if args.function is not None:
-        rule_function_filter = lambda rule: args.function in rule.__name__
+        rule_function_filter = lambda rule: args.function in rule.name
     else:
         rule_function_filter = lambda _: True
 

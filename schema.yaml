@@ -400,7 +400,7 @@ classification_annotations: &classification_annotations
       enum: [SPIRE, KSAT]
     directionality:
       type: string
-      enum: [BIDIR, TXO]
+      enum: [BIDIR, TXO, RXO]
     adcs_pointing:
       type: string
       enum: [TRACK, NADIR]

@@ -181,11 +181,19 @@ def get_validation_rules(
     rule_function_filter: Callable[[Any], bool],
 ) -> Dict[str, List[ValidationRule]]:
     print(f"Importing validation rules")
+    matching_rules = {}
     for path in Path("channel_tool/validation_rules").rglob("*.py"):
         dir = path.parent.__str__().replace("/", ".")
         package = importlib.import_module(f"{dir}.{path.stem}")
     for module_name, module_rules in validation_rules.items():
-        print(f"Found {len(module_rules)} rules in module {module_name}:")
-        for rule in module_rules:
-            print(f"  - {rule.name}")
-    return validation_rules
+        module_matching_rules = [
+            rule
+            for rule in module_rules
+            if rule_module_filter(rule) and rule_function_filter(rule)
+        ]
+        if len(module_matching_rules) > 0:
+            print(f"Found {len(module_matching_rules)} rules in module {module_name}:")
+            for rule in module_matching_rules:
+                print(f"  - {rule.name}")
+            matching_rules[module_name] = module_matching_rules
+    return matching_rules

@@ -35,7 +35,7 @@ CONTACT_BIDIR_PARAM:
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
 CONTACT_BIDIR_PARAM_DVBS2X:
@@ -75,7 +75,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
@@ -136,7 +136,7 @@ CONTACT_RXO:
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
 CONTACT_RXO_DVBS2X:
@@ -166,7 +166,7 @@ CONTACT_RXO_DVBS2X:
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2020.5
+    space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
