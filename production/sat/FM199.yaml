@@ -5,7 +5,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
   - AU
   - MN
   - NZ
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
