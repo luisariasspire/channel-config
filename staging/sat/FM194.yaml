@@ -122,7 +122,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      flat: 666
+      # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
+      per_second: 9.5
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -174,7 +179,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      flat: 666
+      # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
+      per_second: 9.5
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -499,7 +509,12 @@ CONTACT_RXO_DVBS2X_BW1MHZ_23PLS_25DEG:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      flat: 589
+      # legacy sband: 8.98W
+      per_second: 8.98
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -536,7 +551,12 @@ CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      flat: 589
+      # legacy sband: 8.98W
+      per_second: 8.98
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 40
