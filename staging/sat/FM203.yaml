@@ -344,7 +344,7 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
@@ -769,7 +769,7 @@ TXO_XBAND_PROV_KSAT:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
