@@ -32,6 +32,7 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
       bandaid_mode: RX_SBAND_TX_XBAND
       bandaid_override:
         oort_dest_host: localhost
+        vbatt/voltage/min: 6700
 BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
   directionality: Bidirectional
   contact_type: CONTACT_SPACE_GROUND_BIDIR
@@ -201,7 +202,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
     uplink_rate_kbps: 4.0
     min_duration: 4m
   - min_elevation_deg: 25
-    # 39 PLS reaches around 94% of its guarantee when 
+    # 39 PLS reaches around 94% of its guarantee when
     # its working properly. This is scaled down by the
     # same amount.
     downlink_rate_kbps: 817.8
