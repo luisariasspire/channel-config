@@ -8,6 +8,11 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
   enabled: false
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # 3.8 x 155 = 589
+      flat: 589
+      # xband-down 19.89 + sband-up 0.2 = 20.09
+      per_second: 20.09
     separation:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
@@ -36,7 +41,7 @@ CONTACT_BIDIR_PARAM:
   legal: true
   satellite_constraints:
     electrical_cost:
-      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      # pre/post buffer duration x (uhf + dexter idle) =  155s x (0.5W + 3.8W) = 666
       flat: 666
       # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
       per_second: 9.5
@@ -79,7 +84,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   legal: true
   satellite_constraints:
     electrical_cost:
-      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      # pre/post buffer duration x (uhf + dexter idle) =  155s x (0.5W + 3.8W) = 666
       flat: 666
       # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
       per_second: 9.5
@@ -124,7 +129,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
   legal: true
   satellite_constraints:
     electrical_cost:
-      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      # pre/post buffer duration x (uhf + dexter idle) =  155s x (0.5W + 3.8W) = 666
       flat: 666
       # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
       per_second: 9.5
@@ -181,7 +186,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   legal: true
   satellite_constraints:
     electrical_cost:
-      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      # pre/post buffer duration x (uhf + dexter idle) =  155s x (0.5W + 3.8W) = 666
       flat: 666
       # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
       per_second: 9.5
@@ -233,7 +238,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   legal: true
   satellite_constraints:
     electrical_cost:
-      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      # pre/post buffer duration x (uhf + dexter idle) =  155s x (0.5W + 3.8W) = 666
       flat: 666
       # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
       per_second: 9.5
@@ -293,7 +298,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   legal: true
   satellite_constraints:
     electrical_cost:
-      # 3W x 155s uhf + dexter idle = 0.5 + 3.8w x 155s = 666
+      # pre/post buffer duration x (uhf + dexter idle) =  155s x (0.5W + 3.8W) = 666
       flat: 666
       # sband + uhf = 8.98 + 0.5 = 9.48 -> 9.5
       per_second: 9.5
@@ -348,7 +353,13 @@ CONTACT_BIDIR_PARAM_UHF:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # non-marsupial dexter -- only UHF radio is on
+      # pre/post buffer duration x uhf =  155s x 0.5W = 77
+      flat: 77
+      # uhf 0.5
+      per_second: 0.5
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0

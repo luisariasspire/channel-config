@@ -25,6 +25,12 @@ class ValidationRuleInput:
         self.gs_templates = gs_templates
         self.gs_configs = gs_configs
         self.shared_constraint_sets = shared_constraint_sets
+        self.channel_id_to_class_annos = {}
+
+        for channel_id, channel_config in gs_templates.items():
+            self.channel_id_to_class_annos[channel_id] = channel_config[
+                "classification_annotations"
+            ]
 
 
 class ValidationRuleMode(Enum):
@@ -33,19 +39,33 @@ class ValidationRuleMode(Enum):
 
 
 class ValidationRuleScope(Enum):
+    # rule is run once for each channel in gs_templates.yaml
     GROUNDSTATION_TEMPLATE_CHANNEL = 1
+    # rule is run once for each channel in sat_templates.yaml
     SATELLITE_TEMPLATE_CHANNEL = 2
+    # rule is run once for each channel in each groundstation yaml file
     GROUNDSTATION_CHANNEL = 3
+    # rule is run once for each channel in each satellite yaml file
     SATELLITE_CHANNEL = 4
-    GENERAL = 5
+    # rule is run once for each groundstation yaml file, and gets passed all its channels
+    GROUNDSTATION = 5
+    # rule is run once for each satellite yaml file, and gets passed all its channels
+    SATELLITE = 6
+    # rule is run once, and can access all aspects of channel config
+    GENERAL = 7
 
 
 class ValidationRuleViolatedError:
     def __init__(
-        self, description: str, mode: ValidationRuleMode, violation_cases: List[str]
+        self,
+        description: str,
+        mode: ValidationRuleMode,
+        scope: ValidationRuleScope,
+        violation_cases: List[str],
     ):
         self.description = description
         self.mode = mode
+        self.scope = scope
         self.violation_cases = violation_cases
 
 
@@ -100,9 +120,7 @@ def validation_rule(
                         )
                 case ValidationRuleScope.SATELLITE_TEMPLATE_CHANNEL:
                     for channel_id, channel_config in input.sat_templates.items():
-                        class_annos = input.gs_templates[channel_id][
-                            "classification_annotations"
-                        ]
+                        class_annos = input.channel_id_to_class_annos[channel_id]
                         interpret_rule_result(
                             violation_cases,
                             func(input, channel_id, class_annos, channel_config),
@@ -111,9 +129,7 @@ def validation_rule(
                 case ValidationRuleScope.GROUNDSTATION_CHANNEL:
                     for gs_id, gs_config in input.gs_configs.items():
                         for channel_id, channel_config in gs_config.items():
-                            class_annos = input.gs_templates[channel_id][
-                                "classification_annotations"
-                            ]
+                            class_annos = input.channel_id_to_class_annos[channel_id]
                             interpret_rule_result(
                                 violation_cases,
                                 func(
@@ -128,9 +144,7 @@ def validation_rule(
                 case ValidationRuleScope.SATELLITE_CHANNEL:
                     for sat_id, sat_config in input.sat_configs.items():
                         for channel_id, channel_config in sat_config.items():
-                            class_annos = input.gs_templates[channel_id][
-                                "classification_annotations"
-                            ]
+                            class_annos = input.channel_id_to_class_annos[channel_id]
                             interpret_rule_result(
                                 violation_cases,
                                 func(
@@ -142,15 +156,42 @@ def validation_rule(
                                 ),
                                 f"{channel_id} on {sat_id}",
                             )
+                case ValidationRuleScope.SATELLITE:
+                    for sat_id, sat_configs in input.sat_configs.items():
+                        interpret_rule_result(
+                            violation_cases,
+                            func(
+                                input,
+                                sat_id,
+                                sat_configs,
+                                input.channel_id_to_class_annos,
+                            ),
+                            f"{sat_id}",
+                        )
+                case ValidationRuleScope.GROUNDSTATION:
+                    for gs_id, gs_configs in input.gs_configs.items():
+                        interpret_rule_result(
+                            violation_cases,
+                            func(
+                                input,
+                                gs_id,
+                                gs_configs,
+                                input.channel_id_to_class_annos,
+                            ),
+                            f"{gs_id}",
+                        )
                 case ValidationRuleScope.GENERAL:
                     interpret_rule_result(
                         violation_cases, func(input), "General rule failure"
                     )
+
                 case _:
                     raise Exception(f"Unknown validation rule scope {scope}")
 
             if len(violation_cases) > 0:
-                return ValidationRuleViolatedError(description, mode, violation_cases)
+                return ValidationRuleViolatedError(
+                    description, mode, scope, violation_cases
+                )
             return None
 
         module_name = func.__module__.replace("channel_tool.validation_rules.", "")

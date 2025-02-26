@@ -34,7 +34,7 @@ from channel_tool.validation_rules import (
 )
 
 
-class ValidationError(Exception):
+class SchemaValidationError(Exception):
     def __init__(
         self,
         parent: Any,
@@ -236,7 +236,9 @@ def check_element_conforms_to_schema(
     schema = load_schema(asset_type)
     errs = list(jsonschema.Draft7Validator(schema).iter_errors(config))  # type: ignore
     if errs:
-        raise ValidationError(best_match(errs), file=file, key=key, count=len(errs))
+        raise SchemaValidationError(
+            best_match(errs), file=file, key=key, count=len(errs)
+        )
 
 
 def run_validation_rule(
@@ -298,9 +300,10 @@ def run_validation_rules(
 
     for rulestring, result in enforce_fail_results.items():
         print(
-            "{0}: {1} failed:\n\tMode: {2}\n\tModule: {3}\n\tDescription: {4}\n\tViolation cases: \n\t - {5}".format(
+            "{0}: {1} failed:\n\tScope: {2}\n\tMode: {3}\n\tModule: {4}\n\tDescription: {5}\n\tViolation cases: \n\t - {6}".format(
                 colored("ERROR", "red"),
                 result[0].name,
+                result[1].scope,
                 result[1].mode,
                 result[0].module,
                 result[1].description,
@@ -309,7 +312,7 @@ def run_validation_rules(
         )
 
     if len(enforce_fail_results) > 0:
-        raise ValidationError(Exception("One or more enforced validation rules failed"))
+        raise Exception("One or more enforced validation rules failed")
 
 
 # Memoize the JSON Schema definitions.

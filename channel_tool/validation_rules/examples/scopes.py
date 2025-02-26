@@ -71,6 +71,36 @@ def satellite_template_channel_example(
 
 
 @validation_rule(
+    scope=ValidationRuleScope.SATELLITE,
+    description="Satellite example rule",
+    mode=ValidationRuleMode.ENFORCE,
+)  # type: ignore
+def satellite_example(
+    input: ValidationRuleInput,
+    sat_id: str,
+    channel_id_to_config: Dict[str, Dict[str, Any]],
+    channel_id_to_class_annos: Dict[str, Dict[str, Any]],
+) -> Union[str, bool]:
+    # print(f"Prototype satellite rule {sat_id}")
+    return True
+
+
+@validation_rule(
+    scope=ValidationRuleScope.GROUNDSTATION,
+    description="Groundstation example rule",
+    mode=ValidationRuleMode.ENFORCE,
+)  # type: ignore
+def groundstation_example(
+    input: ValidationRuleInput,
+    gs_id: str,
+    channel_id_to_config: Dict[str, Dict[str, Any]],
+    channel_id_to_class_annos: Dict[str, Dict[str, Any]],
+) -> Union[str, bool]:
+    # print(f"Prototype groundstation rule {gs_id}")
+    return True
+
+
+@validation_rule(
     scope=ValidationRuleScope.GENERAL,
     description="Example rule with general scope",
     mode=ValidationRuleMode.ENFORCE,
