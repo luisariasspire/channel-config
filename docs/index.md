@@ -130,41 +130,6 @@ following must hold at all times:
    `min_elevation_deg`, the satellite must remain above that segment's `min_elevation_deg` for at
    least the `min_duration` given.
 
-### Configuring Link State Cues
-
-Link State Cues (LSCs) for each contact define to OORT which topics to downlink at particular offsets from 
-the start of that contact. LSCs can be configured for each channel in the `dynamical_window_parameters` field
-on the satellite side config. An example shows the below:
-
-```
-CONTACT_TRACKING_BIDIR_DVBS2X
-  dynamic_window_parameters:
-      link_state_cues:
-        - topics:
-            - topic1
-            - topic2
-          offset:
-            offset_type: absolute
-            value: 0
-        - topics:
-            - topic3
-          offset:
-            offset_type: absolute
-            value: 100
-```
-
-The above example has two LSCs for the channel `CONTACT_TRACKING_BIDIR_DVBS2X`. OORT topics `topic1` and `topic2`
-will be downlinked from an offset of `0` from the start of the contact. `topic3` will be downlinked at an offset of `100`
-from the start of the contact. 
-
-The offsets are dynamically determined in the contact solver depending on the `offset_type`. If the `offset_type` is 
-`absolute`, than this will be the number of seconds from the start of the contact. `relative` can also be used, and this 
-is a fractional offset based on the length of the contact. So if the contact was `1000s` long, the above values would have to be `0` and 
-`0.1` respectively.
-
-Users can express one link state cue, with an optional `offset` field. The topics in this LSC will be assumed for the whole contact.
-Validation rules will be in place to guardrail unsupported configs e.g. multiple LSCs for a channel, but some without an `offset` field. 
-
 ### Window Parameter Merge Semantics
 
 Each contact involves two assets. Each of these has their own set of static
