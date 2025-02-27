@@ -904,6 +904,34 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
       name: spire_nasa_xband_coordination
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
+TXO_XBAND_ADCS_TRACK_BW_20_PLS_61:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 0s
+  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
 TXO_XBAND_BW_10_PLS_17:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
