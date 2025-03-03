@@ -834,7 +834,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_SNC
