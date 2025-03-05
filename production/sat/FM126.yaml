@@ -20,7 +20,12 @@ CONTACT_BIDIR_PARAM:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: (0.5W + 3.8W) * 155s = 666J
+      flat: 666
+      # 3W UHF + 9.86W Sband = 12.86W
+      per_second: 12.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -61,7 +66,12 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: (0.5W + 3.8W) * 155s = 666J
+      flat: 666
+      # 3W UHF + 9.86W Sband = 12.86W
+      per_second: 12.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -102,7 +112,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: (0.5W + 3.8W) * 155s = 666J
+      flat: 666
+      # 3W UHF + 9.86W Sband = 12.86W
+      per_second: 12.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -155,7 +170,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: (0.5W + 3.8W) * 155s = 666J
+      flat: 666
+      # 3W UHF + 9.86W Sband = 12.86W
+      per_second: 12.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -202,7 +222,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: (0.5W + 3.8W) * 155s = 666J
+      flat: 666
+      # 3W UHF + 9.86W Sband = 12.86W
+      per_second: 12.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -257,7 +282,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: (0.5W + 3.8W) * 155s = 666J
+      flat: 666
+      # 3W UHF + 9.86W Sband = 12.86W
+      per_second: 12.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -310,7 +340,12 @@ CONTACT_BIDIR_PARAM_UHF:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 0.5W * 155s = 77
+      flat: 77
+      # 3W while transmitting (peaking to 6 but broadcasting maybe half the time)
+      per_second: 3.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -339,6 +374,11 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
   enabled: true
   legal: true
   satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 666
+      # 9.86W Sband = 9.86W
+      per_second: 9.86
     budget_name: KSAT_NOAA
     fixed_contact_duration:
     - 2min
@@ -382,7 +422,12 @@ CONTACT_RXO:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -421,7 +466,12 @@ CONTACT_RXO_DVBS2X:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -460,7 +510,12 @@ CONTACT_RXO_DVBS2X_BW1MHZ_23PLS_25DEG:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -498,7 +553,12 @@ CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 40
@@ -537,7 +597,12 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -585,7 +650,12 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 30
@@ -633,7 +703,12 @@ CONTACT_RXO_DVBS2X_HIGH_ELEVATION:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -673,7 +748,12 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -714,7 +794,12 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ_PLS_87:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -755,7 +840,12 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
