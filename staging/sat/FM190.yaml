@@ -1000,7 +1000,7 @@ TXO_XBAND:
         vbatt/voltage/min: 6700
         fec_k: 223
         fec: 255
-TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
+TXO_XBAND_ADCS_TRACK_BW_20_PLS_61:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:

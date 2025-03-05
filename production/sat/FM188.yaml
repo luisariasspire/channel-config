@@ -994,7 +994,7 @@ TXO_XBAND:
     forward_channels:
     - bandaid_override:
         vbatt/voltage/min: 6700
-TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
+TXO_XBAND_ADCS_TRACK_BW_20_PLS_61:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:

@@ -138,10 +138,6 @@ contact_types:
     contact_type: "CONTACT_SPACE_GROUND_TXO"
     directionality: "SpaceToEarth"
 
-  TXO_XBAND_ADCS_TRACK_BW_20_PLS_29:
-    <<: *xband_txo
-    desc: "One-way contact in X-band at 20Mhz bandwidth at PLS29, with target tracking"
-
   TXO_XBAND_ADCS_TRACK_BW_20_PLS_61:
     <<: *xband_txo
     desc: "One-way contact in X-band at 20Mhz bandwidth at PLS61, with target tracking"
@@ -249,7 +245,6 @@ groups:
   # any using XBand
   xband:
     - TXO_XBAND
-    - TXO_XBAND_ADCS_TRACK_BW_20_PLS_29
     - TXO_XBAND_ADCS_TRACK_BW_20_PLS_61
     - TXO_XBAND_PROV_KSAT
     - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29
@@ -289,7 +284,6 @@ groups:
     - CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
     - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
     - TXO_XBAND
-    - TXO_XBAND_ADCS_TRACK_BW_20_PLS_29
     - TXO_XBAND_ADCS_TRACK_BW_20_PLS_61
     - TXO_XBAND_PROV_KSAT
     - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29
@@ -306,14 +300,12 @@ groups:
     - CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION
     - CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ
     - TXO_XBAND
-    - TXO_XBAND_ADCS_TRACK_BW_20_PLS_29
     - TXO_XBAND_ADCS_TRACK_BW_20_PLS_61
     - TXO_XBAND_PROV_KSAT
     - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29
 
   # Target tracking
   tracking:
-    - TXO_XBAND_ADCS_TRACK_BW_20_PLS_29
     - TXO_XBAND_ADCS_TRACK_BW_20_PLS_61
     - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29
 
