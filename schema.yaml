@@ -325,6 +325,21 @@ definitions:
       reverse_channels:
         type: array
         items: *channel_parameter_set
+      tracking_target:
+        type: object
+        properties:
+          latitude_north: 
+            type: number
+            minimum: -90.0
+            maximum: 90.0
+          longitude_east: 
+            type: number
+            minimum: -180.0
+            maximum: 180.0
+        required:
+          - latitude_north
+          - longitude_west
+            
 
   contact_type: &contact_type ^CONTACT_[A-Z0-9_]+$
 

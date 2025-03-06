@@ -1112,9 +1112,6 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_61:
         gain: 17
         freq: 1250000000
         radionet-m: 6718
-    tracking_target:
-      latitude_north: -46.52966
-      longitude_west: -168.38124
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -1405,9 +1402,6 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
         gain: 3
       use_radionet: true
       protocol: DVBS2X
-    tracking_target:
-      latitude_north: 37.84515
-      longitude_west: -22.623802
   classification_annotations:
     provider: KSAT
     directionality: TXO

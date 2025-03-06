@@ -49,6 +49,7 @@ def satellite_channel_example(
 def groundstation_template_channel_example(
     input: ValidationRuleInput,
     channel_id: str,
+    class_annos: Dict[str, Any],
     channel_config: Dict[str, Any],
 ) -> Union[str, bool]:
     # print(f"Prototype GS template channel rule, channel {channel_id}")

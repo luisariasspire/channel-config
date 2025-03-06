@@ -113,10 +113,11 @@ def validation_rule(
             match scope:
                 case ValidationRuleScope.GROUNDSTATION_TEMPLATE_CHANNEL:
                     for channel_id, channel_config in input.gs_templates.items():
+                        class_annos = input.channel_id_to_class_annos[channel_id]
                         interpret_rule_result(
                             violation_cases,
-                            func(input, channel_id, channel_config),
-                            f"{channel_id} in {input.sat_templates_file}",
+                            func(input, channel_id, class_annos, channel_config),
+                            f"{channel_id} in {input.gs_templates_file}",
                         )
                 case ValidationRuleScope.SATELLITE_TEMPLATE_CHANNEL:
                     for channel_id, channel_config in input.sat_templates.items():

@@ -54,6 +54,9 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
         radionet-m: 223
         uplink-sps: 15
         dopp-up-rate: 0.1
+    tracking_target:
+      latitude_north: -29.010417
+      longitude_west: -115.341708
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR

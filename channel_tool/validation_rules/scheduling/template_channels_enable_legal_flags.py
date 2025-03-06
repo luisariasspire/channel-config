@@ -16,6 +16,7 @@ from channel_tool.validation_rules import (
 def gs_template_channels_must_have_enabled_false(
     input: ValidationRuleInput,
     channel_id: str,
+    class_annos: Dict[str, Any],
     channel_config: Dict[str, Any],
 ) -> Union[str, bool]:
     return not channel_config["enabled"]
@@ -29,6 +30,7 @@ def gs_template_channels_must_have_enabled_false(
 def gs_template_channels_must_have_legal_false(
     input: ValidationRuleInput,
     channel_id: str,
+    class_annos: Dict[str, Any],
     channel_config: Dict[str, Any],
 ) -> Union[str, bool]:
     return not channel_config["legal"]
