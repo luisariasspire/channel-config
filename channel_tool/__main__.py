@@ -1025,6 +1025,12 @@ PLS_BAND.add_argument(
     action="store_true",
 )
 PLS_PARSER.add_argument(
+    "--raw",
+    help="Print the raw result without any comments",
+    default=False,
+    action="store_true",
+)
+PLS_PARSER.add_argument(
     "-r", "--radionet", help="enable radionet", default=False, action="store_true"
 )
 PLS_PARSER.add_argument(

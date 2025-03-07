@@ -166,7 +166,8 @@ def pls_lookup(args: Any) -> None:
     """
     found: Dict[str, Optional[Union[float, str]]] = {"pls": None, "mtu": None}
     if args.radionet:
-        print("Radionet enabled")
+        if not args.raw:
+            print("Radionet enabled")
         found["radionet"] = True
 
     if args.sband:
@@ -187,9 +188,10 @@ def pls_lookup(args: Any) -> None:
             raise ValueError(f"pls {args.pls} not valid for xband")
         found["pls"] = args.pls
         found["mtu"] = pls_mtu_map[args.pls]
-        print(
-            f"pls: {args.pls}  mtu: {pls_mtu_map[args.pls]} req SnR: {pls_snr_req[args.pls] + args.iovdb} speed: {pls_speed[args.pls]}"
-        )
+        if not args.raw:
+            print(
+                f"pls: {args.pls}  mtu: {pls_mtu_map[args.pls]} req SnR: {pls_snr_req[args.pls] + args.iovdb} speed: {pls_speed[args.pls]}"
+            )
     else:
         reqd = args.db - args.iovdb
 
@@ -204,16 +206,18 @@ def pls_lookup(args: Any) -> None:
             found_pls = pls
             found_db = db_req
             speed = sp
-        print(
-            f"pls: {found_pls}  mtu: {pls_mtu_map[found_pls]}  req SnR: {found_db + args.iovdb} speed: {speed}Mbps"
-        )
+        if not args.raw:
+            print(
+                f"pls: {found_pls}  mtu: {pls_mtu_map[found_pls]}  req SnR: {found_db + args.iovdb} speed: {speed}Mbps"
+            )
         found["pls"] = found_pls
         found["mtu"] = pls_mtu_map[found_pls]
 
     if not (args.xband or args.sband):
         print("Specify sband or xband to generate template")
     else:
-        print(f"---using template {args.template}---")
+        if not args.raw:
+            print(f"---using template {args.template}---")
         loader = yaml.loader.SafeLoader
         loader.vars = found
         loader.args = args
