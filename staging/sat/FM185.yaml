@@ -809,6 +809,8 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_61:
     separation:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
+    deny_ground_stations:
+    - ubngs
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
   window_parameters:
@@ -864,3 +866,50 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
         pls: 29
   additional_provider_config:
     ksat_mission_config: SPIRE_Q_20MHZ
+ubngs_FM185_TXO_XBAND_57PLS_20MHZ_PRI-211:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 9.0
+    downlink_rate_kbps: 26103.0
+    uplink_rate_kbps: 0.0
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_XBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        tx_hardware_gain_db: -20
+        tx_bandwidth_hz: 20000000
+        tx_sample_rate_hz: 16666000
+        pls: 57
+        fec: 255
+        fec_k: 223
+        mtu: 6039
+      ground_override:
+        radionet-m: 6039
