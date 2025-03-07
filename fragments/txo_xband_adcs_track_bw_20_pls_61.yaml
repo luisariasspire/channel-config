@@ -10,8 +10,8 @@ forward_channels:
     tx_hardware_gain_db: -10
     tx_bandwidth_hz: 20000000
     tx_sample_rate_hz: 16666000
-    pls: 29
-    mtu: 6039
+    pls: 61
+    mtu: 6718
     mod_gain: 130
     vbatt/voltage/min: 7000
     vbatt/voltage/max: 8500
@@ -19,7 +19,7 @@ forward_channels:
   use_radionet: true
   protocol: DVBS2X
   ground_override:
-    radionet-m: 6039
+    radionet-m: 6718
     header-freq-pow: 7
     coarse-freq-win: 1000000
     lo-offset: 5000000

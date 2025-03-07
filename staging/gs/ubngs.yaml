@@ -1,4 +1,4 @@
-BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
+BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_61:
   directionality: Bidirectional
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   allowed_license_countries:
@@ -26,8 +26,8 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
         tx_bandwidth_hz: 20000000
         tx_sample_rate_hz: 16666000
         rx_sample_rate_hz: 16666000
-        pls: 29
-        mtu: 6039
+        pls: 61
+        mtu: 6718
         mod_gain: 130
         vbatt/voltage/min: 7000
         vbatt/voltage/max: 8500
@@ -42,7 +42,7 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
         rf_bandwidth: 20000000
         gain: 17
         freq: 1250000000
-        radionet-m: 6039
+        radionet-m: 6718
         status_poll_period: 10
     reverse_channels:
     - radio_band: SBAND
@@ -68,7 +68,7 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_29:
     can_run_rpcs: false
     space_ground_sband: false
     space_ground_xband: true
-    space_ground_xband_dvbs2x_pls: 29
+    space_ground_xband_dvbs2x_pls: 61
     space_ground_xband_bandwidth_mhz: 20
 
 BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
