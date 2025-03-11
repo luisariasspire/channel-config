@@ -1591,7 +1591,7 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_25:
     space_ground_xband_dvbs2x_pls: 25
     space_ground_xband_bandwidth_mhz: 10
 
-ubngs_FM126_TXO_SBAND_75PLS_1MHZ_PRI-211:
+ubngs_FM126_TXO_SBAND_43PLS_1MHZ_PRI-211:
   directionality: SpaceToEarth
   allowed_license_countries:
   - DE
@@ -1604,6 +1604,54 @@ ubngs_FM126_TXO_SBAND_75PLS_1MHZ_PRI-211:
   contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10.0
+    downlink_rate_kbps: 903.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
+        freq: 70000000
+        status_poll_period: 10
+        radionet-m: 1767
+      bandaid_override:
+        pls: 43
+        fec: 255
+        fec_k: 223
+        mtu: 1767
+      bandaid_mode: TX_SBAND_DVB_IP
+      protocol: DVBS2X
+      radio_band: SBAND
+      use_radionet: true
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 43
+    space_ground_sband_bandwidth_mhz: 1.0
+    jira_ticket: PRI-2113180140274240513
+ubngs_FM126_TXO_SBAND_75PLS_1MHZ_PRI-211:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 11.0
     downlink_rate_kbps: 1211.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -1651,7 +1699,7 @@ ubngs_FM126_TXO_SBAND_79PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 16.0
+  - min_elevation_deg: 19.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -1699,7 +1747,7 @@ ubngs_FM126_TXO_SBAND_83PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 21.0
+  - min_elevation_deg: 25.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -1747,7 +1795,7 @@ ubngs_FM126_TXO_SBAND_87PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 23.0
+  - min_elevation_deg: 28.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -1783,7 +1831,7 @@ ubngs_FM126_TXO_SBAND_87PLS_1MHZ_PRI-211:
     space_ground_sband_dvbs2x_pls: 87
     space_ground_sband_bandwidth_mhz: 1.0
     jira_ticket: PRI-2113180140274240513
-ubngs_FM127_TXO_SBAND_75PLS_1MHZ_PRI-211:
+ubngs_FM127_TXO_SBAND_43PLS_1MHZ_PRI-211:
   directionality: SpaceToEarth
   allowed_license_countries:
   - DE
@@ -1796,6 +1844,54 @@ ubngs_FM127_TXO_SBAND_75PLS_1MHZ_PRI-211:
   contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 9.0
+    downlink_rate_kbps: 903.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
+        freq: 70000000
+        status_poll_period: 10
+        radionet-m: 1767
+      bandaid_override:
+        pls: 43
+        fec: 255
+        fec_k: 223
+        mtu: 1767
+      bandaid_mode: TX_SBAND_DVB_IP
+      protocol: DVBS2X
+      radio_band: SBAND
+      use_radionet: true
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 43
+    space_ground_sband_bandwidth_mhz: 1.0
+    jira_ticket: PRI-2113180140274240514
+ubngs_FM127_TXO_SBAND_75PLS_1MHZ_PRI-211:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10.0
     downlink_rate_kbps: 1211.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -1843,7 +1939,7 @@ ubngs_FM127_TXO_SBAND_79PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 14.0
+  - min_elevation_deg: 16.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -1891,7 +1987,7 @@ ubngs_FM127_TXO_SBAND_83PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 18.0
+  - min_elevation_deg: 21.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -1939,7 +2035,7 @@ ubngs_FM127_TXO_SBAND_87PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 22.0
+  - min_elevation_deg: 26.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -1975,7 +2071,7 @@ ubngs_FM127_TXO_SBAND_87PLS_1MHZ_PRI-211:
     space_ground_sband_dvbs2x_pls: 87
     space_ground_sband_bandwidth_mhz: 1.0
     jira_ticket: PRI-2113180140274240514
-ubngs_FM178_TXO_SBAND_75PLS_1MHZ_PRI-211:
+ubngs_FM178_TXO_SBAND_43PLS_1MHZ_PRI-211:
   directionality: SpaceToEarth
   allowed_license_countries:
   - DE
@@ -1988,6 +2084,54 @@ ubngs_FM178_TXO_SBAND_75PLS_1MHZ_PRI-211:
   contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10.0
+    downlink_rate_kbps: 903.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
+        freq: 70000000
+        status_poll_period: 10
+        radionet-m: 1767
+      bandaid_override:
+        pls: 43
+        fec: 255
+        fec_k: 223
+        mtu: 1767
+      bandaid_mode: TX_SBAND_DVB_IP
+      protocol: DVBS2X
+      radio_band: SBAND
+      use_radionet: true
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 43
+    space_ground_sband_bandwidth_mhz: 1.0
+    jira_ticket: PRI-2113180140274240670
+ubngs_FM178_TXO_SBAND_75PLS_1MHZ_PRI-211:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 12.0
     downlink_rate_kbps: 1211.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2035,7 +2179,7 @@ ubngs_FM178_TXO_SBAND_79PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 14.0
+  - min_elevation_deg: 16.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2083,7 +2227,7 @@ ubngs_FM178_TXO_SBAND_83PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 16.0
+  - min_elevation_deg: 18.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2131,7 +2275,7 @@ ubngs_FM178_TXO_SBAND_87PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 18.0
+  - min_elevation_deg: 20.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2179,7 +2323,7 @@ ubngs_FM178_TXO_SBAND_91PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 21.0
+  - min_elevation_deg: 23.0
     downlink_rate_kbps: 1813.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2275,7 +2419,7 @@ ubngs_FM179_TXO_SBAND_79PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 11.0
+  - min_elevation_deg: 13.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2323,7 +2467,7 @@ ubngs_FM179_TXO_SBAND_83PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 13.0
+  - min_elevation_deg: 15.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2371,7 +2515,7 @@ ubngs_FM179_TXO_SBAND_87PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 15.0
+  - min_elevation_deg: 17.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2419,7 +2563,7 @@ ubngs_FM179_TXO_SBAND_91PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 19.0
+  - min_elevation_deg: 21.0
     downlink_rate_kbps: 1813.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2455,7 +2599,7 @@ ubngs_FM179_TXO_SBAND_91PLS_1MHZ_PRI-211:
     space_ground_sband_dvbs2x_pls: 91
     space_ground_sband_bandwidth_mhz: 1.0
     jira_ticket: PRI-2113180140274240671
-ubngs_FM180_TXO_SBAND_75PLS_1MHZ_PRI-211:
+ubngs_FM180_TXO_SBAND_43PLS_1MHZ_PRI-211:
   directionality: SpaceToEarth
   allowed_license_countries:
   - DE
@@ -2468,6 +2612,54 @@ ubngs_FM180_TXO_SBAND_75PLS_1MHZ_PRI-211:
   contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10.0
+    downlink_rate_kbps: 903.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
+        freq: 70000000
+        status_poll_period: 10
+        radionet-m: 1767
+      bandaid_override:
+        pls: 43
+        fec: 255
+        fec_k: 223
+        mtu: 1767
+      bandaid_mode: TX_SBAND_DVB_IP
+      protocol: DVBS2X
+      radio_band: SBAND
+      use_radionet: true
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 43
+    space_ground_sband_bandwidth_mhz: 1.0
+    jira_ticket: PRI-2113180140274240693
+ubngs_FM180_TXO_SBAND_75PLS_1MHZ_PRI-211:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 11.0
     downlink_rate_kbps: 1211.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2515,7 +2707,7 @@ ubngs_FM180_TXO_SBAND_79PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 13.0
+  - min_elevation_deg: 15.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2563,7 +2755,7 @@ ubngs_FM180_TXO_SBAND_83PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 15.0
+  - min_elevation_deg: 17.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2611,7 +2803,7 @@ ubngs_FM180_TXO_SBAND_87PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 16.0
+  - min_elevation_deg: 18.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2659,7 +2851,7 @@ ubngs_FM180_TXO_SBAND_91PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 20.0
+  - min_elevation_deg: 22.0
     downlink_rate_kbps: 1813.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2816,7 +3008,7 @@ ubngs_FM191_TXO_SBAND_79PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 11.0
+  - min_elevation_deg: 13.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2864,7 +3056,7 @@ ubngs_FM191_TXO_SBAND_83PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 14.0
+  - min_elevation_deg: 15.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2912,7 +3104,7 @@ ubngs_FM191_TXO_SBAND_87PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 15.0
+  - min_elevation_deg: 16.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -2960,7 +3152,7 @@ ubngs_FM191_TXO_SBAND_91PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 18.0
+  - min_elevation_deg: 19.0
     downlink_rate_kbps: 1813.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -3056,7 +3248,7 @@ ubngs_FM192_TXO_SBAND_75PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 11.0
+  - min_elevation_deg: 12.0
     downlink_rate_kbps: 1211.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -3104,7 +3296,7 @@ ubngs_FM192_TXO_SBAND_79PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 15.0
+  - min_elevation_deg: 16.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -3152,7 +3344,7 @@ ubngs_FM192_TXO_SBAND_83PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 17.0
+  - min_elevation_deg: 18.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -3200,7 +3392,7 @@ ubngs_FM192_TXO_SBAND_87PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 18.0
+  - min_elevation_deg: 19.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
@@ -3248,7 +3440,7 @@ ubngs_FM192_TXO_SBAND_91PLS_1MHZ_PRI-211:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 21.0
+  - min_elevation_deg: 23.0
     downlink_rate_kbps: 1813.0
     uplink_rate_kbps: 0.0
     min_duration: 1min

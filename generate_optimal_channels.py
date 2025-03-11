@@ -330,6 +330,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "-e", "--environment", choices=["staging", "production"], required=True
 )
+parser.add_argument(
+    "--gen-templates",
+    help=f"Generate templates too",
+    action="store_true",
+    default=False,
+)
 args = parser.parse_args()
 
 if not DATABRICKS_ACCESS_TOKEN:
@@ -425,19 +431,14 @@ for asset, cfg in new_configs.items():
 
     assert original_channels
 
-    asset_constraints_key = (
-        "ground_station_constraints"
-        if get_asset_type(asset) == "gs"
-        else "satellite_constraints"
-    )
-    deny_key = (
-        "deny_satellites" if get_asset_type(asset) == "gs" else "deny_ground_stations"
-    )
-    edit_flag = (
-        "--ground_station_constraints_file"
-        if get_asset_type(asset) == "gs"
-        else "--satellite_constraints_file"
-    )
+    if get_asset_type(asset) == "gs":
+        asset_constraints_key = "ground_station_constraints"
+        deny_key = "deny_satellites"
+        edit_flag = "--ground_station_constraints_file"
+    else:
+        asset_constraints_key = "satellite_constraints"
+        deny_key = "deny_ground_stations"
+        edit_flag = "--satellite_constraints_file"
 
     denied_assets = deepcopy(cfg.get(asset_constraints_key, {}).get(deny_key, []))
     for other_asset in new_configs:
@@ -471,17 +472,18 @@ summary = {k: [c for c in v] for k, v in new_configs.items()}
 with open("/tmp/summary.yaml", "w") as file:
     yaml.dump(summary, file)
 
-for k in new_configs:
-    cfg = new_configs[k]
-    for ch, cf in cfg.items():
-        cfg[ch]["enabled"] = False
-        cfg[ch]["legal"] = False
-    if get_asset_type(k) == "gs":
-        with open("gs_templates.yaml", "a") as file:
-            yaml.dump(cfg, file)
-    else:
-        with open("sat_templates.yaml", "a") as file:
-            yaml.dump(cfg, file)
+if args.gen_templates:
+    for k in new_configs:
+        cfg = new_configs[k]
+        for ch, cf in cfg.items():
+            cfg[ch]["enabled"] = False
+            cfg[ch]["legal"] = False
+        if get_asset_type(k) == "gs":
+            with open("gs_templates.yaml", "a") as file:
+                yaml.dump(cfg, file)
+        else:
+            with open("sat_templates.yaml", "a") as file:
+                yaml.dump(cfg, file)
 
 channel_tool(["normalize", args.environment, "all"])
 channel_tool(["format"])

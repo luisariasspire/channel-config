@@ -1140,7 +1140,7 @@ TXO_XBAND_PROV_KSAT_BW_10_PLS_25:
     uplink_rate_kbps: 0.0
     min_duration: 2min
 
-ubngs_FM126_TXO_SBAND_75PLS_1MHZ_PRI-211:
+ubngs_FM126_TXO_SBAND_43PLS_1MHZ_PRI-211:
   directionality: SpaceToEarth
   allowed_license_countries:
   - AU
@@ -1172,6 +1172,56 @@ ubngs_FM126_TXO_SBAND_75PLS_1MHZ_PRI-211:
   contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10.0
+    downlink_rate_kbps: 903.0
+    uplink_rate_kbps: 0.0
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+
+        mtu: 1767
+        pls: 43
+      ground_override:
+        radionet-m: 1767
+ubngs_FM126_TXO_SBAND_75PLS_1MHZ_PRI-211:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 11.0
     downlink_rate_kbps: 1211.0
     uplink_rate_kbps: 0.0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1221,7 +1271,7 @@ ubngs_FM126_TXO_SBAND_79PLS_1MHZ_PRI-211:
       per_second: 9.86
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 16.0
+  - min_elevation_deg: 19.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0.0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1271,7 +1321,7 @@ ubngs_FM126_TXO_SBAND_83PLS_1MHZ_PRI-211:
       per_second: 9.86
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 21.0
+  - min_elevation_deg: 25.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0.0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1321,7 +1371,7 @@ ubngs_FM126_TXO_SBAND_87PLS_1MHZ_PRI-211:
       per_second: 9.86
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 23.0
+  - min_elevation_deg: 28.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0.0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1340,7 +1390,7 @@ ubngs_FM126_TXO_SBAND_87PLS_1MHZ_PRI-211:
         pls: 87
       ground_override:
         radionet-m: 1632
-ubngs_FM127_TXO_SBAND_75PLS_1MHZ_PRI-211:
+ubngs_FM127_TXO_SBAND_43PLS_1MHZ_PRI-211:
   directionality: SpaceToEarth
   allowed_license_countries:
   - AU
@@ -1367,6 +1417,51 @@ ubngs_FM127_TXO_SBAND_75PLS_1MHZ_PRI-211:
   contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 9.0
+    downlink_rate_kbps: 903.0
+    uplink_rate_kbps: 0.0
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+
+        mtu: 1767
+        pls: 43
+      ground_override:
+        radionet-m: 1767
+  contact_type: CONTACT_SPACE_GROUND_TXO
+ubngs_FM127_TXO_SBAND_75PLS_1MHZ_PRI-211:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10.0
     downlink_rate_kbps: 1211.0
     uplink_rate_kbps: 0.0
   window_parameters:
@@ -1411,7 +1506,7 @@ ubngs_FM127_TXO_SBAND_79PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 14.0
+  - min_elevation_deg: 16.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0.0
   window_parameters:
@@ -1456,7 +1551,7 @@ ubngs_FM127_TXO_SBAND_83PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 18.0
+  - min_elevation_deg: 21.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0.0
   window_parameters:
@@ -1501,7 +1596,7 @@ ubngs_FM127_TXO_SBAND_87PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 22.0
+  - min_elevation_deg: 26.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0.0
   window_parameters:
@@ -1520,7 +1615,7 @@ ubngs_FM127_TXO_SBAND_87PLS_1MHZ_PRI-211:
       ground_override:
         radionet-m: 1632
   contact_type: CONTACT_SPACE_GROUND_TXO
-ubngs_FM178_TXO_SBAND_75PLS_1MHZ_PRI-211:
+ubngs_FM178_TXO_SBAND_43PLS_1MHZ_PRI-211:
   directionality: SpaceToEarth
   allowed_license_countries:
   - AU
@@ -1546,6 +1641,50 @@ ubngs_FM178_TXO_SBAND_75PLS_1MHZ_PRI-211:
   contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10.0
+    downlink_rate_kbps: 903.0
+    uplink_rate_kbps: 0
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+
+        mtu: 1767
+        pls: 43
+      ground_override:
+        radionet-m: 1767
+ubngs_FM178_TXO_SBAND_75PLS_1MHZ_PRI-211:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 12.0
     downlink_rate_kbps: 1211.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1589,7 +1728,7 @@ ubngs_FM178_TXO_SBAND_79PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 14.0
+  - min_elevation_deg: 16.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1633,7 +1772,7 @@ ubngs_FM178_TXO_SBAND_83PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 16.0
+  - min_elevation_deg: 18.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1677,7 +1816,7 @@ ubngs_FM178_TXO_SBAND_87PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 18.0
+  - min_elevation_deg: 20.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1721,7 +1860,7 @@ ubngs_FM178_TXO_SBAND_91PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 21.0
+  - min_elevation_deg: 23.0
     downlink_rate_kbps: 1813.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1809,7 +1948,7 @@ ubngs_FM179_TXO_SBAND_79PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 11.0
+  - min_elevation_deg: 13.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1853,7 +1992,7 @@ ubngs_FM179_TXO_SBAND_83PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 13.0
+  - min_elevation_deg: 15.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1897,7 +2036,7 @@ ubngs_FM179_TXO_SBAND_87PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 15.0
+  - min_elevation_deg: 17.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1941,7 +2080,7 @@ ubngs_FM179_TXO_SBAND_91PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 19.0
+  - min_elevation_deg: 21.0
     downlink_rate_kbps: 1813.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1958,6 +2097,50 @@ ubngs_FM179_TXO_SBAND_91PLS_1MHZ_PRI-211:
 
         mtu: 1767
         pls: 91
+      ground_override:
+        radionet-m: 1767
+ubngs_FM180_TXO_SBAND_43PLS_1MHZ_PRI-211:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10.0
+    downlink_rate_kbps: 903.0
+    uplink_rate_kbps: 0
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+
+        mtu: 1767
+        pls: 43
       ground_override:
         radionet-m: 1767
 ubngs_FM180_TXO_SBAND_75PLS_1MHZ_PRI-211:
@@ -1985,7 +2168,7 @@ ubngs_FM180_TXO_SBAND_75PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 10.0
+  - min_elevation_deg: 11.0
     downlink_rate_kbps: 1211.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2029,7 +2212,7 @@ ubngs_FM180_TXO_SBAND_79PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 13.0
+  - min_elevation_deg: 15.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2073,7 +2256,7 @@ ubngs_FM180_TXO_SBAND_83PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 15.0
+  - min_elevation_deg: 17.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2117,7 +2300,7 @@ ubngs_FM180_TXO_SBAND_87PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 16.0
+  - min_elevation_deg: 18.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2161,7 +2344,7 @@ ubngs_FM180_TXO_SBAND_91PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 20.0
+  - min_elevation_deg: 22.0
     downlink_rate_kbps: 1813.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2298,7 +2481,7 @@ ubngs_FM191_TXO_SBAND_79PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 11.0
+  - min_elevation_deg: 13.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2343,7 +2526,7 @@ ubngs_FM191_TXO_SBAND_83PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 14.0
+  - min_elevation_deg: 15.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2388,7 +2571,7 @@ ubngs_FM191_TXO_SBAND_87PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 15.0
+  - min_elevation_deg: 16.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2433,7 +2616,7 @@ ubngs_FM191_TXO_SBAND_91PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 18.0
+  - min_elevation_deg: 19.0
     downlink_rate_kbps: 1813.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2523,7 +2706,7 @@ ubngs_FM192_TXO_SBAND_75PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 11.0
+  - min_elevation_deg: 12.0
     downlink_rate_kbps: 1211.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2568,7 +2751,7 @@ ubngs_FM192_TXO_SBAND_79PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 15.0
+  - min_elevation_deg: 16.0
     downlink_rate_kbps: 1351.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2613,7 +2796,7 @@ ubngs_FM192_TXO_SBAND_83PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 17.0
+  - min_elevation_deg: 18.0
     downlink_rate_kbps: 1491.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2658,7 +2841,7 @@ ubngs_FM192_TXO_SBAND_87PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 18.0
+  - min_elevation_deg: 19.0
     downlink_rate_kbps: 1673.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2703,7 +2886,7 @@ ubngs_FM192_TXO_SBAND_91PLS_1MHZ_PRI-211:
   satellite_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 21.0
+  - min_elevation_deg: 23.0
     downlink_rate_kbps: 1813.0
     uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
