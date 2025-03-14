@@ -1099,3 +1099,54 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49:
         fec: 255
   additional_provider_config:
     ksat_mission_config: SPIRE_Q_20MHZ
+TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_61:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - CA
+  - CL
+  - ES
+  - GR
+  - NO
+  - NZ
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - tr20kl
+      - sg71kl
+      - sg161kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
+    budget_name: KSAT_GHGSAT
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 20
+    downlink_rate_kbps: 9999999
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - bandaid_override:
+        vbatt/voltage/min: 6700
+        fec_k: 223
+        fec: 255
+  additional_provider_config:
+    ksat_mission_config: SPIRE_Q_20MHZ

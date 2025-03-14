@@ -167,6 +167,68 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 49
     space_ground_xband_bandwidth_mhz: 20
+TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_61:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: true
+  legal: true
+  ground_station_constraints:
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1.60
+        interval: 1min
+      fixed_dollar_cost: 1.60
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 37000.00
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 20000000
+        tx_sample_rate_hz: 16666000
+        pls: 61
+        mtu: 6718
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+      ground_override:
+        radionet-m: 6718
+        rf_bandwidth: 20000000
+        gain: 3
+      use_radionet: true
+      protocol: DVBS2X
+    tracking_target:
+      latitude_north: 69.6632
+      longitude_west: -18.9404
+  classification_annotations:
+    provider: KSAT
+    directionality: TXO
+    adcs_pointing: TRACK
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: false
+    ground_space_sband: false
+    space_ground_xband: true
+    space_ground_xband_dvbs2x_pls: 61
+    space_ground_xband_bandwidth_mhz: 20
 TXO_XBAND_PROV_KSAT_BW_10_PLS_17:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
