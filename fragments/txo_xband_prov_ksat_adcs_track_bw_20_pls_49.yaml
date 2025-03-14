@@ -9,14 +9,14 @@ forward_channels:
     tx_hardware_gain_db: -10
     tx_bandwidth_hz: 20000000
     tx_sample_rate_hz: 16666000
-    pls: 29
-    mtu: 6039
+    pls: 49
+    mtu: 4824
     mod_gain: 130
     vbatt/voltage/min: 7000
     vbatt/voltage/max: 8500
     vbatt/power/max: 19550
   ground_override:
-    radionet-m: 6039
+    radionet-m: 4824
     rf_bandwidth: 20000000
     gain: 3
   use_radionet: true

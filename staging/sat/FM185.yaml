@@ -824,7 +824,7 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_61:
         tx_bandwidth_hz: 20000000
         tx_sample_rate_hz: 16666000
         pls: 61
-TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
+TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
@@ -863,7 +863,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
         tx_hardware_gain_db: -20
         tx_bandwidth_hz: 20000000
         tx_sample_rate_hz: 16666000
-        pls: 29
+        pls: 49
   additional_provider_config:
     ksat_mission_config: SPIRE_Q_20MHZ
 ubngs_FM185_TXO_XBAND_57PLS_20MHZ_PRI-211:

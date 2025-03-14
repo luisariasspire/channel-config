@@ -1358,7 +1358,7 @@ TXO_XBAND_PROV_KSAT:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 5
     space_ground_xband_bandwidth_mhz: 10
-TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
+TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
@@ -1390,14 +1390,14 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 20000000
         tx_sample_rate_hz: 16666000
-        pls: 29
-        mtu: 6039
+        pls: 49
+        mtu: 4824
         mod_gain: 130
         vbatt/voltage/min: 7000
         vbatt/voltage/max: 8500
         vbatt/power/max: 19550
       ground_override:
-        radionet-m: 6039
+        radionet-m: 4824
         rf_bandwidth: 20000000
         gain: 3
       use_radionet: true
@@ -1413,7 +1413,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
     space_ground_sband: false
     ground_space_sband: false
     space_ground_xband: true
-    space_ground_xband_dvbs2x_pls: 29
+    space_ground_xband_dvbs2x_pls: 49
     space_ground_xband_bandwidth_mhz: 20
 
 # KSAT xband improved PLS channels

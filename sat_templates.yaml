@@ -1018,7 +1018,7 @@ TXO_XBAND_PROV_KSAT:
     uplink_rate_kbps: 0.0
     min_duration: 2min
 
-TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
+TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:

@@ -156,9 +156,9 @@ contact_types:
     contact_type: "CONTACT_SPACE_GROUND_TXO"
     directionality: "SpaceToEarth"
 
-  TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29:
+  TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49:
     <<: *xband_txo_ksat
-    desc: "One-way contact in X-band at 20Mhz bandwidth at PLS29 with target tracking, using KSAT Lite network"
+    desc: "One-way contact in X-band at 20Mhz bandwidth at PLS49 with target tracking, using KSAT Lite network"
 
 
 # Below are alias definitions for groups of channels which can be used in
@@ -247,7 +247,7 @@ groups:
     - TXO_XBAND
     - TXO_XBAND_ADCS_TRACK_BW_20_PLS_61
     - TXO_XBAND_PROV_KSAT
-    - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29
+    - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49
     - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5
     - BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13
 
@@ -286,7 +286,7 @@ groups:
     - TXO_XBAND
     - TXO_XBAND_ADCS_TRACK_BW_20_PLS_61
     - TXO_XBAND_PROV_KSAT
-    - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29
+    - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49
 
   # DVBS2X encoded
   dvbs2x:
@@ -302,18 +302,18 @@ groups:
     - TXO_XBAND
     - TXO_XBAND_ADCS_TRACK_BW_20_PLS_61
     - TXO_XBAND_PROV_KSAT
-    - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29
+    - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49
 
   # Target tracking
   tracking:
     - TXO_XBAND_ADCS_TRACK_BW_20_PLS_61
-    - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29
+    - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49
 
   # Antenna-only KSAT contacts.
   ksatlite:
     - CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO
     - TXO_XBAND_PROV_KSAT
-    - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_29
+    - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49
 
   # sband 5MHz DVB contacts
   sband_5mhz:
