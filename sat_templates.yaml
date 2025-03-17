@@ -389,7 +389,7 @@ CONTACT_BIDIR_PARAM_UHF:
     link_state_cues:
     - topics: [mission_download]
   contact_type: CONTACT_SPACE_GROUND_BIDIR
-CONTACT_BIDIR_PARAM_UHF_WBUGS_PAR_437:
+CONTACT_BIDIR_PARAM_UHF_PAR_437:
   directionality: Bidirectional
   allowed_license_countries:
   # Removing for 400.04MHz test at WBUGS only
