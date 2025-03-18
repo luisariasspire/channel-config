@@ -18,7 +18,7 @@ class Directionality(Enum):
     BIDIR = 2
 
 
-BITRATE_SCALE_FACTOR = 0.7
+BITRATE_SCALE_FACTOR = 0.9
 DATABRICKS_ACCESS_TOKEN = os.getenv("DATABRICKS_TOKEN")
 JIRA_TICKET_ID = "PRI-211"
 
@@ -289,10 +289,9 @@ def get_original_channel_ids(asset_id, directionality, row):
             continue
 
         class_annos = channel_config.get("classification_annotations", {})
-        if (
-            all(class_annos.get(k, None) == v for k, v in class_anno_markers.items())
-            and class_annos.get("jira_ticket", None) != JIRA_TICKET_ID
-        ):
+        if all(
+            class_annos.get(k, None) == v for k, v in class_anno_markers.items()
+        ) and not class_annos.get("jira_ticket", "").startswith(JIRA_TICKET_ID):
             res.append(id)
 
     return res
