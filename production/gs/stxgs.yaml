@@ -3,7 +3,7 @@ CONTACT_BIDIR_PARAM:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
@@ -38,7 +38,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
   allowed_license_countries:
   - LU
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -93,7 +93,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   allowed_license_countries:
   - LU
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -131,7 +131,7 @@ CONTACT_BIDIR_PARAM_UHF:
   allowed_license_countries:
   - US
   - LU
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 210s
