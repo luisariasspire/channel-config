@@ -20,7 +20,12 @@ CONTACT_BIDIR_PARAM:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
+      flat: 666.5
+      # UHF Tx 3.0W, DEXTER Tx 11.17W = 14.17
+      per_second: 14.17
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -59,7 +64,12 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
+      flat: 666.5
+      # UHF Tx 3.0W, DEXTER Tx 11.17W = 14.17
+      per_second: 14.17
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -100,7 +110,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
+      flat: 666.5
+      # UHF Tx 3.0W, DEXTER Tx 11.17W = 14.17
+      per_second: 14.17
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -153,7 +168,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
+      flat: 666.5
+      # UHF Tx 3.0W, DEXTER Tx 11.17W = 14.17
+      per_second: 14.17
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -200,7 +220,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
+      flat: 666.5
+      # UHF Tx 3.0W, DEXTER Tx 11.17W = 14.17
+      per_second: 14.17
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -255,7 +280,12 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - ZA
   enabled: false
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
+      flat: 666.5
+      # UHF Tx 3.0W, DEXTER Tx 11.17W = 14.17
+      per_second: 14.17
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -308,7 +338,12 @@ CONTACT_BIDIR_PARAM_UHF:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W = 77.5
+      flat: 77.5
+      # UHF Tx = 3.0W
+      per_second: 3.0
   contact_overhead_time: 210s
   link_profile:
   - min_elevation_deg: 0
@@ -342,6 +377,11 @@ CONTACT_KSATLITE_SBAND_SPACE_GROUND_TXO:
     - 2min
     - 4min
     - 6min
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 12.16W
+      per_second: 12.16
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -376,7 +416,12 @@ CONTACT_RXO:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 9.11375W
+      per_second: 9.11375
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -413,7 +458,12 @@ CONTACT_RXO_DVBS2X:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 8.14W
+      per_second: 8.14
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -452,7 +502,12 @@ CONTACT_RXO_DVBS2X_BW1MHZ_23PLS_25DEG:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 8.11W
+      per_second: 8.11
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -490,7 +545,12 @@ CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 9.11375W
+      per_second: 9.11375
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 40
@@ -529,7 +589,12 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 8.04W
+      per_second: 8.04
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
@@ -577,7 +642,12 @@ CONTACT_RXO_DVBS2X_BW5MHZ_PLS15:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 8.1W
+      per_second: 8.1
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 30
@@ -624,7 +694,12 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 8.2W
+      per_second: 8.2
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -665,7 +740,12 @@ CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ_PLS_87:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 8.0W
+      per_second: 8.0
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -706,7 +786,12 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
   - ZA
   enabled: true
   legal: true
-  satellite_constraints: {}
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 12.16W
+      per_second: 12.16
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -746,6 +831,11 @@ TXO_XBAND_PROV_KSAT:
     separation:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 18.718620689655175W
+      per_second: 18.718620689655175
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
