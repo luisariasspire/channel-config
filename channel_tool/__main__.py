@@ -3,6 +3,7 @@
 import argparse
 import itertools
 import os
+import re
 import sys
 from copy import deepcopy
 from typing import Any, Callable, Dict, List, Mapping, Optional, Sequence, Set, Union
@@ -20,11 +21,7 @@ from channel_tool.asset_config import (
     write_asset_config,
 )
 from channel_tool.audit import AuditReport
-from channel_tool.auto_update_utils import (
-    asset_to_predicates,
-    create_config_updates,
-    read_history,
-)
+from channel_tool.auto_update_utils import create_config_updates, read_history
 from channel_tool.pls_tool import pls_long, pls_lookup, pls_short
 from channel_tool.typedefs import ChannelDefinition, DefsFile, Environment
 from channel_tool.util import (
@@ -610,15 +607,65 @@ def channel_list(val: str) -> List[str]:
     sat_templates: Dict[str, ChannelDefinition] = load_yaml_file(SAT_TEMPLATE_FILE)
     gs_templates: Dict[str, ChannelDefinition] = load_yaml_file(GS_TEMPLATE_FILE)
     all_channels = list(set(sat_templates.keys()).union(set(gs_templates.keys())))
+    gs_schema = load_gs_schema()
+    classification_annotations_schema: dict[str, Any] = gs_schema["properties"][
+        "classification_annotations"
+    ]["properties"]
+
+    # Matches a string if it contains classification annotation keys
+    # Used to figure out if the input is a predicate
+    classification_annotations_keys = list(classification_annotations_schema.keys())
+    regex = re.compile(f".*(?=({'|'.join(classification_annotations_keys)}))")
 
     if val.lower() == "all":
         return all_channels
     elif val.lower() in CONTACT_TYPE_DEFS["groups"]:
-        group: List[str] = CONTACT_TYPE_DEFS["groups"][val.lower()]
-        return group
+        group_predicate = CONTACT_TYPE_DEFS["groups"][val.lower()]
+        return channels_from_predicate(
+            group_predicate, gs_templates, classification_annotations_schema
+        )
+    elif regex.match(val):
+        return channels_from_predicate(
+            val, gs_templates, classification_annotations_schema
+        )
     else:
         channels: List[str] = str_to_list(val)
         return channels
+
+
+def channels_from_predicate(
+    val: str,
+    gs_templates: Dict[str, ChannelDefinition],
+    classification_annotations_schema: dict[str, Any],
+) -> List[str]:
+    # Don't need the giant stack trace if this fails. Just give us the error message.
+    sys.tracebacklimit = -1
+    # Check that we can evaluate the predicate against the classification
+    # annotations schema which means it doesn't contain any invalid keys
+    eval(val, classification_annotations_schema)
+    # Reset back to the default
+    # https://docs.python.org/3/library/sys.html#sys.tracebacklimit
+    sys.tracebacklimit = 1000
+
+    def evaluate(annos: Dict[str, Any]) -> Any:
+        try:
+            return eval(val, annos)
+        # We catch NameError exceptions and return False explicitly.
+        # This is because not all fields exist for all channels.
+        # e.g. space_ground_sband_dvbs2x_pls will only be defined if
+        # the channel is a DVB S-Band-down.
+        # Because of the above check, NameError here does not mean
+        # an error in the user input but rather we hit a channel
+        # that doesn't have the predicate field. We just want to filter
+        # it out.
+        except NameError:
+            return False
+
+    return [
+        id
+        for id, cdef in gs_templates.items()
+        if evaluate(cdef["classification_annotations"])
+    ]
 
 
 def add_process_flags(parser: Any) -> None:
@@ -806,8 +853,26 @@ def add_channel_flag(parser: Any) -> None:
         "channels",
         type=channel_list,
         help=(
-            "The channels to act on as a comma separated list. "
-            f"Also supports the following aliases: {aliases} or 'all'."
+            "R|The channels to act on in one of three different formats.\n"
+            "1) As a comma separated list of literal channel names.\n\n"
+            "2) A predicate in the form of a Python conditional statement \n"
+            "filtering channels based on their classification annotations. \n\n"
+            "* Some notes *\n"
+            "- The annotations must be referred directly by the field name. \n"
+            "- The statement is executed without any modifications. \n"
+            "- It must be valid Python. \n"
+            "- It must use correct types and the exact values it needs to match. \n"
+            "  For example, using 'bidir' instead of 'BIDIR' or the string '39' \n"
+            "  instead of integer 39 will not work as expected. Boolean fields \n"
+            "  can be used as bools. \n"
+            "- Anything Python supports is supported. e.g. `and`, `not`, `or` keywords,\n"
+            "  parantheses.\n"
+            "e.g. this statement will select both BIDIRs that cannot run rpcs and \n"
+            "39PLS DVB S-Band channels:\n"
+            "'(directionality == 'BIDIR' and not can_run_rpcs) or \n"
+            "space_ground_sband_dvbs2x_pls == 39'\n\n"
+            "For more examples, see the groups in contact_type_defs.yaml.\n\n"
+            f"3) The following aliases: {aliases} or 'all'.\n"
         ),
     )
 
@@ -866,6 +931,15 @@ def add_asset_flags(parser: Any) -> None:
     add_channel_flag(parser)
 
 
+# Allow newlines in help texts that starts with the R| marker
+# format as usual otherwise
+class ArgFormatter(argparse.HelpFormatter):
+    def _split_lines(self, text: str, width: int) -> list[str]:
+        if text.startswith("R|"):
+            return text[2:].splitlines()
+        return argparse.HelpFormatter._split_lines(self, text, width)
+
+
 PARSER = argparse.ArgumentParser(
     prog="python -m channel_tool",
     description="A utility to help with managing channels.",
@@ -874,31 +948,46 @@ PARSER.add_argument("--debug", action="store_true", help="Run in debugging mode.
 
 SUBPARSERS = PARSER.add_subparsers()
 
-ADD_PARSER = SUBPARSERS.add_parser(
-    "add", help="Add a channel configuration from a template.", aliases=["a"]
+
+def add_subparser(*args, **kwargs) -> argparse.ArgumentParser:  # type: ignore
+    return SUBPARSERS.add_parser(
+        *args,
+        **kwargs,
+        formatter_class=ArgFormatter,
+    )
+
+
+ADD_PARSER = add_subparser(
+    "add",
+    help="Add a channel configuration from a template.",
+    aliases=["a"],
 )
 ADD_PARSER.set_defaults(func=add_config)
 add_process_flags(ADD_PARSER)
 add_editing_flags(ADD_PARSER)
 add_asset_flags(ADD_PARSER)
 
-DELETE_PARSER = SUBPARSERS.add_parser(
-    "delete", help="Delete a channel configuration.", aliases=["d"]
+DELETE_PARSER = add_subparser(
+    "delete",
+    help="Delete a channel configuration.",
+    aliases=["d"],
 )
 DELETE_PARSER.set_defaults(func=delete_config)
 add_process_flags(DELETE_PARSER)
 add_delete_flags(DELETE_PARSER)
 add_asset_flags(DELETE_PARSER)
 
-EDIT_PARSER = SUBPARSERS.add_parser(
-    "edit", help="Modify an existing channel configuration.", aliases=["e"]
+EDIT_PARSER = add_subparser(
+    "edit",
+    help="Modify an existing channel configuration.",
+    aliases=["e"],
 )
 EDIT_PARSER.set_defaults(func=edit_config)
 add_process_flags(EDIT_PARSER)
 add_editing_flags(EDIT_PARSER)
 add_asset_flags(EDIT_PARSER)
 
-AUDIT_PARSER = SUBPARSERS.add_parser(
+AUDIT_PARSER = add_subparser(
     "audit", help="Audit a satellite/ground station pair to find usable channels."
 )
 AUDIT_PARSER.set_defaults(func=audit_configs)
@@ -921,7 +1010,7 @@ AUDIT_PARSER.add_argument(
     help=("Only print asset pairs that contain valid channels."),
 )
 
-QUERY_PARSER = SUBPARSERS.add_parser(
+QUERY_PARSER = add_subparser(
     "query",
     help="Query field values across assets and channels and output to CSV (only flat fields at the moment).",
 )
@@ -935,7 +1024,7 @@ QUERY_PARSER.add_argument(
     help=("The field to query."),
 )
 
-DIFF_PARSER = SUBPARSERS.add_parser(
+DIFF_PARSER = add_subparser(
     "diff",
     help="Compare items.",
 )
@@ -951,14 +1040,14 @@ DIFF_PARSER.add_argument(
     help=("Increase verbosity of diff and print changed values."),
 )
 
-NORMALIZE_PARSER = SUBPARSERS.add_parser(
+NORMALIZE_PARSER = add_subparser(
     "normalize", help="Silently convert specific configurations to a normalized format."
 )
 NORMALIZE_PARSER.set_defaults(func=normalize_configs)
 add_env_flag(NORMALIZE_PARSER)
 add_asset_flag(NORMALIZE_PARSER)
 
-FORMAT_PARSER = SUBPARSERS.add_parser(
+FORMAT_PARSER = add_subparser(
     "format",
     help="Normalize all configuration formatting, indicating which files were changed.",
 )
@@ -969,7 +1058,7 @@ FORMAT_PARSER.add_argument(
     help=("Report if any configs would be updated for formatting and fail if so."),
 )
 
-VALIDATE_PARSER = SUBPARSERS.add_parser(
+VALIDATE_PARSER = add_subparser(
     "validate", help="Validate all templates and extant configurations."
 )
 VALIDATE_PARSER.add_argument(
@@ -994,7 +1083,7 @@ VALIDATE_PARSER.add_argument(
 )
 VALIDATE_PARSER.set_defaults(func=lambda args: validate_all(args))
 
-AUTO_UPDATE_PARSER = SUBPARSERS.add_parser(
+AUTO_UPDATE_PARSER = add_subparser(
     "auto-update",
     help="Automatically update link profiles for given assets, channels and channels.",
 )
@@ -1003,7 +1092,7 @@ add_auto_update_flags(AUTO_UPDATE_PARSER)
 add_asset_flags(AUTO_UPDATE_PARSER)
 add_process_flags(AUTO_UPDATE_PARSER)
 
-PLS_PARSER = SUBPARSERS.add_parser(
+PLS_PARSER = add_subparser(
     "pls",
     help="Look up PLS-associated values",
 )
@@ -1046,7 +1135,7 @@ PLS_PARSER.add_argument(
     default="fragments/txo_dvb_template.yaml",
 )
 
-DATABASE_PARSER = SUBPARSERS.add_parser(
+DATABASE_PARSER = add_subparser(
     "db", help="[EXPERIMENTAL] Interact with SQL config database"
 )
 DATABASE_SUBPARSERS = DATABASE_PARSER.add_subparsers()
