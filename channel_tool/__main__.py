@@ -504,6 +504,45 @@ def format_configs(args: Any) -> None:
         exit(1)
 
 
+def rename_channel(args: Any) -> None:
+    any_updates = False
+    current_name = args.current_name
+    new_name = args.new_name
+    gs_templates = load_yaml_file(GS_TEMPLATE_FILE)
+    any_updates |= rename_channel_in_configs(
+        gs_templates, GS_TEMPLATE_FILE, current_name, new_name
+    )
+    sat_templates = load_yaml_file(SAT_TEMPLATE_FILE)
+    any_updates |= rename_channel_in_configs(
+        sat_templates, SAT_TEMPLATE_FILE, current_name, new_name
+    )
+    for env in ENVS:
+        all_assets = locate_assets(env, "all_gs")
+        all_assets.extend(locate_assets(env, "all_sat"))
+        for asset in all_assets:
+            path = infer_config_file(env, asset)
+            configs = load_asset_config(env, asset)
+            any_updates |= rename_channel_in_configs(
+                configs, path, current_name, new_name
+            )
+    if not any_updates:
+        print(f"No channel {current_name} found in any config or template")
+
+
+def rename_channel_in_configs(
+    configs: Any, path: str, current_name: str, new_name: str
+) -> bool:
+    config = configs.pop(current_name, None)
+    if config:
+        configs[new_name] = config
+        configs_string = asset_config_to_string(configs)
+        with open(path, "w") as f:
+            f.write(configs_string)
+        print(f"Renamed channel {current_name} to {new_name} in {path}")
+        return True
+    return False
+
+
 def format_asset(args: Any, config: Any, path: str) -> bool:
     with open(path) as f:
         string_before = f.read()
@@ -976,6 +1015,24 @@ DELETE_PARSER.set_defaults(func=delete_config)
 add_process_flags(DELETE_PARSER)
 add_delete_flags(DELETE_PARSER)
 add_asset_flags(DELETE_PARSER)
+
+RENAME_PARSER = add_subparser(
+    "rename",
+    help="Rename a channel across all environments, assets and templates.",
+    aliases=["r"],
+)
+RENAME_PARSER.set_defaults(func=rename_channel)
+RENAME_PARSER.add_argument(
+    "current_name",
+    type=str,
+    help=("current name of channel"),
+)
+RENAME_PARSER.add_argument(
+    "new_name",
+    type=str,
+    help=("new name for channel"),
+)
+
 
 EDIT_PARSER = add_subparser(
     "edit",
