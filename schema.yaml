@@ -268,6 +268,25 @@ definitions:
       type: object
       additionalProperties: false
       properties:
+        satellite_min_elevations:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              satellites:
+                type: array
+                items:
+                  type: string
+                  pattern: ^FM[0-9]{3}$
+              min_elevation_deg:
+                minimum: 0
+                maximum: 90
+                type: integer
+        default_min_elevation_deg:
+          minimum: 0
+          maximum: 90
+          type: integer
         min_elevation_deg:
           minimum: 0
           maximum: 90
@@ -281,11 +300,24 @@ definitions:
         min_duration:
           type: string
           pattern: *humantime
+        add_transmit_times:
+          type: boolean
       required:
-        - min_elevation_deg
         - downlink_rate_kbps
         - uplink_rate_kbps
-
+      dependencies:
+        "satellite_min_elevations": ["default_min_elevation_deg"]
+        "add_transmit_times": ["default_min_elevation_deg"]
+    oneOf:
+      - items:
+          required: ["min_elevation_deg"]
+          not:
+            required: ["default_min_elevation_deg"]
+      - items:
+          required: ["default_min_elevation_deg"]
+          not:
+            required: ["min_elevation_deg"]
+                  
   channel_parameter_set: &channel_parameter_set
     oneOf:
       - type: object

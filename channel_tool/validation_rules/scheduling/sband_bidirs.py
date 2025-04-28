@@ -33,10 +33,17 @@ def check_transmit_times_elevation_exists_and_matches_innermost_link_profile_min
     ):
         return True
 
-    elevation = max(
-        get_nested(channel_config, ["link_profile"]),
-        key=lambda x: x["min_elevation_deg"],
-    )["min_elevation_deg"]
+    link_profiles = get_nested(channel_config, ["link_profile"])
+
+    link_profile = max(link_profiles, key=lambda x: x["downlink_rate_kbps"])
+
+    if "default_min_elevation_deg" in link_profile:
+        if "add_transmit_times" not in link_profile:
+            return "S-Band BIDIRs that adhere to the new schema must contain `add_transmit_times`"
+
+        return True
+
+    min_elevation_deg = link_profile["min_elevation_deg"]
     dynamic_param_elevation = get_nested(
         channel_config,
         ["dynamic_window_parameters", "transmit_times", "elevation_threshold_deg"],
@@ -45,7 +52,7 @@ def check_transmit_times_elevation_exists_and_matches_innermost_link_profile_min
     if not dynamic_param_elevation:
         return "S-Band BIDIRs must have transmit times min elevation"
 
-    if elevation == dynamic_param_elevation:
+    if min_elevation_deg == dynamic_param_elevation:
         return True
 
-    return f"{elevation} is not equal to {dynamic_param_elevation}"
+    return f"{min_elevation_deg} is not equal to {dynamic_param_elevation}"
