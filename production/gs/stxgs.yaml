@@ -126,31 +126,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
     space_ground_sband_bandwidth_mhz: 1
     jira_ticket: PRI-184
   contact_type: CONTACT_SPACE_GROUND_BIDIR
-CONTACT_BIDIR_PARAM_UHF:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - US
-  - LU
-  enabled: false
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 210s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 4.0
-    min_duration: 2m
-  classification_annotations:
-    provider: SPIRE
-    directionality: BIDIR
-    adcs_pointing: NADIR
-    space_ground_uhf: true
-    ground_space_uhf: true
-    can_sync_schedule: true
-    can_run_rpcs: true
-    space_ground_sband: false
-    ground_space_sband: false
-    space_ground_xband: false
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -258,3 +233,28 @@ CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
     space_ground_sband_bandwidth_mhz: 1
     jira_ticket: PRI-184
   contact_type: CONTACT_SPACE_GROUND_TXO
+U_U_BIDIR_SPIRE:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: false
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
+    min_duration: 2m
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
+    space_ground_sband: false
+    ground_space_sband: false
+    space_ground_xband: false
