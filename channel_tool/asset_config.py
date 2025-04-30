@@ -13,7 +13,9 @@ from channel_tool.typedefs import (
 from channel_tool.util import (
     GROUND_STATION,
     GS_DIR,
+    GS_TEMPLATE_FILE,
     SAT_DIR,
+    SAT_TEMPLATE_FILE,
     SATELLITE,
     dump_yaml_file,
     dump_yaml_string,

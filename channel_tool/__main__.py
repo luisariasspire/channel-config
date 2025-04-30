@@ -2,7 +2,6 @@
 
 import argparse
 import itertools
-import os
 import re
 import sys
 from copy import deepcopy
@@ -22,6 +21,8 @@ from channel_tool.asset_config import (
 )
 from channel_tool.audit import AuditReport
 from channel_tool.auto_update_utils import create_config_updates, read_history
+from channel_tool.duplicate import DuplicateError, duplicate, gen_channel_id
+from channel_tool.naming import class_annos_to_name
 from channel_tool.pls_tool import pls_long, pls_lookup, pls_short
 from channel_tool.typedefs import ChannelDefinition, DefsFile, Environment
 from channel_tool.util import (
@@ -29,12 +30,13 @@ from channel_tool.util import (
     GROUND_STATION,
     GS_TEMPLATE_FILE,
     SAT_TEMPLATE_FILE,
-    SATELLITE,
     confirm,
+    dump_yaml_file,
     err,
     file_to_yaml_collection,
     file_to_yaml_list,
     file_to_yaml_map,
+    find_template,
     format_diff,
     load_yaml_file,
     str_to_bool,
@@ -62,7 +64,7 @@ class NoConfigurationError(Exception):
     pass
 
 
-class MissingTemplateError(Exception):
+class AmbigousChannel(Exception):
     pass
 
 
@@ -432,6 +434,43 @@ def auto_update_config(args: Any) -> None:
         )
 
 
+def duplicate_config(args: Any) -> None:
+    # This is not an exception to make channel predicates usable.
+    if len(args.channels) != 1:
+        warn("More than one channel was specified. Duplicating the first one...")
+
+    channels = args.channels[:1]
+    template = find_template(GROUND_STATION, channels[0])
+    class_annos = template.get("classification_annotations")
+
+    def do_duplicate(
+        asset: str, channel: str, existing: Optional[ChannelDefinition]
+    ) -> Optional[ChannelDefinition]:
+        if existing is None:
+            msg = (
+                f"No configuration for {channel} on {asset}.\n"
+                f"(Tip: Use `channel_tool add {asset} {channel}` to add one from a template.)"
+            )
+            if not args.fail_fast:
+                warn(msg)
+                return None
+            else:
+                raise NoConfigurationError(msg)
+
+        return duplicate(args, existing, class_annos)
+
+    new_channel_id = gen_channel_id(args, class_annos)
+
+    apply_update(
+        args.environment,
+        args.assets,
+        channels,
+        do_duplicate,
+        yes=args.yes,
+        new_channel_id=new_channel_id,
+    )
+
+
 def audit_configs(args: Any) -> None:
     sats = locate_assets(args.environment, args.satellites)
     gss = locate_assets(args.environment, args.ground_stations)
@@ -504,6 +543,32 @@ def format_configs(args: Any) -> None:
         exit(1)
 
 
+def duplicate_template(new_channel_id: str, old_channel_id: str, asset: str) -> None:
+    file = (
+        GS_TEMPLATE_FILE
+        if infer_asset_type(asset) == "groundstation"
+        else SAT_TEMPLATE_FILE
+    )
+
+    templates = load_yaml_file(file)
+
+    if new_channel_id in templates:
+        warn(f"{new_channel_id} already exists in {file}. No-op.")
+        return
+
+    old_template = templates[old_channel_id]
+    template_class_annos = (
+        old_template.get("classification_annotations")
+        or find_template(GROUND_STATION, old_channel_id)["classification_annotations"]
+    )
+    new_template = duplicate(args, old_template, template_class_annos)
+
+    templates[new_channel_id] = deepcopy(new_template)
+    dump_yaml_file(templates, file)
+
+    print(f"Added {new_channel_id} to {file}.")
+
+
 def rename_channel(args: Any) -> None:
     any_updates = False
     current_name = args.current_name
@@ -561,31 +626,13 @@ def format_asset(args: Any, config: Any, path: str) -> bool:
         return False
 
 
-def find_template(asset_type: str, channel: str) -> ChannelDefinition:
-    if asset_type == GROUND_STATION:
-        template_file = GS_TEMPLATE_FILE
-    elif asset_type == SATELLITE:
-        template_file = SAT_TEMPLATE_FILE
-    else:
-        raise Exception(f"Unknown asset type {asset_type}")
-    if os.path.exists(template_file):
-        templates: Dict[str, ChannelDefinition] = load_yaml_file(template_file)
-        if channel in templates:
-            return templates[channel]
-        else:
-            raise MissingTemplateError(
-                f"Could not find template for {channel} in {template_file}"
-            )
-    else:
-        raise FileNotFoundError(f"Could not find file {template_file}")
-
-
 def apply_update(
     env: Environment,
     assets: List[str],
     channels: List[str],
     tfm: Callable[[str, str, Optional[ChannelDefinition]], Optional[ChannelDefinition]],
     yes: bool = False,
+    new_channel_id: Optional[str] = None,
 ) -> None:
     for asset in locate_assets(env, assets):
         asset_config = load_asset_config(env, asset)
@@ -599,6 +646,16 @@ def apply_update(
                         asset_type, updated_chan, file=asset, key=channel
                     )
                 if updated_chan != existing_chan:
+                    # new_channel_id is specified when we operated on an
+                    # existing channel but want to save our changes under a new
+                    # id. We need to update existing_chan so that the diff is
+                    # correct and channel so that we use the new channel id
+                    # from here on.
+                    if new_channel_id:
+                        existing_chan = None
+                        old_channel_id = channel
+                        channel = new_channel_id
+
                     if yes or confirm_changes(
                         asset, channel, existing_chan, updated_chan
                     ):
@@ -611,11 +668,19 @@ def apply_update(
                         else:
                             # Deepcopy here to try to avoid YAML being too smart and combining
                             # structures. It makes diffs hard to read.
-                            asset_config[channel] = deepcopy(updated_chan)
+                            updated_chan = deepcopy(updated_chan)
+                            asset_config[channel] = updated_chan
                             print(f"Updated {channel} definition for {asset}.")
+
+                            # If we're creating a new channel, also add it to
+                            # the templates
+                            if new_channel_id:
+                                duplicate_template(channel, old_channel_id, asset)
                 else:
                     print(colored(f"No changes for {channel} on {asset}.", "magenta"))
             except AlreadyExistsError as e:
+                err(f"Error: {e}")
+            except DuplicateError as e:
                 err(f"Error: {e}")
             except Exception as e:
                 err(
@@ -970,6 +1035,24 @@ def add_asset_flags(parser: Any) -> None:
     add_channel_flag(parser)
 
 
+# These are separated to a function since other subcommands that might need to
+# call pls tool's internal functions will need to pass these and we need a
+# single source of truth for defaults.
+def add_pls_flags(parser: Any) -> None:
+    parser.add_argument(
+        "--iovdb",
+        help="SnR db adjustment based on IOV (default %(default).1f, change with care)",
+        default=4,
+        type=float,
+    )
+    parser.add_argument(
+        "template",
+        nargs="?",
+        help="YAML template to expand",
+        default="fragments/txo_dvb_template.yaml",
+    )
+
+
 # Allow newlines in help texts that starts with the R| marker
 # format as usual otherwise
 class ArgFormatter(argparse.HelpFormatter):
@@ -982,6 +1065,7 @@ class ArgFormatter(argparse.HelpFormatter):
 PARSER = argparse.ArgumentParser(
     prog="python -m channel_tool",
     description="A utility to help with managing channels.",
+    formatter_class=ArgFormatter,
 )
 PARSER.add_argument("--debug", action="store_true", help="Run in debugging mode.")
 
@@ -1142,18 +1226,44 @@ VALIDATE_PARSER.set_defaults(func=lambda args: validate_all(args))
 
 AUTO_UPDATE_PARSER = add_subparser(
     "auto-update",
-    help="Automatically update link profiles for given assets, channels and channels.",
+    help="Automatically update link profiles for given assets and channels.",
 )
 AUTO_UPDATE_PARSER.set_defaults(func=auto_update_config)
 add_auto_update_flags(AUTO_UPDATE_PARSER)
 add_asset_flags(AUTO_UPDATE_PARSER)
 add_process_flags(AUTO_UPDATE_PARSER)
 
+DUPLICATE_PARSER = add_subparser(
+    "duplicate",
+    help=(
+        "R|Duplicate a channel within an asset with a different PLS value.\n"
+        "- A channel can only be duplicated within the same asset.\n"
+        "- It is currently not possible to duplicate while changing bandwidths.\n"
+        "- If more than one channel to duplicate is specified, only the first one will be used.\n"
+    ),
+)
+DUPLICATE_PARSER.set_defaults(func=duplicate_config)
+add_asset_flags(DUPLICATE_PARSER)
+add_process_flags(DUPLICATE_PARSER)
+add_pls_flags(DUPLICATE_PARSER)
+DUPLICATE_PARSER.add_argument("--pls", help="New PLS value", type=int, required=True)
+# TODO we have a pls to bitrate mapping in pls tool we can use instead
+DUPLICATE_PARSER.add_argument(
+    "--bitrate-kbps", help="New bitrate in kbps", type=float, required=True
+)
+DUPLICATE_PARSER.add_argument(
+    "--min-elevation-deg",
+    help="New minimum elevation in degrees",
+    type=float,
+    required=True,
+)
+
 PLS_PARSER = add_subparser(
     "pls",
     help="Look up PLS-associated values",
 )
 PLS_PARSER.set_defaults(func=pls_lookup)
+add_pls_flags(PLS_PARSER)
 PLS_LOOKUP = PLS_PARSER.add_mutually_exclusive_group(required=True)
 PLS_LOOKUP.add_argument("-p", "--pls", help="PLS value", type=int)
 PLS_LOOKUP.add_argument("-d", "--db", help="SnR value (db)", type=float)
@@ -1178,18 +1288,6 @@ PLS_PARSER.add_argument(
 )
 PLS_PARSER.add_argument(
     "-r", "--radionet", help="enable radionet", default=False, action="store_true"
-)
-PLS_PARSER.add_argument(
-    "--iovdb",
-    help="SnR db adjustment based on IOV (default %(default).1f, change with care)",
-    default=4,
-    type=float,
-)
-PLS_PARSER.add_argument(
-    "template",
-    nargs="?",
-    help="YAML template to expand",
-    default="fragments/txo_dvb_template.yaml",
 )
 
 DATABASE_PARSER = add_subparser(

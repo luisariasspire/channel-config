@@ -3,7 +3,7 @@ import os
 import subprocess
 from copy import deepcopy
 from io import StringIO
-from typing import Any, List, Mapping, Optional, Union
+from typing import Any, Dict, List, Mapping, Optional, Union
 
 from ruamel.yaml import YAML
 from termcolor import colored
@@ -14,6 +14,11 @@ from channel_tool.typedefs import (
     GroundStationKind,
     SatelliteKind,
 )
+
+
+class MissingTemplateError(Exception):
+    pass
+
 
 SAT_DIR = "sat"
 GS_DIR = "gs"
@@ -191,3 +196,22 @@ def format_diff(
     d = difflib.unified_diff(a, b, n=lines)
     cd = [color_diff_line(line) for line in d]
     return "".join(cd)
+
+
+def find_template(asset_type: str, channel: str) -> ChannelDefinition:
+    if asset_type == GROUND_STATION:
+        template_file = GS_TEMPLATE_FILE
+    elif asset_type == SATELLITE:
+        template_file = SAT_TEMPLATE_FILE
+    else:
+        raise Exception(f"Unknown asset type {asset_type}")
+    if os.path.exists(template_file):
+        templates: Dict[str, ChannelDefinition] = load_yaml_file(template_file)
+        if channel in templates:
+            return templates[channel]
+        else:
+            raise MissingTemplateError(
+                f"Could not find template for {channel} in {template_file}"
+            )
+    else:
+        raise FileNotFoundError(f"Could not find file {template_file}")

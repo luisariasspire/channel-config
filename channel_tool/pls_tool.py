@@ -160,10 +160,12 @@ def load_radionet(
     return None
 
 
-def pls_lookup(args: Any) -> None:
+def pls_lookup(args: Any, stdout: bool = True) -> Any:
     """
     module main entry point
     """
+    if not stdout:
+        args.raw = True
     found: Dict[str, Optional[Union[float, str]]] = {"pls": None, "mtu": None}
     if args.radionet:
         if not args.raw:
@@ -227,4 +229,8 @@ def pls_lookup(args: Any) -> None:
         loader.add_constructor("!radionet", load_radionet)
         with open(args.template) as t:
             tmpl = yaml.load(t, Loader=loader)
-        print(yaml.dump(tmpl, default_flow_style=False))
+
+        if stdout:
+            print(yaml.dump(tmpl, default_flow_style=False))
+
+        return tmpl

@@ -26,6 +26,7 @@ class ChannelDefinition(TypedDict, total=False):
     ground_station_constraints: GsConstraints
     satellite_constraints: SatConstraints
     parameters: Any  # Unfortunately, we can't represent JSON in MyPy.
+    classification_annotations: dict[str, Any]
 
 
 AssetConfig = Dict[str, Optional[ChannelDefinition]]
