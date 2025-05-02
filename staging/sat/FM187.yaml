@@ -362,51 +362,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
-S_TXO_SPIRE_BW1_P39_F2200_5:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: false
-  legal: true
-  satellite_constraints:
-    electrical_cost:
-      # 155 second warmup; DEXTER idle 6.5W = 1007.5
-      flat: 1007.5
-      # DEXTER Tx 9.001437125748502W
-      per_second: 9.001437125748502
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 0
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB_IP
-      use_radionet: true
-      bandaid_override:
-        fec_k: 223
-        fec: 255
-        tx_carrier_frequency_hz: 2200500000
-
 CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ_PLS_87:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -700,6 +655,51 @@ S_TXO_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
       use_radionet: true
       bandaid_override:
         pkt_header_len: 2
+S_TXO_SPIRE_BW1_P39_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 6.5W = 1007.5
+      flat: 1007.5
+      # DEXTER Tx 9.001437125748502W
+      per_second: 9.001437125748502
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 0
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+
 S_TXO_SPIRE_BW5_P11_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
