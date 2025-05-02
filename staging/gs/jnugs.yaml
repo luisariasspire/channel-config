@@ -75,7 +75,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
-CONTACT_RXO:
+S_TXO_SPIRE_BW1_LEG_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
   - US
