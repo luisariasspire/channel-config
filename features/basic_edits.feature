@@ -23,7 +23,7 @@ Feature: operators can make basic edits
 
   Scenario: deleting a channel
     Given the satellite 'FM0' has 'CONTACT_BIDIR_PARAM' in its configuration file
-    And the satellite 'FM0' has 'CONTACT_RXO' in its configuration file
+    And the satellite 'FM0' has 'S_TXO_SPIRE_BW1_LEG_F2022_5' in its configuration file
     When I successfully run 'python -m channel_tool delete staging FM0 CONTACT_BIDIR_PARAM --yes'
     Then the satellite 'FM0' does not have 'CONTACT_BIDIR_PARAM' in its configuration file
 
