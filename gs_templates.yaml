@@ -529,38 +529,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_HIGH_ELEVATION:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 75
     space_ground_sband_bandwidth_mhz: 1
-S_TXO_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - DE
-  - LU
-  - SG
-  - US
-  enabled: false
-  legal: false
-  ground_station_constraints: {}
-  contact_overhead_time: 10s
-  link_profile:
-  - min_elevation_deg: 40
-    downlink_rate_kbps: 1120.0
-    uplink_rate_kbps: 0.0
-    min_duration: 1min
-  classification_annotations:
-    provider: SPIRE
-    directionality: TXO
-    adcs_pointing: NADIR
-    space_ground_uhf: false
-    ground_space_uhf: false
-    can_sync_schedule: false
-    can_run_rpcs: false
-    space_ground_sband: true
-    ground_space_sband: false
-    space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2022.5
-    space_ground_sband_encoding: DVBS2X
-    space_ground_sband_dvbs2x_pls: 39
-    space_ground_sband_bandwidth_mhz: 1
-    jira_ticket: PRI-184
 CONTACT_RXO_DVBS2X_BW5MHZ_PLS11:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -956,6 +924,38 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
+S_TXO_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 40
+    downlink_rate_kbps: 1120.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 39
+    space_ground_sband_bandwidth_mhz: 1
+    jira_ticket: PRI-184
 TXO_XBAND:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
