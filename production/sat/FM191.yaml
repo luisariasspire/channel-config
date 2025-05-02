@@ -314,7 +314,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
-CONTACT_RXO_DVBS2X_SBAND_FREQ_2200_MHZ_PLS_87:
+S_TXO_SPIRE_BW1_P87_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
   - AU
