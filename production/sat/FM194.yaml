@@ -339,47 +339,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
-S_TXO_KSAT_BW1_LEG_F2200_5:
-  directionality: SpaceToEarth
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  allowed_license_countries:
-  - AU
-  - CA
-  - CL
-  - ES
-  - GR
-  - NO
-  - NZ
-  - ZA
-  enabled: true
-  legal: true
-  satellite_constraints:
-    electrical_cost:
-      # 3.8 * 155 = 589
-      # 155 second warmup; DEXTER idle 3.8W = 589.0
-      flat: 589.0
-      # DEXTER Tx 10.55W
-      per_second: 10.55
-    budget_name: KSAT_NOAA
-    fixed_contact_duration:
-    - 2min
-    - 4min
-    - 6min
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 10000.0
-    uplink_rate_kbps: 0
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: LEGACY
-      bandaid_mode: TX_SBAND_IP
-      use_radionet: true
-      bandaid_override:
-        mtu: 223
-        fec_k: 254
-        fec: 255
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -843,6 +802,47 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
         fec_k: 223
         fec: 255
         tx_carrier_frequency_hz: 2200500000
+S_TXO_KSAT_BW1_LEG_F2200_5:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - CA
+  - CL
+  - ES
+  - GR
+  - NO
+  - NZ
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 3.8 * 155 = 589
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 10.55W
+      per_second: 10.55
+    budget_name: KSAT_NOAA
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 10000.0
+    uplink_rate_kbps: 0
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
+      bandaid_override:
+        mtu: 223
+        fec_k: 254
+        fec: 255
 TXO_XBAND:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO

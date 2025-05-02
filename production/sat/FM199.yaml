@@ -337,44 +337,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
-S_TXO_KSAT_BW1_LEG_F2200_5:
-  directionality: SpaceToEarth
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  allowed_license_countries:
-  - AU
-  - CA
-  - CL
-  - ES
-  - GR
-  - NO
-  - NZ
-  - ZA
-  enabled: true
-  legal: true
-  satellite_constraints:
-    budget_name: KSAT_NOAA
-    fixed_contact_duration:
-    - 2min
-    - 4min
-    - 6min
-    electrical_cost:
-      # 155 second warmup; DEXTER idle 3.8W = 589.0
-      flat: 589.0
-      # DEXTER Tx 11.57W
-      per_second: 11.57
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 10000.0
-    uplink_rate_kbps: 0
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: LEGACY
-      bandaid_mode: TX_SBAND_IP
-      bandaid_override:
-        tx_hardware_gain_db: -7
-      use_radionet: true
 CONTACT_RXO:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -792,6 +754,44 @@ CONTACT_RXO_SBAND_FREQ_2200_MHZ:
         fec: 255
         tx_carrier_frequency_hz: 2200500000
         tx_hardware_gain_db: -7
+S_TXO_KSAT_BW1_LEG_F2200_5:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - CA
+  - CL
+  - ES
+  - GR
+  - NO
+  - NZ
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    budget_name: KSAT_NOAA
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 11.57W
+      per_second: 11.57
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 10000.0
+    uplink_rate_kbps: 0
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      bandaid_override:
+        tx_hardware_gain_db: -7
+      use_radionet: true
 TXO_XBAND:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
