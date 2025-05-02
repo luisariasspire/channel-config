@@ -132,7 +132,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
     space_ground_sband_bandwidth_mhz: 1
     jira_ticket: PRI-184
   contact_type: CONTACT_SPACE_GROUND_BIDIR
-CONTACT_RXO_DVBS2X_BW1MHZ_23PLS_25DEG:
+S_TXO_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
   directionality: SpaceToEarth
   allowed_license_countries:
   - DE
