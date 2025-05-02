@@ -214,7 +214,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
     space_ground_xband_bandwidth_mhz: 10
 
 # The 3m dish has ~ 15db of SNR allowing PLS 87 (2.391mbps)
-CONTACT_RXO_SBAND_FREQ_2200_MHZ:
+S_TXO_SPIRE_BW1_LEG_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
   - DE
