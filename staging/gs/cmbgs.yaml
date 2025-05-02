@@ -73,36 +73,6 @@ CONTACT_BIDIR_PARAM_DVBS2X:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
-S_TXO_SPIRE_BW1_LEG_F2022_5:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - DE
-  - LU
-  - SG
-  - US
-  enabled: true
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 583.41
-    uplink_rate_kbps: 0.0
-    min_duration: 1min
-  classification_annotations:
-    provider: SPIRE
-    directionality: TXO
-    adcs_pointing: NADIR
-    space_ground_uhf: false
-    ground_space_uhf: false
-    can_sync_schedule: false
-    can_run_rpcs: false
-    space_ground_sband: true
-    ground_space_sband: false
-    space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2022.5
-    space_ground_sband_encoding: LEGACY
-    space_ground_sband_bandwidth_mhz: 1
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -133,6 +103,36 @@ CONTACT_RXO_DVBS2X:
     space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
+    space_ground_sband_bandwidth_mhz: 1
+S_TXO_SPIRE_BW1_LEG_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 583.41
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
 U_U_BIDIR_SPIRE:
   directionality: Bidirectional

@@ -449,63 +449,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
-S_TXO_SPIRE_BW1_LEG_F2022_5:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: false
-  legal: true
-  satellite_constraints:
-    sun_constraint:
-      contacts_above_threshold: false
-      declination_threshold_deg: 10.0
-      pre_buffer: 2min
-      post_buffer: 2min
-      exclude_gs_ids:
-      - tr4kl
-      - tr6kl
-      - tr20kl
-      - sg71kl
-      - sg161kl
-      - sg180kl
-      - sg182kl
-      - sg189kl
-    electrical_cost:
-      # 155 second warmup; DEXTER idle 6.5W = 1007.5
-      flat: 1007.5
-      # DEXTER Tx 9.001437125748502W
-      per_second: 9.001437125748502
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 0
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: LEGACY
-      bandaid_mode: TX_SBAND_IP
-      use_radionet: true
-      bandaid_override:
-        fec_k: 223
-        fec: 255
-  contact_type: CONTACT_SPACE_GROUND_TXO
 CONTACT_RXO_DVBS2X:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -1007,6 +950,63 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       use_radionet: true
+S_TXO_SPIRE_BW1_LEG_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - tr20kl
+      - sg71kl
+      - sg161kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 6.5W = 1007.5
+      flat: 1007.5
+      # DEXTER Tx 9.001437125748502W
+      per_second: 9.001437125748502
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 0
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+  contact_type: CONTACT_SPACE_GROUND_TXO
 TXO_XBAND:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
