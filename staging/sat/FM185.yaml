@@ -360,48 +360,6 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
     - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
-S_TXO_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: false
-  legal: true
-  satellite_constraints:
-    electrical_cost:
-      # 155 second warmup; DEXTER idle 6.5W = 1007.5
-      flat: 1007.5
-      # DEXTER Tx 9.001437125748502W
-      per_second: 9.001437125748502
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 817.8
-    uplink_rate_kbps: 4.0
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB_IP
-      use_radionet: true
-      bandaid_override:
-        pkt_header_len: 2
 CONTACT_RXO_DVBS2X_BW1MHZ_39PLS_40DEG:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -759,6 +717,48 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
       use_radionet: true
       bandaid_override: {}
   contact_type: CONTACT_SPACE_GROUND_TXO
+S_TXO_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 6.5W = 1007.5
+      flat: 1007.5
+      # DEXTER Tx 9.001437125748502W
+      per_second: 9.001437125748502
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 817.8
+    uplink_rate_kbps: 4.0
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pkt_header_len: 2
 S_TXO_SPIRE_BW1_P39_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
