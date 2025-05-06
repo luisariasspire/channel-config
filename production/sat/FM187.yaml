@@ -4,7 +4,7 @@ BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_61:
   allowed_license_countries:
   - AU
   - MN
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -67,7 +67,7 @@ CONTACT_BIDIR_PARAM:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -110,7 +110,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -157,7 +157,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -214,7 +214,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -265,7 +265,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -324,7 +324,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -856,7 +856,7 @@ X_TXO_KSAT_BW20_P49_TRACK:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_SNC
@@ -892,7 +892,7 @@ X_TXO_KSAT_BW20_P61_TRACK:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_SNC
@@ -936,7 +936,7 @@ X_TXO_SPIRE_BW10_P5:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
@@ -969,7 +969,7 @@ X_TXO_SPIRE_BW20_P61_TRACK:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     separation:
