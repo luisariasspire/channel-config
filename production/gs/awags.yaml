@@ -283,7 +283,7 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 87
     space_ground_sband_bandwidth_mhz: 1
-TXO_XBAND_BW_10_PLS_25:
+X_TXO_SPIRE_BW10_P25:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
