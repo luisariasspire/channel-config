@@ -46,7 +46,7 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
     space_ground_sband_mid_freq_mhz: 2200.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
-TXO_XBAND_PROV_KSAT_BW_10_PLS_25:
+X_TXO_KSAT_BW10_P25:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
