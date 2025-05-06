@@ -67,7 +67,7 @@ CONTACT_BIDIR_PARAM:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -110,7 +110,7 @@ CONTACT_BIDIR_PARAM_DVBS2X:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -155,7 +155,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -170,7 +170,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
     uplink_rate_kbps: 4.0
     min_duration: 4m
   - min_elevation_deg: 25
-    # 39 PLS reaches around 94% of its guarantee when 
+    # 39 PLS reaches around 94% of its guarantee when
     # its working properly. This is scaled down by the
     # same amount.
     downlink_rate_kbps: 817.8
@@ -212,7 +212,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_39PLS_40DEG:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -263,7 +263,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS11:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -322,7 +322,7 @@ CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -372,7 +372,7 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     budget_name: KSAT_SNC
@@ -416,7 +416,7 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -457,7 +457,7 @@ S_TXO_SPIRE_BW1_LEG_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -501,7 +501,7 @@ S_TXO_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -543,7 +543,7 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -586,7 +586,7 @@ S_TXO_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -628,7 +628,7 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -673,7 +673,7 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -719,7 +719,7 @@ S_TXO_SPIRE_BW5_P11_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -771,7 +771,7 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     electrical_cost:

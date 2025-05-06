@@ -93,6 +93,16 @@ snc:
   - FM186
   - FM187
 
+otc_p1:
+  - FM211
+  - FM212
+  - FM213
+  - FM214
+  - FM215
+  - FM216
+  - FM217
+  - FM218
+
 ksat_gs:
   - at2kl
   - ha2kl

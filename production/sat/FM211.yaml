@@ -1,10 +1,10 @@
-BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
+BIDIR_XBAND_D_SBAND_U_ADCS_TRACK_BW_20_PLS_61:
   directionality: Bidirectional
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   allowed_license_countries:
   - AU
   - MN
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -12,6 +12,12 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
       name: spire_nasa_xband_coordination
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        oort_dest_host: localhost
 CONTACT_BIDIR_PARAM:
   directionality: Bidirectional
   allowed_license_countries:
