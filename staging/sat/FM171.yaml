@@ -673,7 +673,7 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
       ground_override:
         rf_bandwidth: 5000000
 
-TXO_XBAND_BW_10_PLS_21:
+X_TXO_SPIRE_BW10_P21:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
