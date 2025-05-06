@@ -1,0 +1,11 @@
+	 - TXO_XBAND in gs_templates.yaml: Channel name was TXO_XBAND but classification annotations imply X_TXO_SPIRE_BW10_P5
+	 - TXO_XBAND_ADCS_TRACK_BW_20_PLS_61 in gs_templates.yaml: Channel name was TXO_XBAND_ADCS_TRACK_BW_20_PLS_61 but classification annotations imply X_TXO_SPIRE_BW20_P61_TRACK
+	 - TXO_XBAND_BW_10_PLS_17 in gs_templates.yaml: Channel name was TXO_XBAND_BW_10_PLS_17 but classification annotations imply X_TXO_SPIRE_BW10_P17
+	 - TXO_XBAND_BW_10_PLS_21 in gs_templates.yaml: Channel name was TXO_XBAND_BW_10_PLS_21 but classification annotations imply X_TXO_SPIRE_BW10_P21
+	 - TXO_XBAND_BW_10_PLS_25 in gs_templates.yaml: Channel name was TXO_XBAND_BW_10_PLS_25 but classification annotations imply X_TXO_SPIRE_BW10_P25
+	 - TXO_XBAND_PROV_KSAT in gs_templates.yaml: Channel name was TXO_XBAND_PROV_KSAT but classification annotations imply X_TXO_KSAT_BW10_P5
+	 - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49 in gs_templates.yaml: Channel name was TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49 but classification annotations imply X_TXO_KSAT_BW20_P49_TRACK
+	 - TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_61 in gs_templates.yaml: Channel name was TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_61 but classification annotations imply X_TXO_KSAT_BW20_P61_TRACK
+	 - TXO_XBAND_PROV_KSAT_BW_10_PLS_17 in gs_templates.yaml: Channel name was TXO_XBAND_PROV_KSAT_BW_10_PLS_17 but classification annotations imply X_TXO_KSAT_BW10_P17
+	 - TXO_XBAND_PROV_KSAT_BW_10_PLS_21 in gs_templates.yaml: Channel name was TXO_XBAND_PROV_KSAT_BW_10_PLS_21 but classification annotations imply X_TXO_KSAT_BW10_P21
+	 - TXO_XBAND_PROV_KSAT_BW_10_PLS_25 in gs_templates.yaml: Channel name was TXO_XBAND_PROV_KSAT_BW_10_PLS_25 but classification annotations imply X_TXO_KSAT_BW10_P25
