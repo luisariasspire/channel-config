@@ -673,34 +673,6 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
       ground_override:
         rf_bandwidth: 5000000
 
-X_TXO_SPIRE_BW10_P5:
-  directionality: SpaceToEarth
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: true
-  legal: true
-  satellite_constraints:
-    separation:
-    - type: shared_constraint_set
-      name: spire_nasa_xband_coordination
-  contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]
 TXO_XBAND_BW_10_PLS_21:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -823,3 +795,31 @@ U_U_BIDIR_SPIRE:
     link_state_cues:
     - topics: [mission_download]
   contact_type: CONTACT_SPACE_GROUND_BIDIR
+X_TXO_SPIRE_BW10_P5:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 0s
+  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 10000.0, uplink_rate_kbps: 0.0}]
