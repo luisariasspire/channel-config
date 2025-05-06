@@ -28,7 +28,7 @@ Feature: operators can make basic edits
     Then the satellite 'FM0' does not have 'CONTACT_BIDIR_PARAM' in its configuration file
 
   Scenario: editing a channel
-    Given the satellite 'FM0' has 'TXO_XBAND' in its configuration file
-    When I successfully run 'python -m channel_tool edit staging --contact_overhead_time=999s FM0 TXO_XBAND --yes'
-    Then the satellite 'FM0' has 'TXO_XBAND' in its configuration file
-    And the channel 'TXO_XBAND' on satellite 'FM0' has contact_overhead_time set to 999s
+    Given the satellite 'FM0' has 'X_TXO_SPIRE_BW10_P5' in its configuration file
+    When I successfully run 'python -m channel_tool edit staging --contact_overhead_time=999s FM0 X_TXO_SPIRE_BW10_P5 --yes'
+    Then the satellite 'FM0' has 'X_TXO_SPIRE_BW10_P5' in its configuration file
+    And the channel 'X_TXO_SPIRE_BW10_P5' on satellite 'FM0' has contact_overhead_time set to 999s

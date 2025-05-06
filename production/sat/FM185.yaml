@@ -802,61 +802,19 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
       ground_override:
         radionet-m: 777
         rf_bandwidth: 5000000
-TXO_XBAND:
-  directionality: SpaceToEarth
-  contact_type: CONTACT_SPACE_GROUND_TXO
+U_U_BIDIR_SPIRE:
+  directionality: Bidirectional
   allowed_license_countries:
   - AU
   - BM
   - CL
   - FK
   - GB
+  - GH
   - IE
   - JP
   - LK
   - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: false
-  legal: true
-  satellite_constraints:
-    separation:
-    - type: shared_constraint_set
-      name: spire_nasa_xband_coordination
-    electrical_cost:
-      # 155 second warmup; DEXTER idle 6.5W = 1007.5
-      flat: 1007.5
-      # DEXTER Tx 18.718620689655175W
-      per_second: 18.718620689655175
-  contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
-  window_parameters:
-    forward_channels:
-    - radio_band: XBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_XBAND_DVB_IP
-      use_radionet: true
-      bandaid_override:
-        tx_hardware_gain_db: -20
-TXO_XBAND_ADCS_TRACK_BW_20_PLS_61:
-  directionality: SpaceToEarth
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
   - NO
   - NZ
   - PT
@@ -866,28 +824,25 @@ TXO_XBAND_ADCS_TRACK_BW_20_PLS_61:
   enabled: true
   legal: true
   satellite_constraints:
-    separation:
-    - type: shared_constraint_set
-      name: spire_nasa_xband_coordination
     electrical_cost:
-      # 155 second warmup; DEXTER idle 6.5W = 1007.5
-      flat: 1007.5
-      # DEXTER Tx 18.7W
-      per_second: 18.7
-  contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 6.5W = 1085.0
+      flat: 1085.0
+      # UHF Tx 3.0W, DEXTER idle 6.5W = 9.5
+      per_second: 9.5
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 100
+    uplink_rate_kbps: 10
   window_parameters:
     forward_channels:
-    - radio_band: XBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_XBAND_DVB_IP
-      use_radionet: true
-      bandaid_override:
-        tx_hardware_gain_db: -20
-        tx_bandwidth_hz: 20000000
-        tx_sample_rate_hz: 16666000
-        pls: 61
-TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49:
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+    link_state_cues:
+    - topics: [mission_download, logs, tlm_low]
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+X_TXO_KSAT_BW20_P49_TRACK:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
@@ -934,7 +889,7 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_49:
         pls: 49
   additional_provider_config:
     ksat_mission_config: SPIRE_Q_20MHZ
-TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_61:
+X_TXO_KSAT_BW20_P61_TRACK:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
@@ -981,19 +936,61 @@ TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_61:
         pls: 61
   additional_provider_config:
     ksat_mission_config: SPIRE_Q_20MHZ
-U_U_BIDIR_SPIRE:
-  directionality: Bidirectional
+X_TXO_SPIRE_BW10_P5:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
   - AU
   - BM
   - CL
   - FK
   - GB
-  - GH
   - IE
   - JP
   - LK
   - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 6.5W = 1007.5
+      flat: 1007.5
+      # DEXTER Tx 18.718620689655175W
+      per_second: 18.718620689655175
+  contact_overhead_time: 0s
+  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_XBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        tx_hardware_gain_db: -20
+X_TXO_SPIRE_BW20_P61_TRACK:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
   - NO
   - NZ
   - PT
@@ -1003,21 +1000,24 @@ U_U_BIDIR_SPIRE:
   enabled: true
   legal: true
   satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
     electrical_cost:
-      # 155 second warmup; UHF idle 0.5W, DEXTER idle 6.5W = 1085.0
-      flat: 1085.0
-      # UHF Tx 3.0W, DEXTER idle 6.5W = 9.5
-      per_second: 9.5
-  contact_overhead_time: 210s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 100
-    uplink_rate_kbps: 10
+      # 155 second warmup; DEXTER idle 6.5W = 1007.5
+      flat: 1007.5
+      # DEXTER Tx 18.7W
+      per_second: 18.7
+  contact_overhead_time: 0s
+  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
   window_parameters:
     forward_channels:
-    - radio_band: UHF
-    reverse_channels:
-    - radio_band: UHF
-    link_state_cues:
-    - topics: [mission_download, logs, tlm_low]
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
+    - radio_band: XBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_XBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        tx_hardware_gain_db: -20
+        tx_bandwidth_hz: 20000000
+        tx_sample_rate_hz: 16666000
+        pls: 61
