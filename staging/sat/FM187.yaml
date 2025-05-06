@@ -804,7 +804,7 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
       ground_override:
         radionet-m: 777
         rf_bandwidth: 5000000
-TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_61:
+X_TXO_KSAT_BW20_P61_TRACK:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
   allowed_license_countries:
