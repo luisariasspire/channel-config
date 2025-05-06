@@ -802,42 +802,6 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
       ground_override:
         radionet-m: 777
         rf_bandwidth: 5000000
-X_TXO_KSAT_BW20_P49_TRACK:
-  directionality: SpaceToEarth
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  allowed_license_countries:
-  - AU
-  - CA
-  - CL
-  - ES
-  - GR
-  - NO
-  - NZ
-  - ZA
-  enabled: true
-  legal: true
-  satellite_constraints:
-    budget_name: KSAT_SNC
-    fixed_contact_duration:
-    - 2min
-    - 4min
-    - 6min
-    separation:
-    - type: shared_constraint_set
-      name: spire_nasa_xband_coordination
-    electrical_cost:
-      # 155 second warmup; DEXTER idle 6.5W = 1007.5
-      flat: 1007.5
-      # DEXTER Tx 17.92W
-      per_second: 17.92
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 9999999
-    uplink_rate_kbps: 0.0
-    min_duration: 2min
-  additional_provider_config:
-    ksat_mission_config: SPIRE_Q_20MHZ
 TXO_XBAND_PROV_KSAT_ADCS_TRACK_BW_20_PLS_61:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -914,6 +878,42 @@ U_U_BIDIR_SPIRE:
     link_state_cues:
     - topics: [mission_download, logs, tlm_low]
   contact_type: CONTACT_SPACE_GROUND_BIDIR
+X_TXO_KSAT_BW20_P49_TRACK:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - CA
+  - CL
+  - ES
+  - GR
+  - NO
+  - NZ
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    budget_name: KSAT_SNC
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 6.5W = 1007.5
+      flat: 1007.5
+      # DEXTER Tx 17.92W
+      per_second: 17.92
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 9999999
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+  additional_provider_config:
+    ksat_mission_config: SPIRE_Q_20MHZ
 X_TXO_SPIRE_BW10_P5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
