@@ -1,4 +1,4 @@
-BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
+X_S_BIDIR_SPIRE_BW10_P5:
   directionality: Bidirectional
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   allowed_license_countries:
