@@ -77,7 +77,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
       bandaid_mode: RX_SBAND_TX_XBAND
       bandaid_override:
         oort_dest_host: localhost
-CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
+S_U_BIDIR_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
   directionality: Bidirectional
   allowed_license_countries:
   - AU

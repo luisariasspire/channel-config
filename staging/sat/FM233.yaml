@@ -18,7 +18,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
       per_second: 18.54
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
-CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
+S_U_BIDIR_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
   directionality: Bidirectional
   allowed_license_countries:
   - AU
