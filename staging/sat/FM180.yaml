@@ -17,7 +17,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
       per_second: 18.03
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
-CONTACT_BIDIR_PARAM:
+S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   directionality: Bidirectional
   allowed_license_countries:
   - AU
