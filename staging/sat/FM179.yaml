@@ -17,65 +17,6 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
       per_second: 18.785
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
-S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
-  directionality: Bidirectional
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - ES
-  - FK
-  - GB
-  - GR
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: true
-  legal: true
-  satellite_constraints:
-    electrical_cost:
-      # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
-      flat: 666.5
-      # UHF Tx 3.0W, DEXTER Tx 7.91W = 10.91
-      per_second: 10.91
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 5.6
-    min_duration: 4m
-  - min_elevation_deg: 30
-        # spec * 0.75
-    downlink_rate_kbps: 2130
-    uplink_rate_kbps: 5.6
-    min_duration: 20sec
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB_IP
-      use_radionet: true
-      bandaid_override:
-        fec_k: 223
-        fec: 255
-        pls: 15
-        mtu: 777
-        tx_bandwidth_hz: 5000000
-        tx_sample_rate_hz: 3703000
-      ground_override:
-        radionet-m: 777
-        rf_bandwidth: 5000000
-    - radio_band: UHF
-    reverse_channels:
-    - radio_band: UHF
 S_TXO_KSAT_BW1_LEG_F2200_5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -776,6 +717,65 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
         tx_sample_rate_hz: 3703000
       ground_override:
         radionet-m: 642
+        rf_bandwidth: 5000000
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - ES
+  - FK
+  - GB
+  - GR
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
+      flat: 666.5
+      # UHF Tx 3.0W, DEXTER Tx 7.91W = 10.91
+      per_second: 10.91
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 5.6
+    min_duration: 4m
+  - min_elevation_deg: 30
+        # spec * 0.75
+    downlink_rate_kbps: 2130
+    uplink_rate_kbps: 5.6
+    min_duration: 20sec
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 15
+        mtu: 777
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+      ground_override:
+        radionet-m: 777
         rf_bandwidth: 5000000
     - radio_band: UHF
     reverse_channels:
