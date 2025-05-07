@@ -77,63 +77,6 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
       bandaid_mode: RX_SBAND_TX_XBAND
       bandaid_override:
         oort_dest_host: localhost
-S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: true
-  legal: true
-  satellite_constraints:
-    sun_constraint:
-      contacts_above_threshold: false
-      declination_threshold_deg: 10.0
-      pre_buffer: 2min
-      post_buffer: 2min
-      exclude_gs_ids:
-      - tr4kl
-      - tr6kl
-      - tr20kl
-      - sg71kl
-      - sg161kl
-      - sg180kl
-      - sg182kl
-      - sg189kl
-    electrical_cost:
-      # 155 second warmup; UHF idle 0.5W, DEXTER idle 6.5W = 1085.0
-      flat: 1085.0
-      # UHF Tx 3.0W, DEXTER Tx 9.627500000000001W = 12.627500000000001
-      per_second: 12.627500000000001
-  contact_overhead_time: 210s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 10
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: LEGACY
-      bandaid_mode: TX_SBAND_IP
-      bandaid_override: {}
-      use_radionet: true
-    - radio_band: UHF
-    reverse_channels:
-    - radio_band: UHF
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
 CONTACT_BIDIR_PARAM_DVBS2X:
   directionality: Bidirectional
   allowed_license_countries:
@@ -1003,6 +946,63 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
       ground_override:
         radionet-m: 777
         rf_bandwidth: 5000000
+S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - tr20kl
+      - sg71kl
+      - sg161kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 6.5W = 1085.0
+      flat: 1085.0
+      # UHF Tx 3.0W, DEXTER Tx 9.627500000000001W = 12.627500000000001
+      per_second: 12.627500000000001
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      bandaid_override: {}
+      use_radionet: true
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
 U_U_BIDIR_SPIRE:
   directionality: Bidirectional
   allowed_license_countries:
