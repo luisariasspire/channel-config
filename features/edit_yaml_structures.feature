@@ -13,7 +13,7 @@ Feature: `channel_tool` supports editing embedded YAML structures
   (Generally speaking Option 1 is easier and recommended.)
 
   Scenario: overwrite a YAML array from a file
-   Given the ground station 'testgs' has 'CONTACT_BIDIR_PARAM' in its configuration file
+   Given the ground station 'testgs' has 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' in its configuration file
    And a file 'link_profile.yaml' containing:
    """
    - min_elevation_deg: 25
@@ -21,7 +21,7 @@ Feature: `channel_tool` supports editing embedded YAML structures
      uplink_rate_kbps: 10.0
      min_duration: 2min
    """
-   When I run 'python -m channel_tool edit staging testgs CONTACT_BIDIR_PARAM --link_profile_file link_profile.yaml --yes'
+   When I run 'python -m channel_tool edit staging testgs S_U_BIDIR_SPIRE_BW1_LEG_F2022_5 --link_profile_file link_profile.yaml --yes'
    Then it will exit with code '0'
    And the file 'staging/gs/testgs.yaml' will contain:
    """
@@ -33,7 +33,7 @@ Feature: `channel_tool` supports editing embedded YAML structures
    """
 
   Scenario: remove a YAML structure from a file
-   Given the ground station 'testgs' has 'CONTACT_BIDIR_PARAM' in its configuration file
+   Given the ground station 'testgs' has 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' in its configuration file
    And a file 'link_profile.yaml' containing:
    """
    - min_elevation_deg: 25
@@ -41,7 +41,7 @@ Feature: `channel_tool` supports editing embedded YAML structures
      uplink_rate_kbps: 4.0
      min_duration: 20sec
    """
-   When I run 'python -m channel_tool edit staging testgs CONTACT_BIDIR_PARAM --link_profile_file link_profile.yaml --mode=remove --yes'
+   When I run 'python -m channel_tool edit staging testgs S_U_BIDIR_SPIRE_BW1_LEG_F2022_5 --link_profile_file link_profile.yaml --mode=remove --yes'
    Then it will exit with code '0'
    And the file 'staging/gs/testgs.yaml' will not contain:
    """
@@ -52,7 +52,7 @@ Feature: `channel_tool` supports editing embedded YAML structures
    """
 
   Scenario: update a YAML structure within a file using edit
-   Given the ground station 'testgs' has 'CONTACT_BIDIR_PARAM' in its configuration file
+   Given the ground station 'testgs' has 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' in its configuration file
    And a file 'link_profile.yaml' containing:
    """
    - min_elevation_deg: 25
@@ -60,7 +60,7 @@ Feature: `channel_tool` supports editing embedded YAML structures
      uplink_rate_kbps: null
      min_duration: 20sec
    """
-   When I run 'python -m channel_tool --debug edit staging testgs CONTACT_BIDIR_PARAM --link_profile_file link_profile.yaml --mode=update --yes --predicate "min_elevation_deg >= 25"'
+   When I run 'python -m channel_tool --debug edit staging testgs S_U_BIDIR_SPIRE_BW1_LEG_F2022_5 --link_profile_file link_profile.yaml --mode=update --yes --predicate "min_elevation_deg >= 25"'
    Then it will exit with code '0'
    And the file 'staging/gs/testgs.yaml' will contain:
    """
@@ -71,16 +71,16 @@ Feature: `channel_tool` supports editing embedded YAML structures
    """
 
   Scenario: update a YAML structure within a file using auto-update
-   Given the ground station 'testgs' has 'CONTACT_BIDIR_PARAM' in its configuration file
+   Given the ground station 'testgs' has 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' in its configuration file
    And a file 'goodput.csv' containing:
    """
    sync_id,Goodput,channel_id
-   1,1000,CONTACT_BIDIR_PARAM
-   3,1400,CONTACT_BIDIR_PARAM
-   2,1200,CONTACT_BIDIR_PARAM
-   4,1200,CONTACT_BIDIR_PARAM_2
+   1,1000,S_U_BIDIR_SPIRE_BW1_LEG_F2022_5
+   3,1400,S_U_BIDIR_SPIRE_BW1_LEG_F2022_5
+   2,1200,S_U_BIDIR_SPIRE_BW1_LEG_F2022_5
+   4,1200,S_U_BIDIR_SPIRE_BW1_LEG_F2022_5_2
    """
-   When I run 'python -m channel_tool auto-update staging testgs CONTACT_BIDIR_PARAM --parameter=link_profile --data-column=Goodput  --safety-factor=0.95 --calculation-method=ema --source-file="goodput.csv" -y'
+   When I run 'python -m channel_tool auto-update staging testgs S_U_BIDIR_SPIRE_BW1_LEG_F2022_5 --parameter=link_profile --data-column=Goodput  --safety-factor=0.95 --calculation-method=ema --source-file="goodput.csv" -y'
    Then it will exit with code '0'
    And the file 'staging/gs/testgs.yaml' will contain:
    """

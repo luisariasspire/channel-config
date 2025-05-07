@@ -29,10 +29,10 @@ Feature: operators can create new asset configurations
 
   Scenario: marking channels as legal to use
     Given there is a valid configuration for the satellite 'FM0'
-    When I run 'python -m channel_tool edit staging FM0 CONTACT_BIDIR_PARAM --legal=True --yes'
-    Then the channel 'CONTACT_BIDIR_PARAM' on satellite 'FM0' will be marked legal
+    When I run 'python -m channel_tool edit staging FM0 S_U_BIDIR_SPIRE_BW1_LEG_F2022_5 --legal=True --yes'
+    Then the channel 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' on satellite 'FM0' will be marked legal
 
   Scenario: marking channels as enabled
     Given there is a valid configuration for the satellite 'FM0'
-    When I run 'python -m channel_tool edit staging FM0 CONTACT_BIDIR_PARAM --enabled=True --yes'
-    Then the channel 'CONTACT_BIDIR_PARAM' on satellite 'FM0' will be marked enabled
+    When I run 'python -m channel_tool edit staging FM0 S_U_BIDIR_SPIRE_BW1_LEG_F2022_5 --enabled=True --yes'
+    Then the channel 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' on satellite 'FM0' will be marked enabled

@@ -1,78 +1,3 @@
-CONTACT_BIDIR_PARAM:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - DE
-  - LU
-  - SG
-  - US
-  enabled: false
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 210s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 4.0
-    min_duration: 4m
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 446.46
-    uplink_rate_kbps: 4.0
-    min_duration: 20sec
-  dynamic_window_parameters:
-    transmit_times:
-      elevation_threshold_deg: 25
-  classification_annotations:
-    provider: SPIRE
-    directionality: BIDIR
-    adcs_pointing: NADIR
-    space_ground_uhf: true
-    ground_space_uhf: true
-    can_sync_schedule: true
-    can_run_rpcs: true
-    space_ground_sband: true
-    ground_space_sband: false
-    space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2022.5
-    space_ground_sband_encoding: LEGACY
-    space_ground_sband_bandwidth_mhz: 1
-CONTACT_BIDIR_PARAM_DVBS2X:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - DE
-  - LU
-  - SG
-  - US
-  enabled: false
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 10s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 4.0
-    min_duration: 4m
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 984.91
-    uplink_rate_kbps: 4.0
-    min_duration: 20sec
-  dynamic_window_parameters:
-    transmit_times:
-      elevation_threshold_deg: 25
-  classification_annotations:
-    provider: SPIRE
-    directionality: BIDIR
-    adcs_pointing: NADIR
-    space_ground_uhf: true
-    ground_space_uhf: true
-    can_sync_schedule: true
-    can_run_rpcs: true
-    space_ground_sband: true
-    ground_space_sband: false
-    space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2022.5
-    space_ground_sband_encoding: DVBS2X
-    space_ground_sband_dvbs2x_pls: 39
-    space_ground_sband_bandwidth_mhz: 1
 S_TXO_SPIRE_BW1_LEG_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -127,6 +52,81 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
     ground_space_uhf: false
     can_sync_schedule: false
     can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 39
+    space_ground_sband_bandwidth_mhz: 1
+S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 210s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
+    min_duration: 4m
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 446.46
+    uplink_rate_kbps: 4.0
+    min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 25
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: LEGACY
+    space_ground_sband_bandwidth_mhz: 1
+S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
+    min_duration: 4m
+  - min_elevation_deg: 25
+    downlink_rate_kbps: 984.91
+    uplink_rate_kbps: 4.0
+    min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 25
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
     space_ground_sband: true
     ground_space_sband: false
     space_ground_xband: false

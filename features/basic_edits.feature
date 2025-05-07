@@ -6,26 +6,26 @@ Feature: operators can make basic edits
   channels.
 
   Scenario: disabling a channel
-    Given the satellite 'FM0' has 'CONTACT_BIDIR_PARAM' enabled in its configuration file
-    When I successfully run 'python -m channel_tool edit staging FM0 CONTACT_BIDIR_PARAM --enabled=false --yes'
-    Then the channel 'CONTACT_BIDIR_PARAM' on satellite 'FM0' will be marked disabled
+    Given the satellite 'FM0' has 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' enabled in its configuration file
+    When I successfully run 'python -m channel_tool edit staging FM0 S_U_BIDIR_SPIRE_BW1_LEG_F2022_5 --enabled=false --yes'
+    Then the channel 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' on satellite 'FM0' will be marked disabled
 
   Scenario: adding a new channel from a template
-    Given the satellite 'FM0' does not have 'CONTACT_BIDIR_PARAM' in its configuration file
-    When I successfully run 'python -m channel_tool add staging FM0 CONTACT_BIDIR_PARAM --yes'
-    Then the satellite 'FM0' has 'CONTACT_BIDIR_PARAM' in its configuration file
+    Given the satellite 'FM0' does not have 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' in its configuration file
+    When I successfully run 'python -m channel_tool add staging FM0 S_U_BIDIR_SPIRE_BW1_LEG_F2022_5 --yes'
+    Then the satellite 'FM0' has 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' in its configuration file
 
   Scenario: adding a new channel from a template with customizations
-    Given the satellite 'FM0' does not have 'CONTACT_BIDIR_PARAM' in its configuration file
-    When I successfully run 'python -m channel_tool add staging FM0 CONTACT_BIDIR_PARAM --contact_type=CONTACT_SPACE_GROUND_TXO --yes'
-    Then the satellite 'FM0' has 'CONTACT_BIDIR_PARAM' in its configuration file
-    And the channel 'CONTACT_BIDIR_PARAM' on satellite 'FM0' has contact_type set to CONTACT_SPACE_GROUND_TXO
+    Given the satellite 'FM0' does not have 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' in its configuration file
+    When I successfully run 'python -m channel_tool add staging FM0 S_U_BIDIR_SPIRE_BW1_LEG_F2022_5 --contact_type=CONTACT_SPACE_GROUND_TXO --yes'
+    Then the satellite 'FM0' has 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' in its configuration file
+    And the channel 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' on satellite 'FM0' has contact_type set to CONTACT_SPACE_GROUND_TXO
 
   Scenario: deleting a channel
-    Given the satellite 'FM0' has 'CONTACT_BIDIR_PARAM' in its configuration file
+    Given the satellite 'FM0' has 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' in its configuration file
     And the satellite 'FM0' has 'S_TXO_SPIRE_BW1_LEG_F2022_5' in its configuration file
-    When I successfully run 'python -m channel_tool delete staging FM0 CONTACT_BIDIR_PARAM --yes'
-    Then the satellite 'FM0' does not have 'CONTACT_BIDIR_PARAM' in its configuration file
+    When I successfully run 'python -m channel_tool delete staging FM0 S_U_BIDIR_SPIRE_BW1_LEG_F2022_5 --yes'
+    Then the satellite 'FM0' does not have 'S_U_BIDIR_SPIRE_BW1_LEG_F2022_5' in its configuration file
 
   Scenario: editing a channel
     Given the satellite 'FM0' has 'X_TXO_SPIRE_BW10_P5' in its configuration file
