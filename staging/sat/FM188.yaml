@@ -77,7 +77,7 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
       bandaid_mode: RX_SBAND_TX_XBAND
       bandaid_override:
         oort_dest_host: localhost
-CONTACT_BIDIR_PARAM_DVBS2X_BW5MHZ_PLS15:
+S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   directionality: Bidirectional
   allowed_license_countries:
