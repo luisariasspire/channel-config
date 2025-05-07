@@ -542,9 +542,9 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
   ground_station_constraints:
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.60
+        dollars: 1.54
         interval: 1min
-      fixed_dollar_cost: 1.60
+      fixed_dollar_cost: 1.54
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -1022,9 +1022,9 @@ X_TXO_KSAT_BW10_P17:
   ground_station_constraints:
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.60
+        dollars: 1.54
         interval: 1min
-      fixed_dollar_cost: 1.60
+      fixed_dollar_cost: 1.54
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -1080,9 +1080,9 @@ X_TXO_KSAT_BW10_P21:
   ground_station_constraints:
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.60
+        dollars: 1.54
         interval: 1min
-      fixed_dollar_cost: 1.60
+      fixed_dollar_cost: 1.54
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -1138,9 +1138,9 @@ X_TXO_KSAT_BW10_P25:
   ground_station_constraints:
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.60
+        dollars: 1.54
         interval: 1min
-      fixed_dollar_cost: 1.60
+      fixed_dollar_cost: 1.54
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -1196,9 +1196,9 @@ X_TXO_KSAT_BW10_P5:
   ground_station_constraints:
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.60
+        dollars: 1.54
         interval: 1min
-      fixed_dollar_cost: 1.60
+      fixed_dollar_cost: 1.54
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -1253,9 +1253,9 @@ X_TXO_KSAT_BW20_P49_TRACK:
   ground_station_constraints:
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.60
+        dollars: 1.54
         interval: 1min
-      fixed_dollar_cost: 1.60
+      fixed_dollar_cost: 1.54
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -1311,9 +1311,9 @@ X_TXO_KSAT_BW20_P61_TRACK:
   ground_station_constraints:
     dollar_cost:
       time_dollar_cost:
-        dollars: 1.60
+        dollars: 1.54
         interval: 1min
-      fixed_dollar_cost: 1.60
+      fixed_dollar_cost: 1.54
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
