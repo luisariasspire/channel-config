@@ -55,42 +55,6 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
       name: spire_nasa_xband_coordination
   contact_overhead_time: 0s
   link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
-S_U_BIDIR_SPIRE_BW1_P75_F2022_5:
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
-  directionality: Bidirectional
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: false
-  legal: false
-  satellite_constraints: {}
-  contact_overhead_time: 200s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 10
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB
-    - radio_band: UHF
-    reverse_channels:
-    - radio_band: UHF
 S_TXO_KSAT_BW1_LEG_F2200_5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -673,6 +637,42 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
     downlink_rate_kbps: 1120.0
     uplink_rate_kbps: 4.0
     min_duration: 20sec
+S_U_BIDIR_SPIRE_BW1_P75_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 200s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
 S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   directionality: Bidirectional
