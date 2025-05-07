@@ -48,53 +48,6 @@ BIDIR_XBAND_D_SBAND_U_BW_10_PLS_13:
       bandaid_mode: RX_SBAND_TX_XBAND
       bandaid_override:
         oort_dest_host: localhost
-S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: false
-  legal: true
-  satellite_constraints:
-    electrical_cost:
-      # 155 second warmup; UHF idle 0.5W, DEXTER idle 6.5W = 1085.0
-      flat: 1085.0
-      # UHF Tx 3.0W, DEXTER Tx 7.61W = 10.61
-      per_second: 10.61
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 10
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB_IP
-      bandaid_override:
-        tx_bandwidth_hz: 1000000
-        tx_sample_rate_hz: 739999
-        fec_k: 223
-        fec: 255
-      use_radionet: true
-    - radio_band: UHF
-    reverse_channels:
-    - radio_band: UHF
 CONTACT_BIDIR_PARAM_DVBS2X_BW1MHZ_23PLS_25DEG:
   directionality: Bidirectional
   allowed_license_countries:
@@ -804,6 +757,53 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
     reverse_channels:
     - radio_band: UHF
   contact_type: CONTACT_SPACE_GROUND_BIDIR
+S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 6.5W = 1085.0
+      flat: 1085.0
+      # UHF Tx 3.0W, DEXTER Tx 7.61W = 10.61
+      per_second: 10.61
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 0
+    downlink_rate_kbps: 1000
+    uplink_rate_kbps: 10
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override:
+        tx_bandwidth_hz: 1000000
+        tx_sample_rate_hz: 739999
+        fec_k: 223
+        fec: 255
+      use_radionet: true
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
 U_U_BIDIR_SPIRE:
   directionality: Bidirectional
   allowed_license_countries:
