@@ -1,18 +1,3 @@
-BIDIR_XBAND_D_SBAND_U_BW_10_PLS_5:
-  directionality: Bidirectional
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
-  allowed_license_countries:
-  - AU
-  - MN
-  - NZ
-  enabled: false
-  legal: true
-  satellite_constraints:
-    separation:
-    - type: shared_constraint_set
-      name: spire_nasa_xband_coordination
-  contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
 S_TXO_KSAT_BW1_LEG_F2200_5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -708,6 +693,21 @@ U_U_BIDIR_SPIRE:
     link_state_cues:
     - topics: [mission_download]
   contact_type: CONTACT_SPACE_GROUND_BIDIR
+X_S_BIDIR_SPIRE_BW10_P5:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - AU
+  - MN
+  - NZ
+  enabled: false
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 0s
+  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
 X_TXO_KSAT_BW10_P21:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO

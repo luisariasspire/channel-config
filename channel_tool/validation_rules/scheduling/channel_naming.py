@@ -13,7 +13,7 @@ from channel_tool.validation_rules import (
 @validation_rule(
     scope=ValidationRuleScope.GROUNDSTATION_TEMPLATE_CHANNEL,
     description="Check channel names are correct",
-    mode=ValidationRuleMode.COMPLAIN,
+    mode=ValidationRuleMode.ENFORCE,
 )  # type: ignore
 def check_channel_names_are_correct(
     _input: ValidationRuleInput,
