@@ -799,7 +799,7 @@ U_U_BIDIR_SPIRE:
     link_state_cues:
     - topics: [mission_download]
   contact_type: CONTACT_SPACE_GROUND_BIDIR
-X_S_BIDIR_SPIRE_BW20_P61_TRACK:
+X_S_BIDIR_SPIRE_BW10_P13:
   directionality: Bidirectional
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   allowed_license_countries:
