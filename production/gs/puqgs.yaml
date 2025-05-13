@@ -5,7 +5,7 @@ S_TXO_SPIRE_BW1_LEG_F2200_5:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
