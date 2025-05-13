@@ -13,6 +13,12 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     budget_name: KSAT_GENERAL
     fixed_contact_duration:
     - 2min
@@ -52,6 +58,12 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; DEXTER idle 3.8W = 589.0
       flat: 589.0
@@ -93,6 +105,12 @@ S_TXO_SPIRE_BW1_LEG_F2200_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; DEXTER idle 3.8W = 589.0
       flat: 589.0
@@ -137,6 +155,12 @@ S_TXO_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; DEXTER idle 3.8W = 589.0
       flat: 589.0
@@ -179,6 +203,12 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; DEXTER idle 3.8W = 589.0
       flat: 589.0
@@ -222,6 +252,12 @@ S_TXO_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; DEXTER idle 3.8W = 589.0
       flat: 589.0
@@ -264,6 +300,12 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; DEXTER idle 3.8W = 589.0
       flat: 589.0
@@ -309,6 +351,12 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; DEXTER idle 3.8W = 589.0
       flat: 589.0
@@ -356,6 +404,12 @@ S_TXO_SPIRE_BW5_P11_F2022_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; DEXTER idle 3.8W = 589.0
       flat: 589.0
@@ -409,6 +463,12 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; DEXTER idle 3.8W = 589.0
       flat: 589.0
@@ -459,11 +519,17 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
       flat: 666.5
-      # UHF Tx 3.0W, DEXTER Tx 8.726321839080459W = 11.726321839080459
-      per_second: 11.726321839080459
+      # UHF Tx 3.0W, DEXTER Tx 8.726321839080457W = 11.726321839080457
+      per_second: 11.726321839080457
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -502,11 +568,17 @@ S_U_BIDIR_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
       flat: 666.5
-      # UHF Tx 3.0W, DEXTER Tx 8.726321839080459W = 11.726321839080459
-      per_second: 11.726321839080459
+      # UHF Tx 3.0W, DEXTER Tx 8.726321839080457W = 11.726321839080457
+      per_second: 11.726321839080457
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -559,11 +631,17 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
       flat: 666.5
-      # UHF Tx 3.0W, DEXTER Tx 8.726321839080459W = 11.726321839080459
-      per_second: 11.726321839080459
+      # UHF Tx 3.0W, DEXTER Tx 8.726321839080457W = 11.726321839080457
+      per_second: 11.726321839080457
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 0
@@ -604,11 +682,17 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
       flat: 666.5
-      # UHF Tx 3.0W, DEXTER Tx 8.726321839080459W = 11.726321839080459
-      per_second: 11.726321839080459
+      # UHF Tx 3.0W, DEXTER Tx 8.726321839080457W = 11.726321839080457
+      per_second: 11.726321839080457
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -656,11 +740,17 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
       flat: 666.5
-      # UHF Tx 3.0W, DEXTER Tx 8.726321839080459W = 11.726321839080459
-      per_second: 11.726321839080459
+      # UHF Tx 3.0W, DEXTER Tx 8.726321839080457W = 11.726321839080457
+      per_second: 11.726321839080457
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -716,11 +806,17 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
       flat: 666.5
-      # UHF Tx 3.0W, DEXTER Tx 8.726321839080459W = 11.726321839080459
-      per_second: 11.726321839080459
+      # UHF Tx 3.0W, DEXTER Tx 8.726321839080457W = 11.726321839080457
+      per_second: 11.726321839080457
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 10
@@ -773,6 +869,12 @@ U_U_BIDIR_SPIRE:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     electrical_cost:
       # 155 second warmup; UHF idle 0.5W = 77.5
       flat: 77.5
@@ -801,6 +903,12 @@ X_S_BIDIR_SPIRE_BW10_P5:
   enabled: false
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     separation:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
@@ -826,6 +934,12 @@ X_TXO_KSAT_BW10_P5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     budget_name: KSAT_GENERAL
     fixed_contact_duration:
     - 2min
@@ -868,6 +982,12 @@ X_TXO_SPIRE_BW10_P5:
   enabled: true
   legal: true
   satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: true
+      exclude_gs_ids: []
+      declination_threshold_deg: 0.0
+      pre_buffer: 2min
+      post_buffer: 2min
     separation:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
