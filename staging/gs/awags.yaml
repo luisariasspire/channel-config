@@ -100,7 +100,7 @@ X_S_BIDIR_SPIRE_BW10_P13:
         tx_sample_rate_hz: 8333000
         rx_hardware_gain_db: 70
         pls: 13
-        mtu: 1989
+        mtu: 3204
         mod_gain: 130
         vbatt/voltage/min: 7000
         vbatt/voltage/max: 8500
@@ -115,7 +115,7 @@ X_S_BIDIR_SPIRE_BW10_P13:
         rf_bandwidth: 10000000
         gain: 3
         freq: 1250000000
-        radionet-m: 1989
+        radionet-m: 3204
         status_poll_period: 10
     reverse_channels:
     - radio_band: SBAND
