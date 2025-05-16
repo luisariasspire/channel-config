@@ -687,4 +687,3 @@ sat_schema:
     - contact_overhead_time
     - allowed_license_countries
     - satellite_constraints
-    - link_profile

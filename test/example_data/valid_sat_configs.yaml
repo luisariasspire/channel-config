@@ -7,10 +7,6 @@ MINIMAL_SAT_CONFIG: &sat_base
   legal: true
   contact_overhead_time: 210s
   satellite_constraints: {}
-  link_profile:
-    - min_elevation_deg: 0
-      downlink_rate_kbps: 1000.0
-      uplink_rate_kbps: 10.0
 
 SAT_CONFIG_WITH_CONSTRAINTS:
   <<: *sat_base
