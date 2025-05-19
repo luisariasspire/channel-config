@@ -28,7 +28,7 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
     space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
-S_TXO_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
+S_TXO_SPIRE_BW1_P39_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
   - DE
@@ -38,60 +38,10 @@ S_TXO_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 10s
+  contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
-    # 39 PLS reaches around 94% of its guarantee when 
-    # its working properly. This is scaled down by the
-    # same amount.
-    downlink_rate_kbps: 817.8
-    uplink_rate_kbps: 0.0
-    min_duration: 1min
-  window_parameters:
-    # poetry run python -m channel_tool pls -p 23 --sband --radionet
-    forward_channels:
-    - bandaid_mode: TX_SBAND_DVB_IP
-      bandaid_override:
-        fec: 255
-        fec_k: 223
-        mtu: 1182
-        pls: 23
-      ground_override:
-        radionet-m: 1182
-      protocol: DVBS2X
-      radio_band: SBAND
-      use_radionet: true
-  classification_annotations:
-    provider: SPIRE
-    directionality: TXO
-    adcs_pointing: NADIR
-    space_ground_uhf: false
-    ground_space_uhf: false
-    can_sync_schedule: false
-    can_run_rpcs: false
-    space_ground_sband: true
-    ground_space_sband: false
-    space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2022.5
-    space_ground_sband_encoding: DVBS2X
-    space_ground_sband_dvbs2x_pls: 23
-    space_ground_sband_bandwidth_mhz: 1
-    jira_ticket: PRI-184
-  contact_type: CONTACT_SPACE_GROUND_TXO
-S_TXO_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - DE
-  - LU
-  - SG
-  - US
-  enabled: true
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 10s
-  link_profile:
-  - min_elevation_deg: 40
-    downlink_rate_kbps: 1120.0
+    downlink_rate_kbps: 634.85
     uplink_rate_kbps: 0.0
     min_duration: 1min
   classification_annotations:
@@ -109,8 +59,6 @@ S_TXO_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
-    jira_ticket: PRI-184
-  contact_type: CONTACT_SPACE_GROUND_TXO
 S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   directionality: Bidirectional
   allowed_license_countries:
@@ -148,14 +96,14 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
     space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
-S_U_BIDIR_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
+S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   directionality: Bidirectional
   allowed_license_countries:
   - DE
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -165,69 +113,12 @@ S_U_BIDIR_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
     uplink_rate_kbps: 4.0
     min_duration: 4m
   - min_elevation_deg: 25
-    # 39 PLS reaches around 94% of its guarantee when 
-    # its working properly. This is scaled down by the
-    # same amount.
-    downlink_rate_kbps: 817.8
+    downlink_rate_kbps: 562.93
     uplink_rate_kbps: 4.0
     min_duration: 20sec
   dynamic_window_parameters:
     transmit_times:
       elevation_threshold_deg: 25
-  window_parameters:
-    # poetry run python -m channel_tool pls -p 23 --sband --radionet
-    forward_channels:
-    - bandaid_mode: TX_SBAND_DVB_IP
-      bandaid_override:
-        fec: 255
-        fec_k: 223
-        mtu: 1182
-        pls: 23
-      ground_override:
-        radionet-m: 1182
-      protocol: DVBS2X
-      radio_band: SBAND
-      use_radionet: true
-  classification_annotations:
-    provider: SPIRE
-    directionality: BIDIR
-    adcs_pointing: NADIR
-    space_ground_uhf: true
-    ground_space_uhf: true
-    can_sync_schedule: true
-    can_run_rpcs: true
-    space_ground_sband: true
-    ground_space_sband: false
-    space_ground_xband: false
-    space_ground_sband_mid_freq_mhz: 2022.5
-    space_ground_sband_encoding: DVBS2X
-    space_ground_sband_dvbs2x_pls: 23
-    space_ground_sband_bandwidth_mhz: 1
-    jira_ticket: PRI-184
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
-S_U_BIDIR_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - DE
-  - LU
-  - SG
-  - US
-  enabled: false
-  legal: true
-  ground_station_constraints: {}
-  contact_overhead_time: 10s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 4.0
-    min_duration: 4m
-  - min_elevation_deg: 40
-    downlink_rate_kbps: 1120.0
-    uplink_rate_kbps: 4.0
-    min_duration: 20sec
-  dynamic_window_parameters:
-    transmit_times:
-      elevation_threshold_deg: 40
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -243,8 +134,6 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
-    jira_ticket: PRI-184
-  contact_type: CONTACT_SPACE_GROUND_BIDIR
 U_U_BIDIR_SPIRE:
   directionality: Bidirectional
   allowed_license_countries:

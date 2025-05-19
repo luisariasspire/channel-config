@@ -165,48 +165,6 @@ S_TXO_SPIRE_BW1_LEG_F2200_5:
         fec_k: 223
         fec: 255
         tx_carrier_frequency_hz: 2200500000
-S_TXO_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: false
-  legal: true
-  satellite_constraints:
-    electrical_cost:
-      # 155 second warmup; DEXTER idle 6.5W = 1007.5
-      flat: 1007.5
-      # DEXTER Tx 9.001437125748502W
-      per_second: 9.001437125748502
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 817.8
-    uplink_rate_kbps: 4.0
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB_IP
-      use_radionet: true
-      bandaid_override:
-        pkt_header_len: 2
 S_TXO_SPIRE_BW1_P39_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -264,48 +222,6 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
       bandaid_override:
         fec_k: 223
         fec: 255
-S_TXO_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
-  directionality: SpaceToEarth
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - MN
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: false
-  legal: true
-  satellite_constraints:
-    electrical_cost:
-      # 155 second warmup; DEXTER idle 6.5W = 1007.5
-      flat: 1007.5
-      # DEXTER Tx 9.001437125748502W
-      per_second: 9.001437125748502
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 40
-    downlink_rate_kbps: 1120.0
-    uplink_rate_kbps: 4.0
-  contact_type: CONTACT_SPACE_GROUND_TXO
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB_IP
-      use_radionet: true
-      bandaid_override:
-        pkt_header_len: 2
 S_TXO_SPIRE_BW1_P39_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -616,63 +532,6 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
     reverse_channels:
     - radio_band: UHF
   contact_type: CONTACT_SPACE_GROUND_BIDIR
-S_U_BIDIR_SPIRE_BW1_P23_F2022_5_JIRA_PRI_184:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: true
-  legal: true
-  satellite_constraints:
-    electrical_cost:
-      # 155 second warmup; UHF idle 0.5W, DEXTER idle 6.5W = 1085.0
-      flat: 1085.0
-      # UHF Tx 3.0W, DEXTER Tx 10.17W = 13.17
-      per_second: 13.17
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 4.0
-    min_duration: 4m
-  - min_elevation_deg: 25
-    # 39 PLS reaches around 94% of its guarantee when
-    # its working properly. This is scaled down by the
-    # same amount.
-    downlink_rate_kbps: 817.8
-    uplink_rate_kbps: 4.0
-    min_duration: 20sec
-  window_parameters:
-    # poetry run python -m channel_tool pls -p 23 --sband --radionet
-    forward_channels:
-    - bandaid_mode: TX_SBAND_DVB_IP
-      bandaid_override:
-        fec: 255
-        fec_k: 223
-        mtu: 1182
-        pls: 23
-      ground_override:
-        radionet-m: 1182
-      protocol: DVBS2X
-      radio_band: SBAND
-      use_radionet: true
-    - radio_band: UHF
-    reverse_channels:
-    - radio_band: UHF
 S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   directionality: Bidirectional
   allowed_license_countries:
@@ -720,55 +579,6 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
     downlink_rate_kbps: 1000
     uplink_rate_kbps: 10
   contact_type: CONTACT_SPACE_GROUND_BIDIR
-  window_parameters:
-    forward_channels:
-    - radio_band: SBAND
-      protocol: DVBS2X
-      bandaid_mode: TX_SBAND_DVB_IP
-      bandaid_override:
-        fec_k: 223
-        fec: 255
-      use_radionet: true
-    - radio_band: UHF
-    reverse_channels:
-    - radio_band: UHF
-S_U_BIDIR_SPIRE_BW1_P39_F2022_5_JIRA_PRI_184:
-  directionality: Bidirectional
-  allowed_license_countries:
-  - AU
-  - BM
-  - CL
-  - FK
-  - GB
-  - GH
-  - IE
-  - JP
-  - LK
-  - LV
-  - NO
-  - NZ
-  - PT
-  - SG
-  - SH
-  - ZA
-  enabled: true
-  legal: true
-  satellite_constraints:
-    electrical_cost:
-      # 155 second warmup; UHF idle 0.5W, DEXTER idle 6.5W = 1085.0
-      flat: 1085.0
-      # UHF Tx 3.0W, DEXTER Tx 9.94W = 12.94
-      per_second: 12.94
-  contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 4.0
-    min_duration: 4m
-  - min_elevation_deg: 40
-    downlink_rate_kbps: 1120.0
-    uplink_rate_kbps: 4.0
-    min_duration: 20sec
   window_parameters:
     forward_channels:
     - radio_band: SBAND
