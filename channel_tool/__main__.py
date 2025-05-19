@@ -22,7 +22,6 @@ from channel_tool.asset_config import (
 from channel_tool.audit import AuditReport
 from channel_tool.auto_update_utils import create_config_updates, read_history
 from channel_tool.duplicate import DuplicateError, duplicate, gen_channel_id
-from channel_tool.naming import class_annos_to_name
 from channel_tool.pls_tool import pls_long, pls_lookup, pls_short
 from channel_tool.typedefs import ChannelDefinition, DefsFile, Environment
 from channel_tool.util import (
@@ -64,7 +63,7 @@ class NoConfigurationError(Exception):
     pass
 
 
-class AmbigousChannel(Exception):
+class IncorrectInput(Exception):
     pass
 
 
@@ -435,14 +434,6 @@ def auto_update_config(args: Any) -> None:
 
 
 def duplicate_config(args: Any) -> None:
-    # This is not an exception to make channel predicates usable.
-    if len(args.channels) != 1:
-        warn("More than one channel was specified. Duplicating the first one...")
-
-    channels = args.channels[:1]
-    template = find_template(GROUND_STATION, channels[0])
-    class_annos = template.get("classification_annotations")
-
     def do_duplicate(
         asset: str, channel: str, existing: Optional[ChannelDefinition]
     ) -> Optional[ChannelDefinition]:
@@ -457,17 +448,21 @@ def duplicate_config(args: Any) -> None:
             else:
                 raise NoConfigurationError(msg)
 
-        return duplicate(args, existing, class_annos)
+        # This is going to run many times so let's avoid file i/o when we can
+        class_annos = existing.get("classification_annotations") or find_template(
+            GROUND_STATION, channel
+        ).get("classification_annotations")
 
-    new_channel_id = gen_channel_id(args, class_annos)
+        return duplicate(args, existing, class_annos)
 
     apply_update(
         args.environment,
         args.assets,
-        channels,
+        args.channels,
         do_duplicate,
         yes=args.yes,
-        new_channel_id=new_channel_id,
+        new_channel=True,
+        args=args,
     )
 
 
@@ -632,30 +627,43 @@ def apply_update(
     channels: List[str],
     tfm: Callable[[str, str, Optional[ChannelDefinition]], Optional[ChannelDefinition]],
     yes: bool = False,
-    new_channel_id: Optional[str] = None,
+    new_channel: Optional[bool] = False,
+    args: Optional[Any] = None,
 ) -> None:
+    if new_channel and not args:
+        raise IncorrectInput("CLI args must be passed if new_channel is True")
+
     for asset in locate_assets(env, assets):
         asset_config = load_asset_config(env, asset)
         for channel in channels:
             existing_chan = asset_config.get(channel)
             try:
                 updated_chan = tfm(asset, channel, existing_chan)
+
                 if updated_chan is not None:
-                    asset_type = infer_asset_type(asset)
-                    check_element_conforms_to_schema(
-                        asset_type, updated_chan, file=asset, key=channel
-                    )
-                if updated_chan != existing_chan:
-                    # new_channel_id is specified when we operated on an
-                    # existing channel but want to save our changes under a new
-                    # id. We need to update existing_chan so that the diff is
-                    # correct and channel so that we use the new channel id
-                    # from here on.
-                    if new_channel_id:
+                    # new_channel is specified when we operated on an existing
+                    # channel but want to save our changes under a new id. We
+                    # need to update existing_chan so that the diff is correct
+                    # and channel so that we use the new channel id from here
+                    # on.
+                    if new_channel:
+                        # This is going to run many times so let's avoid file i/o when we can
+                        class_annos = updated_chan.get(
+                            "classification_annotations"
+                        ) or find_template(GROUND_STATION, channel).get(
+                            "classification_annotations"
+                        )
+                        new_channel_id = gen_channel_id(args, class_annos)
                         existing_chan = None
                         old_channel_id = channel
                         channel = new_channel_id
 
+                    asset_type = infer_asset_type(asset)
+                    check_element_conforms_to_schema(
+                        asset_type, updated_chan, file=asset, key=channel
+                    )
+
+                if updated_chan != existing_chan:
                     if yes or confirm_changes(
                         asset, channel, existing_chan, updated_chan
                     ):
@@ -674,7 +682,7 @@ def apply_update(
 
                             # If we're creating a new channel, also add it to
                             # the templates
-                            if new_channel_id:
+                            if new_channel:
                                 duplicate_template(channel, old_channel_id, asset)
                 else:
                     print(colored(f"No changes for {channel} on {asset}.", "magenta"))

@@ -159,11 +159,16 @@ def duplicate_link_profile(
 ) -> list[dict[str, Any]]:
     dvb_profile = max(original_link_profile, key=lambda i: i["downlink_rate_kbps"])
 
+    if "min_elevation_deg" in dvb_profile:
+        min_elevation_key = "min_elevation_deg"
+    else:
+        min_elevation_key = "default_min_elevation_deg"
+
     link_profile = [
         update_multiple_nested_values(
             dvb_profile,
             {
-                ("min_elevation_deg",): float(args.min_elevation),
+                (min_elevation_key,): float(args.min_elevation),
                 ("downlink_rate_kbps",): args.bitrate_kbps,
             },
         )
