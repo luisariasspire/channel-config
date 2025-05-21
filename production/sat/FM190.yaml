@@ -38,10 +38,6 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 10000.0
-    uplink_rate_kbps: 0
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -93,10 +89,6 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 0
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -151,10 +143,6 @@ S_TXO_SPIRE_BW1_LEG_F2200_5:
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
   window_parameters:
     forward_channels:
@@ -210,10 +198,6 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
   window_parameters:
     forward_channels:
@@ -267,10 +251,6 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
   window_parameters:
     forward_channels:
@@ -282,7 +262,6 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
         fec_k: 223
         fec: 255
         tx_carrier_frequency_hz: 2200500000
-
 S_TXO_SPIRE_BW1_P87_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -326,10 +305,6 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 0
   contact_type: CONTACT_SPACE_GROUND_TXO
   window_parameters:
     forward_channels:
@@ -341,7 +316,6 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
         fec_k: 223
         fec: 255
         tx_carrier_frequency_hz: 2200500000
-
 S_TXO_SPIRE_BW5_P11_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -380,19 +354,12 @@ S_TXO_SPIRE_BW5_P11_F2022_5:
       - sg180kl
       - sg182kl
       - sg189kl
-
     electrical_cost:
       # 155 second warmup; DEXTER idle 6.5W = 1007.5
       flat: 1007.5
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 25
-      # spec * 0.75
-    downlink_rate_kbps: 1767
-    uplink_rate_kbps: 0.0
-    min_duration: 60sec
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -447,19 +414,12 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
       - sg180kl
       - sg182kl
       - sg189kl
-
     electrical_cost:
       # 155 second warmup; DEXTER idle 6.5W = 1007.5
       flat: 1007.5
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 30
-      # spec * 0.75
-    downlink_rate_kbps: 2130
-    uplink_rate_kbps: 0.0
-    min_duration: 60sec
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -518,10 +478,6 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
       # UHF Tx 3.0W, DEXTER Tx 9.592500000000001W = 12.592500000000001
       per_second: 12.592500000000001
   contact_overhead_time: 210s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 10
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -578,10 +534,6 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
       # UHF Tx 3.0W, DEXTER Tx 10.74W = 13.74
       per_second: 13.74
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 1000
-    uplink_rate_kbps: 10
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   window_parameters:
     forward_channels:
@@ -633,23 +585,12 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
       - sg180kl
       - sg182kl
       - sg189kl
-
     electrical_cost:
       # 155 second warmup; UHF idle 0.5W, DEXTER idle 6.5W = 1085.0
       flat: 1085.0
       # UHF Tx 3.0W, DEXTER Tx 9.25W = 12.25
       per_second: 12.25
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 5.6
-    min_duration: 4m
-  - min_elevation_deg: 25
-      # spec * 0.75
-    downlink_rate_kbps: 1767
-    uplink_rate_kbps: 5.6
-    min_duration: 20sec
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -707,23 +648,12 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
       - sg180kl
       - sg182kl
       - sg189kl
-
     electrical_cost:
       # 155 second warmup; UHF idle 0.5W, DEXTER idle 6.5W = 1085.0
       flat: 1085.0
       # UHF Tx 3.0W, DEXTER Tx 9.14W = 12.14
       per_second: 12.14
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
-    uplink_rate_kbps: 5.6
-    min_duration: 4m
-  - min_elevation_deg: 30
-      # spec * 0.75
-    downlink_rate_kbps: 2130
-    uplink_rate_kbps: 5.6
-    min_duration: 20sec
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -771,10 +701,6 @@ U_U_BIDIR_SPIRE:
       # UHF Tx 3.0W, DEXTER idle 6.5W = 9.5
       per_second: 9.5
   contact_overhead_time: 210s
-  link_profile:
-  - min_elevation_deg: 0
-    downlink_rate_kbps: 100
-    uplink_rate_kbps: 10
   window_parameters:
     forward_channels:
     - radio_band: UHF
@@ -815,7 +741,6 @@ X_S_BIDIR_SPIRE_BW10_P13:
       # DEXTER Tx+Rx 18.39W
       per_second: 18.39
   contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
   window_parameters:
     forward_channels:
     - radio_band: XBAND
@@ -854,7 +779,6 @@ X_S_BIDIR_SPIRE_BW20_P61_TRACK:
       # DEXTER Tx+Rx 18.47W
       per_second: 18.47
   contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999.0, uplink_rate_kbps: 10000.0}]
   window_parameters:
     forward_channels:
     - radio_band: XBAND
@@ -905,11 +829,6 @@ X_TXO_KSAT_BW20_P49_TRACK:
       # DEXTER Tx 18.29W
       per_second: 18.29
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 9999999
-    uplink_rate_kbps: 0.0
-    min_duration: 2min
   window_parameters:
     forward_channels:
     - bandaid_override:
@@ -961,11 +880,6 @@ X_TXO_KSAT_BW20_P61_TRACK:
       # DEXTER Tx 18.35W
       per_second: 18.35
   contact_overhead_time: 0s
-  link_profile:
-  - min_elevation_deg: 20
-    downlink_rate_kbps: 9999999
-    uplink_rate_kbps: 0.0
-    min_duration: 2min
   window_parameters:
     forward_channels:
     - bandaid_override:
@@ -1020,7 +934,6 @@ X_TXO_SPIRE_BW10_P5:
       # DEXTER Tx 18.718620689655175W
       per_second: 18.718620689655175
   contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
   window_parameters:
     forward_channels:
     - bandaid_override:
@@ -1073,7 +986,6 @@ X_TXO_SPIRE_BW20_P61_TRACK:
       # DEXTER Tx 18.33W
       per_second: 18.33
   contact_overhead_time: 0s
-  link_profile: [{min_elevation_deg: 0, downlink_rate_kbps: 9999999, uplink_rate_kbps: 0.0}]
   window_parameters:
     forward_channels:
     - bandaid_override:

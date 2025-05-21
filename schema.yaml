@@ -404,7 +404,6 @@ base_properties: &base_properties
     items:
       type: string
       enum: *iso3166
-  link_profile: *link_profile
   window_parameters: *window_parameters
   additional_provider_config: *additional_provider_config
 
@@ -565,6 +564,7 @@ gs_schema:
   additionalProperties: false
   properties:
     <<: *base_properties
+    link_profile: *link_profile
     dynamic_window_parameters:
       type: object
       additionalProperties: false
