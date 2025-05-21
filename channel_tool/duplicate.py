@@ -177,7 +177,7 @@ def duplicate_link_profile(
     if args.directionality == Directionality.BIDIR:
         uhf_profile = min(original_link_profile, key=lambda i: i["downlink_rate_kbps"])
 
-        link_profile.append(uhf_profile)
+        link_profile.insert(0, uhf_profile)
 
     return link_profile
 
@@ -208,18 +208,22 @@ def duplicate_window_parameters(
 
     forward_channel_overrides = gen_forward_channel(args)["forward_channels"][0]
 
-    # We need to add the values from the pls tool even if the original did not
-    # have any window parameters since non-default pls values must specify
-    # those fields
-    if not original_dvb_forward_channel:
-        return forward_channel_overrides
-
-    og_dvb_forward_channel = original_dvb_forward_channel[0]
-
     forward_channels = []
 
     if args.directionality == Directionality.BIDIR:
         forward_channels.append({"radio_band": "UHF"})
+
+    # We need to add the values from the pls tool even if the original did not
+    # have any window parameters since non-default pls values must specify
+    # those fields
+    if not original_dvb_forward_channel:
+        forward_channels.append(forward_channel_overrides)
+        window_parameters = {"forward_channels": forward_channels}
+        if args.directionality == Directionality.BIDIR:
+            window_parameters["reverse_channels"] = [{"radio_band": "UHF"}]
+        return window_parameters
+
+    og_dvb_forward_channel = original_dvb_forward_channel[0]
 
     dvb_forward_channel = merge_forward_channels(
         og_dvb_forward_channel, forward_channel_overrides

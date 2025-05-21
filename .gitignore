@@ -133,3 +133,6 @@ dmypy.json
 *.db
 
 .vscode
+
+# populate_per_pair_elevations.py creates this
+bundle

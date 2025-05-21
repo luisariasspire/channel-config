@@ -13,6 +13,7 @@ if __name__ != "__main__":
     sys.exit("do not import this script")
 
 import argparse
+import json
 import os
 import re
 import subprocess
@@ -63,7 +64,7 @@ def channel_tool(args):
     return process.stdout
 
 
-def fetch_data(table):
+def fetch_data(query):
     connection = sql.connect(
         server_hostname="dbc-24e0a945-16d8.cloud.databricks.us",
         http_path="/sql/1.0/warehouses/c9cc905ac4a154ae",
@@ -71,12 +72,6 @@ def fetch_data(table):
     )
 
     cursor = connection.cursor()
-
-    query = f"""
-        SELECT *
-        FROM {table}
-        WHERE gs_id = 'smags' and band = 'S' and pls in (7, 15, 23, 27)
-    """
 
     cursor.execute(query)
 
@@ -111,6 +106,24 @@ def load_config_file(asset_id):
     return channel_config_file
 
 
+def get_channel_link_profile(gs_id, predicate):
+    channels = channel_tool(
+        ["query", args.environment, gs_id, predicate, "link_profile"]
+    )
+
+    decoded = channels.decode("utf-8")
+    result = decoded.splitlines()[1:]
+
+    assert len(result) == 1
+
+    fields = result[0].split(",", maxsplit=2)
+
+    assert fields[0] == gs_id
+
+    # (channel_id, link_profile)
+    return (fields[1], yaml.load(fields[2]))
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "-e", "--environment", choices=["staging", "production"], required=True
@@ -122,165 +135,137 @@ if not DATABRICKS_ACCESS_TOKEN:
 
 yaml = YAML()
 
-per_pair_rows = fetch_data("ripley_dev.default.optimal_channel_properties")
-per_asset_rows = fetch_data("ripley_dev.default.optimal_channel_properties_gs")
+new_channels = fetch_data(
+    """
+with aq as (
+select 
+gs_id, collect_set(spire_id) as satellites, pls, round(elevation) as min_elevation_deg, bw_mhz, band, any_value(mbps) as mbps
+from ripley_dev.default.optimal_channel_properties
+-- CHANGE PER-GS
+where gs_id = "smags" and band = 'S' and pls in (7, 15, 23, 27)
+group by gs_id, pls, round(elevation), bw_mhz, band
+)
+select aq.gs_id, collect_list(struct(aq.min_elevation_deg, aq.satellites)) as satellite_min_elevations, aq.pls, aq.bw_mhz, aq.band, aq.mbps, round(gs.elevation) as default_min_elevation_deg
+from aq
+left join ripley_dev.default.optimal_channel_properties_gs gs on aq.gs_id = gs.gs_id and aq.pls = gs.pls and aq.bw_mhz = gs.bw_mhz and aq.band = gs.band
+group by aq.gs_id, aq.pls, aq.bw_mhz, aq.band, aq.mbps, gs.elevation
+"""
+)
 
-# Get rid of decommissioned assets
-per_pair_rows = [
-    row
-    for row in per_pair_rows
-    if os.path.exists(asset_filepath(row.gs_id))
-    and os.path.exists(asset_filepath(row.spire_id))
-]
-per_asset_rows = [
-    row for row in per_asset_rows if os.path.exists(asset_filepath(row.gs_id))
-]
+# We get a list of pls values from databricks but for various reasons we may not
+# process them. e.g. if all the assets under that pls value are decommisioned.
+# So let's keep track of what we processed.
+new_pls_values = {}
 
-configs = {}
-for r in per_pair_rows:
-    if r.spire_id not in configs:
-        configs[r.spire_id] = load_config_file(r.spire_id)
-    if r.gs_id not in configs:
-        configs[r.gs_id] = load_config_file(r.gs_id)
+for directionality in list(Directionality):
+    for row in new_channels:
+        # skip if the gs is decomissioned
+        if not os.path.exists(asset_filepath(row.gs_id)):
+            continue
 
-for row in per_pair_rows:
-    gs_id = row.gs_id
-    spire_id = row.spire_id
+        gs_id = row.gs_id
+        pls = row.pls
+        bw_mhz = row.bw_mhz
+        band = row.band.lower()
+        downlink_rate_kbps = row.mbps * 1000 * BITRATE_SCALE_FACTOR
+        satellite_min_elevations = json.loads(row.satellite_min_elevations)
+        default_min_elevation_deg = int(row.default_min_elevation_deg)
 
-    sat_config = configs[spire_id]
-    gs_config = configs[gs_id]
+        # clean out decomissioned satellites
+        for d in satellite_min_elevations:
+            d["satellites"] = [
+                v for v in d["satellites"] if os.path.exists(asset_filepath(v))
+            ]
 
-    # for directionality in list(Directionality):
-    directionality = Directionality.TXO
+        # Some of these may be empty afterwards. Filter them out.
+        satellite_min_elevations = [
+            i for i in satellite_min_elevations if i["satellites"]
+        ]
 
-    print(
-        f"\033[93mProcessing {gs_id} {spire_id} {row.band}-Band {row.bw_mhz}MHZ {row.pls}PLS {directionality.name}\033[00m"
-    )
+        predicate = (
+            f"directionality == '{directionality.name}' and "
+            # CHANGE PER-GS
+            "provider == 'SPIRE' and "
+            f"space_ground_{band}band_bandwidth_mhz == {bw_mhz} and "
+            "(space_ground_xband or space_ground_sband_encoding == 'DVBS2X') and "
+            # CHANGE PER-GS
+            "(not space_ground_sband_mid_freq_mhz or space_ground_sband_mid_freq_mhz == 2022.5)"
+        )
 
-    predicate = (
-        f"directionality == '{directionality.name}' and "
-        "provider == 'SPIRE' and "  # Ripley doesn't process KSAT ground telemetry yet
-        f"space_ground_{row.band.lower()}band_bandwidth_mhz == {row.bw_mhz} and "
-        "(space_ground_xband or space_ground_sband_encoding == 'DVBS2X')"
-    )
+        comma_separated_assets = (
+            ",".join(",".join(d["satellites"]) for d in satellite_min_elevations)
+            + ","
+            + gs_id
+        )
 
-    def dupe(asset):
         channel_tool(
             [
                 "duplicate",
                 args.environment,
-                asset,
+                comma_separated_assets,
                 predicate,
                 "--pls",
-                row.pls,
+                pls,
                 "--bitrate",
-                row.mbps * 1000 * BITRATE_SCALE_FACTOR,
+                downlink_rate_kbps,
                 "--min-elevation",
-                int(row.elevation),
+                int(default_min_elevation_deg),
                 "-y",
             ]
         )
 
-    dupe(gs_id)
-    dupe(spire_id)
+        new_pls_values.setdefault((gs_id, band, bw_mhz, directionality), []).append(pls)
 
-    # We have to reload templates after every duplication because it also
-    # creates templates
-    with open("gs_templates.yaml") as file:
-        templates = yaml.load(file)
+        edit_predicate = predicate + f" and space_ground_{band}band_dvbs2x_pls == {pls}"
 
-    # Insert per-pair elevation values to gs side link profiles
-
-    # get the channels and their link profiles that match our predicate
-    # this includes all newly created channels as well as any existing ones
-    channels = channel_tool(
-        ["query", args.environment, gs_id, predicate, "link_profile"]
-    )
-
-    decoded = channels.decode("utf-8")
-
-    # query dumps three fields in csv format: asset, channel, value
-    channels = {}
-    for line in decoded.splitlines()[1:]:
-        fields = line.split(",", maxsplit=2)
-        assert fields[0] == gs_id
-        channels[fields[1]] = yaml.load(fields[2])
-
-    for channel, link_profile in channels.items():
-        temp_filename = f"/tmp/{gs_id}_{channel}.yaml"
-        class_annos = templates[channel]["classification_annotations"]
-        pls = class_annos[f"space_ground_{row.band.lower()}band_dvbs2x_pls"]
-        bw_mhz = class_annos[f"space_ground_{row.band.lower()}band_bandwidth_mhz"]
-
-        # we're doing just TXO for now
-        assert class_annos["directionality"] == "TXO"
+        # the channel_id and the link_profile of the channel we just created
+        (channel_id, link_profile) = get_channel_link_profile(gs_id, edit_predicate)
 
         dvb_link_profile = max(link_profile, key=lambda i: i["downlink_rate_kbps"])
+        dvb_link_profile["satellite_min_elevations"] = satellite_min_elevations
 
-        dvb_link_profile.pop("min_elevation_deg", None)
-
-        # Default comes from the per-asset table which contains the average
-        # performance of an asset across all of its contacts
-        # This will fail for existing channels whose PLS value is not in
-        # included in the query. We delete them and move on.
-        try:
-            default_min_elevation_deg = int(
-                next(
-                    (
-                        x
-                        for x in per_asset_rows
-                        if x.gs_id == gs_id and x.pls == pls and x.bw_mhz == bw_mhz
-                    )
-                ).elevation
-            )
-        except StopIteration:
-            channel_tool(
+        config_file = load_config_file(gs_id)
+        if "dynamic_window_parameters" in config_file[channel_id]:
+            dvb_link_profile["add_transmit_times"] = True
+            subprocess.run(
                 [
-                    "delete",
-                    args.environment,
-                    gs_id,
-                    channel,
-                    "-y",
+                    "yq",
+                    "-i",
+                    f"del(.{channel_id}.dynamic_window_parameters)",
+                    asset_filepath(gs_id),
+                ],
+            )
+            subprocess.run(
+                [
+                    "yq",
+                    "-i",
+                    f"del(.{channel_id}.dynamic_window_parameters)",
+                    "gs_templates.yaml",
                 ]
             )
-            continue
 
-        dvb_link_profile["default_min_elevation_deg"] = default_min_elevation_deg
-        dvb_link_profile["downlink_rate_kbps"] = r.mbps * 1000 * BITRATE_SCALE_FACTOR
+        # if we duplicated a channel that uses the old key, replace it.
+        if dvb_link_profile.pop("min_elevation_deg", None):
+            dvb_link_profile["default_min_elevation_deg"] = default_min_elevation_deg
 
-        # create a list of dicts that contain elevation to satellite lists
-        satellite_min_elevations = []
-        for r in per_pair_rows:
-            # poor man's filter
-            if r.gs_id != gs_id or r.pls != pls or r.bw_mhz != bw_mhz:
-                continue
+        lp = [dict(dvb_link_profile)]
 
-            exists = False
-            for sme in satellite_min_elevations:
-                if sme["min_elevation_deg"] == int(r.elevation):
-                    if row.spire_id not in sme["satellites"]:
-                        sme["satellites"].append(r.spire_id)
-                    exists = True
-                    break
-
-            if not exists:
-                satellite_min_elevations.append(
-                    {
-                        "min_elevation_deg": int(r.elevation),
-                        "satellites": [r.spire_id],
-                    }
-                )
-
-        if satellite_min_elevations:
-            dvb_link_profile["satellite_min_elevations"] = satellite_min_elevations
-
-        if directionality == Directionality.TXO:
-            lp = [dict(dvb_link_profile)]
-        else:
+        if directionality == Directionality.BIDIR:
             uhf_link_profile = min(link_profile, key=lambda i: i["downlink_rate_kbps"])
-            lp = [dict(uhf_link_profile), dict(dvb_link_profile)]
+            uhf_default_min_elevation_deg = uhf_link_profile.pop(
+                "min_elevation_deg", None
+            )
+            # if we duplicated a channel that uses the old key, replace it.
+            if uhf_default_min_elevation_deg:
+                uhf_link_profile[
+                    "default_min_elevation_deg"
+                ] = uhf_default_min_elevation_deg
+            # validation rules expect uhf to be the first.
+            lp.insert(0, dict(uhf_link_profile))
 
-        with open(temp_filename, "wb") as file:
+        tmp_file = f"./bundle/{gs_id}_{channel_id}.yaml"
+
+        with open(tmp_file, "wb") as file:
             yaml.dump(lp, file)
 
         channel_tool(
@@ -288,14 +273,34 @@ for row in per_pair_rows:
                 "edit",
                 args.environment,
                 gs_id,
-                channel,
+                channel_id,
                 "--mode",
                 "overwrite",
                 "--link_profile_file",
-                temp_filename,
+                tmp_file,
                 "-y",
             ]
         )
+
+# Delete all channels that contain an unsupport pls value on the ground station.
+for (gs_id, band, bw_mhz, directionality), pls_values in new_pls_values.items():
+    predicate = (
+        f"directionality == '{directionality.name}' and "
+        "provider == 'SPIRE' and "
+        f"space_ground_{band}band_bandwidth_mhz == {bw_mhz} and "
+        "(space_ground_xband or space_ground_sband_encoding == 'DVBS2X') and "
+        f"space_ground_{band}band_dvbs2x_pls not in {pls_values}"
+    )
+
+    channel_tool(
+        [
+            "delete",
+            args.environment,
+            gs_id,
+            predicate,
+            "-y",
+        ]
+    )
 
 channel_tool(["normalize", args.environment, "all"])
 channel_tool(["format"])
