@@ -774,9 +774,6 @@ S_U_BIDIR_SPIRE_BW1_P7_F2022_5:
     downlink_rate_kbps: 234.0
     uplink_rate_kbps: 4.0
     min_duration: 20sec
-  dynamic_window_parameters:
-    transmit_times:
-      elevation_threshold_deg: 10.0
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR

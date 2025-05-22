@@ -238,6 +238,50 @@ S_TXO_SPIRE_BW1_P75_F2022_5:
         fec: 255
         pls: 75
         mtu: 1182
+S_TXO_SPIRE_BW1_P7_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # flat: 3.8W * 155s = 589J
+      flat: 589
+      # 9.86 W while transmitting.
+      per_second: 9.86
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 7
+        mtu: 372
+      ground_override:
+        radionet-m: 372
 S_TXO_SPIRE_BW1_P87_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -455,6 +499,52 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
         fec: 255
       use_radionet: true
     - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW1_P7_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # flat: (0.5W + 3.8W) * 155s = 666J
+      flat: 666
+      # 3W UHF + 9.86W Sband = 12.86W
+      per_second: 12.86
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 7
+        mtu: 372
+      use_radionet: true
+      ground_override:
+        radionet-m: 372
     reverse_channels:
     - radio_band: UHF
 S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
