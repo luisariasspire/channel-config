@@ -760,18 +760,16 @@ def channels_from_predicate(
     sys.tracebacklimit = 1000
 
     def evaluate(annos: Dict[str, Any]) -> Any:
-        try:
-            return eval(val, annos)
-        # We catch NameError exceptions and return False explicitly.
-        # This is because not all fields exist for all channels.
-        # e.g. space_ground_sband_dvbs2x_pls will only be defined if
-        # the channel is a DVB S-Band-down.
-        # Because of the above check, NameError here does not mean
-        # an error in the user input but rather we hit a channel
-        # that doesn't have the predicate field. We just want to filter
-        # it out.
-        except NameError:
-            return False
+        # Add missing keys to the annotations and set them to None
+        # This allows us to run predicates that contain keys that doesn't
+        # exist on a channel. `eval` is short circuiting and treats non-existent
+        # keys as exceptions. So this allows us to run predicates like:
+        # (not space_ground_sband_mid_freq_mhz or space_ground_sband_mid_freq_mhz == 2022.5)
+        # which would otherwise raise `NameError` for XBand channels.
+        for key in classification_annotations_schema.keys() - annos.keys():
+            annos[key] = None
+
+        return eval(val, annos)
 
     return [
         id
