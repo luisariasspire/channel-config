@@ -142,7 +142,7 @@ select
 gs_id, collect_set(spire_id) as satellites, pls, round(elevation) as min_elevation_deg, bw_mhz, band, any_value(mbps) as mbps
 from ripley_dev.default.optimal_channel_properties
 -- CHANGE PER-GS
-where gs_id = "ubngs" and band = 'S' and pls in (19, 43, 79, 87)
+where gs_id = "hlegs" and band = 'S' and pls in (7, 11, 23, 39)
 group by gs_id, pls, round(elevation), bw_mhz, band
 )
 select aq.gs_id, collect_list(struct(aq.min_elevation_deg, aq.satellites)) as satellite_min_elevations, aq.pls, aq.bw_mhz, aq.band, aq.mbps, coalesce(round(gs.elevation), 90) as default_min_elevation_deg
@@ -189,7 +189,7 @@ for directionality in list(Directionality):
             f"space_ground_{band}band_bandwidth_mhz == {bw_mhz} and "
             "(space_ground_xband or space_ground_sband_encoding == 'DVBS2X') and "
             # CHANGE PER-GS
-            "(not space_ground_sband_mid_freq_mhz or space_ground_sband_mid_freq_mhz == 2200.5)"
+            "(not space_ground_sband_mid_freq_mhz or space_ground_sband_mid_freq_mhz == 2022.5)"
         )
 
         comma_separated_assets = (

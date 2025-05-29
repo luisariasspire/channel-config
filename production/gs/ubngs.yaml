@@ -33,6 +33,292 @@ S_TXO_SPIRE_BW1_LEG_F2200_5:
     space_ground_sband_mid_freq_mhz: 2200.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
+S_TXO_SPIRE_BW1_P19_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - downlink_rate_kbps: 567.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+    satellite_min_elevations:
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM126
+      - FM127
+      - FM173
+      - FM174
+      - FM175
+      - FM178
+      - FM179
+      - FM180
+      - FM191
+      - FM192
+      - FM194
+      - FM195
+      - FM196
+      - FM197
+      - FM199
+      - FM200
+      - FM201
+      - FM202
+      - FM203
+      - FM205
+      - FM208
+      - FM211
+      - FM212
+      - FM213
+      - FM214
+      - FM215
+      - FM216
+      - FM217
+      - FM218
+      - FM224
+      - FM225
+      - FM226
+      - FM233
+      - FM235
+      - FM236
+    - min_elevation_deg: 46.0
+      satellites:
+      - FM206
+    default_min_elevation_deg: 10.0
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
+        freq: 70000000
+        status_poll_period: 10
+        radionet-m: 867
+      bandaid_override:
+        pls: 19
+        fec: 255
+        fec_k: 223
+        mtu: 867
+      radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 19
+    space_ground_sband_bandwidth_mhz: 1
+S_TXO_SPIRE_BW1_P43_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - downlink_rate_kbps: 1134.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+    satellite_min_elevations:
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM126
+      - FM127
+      - FM173
+      - FM174
+      - FM175
+      - FM178
+      - FM179
+      - FM180
+      - FM191
+      - FM192
+      - FM194
+      - FM195
+      - FM196
+      - FM197
+      - FM199
+      - FM200
+      - FM201
+      - FM202
+      - FM203
+      - FM205
+      - FM208
+      - FM212
+      - FM217
+      - FM224
+      - FM225
+      - FM226
+      - FM233
+      - FM235
+      - FM236
+    - min_elevation_deg: 46.0
+      satellites:
+      - FM206
+    - min_elevation_deg: 11.0
+      satellites:
+      - FM213
+      - FM214
+    - min_elevation_deg: 12.0
+      satellites:
+      - FM216
+    default_min_elevation_deg: 10.0
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
+        freq: 70000000
+        status_poll_period: 10
+        radionet-m: 1767
+      bandaid_override:
+        pls: 43
+        fec: 255
+        fec_k: 223
+        mtu: 1767
+      radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 43
+    space_ground_sband_bandwidth_mhz: 1
+S_TXO_SPIRE_BW1_P79_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - downlink_rate_kbps: 1701.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+    satellite_min_elevations:
+    - min_elevation_deg: 20.0
+      satellites:
+      - FM126
+    - min_elevation_deg: 18.0
+      satellites:
+      - FM127
+      - FM173
+      - FM226
+    - min_elevation_deg: 15.0
+      satellites:
+      - FM174
+    - min_elevation_deg: 12.0
+      satellites:
+      - FM175
+      - FM196
+      - FM197
+    - min_elevation_deg: 17.0
+      satellites:
+      - FM178
+      - FM192
+    - min_elevation_deg: 13.0
+      satellites:
+      - FM179
+      - FM195
+      - FM199
+      - FM201
+    - min_elevation_deg: 16.0
+      satellites:
+      - FM180
+    - min_elevation_deg: 14.0
+      satellites:
+      - FM191
+      - FM194
+    - min_elevation_deg: 22.0
+      satellites:
+      - FM200
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM202
+    - min_elevation_deg: 46.0
+      satellites:
+      - FM206
+    - min_elevation_deg: 29.0
+      satellites:
+      - FM208
+    - min_elevation_deg: 30.0
+      satellites:
+      - FM213
+    - min_elevation_deg: 31.0
+      satellites:
+      - FM214
+      - FM233
+    - min_elevation_deg: 19.0
+      satellites:
+      - FM224
+    - min_elevation_deg: 63.0
+      satellites:
+      - FM235
+    - min_elevation_deg: 23.0
+      satellites:
+      - FM236
+    default_min_elevation_deg: 16.0
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
+        freq: 70000000
+        status_poll_period: 10
+        radionet-m: 1317
+      bandaid_override:
+        pls: 79
+        fec: 255
+        fec_k: 223
+        mtu: 1317
+      radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 79
+    space_ground_sband_bandwidth_mhz: 1
 S_TXO_SPIRE_BW1_P87_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -45,18 +331,72 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 1312.95
+  - downlink_rate_kbps: 2106.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
+    satellite_min_elevations:
+    - min_elevation_deg: 29.0
+      satellites:
+      - FM126
+    - min_elevation_deg: 28.0
+      satellites:
+      - FM127
+    - min_elevation_deg: 22.0
+      satellites:
+      - FM173
+      - FM194
+    - min_elevation_deg: 21.0
+      satellites:
+      - FM174
+      - FM178
+      - FM192
+    - min_elevation_deg: 20.0
+      satellites:
+      - FM175
+      - FM180
+    - min_elevation_deg: 18.0
+      satellites:
+      - FM179
+      - FM191
+      - FM195
+      - FM196
+    - min_elevation_deg: 19.0
+      satellites:
+      - FM199
+    - min_elevation_deg: 34.0
+      satellites:
+      - FM200
+    - min_elevation_deg: 40.0
+      satellites:
+      - FM208
+      - FM214
+      - FM224
+    - min_elevation_deg: 42.0
+      satellites:
+      - FM213
+    - min_elevation_deg: 63.0
+      satellites:
+      - FM226
+    - min_elevation_deg: 60.0
+      satellites:
+      - FM236
+    default_min_elevation_deg: 22.0
   window_parameters:
     forward_channels:
     - ground_override:
         # GS window parameters for stations using a downconverter to deliver SBand signal at 70MHz
         freq: 70000000
         status_poll_period: 10
+        radionet-m: 1632
       bandaid_override:
         pls: 87
+        fec: 255
+        fec_k: 223
+        mtu: 1632
+      radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
   classification_annotations:
     provider: SPIRE
     directionality: TXO
