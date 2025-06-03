@@ -1366,6 +1366,26 @@ X_S_BIDIR_SPIRE_BW20_P61_TRACK:
       bandaid_mode: RX_SBAND_TX_XBAND
       bandaid_override:
         oort_dest_host: localhost
+X_S_BIDIR_SPIRE_BW56_P29_TRACK:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - AU
+  - MN
+  - NZ
+  enabled: false
+  legal: false
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 0s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        oort_dest_host: localhost
 X_TXO_KSAT_BW10_P17:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1677,3 +1697,30 @@ X_TXO_SPIRE_BW20_P61_TRACK:
   contact_overhead_time: 0s
   additional_provider_config:
     ksat_mission_config: SPIRE_Q_20MHZ
+X_TXO_SPIRE_BW56_P29_TRACK:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 0s
