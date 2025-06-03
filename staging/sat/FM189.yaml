@@ -1591,6 +1591,55 @@ X_TXO_KSAT_BW20_P61_TRACK:
         vbatt/voltage/min: 6700
   additional_provider_config:
     ksat_mission_config: SPIRE_Q_20MHZ
+X_TXO_KSAT_BW56_P29_TRACK:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - CA
+  - CL
+  - ES
+  - GR
+  - NO
+  - NZ
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    sun_constraint:
+      contacts_above_threshold: false
+      declination_threshold_deg: 10.0
+      pre_buffer: 2min
+      post_buffer: 2min
+      exclude_gs_ids:
+      - tr4kl
+      - tr6kl
+      - tr20kl
+      - sg71kl
+      - sg161kl
+      - sg180kl
+      - sg182kl
+      - sg189kl
+    budget_name: KSAT_GHGSAT
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 6.5W = 1007.5
+      flat: 1007.5
+      # DEXTER Tx 17.15W
+      per_second: 17.15
+  contact_overhead_time: 0s
+  window_parameters:
+    forward_channels:
+    - bandaid_override:
+        vbatt/voltage/min: 6700
+  additional_provider_config:
+    ksat_mission_config: SPIRE_Q_56MHZ
 X_TXO_SPIRE_BW10_P5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO

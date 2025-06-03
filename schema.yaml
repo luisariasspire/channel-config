@@ -382,7 +382,7 @@ additional_provider_config: &additional_provider_config
   properties:
     ksat_mission_config:
       type: string
-      enum: [SPIRE_Q, SPIRE_Q_20MHZ]
+      enum: [SPIRE_Q, SPIRE_Q_20MHZ, SPIRE_Q_56MHZ]
       optional: true
 
 # Basic properties which are shared between both satellite and ground station schemas.
