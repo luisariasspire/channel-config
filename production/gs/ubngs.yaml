@@ -71,6 +71,7 @@ S_TXO_SPIRE_BW1_P19_F2200_5:
       - FM202
       - FM203
       - FM205
+      - FM206
       - FM208
       - FM211
       - FM212
@@ -86,9 +87,12 @@ S_TXO_SPIRE_BW1_P19_F2200_5:
       - FM233
       - FM235
       - FM236
-    - min_elevation_deg: 46.0
+    - min_elevation_deg: 90
       satellites:
-      - FM206
+      - FM190
+      - FM188
+      - FM185
+      - FM189
     default_min_elevation_deg: 10.0
   window_parameters:
     forward_channels:
@@ -159,6 +163,7 @@ S_TXO_SPIRE_BW1_P43_F2200_5:
       - FM202
       - FM203
       - FM205
+      - FM206
       - FM208
       - FM212
       - FM217
@@ -168,16 +173,24 @@ S_TXO_SPIRE_BW1_P43_F2200_5:
       - FM233
       - FM235
       - FM236
-    - min_elevation_deg: 46.0
-      satellites:
-      - FM206
     - min_elevation_deg: 11.0
       satellites:
       - FM213
-      - FM214
     - min_elevation_deg: 12.0
       satellites:
+      - FM214
+    - min_elevation_deg: 19.0
+      satellites:
       - FM216
+    - min_elevation_deg: 90
+      satellites:
+      - FM190
+      - FM188
+      - FM185
+      - FM189
+      - FM211
+      - FM215
+      - FM218
     default_min_elevation_deg: 10.0
   window_parameters:
     forward_channels:
@@ -233,60 +246,61 @@ S_TXO_SPIRE_BW1_P79_F2200_5:
       satellites:
       - FM127
       - FM173
-      - FM226
     - min_elevation_deg: 15.0
       satellites:
       - FM174
+      - FM208
+      - FM226
+      - FM233
+      - FM235
     - min_elevation_deg: 12.0
       satellites:
       - FM175
       - FM196
       - FM197
+      - FM201
     - min_elevation_deg: 17.0
       satellites:
       - FM178
       - FM192
+      - FM203
+      - FM206
     - min_elevation_deg: 13.0
       satellites:
       - FM179
       - FM195
       - FM199
-      - FM201
+      - FM202
+      - FM236
     - min_elevation_deg: 16.0
       satellites:
       - FM180
+      - FM225
     - min_elevation_deg: 14.0
       satellites:
       - FM191
       - FM194
-    - min_elevation_deg: 22.0
-      satellites:
       - FM200
-    - min_elevation_deg: 10.0
-      satellites:
-      - FM202
-    - min_elevation_deg: 46.0
-      satellites:
-      - FM206
-    - min_elevation_deg: 29.0
-      satellites:
-      - FM208
+      - FM205
+      - FM224
     - min_elevation_deg: 30.0
       satellites:
       - FM213
     - min_elevation_deg: 31.0
       satellites:
       - FM214
-      - FM233
-    - min_elevation_deg: 19.0
+    - min_elevation_deg: 90
       satellites:
-      - FM224
-    - min_elevation_deg: 63.0
-      satellites:
-      - FM235
-    - min_elevation_deg: 23.0
-      satellites:
-      - FM236
+      - FM190
+      - FM188
+      - FM185
+      - FM189
+      - FM211
+      - FM212
+      - FM215
+      - FM216
+      - FM218
+      - FM217
     default_min_elevation_deg: 16.0
   window_parameters:
     forward_channels:
@@ -345,42 +359,59 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
       satellites:
       - FM173
       - FM194
+      - FM203
+      - FM208
     - min_elevation_deg: 21.0
       satellites:
       - FM174
       - FM178
       - FM192
+      - FM200
+      - FM226
+      - FM233
+      - FM235
+      - FM236
     - min_elevation_deg: 20.0
       satellites:
       - FM175
-      - FM180
+      - FM205
+      - FM224
+      - FM225
     - min_elevation_deg: 18.0
       satellites:
       - FM179
       - FM191
-      - FM195
       - FM196
     - min_elevation_deg: 19.0
       satellites:
+      - FM180
       - FM199
-    - min_elevation_deg: 34.0
+      - FM202
+      - FM206
+    - min_elevation_deg: 17.0
       satellites:
-      - FM200
-    - min_elevation_deg: 40.0
-      satellites:
-      - FM208
-      - FM214
-      - FM224
+      - FM195
+      - FM201
     - min_elevation_deg: 42.0
       satellites:
       - FM213
-    - min_elevation_deg: 63.0
+    - min_elevation_deg: 40.0
       satellites:
-      - FM226
-    - min_elevation_deg: 60.0
+      - FM214
+    - min_elevation_deg: 90
       satellites:
-      - FM236
-    default_min_elevation_deg: 22.0
+      - FM190
+      - FM188
+      - FM185
+      - FM189
+      - FM211
+      - FM212
+      - FM215
+      - FM197
+      - FM216
+      - FM218
+      - FM217
+    default_min_elevation_deg: 21.0
   window_parameters:
     forward_channels:
     - ground_override:

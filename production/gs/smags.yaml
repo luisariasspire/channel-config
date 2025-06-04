@@ -44,86 +44,93 @@ S_TXO_SPIRE_BW1_P15_F2022_5:
     uplink_rate_kbps: 0.0
     min_duration: 1min
     satellite_min_elevations:
-    - min_elevation_deg: 34
+    - min_elevation_deg: 35.0
       satellites:
       - FM173
-      - FM224
-    - min_elevation_deg: 33
-      satellites:
       - FM174
-      - FM180
-      - FM201
-      - FM236
-    - min_elevation_deg: 28
+      - FM233
+    - min_elevation_deg: 27.0
       satellites:
       - FM175
-      - FM197
-    - min_elevation_deg: 39
-      satellites:
-      - FM203
-    - min_elevation_deg: 32
+    - min_elevation_deg: 32.0
       satellites:
       - FM178
+      - FM199
       - FM206
-    - min_elevation_deg: 31
+      - FM225
+    - min_elevation_deg: 31.0
       satellites:
       - FM179
-      - FM199
-      - FM225
-    - min_elevation_deg: 84
+      - FM202
+    - min_elevation_deg: 34.0
+      satellites:
+      - FM180
+      - FM200
+      - FM205
+      - FM224
+      - FM235
+    - min_elevation_deg: 59.0
       satellites:
       - FM188
-    - min_elevation_deg: 56
+    - min_elevation_deg: 51.0
       satellites:
       - FM189
-      - FM217
-    - min_elevation_deg: 64
+    - min_elevation_deg: 63.0
       satellites:
       - FM190
-    - min_elevation_deg: 41
+      - FM216
+    - min_elevation_deg: 42.0
       satellites:
       - FM191
-      - FM205
-    - min_elevation_deg: 48
+    - min_elevation_deg: 48.0
       satellites:
       - FM192
-    - min_elevation_deg: 25
-      satellites:
-      - FM193
-    - min_elevation_deg: 27
+    - min_elevation_deg: 28.0
       satellites:
       - FM194
-    - min_elevation_deg: 29
+    - min_elevation_deg: 30.0
       satellites:
       - FM196
-    - min_elevation_deg: 30
+      - FM201
+    - min_elevation_deg: 29.0
       satellites:
-      - FM202
-    - min_elevation_deg: 60
+      - FM197
+    - min_elevation_deg: 40.0
+      satellites:
+      - FM203
+    - min_elevation_deg: 58.0
+      satellites:
+      - FM208
+    - min_elevation_deg: 61.0
       satellites:
       - FM211
-    - min_elevation_deg: 76
+    - min_elevation_deg: 76.0
       satellites:
       - FM212
-    - min_elevation_deg: 70
+    - min_elevation_deg: 69.0
       satellites:
       - FM213
-      - FM216
-    - min_elevation_deg: 88
+      - FM215
+    - min_elevation_deg: 88.0
       satellites:
       - FM214
-    - min_elevation_deg: 65
+    - min_elevation_deg: 56.0
       satellites:
-      - FM215
-    - min_elevation_deg: 61
+      - FM217
+    - min_elevation_deg: 62.0
       satellites:
       - FM218
-    - min_elevation_deg: 35
+    - min_elevation_deg: 33.0
       satellites:
       - FM226
-      - FM233
-      - FM235
-    default_min_elevation_deg: 50.0
+      - FM236
+    - min_elevation_deg: 90
+      satellites:
+      - FM126
+      - FM185
+      - FM127
+      - FM195
+    default_min_elevation_deg: 43.0
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -168,76 +175,90 @@ S_TXO_SPIRE_BW1_P23_F2022_5:
     uplink_rate_kbps: 0.0
     min_duration: 1min
     satellite_min_elevations:
-    - min_elevation_deg: 51
+    - min_elevation_deg: 51.0
       satellites:
       - FM173
-    - min_elevation_deg: 53
+      - FM178
+    - min_elevation_deg: 54.0
       satellites:
       - FM174
-    - min_elevation_deg: 42
+    - min_elevation_deg: 41.0
       satellites:
       - FM175
-    - min_elevation_deg: 45
-      satellites:
-      - FM197
-    - min_elevation_deg: 50
-      satellites:
-      - FM178
-      - FM235
-    - min_elevation_deg: 44
+      - FM199
+    - min_elevation_deg: 44.0
       satellites:
       - FM179
-    - min_elevation_deg: 54
+      - FM202
+    - min_elevation_deg: 57.0
       satellites:
       - FM180
-      - FM224
-    - min_elevation_deg: 85
+    - min_elevation_deg: 86.0
       satellites:
       - FM188
-    - min_elevation_deg: 80
+    - min_elevation_deg: 71.0
       satellites:
       - FM189
-    - min_elevation_deg: 82
+    - min_elevation_deg: 81.0
       satellites:
       - FM190
-    - min_elevation_deg: 63
+    - min_elevation_deg: 65.0
       satellites:
       - FM191
-    - min_elevation_deg: 37
+    - min_elevation_deg: 70.0
       satellites:
-      - FM193
-    - min_elevation_deg: 39
+      - FM192
+    - min_elevation_deg: 39.0
       satellites:
       - FM194
-    - min_elevation_deg: 47
+    - min_elevation_deg: 56.0
       satellites:
       - FM196
-      - FM225
-    - min_elevation_deg: 40
+    - min_elevation_deg: 46.0
       satellites:
-      - FM199
-    - min_elevation_deg: 43
+      - FM197
+    - min_elevation_deg: 45.0
       satellites:
-      - FM202
-    - min_elevation_deg: 75
+      - FM200
+      - FM206
+    - min_elevation_deg: 78.0
       satellites:
       - FM203
-    - min_elevation_deg: 58
+    - min_elevation_deg: 48.0
       satellites:
       - FM205
-      - FM233
-    - min_elevation_deg: 79
+      - FM235
+    - min_elevation_deg: 83.0
       satellites:
-      - FM206
-    - min_elevation_deg: 84
+      - FM208
+    - min_elevation_deg: 88.0
       satellites:
-      - FM217
-    - min_elevation_deg: 83
+      - FM213
+    - min_elevation_deg: 52.0
       satellites:
+      - FM224
       - FM226
-    - min_elevation_deg: 48
+    - min_elevation_deg: 47.0
       satellites:
+      - FM225
       - FM236
+    - min_elevation_deg: 50.0
+      satellites:
+      - FM233
+    - min_elevation_deg: 90
+      satellites:
+      - FM126
+      - FM185
+      - FM127
+      - FM211
+      - FM212
+      - FM214
+      - FM215
+      - FM201
+      - FM195
+      - FM216
+      - FM218
+      - FM217
     default_min_elevation_deg: 89.0
   classification_annotations:
     provider: SPIRE
@@ -283,71 +304,89 @@ S_TXO_SPIRE_BW1_P27_F2022_5:
     uplink_rate_kbps: 0.0
     min_duration: 1min
     satellite_min_elevations:
-    - min_elevation_deg: 89
+    - min_elevation_deg: 90.0
       satellites:
       - FM173
-      - FM188
-    - min_elevation_deg: 72
+    - min_elevation_deg: 73.0
       satellites:
       - FM174
-    - min_elevation_deg: 45
+    - min_elevation_deg: 44.0
       satellites:
       - FM175
-    - min_elevation_deg: 48
-      satellites:
-      - FM202
-    - min_elevation_deg: 66
+      - FM194
+    - min_elevation_deg: 67.0
       satellites:
       - FM178
-    - min_elevation_deg: 50
+    - min_elevation_deg: 49.0
       satellites:
       - FM179
-    - min_elevation_deg: 61
+      - FM202
+      - FM206
+    - min_elevation_deg: 64.0
       satellites:
       - FM180
-      - FM224
-    - min_elevation_deg: 75
+    - min_elevation_deg: 81.0
+      satellites:
+      - FM189
+    - min_elevation_deg: 75.0
       satellites:
       - FM191
-      - FM205
-    - min_elevation_deg: 41
-      satellites:
-      - FM193
-    - min_elevation_deg: 43
-      satellites:
-      - FM194
-    - min_elevation_deg: 70
+    - min_elevation_deg: 70.0
       satellites:
       - FM196
-    - min_elevation_deg: 52
+    - min_elevation_deg: 53.0
       satellites:
       - FM197
       - FM235
-    - min_elevation_deg: 44
+    - min_elevation_deg: 45.0
       satellites:
       - FM199
-    - min_elevation_deg: 78
+    - min_elevation_deg: 59.0
+      satellites:
+      - FM200
+    - min_elevation_deg: 79.0
       satellites:
       - FM203
-    - min_elevation_deg: 79
+    - min_elevation_deg: 52.0
       satellites:
-      - FM206
-    - min_elevation_deg: 84
+      - FM205
+      - FM236
+    - min_elevation_deg: 83.0
       satellites:
-      - FM217
-    - min_elevation_deg: 49
+      - FM208
+    - min_elevation_deg: 88.0
+      satellites:
+      - FM213
+    - min_elevation_deg: 58.0
+      satellites:
+      - FM224
+    - min_elevation_deg: 51.0
       satellites:
       - FM225
-    - min_elevation_deg: 83
+    - min_elevation_deg: 56.0
       satellites:
       - FM226
-    - min_elevation_deg: 71
+    - min_elevation_deg: 55.0
       satellites:
       - FM233
-    - min_elevation_deg: 68
+    - min_elevation_deg: 90
       satellites:
-      - FM236
-    default_min_elevation_deg: 89.0
+      - FM190
+      - FM126
+      - FM188
+      - FM185
+      - FM127
+      - FM211
+      - FM212
+      - FM214
+      - FM215
+      - FM201
+      - FM192
+      - FM195
+      - FM216
+      - FM218
+      - FM217
+    default_min_elevation_deg: 90.0
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -392,93 +431,95 @@ S_TXO_SPIRE_BW1_P7_F2022_5:
     uplink_rate_kbps: 0.0
     min_duration: 1min
     satellite_min_elevations:
-    - min_elevation_deg: 40
+    - min_elevation_deg: 33.0
       satellites:
       - FM126
-    - min_elevation_deg: 28
+    - min_elevation_deg: 27.0
       satellites:
       - FM127
-    - min_elevation_deg: 23
-      satellites:
-      - FM178
-      - FM180
-      - FM193
-      - FM194
-    - min_elevation_deg: 24
+      - FM191
+    - min_elevation_deg: 23.0
       satellites:
       - FM173
+      - FM199
+    - min_elevation_deg: 24.0
+      satellites:
       - FM174
+      - FM178
       - FM195
       - FM197
-      - FM199
-    - min_elevation_deg: 12
+      - FM200
+      - FM203
+    - min_elevation_deg: 11.0
       satellites:
       - FM175
-      - FM226
-    - min_elevation_deg: 19
+      - FM233
+    - min_elevation_deg: 19.0
       satellites:
       - FM179
-    - min_elevation_deg: 10
+      - FM196
+    - min_elevation_deg: 22.0
       satellites:
-      - FM201
-      - FM202
-      - FM203
-      - FM206
-      - FM208
-      - FM225
-      - FM233
-      - FM235
-      - FM236
-    - min_elevation_deg: 39
+      - FM180
+      - FM194
+    - min_elevation_deg: 37.0
       satellites:
       - FM188
-    - min_elevation_deg: 36
+      - FM190
+    - min_elevation_deg: 36.0
       satellites:
       - FM189
-    - min_elevation_deg: 37
-      satellites:
-      - FM190
-    - min_elevation_deg: 27
-      satellites:
-      - FM191
-    - min_elevation_deg: 31
+    - min_elevation_deg: 32.0
       satellites:
       - FM192
-    - min_elevation_deg: 20
+    - min_elevation_deg: 10.0
       satellites:
-      - FM196
-    - min_elevation_deg: 26
+      - FM201
+    - min_elevation_deg: 13.0
       satellites:
-      - FM200
-    - min_elevation_deg: 11
+      - FM202
+      - FM226
+    - min_elevation_deg: 14.0
       satellites:
       - FM205
       - FM224
-    - min_elevation_deg: 45
+      - FM235
+    - min_elevation_deg: 15.0
+      satellites:
+      - FM206
+    - min_elevation_deg: 26.0
+      satellites:
+      - FM208
+    - min_elevation_deg: 38.0
       satellites:
       - FM211
-    - min_elevation_deg: 44
+    - min_elevation_deg: 43.0
       satellites:
       - FM212
-    - min_elevation_deg: 48
+      - FM218
+    - min_elevation_deg: 46.0
       satellites:
       - FM213
-    - min_elevation_deg: 50
+      - FM216
+    - min_elevation_deg: 50.0
       satellites:
       - FM214
-    - min_elevation_deg: 46
+    - min_elevation_deg: 47.0
       satellites:
       - FM215
-    - min_elevation_deg: 51
-      satellites:
-      - FM216
-    - min_elevation_deg: 41
+    - min_elevation_deg: 45.0
       satellites:
       - FM217
-    - min_elevation_deg: 34
+    - min_elevation_deg: 12.0
       satellites:
-      - FM218
-    default_min_elevation_deg: 10
+      - FM225
+    - min_elevation_deg: 16.0
+      satellites:
+      - FM236
+    - min_elevation_deg: 90
+      satellites:
+      - FM185
+    default_min_elevation_deg: 10.0
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -563,87 +604,94 @@ S_U_BIDIR_SPIRE_BW1_P15_F2022_5:
     uplink_rate_kbps: 4.0
     min_duration: 20sec
     satellite_min_elevations:
-    - min_elevation_deg: 34
+    - min_elevation_deg: 35.0
       satellites:
       - FM173
-      - FM224
-    - min_elevation_deg: 33
-      satellites:
       - FM174
-      - FM180
-      - FM201
-      - FM236
-    - min_elevation_deg: 28
+      - FM233
+    - min_elevation_deg: 27.0
       satellites:
       - FM175
-      - FM197
-    - min_elevation_deg: 39
-      satellites:
-      - FM203
-    - min_elevation_deg: 32
+    - min_elevation_deg: 32.0
       satellites:
       - FM178
+      - FM199
       - FM206
-    - min_elevation_deg: 31
+      - FM225
+    - min_elevation_deg: 31.0
       satellites:
       - FM179
-      - FM199
-      - FM225
-    - min_elevation_deg: 84
+      - FM202
+    - min_elevation_deg: 34.0
+      satellites:
+      - FM180
+      - FM200
+      - FM205
+      - FM224
+      - FM235
+    - min_elevation_deg: 59.0
       satellites:
       - FM188
-    - min_elevation_deg: 56
+    - min_elevation_deg: 51.0
       satellites:
       - FM189
-      - FM217
-    - min_elevation_deg: 64
+    - min_elevation_deg: 63.0
       satellites:
       - FM190
-    - min_elevation_deg: 41
+      - FM216
+    - min_elevation_deg: 42.0
       satellites:
       - FM191
-      - FM205
-    - min_elevation_deg: 48
+    - min_elevation_deg: 48.0
       satellites:
       - FM192
-    - min_elevation_deg: 25
-      satellites:
-      - FM193
-    - min_elevation_deg: 27
+    - min_elevation_deg: 28.0
       satellites:
       - FM194
-    - min_elevation_deg: 29
+    - min_elevation_deg: 30.0
       satellites:
       - FM196
-    - min_elevation_deg: 30
+      - FM201
+    - min_elevation_deg: 29.0
       satellites:
-      - FM202
-    - min_elevation_deg: 60
+      - FM197
+    - min_elevation_deg: 40.0
+      satellites:
+      - FM203
+    - min_elevation_deg: 58.0
+      satellites:
+      - FM208
+    - min_elevation_deg: 61.0
       satellites:
       - FM211
-    - min_elevation_deg: 76
+    - min_elevation_deg: 76.0
       satellites:
       - FM212
-    - min_elevation_deg: 70
+    - min_elevation_deg: 69.0
       satellites:
       - FM213
-      - FM216
-    - min_elevation_deg: 88
+      - FM215
+    - min_elevation_deg: 88.0
       satellites:
       - FM214
-    - min_elevation_deg: 65
+    - min_elevation_deg: 56.0
       satellites:
-      - FM215
-    - min_elevation_deg: 61
+      - FM217
+    - min_elevation_deg: 62.0
       satellites:
       - FM218
-    - min_elevation_deg: 35
+    - min_elevation_deg: 33.0
       satellites:
       - FM226
-      - FM233
-      - FM235
+      - FM236
+    - min_elevation_deg: 90
+      satellites:
+      - FM126
+      - FM185
+      - FM127
+      - FM195
     add_transmit_times: true
-    default_min_elevation_deg: 50.0
+    default_min_elevation_deg: 43.0
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -695,76 +743,90 @@ S_U_BIDIR_SPIRE_BW1_P23_F2022_5:
     uplink_rate_kbps: 4.0
     min_duration: 20sec
     satellite_min_elevations:
-    - min_elevation_deg: 51
+    - min_elevation_deg: 51.0
       satellites:
       - FM173
-    - min_elevation_deg: 53
+      - FM178
+    - min_elevation_deg: 54.0
       satellites:
       - FM174
-    - min_elevation_deg: 42
+    - min_elevation_deg: 41.0
       satellites:
       - FM175
-    - min_elevation_deg: 45
-      satellites:
-      - FM197
-    - min_elevation_deg: 50
-      satellites:
-      - FM178
-      - FM235
-    - min_elevation_deg: 44
+      - FM199
+    - min_elevation_deg: 44.0
       satellites:
       - FM179
-    - min_elevation_deg: 54
+      - FM202
+    - min_elevation_deg: 57.0
       satellites:
       - FM180
-      - FM224
-    - min_elevation_deg: 85
+    - min_elevation_deg: 86.0
       satellites:
       - FM188
-    - min_elevation_deg: 80
+    - min_elevation_deg: 71.0
       satellites:
       - FM189
-    - min_elevation_deg: 82
+    - min_elevation_deg: 81.0
       satellites:
       - FM190
-    - min_elevation_deg: 63
+    - min_elevation_deg: 65.0
       satellites:
       - FM191
-    - min_elevation_deg: 37
+    - min_elevation_deg: 70.0
       satellites:
-      - FM193
-    - min_elevation_deg: 39
+      - FM192
+    - min_elevation_deg: 39.0
       satellites:
       - FM194
-    - min_elevation_deg: 47
+    - min_elevation_deg: 56.0
       satellites:
       - FM196
-      - FM225
-    - min_elevation_deg: 40
+    - min_elevation_deg: 46.0
       satellites:
-      - FM199
-    - min_elevation_deg: 43
+      - FM197
+    - min_elevation_deg: 45.0
       satellites:
-      - FM202
-    - min_elevation_deg: 75
+      - FM200
+      - FM206
+    - min_elevation_deg: 78.0
       satellites:
       - FM203
-    - min_elevation_deg: 58
+    - min_elevation_deg: 48.0
       satellites:
       - FM205
-      - FM233
-    - min_elevation_deg: 79
+      - FM235
+    - min_elevation_deg: 83.0
       satellites:
-      - FM206
-    - min_elevation_deg: 84
+      - FM208
+    - min_elevation_deg: 88.0
       satellites:
-      - FM217
-    - min_elevation_deg: 83
+      - FM213
+    - min_elevation_deg: 52.0
       satellites:
+      - FM224
       - FM226
-    - min_elevation_deg: 48
+    - min_elevation_deg: 47.0
       satellites:
+      - FM225
       - FM236
+    - min_elevation_deg: 50.0
+      satellites:
+      - FM233
+    - min_elevation_deg: 90
+      satellites:
+      - FM126
+      - FM185
+      - FM127
+      - FM211
+      - FM212
+      - FM214
+      - FM215
+      - FM201
+      - FM195
+      - FM216
+      - FM218
+      - FM217
     add_transmit_times: true
     default_min_elevation_deg: 89.0
   classification_annotations:
@@ -818,72 +880,90 @@ S_U_BIDIR_SPIRE_BW1_P27_F2022_5:
     uplink_rate_kbps: 4.0
     min_duration: 20sec
     satellite_min_elevations:
-    - min_elevation_deg: 89
+    - min_elevation_deg: 90.0
       satellites:
       - FM173
-      - FM188
-    - min_elevation_deg: 72
+    - min_elevation_deg: 73.0
       satellites:
       - FM174
-    - min_elevation_deg: 45
+    - min_elevation_deg: 44.0
       satellites:
       - FM175
-    - min_elevation_deg: 48
-      satellites:
-      - FM202
-    - min_elevation_deg: 66
+      - FM194
+    - min_elevation_deg: 67.0
       satellites:
       - FM178
-    - min_elevation_deg: 50
+    - min_elevation_deg: 49.0
       satellites:
       - FM179
-    - min_elevation_deg: 61
+      - FM202
+      - FM206
+    - min_elevation_deg: 64.0
       satellites:
       - FM180
-      - FM224
-    - min_elevation_deg: 75
+    - min_elevation_deg: 81.0
+      satellites:
+      - FM189
+    - min_elevation_deg: 75.0
       satellites:
       - FM191
-      - FM205
-    - min_elevation_deg: 41
-      satellites:
-      - FM193
-    - min_elevation_deg: 43
-      satellites:
-      - FM194
-    - min_elevation_deg: 70
+    - min_elevation_deg: 70.0
       satellites:
       - FM196
-    - min_elevation_deg: 52
+    - min_elevation_deg: 53.0
       satellites:
       - FM197
       - FM235
-    - min_elevation_deg: 44
+    - min_elevation_deg: 45.0
       satellites:
       - FM199
-    - min_elevation_deg: 78
+    - min_elevation_deg: 59.0
+      satellites:
+      - FM200
+    - min_elevation_deg: 79.0
       satellites:
       - FM203
-    - min_elevation_deg: 79
+    - min_elevation_deg: 52.0
       satellites:
-      - FM206
-    - min_elevation_deg: 84
+      - FM205
+      - FM236
+    - min_elevation_deg: 83.0
       satellites:
-      - FM217
-    - min_elevation_deg: 49
+      - FM208
+    - min_elevation_deg: 88.0
+      satellites:
+      - FM213
+    - min_elevation_deg: 58.0
+      satellites:
+      - FM224
+    - min_elevation_deg: 51.0
       satellites:
       - FM225
-    - min_elevation_deg: 83
+    - min_elevation_deg: 56.0
       satellites:
       - FM226
-    - min_elevation_deg: 71
+    - min_elevation_deg: 55.0
       satellites:
       - FM233
-    - min_elevation_deg: 68
+    - min_elevation_deg: 90
       satellites:
-      - FM236
+      - FM190
+      - FM126
+      - FM188
+      - FM185
+      - FM127
+      - FM211
+      - FM212
+      - FM214
+      - FM215
+      - FM201
+      - FM192
+      - FM195
+      - FM216
+      - FM218
+      - FM217
     add_transmit_times: true
-    default_min_elevation_deg: 89.0
+    default_min_elevation_deg: 90.0
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -935,94 +1015,96 @@ S_U_BIDIR_SPIRE_BW1_P7_F2022_5:
     uplink_rate_kbps: 4.0
     min_duration: 20sec
     satellite_min_elevations:
-    - min_elevation_deg: 40
+    - min_elevation_deg: 33.0
       satellites:
       - FM126
-    - min_elevation_deg: 28
+    - min_elevation_deg: 27.0
       satellites:
       - FM127
-    - min_elevation_deg: 23
-      satellites:
-      - FM178
-      - FM180
-      - FM193
-      - FM194
-    - min_elevation_deg: 24
+      - FM191
+    - min_elevation_deg: 23.0
       satellites:
       - FM173
+      - FM199
+    - min_elevation_deg: 24.0
+      satellites:
       - FM174
+      - FM178
       - FM195
       - FM197
-      - FM199
-    - min_elevation_deg: 12
+      - FM200
+      - FM203
+    - min_elevation_deg: 11.0
       satellites:
       - FM175
-      - FM226
-    - min_elevation_deg: 19
+      - FM233
+    - min_elevation_deg: 19.0
       satellites:
       - FM179
-    - min_elevation_deg: 10
+      - FM196
+    - min_elevation_deg: 22.0
       satellites:
-      - FM201
-      - FM202
-      - FM203
-      - FM206
-      - FM208
-      - FM225
-      - FM233
-      - FM235
-      - FM236
-    - min_elevation_deg: 39
+      - FM180
+      - FM194
+    - min_elevation_deg: 37.0
       satellites:
       - FM188
-    - min_elevation_deg: 36
+      - FM190
+    - min_elevation_deg: 36.0
       satellites:
       - FM189
-    - min_elevation_deg: 37
-      satellites:
-      - FM190
-    - min_elevation_deg: 27
-      satellites:
-      - FM191
-    - min_elevation_deg: 31
+    - min_elevation_deg: 32.0
       satellites:
       - FM192
-    - min_elevation_deg: 20
+    - min_elevation_deg: 10.0
       satellites:
-      - FM196
-    - min_elevation_deg: 26
+      - FM201
+    - min_elevation_deg: 13.0
       satellites:
-      - FM200
-    - min_elevation_deg: 11
+      - FM202
+      - FM226
+    - min_elevation_deg: 14.0
       satellites:
       - FM205
       - FM224
-    - min_elevation_deg: 45
+      - FM235
+    - min_elevation_deg: 15.0
+      satellites:
+      - FM206
+    - min_elevation_deg: 26.0
+      satellites:
+      - FM208
+    - min_elevation_deg: 38.0
       satellites:
       - FM211
-    - min_elevation_deg: 44
+    - min_elevation_deg: 43.0
       satellites:
       - FM212
-    - min_elevation_deg: 48
+      - FM218
+    - min_elevation_deg: 46.0
       satellites:
       - FM213
-    - min_elevation_deg: 50
+      - FM216
+    - min_elevation_deg: 50.0
       satellites:
       - FM214
-    - min_elevation_deg: 46
+    - min_elevation_deg: 47.0
       satellites:
       - FM215
-    - min_elevation_deg: 51
-      satellites:
-      - FM216
-    - min_elevation_deg: 41
+    - min_elevation_deg: 45.0
       satellites:
       - FM217
-    - min_elevation_deg: 34
+    - min_elevation_deg: 12.0
       satellites:
-      - FM218
+      - FM225
+    - min_elevation_deg: 16.0
+      satellites:
+      - FM236
+    - min_elevation_deg: 90
+      satellites:
+      - FM185
     add_transmit_times: true
-    default_min_elevation_deg: 10
+    default_min_elevation_deg: 10.0
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR

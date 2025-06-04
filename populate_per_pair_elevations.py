@@ -52,7 +52,7 @@ def channel_tool(args):
     if command_str in command_history:
         return command_history[command_str].stdout
 
-    process = subprocess.run(command, capture_output=True, timeout=120)
+    process = subprocess.run(command, capture_output=True, timeout=600)
 
     if process.returncode != 0:
         raise Exception(
@@ -142,7 +142,7 @@ select
 gs_id, collect_set(spire_id) as satellites, pls, round(elevation) as min_elevation_deg, bw_mhz, band, any_value(mbps) as mbps
 from ripley_dev.default.optimal_channel_properties
 -- CHANGE PER-GS
-where gs_id = "seags" and band = 'S' and pls in (7, 11, 23, 35)
+where gs_id = "ubngs" and band = 'S' and pls in (19, 43, 79, 87)
 group by gs_id, pls, round(elevation), bw_mhz, band
 )
 select aq.gs_id, collect_list(struct(aq.min_elevation_deg, aq.satellites)) as satellite_min_elevations, aq.pls, aq.bw_mhz, aq.band, aq.mbps, coalesce(round(gs.elevation), 90) as default_min_elevation_deg
@@ -151,13 +151,16 @@ left join ripley_dev.default.optimal_channel_properties_gs gs on aq.gs_id = gs.g
 group by aq.gs_id, aq.pls, aq.bw_mhz, aq.band, aq.mbps, gs.elevation
 """
 )
+active_sats = fetch_data(
+    "select asset_id from ripley_dev.default.active_assets where asset_type = 'sat'"
+)
 
 # We get a list of pls values from databricks but for various reasons we may not
 # process them. e.g. if all the assets under that pls value are decommisioned.
 # So let's keep track of what we processed.
 new_pls_values = {}
 
-for directionality in list(Directionality):
+for directionality in [Directionality.TXO]:  # list(Directionality):
     for row in new_channels:
         # skip if the gs is decomissioned
         if not os.path.exists(asset_filepath(row.gs_id)):
@@ -182,6 +185,19 @@ for directionality in list(Directionality):
             i for i in satellite_min_elevations if i["satellites"]
         ]
 
+        # Finally, add all satellites that doesn't have an override under 90
+        # degree bucket to disable them.
+        disabled_sats = [
+            sat.asset_id
+            for sat in active_sats
+            if all(
+                sat.asset_id not in d["satellites"] for d in satellite_min_elevations
+            )
+        ]
+        satellite_min_elevations.append(
+            {"min_elevation_deg": 90, "satellites": disabled_sats}
+        )
+
         predicate = (
             f"directionality == '{directionality.name}' and "
             # CHANGE PER-GS
@@ -189,11 +205,18 @@ for directionality in list(Directionality):
             f"space_ground_{band}band_bandwidth_mhz == {bw_mhz} and "
             "(space_ground_xband or space_ground_sband_encoding == 'DVBS2X') and "
             # CHANGE PER-GS
-            "(not space_ground_sband_mid_freq_mhz or space_ground_sband_mid_freq_mhz == 2022.5)"
+            "(not space_ground_sband_mid_freq_mhz or space_ground_sband_mid_freq_mhz == 2200.5)"
         )
 
         comma_separated_assets = (
-            ",".join(",".join(d["satellites"]) for d in satellite_min_elevations)
+            ",".join(
+                ",".join(d["satellites"])
+                for d in satellite_min_elevations
+                # Make sure we don't create a channel for disabled sats
+                # They're disabled to ensure we don't communicate with this groundstation
+                # if the sat gets the channel by some other means in the future.
+                if d["min_elevation_deg"] != 90
+            )
             + ","
             + gs_id
         )
