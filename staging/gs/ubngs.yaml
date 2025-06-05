@@ -658,6 +658,7 @@ X_S_BIDIR_SPIRE_BW56_P29_TRACK:
         tx_hardware_gain_db: -10
         tx_bandwidth_hz: 56000000
         tx_sample_rate_hz: 46666000
+        rx_sample_rate_hz: 46666000
         pls: 29
         mtu: 6039
         mod_gain: 130
