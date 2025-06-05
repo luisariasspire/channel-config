@@ -253,6 +253,7 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
       elevation_threshold_deg: 25
   window_parameters:
     forward_channels:
+    - radio_band: UHF
     - radio_band: SBAND
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
@@ -264,7 +265,6 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
         tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
-    - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
   classification_annotations:
@@ -309,6 +309,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
       elevation_threshold_deg: 30
   window_parameters:
     forward_channels:
+    - radio_band: UHF
     - radio_band: SBAND
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
@@ -320,7 +321,6 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
         tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
-    - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
   classification_annotations:

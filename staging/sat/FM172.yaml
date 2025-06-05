@@ -339,12 +339,12 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   contact_overhead_time: 210s
   window_parameters:
     forward_channels:
+    - radio_band: UHF
     - radio_band: SBAND
       protocol: LEGACY
       bandaid_mode: TX_SBAND_IP
       bandaid_override: {}
       use_radionet: true
-    - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
   contact_type: CONTACT_SPACE_GROUND_BIDIR
@@ -379,12 +379,12 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   window_parameters:
     forward_channels:
+    - radio_band: UHF
     - radio_band: SBAND
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
       bandaid_override: {}
       use_radionet: true
-    - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
 S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
@@ -419,6 +419,7 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
   contact_overhead_time: 0s
   window_parameters:
     forward_channels:
+    - radio_band: UHF
     - radio_band: SBAND
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
@@ -430,7 +431,6 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
         tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
-    - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
 S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
@@ -465,6 +465,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   contact_overhead_time: 0s
   window_parameters:
     forward_channels:
+    - radio_band: UHF
     - radio_band: SBAND
       protocol: DVBS2X
       bandaid_mode: TX_SBAND_DVB_IP
@@ -476,7 +477,6 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
         tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
-    - radio_band: UHF
     reverse_channels:
     - radio_band: UHF
 U_U_BIDIR_SPIRE:
