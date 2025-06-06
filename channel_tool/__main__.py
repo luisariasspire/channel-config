@@ -300,7 +300,9 @@ def modify(cdef: ChannelDefinition, args: Any) -> ChannelDefinition:
 
     def get_field_value(field: str) -> Any:
         if field in vargs and vargs[field] is not None:
-            return vargs[field]
+            # Mode is an arg below, but it's also a schema key. We should except this from this functionality.
+            if field != "mode":
+                return vargs[field]
         arg = f"{field}_file"
         if arg in vargs and vargs[arg] is not None:
             return vargs[arg]

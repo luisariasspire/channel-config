@@ -30,6 +30,7 @@ from channel_tool.validation_rules import (
     ValidationRuleInput,
     ValidationRuleMode,
     ValidationRuleViolatedError,
+    filter_validation_rules_by_env,
     get_validation_rules,
 )
 
@@ -193,6 +194,9 @@ def validate_all(args: Any) -> None:
         print(colored("PASS", "green"))
 
         print(f"Running validation rules on {env} config ...")
+
+        env_validation_rules = filter_validation_rules_by_env(validation_rules, env)
+
         validation_rule_input = ValidationRuleInput(
             SAT_TEMPLATE_FILE,
             sat_templates,
@@ -202,7 +206,7 @@ def validate_all(args: Any) -> None:
             all_gs_configs,
             shared_constraint_sets,
         )
-        run_validation_rules(validation_rules, validation_rule_input)
+        run_validation_rules(env_validation_rules, validation_rule_input)
         print(f"Validation complete for {env}")
 
 

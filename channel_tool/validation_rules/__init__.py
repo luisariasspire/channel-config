@@ -55,6 +55,11 @@ class ValidationRuleScope(Enum):
     GENERAL = 7
 
 
+class ValidationRuleEnv(str, Enum):
+    PRODUCTION_ONLY = "production"
+    STAGING_ONLY = "staging"
+
+
 class ValidationRuleViolatedError:
     def __init__(
         self,
@@ -99,7 +104,10 @@ validation_rules: Dict[str, List[ValidationRule]] = {}
 
 
 def validation_rule(
-    scope: ValidationRuleScope, description: str, mode: ValidationRuleMode
+    scope: ValidationRuleScope,
+    description: str,
+    mode: ValidationRuleMode,
+    env: Optional[ValidationRuleEnv] = None,
 ) -> Callable[
     [Any], Callable[[ValidationRuleInput], Optional[ValidationRuleViolatedError]]
 ]:
@@ -195,6 +203,7 @@ def validation_rule(
                 )
             return None
 
+        setattr(wrapper, "_arg_rule_env", env)
         module_name = func.__module__.replace("channel_tool.validation_rules.", "")
         module_rules = validation_rules.get(module_name, [])
         if not module_rules:
@@ -239,3 +248,34 @@ def get_validation_rules(
                 print(f"  - {rule.name}")
             matching_rules[module_name] = module_matching_rules
     return matching_rules
+
+
+def filter_validation_rules_by_env(
+    validation_rules: Dict[str, List[ValidationRule]], target_environment: str
+) -> Dict[str, List[ValidationRule]]:
+    """
+    Filter validation rules based on target environment.
+
+    Validation rules can specify an optional environment argument. If this is specified, it means run
+    the rule only in that environment. If the environment is not specified, this is treated as a wildcard.
+    """
+    env_validation_rules = {}
+    for module_name, module_rules in validation_rules.items():
+        module_env_rules = []
+        for rule in module_rules:
+            rule_env = getattr(
+                rule.function,
+                "_arg_rule_env",
+            )
+            if not rule_env:
+                module_env_rules.append(rule)
+            elif rule_env.value == target_environment:
+                module_env_rules.append(rule)
+            else:
+                print(
+                    f"Filtering out {rule.name} for validation in {target_environment} environment."
+                )
+                continue
+        if module_env_rules:
+            env_validation_rules[module_name] = module_env_rules
+    return env_validation_rules

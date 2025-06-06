@@ -357,20 +357,20 @@ definitions:
       reverse_channels:
         type: array
         items: *channel_parameter_set
-      tracking_target:
+      adcs_config:
         type: object
+        additionalProperties: false
         properties:
-          latitude_north: 
-            type: number
-            minimum: -90.0
-            maximum: 90.0
-          longitude_east: 
-            type: number
-            minimum: -180.0
-            maximum: 180.0
+          mode: 
+            type: string
+          primary_instrument: 
+            type: string
+          secondary_instrument: 
+            type: string
+          antenna: 
+            type: string
         required:
-          - latitude_north
-          - longitude_west
+          - mode
             
 
   contact_type: &contact_type ^CONTACT_[A-Z0-9_]+$
@@ -449,7 +449,7 @@ classification_annotations: &classification_annotations
       enum: [BIDIR, TXO, RXO]
     adcs_pointing:
       type: string
-      enum: [TRACK, NADIR]
+      enum: [TRACK, NADIR, HALFTRACK]
     space_ground_uhf:
       type: boolean
     ground_space_uhf:
@@ -577,6 +577,8 @@ gs_schema:
               type: number
           required:
             - elevation_threshold_deg
+        adcs_config_target_coords:
+          type: boolean
     ground_station_constraints:
       type: object
       properties:

@@ -330,9 +330,8 @@ X_TXO_KSAT_BW20_P49_TRACK:
         gain: 3
       use_radionet: true
       protocol: DVBS2X
-    tracking_target:
-      latitude_north: -46.530106
-      longitude_west: -168.38274
+    adcs_config:
+      mode: TRACKING_SUN
   classification_annotations:
     provider: KSAT
     directionality: TXO
@@ -346,6 +345,8 @@ X_TXO_KSAT_BW20_P49_TRACK:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 49
     space_ground_xband_bandwidth_mhz: 20
+  dynamic_window_parameters:
+    adcs_config_target_coords: true
 X_TXO_KSAT_BW20_P61_TRACK:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -392,9 +393,8 @@ X_TXO_KSAT_BW20_P61_TRACK:
         gain: 3
       use_radionet: true
       protocol: DVBS2X
-    tracking_target:
-      latitude_north: -46.530106
-      longitude_west: -168.38274
+    adcs_config:
+      mode: TRACKING_SUN
   classification_annotations:
     provider: KSAT
     directionality: TXO
@@ -408,3 +408,5 @@ X_TXO_KSAT_BW20_P61_TRACK:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 61
     space_ground_xband_bandwidth_mhz: 20
+  dynamic_window_parameters:
+    adcs_config_target_coords: true
