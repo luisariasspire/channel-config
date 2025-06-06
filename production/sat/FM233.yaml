@@ -10,7 +10,7 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
@@ -53,7 +53,7 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -92,7 +92,7 @@ S_TXO_SPIRE_BW1_LEG_F2200_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -178,7 +178,7 @@ S_TXO_SPIRE_BW1_P15_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -267,7 +267,7 @@ S_TXO_SPIRE_BW1_P23_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -311,7 +311,7 @@ S_TXO_SPIRE_BW1_P27_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -399,7 +399,7 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -443,7 +443,7 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -618,7 +618,7 @@ S_TXO_SPIRE_BW1_P7_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -707,7 +707,7 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -753,7 +753,7 @@ S_TXO_SPIRE_BW5_P11_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -800,7 +800,7 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -892,7 +892,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -979,7 +979,7 @@ S_U_BIDIR_SPIRE_BW1_P15_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -1025,7 +1025,7 @@ S_U_BIDIR_SPIRE_BW1_P23_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -1071,7 +1071,7 @@ S_U_BIDIR_SPIRE_BW1_P27_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -1163,7 +1163,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -1255,7 +1255,7 @@ S_U_BIDIR_SPIRE_BW1_P7_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -1303,7 +1303,7 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -1353,7 +1353,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
