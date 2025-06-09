@@ -439,16 +439,8 @@ def duplicate_config(args: Any) -> None:
     def do_duplicate(
         asset: str, channel: str, existing: Optional[ChannelDefinition]
     ) -> Optional[ChannelDefinition]:
-        if existing is None:
-            msg = (
-                f"No configuration for {channel} on {asset}.\n"
-                f"(Tip: Use `channel_tool add {asset} {channel}` to add one from a template.)"
-            )
-            if not args.fail_fast:
-                warn(msg)
-                return None
-            else:
-                raise NoConfigurationError(msg)
+        if not existing:
+            raise Exception("Duplicate requires an existing channel!")
 
         # This is going to run many times so let's avoid file i/o when we can
         class_annos = existing.get("classification_annotations") or find_template(
@@ -457,15 +449,29 @@ def duplicate_config(args: Any) -> None:
 
         return duplicate(args, existing, class_annos)
 
-    apply_update(
-        args.environment,
-        args.assets,
-        args.channels,
-        do_duplicate,
-        yes=args.yes,
-        new_channel=True,
-        args=args,
-    )
+    # Find the first channel in `args.channels` that exists in the asset config
+    # for each asset and duplicate that.
+    for asset in args.assets.split(","):
+        asset_config = load_asset_config(args.environment, asset)
+        existing_channel = None
+        for channel in args.channels:
+            if channel in asset_config:
+                existing_channel = channel
+                break
+
+        if not existing_channel:
+            warn(f"None of the channels in {args.channels} exist in {asset}.")
+            return None
+
+        apply_update(
+            args.environment,
+            [asset],
+            [existing_channel],
+            do_duplicate,
+            yes=args.yes,
+            new_channel=True,
+            args=args,
+        )
 
 
 def audit_configs(args: Any) -> None:
@@ -632,9 +638,6 @@ def apply_update(
     new_channel: Optional[bool] = False,
     args: Optional[Any] = None,
 ) -> None:
-    if new_channel and not args:
-        raise IncorrectInput("CLI args must be passed if new_channel is True")
-
     for asset in locate_assets(env, assets):
         asset_config = load_asset_config(env, asset)
         for channel in channels:

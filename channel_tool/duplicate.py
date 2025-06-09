@@ -217,7 +217,7 @@ def duplicate_window_parameters(
     # have any window parameters since non-default pls values must specify
     # those fields
     if not original_dvb_forward_channel:
-        forward_channels.insert(0, forward_channel_overrides)
+        forward_channels.append(forward_channel_overrides)
         window_parameters = {"forward_channels": forward_channels}
         if args.directionality == Directionality.BIDIR:
             window_parameters["reverse_channels"] = [{"radio_band": "UHF"}]
@@ -229,7 +229,7 @@ def duplicate_window_parameters(
         og_dvb_forward_channel, forward_channel_overrides
     )
 
-    forward_channels.insert(0, dvb_forward_channel)
+    forward_channels.append(dvb_forward_channel)
 
     return update_nested_value(
         original_window_parameters, ("forward_channels",), forward_channels

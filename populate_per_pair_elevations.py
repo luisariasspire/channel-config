@@ -4,8 +4,6 @@
 #
 # This will be the ancestor of the eventual channel tool command to do
 # this. Since it's temporary, correctness is the only priority.
-#
-# The script currently only supports manipulating TXO channels.
 
 if __name__ != "__main__":
     import sys
@@ -47,7 +45,7 @@ def channel_tool(args):
 
     command = ["poetry", "run", "python", "-m", "channel_tool"] + args
     command_str = " ".join(command)
-    print(command_str)
+    print(command_str, flush=True)
 
     if command_str in command_history:
         return command_history[command_str].stdout
@@ -134,7 +132,6 @@ if not DATABRICKS_ACCESS_TOKEN:
     raise Exception("DATABRICKS_TOKEN environment variable is missing")
 
 yaml = YAML()
-
 new_channels = fetch_data(
     """
 with aq as (
@@ -142,7 +139,23 @@ select
 gs_id, collect_set(spire_id) as satellites, pls, round(elevation) as min_elevation_deg, bw_mhz, band, any_value(mbps) as mbps
 from ripley_dev.default.optimal_channel_properties
 -- CHANGE PER-GS
-where gs_id = "ubngs" and band = 'S' and pls in (19, 43, 79, 87)
+where (
+    (gs_id = "ancgs" and band = 'S' and pls in (15, 23, 31, 39) and bw_mhz = 1)
+    or
+    (gs_id = "ancgs" and band = 'S' and pls in (7, 15, 23, 31) and bw_mhz = 5)
+    or
+    (gs_id = "bdugs" and band = 'S' and pls in (19, 27, 39, 75) and bw_mhz = 1)
+    or
+    (gs_id = "bdugs" and band = 'S' and pls in (7, 15, 23, 27) and bw_mhz = 5)
+    or
+    (gs_id = "vntgs" and band = 'S' and pls in (43, 79, 87, 91) and bw_mhz = 1)
+    or
+    (gs_id = "vntgs" and band = 'S' and pls in (19, 27, 43, 75) and bw_mhz = 5)
+    or
+    (gs_id = "puqgs" and band = 'S' and pls in (23, 39, 75, 83) and bw_mhz = 1)
+    or
+    (gs_id = "accgs" and band = 'S' and pls in (23, 35, 75, 91) and bw_mhz = 1)
+)
 group by gs_id, pls, round(elevation), bw_mhz, band
 )
 select aq.gs_id, collect_list(struct(aq.min_elevation_deg, aq.satellites)) as satellite_min_elevations, aq.pls, aq.bw_mhz, aq.band, aq.mbps, coalesce(round(gs.elevation), 90) as default_min_elevation_deg
@@ -160,20 +173,27 @@ active_sats = fetch_data(
 # So let's keep track of what we processed.
 new_pls_values = {}
 
-for directionality in [Directionality.TXO]:  # list(Directionality):
-    for row in new_channels:
-        # skip if the gs is decomissioned
-        if not os.path.exists(asset_filepath(row.gs_id)):
-            continue
+high_mid_freq = ["accgs", "puqgs"]
+supports_bidir = ["bdugs"]
 
-        gs_id = row.gs_id
-        pls = row.pls
-        bw_mhz = row.bw_mhz
-        band = row.band.lower()
-        downlink_rate_kbps = row.mbps * 1000 * BITRATE_SCALE_FACTOR
-        satellite_min_elevations = json.loads(row.satellite_min_elevations)
-        default_min_elevation_deg = int(row.default_min_elevation_deg)
+for row in new_channels:
+    # skip if the gs is decomissioned
+    if not os.path.exists(asset_filepath(row.gs_id)):
+        continue
 
+    gs_id = row.gs_id
+    pls = row.pls
+    bw_mhz = row.bw_mhz
+    band = row.band.lower()
+    downlink_rate_kbps = row.mbps * 1000 * BITRATE_SCALE_FACTOR
+    satellite_min_elevations = json.loads(row.satellite_min_elevations)
+    default_min_elevation_deg = int(row.default_min_elevation_deg)
+
+    supported_directionality = [Directionality.TXO]
+    if gs_id in supports_bidir:
+        supported_directionality.append(Directionality.BIDIR)
+
+    for directionality in supported_directionality:
         # clean out decomissioned satellites
         for d in satellite_min_elevations:
             d["satellites"] = [
@@ -198,6 +218,8 @@ for directionality in [Directionality.TXO]:  # list(Directionality):
             {"min_elevation_deg": 90, "satellites": disabled_sats}
         )
 
+        mid_freq = 2200.5 if gs_id in high_mid_freq else 2022.5
+
         predicate = (
             f"directionality == '{directionality.name}' and "
             # CHANGE PER-GS
@@ -205,7 +227,7 @@ for directionality in [Directionality.TXO]:  # list(Directionality):
             f"space_ground_{band}band_bandwidth_mhz == {bw_mhz} and "
             "(space_ground_xband or space_ground_sband_encoding == 'DVBS2X') and "
             # CHANGE PER-GS
-            "(not space_ground_sband_mid_freq_mhz or space_ground_sband_mid_freq_mhz == 2200.5)"
+            f"(not space_ground_sband_mid_freq_mhz or space_ground_sband_mid_freq_mhz == {mid_freq})"
         )
 
         comma_separated_assets = (

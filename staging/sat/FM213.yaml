@@ -284,6 +284,94 @@ S_TXO_SPIRE_BW1_P23_F2022_5:
         mtu: 1182
       ground_override:
         radionet-m: 1182
+S_TXO_SPIRE_BW1_P23_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 9.001437125748502W
+      per_second: 9.001437125748502
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+        pls: 23
+        mtu: 1182
+      ground_override:
+        radionet-m: 1182
+S_TXO_SPIRE_BW1_P35_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 9.001437125748502W
+      per_second: 9.001437125748502
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+        pls: 35
+        mtu: 1542
+      ground_override:
+        radionet-m: 1542
 S_TXO_SPIRE_BW1_P39_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -351,7 +439,7 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
       flat: 589.0
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   contact_type: CONTACT_SPACE_GROUND_TXO
   window_parameters:
     forward_channels:
@@ -363,6 +451,10 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
         fec_k: 223
         fec: 255
         tx_carrier_frequency_hz: 2200500000
+        pls: 39
+        mtu: 1632
+      ground_override:
+        radionet-m: 1632
 S_TXO_SPIRE_BW1_P43_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -407,6 +499,50 @@ S_TXO_SPIRE_BW1_P43_F2200_5:
         mtu: 1767
       ground_override:
         radionet-m: 1767
+S_TXO_SPIRE_BW1_P75_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 9.001437125748502W
+      per_second: 9.001437125748502
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+        pls: 75
+        mtu: 1182
+      ground_override:
+        radionet-m: 1182
 S_TXO_SPIRE_BW1_P79_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -613,7 +749,7 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
       flat: 589.0
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -629,6 +765,98 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
         tx_sample_rate_hz: 3703000
       ground_override:
         radionet-m: 777
+        rf_bandwidth: 5000000
+S_TXO_SPIRE_BW5_P19_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - ES
+  - FK
+  - GB
+  - GR
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 9.001437125748502W
+      per_second: 9.001437125748502
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 19
+        mtu: 867
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+      ground_override:
+        radionet-m: 867
+        rf_bandwidth: 5000000
+S_TXO_SPIRE_BW5_P7_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - ES
+  - FK
+  - GB
+  - GR
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 9.001437125748502W
+      per_second: 9.001437125748502
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 7
+        mtu: 372
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+      ground_override:
+        radionet-m: 372
         rf_bandwidth: 5000000
 S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   directionality: Bidirectional
@@ -969,7 +1197,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
       flat: 666.5
       # UHF Tx 3.0W, DEXTER Tx 8.726321839080459W = 11.726321839080459
       per_second: 11.726321839080459
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   window_parameters:
     forward_channels:
     - radio_band: UHF
@@ -986,6 +1214,55 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
         tx_sample_rate_hz: 3703000
       ground_override:
         radionet-m: 777
+        rf_bandwidth: 5000000
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW5_P7_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - ES
+  - FK
+  - GB
+  - GR
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W, DEXTER idle 3.8W = 666.5
+      flat: 666.5
+      # UHF Tx 3.0W, DEXTER Tx 8.726321839080459W = 11.726321839080459
+      per_second: 11.726321839080459
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 7
+        mtu: 372
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+      ground_override:
+        radionet-m: 372
         rf_bandwidth: 5000000
     reverse_channels:
     - radio_band: UHF

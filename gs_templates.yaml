@@ -197,6 +197,50 @@ S_TXO_SPIRE_BW1_P15_F2022_5:
         mtu: 777
       ground_override:
         radionet-m: 777
+S_TXO_SPIRE_BW1_P19_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 11.0
+    downlink_rate_kbps: 567.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 19
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 19
+        mtu: 867
+      ground_override:
+        radionet-m: 867
 S_TXO_SPIRE_BW1_P19_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -286,6 +330,51 @@ S_TXO_SPIRE_BW1_P23_F2022_5:
         mtu: 1182
       ground_override:
         radionet-m: 1182
+S_TXO_SPIRE_BW1_P23_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10.0
+    downlink_rate_kbps: 765.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        freq: 2200500000
+        radionet-m: 1182
+      radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 23
+        mtu: 1182
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 23
+    space_ground_sband_bandwidth_mhz: 1
 S_TXO_SPIRE_BW1_P27_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -330,6 +419,50 @@ S_TXO_SPIRE_BW1_P27_F2022_5:
         mtu: 1317
       ground_override:
         radionet-m: 1317
+S_TXO_SPIRE_BW1_P31_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 40.0
+    downlink_rate_kbps: 936.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 31
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 31
+        mtu: 1452
+      ground_override:
+        radionet-m: 1452
 S_TXO_SPIRE_BW1_P35_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -374,6 +507,51 @@ S_TXO_SPIRE_BW1_P35_F2022_5:
         mtu: 1542
       ground_override:
         radionet-m: 1542
+S_TXO_SPIRE_BW1_P35_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10.0
+    downlink_rate_kbps: 999.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        freq: 2200500000
+        radionet-m: 1542
+      radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 35
+        mtu: 1542
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 35
+    space_ground_sband_bandwidth_mhz: 1
 S_TXO_SPIRE_BW1_P39_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -569,6 +747,95 @@ S_TXO_SPIRE_BW1_P75_F2022_5:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 75
     space_ground_sband_bandwidth_mhz: 1
+S_TXO_SPIRE_BW1_P75_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 42.0
+    downlink_rate_kbps: 1530.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        freq: 2200500000
+        radionet-m: 1182
+      radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 75
+        mtu: 1182
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 75
+    space_ground_sband_bandwidth_mhz: 1
+S_TXO_SPIRE_BW1_P79_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 89.0
+    downlink_rate_kbps: 1701.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 79
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 79
+        mtu: 1317
+      ground_override:
+        radionet-m: 1317
 S_TXO_SPIRE_BW1_P79_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -703,6 +970,50 @@ S_TXO_SPIRE_BW1_P83_F2200_5:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 83
     space_ground_sband_bandwidth_mhz: 1
+S_TXO_SPIRE_BW1_P87_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 89.0
+    downlink_rate_kbps: 2106.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 87
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 87
+        mtu: 1632
+      ground_override:
+        radionet-m: 1632
 S_TXO_SPIRE_BW1_P87_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -739,6 +1050,95 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
     space_ground_sband_mid_freq_mhz: 2200.5
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 87
+    space_ground_sband_bandwidth_mhz: 1
+S_TXO_SPIRE_BW1_P91_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 90.0
+    downlink_rate_kbps: 2286.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 91
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 91
+        mtu: 1767
+      ground_override:
+        radionet-m: 1767
+S_TXO_SPIRE_BW1_P91_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 90.0
+    downlink_rate_kbps: 2286.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+  window_parameters:
+    forward_channels:
+    - ground_override:
+        freq: 2200500000
+        radionet-m: 1767
+      radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 91
+        mtu: 1767
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 91
     space_ground_sband_bandwidth_mhz: 1
 S_TXO_SPIRE_BW5_P11_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -831,6 +1231,294 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
     space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 15
+    space_ground_sband_bandwidth_mhz: 5
+S_TXO_SPIRE_BW5_P19_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 34.0
+    downlink_rate_kbps: 2808.0
+    uplink_rate_kbps: 0.0
+    min_duration: 60sec
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 19
+        mtu: 867
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 867
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 19
+    space_ground_sband_bandwidth_mhz: 5
+S_TXO_SPIRE_BW5_P23_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 44.0
+    downlink_rate_kbps: 3816.0
+    uplink_rate_kbps: 0.0
+    min_duration: 60sec
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 23
+        mtu: 1182
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 1182
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 23
+    space_ground_sband_bandwidth_mhz: 5
+S_TXO_SPIRE_BW5_P27_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 90.0
+    downlink_rate_kbps: 4257.0
+    uplink_rate_kbps: 0.0
+    min_duration: 60sec
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 27
+        mtu: 1317
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 1317
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 27
+    space_ground_sband_bandwidth_mhz: 5
+S_TXO_SPIRE_BW5_P31_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 51.0
+    downlink_rate_kbps: 4689.0
+    uplink_rate_kbps: 0.0
+    min_duration: 60sec
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 31
+        mtu: 1452
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 1452
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 31
+    space_ground_sband_bandwidth_mhz: 5
+S_TXO_SPIRE_BW5_P43_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 67.0
+    downlink_rate_kbps: 5706.0
+    uplink_rate_kbps: 0.0
+    min_duration: 60sec
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 43
+        mtu: 1767
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 1767
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 43
+    space_ground_sband_bandwidth_mhz: 5
+S_TXO_SPIRE_BW5_P75_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 90.0
+    downlink_rate_kbps: 7641.0
+    uplink_rate_kbps: 0.0
+    min_duration: 60sec
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 75
+        mtu: 1182
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 1182
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 75
     space_ground_sband_bandwidth_mhz: 5
 S_TXO_SPIRE_BW5_P7_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1020,6 +1708,57 @@ S_U_BIDIR_SPIRE_BW1_P15_F2022_5:
         mtu: 777
       ground_override:
         radionet-m: 777
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW1_P19_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
+    min_duration: 4m
+  - min_elevation_deg: 11.0
+    downlink_rate_kbps: 567.0
+    uplink_rate_kbps: 4.0
+    min_duration: 20sec
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 19
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 19
+        mtu: 867
+      ground_override:
+        radionet-m: 867
     reverse_channels:
     - radio_band: UHF
 S_U_BIDIR_SPIRE_BW1_P23_F2022_5:
@@ -1273,6 +2012,60 @@ S_U_BIDIR_SPIRE_BW1_P43_F2022_5:
         radionet-m: 1767
     reverse_channels:
     - radio_band: UHF
+S_U_BIDIR_SPIRE_BW1_P75_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
+    min_duration: 4m
+  - min_elevation_deg: 90.0
+    downlink_rate_kbps: 1530.0
+    uplink_rate_kbps: 4.0
+    min_duration: 20sec
+  dynamic_window_parameters:
+    transmit_times:
+      elevation_threshold_deg: 90.0
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 75
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 75
+        mtu: 1182
+      ground_override:
+        radionet-m: 1182
+    reverse_channels:
+    - radio_band: UHF
 S_U_BIDIR_SPIRE_BW1_P7_F2022_5:
   directionality: Bidirectional
   allowed_license_countries:
@@ -1392,9 +2185,6 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   legal: false
   ground_station_constraints: {}
   contact_overhead_time: 200s
-  dynamic_window_parameters:
-    transmit_times:
-      elevation_threshold_deg: 30
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
@@ -1435,6 +2225,116 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
     space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 15
+    space_ground_sband_bandwidth_mhz: 5
+S_U_BIDIR_SPIRE_BW5_P23_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 5.6
+    min_duration: 4m
+  - min_elevation_deg: 66.0
+    downlink_rate_kbps: 3816.0
+    uplink_rate_kbps: 5.6
+    min_duration: 20sec
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 23
+        mtu: 1182
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 1182
+    reverse_channels:
+    - radio_band: UHF
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 23
+    space_ground_sband_bandwidth_mhz: 5
+S_U_BIDIR_SPIRE_BW5_P27_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 5.6
+    min_duration: 4m
+  - min_elevation_deg: 90.0
+    downlink_rate_kbps: 4257.0
+    uplink_rate_kbps: 5.6
+    min_duration: 20sec
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 27
+        mtu: 1317
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 1317
+    reverse_channels:
+    - radio_band: UHF
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 27
     space_ground_sband_bandwidth_mhz: 5
 S_U_BIDIR_SPIRE_BW5_P7_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_BIDIR
