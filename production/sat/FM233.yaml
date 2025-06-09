@@ -134,7 +134,7 @@ S_TXO_SPIRE_BW1_P11_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -222,7 +222,7 @@ S_TXO_SPIRE_BW1_P19_F2200_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -355,7 +355,7 @@ S_TXO_SPIRE_BW1_P35_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -484,7 +484,7 @@ S_TXO_SPIRE_BW1_P43_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -528,7 +528,7 @@ S_TXO_SPIRE_BW1_P43_F2200_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -573,7 +573,7 @@ S_TXO_SPIRE_BW1_P79_F2200_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -662,7 +662,7 @@ S_TXO_SPIRE_BW1_P83_F2200_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -847,7 +847,7 @@ S_TXO_SPIRE_BW5_P7_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -933,7 +933,7 @@ S_U_BIDIR_SPIRE_BW1_P11_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -1117,7 +1117,7 @@ S_U_BIDIR_SPIRE_BW1_P35_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -1209,7 +1209,7 @@ S_U_BIDIR_SPIRE_BW1_P43_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
@@ -1403,7 +1403,7 @@ S_U_BIDIR_SPIRE_BW5_P7_F2022_5:
   - SH
   - US
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     electrical_cost:
