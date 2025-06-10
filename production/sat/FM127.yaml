@@ -174,6 +174,45 @@ S_TXO_SPIRE_BW1_P15_F2022_5:
         mtu: 777
       ground_override:
         radionet-m: 777
+S_TXO_SPIRE_BW1_P19_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 19
+        mtu: 867
+      ground_override:
+        radionet-m: 867
 S_TXO_SPIRE_BW1_P19_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -214,7 +253,8 @@ S_TXO_SPIRE_BW1_P19_F2200_5:
       ground_override:
         radionet-m: 867
   contact_type: CONTACT_SPACE_GROUND_TXO
-S_TXO_SPIRE_BW1_P39_F2022_5:
+S_TXO_SPIRE_BW1_P23_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
   allowed_license_countries:
   - AU
@@ -238,7 +278,7 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
   enabled: true
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -248,7 +288,207 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
       bandaid_override:
         fec_k: 223
         fec: 255
+        pls: 23
+        mtu: 1182
+      ground_override:
+        radionet-m: 1182
+S_TXO_SPIRE_BW1_P23_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+        pls: 23
+        mtu: 1182
+      ground_override:
+        radionet-m: 1182
   contact_type: CONTACT_SPACE_GROUND_TXO
+S_TXO_SPIRE_BW1_P27_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 27
+        mtu: 1317
+      ground_override:
+        radionet-m: 1317
+S_TXO_SPIRE_BW1_P31_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 31
+        mtu: 1452
+      ground_override:
+        radionet-m: 1452
+S_TXO_SPIRE_BW1_P35_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+        pls: 35
+        mtu: 1542
+      ground_override:
+        radionet-m: 1542
+  contact_type: CONTACT_SPACE_GROUND_TXO
+S_TXO_SPIRE_BW1_P39_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 39
+        mtu: 1632
+      ground_override:
+        radionet-m: 1632
 S_TXO_SPIRE_BW1_P39_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -273,7 +513,7 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
   enabled: true
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -284,6 +524,10 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
         fec_k: 223
         fec: 255
         tx_carrier_frequency_hz: 2200500000
+        pls: 39
+        mtu: 1632
+      ground_override:
+        radionet-m: 1632
   contact_type: CONTACT_SPACE_GROUND_TXO
 S_TXO_SPIRE_BW1_P43_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -759,6 +1003,88 @@ S_U_BIDIR_SPIRE_BW1_P15_F2022_5:
       use_radionet: true
       ground_override:
         radionet-m: 777
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW1_P19_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 19
+        mtu: 867
+      use_radionet: true
+      ground_override:
+        radionet-m: 867
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW1_P27_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 27
+        mtu: 1317
+      use_radionet: true
+      ground_override:
+        radionet-m: 1317
     reverse_channels:
     - radio_band: UHF
 S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
