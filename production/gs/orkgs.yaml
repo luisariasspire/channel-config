@@ -35,7 +35,7 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -67,7 +67,7 @@ S_TXO_SPIRE_BW5_P11_F2022_5:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -113,7 +113,7 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -195,7 +195,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -234,7 +234,7 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -289,7 +289,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   - LU
   - SG
   - US
-  enabled: true
+  enabled: false
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
