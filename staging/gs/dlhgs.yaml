@@ -9,7 +9,7 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
   contact_overhead_time: 0s
   link_profile:
   - min_elevation_deg: 25
-    downlink_rate_kbps: 583.41
+    downlink_rate_kbps: 250.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
   classification_annotations:
@@ -26,6 +26,224 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
     space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
+S_TXO_SPIRE_BW1_P23_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - downlink_rate_kbps: 765.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+    satellite_min_elevations:
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM225
+      - FM206
+      - FM202
+    - min_elevation_deg: 11.0
+      satellites:
+      - FM208
+      - FM191
+    - min_elevation_deg: 24.0
+      satellites:
+      - FM233
+      - FM196
+      - FM235
+    - min_elevation_deg: 15.0
+      satellites:
+      - FM127
+    - min_elevation_deg: 20.0
+      satellites:
+      - FM173
+      - FM197
+    - min_elevation_deg: 23.0
+      satellites:
+      - FM205
+    - min_elevation_deg: 22.0
+      satellites:
+      - FM226
+      - FM192
+    - min_elevation_deg: 18.0
+      satellites:
+      - FM201
+    - min_elevation_deg: 26.0
+      satellites:
+      - FM126
+    - min_elevation_deg: 19.0
+      satellites:
+      - FM236
+    - min_elevation_deg: 25.0
+      satellites:
+      - FM195
+      - FM174
+    - min_elevation_deg: 90
+      satellites:
+      - FM190
+      - FM175
+      - FM188
+      - FM180
+      - FM194
+      - FM185
+      - FM178
+      - FM179
+      - FM189
+      - FM211
+      - FM212
+      - FM224
+      - FM214
+      - FM215
+      - FM200
+      - FM213
+      - FM199
+      - FM203
+      - FM216
+      - FM218
+      - FM217
+    default_min_elevation_deg: 10.0
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 23
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 23
+        mtu: 1182
+      ground_override:
+        radionet-m: 1182
+S_TXO_SPIRE_BW1_P35_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - downlink_rate_kbps: 999.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+    satellite_min_elevations:
+    - min_elevation_deg: 27.0
+      satellites:
+      - FM195
+      - FM173
+    - min_elevation_deg: 34.0
+      satellites:
+      - FM192
+    - min_elevation_deg: 28.0
+      satellites:
+      - FM174
+    - min_elevation_deg: 30.0
+      satellites:
+      - FM191
+    - min_elevation_deg: 22.0
+      satellites:
+      - FM226
+    - min_elevation_deg: 19.0
+      satellites:
+      - FM236
+    - min_elevation_deg: 24.0
+      satellites:
+      - FM233
+      - FM235
+      - FM196
+    - min_elevation_deg: 20.0
+      satellites:
+      - FM197
+    - min_elevation_deg: 26.0
+      satellites:
+      - FM126
+    - min_elevation_deg: 11.0
+      satellites:
+      - FM208
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM206
+      - FM225
+      - FM202
+    - min_elevation_deg: 18.0
+      satellites:
+      - FM201
+    - min_elevation_deg: 23.0
+      satellites:
+      - FM205
+    - min_elevation_deg: 90
+      satellites:
+      - FM190
+      - FM175
+      - FM188
+      - FM180
+      - FM194
+      - FM185
+      - FM178
+      - FM179
+      - FM189
+      - FM127
+      - FM211
+      - FM212
+      - FM224
+      - FM214
+      - FM215
+      - FM200
+      - FM213
+      - FM199
+      - FM203
+      - FM216
+      - FM218
+      - FM217
+    default_min_elevation_deg: 27
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 35
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 35
+        mtu: 1542
+      ground_override:
+        radionet-m: 1542
 S_TXO_SPIRE_BW1_P39_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -36,10 +254,77 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 1574.06
+  - downlink_rate_kbps: 1062.0
     uplink_rate_kbps: 0.0
     min_duration: 1min
+    satellite_min_elevations:
+    - min_elevation_deg: 29.0
+      satellites:
+      - FM126
+      - FM173
+    - min_elevation_deg: 18.0
+      satellites:
+      - FM201
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM202
+      - FM206
+      - FM225
+    - min_elevation_deg: 37.0
+      satellites:
+      - FM192
+    - min_elevation_deg: 22.0
+      satellites:
+      - FM226
+    - min_elevation_deg: 20.0
+      satellites:
+      - FM197
+    - min_elevation_deg: 19.0
+      satellites:
+      - FM236
+    - min_elevation_deg: 34.0
+      satellites:
+      - FM195
+    - min_elevation_deg: 33.0
+      satellites:
+      - FM191
+    - min_elevation_deg: 24.0
+      satellites:
+      - FM196
+      - FM233
+      - FM205
+      - FM235
+    - min_elevation_deg: 11.0
+      satellites:
+      - FM208
+    - min_elevation_deg: 30.0
+      satellites:
+      - FM174
+    - min_elevation_deg: 90
+      satellites:
+      - FM190
+      - FM175
+      - FM188
+      - FM180
+      - FM194
+      - FM185
+      - FM178
+      - FM179
+      - FM189
+      - FM127
+      - FM211
+      - FM212
+      - FM224
+      - FM214
+      - FM215
+      - FM200
+      - FM213
+      - FM199
+      - FM203
+      - FM216
+      - FM218
+      - FM217
+    default_min_elevation_deg: 30.0
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -55,6 +340,132 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 39
+        mtu: 1632
+      ground_override:
+        radionet-m: 1632
+S_TXO_SPIRE_BW1_P43_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - downlink_rate_kbps: 1134.0
+    uplink_rate_kbps: 0.0
+    min_duration: 1min
+    satellite_min_elevations:
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM202
+    - min_elevation_deg: 27.0
+      satellites:
+      - FM196
+    - min_elevation_deg: 43.0
+      satellites:
+      - FM191
+    - min_elevation_deg: 20.0
+      satellites:
+      - FM197
+    - min_elevation_deg: 39.0
+      satellites:
+      - FM195
+    - min_elevation_deg: 26.0
+      satellites:
+      - FM206
+      - FM208
+      - FM233
+    - min_elevation_deg: 18.0
+      satellites:
+      - FM201
+    - min_elevation_deg: 34.0
+      satellites:
+      - FM174
+    - min_elevation_deg: 28.0
+      satellites:
+      - FM205
+    - min_elevation_deg: 24.0
+      satellites:
+      - FM225
+      - FM235
+    - min_elevation_deg: 40.0
+      satellites:
+      - FM192
+    - min_elevation_deg: 19.0
+      satellites:
+      - FM236
+    - min_elevation_deg: 22.0
+      satellites:
+      - FM226
+    - min_elevation_deg: 33.0
+      satellites:
+      - FM173
+    - min_elevation_deg: 90
+      satellites:
+      - FM190
+      - FM175
+      - FM126
+      - FM188
+      - FM180
+      - FM194
+      - FM185
+      - FM178
+      - FM179
+      - FM189
+      - FM127
+      - FM211
+      - FM212
+      - FM224
+      - FM214
+      - FM215
+      - FM200
+      - FM213
+      - FM199
+      - FM203
+      - FM216
+      - FM218
+      - FM217
+    default_min_elevation_deg: 37.0
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 43
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 43
+        mtu: 1767
+      ground_override:
+        radionet-m: 1767
 S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   directionality: Bidirectional
   allowed_license_countries:
@@ -90,6 +501,244 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
     space_ground_sband_mid_freq_mhz: 2022.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
+S_U_BIDIR_SPIRE_BW1_P23_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
+    min_duration: 4m
+    default_min_elevation_deg: 10
+  - downlink_rate_kbps: 765.0
+    uplink_rate_kbps: 4.0
+    min_duration: 20sec
+    satellite_min_elevations:
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM225
+      - FM206
+      - FM202
+    - min_elevation_deg: 11.0
+      satellites:
+      - FM208
+      - FM191
+    - min_elevation_deg: 24.0
+      satellites:
+      - FM233
+      - FM196
+      - FM235
+    - min_elevation_deg: 15.0
+      satellites:
+      - FM127
+    - min_elevation_deg: 20.0
+      satellites:
+      - FM173
+      - FM197
+    - min_elevation_deg: 23.0
+      satellites:
+      - FM205
+    - min_elevation_deg: 22.0
+      satellites:
+      - FM226
+      - FM192
+    - min_elevation_deg: 18.0
+      satellites:
+      - FM201
+    - min_elevation_deg: 26.0
+      satellites:
+      - FM126
+    - min_elevation_deg: 19.0
+      satellites:
+      - FM236
+    - min_elevation_deg: 25.0
+      satellites:
+      - FM195
+      - FM174
+    - min_elevation_deg: 90
+      satellites:
+      - FM190
+      - FM175
+      - FM188
+      - FM180
+      - FM194
+      - FM178
+      - FM179
+      - FM189
+      - FM211
+      - FM212
+      - FM224
+      - FM214
+      - FM215
+      - FM200
+      - FM213
+      - FM199
+      - FM203
+      - FM216
+      - FM218
+      - FM217
+    - min_elevation_deg: 90
+      satellites:
+      - FM185
+    add_transmit_times: true
+    default_min_elevation_deg: 10.0
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 23
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 23
+        mtu: 1182
+      ground_override:
+        radionet-m: 1182
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW1_P35_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
+    min_duration: 4m
+    default_min_elevation_deg: 10
+  - downlink_rate_kbps: 999.0
+    uplink_rate_kbps: 4.0
+    min_duration: 20sec
+    satellite_min_elevations:
+    - min_elevation_deg: 27.0
+      satellites:
+      - FM195
+      - FM173
+    - min_elevation_deg: 34.0
+      satellites:
+      - FM192
+    - min_elevation_deg: 28.0
+      satellites:
+      - FM174
+    - min_elevation_deg: 30.0
+      satellites:
+      - FM191
+    - min_elevation_deg: 22.0
+      satellites:
+      - FM226
+    - min_elevation_deg: 19.0
+      satellites:
+      - FM236
+    - min_elevation_deg: 24.0
+      satellites:
+      - FM233
+      - FM235
+      - FM196
+    - min_elevation_deg: 20.0
+      satellites:
+      - FM197
+    - min_elevation_deg: 26.0
+      satellites:
+      - FM126
+    - min_elevation_deg: 11.0
+      satellites:
+      - FM208
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM206
+      - FM225
+      - FM202
+    - min_elevation_deg: 18.0
+      satellites:
+      - FM201
+    - min_elevation_deg: 23.0
+      satellites:
+      - FM205
+    - min_elevation_deg: 90
+      satellites:
+      - FM190
+      - FM175
+      - FM188
+      - FM180
+      - FM194
+      - FM178
+      - FM179
+      - FM189
+      - FM127
+      - FM211
+      - FM212
+      - FM224
+      - FM214
+      - FM215
+      - FM200
+      - FM213
+      - FM199
+      - FM203
+      - FM216
+      - FM218
+      - FM217
+    - min_elevation_deg: 90
+      satellites:
+      - FM185
+    add_transmit_times: true
+    default_min_elevation_deg: 27
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 35
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 35
+        mtu: 1542
+      ground_override:
+        radionet-m: 1542
+    reverse_channels:
+    - radio_band: UHF
 S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   directionality: Bidirectional
   allowed_license_countries:
@@ -100,17 +749,84 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   ground_station_constraints: {}
   contact_overhead_time: 10s
   link_profile:
-  - min_elevation_deg: 10
-    downlink_rate_kbps: 5.6
+  - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
     min_duration: 4m
-  - min_elevation_deg: 25
-    downlink_rate_kbps: 984.91
+    default_min_elevation_deg: 10
+  - downlink_rate_kbps: 1062.0
     uplink_rate_kbps: 4.0
     min_duration: 20sec
-  dynamic_window_parameters:
-    transmit_times:
-      elevation_threshold_deg: 25
+    satellite_min_elevations:
+    - min_elevation_deg: 29.0
+      satellites:
+      - FM126
+      - FM173
+    - min_elevation_deg: 18.0
+      satellites:
+      - FM201
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM202
+      - FM206
+      - FM225
+    - min_elevation_deg: 37.0
+      satellites:
+      - FM192
+    - min_elevation_deg: 22.0
+      satellites:
+      - FM226
+    - min_elevation_deg: 20.0
+      satellites:
+      - FM197
+    - min_elevation_deg: 19.0
+      satellites:
+      - FM236
+    - min_elevation_deg: 34.0
+      satellites:
+      - FM195
+    - min_elevation_deg: 33.0
+      satellites:
+      - FM191
+    - min_elevation_deg: 24.0
+      satellites:
+      - FM196
+      - FM233
+      - FM205
+      - FM235
+    - min_elevation_deg: 11.0
+      satellites:
+      - FM208
+    - min_elevation_deg: 30.0
+      satellites:
+      - FM174
+    - min_elevation_deg: 90
+      satellites:
+      - FM190
+      - FM175
+      - FM188
+      - FM180
+      - FM194
+      - FM178
+      - FM179
+      - FM189
+      - FM127
+      - FM211
+      - FM212
+      - FM224
+      - FM214
+      - FM215
+      - FM200
+      - FM213
+      - FM199
+      - FM203
+      - FM216
+      - FM218
+      - FM217
+    - min_elevation_deg: 90
+      satellites:
+      - FM185
+    add_transmit_times: true
+    default_min_elevation_deg: 30.0
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -126,6 +842,145 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
     space_ground_sband_encoding: DVBS2X
     space_ground_sband_dvbs2x_pls: 39
     space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 39
+        mtu: 1632
+      ground_override:
+        radionet-m: 1632
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW1_P43_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - US
+  - LU
+  enabled: true
+  legal: true
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - downlink_rate_kbps: 5.6
+    uplink_rate_kbps: 4.0
+    min_duration: 4m
+    default_min_elevation_deg: 10
+  - downlink_rate_kbps: 1134.0
+    uplink_rate_kbps: 4.0
+    min_duration: 20sec
+    satellite_min_elevations:
+    - min_elevation_deg: 10.0
+      satellites:
+      - FM202
+    - min_elevation_deg: 27.0
+      satellites:
+      - FM196
+    - min_elevation_deg: 43.0
+      satellites:
+      - FM191
+    - min_elevation_deg: 20.0
+      satellites:
+      - FM197
+    - min_elevation_deg: 39.0
+      satellites:
+      - FM195
+    - min_elevation_deg: 26.0
+      satellites:
+      - FM206
+      - FM208
+      - FM233
+    - min_elevation_deg: 18.0
+      satellites:
+      - FM201
+    - min_elevation_deg: 34.0
+      satellites:
+      - FM174
+    - min_elevation_deg: 28.0
+      satellites:
+      - FM205
+    - min_elevation_deg: 24.0
+      satellites:
+      - FM225
+      - FM235
+    - min_elevation_deg: 40.0
+      satellites:
+      - FM192
+    - min_elevation_deg: 19.0
+      satellites:
+      - FM236
+    - min_elevation_deg: 22.0
+      satellites:
+      - FM226
+    - min_elevation_deg: 33.0
+      satellites:
+      - FM173
+    - min_elevation_deg: 90
+      satellites:
+      - FM190
+      - FM175
+      - FM126
+      - FM188
+      - FM180
+      - FM194
+      - FM178
+      - FM179
+      - FM189
+      - FM127
+      - FM211
+      - FM212
+      - FM224
+      - FM214
+      - FM215
+      - FM200
+      - FM213
+      - FM199
+      - FM203
+      - FM216
+      - FM218
+      - FM217
+    - min_elevation_deg: 90
+      satellites:
+      - FM185
+    add_transmit_times: true
+    default_min_elevation_deg: 37.0
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: true
+    ground_space_uhf: true
+    can_sync_schedule: true
+    can_run_rpcs: true
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2022.5
+    space_ground_sband_encoding: DVBS2X
+    space_ground_sband_dvbs2x_pls: 43
+    space_ground_sband_bandwidth_mhz: 1
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 43
+        mtu: 1767
+      ground_override:
+        radionet-m: 1767
+    reverse_channels:
+    - radio_band: UHF
 U_U_BIDIR_SPIRE:
   directionality: Bidirectional
   allowed_license_countries:

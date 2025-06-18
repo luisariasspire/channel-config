@@ -1605,6 +1605,46 @@ S_U_BIDIR_SPIRE_BW1_P27_F2022_5:
         radionet-m: 1317
     reverse_channels:
     - radio_band: UHF
+S_U_BIDIR_SPIRE_BW1_P31_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 31
+        mtu: 1452
+      use_radionet: true
+      ground_override:
+        radionet-m: 1452
+    reverse_channels:
+    - radio_band: UHF
 S_U_BIDIR_SPIRE_BW1_P35_F2022_5:
   directionality: Bidirectional
   allowed_license_countries:
@@ -1759,6 +1799,46 @@ S_U_BIDIR_SPIRE_BW1_P75_F2022_5:
         radionet-m: 1182
     reverse_channels:
     - radio_band: UHF
+S_U_BIDIR_SPIRE_BW1_P79_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 79
+        mtu: 1317
+      use_radionet: true
+      ground_override:
+        radionet-m: 1317
+    reverse_channels:
+    - radio_band: UHF
 S_U_BIDIR_SPIRE_BW1_P7_F2022_5:
   directionality: Bidirectional
   allowed_license_countries:
@@ -1797,6 +1877,46 @@ S_U_BIDIR_SPIRE_BW1_P7_F2022_5:
       use_radionet: true
       ground_override:
         radionet-m: 372
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW1_P87_F2022_5:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 87
+        mtu: 1632
+      use_radionet: true
+      ground_override:
+        radionet-m: 1632
     reverse_channels:
     - radio_band: UHF
 S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
@@ -1879,6 +1999,50 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
         tx_sample_rate_hz: 3703000
       ground_override:
         rf_bandwidth: 5000000
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW5_P19_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - ES
+  - FK
+  - GB
+  - GR
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 19
+        mtu: 867
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 867
     reverse_channels:
     - radio_band: UHF
 S_U_BIDIR_SPIRE_BW5_P23_F2022_5:
@@ -1967,6 +2131,138 @@ S_U_BIDIR_SPIRE_BW5_P27_F2022_5:
       ground_override:
         rf_bandwidth: 5000000
         radionet-m: 1317
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW5_P31_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - ES
+  - FK
+  - GB
+  - GR
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 31
+        mtu: 1452
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 1452
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW5_P43_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - ES
+  - FK
+  - GB
+  - GR
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 43
+        mtu: 1767
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 1767
+    reverse_channels:
+    - radio_band: UHF
+S_U_BIDIR_SPIRE_BW5_P75_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - ES
+  - FK
+  - GB
+  - GR
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: false
+  legal: false
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        pls: 75
+        mtu: 1182
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+        fec: 255
+        fec_k: 223
+      ground_override:
+        rf_bandwidth: 5000000
+        radionet-m: 1182
     reverse_channels:
     - radio_band: UHF
 S_U_BIDIR_SPIRE_BW5_P7_F2022_5:

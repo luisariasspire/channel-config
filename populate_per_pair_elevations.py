@@ -140,21 +140,45 @@ gs_id, collect_set(spire_id) as satellites, pls, round(elevation) as min_elevati
 from ripley_dev.default.optimal_channel_properties
 -- CHANGE PER-GS
 where (
-    (gs_id = "ancgs" and band = 'S' and pls in (15, 23, 31, 39) and bw_mhz = 1)
+    (gs_id = "pergs" and band = 'S' and pls in (43, 75, 83, 91) and bw_mhz = 1)
     or
-    (gs_id = "ancgs" and band = 'S' and pls in (7, 15, 23, 31) and bw_mhz = 5)
+    (gs_id = "pitgs" and band = 'S' and pls in (7, 11, 15, 23) and bw_mhz = 1)
     or
-    (gs_id = "bdugs" and band = 'S' and pls in (19, 27, 39, 75) and bw_mhz = 1)
+    (gs_id = "cltgs" and band = 'S' and pls in (7, 11, 15, 19) and bw_mhz = 1)
     or
-    (gs_id = "bdugs" and band = 'S' and pls in (7, 15, 23, 27) and bw_mhz = 5)
+    (gs_id = "stxgs" and band = 'S' and pls in (7, 15, 23, 35) and bw_mhz = 1)
     or
-    (gs_id = "vntgs" and band = 'S' and pls in (43, 79, 87, 91) and bw_mhz = 1)
+    (gs_id = "dalgs" and band = 'S' and pls in (11, 15, 19, 27) and bw_mhz = 1)
     or
-    (gs_id = "vntgs" and band = 'S' and pls in (19, 27, 43, 75) and bw_mhz = 5)
+    (gs_id = "jnugs" and band = 'S' and pls in (19, 23, 31, 43) and bw_mhz = 1)
     or
-    (gs_id = "puqgs" and band = 'S' and pls in (23, 39, 75, 83) and bw_mhz = 1)
+    (gs_id = "glags" and band = 'S' and pls in (35, 43, 75, 87) and bw_mhz = 1)
     or
-    (gs_id = "accgs" and band = 'S' and pls in (23, 35, 75, 91) and bw_mhz = 1)
+    (gs_id = "glags" and band = 'S' and pls in (7, 15, 31, 75) and bw_mhz = 5)
+    or
+    (gs_id = "jnbgs" and band = 'S' and pls in (19, 39, 75, 87) and bw_mhz = 1)
+    or
+    (gs_id = "jnbgs" and band = 'S' and pls in (7, 15, 27, 43) and bw_mhz = 5)
+    or
+    (gs_id = "ivcgs" and band = 'S' and pls in (11, 23, 35, 79) and bw_mhz = 1)
+    or
+    (gs_id = "xspgs" and band = 'S' and pls in (7, 15, 35, 75) and bw_mhz = 1)
+    or
+    (gs_id = "xspgs" and band = 'S' and pls in (7, 11, 15, 27) and bw_mhz = 5)
+    or
+    (gs_id = "dlhgs" and band = 'S' and pls in (23, 35, 39, 43) and bw_mhz = 1)
+    or
+    (gs_id = "tusgs" and band = 'S' and pls in (15, 27, 35, 75) and bw_mhz = 1)
+    or
+    (gs_id = "tusgs" and band = 'S' and pls in (7, 11, 15, 19) and bw_mhz = 5)
+    or
+    (gs_id = "orkgs" and band = 'S' and pls in (11, 15, 23, 31) and bw_mhz = 1)
+    or
+    (gs_id = "orkgs" and band = 'S' and pls in (7, 11, 15, 19) and bw_mhz = 5)
+    or
+    (gs_id = "wbugs" and band = 'S' and pls in (15, 23, 43, 79) and bw_mhz = 1)
+    or
+    (gs_id = "wbugs" and band = 'S' and pls in (7, 11, 15, 19) and bw_mhz = 5)
 )
 group by gs_id, pls, round(elevation), bw_mhz, band
 )
@@ -173,12 +197,10 @@ active_sats = fetch_data(
 # So let's keep track of what we processed.
 new_pls_values = {}
 
-high_mid_freq = ["accgs", "puqgs"]
-supports_bidir = ["bdugs"]
-
 for row in new_channels:
     # skip if the gs is decomissioned
     if not os.path.exists(asset_filepath(row.gs_id)):
+        print(f"Skipping {row.gs_id} due to missing configuration file.")
         continue
 
     gs_id = row.gs_id
@@ -189,8 +211,27 @@ for row in new_channels:
     satellite_min_elevations = json.loads(row.satellite_min_elevations)
     default_min_elevation_deg = int(row.default_min_elevation_deg)
 
+    configs = load_config_file(gs_id)
+    mid_freq = (
+        2200.5
+        if any(
+            c["classification_annotations"].get("space_ground_sband", None)
+            and c["classification_annotations"].get(
+                "space_ground_sband_mid_freq_mhz", None
+            )
+            == 2200.5
+            for c in configs.values()
+        )
+        else 2022.5
+    )
+    supports_s_u_bidir = any(
+        c["classification_annotations"].get("space_ground_sband", None)
+        and c["classification_annotations"].get("ground_space_uhf", None)
+        for c in configs.values()
+    )
+
     supported_directionality = [Directionality.TXO]
-    if gs_id in supports_bidir:
+    if supports_s_u_bidir:
         supported_directionality.append(Directionality.BIDIR)
 
     for directionality in supported_directionality:
@@ -217,8 +258,6 @@ for row in new_channels:
         satellite_min_elevations.append(
             {"min_elevation_deg": 90, "satellites": disabled_sats}
         )
-
-        mid_freq = 2200.5 if gs_id in high_mid_freq else 2022.5
 
         predicate = (
             f"directionality == '{directionality.name}' and "
