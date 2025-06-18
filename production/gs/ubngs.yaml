@@ -641,9 +641,8 @@ X_S_BIDIR_SPIRE_BW20_P61_TRACK:
         radionet-m: 223
         uplink-sps: 15
         dopp-up-rate: 0.1
-    tracking_target:
-      latitude_north: 47.839
-      longitude_west: -106.790918
+    adcs_config:
+      mode: TRACKING_SUN
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -658,6 +657,8 @@ X_S_BIDIR_SPIRE_BW20_P61_TRACK:
     space_ground_xband_dvbs2x_pls: 61
     space_ground_xband_bandwidth_mhz: 20
 
+  dynamic_window_parameters:
+    adcs_config_target_coords: true
 X_S_BIDIR_SPIRE_BW56_P29_TRACK:
   directionality: Bidirectional
   contact_type: CONTACT_SPACE_GROUND_BIDIR
@@ -714,9 +715,8 @@ X_S_BIDIR_SPIRE_BW56_P29_TRACK:
         radionet-m: 223
         uplink-sps: 15
         dopp-up-rate: 0.1
-    tracking_target:
-      latitude_north: 47.839
-      longitude_west: -106.790918
+    adcs_config:
+      mode: TRACKING_SUN
   classification_annotations:
     provider: SPIRE
     directionality: BIDIR
@@ -730,6 +730,8 @@ X_S_BIDIR_SPIRE_BW56_P29_TRACK:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 29
     space_ground_xband_bandwidth_mhz: 56
+  dynamic_window_parameters:
+    adcs_config_target_coords: true
 X_TXO_SPIRE_BW10_P17:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1017,9 +1019,8 @@ X_TXO_SPIRE_BW20_P61_TRACK:
         rf_bandwidth: 20000000
         gain: 17
         freq: 1250000000
-    tracking_target:
-      latitude_north: 47.839
-      longitude_west: -106.790918
+    adcs_config:
+      mode: TRACKING_SUN
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -1033,6 +1034,8 @@ X_TXO_SPIRE_BW20_P61_TRACK:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 61
     space_ground_xband_bandwidth_mhz: 20
+  dynamic_window_parameters:
+    adcs_config_target_coords: true
 X_TXO_SPIRE_BW56_P29_TRACK:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1077,9 +1080,8 @@ X_TXO_SPIRE_BW56_P29_TRACK:
         gain: 17
         freq: 1250000000
         radionet-m: 6039
-    tracking_target:
-      latitude_north: 47.839
-      longitude_west: -106.790918
+    adcs_config:
+      mode: TRACKING_SUN
   classification_annotations:
     provider: SPIRE
     directionality: TXO
@@ -1093,3 +1095,5 @@ X_TXO_SPIRE_BW56_P29_TRACK:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 29
     space_ground_xband_bandwidth_mhz: 56
+  dynamic_window_parameters:
+    adcs_config_target_coords: true
