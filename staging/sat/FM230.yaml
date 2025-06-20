@@ -1,0 +1,36 @@
+U_U_BIDIR_SPIRE:
+  directionality: Bidirectional
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; UHF idle 0.5W = 77.5
+      flat: 77.5
+      # UHF Tx = 3.0W
+      per_second: 3.0
+  contact_overhead_time: 210s
+  window_parameters:
+    forward_channels:
+    - radio_band: UHF
+    reverse_channels:
+    - radio_band: UHF
+    link_state_cues:
+    - topics: [mission_download]
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
