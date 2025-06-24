@@ -462,7 +462,7 @@ S_TXO_SPIRE_BW1_P43_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
