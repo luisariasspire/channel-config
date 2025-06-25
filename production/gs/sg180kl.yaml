@@ -46,6 +46,58 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
     space_ground_sband_mid_freq_mhz: 2200.5
     space_ground_sband_encoding: LEGACY
     space_ground_sband_bandwidth_mhz: 1
+S_TXO_KSAT_BW1_LEG_F2200_5_HALFTRACK:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: true
+  legal: true
+  ground_station_constraints:
+    dollar_cost:
+      time_dollar_cost:
+        dollars: 1.54
+        interval: 1min
+      fixed_dollar_cost: 1.54
+  contact_overhead_time: 0s
+  link_profile:
+  - min_elevation_deg: 10
+    downlink_rate_kbps: 564.01
+    uplink_rate_kbps: 0
+    min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: TX_SBAND_IP
+      use_radionet: true
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        tx_carrier_frequency_hz: 2200500000
+      ground_override:
+        freq: 70000000
+    adcs_config:
+      mode: NADIRPOINTLATLON
+  classification_annotations:
+    provider: KSAT
+    directionality: TXO
+    adcs_pointing: HALFTRACK
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: true
+    ground_space_sband: false
+    space_ground_xband: false
+    space_ground_sband_mid_freq_mhz: 2200.5
+    space_ground_sband_encoding: LEGACY
+    space_ground_sband_bandwidth_mhz: 1
+  dynamic_window_parameters:
+    adcs_config_target_coords: true
 X_TXO_KSAT_BW10_P17:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO

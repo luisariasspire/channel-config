@@ -56,6 +56,10 @@ def check_consistent_radio_bands(
     forward_channels = window_params.get("forward_channels", [])
     reverse_channels = window_params.get("reverse_channels", [])
 
+    # If there are no channels expressed in window parameters on either side, we shouldn't fail.
+    if not forward_channels and not reverse_channels:
+        return True
+
     forward_bands = [
         channel["radio_band"]
         for channel in forward_channels
