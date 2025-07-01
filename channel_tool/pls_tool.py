@@ -178,7 +178,12 @@ def pls_lookup(args: Any, stdout: bool = True) -> Any:
         filt_sp = {v: k for k, v in pls_speed.items() if k in pls_short}
     elif args.xband:
         found["band"] = "XBAND"
-        found["mode"] = "TX_XBAND_DVB_IP" if args.radionet else "TX_XBAND_DVB"
+        if args.radionet and args.bidir:
+            found["mode"] = "RX_SBAND_TX_XBAND"
+        elif args.radionet:
+            found["mode"] = "TX_XBAND_DVB_IP"
+        else:
+            found["mode"] = "TX_XBAND_DVB"
         filt_sp = {v: k for k, v in pls_speed.items() if k in pls_long}
     else:
         filt_sp = {v: k for k, v in pls_speed.items()}

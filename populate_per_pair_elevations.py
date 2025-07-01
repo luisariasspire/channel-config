@@ -140,45 +140,7 @@ gs_id, collect_set(spire_id) as satellites, pls, round(elevation) as min_elevati
 from ripley_dev.default.optimal_channel_properties
 -- CHANGE PER-GS
 where (
-    (gs_id = "pergs" and band = 'S' and pls in (43, 75, 83, 91) and bw_mhz = 1)
-    or
-    (gs_id = "pitgs" and band = 'S' and pls in (7, 11, 15, 23) and bw_mhz = 1)
-    or
-    (gs_id = "cltgs" and band = 'S' and pls in (7, 11, 15, 19) and bw_mhz = 1)
-    or
-    (gs_id = "stxgs" and band = 'S' and pls in (7, 15, 23, 35) and bw_mhz = 1)
-    or
-    (gs_id = "dalgs" and band = 'S' and pls in (11, 15, 19, 27) and bw_mhz = 1)
-    or
-    (gs_id = "jnugs" and band = 'S' and pls in (19, 23, 31, 43) and bw_mhz = 1)
-    or
-    (gs_id = "glags" and band = 'S' and pls in (35, 43, 75, 87) and bw_mhz = 1)
-    or
-    (gs_id = "glags" and band = 'S' and pls in (7, 15, 31, 75) and bw_mhz = 5)
-    or
-    (gs_id = "jnbgs" and band = 'S' and pls in (19, 39, 75, 87) and bw_mhz = 1)
-    or
-    (gs_id = "jnbgs" and band = 'S' and pls in (7, 15, 27, 43) and bw_mhz = 5)
-    or
-    (gs_id = "ivcgs" and band = 'S' and pls in (11, 23, 35, 79) and bw_mhz = 1)
-    or
-    (gs_id = "xspgs" and band = 'S' and pls in (7, 15, 35, 75) and bw_mhz = 1)
-    or
-    (gs_id = "xspgs" and band = 'S' and pls in (7, 11, 15, 27) and bw_mhz = 5)
-    or
-    (gs_id = "dlhgs" and band = 'S' and pls in (23, 35, 39, 43) and bw_mhz = 1)
-    or
-    (gs_id = "tusgs" and band = 'S' and pls in (15, 27, 35, 75) and bw_mhz = 1)
-    or
-    (gs_id = "tusgs" and band = 'S' and pls in (7, 11, 15, 19) and bw_mhz = 5)
-    or
-    (gs_id = "orkgs" and band = 'S' and pls in (11, 15, 23, 31) and bw_mhz = 1)
-    or
-    (gs_id = "orkgs" and band = 'S' and pls in (7, 11, 15, 19) and bw_mhz = 5)
-    or
-    (gs_id = "wbugs" and band = 'S' and pls in (15, 23, 43, 79) and bw_mhz = 1)
-    or
-    (gs_id = "wbugs" and band = 'S' and pls in (7, 11, 15, 19) and bw_mhz = 5)
+    (gs_id = "awags" and band = 'X' and pls in (13, 25, 37, 57) and bw_mhz = 10)
 )
 group by gs_id, pls, round(elevation), bw_mhz, band
 )
@@ -224,14 +186,15 @@ for row in new_channels:
         )
         else 2022.5
     )
-    supports_s_u_bidir = any(
-        c["classification_annotations"].get("space_ground_sband", None)
-        and c["classification_annotations"].get("ground_space_uhf", None)
+    supports_bidir = any(
+        c["classification_annotations"].get("directionality", None) == "BIDIR"
+        and c["enabled"]
+        and c["legal"]
         for c in configs.values()
     )
 
     supported_directionality = [Directionality.TXO]
-    if supports_s_u_bidir:
+    if supports_bidir:
         supported_directionality.append(Directionality.BIDIR)
 
     for directionality in supported_directionality:
@@ -261,11 +224,9 @@ for row in new_channels:
 
         predicate = (
             f"directionality == '{directionality.name}' and "
-            # CHANGE PER-GS
             "provider == 'SPIRE' and "
             f"space_ground_{band}band_bandwidth_mhz == {bw_mhz} and "
             "(space_ground_xband or space_ground_sband_encoding == 'DVBS2X') and "
-            # CHANGE PER-GS
             f"(not space_ground_sband_mid_freq_mhz or space_ground_sband_mid_freq_mhz == {mid_freq})"
         )
 
@@ -334,7 +295,7 @@ for row in new_channels:
 
         lp = [dict(dvb_link_profile)]
 
-        if directionality == Directionality.BIDIR:
+        if directionality == Directionality.BIDIR and band == "s":
             uhf_link_profile = min(link_profile, key=lambda i: i["downlink_rate_kbps"])
             uhf_default_min_elevation_deg = uhf_link_profile.pop(
                 "min_elevation_deg", None

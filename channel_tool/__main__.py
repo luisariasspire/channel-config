@@ -463,6 +463,8 @@ def duplicate_config(args: Any) -> None:
             warn(f"None of the channels in {args.channels} exist in {asset}.")
             return None
 
+        print(f"Duplicating {existing_channel} within {asset}")
+
         apply_update(
             args.environment,
             [asset],
@@ -1297,6 +1299,7 @@ PLS_PARSER.add_argument(
     default=False,
     action="store_true",
 )
+PLS_PARSER.add_argument("--bidir", action="store_true", default=False)
 PLS_PARSER.add_argument(
     "-r", "--radionet", help="enable radionet", default=False, action="store_true"
 )

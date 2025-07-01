@@ -147,6 +147,7 @@ def gen_forward_channel(args: DuplicateArgs) -> Any:
         "template": args.template,
         "radionet": True,
         "raw": False,
+        "bidir": args.directionality == Directionality.BIDIR,
     }
 
     obj = SimpleNamespace(**pls_args)
@@ -174,7 +175,7 @@ def duplicate_link_profile(
         )
     ]
 
-    if args.directionality == Directionality.BIDIR:
+    if args.directionality == Directionality.BIDIR and args.band == Band.S:
         uhf_profile = min(original_link_profile, key=lambda i: i["downlink_rate_kbps"])
 
         link_profile.insert(0, uhf_profile)
@@ -205,12 +206,20 @@ def duplicate_window_parameters(
         for fc in original_window_parameters.get("forward_channels", [])
         if fc.get("radio_band", "") != "UHF"
     ]
+    original_sband_forward_channel = [
+        rc
+        for rc in original_window_parameters.get("reverse_channels", [])
+        if rc.get("radio_band", "") == "SBAND"
+    ]
+
+    assert len(original_sband_forward_channel) < 2
 
     forward_channel_overrides = gen_forward_channel(args)["forward_channels"][0]
 
     forward_channels = []
 
-    if args.directionality == Directionality.BIDIR:
+    # X/S BIDIRs have a single X-Band forward channel
+    if args.directionality == Directionality.BIDIR and args.band == Band.S:
         forward_channels.append({"radio_band": "UHF"})
 
     # We need to add the values from the pls tool even if the original did not
@@ -219,8 +228,16 @@ def duplicate_window_parameters(
     if not original_dvb_forward_channel:
         forward_channels.append(forward_channel_overrides)
         window_parameters = {"forward_channels": forward_channels}
-        if args.directionality == Directionality.BIDIR:
+        # X/S BIDIRs have a single X-Band forward channel and a single S-Band reverse channel
+        # The reverse channel is not DVB so we use it as is if it exists
+        if args.directionality == Directionality.BIDIR and args.band == Band.S:
             window_parameters["reverse_channels"] = [{"radio_band": "UHF"}]
+        elif (
+            args.directionality == Directionality.BIDIR
+            and args.band == Band.X
+            and original_sband_forward_channel
+        ):
+            window_parameters["reverse_channels"] = original_sband_forward_channel
         return window_parameters
 
     og_dvb_forward_channel = original_dvb_forward_channel[0]
@@ -237,8 +254,10 @@ def duplicate_window_parameters(
 
 
 def check_duplicate_supported(classification_annotations: dict[str, Any]) -> None:
-    if classification_annotations.get("ground_space_sband"):
-        raise DuplicateError("duplicate does not support S/X BIDIRs!")
+    if classification_annotations.get(
+        "space_ground_xband"
+    ) and classification_annotations.get("ground_space_uhf"):
+        raise DuplicateError("X-Band BIDIRs with UHF uplink are not supported!")
 
     if not (
         classification_annotations.get("space_ground_xband_dvbs2x_pls")

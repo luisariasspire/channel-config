@@ -5850,6 +5850,150 @@ X_S_BIDIR_SPIRE_BW10_P13:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 13
     space_ground_xband_bandwidth_mhz: 10
+X_S_BIDIR_SPIRE_BW10_P25:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 14.0
+    downlink_rate_kbps: 9747.0
+    uplink_rate_kbps: 50.0
+    min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        cfo: 0
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        tx_sample_rate_hz: 8333000
+        rx_hardware_gain_db: 70
+        pls: 25
+        mtu: 5368
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+        fec: 255
+        fec_k: 223
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        header-freq-pow: 7
+        coarse-freq-win: 1000000
+        lo-offset: 5000000
+        ant: RX2
+        rf_bandwidth: 10000000
+        gain: 3
+        freq: 1250000000
+        radionet-m: 5368
+        status_poll_period: 10
+    reverse_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: RX_SBAND_TX_XBAND
+      use_radionet: true
+      ground_override:
+        usrp-tx-gain: 1
+        radionet-m: 223
+        uplink-sps: 15
+        dopp-up-rate: 0.1
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    ground_space_sband: true
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: false
+    space_ground_xband: true
+    space_ground_xband_dvbs2x_pls: 25
+    space_ground_xband_bandwidth_mhz: 10
+X_S_BIDIR_SPIRE_BW10_P37:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 19.0
+    downlink_rate_kbps: 12195.0
+    uplink_rate_kbps: 50.0
+    min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        cfo: 0
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        tx_sample_rate_hz: 8333000
+        rx_hardware_gain_db: 70
+        pls: 37
+        mtu: 6718
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+        fec: 255
+        fec_k: 223
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        header-freq-pow: 7
+        coarse-freq-win: 1000000
+        lo-offset: 5000000
+        ant: RX2
+        rf_bandwidth: 10000000
+        gain: 3
+        freq: 1250000000
+        radionet-m: 6718
+        status_poll_period: 10
+    reverse_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: RX_SBAND_TX_XBAND
+      use_radionet: true
+      ground_override:
+        usrp-tx-gain: 1
+        radionet-m: 223
+        uplink-sps: 15
+        dopp-up-rate: 0.1
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    ground_space_sband: true
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: false
+    space_ground_xband: true
+    space_ground_xband_dvbs2x_pls: 37
+    space_ground_xband_bandwidth_mhz: 10
 X_S_BIDIR_SPIRE_BW10_P5:
   directionality: Bidirectional
   contact_type: CONTACT_SPACE_GROUND_BIDIR
@@ -5919,6 +6063,78 @@ X_S_BIDIR_SPIRE_BW10_P5:
     space_ground_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 5
+    space_ground_xband_bandwidth_mhz: 10
+X_S_BIDIR_SPIRE_BW10_P57:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 27.0
+    downlink_rate_kbps: 16443.0
+    uplink_rate_kbps: 50.0
+    min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        cfo: 0
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        tx_sample_rate_hz: 8333000
+        rx_hardware_gain_db: 70
+        pls: 57
+        mtu: 6039
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+        fec: 255
+        fec_k: 223
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        header-freq-pow: 7
+        coarse-freq-win: 1000000
+        lo-offset: 5000000
+        ant: RX2
+        rf_bandwidth: 10000000
+        gain: 3
+        freq: 1250000000
+        radionet-m: 6039
+        status_poll_period: 10
+    reverse_channels:
+    - radio_band: SBAND
+      protocol: LEGACY
+      bandaid_mode: RX_SBAND_TX_XBAND
+      use_radionet: true
+      ground_override:
+        usrp-tx-gain: 1
+        radionet-m: 223
+        uplink-sps: 15
+        dopp-up-rate: 0.1
+  classification_annotations:
+    provider: SPIRE
+    directionality: BIDIR
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    ground_space_sband: true
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: false
+    space_ground_xband: true
+    space_ground_xband_dvbs2x_pls: 57
     space_ground_xband_bandwidth_mhz: 10
 X_S_BIDIR_SPIRE_BW20_P61_TRACK:
   directionality: Bidirectional
@@ -6477,6 +6693,65 @@ X_TXO_KSAT_BW56_P29_TRACK:
   dynamic_window_parameters:
     adcs_config_target_coords: true
 # KSAT xband improved PLS channels
+X_TXO_SPIRE_BW10_P13:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 10.0
+    downlink_rate_kbps: 5823.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      bandaid_override:
+        tx_sample_rate_hz: 10000000
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        pls: 13
+        mtu: 3204
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+        fec: 255
+        fec_k: 223
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        header-freq-pow: 7
+        coarse-freq-win: 1000000
+        lo-offset: 5000000
+        ant: RX2
+        rf_bandwidth: 10000000
+        gain: 17
+        freq: 1250000000
+        radionet-m: 3204
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: false
+    ground_space_sband: false
+    space_ground_xband: true
+    space_ground_xband_dvbs2x_pls: 13
+    space_ground_xband_bandwidth_mhz: 10
 X_TXO_SPIRE_BW10_P17:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -6651,6 +6926,65 @@ X_TXO_SPIRE_BW10_P25:
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 25
     space_ground_xband_bandwidth_mhz: 10
+X_TXO_SPIRE_BW10_P37:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 19.0
+    downlink_rate_kbps: 12195.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      bandaid_override:
+        tx_sample_rate_hz: 10000000
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        pls: 37
+        mtu: 6718
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+        fec: 255
+        fec_k: 223
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        header-freq-pow: 7
+        coarse-freq-win: 1000000
+        lo-offset: 5000000
+        ant: RX2
+        rf_bandwidth: 10000000
+        gain: 17
+        freq: 1250000000
+        radionet-m: 6718
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: false
+    ground_space_sband: false
+    space_ground_xband: true
+    space_ground_xband_dvbs2x_pls: 37
+    space_ground_xband_bandwidth_mhz: 10
 X_TXO_SPIRE_BW10_P5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -6708,6 +7042,65 @@ X_TXO_SPIRE_BW10_P5:
     ground_space_sband: false
     space_ground_xband: true
     space_ground_xband_dvbs2x_pls: 5
+    space_ground_xband_bandwidth_mhz: 10
+X_TXO_SPIRE_BW10_P57:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - DE
+  - LU
+  - SG
+  - US
+  enabled: false
+  legal: false
+  ground_station_constraints: {}
+  contact_overhead_time: 10s
+  link_profile:
+  - min_elevation_deg: 27.0
+    downlink_rate_kbps: 16443.0
+    uplink_rate_kbps: 0.0
+    min_duration: 2min
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      bandaid_override:
+        tx_sample_rate_hz: 10000000
+        tx_lo_frequency_hz: 6440000000
+        tx_carrier_frequency_hz: 1760000000
+        tx_hardware_gain_db: -10
+        tx_bandwidth_hz: 10000000
+        pls: 57
+        mtu: 6039
+        mod_gain: 130
+        vbatt/voltage/min: 7000
+        vbatt/voltage/max: 8500
+        vbatt/power/max: 19550
+        fec: 255
+        fec_k: 223
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        header-freq-pow: 7
+        coarse-freq-win: 1000000
+        lo-offset: 5000000
+        ant: RX2
+        rf_bandwidth: 10000000
+        gain: 17
+        freq: 1250000000
+        radionet-m: 6039
+  classification_annotations:
+    provider: SPIRE
+    directionality: TXO
+    adcs_pointing: NADIR
+    space_ground_uhf: false
+    ground_space_uhf: false
+    can_sync_schedule: false
+    can_run_rpcs: false
+    space_ground_sband: false
+    ground_space_sband: false
+    space_ground_xband: true
+    space_ground_xband_dvbs2x_pls: 57
     space_ground_xband_bandwidth_mhz: 10
 X_TXO_SPIRE_BW20_P61_TRACK:
   directionality: SpaceToEarth
