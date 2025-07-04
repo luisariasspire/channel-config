@@ -47,7 +47,7 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -80,7 +80,7 @@ S_TXO_SPIRE_BW1_LEG_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 0s
@@ -116,7 +116,7 @@ S_TXO_SPIRE_BW1_P11_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -154,7 +154,7 @@ S_TXO_SPIRE_BW1_P15_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -192,7 +192,7 @@ S_TXO_SPIRE_BW1_P19_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -231,7 +231,7 @@ S_TXO_SPIRE_BW1_P23_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -269,7 +269,7 @@ S_TXO_SPIRE_BW1_P23_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -308,7 +308,7 @@ S_TXO_SPIRE_BW1_P35_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -347,7 +347,7 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -385,7 +385,7 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -424,7 +424,7 @@ S_TXO_SPIRE_BW1_P43_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -462,7 +462,7 @@ S_TXO_SPIRE_BW1_P43_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -501,7 +501,7 @@ S_TXO_SPIRE_BW1_P75_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -540,7 +540,7 @@ S_TXO_SPIRE_BW1_P7_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -578,7 +578,7 @@ S_TXO_SPIRE_BW1_P83_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -617,7 +617,7 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -656,7 +656,7 @@ S_TXO_SPIRE_BW1_P91_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -696,7 +696,7 @@ S_TXO_SPIRE_BW5_P11_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -737,7 +737,7 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -778,7 +778,7 @@ S_TXO_SPIRE_BW5_P19_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -819,7 +819,7 @@ S_TXO_SPIRE_BW5_P27_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -860,7 +860,7 @@ S_TXO_SPIRE_BW5_P43_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -901,7 +901,7 @@ S_TXO_SPIRE_BW5_P7_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -940,7 +940,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 210s
@@ -975,7 +975,7 @@ S_U_BIDIR_SPIRE_BW1_P11_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1015,7 +1015,7 @@ S_U_BIDIR_SPIRE_BW1_P15_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1055,7 +1055,7 @@ S_U_BIDIR_SPIRE_BW1_P23_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1095,7 +1095,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1135,7 +1135,7 @@ S_U_BIDIR_SPIRE_BW1_P7_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1177,7 +1177,7 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1221,7 +1221,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1265,7 +1265,7 @@ S_U_BIDIR_SPIRE_BW5_P7_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
