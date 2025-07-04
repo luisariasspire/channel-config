@@ -10,7 +10,7 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
@@ -18,7 +18,7 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
     - 2min
     - 4min
     - 6min
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -47,10 +47,10 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   window_parameters:
     forward_channels:
     - radio_band: SBAND
@@ -80,10 +80,10 @@ S_TXO_SPIRE_BW1_LEG_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   contact_type: CONTACT_SPACE_GROUND_TXO
   window_parameters:
     forward_channels:
@@ -116,7 +116,7 @@ S_TXO_SPIRE_BW1_P11_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -154,7 +154,7 @@ S_TXO_SPIRE_BW1_P15_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -192,7 +192,7 @@ S_TXO_SPIRE_BW1_P19_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -231,7 +231,7 @@ S_TXO_SPIRE_BW1_P23_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -269,7 +269,7 @@ S_TXO_SPIRE_BW1_P23_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -308,7 +308,7 @@ S_TXO_SPIRE_BW1_P35_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -347,7 +347,7 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -385,7 +385,7 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -424,7 +424,7 @@ S_TXO_SPIRE_BW1_P43_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -462,7 +462,7 @@ S_TXO_SPIRE_BW1_P43_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -501,7 +501,7 @@ S_TXO_SPIRE_BW1_P75_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -540,7 +540,7 @@ S_TXO_SPIRE_BW1_P7_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -578,7 +578,7 @@ S_TXO_SPIRE_BW1_P83_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -617,7 +617,7 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -656,7 +656,7 @@ S_TXO_SPIRE_BW1_P91_F2200_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -696,7 +696,7 @@ S_TXO_SPIRE_BW5_P11_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -737,7 +737,7 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -778,7 +778,7 @@ S_TXO_SPIRE_BW5_P19_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -819,7 +819,7 @@ S_TXO_SPIRE_BW5_P27_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -860,7 +860,7 @@ S_TXO_SPIRE_BW5_P43_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -901,7 +901,7 @@ S_TXO_SPIRE_BW5_P7_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -940,10 +940,10 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 210s
+  contact_overhead_time: 10s
   window_parameters:
     forward_channels:
     - radio_band: UHF
@@ -975,7 +975,7 @@ S_U_BIDIR_SPIRE_BW1_P11_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1015,7 +1015,7 @@ S_U_BIDIR_SPIRE_BW1_P15_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1055,7 +1055,7 @@ S_U_BIDIR_SPIRE_BW1_P23_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1095,7 +1095,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1135,7 +1135,7 @@ S_U_BIDIR_SPIRE_BW1_P7_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1177,7 +1177,7 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1221,7 +1221,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1265,7 +1265,7 @@ S_U_BIDIR_SPIRE_BW5_P7_F2022_5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints: {}
   contact_overhead_time: 10s
@@ -1310,7 +1310,7 @@ U_U_BIDIR_SPIRE:
   enabled: true
   legal: true
   satellite_constraints: {}
-  contact_overhead_time: 210s
+  contact_overhead_time: 10s
   window_parameters:
     forward_channels:
     - radio_band: UHF
@@ -1331,7 +1331,7 @@ X_S_BIDIR_SPIRE_BW10_P13:
     separation:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   window_parameters:
     forward_channels:
     - radio_band: XBAND
@@ -1361,7 +1361,7 @@ X_TXO_KSAT_BW10_P5:
     separation:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
 X_TXO_SPIRE_BW10_P5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1388,4 +1388,4 @@ X_TXO_SPIRE_BW10_P5:
     separation:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
