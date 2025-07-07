@@ -1660,13 +1660,102 @@ X_S_BIDIR_SPIRE_BW10_P13:
     separation:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
-  contact_overhead_time: 0s
+  contact_overhead_time: 10s
   window_parameters:
     forward_channels:
     - radio_band: XBAND
       bandaid_mode: RX_SBAND_TX_XBAND
       bandaid_override:
         oort_dest_host: localhost
+        fec: 255
+        fec_k: 223
+        pls: 13
+        mtu: 3204
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        radionet-m: 3204
+X_S_BIDIR_SPIRE_BW10_P25:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - AU
+  - MN
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        oort_dest_host: localhost
+        fec: 255
+        fec_k: 223
+        pls: 25
+        mtu: 5368
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        radionet-m: 5368
+X_S_BIDIR_SPIRE_BW10_P37:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - AU
+  - MN
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        oort_dest_host: localhost
+        fec: 255
+        fec_k: 223
+        pls: 37
+        mtu: 6718
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        radionet-m: 6718
+X_S_BIDIR_SPIRE_BW10_P57:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - AU
+  - MN
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        oort_dest_host: localhost
+        fec: 255
+        fec_k: 223
+        pls: 57
+        mtu: 6039
+      use_radionet: true
+      protocol: DVBS2X
+      ground_override:
+        radionet-m: 6039
 X_TXO_KSAT_BW10_P5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1691,6 +1780,126 @@ X_TXO_KSAT_BW10_P5:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
   contact_overhead_time: 0s
+X_TXO_SPIRE_BW10_P13:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 13
+        mtu: 3204
+      ground_override:
+        radionet-m: 3204
+X_TXO_SPIRE_BW10_P25:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 25
+        mtu: 5368
+      ground_override:
+        radionet-m: 5368
+X_TXO_SPIRE_BW10_P37:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 37
+        mtu: 6718
+      ground_override:
+        radionet-m: 6718
 X_TXO_SPIRE_BW10_P5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1718,3 +1927,43 @@ X_TXO_SPIRE_BW10_P5:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
   contact_overhead_time: 0s
+X_TXO_SPIRE_BW10_P57:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 57
+        mtu: 6039
+      ground_override:
+        radionet-m: 6039
