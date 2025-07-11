@@ -731,14 +731,12 @@ S_TXO_SPIRE_BW1_P87_F2022_5:
     - min_elevation_deg: 36.0
       satellites:
       - FM199
-    - min_elevation_deg: 90.0
-      satellites:
-      - FM191
     - min_elevation_deg: 37.0
       satellites:
       - FM197
     - min_elevation_deg: 90
       satellites:
+      - FM191
       - FM190
       - FM175
       - FM126
@@ -840,15 +838,13 @@ S_TXO_SPIRE_BW1_P87_F2022_5_HALFTRACK:
     - min_elevation_deg: 36.0
       satellites:
       - FM199
-    - min_elevation_deg: 90.0
-      satellites:
-      - FM191
     - min_elevation_deg: 37.0
       satellites:
       - FM197
     - min_elevation_deg: 90
       satellites:
       - FM190
+      - FM191
       - FM175
       - FM126
       - FM188
@@ -2064,8 +2060,6 @@ S_U_BIDIR_SPIRE_BW1_P19_F2022_5:
       - FM216
       - FM218
       - FM217
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 22.0
@@ -2171,8 +2165,6 @@ S_U_BIDIR_SPIRE_BW1_P19_F2022_5_HALFTRACK:
       - FM216
       - FM218
       - FM217
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 22.0
@@ -2290,8 +2282,6 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
       - FM216
       - FM218
       - FM217
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 28
@@ -2405,8 +2395,6 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5_HALFTRACK:
       - FM216
       - FM218
       - FM217
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 28
@@ -2522,8 +2510,6 @@ S_U_BIDIR_SPIRE_BW1_P75_F2022_5:
       - FM216
       - FM218
       - FM217
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 90.0
@@ -2635,8 +2621,6 @@ S_U_BIDIR_SPIRE_BW1_P75_F2022_5_HALFTRACK:
       - FM216
       - FM218
       - FM217
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 90.0
@@ -2725,15 +2709,13 @@ S_U_BIDIR_SPIRE_BW1_P87_F2022_5:
     - min_elevation_deg: 36.0
       satellites:
       - FM199
-    - min_elevation_deg: 90.0
-      satellites:
-      - FM191
     - min_elevation_deg: 37.0
       satellites:
       - FM197
     - min_elevation_deg: 90
       satellites:
       - FM190
+      - FM191
       - FM175
       - FM126
       - FM188
@@ -2758,8 +2740,6 @@ S_U_BIDIR_SPIRE_BW1_P87_F2022_5:
       - FM216
       - FM218
       - FM217
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 90.0
@@ -2844,15 +2824,13 @@ S_U_BIDIR_SPIRE_BW1_P87_F2022_5_HALFTRACK:
     - min_elevation_deg: 36.0
       satellites:
       - FM199
-    - min_elevation_deg: 90.0
-      satellites:
-      - FM191
     - min_elevation_deg: 37.0
       satellites:
       - FM197
     - min_elevation_deg: 90
       satellites:
       - FM190
+      - FM191
       - FM175
       - FM126
       - FM188
@@ -2877,8 +2855,6 @@ S_U_BIDIR_SPIRE_BW1_P87_F2022_5_HALFTRACK:
       - FM216
       - FM218
       - FM217
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 90.0
@@ -3001,8 +2977,6 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
       - FM191
       - FM127
       - FM192
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 26
@@ -3125,8 +3099,6 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5_HALFTRACK:
       - FM191
       - FM127
       - FM192
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 26
@@ -3267,8 +3239,6 @@ S_U_BIDIR_SPIRE_BW5_P27_F2022_5:
       - FM191
       - FM127
       - FM192
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 42
@@ -3405,8 +3375,6 @@ S_U_BIDIR_SPIRE_BW5_P27_F2022_5_HALFTRACK:
       - FM191
       - FM127
       - FM192
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 42
@@ -3555,8 +3523,6 @@ S_U_BIDIR_SPIRE_BW5_P43_F2022_5:
       - FM127
       - FM211
       - FM192
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 59
@@ -3701,8 +3667,6 @@ S_U_BIDIR_SPIRE_BW5_P43_F2022_5_HALFTRACK:
       - FM127
       - FM211
       - FM192
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 59
@@ -3833,8 +3797,6 @@ S_U_BIDIR_SPIRE_BW5_P7_F2022_5:
       - FM191
       - FM127
       - FM192
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 10
@@ -3961,8 +3923,6 @@ S_U_BIDIR_SPIRE_BW5_P7_F2022_5_HALFTRACK:
       - FM191
       - FM127
       - FM192
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     add_transmit_times: true
     default_min_elevation_deg: 10

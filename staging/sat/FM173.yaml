@@ -2709,6 +2709,38 @@ X_S_BIDIR_SPIRE_BW10_P13:
         mtu: 3204
       ground_override:
         radionet-m: 3204
+X_S_BIDIR_SPIRE_BW10_P17:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - AU
+  - MN
+  - NZ
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx+Rx 19.2W
+      per_second: 19.2
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 17
+        mtu: 4014
+      ground_override:
+        radionet-m: 4014
 X_S_BIDIR_SPIRE_BW10_P25:
   directionality: Bidirectional
   contact_type: CONTACT_SPACE_GROUND_BIDIR
@@ -2741,6 +2773,38 @@ X_S_BIDIR_SPIRE_BW10_P25:
         mtu: 5368
       ground_override:
         radionet-m: 5368
+X_S_BIDIR_SPIRE_BW10_P33:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - AU
+  - MN
+  - NZ
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx+Rx 19.2W
+      per_second: 19.2
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 33
+        mtu: 6444
+      ground_override:
+        radionet-m: 6444
 X_S_BIDIR_SPIRE_BW10_P37:
   directionality: Bidirectional
   contact_type: CONTACT_SPACE_GROUND_BIDIR
@@ -2824,6 +2888,38 @@ X_S_BIDIR_SPIRE_BW10_P57:
         mtu: 6039
       ground_override:
         radionet-m: 6039
+X_S_BIDIR_SPIRE_BW10_P65:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - AU
+  - MN
+  - NZ
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx+Rx 19.2W
+      per_second: 19.2
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 65
+        mtu: 7172
+      ground_override:
+        radionet-m: 7172
 X_TXO_KSAT_BW10_P5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2899,6 +2995,52 @@ X_TXO_SPIRE_BW10_P13:
         mtu: 3204
       ground_override:
         radionet-m: 3204
+X_TXO_SPIRE_BW10_P17:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 18.89W
+      per_second: 18.89
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 17
+        mtu: 4014
+      ground_override:
+        radionet-m: 4014
 X_TXO_SPIRE_BW10_P25:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2945,6 +3087,52 @@ X_TXO_SPIRE_BW10_P25:
         mtu: 5368
       ground_override:
         radionet-m: 5368
+X_TXO_SPIRE_BW10_P33:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 18.89W
+      per_second: 18.89
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 33
+        mtu: 6444
+      ground_override:
+        radionet-m: 6444
 X_TXO_SPIRE_BW10_P37:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -3070,3 +3258,49 @@ X_TXO_SPIRE_BW10_P57:
         mtu: 6039
       ground_override:
         radionet-m: 6039
+X_TXO_SPIRE_BW10_P65:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 18.89W
+      per_second: 18.89
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: TX_XBAND_DVB_IP
+      use_radionet: true
+      protocol: DVBS2X
+      bandaid_override:
+        fec: 255
+        fec_k: 223
+        pls: 65
+        mtu: 7172
+      ground_override:
+        radionet-m: 7172

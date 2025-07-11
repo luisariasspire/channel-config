@@ -140,7 +140,9 @@ gs_id, collect_set(spire_id) as satellites, pls, round(elevation) as min_elevati
 from ripley_dev.default.optimal_channel_properties
 -- CHANGE PER-GS
 where (
-    (gs_id = "awags" and band = 'X' and pls in (13, 25, 37, 57) and bw_mhz = 10)
+    (gs_id = "ubngs" and band = 'X' and pls in (13, 33, 57, 61) and bw_mhz = 10)
+    OR
+    (gs_id = "pergs" and band = 'X' and pls in (17, 33, 57, 65) and bw_mhz = 10)
 )
 group by gs_id, pls, round(elevation), bw_mhz, band
 )
@@ -218,9 +220,15 @@ for row in new_channels:
                 sat.asset_id not in d["satellites"] for d in satellite_min_elevations
             )
         ]
-        satellite_min_elevations.append(
-            {"min_elevation_deg": 90, "satellites": disabled_sats}
-        )
+
+        for entry in satellite_min_elevations:
+            if entry["min_elevation_deg"] == 90.0:
+                entry["satellites"].extend(disabled_sats)
+                break
+        else:
+            satellite_min_elevations.append(
+                {"min_elevation_deg": 90.0, "satellites": disabled_sats}
+            )
 
         predicate = (
             f"directionality == '{directionality.name}' and "
@@ -237,7 +245,7 @@ for row in new_channels:
                 # Make sure we don't create a channel for disabled sats
                 # They're disabled to ensure we don't communicate with this groundstation
                 # if the sat gets the channel by some other means in the future.
-                if d["min_elevation_deg"] != 90
+                if d["min_elevation_deg"] != 90.0
             )
             + ","
             + gs_id

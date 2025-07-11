@@ -85,3 +85,34 @@ def check_link_profile_number_and_elevation_in_groundstation_channels(
     channel_config: Dict[str, Any],
 ) -> Union[str, bool]:
     return check_link_profile_number_and_elevation(class_annos, channel_config)
+
+
+@validation_rule(
+    scope=ValidationRuleScope.GROUNDSTATION_CHANNEL,
+    description="Check link profile elevation overrides are unique",
+    mode=ValidationRuleMode.ENFORCE,
+)  # type: ignore
+def check_link_profile_elevation_overrides_unique(
+    input: ValidationRuleInput,
+    gs_id: str,
+    channel_id: str,
+    class_annos: Dict[str, Any],
+    channel_config: Dict[str, Any],
+) -> Union[str, bool]:
+    link_profiles = channel_config["link_profile"]
+
+    if "satellite_min_elevations" not in link_profiles[0]:
+        return True
+
+    overrides = [
+        x["min_elevation_deg"]
+        for lp in link_profiles
+        for x in lp["satellite_min_elevations"]
+    ]
+
+    duplicates = [x for x in set(overrides) if overrides.count(x) > 1]
+
+    if duplicates:
+        return f"Elevation(s) {duplicates} were mentioned multiple times in the link profile"
+
+    return True

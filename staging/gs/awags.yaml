@@ -745,8 +745,6 @@ X_S_BIDIR_SPIRE_BW10_P13:
       - FM127
       - FM192
       - FM195
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     default_min_elevation_deg: 10.0
   window_parameters:
@@ -879,8 +877,6 @@ X_S_BIDIR_SPIRE_BW10_P25:
       - FM127
       - FM192
       - FM195
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     default_min_elevation_deg: 14.0
   window_parameters:
@@ -1019,8 +1015,6 @@ X_S_BIDIR_SPIRE_BW10_P37:
       - FM127
       - FM192
       - FM195
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     default_min_elevation_deg: 19.0
   window_parameters:
@@ -1165,8 +1159,6 @@ X_S_BIDIR_SPIRE_BW10_P57:
       - FM127
       - FM192
       - FM195
-    - min_elevation_deg: 90
-      satellites:
       - FM185
     default_min_elevation_deg: 27.0
   window_parameters:
