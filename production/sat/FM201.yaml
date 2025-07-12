@@ -2502,7 +2502,7 @@ U_U_BIDIR_SPIRE:
     reverse_channels:
     - radio_band: UHF
     link_state_cues:
-    - topics: [mission_download]
+    - topics: [mission_download, logs, tlm_low]
   contact_type: CONTACT_SPACE_GROUND_BIDIR
 X_S_BIDIR_SPIRE_BW10_P13:
   directionality: Bidirectional
