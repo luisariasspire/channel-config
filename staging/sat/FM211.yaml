@@ -13,7 +13,7 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_FOREST_2
+    budget_name: KSAT_GENERAL
     fixed_contact_duration:
     - 2min
     - 4min
@@ -1759,7 +1759,7 @@ X_TXO_KSAT_BW10_P5:
   enabled: false
   legal: true
   satellite_constraints:
-    budget_name: KSAT_FOREST_2
+    budget_name: KSAT_GENERAL
     fixed_contact_duration:
     - 2min
     - 4min
