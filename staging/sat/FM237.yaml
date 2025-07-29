@@ -404,6 +404,44 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
         mtu: 1632
       ground_override:
         radionet-m: 1632
+S_TXO_SPIRE_BW1_P43_F2022_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 43
+        mtu: 1767
+      ground_override:
+        radionet-m: 1767
 S_TXO_SPIRE_BW1_P43_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -598,6 +636,45 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
         mtu: 1632
       ground_override:
         radionet-m: 1632
+S_TXO_SPIRE_BW1_P91_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+        pls: 91
+        mtu: 1767
+      ground_override:
+        radionet-m: 1767
 S_TXO_SPIRE_BW5_P11_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -761,6 +838,47 @@ S_TXO_SPIRE_BW5_P27_F2022_5:
         tx_sample_rate_hz: 3703000
       ground_override:
         radionet-m: 1317
+        rf_bandwidth: 5000000
+S_TXO_SPIRE_BW5_P43_F2022_5:
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - ES
+  - FK
+  - GB
+  - GR
+  - IE
+  - JP
+  - LK
+  - LV
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints: {}
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        pls: 43
+        mtu: 1767
+        tx_bandwidth_hz: 5000000
+        tx_sample_rate_hz: 3703000
+      ground_override:
+        radionet-m: 1767
         rf_bandwidth: 5000000
 S_TXO_SPIRE_BW5_P7_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1207,7 +1325,7 @@ X_S_BIDIR_SPIRE_BW10_P13:
   allowed_license_countries:
   - AU
   - MN
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -1232,7 +1350,7 @@ X_TXO_KSAT_BW10_P5:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
@@ -1264,7 +1382,7 @@ X_TXO_SPIRE_BW10_P5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
