@@ -1382,7 +1382,7 @@ X_TXO_SPIRE_BW10_P5:
   - SG
   - SH
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
