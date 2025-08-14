@@ -2954,7 +2954,7 @@ X_S_BIDIR_SPIRE_BW10_P13:
   - AU
   - MN
   - NZ
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     sun_constraint:
@@ -2992,7 +2992,7 @@ X_S_BIDIR_SPIRE_BW10_P25:
   - AU
   - MN
   - NZ
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     sun_constraint:
@@ -3030,7 +3030,7 @@ X_S_BIDIR_SPIRE_BW10_P37:
   - AU
   - MN
   - NZ
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     sun_constraint:
@@ -3068,7 +3068,7 @@ X_S_BIDIR_SPIRE_BW10_P5:
   - AU
   - MN
   - NZ
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     sun_constraint:
@@ -3093,7 +3093,7 @@ X_S_BIDIR_SPIRE_BW10_P57:
   - AU
   - MN
   - NZ
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     sun_constraint:
