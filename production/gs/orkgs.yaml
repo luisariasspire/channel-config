@@ -70,7 +70,7 @@ S_TXO_SPIRE_BW1_P11_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -175,7 +175,7 @@ S_TXO_SPIRE_BW1_P11_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -284,7 +284,7 @@ S_TXO_SPIRE_BW1_P15_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -389,7 +389,7 @@ S_TXO_SPIRE_BW1_P15_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -498,7 +498,7 @@ S_TXO_SPIRE_BW1_P23_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -605,7 +605,7 @@ S_TXO_SPIRE_BW1_P23_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -716,7 +716,7 @@ S_TXO_SPIRE_BW1_P31_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -821,7 +821,7 @@ S_TXO_SPIRE_BW1_P31_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -931,7 +931,7 @@ S_TXO_SPIRE_BW5_P11_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -1066,7 +1066,7 @@ S_TXO_SPIRE_BW5_P11_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -1205,7 +1205,7 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -1336,7 +1336,7 @@ S_TXO_SPIRE_BW5_P15_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -1471,7 +1471,7 @@ S_TXO_SPIRE_BW5_P19_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -1600,7 +1600,7 @@ S_TXO_SPIRE_BW5_P19_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -1733,7 +1733,7 @@ S_TXO_SPIRE_BW5_P7_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -1864,7 +1864,7 @@ S_TXO_SPIRE_BW5_P7_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -2076,7 +2076,7 @@ S_U_BIDIR_SPIRE_BW1_P11_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -2191,7 +2191,7 @@ S_U_BIDIR_SPIRE_BW1_P11_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -2310,7 +2310,7 @@ S_U_BIDIR_SPIRE_BW1_P15_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -2425,7 +2425,7 @@ S_U_BIDIR_SPIRE_BW1_P15_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -2544,7 +2544,7 @@ S_U_BIDIR_SPIRE_BW1_P23_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -2661,7 +2661,7 @@ S_U_BIDIR_SPIRE_BW1_P23_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -2782,7 +2782,7 @@ S_U_BIDIR_SPIRE_BW1_P31_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -2897,7 +2897,7 @@ S_U_BIDIR_SPIRE_BW1_P31_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -3017,7 +3017,7 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -3162,7 +3162,7 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -3311,7 +3311,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -3452,7 +3452,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -3597,7 +3597,7 @@ S_U_BIDIR_SPIRE_BW5_P19_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -3736,7 +3736,7 @@ S_U_BIDIR_SPIRE_BW5_P19_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -3879,7 +3879,7 @@ S_U_BIDIR_SPIRE_BW5_P7_F2022_5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -4020,7 +4020,7 @@ S_U_BIDIR_SPIRE_BW5_P7_F2022_5_HALFTRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
