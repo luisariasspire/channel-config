@@ -10,7 +10,7 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_FOREST_2
@@ -1768,7 +1768,7 @@ X_TXO_KSAT_BW10_P5:
   - NO
   - NZ
   - ZA
-  enabled: true
+  enabled: false
   legal: true
   satellite_constraints:
     budget_name: KSAT_FOREST_2
