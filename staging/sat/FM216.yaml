@@ -27,6 +27,15 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
       bandaid_override:
         tx_hardware_gain_db: -7
       use_radionet: true
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_LEG_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -59,6 +68,15 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
       use_radionet: true
       bandaid_override:
         tx_hardware_gain_db: -7
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
   contact_type: CONTACT_SPACE_GROUND_TXO
 S_TXO_SPIRE_BW1_LEG_F2200_5:
   directionality: SpaceToEarth
@@ -96,6 +114,15 @@ S_TXO_SPIRE_BW1_LEG_F2200_5:
         fec_k: 223
         fec: 255
         tx_carrier_frequency_hz: 2200500000
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P11_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -134,6 +161,15 @@ S_TXO_SPIRE_BW1_P11_F2022_5:
         mtu: 642
       ground_override:
         radionet-m: 642
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P15_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -172,6 +208,15 @@ S_TXO_SPIRE_BW1_P15_F2022_5:
         mtu: 777
       ground_override:
         radionet-m: 777
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P19_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -211,6 +256,15 @@ S_TXO_SPIRE_BW1_P19_F2200_5:
         mtu: 867
       ground_override:
         radionet-m: 867
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P23_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -249,6 +303,15 @@ S_TXO_SPIRE_BW1_P23_F2022_5:
         mtu: 1182
       ground_override:
         radionet-m: 1182
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P23_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -288,6 +351,15 @@ S_TXO_SPIRE_BW1_P23_F2200_5:
         mtu: 1182
       ground_override:
         radionet-m: 1182
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P35_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -326,6 +398,15 @@ S_TXO_SPIRE_BW1_P35_F2022_5:
         mtu: 1542
       ground_override:
         radionet-m: 1542
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P35_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -365,6 +446,15 @@ S_TXO_SPIRE_BW1_P35_F2200_5:
         mtu: 1542
       ground_override:
         radionet-m: 1542
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P39_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -403,6 +493,15 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
         mtu: 1632
       ground_override:
         radionet-m: 1632
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P39_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -442,6 +541,15 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
         mtu: 1632
       ground_override:
         radionet-m: 1632
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P43_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -481,6 +589,15 @@ S_TXO_SPIRE_BW1_P43_F2200_5:
         mtu: 1767
       ground_override:
         radionet-m: 1767
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P75_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -520,6 +637,15 @@ S_TXO_SPIRE_BW1_P75_F2200_5:
         mtu: 1182
       ground_override:
         radionet-m: 1182
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P79_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -558,6 +684,15 @@ S_TXO_SPIRE_BW1_P79_F2022_5:
         mtu: 1317
       ground_override:
         radionet-m: 1317
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P7_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -596,6 +731,15 @@ S_TXO_SPIRE_BW1_P7_F2022_5:
         mtu: 372
       ground_override:
         radionet-m: 372
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P83_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -635,6 +779,15 @@ S_TXO_SPIRE_BW1_P83_F2200_5:
         mtu: 1452
       ground_override:
         radionet-m: 1452
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW1_P87_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -674,6 +827,15 @@ S_TXO_SPIRE_BW1_P87_F2200_5:
         mtu: 1632
       ground_override:
         radionet-m: 1632
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW5_P11_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -715,6 +877,15 @@ S_TXO_SPIRE_BW5_P11_F2022_5:
       ground_override:
         radionet-m: 642
         rf_bandwidth: 5000000
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW5_P15_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -756,6 +927,15 @@ S_TXO_SPIRE_BW5_P15_F2022_5:
       ground_override:
         radionet-m: 777
         rf_bandwidth: 5000000
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW5_P19_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -797,6 +977,15 @@ S_TXO_SPIRE_BW5_P19_F2022_5:
       ground_override:
         radionet-m: 867
         rf_bandwidth: 5000000
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW5_P27_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -838,6 +1027,15 @@ S_TXO_SPIRE_BW5_P27_F2022_5:
       ground_override:
         radionet-m: 1317
         rf_bandwidth: 5000000
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW5_P31_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -879,6 +1077,15 @@ S_TXO_SPIRE_BW5_P31_F2022_5:
       ground_override:
         radionet-m: 1452
         rf_bandwidth: 5000000
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW5_P43_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -920,6 +1127,15 @@ S_TXO_SPIRE_BW5_P43_F2022_5:
       ground_override:
         radionet-m: 1767
         rf_bandwidth: 5000000
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_TXO_SPIRE_BW5_P7_F2022_5:
   contact_type: CONTACT_SPACE_GROUND_TXO
   directionality: SpaceToEarth
@@ -961,6 +1177,15 @@ S_TXO_SPIRE_BW5_P7_F2022_5:
       ground_override:
         radionet-m: 372
         rf_bandwidth: 5000000
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   directionality: Bidirectional
   allowed_license_countries:
@@ -1855,6 +2080,16 @@ X_TXO_KSAT_BW10_P5:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
   contact_overhead_time: 0s
+  window_parameters:
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 X_TXO_SPIRE_BW10_P13:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1895,6 +2130,15 @@ X_TXO_SPIRE_BW10_P13:
         mtu: 3204
       ground_override:
         radionet-m: 3204
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 X_TXO_SPIRE_BW10_P17:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1935,6 +2179,15 @@ X_TXO_SPIRE_BW10_P17:
         mtu: 4014
       ground_override:
         radionet-m: 4014
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 X_TXO_SPIRE_BW10_P25:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -1975,6 +2228,15 @@ X_TXO_SPIRE_BW10_P25:
         mtu: 5368
       ground_override:
         radionet-m: 5368
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 X_TXO_SPIRE_BW10_P33:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2015,6 +2277,15 @@ X_TXO_SPIRE_BW10_P33:
         mtu: 6444
       ground_override:
         radionet-m: 6444
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 X_TXO_SPIRE_BW10_P37:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2055,6 +2326,15 @@ X_TXO_SPIRE_BW10_P37:
         mtu: 6718
       ground_override:
         radionet-m: 6718
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 X_TXO_SPIRE_BW10_P5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2082,6 +2362,16 @@ X_TXO_SPIRE_BW10_P5:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
   contact_overhead_time: 0s
+  window_parameters:
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 X_TXO_SPIRE_BW10_P57:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2122,6 +2412,15 @@ X_TXO_SPIRE_BW10_P57:
         mtu: 6039
       ground_override:
         radionet-m: 6039
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 X_TXO_SPIRE_BW10_P61:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2162,6 +2461,15 @@ X_TXO_SPIRE_BW10_P61:
         mtu: 6718
       ground_override:
         radionet-m: 6718
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
 X_TXO_SPIRE_BW10_P65:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2202,3 +2510,12 @@ X_TXO_SPIRE_BW10_P65:
         mtu: 7172
       ground_override:
         radionet-m: 7172
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
