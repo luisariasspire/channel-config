@@ -1048,7 +1048,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
     deny_satellites:
     - FM154
     - FM161
-  contact_overhead_time: 210s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
@@ -1088,7 +1088,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5_HALFTRACK:
     deny_satellites:
     - FM154
     - FM161
-  contact_overhead_time: 210s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
