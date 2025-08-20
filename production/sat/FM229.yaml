@@ -10,7 +10,7 @@ S_TXO_KSAT_BW1_LEG_F2200_5_HALFTRACK:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
@@ -59,7 +59,6 @@ S_TXO_SPIRE_BW1_LEG_F2022_5_HALFTRACK:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_GENERAL
     fixed_contact_duration:
     - 2min
     - 4min
@@ -106,7 +105,6 @@ S_TXO_SPIRE_BW1_LEG_F2200_5_HALFTRACK:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_GENERAL
     fixed_contact_duration:
     - 2min
     - 4min
