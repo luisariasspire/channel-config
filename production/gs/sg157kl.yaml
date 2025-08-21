@@ -285,7 +285,7 @@ X_TXO_KSAT_BW10_P5:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     dollar_cost:
@@ -344,7 +344,7 @@ X_TXO_KSAT_BW20_P49_TRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     dollar_cost:
@@ -407,7 +407,7 @@ X_TXO_KSAT_BW20_P61_TRACK:
   - LU
   - SG
   - US
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints:
     dollar_cost:
