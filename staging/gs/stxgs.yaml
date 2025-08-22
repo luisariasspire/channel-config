@@ -920,7 +920,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
   - min_elevation_deg: 25
     downlink_rate_kbps: 280.0
     uplink_rate_kbps: 4.0
@@ -955,7 +955,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5_HALFTRACK:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
   - min_elevation_deg: 25
     downlink_rate_kbps: 280.0
     uplink_rate_kbps: 4.0
@@ -995,7 +995,7 @@ S_U_BIDIR_SPIRE_BW1_P15_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 504.0
     uplink_rate_kbps: 4.0
@@ -1106,7 +1106,7 @@ S_U_BIDIR_SPIRE_BW1_P15_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 504.0
     uplink_rate_kbps: 4.0
@@ -1221,7 +1221,7 @@ S_U_BIDIR_SPIRE_BW1_P23_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 765.0
     uplink_rate_kbps: 4.0
@@ -1340,7 +1340,7 @@ S_U_BIDIR_SPIRE_BW1_P23_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 765.0
     uplink_rate_kbps: 4.0
@@ -1463,7 +1463,7 @@ S_U_BIDIR_SPIRE_BW1_P35_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 999.0
     uplink_rate_kbps: 4.0
@@ -1582,7 +1582,7 @@ S_U_BIDIR_SPIRE_BW1_P35_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 999.0
     uplink_rate_kbps: 4.0
@@ -1705,7 +1705,7 @@ S_U_BIDIR_SPIRE_BW1_P7_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 234.0
     uplink_rate_kbps: 4.0
@@ -1812,7 +1812,7 @@ S_U_BIDIR_SPIRE_BW1_P7_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 234.0
     uplink_rate_kbps: 4.0

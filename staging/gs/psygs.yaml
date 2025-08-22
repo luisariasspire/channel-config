@@ -337,7 +337,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
   - min_elevation_deg: 27
     downlink_rate_kbps: 446.46
     uplink_rate_kbps: 4.0
@@ -374,7 +374,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5_HALFTRACK:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
   - min_elevation_deg: 27
     downlink_rate_kbps: 446.46
     uplink_rate_kbps: 4.0
@@ -415,7 +415,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
   - min_elevation_deg: 27
     downlink_rate_kbps: 984.91
     uplink_rate_kbps: 4.0
@@ -453,7 +453,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5_HALFTRACK:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 4m
+    min_duration: 2m
   - min_elevation_deg: 27
     downlink_rate_kbps: 984.91
     uplink_rate_kbps: 4.0
@@ -496,7 +496,7 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 4m
+    min_duration: 2m
   - min_elevation_deg: 25
       # spec * 0.75
     downlink_rate_kbps: 1888.13
@@ -552,7 +552,7 @@ S_U_BIDIR_SPIRE_BW5_P11_F2022_5_HALFTRACK:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 4m
+    min_duration: 2m
   - min_elevation_deg: 25
       # spec * 0.75
     downlink_rate_kbps: 1888.13
@@ -611,7 +611,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 4m
+    min_duration: 2m
   - min_elevation_deg: 30
       # spec * 0.75
     downlink_rate_kbps: 2169.54
@@ -667,7 +667,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5_HALFTRACK:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 4m
+    min_duration: 2m
   - min_elevation_deg: 30
       # spec * 0.75
     downlink_rate_kbps: 2169.54
