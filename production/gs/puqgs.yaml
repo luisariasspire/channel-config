@@ -339,13 +339,11 @@ S_TXO_SPIRE_BW1_P39_F2200_5:
     - min_elevation_deg: 27.0
       satellites:
       - FM126
+      - FM225
     - min_elevation_deg: 24.0
       satellites:
       - FM127
       - FM233
-    - min_elevation_deg: 10.0
-      satellites:
-      - FM225
     - min_elevation_deg: 11.0
       satellites:
       - FM208
@@ -449,13 +447,11 @@ S_TXO_SPIRE_BW1_P39_F2200_5_HALFTRACK:
     - min_elevation_deg: 27.0
       satellites:
       - FM126
+      - FM225
     - min_elevation_deg: 24.0
       satellites:
       - FM127
       - FM233
-    - min_elevation_deg: 10.0
-      satellites:
-      - FM225
     - min_elevation_deg: 11.0
       satellites:
       - FM208
@@ -572,9 +568,6 @@ S_TXO_SPIRE_BW1_P75_F2200_5:
       - FM213
       - FM218
       - FM215
-    - min_elevation_deg: 10.0
-      satellites:
-      - FM225
     - min_elevation_deg: 26.0
       satellites:
       - FM196
@@ -582,6 +575,7 @@ S_TXO_SPIRE_BW1_P75_F2200_5:
       satellites:
       - FM212
       - FM211
+      - FM225
     - min_elevation_deg: 28.0
       satellites:
       - FM199
@@ -692,9 +686,6 @@ S_TXO_SPIRE_BW1_P75_F2200_5_HALFTRACK:
       - FM213
       - FM218
       - FM215
-    - min_elevation_deg: 10.0
-      satellites:
-      - FM225
     - min_elevation_deg: 26.0
       satellites:
       - FM196
@@ -702,6 +693,7 @@ S_TXO_SPIRE_BW1_P75_F2200_5_HALFTRACK:
       satellites:
       - FM212
       - FM211
+      - FM225
     - min_elevation_deg: 28.0
       satellites:
       - FM199
