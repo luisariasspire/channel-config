@@ -10,7 +10,7 @@ S_TXO_KSAT_BW1_LEG_F2200_5:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
@@ -1325,7 +1325,7 @@ X_S_BIDIR_SPIRE_BW10_P13:
   allowed_license_countries:
   - AU
   - MN
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     separation:
@@ -1350,7 +1350,7 @@ X_TXO_KSAT_BW10_P5:
   - NO
   - NZ
   - ZA
-  enabled: false
+  enabled: true
   legal: true
   satellite_constraints:
     budget_name: KSAT_GENERAL
