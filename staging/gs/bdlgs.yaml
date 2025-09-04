@@ -130,12 +130,12 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   enabled: true
   legal: true
   ground_station_constraints: {}
-  contact_overhead_time: 2110s0s
+  contact_overhead_time: 10s
   link_profile:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
   - min_elevation_deg: 25
     downlink_rate_kbps: 446.46
     uplink_rate_kbps: 4.0
@@ -170,7 +170,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5_HALFTRACK:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
   - min_elevation_deg: 25
     downlink_rate_kbps: 446.46
     uplink_rate_kbps: 4.0
@@ -209,7 +209,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
   - min_elevation_deg: 25
     downlink_rate_kbps: 984.91
     uplink_rate_kbps: 4.0
@@ -245,7 +245,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5_HALFTRACK:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
   - min_elevation_deg: 25
     downlink_rate_kbps: 984.91
     uplink_rate_kbps: 4.0

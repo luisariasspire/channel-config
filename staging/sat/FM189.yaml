@@ -480,7 +480,7 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
       flat: 1007.5
       # DEXTER Tx 9.001437125748502W
       per_second: 9.001437125748502
-  contact_overhead_time: 10s
+  contact_overhead_time: 0s
   contact_type: CONTACT_SPACE_GROUND_TXO
   window_parameters:
     forward_channels:
@@ -491,10 +491,6 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
       bandaid_override:
         fec_k: 223
         fec: 255
-        pls: 39
-        mtu: 1632
-      ground_override:
-        radionet-m: 1632
 S_TXO_SPIRE_BW1_P39_F2200_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -1467,7 +1463,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
       flat: 1085.0
       # UHF Tx 3.0W, DEXTER Tx 11.22W = 14.22
       per_second: 14.22
-  contact_overhead_time: 10s
+  contact_overhead_time: 0s
   contact_type: CONTACT_SPACE_GROUND_BIDIR
   window_parameters:
     forward_channels:
@@ -1478,11 +1474,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
       bandaid_override:
         fec_k: 223
         fec: 255
-        pls: 39
-        mtu: 1632
       use_radionet: true
-      ground_override:
-        radionet-m: 1632
     reverse_channels:
     - radio_band: UHF
 S_U_BIDIR_SPIRE_BW1_P79_F2022_5:

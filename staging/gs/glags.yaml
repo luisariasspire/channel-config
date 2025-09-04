@@ -283,10 +283,8 @@ S_TXO_SPIRE_BW1_P43_F2022_5:
     satellite_min_elevations:
     - min_elevation_deg: 28.0
       satellites:
-      - FM191
-    - min_elevation_deg: 29.0
-      satellites:
       - FM126
+      - FM191
     - min_elevation_deg: 34.0
       satellites:
       - FM174
@@ -386,10 +384,8 @@ S_TXO_SPIRE_BW1_P43_F2022_5_HALFTRACK:
     satellite_min_elevations:
     - min_elevation_deg: 28.0
       satellites:
-      - FM191
-    - min_elevation_deg: 29.0
-      satellites:
       - FM126
+      - FM191
     - min_elevation_deg: 34.0
       satellites:
       - FM174
@@ -709,6 +705,9 @@ S_TXO_SPIRE_BW1_P87_F2022_5:
       satellites:
       - FM202
       - FM236
+    - min_elevation_deg: 36.0
+      satellites:
+      - FM235
     - min_elevation_deg: 47.0
       satellites:
       - FM173
@@ -725,7 +724,6 @@ S_TXO_SPIRE_BW1_P87_F2022_5:
       satellites:
       - FM196
       - FM208
-      - FM235
       - FM233
     - min_elevation_deg: 33.0
       satellites:
@@ -810,6 +808,9 @@ S_TXO_SPIRE_BW1_P87_F2022_5_HALFTRACK:
       satellites:
       - FM202
       - FM236
+    - min_elevation_deg: 36.0
+      satellites:
+      - FM235
     - min_elevation_deg: 47.0
       satellites:
       - FM173
@@ -826,7 +827,6 @@ S_TXO_SPIRE_BW1_P87_F2022_5_HALFTRACK:
       satellites:
       - FM196
       - FM208
-      - FM235
       - FM233
     - min_elevation_deg: 33.0
       satellites:
@@ -1876,7 +1876,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
   - min_elevation_deg: 25
     downlink_rate_kbps: 230.0
     uplink_rate_kbps: 4.0
@@ -1915,7 +1915,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5_HALFTRACK:
   - min_elevation_deg: 10
     downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
   - min_elevation_deg: 25
     downlink_rate_kbps: 230.0
     uplink_rate_kbps: 4.0
@@ -1957,7 +1957,7 @@ S_U_BIDIR_SPIRE_BW1_P35_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 999.0
     uplink_rate_kbps: 4.0
@@ -2068,7 +2068,7 @@ S_U_BIDIR_SPIRE_BW1_P35_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 999.0
     uplink_rate_kbps: 4.0
@@ -2183,7 +2183,7 @@ S_U_BIDIR_SPIRE_BW1_P43_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 1134.0
     uplink_rate_kbps: 4.0
@@ -2191,10 +2191,8 @@ S_U_BIDIR_SPIRE_BW1_P43_F2022_5:
     satellite_min_elevations:
     - min_elevation_deg: 28.0
       satellites:
-      - FM191
-    - min_elevation_deg: 29.0
-      satellites:
       - FM126
+      - FM191
     - min_elevation_deg: 34.0
       satellites:
       - FM174
@@ -2298,7 +2296,7 @@ S_U_BIDIR_SPIRE_BW1_P43_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 1134.0
     uplink_rate_kbps: 4.0
@@ -2306,10 +2304,8 @@ S_U_BIDIR_SPIRE_BW1_P43_F2022_5_HALFTRACK:
     satellite_min_elevations:
     - min_elevation_deg: 28.0
       satellites:
-      - FM191
-    - min_elevation_deg: 29.0
-      satellites:
       - FM126
+      - FM191
     - min_elevation_deg: 34.0
       satellites:
       - FM174
@@ -2417,7 +2413,7 @@ S_U_BIDIR_SPIRE_BW1_P75_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 1530.0
     uplink_rate_kbps: 4.0
@@ -2534,7 +2530,7 @@ S_U_BIDIR_SPIRE_BW1_P75_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 1530.0
     uplink_rate_kbps: 4.0
@@ -2655,7 +2651,7 @@ S_U_BIDIR_SPIRE_BW1_P87_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 2106.0
     uplink_rate_kbps: 4.0
@@ -2665,6 +2661,9 @@ S_U_BIDIR_SPIRE_BW1_P87_F2022_5:
       satellites:
       - FM202
       - FM236
+    - min_elevation_deg: 36.0
+      satellites:
+      - FM235
     - min_elevation_deg: 47.0
       satellites:
       - FM173
@@ -2681,7 +2680,6 @@ S_U_BIDIR_SPIRE_BW1_P87_F2022_5:
       satellites:
       - FM196
       - FM208
-      - FM235
       - FM233
     - min_elevation_deg: 33.0
       satellites:
@@ -2768,7 +2766,7 @@ S_U_BIDIR_SPIRE_BW1_P87_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 4.0
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 2106.0
     uplink_rate_kbps: 4.0
@@ -2778,6 +2776,9 @@ S_U_BIDIR_SPIRE_BW1_P87_F2022_5_HALFTRACK:
       satellites:
       - FM202
       - FM236
+    - min_elevation_deg: 36.0
+      satellites:
+      - FM235
     - min_elevation_deg: 47.0
       satellites:
       - FM173
@@ -2794,7 +2795,6 @@ S_U_BIDIR_SPIRE_BW1_P87_F2022_5_HALFTRACK:
       satellites:
       - FM196
       - FM208
-      - FM235
       - FM233
     - min_elevation_deg: 33.0
       satellites:
@@ -2883,7 +2883,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 2511.0
     uplink_rate_kbps: 5.6
@@ -3011,7 +3011,7 @@ S_U_BIDIR_SPIRE_BW5_P15_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 2511.0
     uplink_rate_kbps: 5.6
@@ -3143,7 +3143,7 @@ S_U_BIDIR_SPIRE_BW5_P31_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 4689.0
     uplink_rate_kbps: 5.6
@@ -3273,7 +3273,7 @@ S_U_BIDIR_SPIRE_BW5_P31_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 4689.0
     uplink_rate_kbps: 5.6
@@ -3407,7 +3407,7 @@ S_U_BIDIR_SPIRE_BW5_P75_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 7641.0
     uplink_rate_kbps: 5.6
@@ -3531,7 +3531,7 @@ S_U_BIDIR_SPIRE_BW5_P75_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 7641.0
     uplink_rate_kbps: 5.6
@@ -3659,7 +3659,7 @@ S_U_BIDIR_SPIRE_BW5_P7_F2022_5:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 1206.0
     uplink_rate_kbps: 5.6
@@ -3787,7 +3787,7 @@ S_U_BIDIR_SPIRE_BW5_P7_F2022_5_HALFTRACK:
   link_profile:
   - downlink_rate_kbps: 5.6
     uplink_rate_kbps: 5.6
-    min_duration: 2m
+    min_duration: 4m
     default_min_elevation_deg: 10
   - downlink_rate_kbps: 1206.0
     uplink_rate_kbps: 5.6
