@@ -2092,7 +2092,6 @@ X_S_BIDIR_SPIRE_BW56_P29_TRACK:
   allowed_license_countries:
   - AU
   - MN
-  - NZ
   enabled: true
   legal: true
   satellite_constraints:

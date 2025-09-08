@@ -1999,6 +1999,25 @@ X_S_BIDIR_SPIRE_BW10_P57:
       protocol: DVBS2X
       ground_override:
         radionet-m: 6039
+X_S_BIDIR_SPIRE_BW56_P29_TRACK:
+  directionality: Bidirectional
+  contact_type: CONTACT_SPACE_GROUND_BIDIR
+  allowed_license_countries:
+  - AU
+  - MN
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 0s
+  window_parameters:
+    forward_channels:
+    - radio_band: XBAND
+      bandaid_mode: RX_SBAND_TX_XBAND
+      bandaid_override:
+        oort_dest_host: localhost
 X_TXO_KSAT_BW10_P5:
   directionality: SpaceToEarth
   contact_type: CONTACT_SPACE_GROUND_TXO
@@ -2023,6 +2042,42 @@ X_TXO_KSAT_BW10_P5:
     - type: shared_constraint_set
       name: spire_nasa_xband_coordination
   contact_overhead_time: 0s
+  window_parameters:
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
+X_TXO_KSAT_BW56_P29_TRACK:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - CA
+  - CL
+  - ES
+  - GR
+  - NO
+  - NZ
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    budget_name: KSAT_FOREST_2
+    fixed_contact_duration:
+    - 2min
+    - 4min
+    - 6min
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 0s
+  additional_provider_config:
+    ksat_mission_config: SPIRE_Q_56MHZ
   window_parameters:
     link_state_cues:
     - topics: [otc_prio_0]
@@ -2257,6 +2312,43 @@ X_TXO_SPIRE_BW10_P57:
         mtu: 6039
       ground_override:
         radionet-m: 6039
+    link_state_cues:
+    - topics: [otc_prio_0]
+      offset: 0
+    - topics: ['*']
+      offset: 30
+    - topics: [otc_prio_0]
+      offset: 60
+    - topics: ['*']
+      offset: 90
+X_TXO_SPIRE_BW56_P29_TRACK:
+  directionality: SpaceToEarth
+  contact_type: CONTACT_SPACE_GROUND_TXO
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - ZA
+  enabled: true
+  legal: true
+  satellite_constraints:
+    separation:
+    - type: shared_constraint_set
+      name: spire_nasa_xband_coordination
+  contact_overhead_time: 0s
+  window_parameters:
     link_state_cues:
     - topics: [otc_prio_0]
       offset: 0
