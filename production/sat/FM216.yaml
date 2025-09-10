@@ -2111,7 +2111,7 @@ X_TXO_KSAT_BW56_P29_TRACK:
   enabled: true
   legal: true
   satellite_constraints:
-    budget_name: KSAT_FOREST_2
+    budget_name: KSAT_OTC_1GB
     fixed_contact_duration:
     - 2min
     - 4min
