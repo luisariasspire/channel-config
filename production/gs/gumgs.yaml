@@ -3,7 +3,7 @@ S_TXO_SPIRE_BW1_LEG_F2022_5:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -31,7 +31,7 @@ S_TXO_SPIRE_BW1_LEG_F2022_5_HALFTRACK:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 0s
@@ -64,7 +64,7 @@ S_TXO_SPIRE_BW1_P39_F2022_5:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -93,7 +93,7 @@ S_TXO_SPIRE_BW1_P39_F2022_5_HALFTRACK:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -127,7 +127,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -162,7 +162,7 @@ S_U_BIDIR_SPIRE_BW1_LEG_F2022_5_HALFTRACK:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -201,7 +201,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
@@ -237,7 +237,7 @@ S_U_BIDIR_SPIRE_BW1_P39_F2022_5_HALFTRACK:
   allowed_license_countries:
   - US
   - LU
-  enabled: false
+  enabled: true
   legal: true
   ground_station_constraints: {}
   contact_overhead_time: 10s
