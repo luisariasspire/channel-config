@@ -458,6 +458,8 @@ classification_annotations: &classification_annotations
       type: boolean
     ground_space_sband:
       type: boolean
+    ground_space_sband_encoding:
+      enum: [LEGACY, CCSDS_TC]
     space_ground_sband_mid_freq_mhz:
       type: number
     space_ground_sband_bandwidth_mhz:

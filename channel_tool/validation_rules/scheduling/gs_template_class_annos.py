@@ -155,3 +155,25 @@ def directionality_must_match_radio_band_booleans(
     if class_anno_directionality != expected_directionality:
         return f"directionality is {class_anno_directionality} but radio band booleans imply {expected_directionality}"
     return True
+
+
+@validation_rule(
+    scope=ValidationRuleScope.GROUNDSTATION_TEMPLATE_CHANNEL,
+    description="Check S-band annotations present on ground space S-band contacts",
+    mode=ValidationRuleMode.ENFORCE,
+)  # type: ignore
+def s_band_annotations_on_ground_space_sband_contacts(
+    input: ValidationRuleInput,
+    channel_id: str,
+    class_annos: Dict[str, Any],
+    channel_config: Dict[str, Any],
+) -> Union[str, bool]:
+    if not class_annos.get("ground_space_sband", False):
+        return True  # not a ground -> space s-band contact
+
+    missing_fields = {"ground_space_sband_encoding"} - set(class_annos.keys())
+
+    if missing_fields:
+        return f"Missing required fields on ground -> space s-band contact: {missing_fields}"
+
+    return True

@@ -962,6 +962,7 @@ X_S_BIDIR_SPIRE_BW10_P13:
     space_ground_uhf: false
     ground_space_uhf: false
     ground_space_sband: true
+    ground_space_sband_encoding: LEGACY
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: false
@@ -1033,6 +1034,7 @@ X_S_BIDIR_SPIRE_BW10_P5:
     space_ground_uhf: false
     ground_space_uhf: false
     ground_space_sband: true
+    ground_space_sband_encoding: LEGACY
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: false
@@ -1106,6 +1108,7 @@ X_S_BIDIR_SPIRE_BW20_P61_TRACK:
     space_ground_uhf: false
     ground_space_uhf: false
     ground_space_sband: true
+    ground_space_sband_encoding: LEGACY
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: false
@@ -1180,6 +1183,7 @@ X_S_BIDIR_SPIRE_BW56_P29_TRACK:
     space_ground_uhf: false
     ground_space_uhf: false
     ground_space_sband: true
+    ground_space_sband_encoding: LEGACY
     can_sync_schedule: false
     can_run_rpcs: false
     space_ground_sband: false
