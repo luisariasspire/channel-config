@@ -1,4 +1,4 @@
-name: "Manual - Sync dashboards"
+name: "Manual - Run optimize populate per pair pls/elevations"
 
 concurrency: 1
 on:
@@ -49,10 +49,5 @@ jobs:
           fi
         working-directory: bundles/Project Ripley/dashboards
         env:
-          DATABRICKS_HOST:  "https://dbc-24e0a945-16d8.cloud.databricks.us"
-          DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
-          DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
-          DATABRICKS_BUNDLE_ENV: dev
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
