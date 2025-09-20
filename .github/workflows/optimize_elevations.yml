@@ -16,7 +16,7 @@ on:
         description: 'Band to run pairs'
         required: false
         default: 'both'
-        type: string
+        type: choice
         options:
           - X
           - S
