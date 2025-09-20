@@ -539,21 +539,21 @@ def run_channels(new_channels):
         mid_freq = (
             2200.5
             if any(
-                c["classification_annotations"].get("space_ground_sband", None) if "classification_annotations" in c else None
-                and c["classification_annotations"].get(
+                c["classification_annotations"].get(
+                    "space_ground_sband", None
+                ) and c["classification_annotations"].get(
                     "space_ground_sband_mid_freq_mhz", None
                 )
                 == 2200.5
-                for c in configs.values()
+                for c in configs.values() if "classification_annotations" in c
             )
             else 2022.5
         )
         supports_bidir = any(
-            "classification_annotations" in c
-            and c["classification_annotations"].get("directionality", None) == "BIDIR"
+            c["classification_annotations"].get("directionality", None) == "BIDIR"
             and c["enabled"]
             and c["legal"]
-            for c in configs.values()
+            for c in configs.values() if "classification_annotations" in c
         )
 
         supported_directionality = [Directionality.TXO]
