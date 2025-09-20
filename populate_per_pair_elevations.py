@@ -21,7 +21,7 @@ from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
 from dataclasses import dataclass
 from enum import Enum
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 
 import numpy as np
@@ -69,7 +69,7 @@ class ChannelConfig:
     category: str
 
 
-def fetch_data(query: str) -> List[namedtuple]:
+def fetch_data(query: str) -> Optional[List[namedtuple]]:
     """Fetch data from Databricks using SQL query.
 
     Args:
@@ -329,14 +329,14 @@ def get_optimized_channel(gs_id:str=None, band:str="S"):
     return new_channels
 
 
-def get_optimized_channels(gs_id:str=None, band: str = "S"):
+def get_optimized_channels(gs:list[str]=(), band: str = "S"):
     """Get optimized channel configurations for one or all ground stations.
 
     Args:
         gs_id: Optional ground station ID. If None, optimizes all ground stations
         band: Frequency band (defaults to "S")
     """
-    if gs_id is None:
+    if len(gs) == 0:
         gs = fetch_data("select gs_id, sband_enabled, sband_only "
                         "from tk_catalog.public.groundstations "
                         "where `group` = 'thewild'")
@@ -344,8 +344,6 @@ def get_optimized_channels(gs_id:str=None, band: str = "S"):
             gs = [g.gs_id for g in gs if g.sband_enabled]
         else:
             gs = [g.gs_id for g in gs if not g.sband_only]
-    else:
-        gs = [gs_id]
 
     print("Getting channels for ground stations: " + str(gs))
 
@@ -355,7 +353,6 @@ def get_optimized_channels(gs_id:str=None, band: str = "S"):
         if optimized_channel is not None:
             optimized_channels.append((gs_id, optimized_channel))
     return optimized_channels
-
 
 
 def execute_command(command, command_str):
@@ -492,22 +489,14 @@ def get_channel_link_profile(gs_id, predicate):
     return link_profiles
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    "-e", "--environment", choices=["staging", "production"], required=True
-)
-args = parser.parse_args()
-
-if not DATABRICKS_ACCESS_TOKEN:
-    raise Exception("DATABRICKS_TOKEN environment variable is missing")
-
-active_sats = fetch_data("""
+def get_active_assets():
+    return fetch_data("""
      SELECT
          spire_id AS asset_id
      FROM tk_catalog.public.satellites
      WHERE spire_id LIKE 'FM%'
        AND support_stage IN ('production', 'checkout_commissioning')
-""")
+     """)
 
 
 def run_channels(new_channels):
@@ -536,16 +525,13 @@ def run_channels(new_channels):
         configs = load_config_file(gs_id)
         if configs is None:
             continue
+        config_values = [c for c in list(configs.values()) if isinstance(c, dict) and "classification_annotations" in c]
         mid_freq = (
             2200.5
             if any(
-                c["classification_annotations"].get(
-                    "space_ground_sband", None
-                ) and c["classification_annotations"].get(
-                    "space_ground_sband_mid_freq_mhz", None
-                )
-                == 2200.5
-                for c in configs.values() if "classification_annotations" in c
+                c["classification_annotations"].get("space_ground_sband", None)
+                and c["classification_annotations"].get("space_ground_sband_mid_freq_mhz", None) == 2200.5
+                for c in config_values
             )
             else 2022.5
         )
@@ -553,7 +539,7 @@ def run_channels(new_channels):
             c["classification_annotations"].get("directionality", None) == "BIDIR"
             and c["enabled"]
             and c["legal"]
-            for c in configs.values() if "classification_annotations" in c
+            for c in config_values
         )
 
         supported_directionality = [Directionality.TXO]
@@ -576,7 +562,7 @@ def run_channels(new_channels):
             # degree bucket to disable them.
             disabled_sats = [
                 sat.asset_id
-                for sat in active_sats
+                for sat in get_active_assets()
                 if all(
                     sat.asset_id not in d["satellites"] for d in satellite_min_elevations
                 )
@@ -723,9 +709,29 @@ def run_channels(new_channels):
     channel_tool(["normalize", args.environment, "all"])
     channel_tool(["format"])
 
-bands = ["S", "X"]
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "-e", "--environment", choices=["staging", "production"], required=True
+)
+parser.add_argument(
+    "-b", "--bands", choices=["X", "S", "both"], required=False, default="both"
+)
+parser.add_argument(
+    "-g", "--gs_ids", required=False, default=""
+)
+args = parser.parse_args()
+
+
+if not DATABRICKS_ACCESS_TOKEN:
+    raise Exception("DATABRICKS_TOKEN environment variable is missing")
+
+
+bands = ["S", "X"] if args.bands.lower() == "both" else [args.bands]
 for band in bands:
     print(f"Running for band {band}")
-    for (gs_id, new_channels) in get_optimized_channels(gs_id=None, band=band):
+    gs_ids = [g for g in args.gs_ids.split(",") if g != '']
+    for (gs_id, new_channels) in get_optimized_channels(gs=gs_ids, band=band):
         print(f"Optimizing {gs_id}")
         run_channels(new_channels)

@@ -2,7 +2,31 @@ name: "Manual - Run optimize populate per pair pls/elevations"
 
 concurrency: 1
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment bundle'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+      bands:
+        description: 'Band to run pairs'
+        required: false
+        default: 'both'
+        type: string
+        options:
+          - X
+          - S
+          - both
+      gs_ids:
+        description: 'Comma separated ground station IDs'
+        required: false
+        default: ''
+        type: string
+
 
 jobs:
   deploy:
@@ -36,8 +60,12 @@ jobs:
           git add yaml
           
           # Run optimize populate tool
-          python populate_per_pair_elevations.py
-                  
+          python populate_per_pair_elevations.py \
+            -e ${{ github.event.inputs.environment }} \
+            -g ${{ github.event.inputs.gs_ids }} \
+            -b ${{ github.event.inputs.bands }}
+          
+          
           # Check if there are any changes to commit
           if ! git diff --staged --quiet; then
             echo "Changes detected, creating commit..."
