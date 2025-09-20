@@ -539,8 +539,7 @@ def run_channels(new_channels):
         mid_freq = (
             2200.5
             if any(
-                "classification_annotations" in c and
-                c["classification_annotations"].get("space_ground_sband", None)
+                c["classification_annotations"].get("space_ground_sband", None) if "classification_annotations" in c else None
                 and c["classification_annotations"].get(
                     "space_ground_sband_mid_freq_mhz", None
                 )
