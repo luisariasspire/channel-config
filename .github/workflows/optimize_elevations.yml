@@ -22,7 +22,7 @@ on:
           - S
           - both
       gs_ids:
-        description: 'Comma separated ground station IDs'
+        description: 'Comma separated ground station IDs (empty=thewild)'
         required: false
         default: ''
         type: string
