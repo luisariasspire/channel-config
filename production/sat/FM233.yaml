@@ -290,6 +290,51 @@ S_TXO_SPIRE_BW1_P23_F2022_5:
         mtu: 1182
       ground_override:
         radionet-m: 1182
+S_TXO_SPIRE_BW1_P23_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 7.7W
+      per_second: 7.7
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+        pls: 23
+        mtu: 1182
+      ground_override:
+        radionet-m: 1182
+  contact_type: CONTACT_SPACE_GROUND_TXO
 S_TXO_SPIRE_BW1_P27_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -378,6 +423,51 @@ S_TXO_SPIRE_BW1_P35_F2022_5:
         mtu: 1542
       ground_override:
         radionet-m: 1542
+S_TXO_SPIRE_BW1_P35_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 7.7W
+      per_second: 7.7
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+        pls: 35
+        mtu: 1542
+      ground_override:
+        radionet-m: 1542
+  contact_type: CONTACT_SPACE_GROUND_TXO
 S_TXO_SPIRE_BW1_P39_F2022_5:
   directionality: SpaceToEarth
   allowed_license_countries:
@@ -551,6 +641,51 @@ S_TXO_SPIRE_BW1_P43_F2200_5:
         mtu: 1767
       ground_override:
         radionet-m: 1767
+  contact_type: CONTACT_SPACE_GROUND_TXO
+S_TXO_SPIRE_BW1_P75_F2200_5:
+  directionality: SpaceToEarth
+  allowed_license_countries:
+  - AU
+  - BM
+  - CL
+  - FK
+  - GB
+  - GH
+  - IE
+  - JP
+  - LK
+  - LV
+  - MN
+  - NO
+  - NZ
+  - PT
+  - SG
+  - SH
+  - US
+  - ZA
+  enabled: false
+  legal: true
+  satellite_constraints:
+    electrical_cost:
+      # 155 second warmup; DEXTER idle 3.8W = 589.0
+      flat: 589.0
+      # DEXTER Tx 7.7W
+      per_second: 7.7
+  contact_overhead_time: 10s
+  window_parameters:
+    forward_channels:
+    - radio_band: SBAND
+      protocol: DVBS2X
+      bandaid_mode: TX_SBAND_DVB_IP
+      use_radionet: true
+      bandaid_override:
+        fec_k: 223
+        fec: 255
+        tx_carrier_frequency_hz: 2200500000
+        pls: 75
+        mtu: 1182
+      ground_override:
+        radionet-m: 1182
   contact_type: CONTACT_SPACE_GROUND_TXO
 S_TXO_SPIRE_BW1_P79_F2200_5:
   directionality: SpaceToEarth
