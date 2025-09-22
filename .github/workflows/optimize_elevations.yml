@@ -27,6 +27,8 @@ on:
         default: ''
         type: string
 
+permissions:
+  contents: write
 
 jobs:
   deploy:
@@ -42,26 +44,28 @@ jobs:
           fetch-depth: 2
 
       - run: |-
-          # populate_per_pair_elevations.py
-          dt=$(date +'%Y-%m-%d %H:%M:%S')
           # Install dependencies
           sudo apt-get install jq python3 python3-pip python3-poetry yq
           poetry install
           pip install --upgrade packaging numpy ruamel.yaml==0.17.32 scipy 
-          
-          # Create unique branch name
-          BRANCH_NAME="populate-per-pair-elevations-${{ github.run_id }}"
-          git checkout -b $BRANCH_NAME
-        
-          # Commit and push changes
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
-          mkdir bundle
+
+      - run: |-
           # Run optimize populate tool
           python populate_per_pair_elevations.py \
             -e ${{ github.event.inputs.environment }} \
             -g ${{ github.event.inputs.gs_ids }} \
             -b ${{ github.event.inputs.bands }}
+          
+          dt=$(date +'%Y-%m-%d %H:%M:%S')
+          
+          # Create unique branch name
+          BRANCH_NAME="populate-per-pair-elevations-${{ github.run_id }}"
+          git checkout -b $BRANCH_NAME
+          
+          # Commit and push changes
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          mkdir bundle
           
           git add -A ${{ github.event.inputs.environment }}
           git add '*.yaml'
