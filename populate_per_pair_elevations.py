@@ -17,7 +17,7 @@ import subprocess
 import sys
 import time
 from collections import namedtuple
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, wait
 from copy import deepcopy
 from dataclasses import dataclass
 from enum import Enum
@@ -43,7 +43,10 @@ WAREHOUSE_ID = os.getenv("DATABRICKS_WAREHOUSE_ID", "c9cc905ac4a154ae")
 
 
 # Thread pool for parallel execution  
-thread_pool = ThreadPoolExecutor(max_workers=4)
+# Update: not a good idea to run in parallel
+# as multiple thread are writing to the same yaml files
+thread_pool = ThreadPoolExecutor(max_workers=1)
+futures = []
 
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
@@ -374,7 +377,7 @@ def execute_command(command, command_str):
     process = subprocess.run(command, capture_output=True, timeout=600)
 
     if process.returncode != 0:
-        raise Exception(
+        print(
             f"Channel tool failed. stdout:\n{process.stdout}\nstderr:\n{process.stderr}"
         )
 
@@ -404,6 +407,7 @@ def channel_tool(args, sync=False):
     print(command_str, flush=True)
 
     future = thread_pool.submit(execute_command, command, command_str)
+    futures.append(future)
 
     if sync:
         return future.result()
@@ -729,9 +733,11 @@ if not DATABRICKS_ACCESS_TOKEN:
 
 
 bands = ["S", "X"] if args.bands.lower() == "both" else [args.bands]
+print(f"Running for band(s) {bands}")
 for band in bands:
-    print(f"Running for band {band}")
     gs_ids = [g for g in args.gs_ids.split(",") if g != '']
     for (gs_id, new_channels) in get_optimized_channels(gs=gs_ids, band=band):
         print(f"Optimizing {gs_id}")
         run_channels(new_channels)
+        wait(futures)
+
