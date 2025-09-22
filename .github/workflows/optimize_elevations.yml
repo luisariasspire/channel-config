@@ -77,4 +77,4 @@ jobs:
           fi
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-
+          GITHUB_TOKEN: ${{ secrets.PAT }}

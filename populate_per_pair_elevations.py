@@ -42,12 +42,6 @@ DATABRICKS_SERVER_HOSTNAME = os.getenv(
 WAREHOUSE_ID = os.getenv("DATABRICKS_WAREHOUSE_ID", "c9cc905ac4a154ae")
 
 
-# Thread pool for parallel execution  
-# Update: not a good idea to run in parallel
-# as multiple thread are writing to the same yaml files
-thread_pool = ThreadPoolExecutor(max_workers=1)
-futures = []
-
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
@@ -358,60 +352,29 @@ def get_optimized_channels(gs:list[str]=(), band: str = "S"):
     return optimized_channels
 
 
-def execute_command(command, command_str):
-    """Execute a channel tool command and cache the results.
+def channel_tool(args):
+    if not isinstance(args, list):
+        raise Exception("Expected list")
 
-    Args:
-        command: Command list to execute
-        command_str: String representation of command for caching
+    args = [str(a) for a in args]
 
-    Returns:
-        Command stdout output
+    command = ["poetry", "run", "python", "-m", "channel_tool"] + args
+    command_str = " ".join(command)
+    print(command_str, flush=True)
 
-    Raises:
-        Exception: If command execution fails
-    """
     if command_str in command_history:
         return command_history[command_str].stdout
 
     process = subprocess.run(command, capture_output=True, timeout=600)
 
     if process.returncode != 0:
-        print(
+        raise Exception(
             f"Channel tool failed. stdout:\n{process.stdout}\nstderr:\n{process.stderr}"
         )
 
     command_history[command_str] = deepcopy(process)
+
     return process.stdout
-
-
-def channel_tool(args, sync=False):
-    """Execute channel tool commands asynchronously using thread pool.
-
-    Args:
-        args: List of command arguments to pass to channel tool
-
-    Returns:
-        Command execution results
-
-    Raises:
-        Exception: If args is not a list
-        :param sync: Waits for command to complete before returning result. Defaults to False.
-    """
-    if not isinstance(args, list):
-        raise Exception("Expected list")
-
-    args = [str(a) for a in args]
-    command = ["poetry", "run", "python", "-m", "channel_tool"] + args
-    command_str = " ".join(command)
-    print(command_str, flush=True)
-
-    future = thread_pool.submit(execute_command, command, command_str)
-    futures.append(future)
-
-    if sync:
-        return future.result()
-    return None
 
 
 def get_asset_type(asset_id):
@@ -739,5 +702,3 @@ for band in bands:
     for (gs_id, new_channels) in get_optimized_channels(gs=gs_ids, band=band):
         print(f"Optimizing {gs_id}")
         run_channels(new_channels)
-        wait(futures)
-
