@@ -439,7 +439,7 @@ def get_channel_link_profile(gs_id, predicate):
         List of tuples containing (channel_id, link_profile) pairs
     """
     channels = channel_tool(
-        ["query", args.environment, gs_id, predicate, "link_profile"], sync=True
+        ["query", args.environment, gs_id, predicate, "link_profile"]
     )
 
     decoded = channels.decode("utf-8")
