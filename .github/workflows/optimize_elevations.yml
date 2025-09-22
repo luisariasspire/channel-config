@@ -42,7 +42,7 @@ jobs:
           fetch-depth: 2
 
       - run: |-
-          # Export Dashboards, create PR  
+          # populate_per_pair_elevations.py
           dt=$(date +'%Y-%m-%d %H:%M:%S')
           # Install dependencies
           apt-get install jq
