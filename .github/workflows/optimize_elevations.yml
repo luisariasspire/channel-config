@@ -51,6 +51,8 @@ jobs:
 
       - run: |-
           # Run optimize populate tool
+          
+          mkdir bundle
           python populate_per_pair_elevations.py \
             -e ${{ github.event.inputs.environment }} \
             -g ${{ github.event.inputs.gs_ids }} \
@@ -65,7 +67,6 @@ jobs:
           # Commit and push changes
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
-          mkdir bundle
           
           git add -A ${{ github.event.inputs.environment }}
           git add '*.yaml'
