@@ -47,8 +47,8 @@ jobs:
           # Install dependencies
           sudo apt-get install jq python3 python3-pip python3-poetry
           poetry install
-          pip install --upgrade packaging numpy
-        
+          pip install --upgrade packaging numpy ruamel.yaml==0.17.32          
+          
           # Create unique branch name
           BRANCH_NAME="populate-per-pair-elevations-${{ github.run_id }}"
           git checkout -b $BRANCH_NAME
