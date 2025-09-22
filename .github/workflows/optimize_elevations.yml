@@ -45,9 +45,9 @@ jobs:
           # populate_per_pair_elevations.py
           dt=$(date +'%Y-%m-%d %H:%M:%S')
           # Install dependencies
-          apt-get install jq
-          pip install --upgrade pip poetry
+          sudo apt-get install jq python3 python3-pip python3-poetry
           poetry install
+          pip install --upgrade packaging
         
           # Create unique branch name
           BRANCH_NAME="populate-per-pair-elevations-${{ github.run_id }}"
