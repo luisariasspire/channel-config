@@ -75,7 +75,6 @@ jobs:
             # 5.1. Do nothing
             echo "No changes detected, skipping commit"
           fi
-        working-directory: bundles/Project Ripley/dashboards
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
