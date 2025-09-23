@@ -223,44 +223,9 @@ def pls_picker(gs_ids: list[str], band: str = "S"):
         List of namedtuples containing PLS values and associated metrics for each ground station
     """
     gs_ids = "'" + "', '".join(gs_ids) + "'"
-    query = f"""
-       with aq as (
-          select gs_id, collect_set(spire_id) as satellites,
-            pls, cardinality(collect_set(spire_id)) * round(elevation) as elev_sum,
-            bw_mhz, band, any_value(mbps) as mbps
-          from
-            optimal_channel_properties
-          where
-            gs_id in ({ gs_ids }) and band in ('{ band }') and elevation < 70
-          group by gs_id, pls, round(elevation), bw_mhz, band
-        )
-        select
-          aq.gs_id,
-          sum(cardinality(aq.satellites)) as sat_count,
-          round(sum(elev_sum) / sum(cardinality(aq.satellites))) as elevation,
-          aq.pls,
-          aq.bw_mhz,
-          aq.band,
-          aq.mbps,
-          coalesce(round(gs.elevation), 90) as default_min_elevation_deg
-        from
-          aq
-            left join optimal_channel_properties_gs gs
-              on aq.gs_id = gs.gs_id
-              and aq.pls = gs.pls
-              and aq.bw_mhz = gs.bw_mhz
-              and aq.band = gs.band
-        group by 
-          aq.gs_id,
-          aq.pls,
-          aq.bw_mhz,
-          aq.band,
-          aq.mbps,
-          gs.elevation
-        order by
-          sat_count desc,
-          pls asc;
-    """
+    query = f"""select * 
+    from ripley_dev.default.pls_picker
+    where gs_id in ({ gs_ids }) and band in ('{ band }')"""
     pls_values = fetch_data(query)
     return pls_values
 
