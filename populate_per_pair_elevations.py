@@ -20,9 +20,9 @@ from collections import namedtuple
 from concurrent.futures import ThreadPoolExecutor, wait
 from copy import deepcopy
 from dataclasses import dataclass
+from datetime import datetime
 from enum import Enum
 from typing import List, Optional
-from datetime import datetime
 
 import numpy as np
 import requests
@@ -36,8 +36,7 @@ if __name__ != "__main__":
 
 DATABRICKS_ACCESS_TOKEN = os.getenv("DATABRICKS_TOKEN")
 DATABRICKS_SERVER_HOSTNAME = os.getenv(
-    "DATABRICKS_SERVER_HOSTNAME",
-    "https://dbc-24e0a945-16d8.cloud.databricks.us"
+    "DATABRICKS_SERVER_HOSTNAME", "https://dbc-24e0a945-16d8.cloud.databricks.us"
 )
 WAREHOUSE_ID = os.getenv("DATABRICKS_WAREHOUSE_ID", "c9cc905ac4a154ae")
 
@@ -45,6 +44,7 @@ WAREHOUSE_ID = os.getenv("DATABRICKS_WAREHOUSE_ID", "c9cc905ac4a154ae")
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
+
 
 class Directionality(Enum):
     TXO = 1
@@ -56,6 +56,7 @@ BITRATE_SCALE_FACTOR = 0.9
 command_history = {}
 
 yaml = YAML()
+
 
 @dataclass
 class ChannelConfig:
@@ -80,7 +81,7 @@ def fetch_data(query: str) -> Optional[List[namedtuple]]:
     """
     HEADERS = {
         "Authorization": f"Bearer {DATABRICKS_ACCESS_TOKEN}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     }
 
     # --- Step 1: Submit the query ---
@@ -89,7 +90,7 @@ def fetch_data(query: str) -> Optional[List[namedtuple]]:
         "catalog": "ripley_dev",
         "schema": "default",
         "statement": query,
-        "warehouse_id": WAREHOUSE_ID
+        "warehouse_id": WAREHOUSE_ID,
     }
 
     response = requests.post(submit_url, headers=HEADERS, json=payload)
@@ -109,8 +110,11 @@ def fetch_data(query: str) -> Optional[List[namedtuple]]:
         state = status_data["status"]["state"]
 
         if state in ("SUCCEEDED", "FAILED", "CANCELED"):
-            if "status" in status_data and "error" in status_data["status"] and "message" in status_data["status"][
-                "error"]:
+            if (
+                "status" in status_data
+                and "error" in status_data["status"]
+                and "message" in status_data["status"]["error"]
+            ):
                 print("Error: " + status_data["status"]["error"]["message"])
             break
         time.sleep(2)
@@ -121,7 +125,11 @@ def fetch_data(query: str) -> Optional[List[namedtuple]]:
 
         if "data_array" in result_data:
             data = []
-            columns = {c["name"]: c["type_name"] for c in status_data["manifest"]["schema"]["columns"]}
+            columns = {
+                c["name"]: c["type_name"]
+                for c in status_data["manifest"]["schema"]["columns"]
+            }
+
             def parse_value(v, c):
                 if v is None:
                     return v
@@ -133,8 +141,10 @@ def fetch_data(query: str) -> Optional[List[namedtuple]]:
                     return json.loads(v)
 
             for row in result_data["data_array"]:
-                values = {k:parse_value(v, columns[k]) for k, v in zip(columns.keys(), row)}
-                data.append(namedtuple('row', columns)(**values))
+                values = {
+                    k: parse_value(v, columns[k]) for k, v in zip(columns.keys(), row)
+                }
+                data.append(namedtuple("row", columns)(**values))
 
             return data
     else:
@@ -144,8 +154,8 @@ def fetch_data(query: str) -> Optional[List[namedtuple]]:
 def categorize_pls(pls):
     """Categorize pls into low, medium, high by tertiles"""
     sorted_pls = sorted(pls)
-    low_thresh = sorted_pls[len(pls)//3]
-    high_thresh = sorted_pls[2*len(pls)//3]
+    low_thresh = sorted_pls[len(pls) // 3]
+    high_thresh = sorted_pls[2 * len(pls) // 3]
 
     categories = []
     for p in pls:
@@ -158,7 +168,9 @@ def categorize_pls(pls):
     return categories
 
 
-def optimize_link(sat_count: list[int], mbps: list[float], pls: list[float], elevation: list[float]) -> dict:
+def optimize_link(
+    sat_count: list[int], mbps: list[float], pls: list[float], elevation: list[float]
+) -> dict:
     n = len(sat_count)
 
     # Objective: maximize sat_count + mbps, minimize elevation
@@ -169,17 +181,17 @@ def optimize_link(sat_count: list[int], mbps: list[float], pls: list[float], ele
     cats = ["low", "medium", "high"]
 
     # Constraints: select 1 option per category
-    A_eq = []
+    a_eq = []
     b_eq = []
     for cat in cats:
         row = [1 if categories[i] == cat else 0 for i in range(n)]
-        A_eq.append(row)
+        a_eq.append(row)
         b_eq.append(1)
 
     # Bounds: x[i] ∈ [0,1]
     bounds = [(0, 1) for _ in range(n)]
 
-    res = linprog(c, A_eq=A_eq, b_eq=b_eq, bounds=bounds, method="highs")
+    res = linprog(c, A_eq=a_eq, b_eq=b_eq, bounds=bounds, method="highs")
 
     if res.success:
         chosen_indices = [i for i, val in enumerate(res.x) if val > 1e-6]
@@ -191,10 +203,10 @@ def optimize_link(sat_count: list[int], mbps: list[float], pls: list[float], ele
                     mbps=mbps[i],
                     pls=pls[i],
                     elevation=elevation[i],
-                    category=categories[i]
+                    category=categories[i],
                 )
                 for i in chosen_indices
-            ]
+            ],
         }
     else:
         raise ValueError("Optimization failed: " + res.message)
@@ -253,18 +265,18 @@ def pls_picker(gs_ids: list[str], band: str = "S"):
     return pls_values
 
 
-def get_new_channels(gs_id, pls:list[int], band:str="S"):
+def get_new_channels(gs_id, pls: list[int], band: str = "S"):
     """Get channel configurations for specified PLS values and ground station.
 
     Args:
         gs_id: Ground station ID to query
-        pls: List of PLS values to fetch channels for 
+        pls: List of PLS values to fetch channels for
         band: Frequency band (defaults to "S")
 
     Returns:
         List of namedtuples containing channel configurations including satellite elevations
     """
-    pls = ','.join([str(p) for p in pls])
+    pls = ",".join([str(p) for p in pls])
     query = f"""
         with aq as (
             select
@@ -293,7 +305,7 @@ def get_new_channels(gs_id, pls:list[int], band:str="S"):
     return new_channels
 
 
-def get_optimized_channel(gs_id:str=None, band:str="S"):
+def get_optimized_channel(gs_id: str = None, band: str = "S"):
     """Get optimized channel configuration for a ground station.
 
     Fetches PLS values, optimizes selection based on metrics, and retrieves full channel config.
@@ -312,7 +324,9 @@ def get_optimized_channel(gs_id:str=None, band:str="S"):
 
     print(f"{gs_id} has the possible PLS values: ")
     for r in pls_values:
-        print(f"sat_count: {r.sat_count}, elevation: {r.elevation}, pls: {r.pls}, mbps: {r.mbps}")
+        print(
+            f"sat_count: {r.sat_count}, elevation: {r.elevation}, pls: {r.pls}, mbps: {r.mbps}"
+        )
 
     sat_count = [r.sat_count for r in pls_values]
     mbps = [r.mbps for r in pls_values]
@@ -326,7 +340,7 @@ def get_optimized_channel(gs_id:str=None, band:str="S"):
     return new_channels
 
 
-def get_optimized_channels(gs:list[str]=(), band: str = "S"):
+def get_optimized_channels(gs: list[str] = (), band: str = "S"):
     """Get optimized channel configurations for one or all ground stations.
 
     Args:
@@ -334,9 +348,11 @@ def get_optimized_channels(gs:list[str]=(), band: str = "S"):
         band: Frequency band (defaults to "S")
     """
     if len(gs) == 0:
-        gs = fetch_data("select gs_id, sband_enabled, sband_only "
-                        "from tk_catalog.public.groundstations "
-                        "where `group` = 'thewild'")
+        gs = fetch_data(
+            "select gs_id, sband_enabled, sband_only "
+            "from tk_catalog.public.groundstations "
+            "where `group` = 'thewild'"
+        )
         if band.upper() == "S":
             gs = [g.gs_id for g in gs if g.sband_enabled]
         else:
@@ -457,13 +473,15 @@ def get_channel_link_profile(gs_id, predicate):
 
 
 def get_active_assets():
-    return fetch_data("""
-     SELECT
-         spire_id AS asset_id
-     FROM tk_catalog.public.satellites
-     WHERE spire_id LIKE 'FM%'
-       AND support_stage IN ('production', 'checkout_commissioning')
-     """)
+    return fetch_data(
+        """
+         SELECT
+             spire_id AS asset_id
+         FROM tk_catalog.public.satellites
+         WHERE spire_id LIKE 'FM%'
+           AND support_stage IN ('production', 'checkout_commissioning')
+     """
+    )
 
 
 def run_channels(new_channels):
@@ -485,19 +503,28 @@ def run_channels(new_channels):
         downlink_rate_kbps = row.mbps * 1000 * BITRATE_SCALE_FACTOR
         satellite_min_elevations = row.satellite_min_elevations
         for min_elevations in row.satellite_min_elevations:
-            min_elevations["min_elevation_deg"] = int(min_elevations["min_elevation_deg"])
+            min_elevations["min_elevation_deg"] = int(
+                min_elevations["min_elevation_deg"]
+            )
 
         default_min_elevation_deg = int(row.default_min_elevation_deg)
 
         configs = load_config_file(gs_id)
         if configs is None:
             continue
-        config_values = [c for c in list(configs.values()) if isinstance(c, dict) and "classification_annotations" in c]
+        config_values = [
+            c
+            for c in list(configs.values())
+            if isinstance(c, dict) and "classification_annotations" in c
+        ]
         mid_freq = (
             2200.5
             if any(
                 c["classification_annotations"].get("space_ground_sband", None)
-                and c["classification_annotations"].get("space_ground_sband_mid_freq_mhz", None) == 2200.5
+                and c["classification_annotations"].get(
+                    "space_ground_sband_mid_freq_mhz", None
+                )
+                == 2200.5
                 for c in config_values
             )
             else 2022.5
@@ -531,7 +558,8 @@ def run_channels(new_channels):
                 sat.asset_id
                 for sat in get_active_assets()
                 if all(
-                    sat.asset_id not in d["satellites"] for d in satellite_min_elevations
+                    sat.asset_id not in d["satellites"]
+                    for d in satellite_min_elevations
                 )
             ]
 
@@ -553,16 +581,16 @@ def run_channels(new_channels):
             )
 
             comma_separated_assets = (
-                    ",".join(
-                        ",".join(d["satellites"])
-                        for d in satellite_min_elevations
-                        # Make sure we don't create a channel for disabled sats
-                        # They're disabled to ensure we don't communicate with this groundstation
-                        # if the sat gets the channel by some other means in the future.
-                        if d["min_elevation_deg"] != 90.0
-                    )
-                    + ","
-                    + gs_id
+                ",".join(
+                    ",".join(d["satellites"])
+                    for d in satellite_min_elevations
+                    # Make sure we don't create a channel for disabled sats
+                    # They're disabled to ensure we don't communicate with this groundstation
+                    # if the sat gets the channel by some other means in the future.
+                    if d["min_elevation_deg"] != 90.0
+                )
+                + ","
+                + gs_id
             )
 
             channel_tool(
@@ -581,14 +609,22 @@ def run_channels(new_channels):
                 ]
             )
 
-            new_pls_values.setdefault((gs_id, band, bw_mhz, directionality), []).append(pls)
+            new_pls_values.setdefault((gs_id, band, bw_mhz, directionality), []).append(
+                pls
+            )
 
-            edit_predicate = predicate + f" and space_ground_{band}band_dvbs2x_pls == {pls}"
+            edit_predicate = (
+                predicate + f" and space_ground_{band}band_dvbs2x_pls == {pls}"
+            )
 
             # the channel_id and the link_profile of the channel we just created
-            for (channel_id, link_profile) in get_channel_link_profile(gs_id, edit_predicate):
+            for channel_id, link_profile in get_channel_link_profile(
+                gs_id, edit_predicate
+            ):
 
-                dvb_link_profile = max(link_profile, key=lambda i: i["downlink_rate_kbps"])
+                dvb_link_profile = max(
+                    link_profile, key=lambda i: i["downlink_rate_kbps"]
+                )
                 dvb_link_profile["satellite_min_elevations"] = satellite_min_elevations
 
                 config_file = load_config_file(gs_id)
@@ -617,20 +653,24 @@ def run_channels(new_channels):
 
                 # if we duplicated a channel that uses the old key, replace it.
                 if dvb_link_profile.pop("min_elevation_deg", None):
-                    dvb_link_profile["default_min_elevation_deg"] = default_min_elevation_deg
+                    dvb_link_profile["default_min_elevation_deg"] = (
+                        default_min_elevation_deg
+                    )
 
                 lp = [dict(dvb_link_profile)]
 
                 if directionality == Directionality.BIDIR and band == "s":
-                    uhf_link_profile = min(link_profile, key=lambda i: i["downlink_rate_kbps"])
+                    uhf_link_profile = min(
+                        link_profile, key=lambda i: i["downlink_rate_kbps"]
+                    )
                     uhf_default_min_elevation_deg = uhf_link_profile.pop(
                         "min_elevation_deg", None
                     )
                     # if we duplicated a channel that uses the old key, replace it.
                     if uhf_default_min_elevation_deg:
-                        uhf_link_profile[
-                            "default_min_elevation_deg"
-                        ] = uhf_default_min_elevation_deg
+                        uhf_link_profile["default_min_elevation_deg"] = (
+                            uhf_default_min_elevation_deg
+                        )
                     # validation rules expect uhf to be the first.
                     lp.insert(0, dict(uhf_link_profile))
 
@@ -677,7 +717,6 @@ def run_channels(new_channels):
     channel_tool(["format"])
 
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "-e", "--environment", choices=["staging", "production"], required=True
@@ -685,9 +724,7 @@ parser.add_argument(
 parser.add_argument(
     "-b", "--bands", choices=["X", "S", "both"], required=False, default="both"
 )
-parser.add_argument(
-    "-g", "--gs_ids", required=False, default=""
-)
+parser.add_argument("-g", "--gs_ids", required=False, default="")
 args = parser.parse_args()
 
 
@@ -698,7 +735,7 @@ if not DATABRICKS_ACCESS_TOKEN:
 bands = ["S", "X"] if args.bands.lower() == "both" else [args.bands]
 print(f"Running for band(s) {bands}")
 for band in bands:
-    gs_ids = [g for g in args.gs_ids.split(",") if g != '']
-    for (gs_id, new_channels) in get_optimized_channels(gs=gs_ids, band=band):
+    gs_ids = [g for g in args.gs_ids.split(",") if g != ""]
+    for gs_id, new_channels in get_optimized_channels(gs=gs_ids, band=band):
         print(f"Optimizing {gs_id}")
         run_channels(new_channels)
