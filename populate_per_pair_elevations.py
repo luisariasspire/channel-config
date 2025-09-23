@@ -621,7 +621,6 @@ def run_channels(new_channels):
             for channel_id, link_profile in get_channel_link_profile(
                 gs_id, edit_predicate
             ):
-
                 dvb_link_profile = max(
                     link_profile, key=lambda i: i["downlink_rate_kbps"]
                 )
@@ -653,9 +652,9 @@ def run_channels(new_channels):
 
                 # if we duplicated a channel that uses the old key, replace it.
                 if dvb_link_profile.pop("min_elevation_deg", None):
-                    dvb_link_profile["default_min_elevation_deg"] = (
-                        default_min_elevation_deg
-                    )
+                    dvb_link_profile[
+                        "default_min_elevation_deg"
+                    ] = default_min_elevation_deg
 
                 lp = [dict(dvb_link_profile)]
 
@@ -668,9 +667,9 @@ def run_channels(new_channels):
                     )
                     # if we duplicated a channel that uses the old key, replace it.
                     if uhf_default_min_elevation_deg:
-                        uhf_link_profile["default_min_elevation_deg"] = (
-                            uhf_default_min_elevation_deg
-                        )
+                        uhf_link_profile[
+                            "default_min_elevation_deg"
+                        ] = uhf_default_min_elevation_deg
                     # validation rules expect uhf to be the first.
                     lp.insert(0, dict(uhf_link_profile))
 
