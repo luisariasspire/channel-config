@@ -33,7 +33,7 @@ permissions:
 jobs:
   deploy:
     name: "Deploy bundle"
-    runs-on: [ ubuntu-latest ]
+    runs-on: [ self-hosted ]
 
     steps:
       # Check out this repo, so that this workflow can access it.
